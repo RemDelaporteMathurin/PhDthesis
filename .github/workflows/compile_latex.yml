@@ -13,4 +13,4 @@ jobs:
       - name: Compile LaTeX document
         uses: dante-ev/latex-action@latest
         with:
-          root_file: master.tex
+          root_file: main.tex
