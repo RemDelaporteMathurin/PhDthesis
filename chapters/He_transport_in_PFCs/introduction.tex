@@ -1,0 +1,26 @@
+In fusion devices, extreme fluxes of helium (He) and hydrogen (H) are expected.
+These fluxes will be mostly located on the tungsten (W) divertor which will also exhaust the plasma He ashes.
+
+Due to a strong W-He repulsion, interstitial He in W tend to \textcolor{black}{react and} form clusters \sidecite{becquart_density_2009, becquart_migration_2006} (see Figure \ref{fig:clustering sketch}).
+Eventually, when mobile clusters reach a critical size, trap-mutation (also called self-trapping) will occur.
+Frenkel pairs (self-interstitial W atom and vacancy) will be produced and the mobile clusters will sit in the created vacancies \sidecite{boisse_modeling_2014}.
+At this point, the clusters are immobile and will continue to grow by absorbing small helium clusters and serve as nuclei for bubble formations.
+When the cluster is over-pressurised, additional Frenkel pairs will be created.
+He bubbles can then form in W and \textcolor{black}{their morphology depends on the exposure conditions} \sidecite{ialovega_hydrogen_2020, taylor_investigating_2019, qin_helium_2019, lemahieu_h/he_2016}.
+Such bubbles have been observed using Molecular Dynamics (MD)  \sidecite{hammond_helium_2019, hamid_molecular_2019, bergstrom_molecular_2017, maroudas_helium_2016, boisse_modeling_2014, sefta_surface_2013} and Object Kinetic Monte Carlo \sidecite{valles_temperature_2017, de_backer_modeling_2015}.
+He bubbles can alter the mechanical properties of W \sidecite{das_hardening_2019, nguyen_modeling_2019, qin_helium_2019} and reduce the thermal properties of components \sidecite{qu_degradation_2018, cui_thermal_2017}.
+Eventually, when over-pressurised bubbles are close to the surface, bursting can occur as shown by Sefta \textit{et al} in MD simulations \sidecite{sefta_helium_2013, sefta_surface_2013}.
+Bursting greatly modifies surfaces morphology by increasing roughness and producing craters \sidecite{ialovega_hydrogen_2020} but also W-fuzz \sidecite{ de_temmerman_effect_2015, mccarthy_enhanced_2020, khan_helium_2020, bernard_temperature_2017, lemahieu_h/he_2016}.
+Moreover, He exposure can alter H retention in W \sidecite{ialovega_hydrogen_2020, markelj_hydrogen_2017, ogorodnikova_deuterium_2011, baldwin_effect_2011, miyamoto_microscopic_2011, ueda_simultaneous_2009}.
+
+An effort has been made to assess He transport in W using atomistically informed macroscopic models called cluster dynamics models implemented using finite differences.
+Some examples of such implementations are the work of Faney \textit{et al} \sidecite{faney_spatially_2014, faney_spatially_2015} and the Xolotl code \sidecite{blondel_continuum-scale_2018}.
+The simulated results are promising but these codes require substantial computational resources considering the thousands of equations that need to be solved.
+The current study therefore proposes an approach to further simplify these models so that they can be easily implemented in finite element codes and later coupled to H transport modelling codes such as FESTIM \sidecite{delaporte-mathurin_finite_2019}.
+This could serve as a base for H-He coupled simulations to better assess H transport in plasma facing materials and couple with additional physics like heat transfer.
+
+The simplified model presented in this work is applied on a simple case and compared with existing results of the literature to ensure the model is not over-simplified.
+Then, the influence of exposure conditions is investigated by running a parametric study varying temperature and implanted particle flux.
+The results of this parametric study are analysed using a regression method previously employed\sidecite{delaporte-mathurin_parametric_2020}.
+Experiments are then conducted to quantitatively assess the He bubble density and size in He irradiated W.
+The current model is finally compared to these experimental results.
