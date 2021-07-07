@@ -1,0 +1,185 @@
+This Section describes the He transport model and the grouped approach employed to simplify it.
+
+\subsection{Helium clustering model}
+
+This model describes the evolution of the concentrations of pure interstitial He clusters (He$_x$) and mixed He-vacancies clusters (He$_x$V$_y$) that are formed by trap-mutation events.
+\begin{figure*}
+    \centering
+    \begin{overpic}[width=0.7\linewidth]{Figures/Chapter2/He clustering.pdf}
+        \put(10, 60){He$_1$}
+        \put(25, 60){He$_2$}
+        \put(45, 60){He$_3$}
+        \put(60, 60){He$_4$}
+        \put(85, 60){V$_1$He$_7$}
+        \put(78, 15){V$_1$He$_8$}
+        \put(50, 15){V$_1$He$_9$}
+        \put(22, 15){V$_2$He$_{10}$}
+        
+    \end{overpic}
+    \caption{Representation of He clustering in solids. Dissociation is omitted for simplification purposes. \textcolor{black}{The grey arrows thicknesses represent} the \textcolor{black}{magnitude} of the reaction rate \textcolor{black}{between mobile He$_1$ and other clusters at the same distance}.}
+    \label{fig:clustering sketch}
+\end{figure*}
+
+
+The spatio-temporal evolution of each species \textcolor{black}{of size} $i$ is defined by:
+\begin{equation}
+    \frac{\partial c_i}{\partial t} =  \nabla \cdot (D_i\nabla c_i) + \Gamma_i + R_i
+    \label{eq:model}
+\end{equation}
+In Equation \ref{eq:model}, the first term of the right hand-side is the diffusion term \textcolor{black}{where ${D=D_0 \cdot \exp\big(-E_\mathrm{diff}/ (k_B \cdot T )\big)}$ is the thermally activated diffusion coefficient expressed in \si{m^2.s^{-1}} with $E_\mathrm{diff}$ the diffusion activation energy in \si{eV}, $k_B$ the Boltzmann constant in \si{eV.K^{-1}} and $T$ the temperature in \si{K}}.
+If a species $i$ is assumed to be immobile, its diffusion coefficient $D_i$ is zero.
+$\Gamma_i$ is the \textcolor{black}{external} production rate of species $i$.
+
+The term $R_i$ is the coupling term due to reactions between species.
+A simple reaction between two species can be described as:
+\begin{equation}
+    \ce{A + B <=>[k^+_\mathrm{A,B}][k^-_\mathrm{A,B}] AB}
+\end{equation}
+
+\textcolor{black}{The \textcolor{black}{forward} rate constant $k^+_{A,B}$ is the clustering rate and is calculated using the theory of diffusion-limited reactions\sidecite{goldstein_diffusion_2007}:
+\begin{equation}
+    k^+_\mathrm{A,B} = 4 \pi (r_\mathrm{A} + r_\mathrm{B}) (D_\mathrm{A} + D_\mathrm{B})
+\end{equation}
+where $r_\mathrm{A}$ and $r_\mathrm{B}$ are the capture radii and $D_\mathrm{A}$ and $D_\mathrm{B}$ are the diffusion coefficients of species A and B respectively.
+The \textcolor{black}{backward} rate constant $k^-_\mathrm{A,B}$ is the dissociation rate and is obtained using chemical equilibrium principles\sidecite{goldstein_diffusion_2007}:
+\begin{equation}
+    k^-_\mathrm{A,B} =\rho k^+_\mathrm{A,B}e^{\frac{-E_b}{k_B T}}
+\end{equation}
+where $\rho$ is the atomic density in $\si{m^{-3}}$ ($\rho = \SI{6.3e28}{m^{-3}}$ for W), $k_B$ is the Boltzmann constant in \si{eV.K^{-1}}, $T$ is the temperature in \si{K} and $E_b$ is the binding energy for the reaction \ce{AB -> A + B} in \si{eV}.}
+
+The reaction term $R_i$ is the coupling term between concentrations and is expressed as:
+\textcolor{black}{
+\begin{equation}
+    R_i=  \sum_{m} k^+_{m,i-m} c_m c_{i-m}  - c_i \sum_m \left( k_{i, m}^+ c_{m} + k_{i+1}^- c_{i+1} -  k_i^- c_i \right)
+    \label{eq:reaction term}
+\end{equation}
+}
+
+In Equation \ref{eq:reaction term}, \textcolor{black}{$c_i$ is the concentration of clusters of size $i$ in \si{m^{-3}}}.
+The first term corresponds to the reactions producing clusters of size $i$.
+The second one corresponds to the ones reacting with clusters of size $i$.
+The third term accounts for bigger clusters dissociating.
+Finally, the last term corresponds to clusters of size $i$ dissociating.
+
+\subsection{Grouped approach}
+Extending this clustering model to clusters containing millions of helium extremely increases the computational cost.
+A grouped approach proposed by Faney et al \sidecite{faney_spatially_2014} for reducing the number of equations will therefore be employed.
+This technique consists in grouping the big clusters \textcolor{black}{that} have a similar behaviour in a single equation while explicitly \textcolor{black}{accounting} for smaller clusters.
+
+The clustering equations can be written as follows:
+
+\begin{subequations}
+    \begin{align}
+        \frac{\partial c_1}{\partial t} &= \nabla \cdot (D_1 \nabla c_1) + \Gamma + \sum\limits_{i=2}^N k_{i}^- c_i - 2k_{1, 1}^+ c_1^2 - \sum\limits_{i=2}^N k_{1,i}^+ c_1 c_i - \sum\limits_{i=N+1}^\infty k_{1,i}^+ c_1 c_i \\
+        \frac{\partial c_2}{\partial t} &= \nabla \cdot (D_2 \nabla c_2) - k_{1, 2}^+ c_1 c_2 + k_{1, 1}^+ c_1^2 - k_{2}^- c_2 + k_{3}^- c_3\\
+        \vdots \nonumber\\
+        \frac{\partial c_i}{\partial t} &= - k_{1, i}^+ c_1 c_i + k_{1, i-1}^+ c_1 c_{i-1} - k_{i}^- c_i\\
+        \frac{\partial c_{i+1}}{\partial t} &= - k_{1, i+1}^+ c_1 c_{i+1} + k_{1, i}^+ c_1 c_i\\
+        \vdots \nonumber
+    \end{align}
+    \label{eq: temporal evolution no grouping}
+\end{subequations}
+\textcolor{black}{where $N$ is some threshold required for the grouping technique.}
+
+In order to simplify this model, the following quantities are defined:
+
+\begin{align}
+    c_b &= \sum\limits_{i=N+1}^\infty c_i \quad \text{ : total concentration of clusters containing more than $N$ He} \\
+    \langle i_b \rangle &= \frac{1}{c_b} \sum\limits_{i=N+1}^\infty i c_i \quad \text{ : average He content in $c_b$} \\
+    \langle r_b \rangle &=  \frac{1}{c_b}\sum\limits_{i=N+1}^\infty r_i c_i \quad \text{ : average radius in $c_b$}\\
+    \langle k_b^+ \rangle &=  \frac{1}{c_b}\sum\limits_{i=N+1}^\infty k_{1,i}^+ c_i = 4 \pi D_1 (r_1 + \langle r_b \rangle) \quad \text{ : average clustering rate in $c_b$}
+\end{align}
+
+\textcolor{black}{
+Clusters with more than $N$ He ($c_b$) will be referred as "bubbles" in the following.
+}
+
+Equation \ref{eq: temporal evolution no grouping} therefore reads:
+
+\begin{subequations}
+    \begin{align}
+        \frac{\partial c_1}{\partial t} &= \nabla \cdot (D_1 \nabla c_1) + \Gamma + \sum\limits_{i=2}^N k_{i}^- c_i- 2k_{1, 1}^+ c_1^2 - \sum\limits_{i=2}^N k_{1,i}^+ c_1 c_i - \langle k_b^+ \rangle c_1 c_b \\
+        \frac{\partial c_2}{\partial t} &= \nabla \cdot (D_2 \nabla c_2) - k_{1, 2}^+ c_1 c_2 + k_{1, 1}^+ c_1^2 - k_{2}^- c_2 + k_{3}^- c_3\\
+        \vdots \nonumber\\
+        \frac{\partial c_N}{\partial t} &= - k_{1, N}^+ c_1 c_N + k_{1, N-1}^+ c_1 c_{N-1} - k_{N}^- c_N\\
+        \frac{\partial c_b}{\partial t} &= k_ {1,N}^+ c_1 c_N \\
+        \frac{\partial (\langle i_b \rangle c_b)}{\partial t} &= (N+1)k_ {1,N}^+ c_1 c_N  + \langle k_b^+ \rangle c_1 c_b
+    \end{align}
+    \label{eq: temporal evolution grouping}
+\end{subequations}
+
+The \textcolor{black}{mean} radius of pure He clusters\sidecite{faney_spatially_2015} is given by:
+\begin{equation}
+    r_{\mathrm{He}_x} = r_{\mathrm{He}_1} + \left(\frac{3}{4\pi} \frac{a_0^3}{10} x \right)^{1/3} - \left( \frac{3}{4\pi} \frac{a_0^3}{10} \right)^{1/3}
+    \label{eq: radius pure He}
+\end{equation}
+with $r_{\mathrm{He}_1} = \SI{0.3}{nm}$.
+
+Several assumptions are made:
+\begin{itemize}
+    \item The average radius is assumed to be a function of $\langle i_b \rangle$:
+    \begin{equation}
+        \begin{split}
+            \langle r_b \rangle &= r(\mathrm{He}_{\langle i_b \rangle}\mathrm{V}_{\langle i_b \rangle/4}) \\
+            &= r_{\mathrm{He}_0 \mathrm{V}_1} + \left(\frac{3}{4 \pi} \frac{a_0^3}{2} \frac{\langle i_b \rangle}{4} \right)^{1/3} - \left(\frac{3}{4 \pi} \frac{a_0^3}{2} \right)^{1/3}
+        \end{split}
+        \label{eq: radius average}
+    \end{equation}
+    with $a_0 = \SI{0.318}{nm}$ the lattice parameter and $r_{\mathrm{He}_0 \mathrm{V}_1} =  a_0 \sqrt{3}/4$.
+    The average radius $\langle r_b \rangle$ is assumed to be only dependent on $\langle i_b \rangle$.
+    The number of vacancies in bubbles is assumed to be $\langle i_b \rangle/4$.
+    This assumption is motivated by MD computations showing that trap mutation events occur for every four additional helium in large vacancy-helium clusters.
+    Moreover, theoretical models for He bubbles growth in metal suggest a similar trend \sidecite{hammond_theoretical_2020}.
+    \item Dissociation of large clusters is neglected (\textit{ie} $k_i^- = 0$ for $i>N$).
+    Indeed, the activation energy for trap mutation events is lower than that of He or vacancy emission\sidecite{boisse_modeling_2014}. Dissociation of large clusters by vacancy or He emission is therefore negligible.
+\end{itemize}
+
+The current implementation further simplifies Faney's model \sidecite{faney_spatially_2014}:
+\begin{itemize}
+    \item Interactions with self-interstitial atoms or pre-existing vacancies are not taken into account.
+    In this work, the only dissociations are He emissions from small mobile clusters and trap-mutation for large clusters.
+    \textcolor{black}{
+    It was showed that this assumption did not have an impact on the results (see Figure \ref{fig:tendril profiles}).}
+    \item The only clusters explicitly computed are $\mathrm{He}_{x \leq 6}$ (\textit{ie} $N=6$) whereas Faney's work explicitly accounted for clusters up to $\mathrm{V}_{50}\mathrm{He}_{250}$ and solved a bigger system of equations.
+    The influence of this threshold $N$ above which clusters are integrated in the quantity $c_b$ is discussed in Section \ref{impact of N}.
+    \item Clusters containing more than six He atoms are assumed to be immobile (\textit{ie} $D_i = 0$ for $i>6$) due to trap mutation events.
+    This assumption is motivated by DFT and MD results suggesting that the self-trapping energy is below the binding energy of one He atom in a pure He cluster for clusters containing more than five He atoms \sidecite{boisse_modeling_2014}.
+
+    For smaller clusters ($\mathrm{He}_1$, $\mathrm{He}_2$, ..., $\mathrm{He}_6$) the diffusion coefficient and the dissociation by He emission energy vary with the number of He atoms in the cluster (see Table \ref{tab:clusters properties}).
+\end{itemize}
+
+\begin{table}
+    \centering
+    \begin{tabular}{L{1cm} R{2cm} R{1.6cm} R{1.1cm} R{1.6cm} R{1.1cm} R{2cm}}
+        Cluster & $D_0 (\si{m^2 s^{-1}})$  & $E_\mathrm{diff} (\si{eV})$ &  $E_b (\si{eV})$   \\
+        \hline
+        \\
+        He$_1$ & $2.95\times 10^{-8}$ & $0.13$ & - \\
+        He$_2$ & $3.24\times 10^{-8}$ & $0.20$ & 1.0\\
+        He$_3$ & $2.26\times 10^{-8}$ & $0.25$ & 1.5\\
+        He$_4$ & $1.68\times 10^{-8}$ & $0.20$ & 1.5\\
+        He$_5$ & $5.20\times 10^{-9}$ & $0.12$ & 1.6\\
+        He$_6$ & $1.20\times 10^{-9}$ & $0.30$ & 2.0\\
+    \end{tabular}
+    \caption{Pure He clusters properties in W. Diffusion properties are taken from Faney \textit{et al} \cite{faney_spatially_2015} and binding energies are taken from Becquart \textit{et al} \cite{becquart_microstructural_2010}.}
+    \label{tab:clusters properties}
+\end{table}
+
+% for some reason, uncommenting this activates the top table
+% \begin{table}
+%  \begin{tabular}{ c c c c }
+%  \toprule
+%  col1 & col2 & col3 & col 4 \\
+%  \midrule
+%  \multirow{3}{4em}{Multiple row} & cell2 & cell3 & cell4\\ &
+%  cell5 & cell6 & cell7 \\ &
+%  cell8 & cell9 & cell10 \\
+%  \multirow{3}{4em}{Multiple row} & cell2 & cell3 & cell4 \\ &
+%  cell5 & cell6 & cell7 \\ &
+% cell8 & cell9 & cell10 \\
+%  \bottomrule
+%  \end{tabular}
+% \end{table}
+
+
+This He transport model was implemented in Python and solved using the finite element solving platform FEniCS \sidecite{alnaes_fenics_2015}.
