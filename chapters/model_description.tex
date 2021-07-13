@@ -38,27 +38,34 @@ $c_0$ can be calculated from Sievert's law of equilibrium and Equation \ref{eq:d
 \end{equation}
 where $P$ is the partial pressure of hydrogen at the boundary in \si{Pa}, $S(T)=S_0 \exp(\frac{-E_S}{k_B T})$ is the material solubility in \si{m^{-3}.Pa^{-1/2}} and $T$ is the local temperature in \si{K}.
 This law of equilibrium is a steady-state approximation of a more complex model which takes into account flux exchanges between adsorbed and mobile concentrations at the boundary.
-It is therefore valid when applied to cases where the kinetics is slow enough for the system to remain at equilibrium.
+It is therefore valid when applied to cases where the kinetics are fast enough for the system to remain at equilibrium.
 
 \subsubsection{Neumann \& Robin boundary conditions}
 
-Concentration gradient can also be constrained on the boundaries as described in Equation \ref{eq: neuman robin bc}.
+The concentration gradient can also be constrained on the boundaries (see Equation \ref{eq: neuman robin bc}).
 
 \begin{equation}
-    D(T)\nabla c_\mathrm{m} = f(x, t) \quad \text { on } \partial \Omega
+    - D(T)\nabla c_\mathrm{m} \cdot \mathbf{n} = f(x, t) \quad \text { on } \partial \Omega
     \label{eq: neuman robin bc}
 \end{equation}
-where $D(T) = D_0 \exp(\frac{-E_D}{k_B T}) $ is the diffusion coefficient in \si{m^2.s^{-1}}, $T$ is the local temperature in \si{K} and $\partial \Omega$ is the domain boundary.
+where $D(T) = D_0 \exp(\frac{-E_D}{k_B T}) $ is the diffusion coefficient in \si{m^2.s^{-1}}, $T$ is the local temperature in \si{K}, $\mathbf{n}$ is the boundary normal vector and $\partial \Omega$ is the domain boundary.
 
-$f$ can be expressed as a molecular recombination flux and Equation \ref{eq: neuman robin bc} reads:
+$f$ can also be expressed as a molecular recombination flux:
 \begin{equation}
-    D(T)\nabla c_\mathrm{m} = K_r(T) c_\mathrm{m}^n \quad \text { on } \partial \Omega
+    - D(T)\nabla c_\mathrm{m} \cdot \mathbf{n} = K_r(T) c_\mathrm{m}^n \quad \text { on } \partial \Omega
+    \label{eq: recombination flux}
 \end{equation}
-where $K_r(T) = K_{r_0} \exp(\frac{-E_{K_r}}{k_B T}) $ is the recombination coefficient expressed in \si{m^{3n-2}.s^{-1}} and $n \in \{1, 2\}$ is the order of the recombination.
+where $K_r(T) = K_{r_0} \exp(\frac{-E_{K_r}}{k_B T}) $ is the recombination coefficient expressed in \si{m^{3n-2}.s^{-1}}, $\mathbf{n}$ is the boundary normal vector and $n \in \{1, 2\}$ is the order of the recombination.
 
+Similarily, a dissociation flux can be applied when a surface is in contact with a gas atmosphere of H (see Equation \ref{eq: dissociation flux}).
+\begin{equation}
+    - D(T)\nabla c_\mathrm{m} \cdot \mathbf{n} = K_d(T) P \quad \text { on } \partial \Omega
+    \label{eq: dissociation flux}
+\end{equation}
+where $K_d(T) = K_{d_0} \exp(\frac{-E_{K_d}}{k_B T}) $ is the dissociation coefficient expressed in \si{m^{-3}.Pa^{-1}} and $\mathbf{n}$ is the boundary normal vector.
 
-\subsubsection{Analytical simplification}
-Assuming a narrow Gaussian distribution for the source term $\varphi_\mathrm{imp}$, the mobile particles concentration profile can be approximated \textcolor{black}{by a triangular shape\cite{schmid_diffusion-trapping_2016} (see Supplementary Figure \ref{fig:recomb sketch})}.
+\subsubsection{Analytical simplification for implantated sources of H}
+Assuming a narrow Gaussian distribution for the source term $\varphi_\mathrm{imp}$, the mobile particles concentration profile can be approximated \textcolor{black}{by a triangular shape \sidecite{schmid_diffusion-trapping_2016} (see Figure \ref{fig:recomb sketch})}.
 
 \begin{figure*}[h!]
     \centering
@@ -120,47 +127,25 @@ Assuming that only free hydrogen atoms contribute to the overall flux in the mat
 where $D$ is the diffusion coefficient of hydrogen in a non-stress lattice expressed in \si{m^{2}.s^{-1}}. 
 
 
-%The temporal evolution of hydrogen concentration in materials is governed by Fick's law of diffusion (see Equation \ref{eq:diffusion equation}).
-
-%\begin{equation}
-%    \frac{\partial c}{\partial t}=\vec{\nabla} \cdot\left(D \vec{\nabla}c\right)+ f
-%    \label{eq:diffusion equation}
-%\end{equation}
-%where $c$ is the hydrogen concentration in \si{m^{-3}}, D is the diffusion coefficient of the mobile hydrogen in the material in \si{m^2.s^{-1}} and $f$ is the source term in \si{m^{-3}.s^{-1}}.
-
-%In order to take into account the conservation of chemical potential across an interface, one must not ensure concentration continuity but rather the continuity of the chemical potential of the species in the material.
-
-%The chemical potential is expressed  expressed in \si{J.mol^{-1}} as follow: \textcolor{red}{YC-> pas sûr qu'il faille garder cette equation ma foi...}
-%\begin{equation}
-%    \mu = \mu_0 + RT\ln{\left(\frac{c}{S} \frac{1}{p_0}\right)}
-%\end{equation}
-%where $\mu_0$ is the species standard chemical potential, $R$ is the gas constant expressed in \si{J.K^{-1}.mol^{-1}}, $T$ is the temperature in \si{K}, $S$ is the solubility of the species in the material expressed in \si{m^{-3}.Pa^{-0.5}} and $p_0$ is the pressure in \si{Pa} at some reference state.
-
-%It can be shown that the continuity of $\mu$ is equivalent to that of $c/S$ \sidecite{}.
 The local equilibrium at the interface between two materials must ensure  the continuity of both the chemical potential $\mu$ (see Equation \ref{eq: muconservation}) and the particle flux (see Equation \ref{eq: flux conservation}).
 \begin{equation}
-            \mu^- = \mu^+  \label{eq: muconservation}  
+    \mu^- = \mu^+  \label{eq: muconservation}  
 \end{equation}
     
 \begin{equation}
-        D^- \nabla c_\mathrm{m}^- = D^+ \nabla c_\mathrm{m}^+ \label{eq: flux conservation} 
+    D^- \nabla c_\mathrm{m}^- = D^+ \nabla c_\mathrm{m}^+ \label{eq: flux conservation} 
 \end{equation}
 The chemical potential continuity can also be ensured by the continuity of the quantity $c_\mathrm{m}/S$ (see Equation \ref{eq: c/s conservation}) for mechanical stress-free materials in thermodynamic equilibrium and the Soret effect being neglected:
 \begin{equation}
-                \left(\frac{c_\mathrm{m}}{S}\right)^- = \left(\frac{c_\mathrm{m}}{S}\right)^+  \label{eq: c/s conservation}  
+    \left(\frac{c_\mathrm{m}}{S}\right)^- = \left(\frac{c_\mathrm{m}}{S}\right)^+  \label{eq: c/s conservation}  
 \end{equation}
 Here, the quantity $c_\mathrm{m}/S$, with $S$ the solubility of hydrogen expressed in \si{m^{-3}.Pa^{-0.5}}, is equivalent to the root square of the pressure of an imaginary gas in thermodynamic equilibrium between the two solids and for which Sievert's law is applied.  
-% Ref annex B
+
 This assumption is correct as long as the time needed to reach the equilibrium is low compared to the time of the simulation.
-\ref{appendix transient model} described the characteristic time calculated by a transient interface model.
-For long exposure time (as in Section \ref{iter case}) as well as for high temperatures, it is shown that the characteristic time is small enough for the equilibrium model to be valid.
+For long exposure time as well as for high temperatures, it was shown in \sidecite{delaporte-mathurin_influence_2021} that the characteristic time is small enough for the equilibrium model to be valid.
 
 From Equation \ref{eq: c/s conservation}, one can deduce that a solubility discontinuity across an interface induces a discontinuity of mobile hydrogen concentration $c_\mathrm{m}$.
 This can also be interpreted as the chemical potentials at a reference state being different in different materials \sidecite{kirchheim_25_2014}, as the lattice site concentration.
-
-% To ensure a correct treatment of the material interface in hydrogen transport codes, two approaches can be used.
-% The most natural is to solve the hydrogen mobile concentration transport in both materials (see Equation \ref{eq: diffusion equation}) and impose an internal condition at the interface between the two materials to verify Equation \ref{eq: c/s conservation} \sidecite{longhurst_tmap7_2008}.
-% The other way is to apply a change of variable in the hydrogen transport equation with $\phi = c_\mathrm{m}/S$ (see Equation \ref{eq: diffusion equation changed})  \sidecite{smith_abaqusstandard_2009} when internal boundary can not be defined. Because $\phi$ is solved, the ratio $c_\mathrm{m}/S$ is continuous by default at the material interfaces.
 
 To ensure a correct treatment of the material interface in hydrogen transport codes, two approaches can be employed.
 The most straightforward approach is to solve the hydrogen mobile concentration transport in both materials (see Equation \ref{eq: diffusion equation}) and enforce the concentration jump at the interface between the two materials with an internal condition verifying  Equation \ref{eq: c/s conservation} \sidecite{longhurst_tmap7_2008}.
@@ -182,35 +167,116 @@ Equation \ref{eq: diffusion equation} therefore reads:
 Because $\phi$ is computed, the ratio $c_\mathrm{m}/S$ is continuous by default at the material interfaces.
 
 This second approach is used for instance in the \textit{mass-diffusion} procedure of the Abaqus code \sidecite{smith_abaqusstandard_2009}.
-% However, this procedure cannot be directly used to simulate hydrogen transport with thermomechanical loading \textit{(coupled temperature displacement} procedure) \sidecite{smith_abaqusstandard_2009}.
-% Indeed, the \textit{mass-diffusion} procedure can solve mechanically-assisted diffusion problems, knowing the spatio-temporal evolution of the mechanical pressure.
-% The \textit{temperature-displacement} procedure is used to simultaneously solve diffusion and mechanical problems.
-% To account for both mechanical fields, trapping influence on diffusion and transient heat transfer, User Subroutines are employed.
-% \ref{appendix abaqus} describes the implementation based on user Subroutines.
 This interface model has also been implemented into the current hydrogen transport code FESTIM \sidecite{delaporte-mathurin_finite_2019} using FEniCS \sidecite{alnaes_fenics_2015}.
 
 
 \section{Heat transfer}
+Due to the numerous processes that are thermally activated, it is essential to model heat transfers.
+Moreover, most tokamak plasma facing components are exposed to intense heat fluxes and are actively cooled, exhibiting high temperature gradients.
+The temperature fields are even more complex when dealing with non-trivial geometries like monoblocks or breeding blankets.
+
 \subsection{Bulk model}
 
-The heat equation is described as follow:
+The equation describing heat conduction in solids is described as follows:
 \begin{equation}
     \rho \cdot C_p \frac{\partial T}{\partial t}=\nabla \cdot (\lambda \nabla T)
     \label{eq:heat equation}
 \end{equation}
-where $\rho$ is the density of the material in \si{kg.m^{-3}}, $C_p$ its specific heat capacity expressed in \si{J.kg^{-1}.K^{-1}} and $\lambda$ the thermal conductivity expressed in \si{W.K^{-1}}.
+where $\rho$ is the density of the material in \si{kg.m^{-3}}, $C_p$ its specific heat capacity expressed in \si{J.kg^{-1}.K^{-1}} and $\lambda$ the thermal conductivity expressed in \si{W.m^{-1}.K^{-1}}.
+
+The thermal properties $C_p$, $\rho$ and $\lambda$ are usually temperature dependent.
 
 \subsection{Boundary conditions}
 
+For heat transfer problems, three types of boundary conditions can be imposed.
+
+First, the temperature can be fixed on the boundary (see Equation \ref{eq:dirichlet bc T}).
+\begin{equation}
+    T = T(x, y, z, t) \quad \text { on } \partial \Omega
+    \label{eq:dirichlet bc T}
+\end{equation}
+where $\partial \Omega$ is the domain boundary.
+
+On the other hand, a heat flux can also be imposed by enforcing the temperature gradient (see Equation \ref{eq: neumann bc T}).
+\begin{equation}
+    -\lambda \nabla T \cdot \mathbf{n} = f(x, y, z, t) \quad \text { on } \partial \Omega
+    \label{eq: neumann bc T}
+\end{equation}
+where $\lambda$ is the thermal conductivity in \si{W.m^{-1}.K^{-1}}, $\mathbf{n}$ is the boundary normal vector and $\partial \Omega$ is the domain boundary.
+
+Finally, to model a convective heat flux when the surface is in contact with a fluid (\textit{eg} cooling pipes, natural convection...), a Robin boundary condition needs to be employed (see Equation \ref{eq: convective bc T}).
+\begin{equation}
+    -\lambda \nabla T \cdot \mathbf{n} = h (T - T_\mathrm{ext}) \quad \text { on } \partial \Omega
+    \label{eq: convective bc T}
+\end{equation}
+where $\lambda$ is the thermal conductivity in \si{W.m^{-1}.K^{-1}}, $\mathbf{n}$ is the boundary normal vector, $h$ is the heat exchange coefficient in \si{W.m^{-2}.K^{-1}}, $T_\mathrm{ext}$ is the fluid temperature in \si{K} and $\partial \Omega$ is the domain boundary.
+The heat exchange coefficient is usually dependent on the temperature.
+
 \section{Implementation}
 
-\section{Verification \& Validation}
-\subsection{Analytical verification}
-\input{chapters/verification_and_validation/analytical_verification.tex}
+
+The models described in this Section can be hard to solve analytically for complex problems (complex geometries, transients, combined boundary conditions, etc).
+The code FESTIM \sidecite{delaporte-mathurin_finite_2019} was therefore developped in order to solve these equations numerically.
+
+\subsection{Finite Element Method: FEniCS}
+FESTIM is based on the Finite Element Method to solve this set of equations and boundary conditions and the python package FEniCS \sidecite{alnaes_fenics_2015} was employed.
+The finite element method is a versatile tool that can solve any partial differential equation on an arbitrary geometry in 1D, 2D or 3D.
+The main advantage of this method compared to the finite diference method is the simplicity of its application to complex geometries and unstructured meshes.
+Indeed, implementing a finite difference scheme for such a problem would be tedious and extra care must be taken for mistakes in the implementation could result in losses in efficiency and accuracy of the numerical solution.
+
+This section will detail the finite element method applied to a simple diffusion equation (see Equation \ref{eq: example poisson}).
+
+\begin{equation}
+    -\nabla^2 u = f
+    \label{eq: example poisson}
+\end{equation}
+
+The first step of the finite element method is to represent the solution $u$ as a combination of polynomial expressions (see Equation \ref{eq: FEM solution}).
+
+\begin{equation}
+    u = \sum^N_{i=0}c_i \phi_i(x, y, z)
+    \label{eq: FEM solution}
+\end{equation}
+where $c_i$ are the coefficient to be determined (called degrees of freedom) and $\phi_i$ are polynomials.
+
+The second step is to build a variational formulation (also called weak form) of the governing equation \ref{eq: example poisson}.
+To do so, the recipe is to multiply the PDE by a function $v$ (called the test function) and integrate over an arbitrary element $\Omega_e$.
+The following expression is obtained:
+\begin{equation}
+    \int_{\Omega_e} -\nabla^2 u v dx = \int_{\Omega_e} f v dx
+    \label{eq: weak form 1}
+\end{equation}
+
+%
+% maybe explain why multiplying by a test function
+%
+
+Equation \ref{eq: weak form 1} needs now to be rewritten in order to only have first order derivatives.
+To do so, Gauss-Green's lemma is employed:
+\begin{equation}
+    \int_{\Omega_e} -\nabla^2 u v dx = \int_{\Omega_e} \nabla u \cdot \nabla v dx - \int_{\partial \Omega_e} \frac{\partial u}{\partial n} v dx
+    \label{eq: gauss-green}
+\end{equation}
+
+The variational form therefore reads:
+\begin{equation}
+    \int_{\Omega_e} \nabla u \cdot \nabla v dx = \int_{\Omega_e} f v dx + \int_{\partial \Omega_e} \frac{\partial u}{\partial n} v dx
+    \label{eq: weak form 2}
+\end{equation}
+where the last term of the equation either vanishes due to Dirichlet boundary conditions or is imposed.
+
+Equation \ref{eq: weak form 2} then gives rise to a system of $N+1$ equations that can be solved to determine the coefficients $c_i$ in Equation \ref{eq: FEM solution}.
+
+\subsection{Main features of FESTIM}
 
 
-\subsection{Experimental validation}
+% \section{Verification \& Validation}
+% \subsection{Analytical verification}
+% \input{chapters/verification_and_validation/analytical_verification.tex}
 
-\input{chapters/verification_and_validation/experimental_validation.tex}
+
+% \subsection{Experimental validation}
+
+% \input{chapters/verification_and_validation/experimental_validation.tex}
 
 \section{Summary}
