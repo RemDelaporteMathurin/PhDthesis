@@ -55,18 +55,9 @@
 \usepackage{overpic}
 \usepackage[dvipsnames]{xcolor}
 
-\definecolor{yellow}{RGB}{180, 95, 6}
-\definecolor{grey}{RGB}{183, 183, 183}
-\definecolor{orange}{RGB}{228, 146, 64}
-
-\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
-\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
-\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
-\newcommand\cruleme[3][black]{\textcolor{#1}{\rule{#2}{#3}}}
-
 % Load the bibliography package
 \usepackage{kaobiblio}
-\addbibresource{main.bib} % Bibliography file
+\addbibresource{bibfile.bib} % Bibliography file
 
 \RenewDocumentCommand{\formatmargincitation}{m}{
 	\parencite{#1} \citeauthor*{#1} (\citeyear{#1})\\
@@ -94,16 +85,28 @@
 
 \begin{document}
 
+% Define colours
+\definecolor{yellow}{RGB}{180, 95, 6}
+\definecolor{grey}{RGB}{183, 183, 183}
+\definecolor{orange}{RGB}{228, 146, 64}
+
+% Define column types
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+\newcommand\cruleme[3][black]{\textcolor{#1}{\rule{#2}{#3}}}
+
+
 %----------------------------------------------------------------------------------------
 %	BOOK INFORMATION
 %----------------------------------------------------------------------------------------
-\titlehead{The \texttt{kaobook} class}
-\subject{Use this document as a template}
+\titlehead{PhD thesis title}
+\subject{My awesome subject}
 
-\title[Example and documentation of the {\normalfont\texttt{kaobook}} class]{Example and documentation \\ of the {\normalfont\texttt{kaobook}} class}
-\subtitle{Customise this page according to your needs}
+\title[Hydrogen transport in tokamak plasma facing components]{Hydrogen transport in tokamak plasma facing components}
+\subtitle{a subtitle}
 
-\author[Federico Marotta]{Federico Marotta \thanks{A \LaTeX\ lover}}
+\author[Rémi Delaporte-Mathurin]{Rémi Delaporte-Mathurin}
 
 \date{\today}
 
@@ -128,40 +131,6 @@
 %	\end{center}
 %}
 %\makeatother
-
-%----------------------------------------------------------------------------------------
-%	COPYRIGHT PAGE
-%----------------------------------------------------------------------------------------
-
-\makeatletter
-\uppertitleback{\@titlehead} % Header
-
-\lowertitleback{
-	\textbf{Disclaimer}\\
-	You can edit this page to suit your needs. For instance, here we have a no copyright statement, a colophon and some other information. This page is based on the corresponding page of Ken Arroyo Ohori's thesis, with minimal changes.
-	
-	\medskip
-	
-	\textbf{No copyright}\\
-	\cczero\ This book is released into the public domain using the CC0 code. To the extent possible under law, I waive all copyright and related or neighbouring rights to this work.
-	
-	To view a copy of the CC0 code, visit: \\\url{http://creativecommons.org/publicdomain/zero/1.0/}
-	
-	\medskip
-	
-	\textbf{Colophon} \\
-	This document was typeset with the help of \href{https://sourceforge.net/projects/koma-script/}{\KOMAScript} and \href{https://www.latex-project.org/}{\LaTeX} using the \href{https://github.com/fmarotta/kaobook/}{kaobook} class.
-	
-	The source code of this book is available at:\\\url{https://github.com/fmarotta/kaobook}
-	
-	(You are welcome to contribute!)
-	
-	\medskip
-	
-	\textbf{Publisher} \\
-	First printed in May 2019 by \@publishers
-}
-\makeatother
 
 %----------------------------------------------------------------------------------------
 %	DEDICATION
@@ -225,23 +194,11 @@
 \setchapterstyle{kao} % Choose the default chapter heading style
 
 \input{chapters/intro}
-
-% \pagelayout{wide} % No margins
-% \addpart{Class Options, Commands and Environments}
-% \pagelayout{margin} % Restore margins
-
-% \input{chapters/references.tex}
-
-% \pagelayout{wide} % No margins
-% \addpart{Design and Additional Features}
-% \pagelayout{margin} % Restore margins
-
 \input{chapters/model_description}
-\input{chapters/verification_and_validation}
 \input{chapters/monoblocks}
 \input{chapters/divertor}
-\input{chapters/breeding_blankets}
 \input{chapters/he_transport_in_pfcs}
+\input{chapters/conclusion}
 
 \appendix % From here onwards, chapters are numbered with letters, as is the appendix convention
 
@@ -250,6 +207,8 @@
 \pagelayout{margin} % Restore margins
 
 \input{chapters/appendix.tex}
+\input{chapters/breeding_blankets}
+\input{chapters/codeposition_model}
 
 %----------------------------------------------------------------------------------------
 

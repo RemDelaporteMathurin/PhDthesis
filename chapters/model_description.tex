@@ -181,12 +181,12 @@ Equation \ref{eq: diffusion equation} therefore reads:
 
 Because $\phi$ is computed, the ratio $c_\mathrm{m}/S$ is continuous by default at the material interfaces.
 
-This second approach is used for instance in the \textit{mass-diffusion} procedure of the Abaqus code.
-However, this procedure cannot be directly used to simulate hydrogen transport with thermomechanical loading \textit{(coupled temperature displacement} procedure) \sidecite{smith_abaqusstandard_2009}.
-Indeed, the \textit{mass-diffusion} procedure can solve mechanically-assisted diffusion problems, knowing the spatio-temporal evolution of the mechanical pressure.
-The \textit{temperature-displacement} procedure is used to simultaneously solve diffusion and mechanical problems.
-To account for both mechanical fields, trapping influence on diffusion and transient heat transfer, User Subroutines are employed.
-\ref{appendix abaqus} describes the implementation based on user Subroutines.
+This second approach is used for instance in the \textit{mass-diffusion} procedure of the Abaqus code \sidecite{smith_abaqusstandard_2009}.
+% However, this procedure cannot be directly used to simulate hydrogen transport with thermomechanical loading \textit{(coupled temperature displacement} procedure) \sidecite{smith_abaqusstandard_2009}.
+% Indeed, the \textit{mass-diffusion} procedure can solve mechanically-assisted diffusion problems, knowing the spatio-temporal evolution of the mechanical pressure.
+% The \textit{temperature-displacement} procedure is used to simultaneously solve diffusion and mechanical problems.
+% To account for both mechanical fields, trapping influence on diffusion and transient heat transfer, User Subroutines are employed.
+% \ref{appendix abaqus} describes the implementation based on user Subroutines.
 This interface model has also been implemented into the current hydrogen transport code FESTIM \sidecite{delaporte-mathurin_finite_2019} using FEniCS \sidecite{alnaes_fenics_2015}.
 
 
@@ -201,4 +201,16 @@ The heat equation is described as follow:
 where $\rho$ is the density of the material in \si{kg.m^{-3}}, $C_p$ its specific heat capacity expressed in \si{J.kg^{-1}.K^{-1}} and $\lambda$ the thermal conductivity expressed in \si{W.K^{-1}}.
 
 \subsection{Boundary conditions}
+
+\section{Implementation}
+
+\section{Verification \& Validation}
+\subsection{Analytical verification}
+\input{chapters/verification_and_validation/analytical_verification.tex}
+
+
+\subsection{Experimental validation}
+
+\input{chapters/verification_and_validation/experimental_validation.tex}
+
 \section{Summary}
