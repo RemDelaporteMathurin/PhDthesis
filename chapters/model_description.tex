@@ -19,11 +19,14 @@ The spatio temporal evolution of these concentrations are commonly described by 
 
 In Equation \ref{eq:mobile}, ${D(T)=D_0 \exp\big(\frac{-E_\mathrm{D}}{k_B \cdot T}\big)}$ is the diffusion coefficient in \si{m^2.s^{-1}}, $T$ being the temperature in $\si{K}$ and ${k_B = 8.617 \times 10^{-5} \si{eV.K^{-1}}}$ the Boltzmann constant, $\Gamma$ is the volumetric source term of particles in \si{m^{-3}.s^{-1}}, $k(T)=k_0\exp{\big(\frac{-E_{k, i}}{k_B \cdot T}\big)}$ and $p(T)=p_0\exp{\big(\frac{-E_{p, i}}{k_B \cdot T}\big)}$ are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively and $n_i$ is the trap density in \si{m^{-3}}.
 The unit of the different concentration, $c_\mathrm{m}$ and $c_{\mathrm{t},i}$ are in $ \si{m^{-3}}$ but can be expressed in atomic fraction (at.fr.) by normalising them to the atomic density of the material.
+
+% maybe write something about the soret effect
+
 \subsection{Boundary conditions}
 
 Several boundary conditions will be employed in order to constrain either the actual solution (Dirichlet) or the solution gradient (Neumann, Robin) at the domain's boundaries.
 
-\subsubsection{Dirichlet boundary conditions}
+\subsubsection{Imposed concentration}
 
 Concentration can be fixed at the surface by applying Dirichlet boundary conditions as described in Equation \ref{eq:dirichlet bc}.
 \begin{equation}
@@ -40,7 +43,7 @@ where $P$ is the partial pressure of hydrogen at the boundary in \si{Pa}, $S(T)=
 This law of equilibrium is a steady-state approximation of a more complex model which takes into account flux exchanges between adsorbed and mobile concentrations at the boundary.
 It is therefore valid when applied to cases where the kinetics are fast enough for the system to remain at equilibrium.
 
-\subsubsection{Neumann \& Robin boundary conditions}
+\subsubsection{Dissociation and recombination fluxes}
 
 The concentration gradient can also be constrained on the boundaries (see Equation \ref{eq: neuman robin bc}).
 
@@ -65,7 +68,8 @@ Similarily, a dissociation flux can be applied when a surface is in contact with
 where $K_d(T) = K_{d_0} \exp(\frac{-E_{K_d}}{k_B T}) $ is the dissociation coefficient expressed in \si{m^{-3}.Pa^{-1}} and $\mathbf{n}$ is the boundary normal vector.
 
 \subsubsection{Analytical simplification for implantated sources of H}
-Assuming a narrow Gaussian distribution for the source term $\varphi_\mathrm{imp}$, the mobile particles concentration profile can be approximated \textcolor{black}{by a triangular shape \sidecite{schmid_diffusion-trapping_2016} (see Figure \ref{fig:recomb sketch})}.
+Let us consider a volumetric source term of H $\Gamma = \varphi_\mathrm{imp} \; f(x)$ where $f$ is a narrow Gaussian distribution.
+The mobile particles concentration profile can be approximated by a triangular shape \sidecite{schmid_diffusion-trapping_2016} (see Figure \ref{fig:recomb sketch}).
 
 \begin{figure*}[h!]
     \centering
@@ -74,6 +78,7 @@ Assuming a narrow Gaussian distribution for the source term $\varphi_\mathrm{imp
     \label{fig:recomb sketch}
 \end{figure*}
 
+The concentration profile is therefore maximum at $x=R_p$.
 The expression of $c_\mathrm{max}$ can be obtained by expressing the flux balance at equilibrium:
 
 \begin{equation}
@@ -171,9 +176,10 @@ This interface model has also been implemented into the current hydrogen transpo
 
 
 \section{Heat transfer}
-Due to the numerous processes that are thermally activated, it is essential to model heat transfers.
+Due to the numerous processes that are thermally activated, it is essential have an accurate temperature field.
 Moreover, most tokamak plasma facing components are exposed to intense heat fluxes and are actively cooled, exhibiting high temperature gradients.
 The temperature fields are even more complex when dealing with non-trivial geometries like monoblocks or breeding blankets.
+For these reasons, heat transfers need to be modelled.
 
 \subsection{Bulk model}
 
@@ -219,7 +225,9 @@ The models described in this Section can be hard to solve analytically for compl
 The code FESTIM \sidecite{delaporte-mathurin_finite_2019} was therefore developped in order to solve these equations numerically.
 
 \subsection{Finite Element Method: FEniCS}
-FESTIM is based on the Finite Element Method to solve this set of equations and boundary conditions and the python package FEniCS \sidecite{alnaes_fenics_2015} was employed.
+FESTIM is based on the Finite Element Method to solve this set of equations and boundary conditions.
+Several finite element libraries are openly available (deal.II \sidecite{arndt_dealii_2021}, MFEM \sidecite{kolev_tzanio_modular_2010}, MOOSE \sidecite{permann_moose_2020}, FreeFEM++ \sidecite{hecht_new_2012}, ...).
+The open-source python package FEniCS \sidecite{alnaes_fenics_2015} was employed.
 The finite element method is a versatile tool that can solve any partial differential equation on an arbitrary geometry in 1D, 2D or 3D.
 The main advantage of this method compared to the finite diference method is the simplicity of its application to complex geometries and unstructured meshes.
 Indeed, implementing a finite difference scheme for such a problem would be tedious and extra care must be taken for mistakes in the implementation could result in losses in efficiency and accuracy of the numerical solution.
@@ -234,10 +242,18 @@ This section will detail the finite element method applied to a simple diffusion
 The first step of the finite element method is to represent the solution $u$ as a combination of polynomial expressions (see Equation \ref{eq: FEM solution}).
 
 \begin{equation}
-    u = \sum^N_{i=0}c_i \phi_i(x, y, z)
+    u = \sum^N_{i=0}u_i \phi_i(x, y, z)
     \label{eq: FEM solution}
 \end{equation}
-where $c_i$ are the coefficient to be determined (called degrees of freedom) and $\phi_i$ are polynomials.
+where $u_i$ are the coefficient to be determined (called degrees of freedom) and $\phi_i$ are polynomials (see Figure \ref{fig: example approximated solution}).
+
+\begin{marginfigure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter2/approximated_solution.pdf}
+    \caption{Example of an approximated solution $u$ (exact in blue, approximated in orange) with basis functions $\phi_i$}
+    \label{fig: example approximated solution}
+\end{marginfigure}
+
 
 The second step is to build a variational formulation (also called weak form) of the governing equation \ref{eq: example poisson}.
 To do so, the recipe is to multiply the PDE by a function $v$ (called the test function) and integrate over an arbitrary element $\Omega_e$.
@@ -247,9 +263,8 @@ The following expression is obtained:
     \label{eq: weak form 1}
 \end{equation}
 
-%
-% maybe explain why multiplying by a test function
-%
+When using $N+1$ different test functions, Equation \ref{eq: weak form 1} then gives rise to a system of $N+1$ equations.
+This form is called the weak form because it relaxes the requirement of Equation \ref{eq: example poisson} and instead requires to solve Equation \ref{eq: weak form 1} for all test functions.
 
 Equation \ref{eq: weak form 1} needs now to be rewritten in order to only have first order derivatives.
 To do so, Gauss-Green's lemma is employed:
@@ -265,18 +280,134 @@ The variational form therefore reads:
 \end{equation}
 where the last term of the equation either vanishes due to Dirichlet boundary conditions or is imposed.
 
-Equation \ref{eq: weak form 2} then gives rise to a system of $N+1$ equations that can be solved to determine the coefficients $c_i$ in Equation \ref{eq: FEM solution}.
+From Equation \ref{eq: weak form 2}, a system of $N+1$ equations can be solved that can be solved to determine the coefficients $c_i$ in Equation \ref{eq: FEM solution}
+Once the $c_i$ coefficients are known, an approximated solution can be computed.
 
 \subsection{Main features of FESTIM}
+FESTIM provides an even higher level of abstraction than FEniCS by providing a user-friendly interface dedicated to H transport and H transfer problems.
+Users only have to provide inputs such as material properties, traps properties, geometry, solving parameters, without having to dive into the finite element implementation.
+
+% user friendly
+Multi-dimensional transient simulations coupled with heat transfer can therefore be run fairly easily without finite element knowledge.
+Nevertheless, since FESTIM is object-oriented, advanced users will always be able to turn FESTIM inside-out to adapt the code to their specific needs (specific boundary conditions, slight changes in the governing equations...).
+Since FESTIM is written in python - which is a fairly easy-to-learn programming langage - no advanced level of coding is required.
+For example, the simple code below is all that is required to simulate a bi-material case (see Figure \ref{fig: example FESTIM}).
 
 
-% \section{Verification \& Validation}
-% \subsection{Analytical verification}
-% \input{chapters/verification_and_validation/analytical_verification.tex}
+\begin{lstlisting}[language=Python]
+
+import FESTIM
+import numpy as np
+
+parameters = {
+    "materials": [
+        {  # material 1
+            "D_0": 1,  # diffusion coefficient
+            "E_D": 0.2,
+            "borders": [0, 5],
+            "id": 1
+        },
+        {  # material 2
+            "D_0": 0.5,
+            "E_D": 0.2,
+            "borders": [5, 10],
+            "id": 2
+        },
+    ],
+    "boundary_conditions": [
+        {
+            "type": "dc",
+            "value": 0,  # c_m = 0 on boundaries
+            "surfaces": [1, 2],  # left and right
+        }
+    ],
+    "source_term": {
+        "value": 0.1  # volumetric source of H
+    },
+    "temperature": {
+        "type": "expression",
+        "value": 600 + 10*FESTIM.x
+    },
+    "traps": [
+        {
+            "k_0": 1,  # trapping rate
+            "E_k": 0,
+            "p_0": 1,  # detrapping rate
+            "E_p": 0,
+            "density": 10,
+            "materials": [1]
+        }
+    ],
+    "mesh_parameters": {
+        "vertices": np.linspace(0, 10, num=500)
+    },
+    "exports": {},
+    "solving_parameters": {
+        "type": "solve_stationary",
+        "newton_solver": {
+            "absolute_tolerance": 1e-10,
+            "relative_tolerance": 1e-10,
+            "maximum_iterations": 15
+        },
+        "traps_element_type": "DG"
+    }
+}
+
+output = FESTIM.run(parameters)
+
+from fenics import plot
+import matplotlib.pyplot as plt
+
+plot(output["solutions"]["retention"])
+plt.show()
+\end{lstlisting}
+
+\begin{marginfigure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter2/example.pdf}
+    \caption{Example}
+    \label{fig: example FESTIM}
+\end{marginfigure}
+
+% physics
+As mentioned above, FESTIM simulates the transport (diffusion and trapping) of H and additional physics can be incorporated, such as the Soret effect (also called heat of transport) and conservation of chemical potential at interfaces...
+Various types of boundary conditions are available for both the H transport (imposed concentration, recombination flux, dissociation flux, implanted source approximation...) and the heat transfer problems (imposed temperature, imposed flux, convective flux...).
+Traps densities in FESTIM can also be time-dependent allowing the users to simulate extrinsic traps (\textit{eg} irradiation induced traps, stress induced traps...).
+
+% geometry
+Thanks to the finite element method, geometries used in FESTIM can be complex (see Figure \ref{fig: example mesh}).
+The meshing capability of FESTIM is limited to 1D meshes and it was decided to instead make FESTIM accept (with the XDMF format) complex meshes from third-party applications dedicated to meshing such as SALOME or GMSH.
+These third-party applications can for instance be usefull to run CAD-based simulations.
+Users can also decide to use the FEniCS built-in meshing tool.
+
+\begin{marginfigure}
+    \centering
+    \includegraphics[width=\linewidth]{example_mesh.png}
+    \caption{Example of a complex mesh readable by FESTIM}
+    \label{fig: example mesh}
+\end{marginfigure}
+
+% visualisation
+Similarly, FESTIM (FEniCS) visualisation functions are limited.
+FESTIM is not a graphical application but the files generated by FESTIM (XDMF, CSV, TXT) can easily be read and post-processed by specialised tools such as Paraview \sidecite{ahrens_paraview_2005}, matplotlib \sidecite{hunter_matplotlib_2007}, NumPy \sidecite{harris_array_2020}, etc.
+
+% what FE
+Regarding the default finite elements used in FESTIM are Continuous Galerkin elements but it can be switched to Discontinuous Galerkin when needed.
+This is usefull when the trapped concentration is discontinuous and help avoiding under- or over-shoots in the concentration field.
+
+% Adaptive step size
+When dealing with transient problems, FESTIM provides an adaptive stepsize allowing the stepsize to increase (by a user-defined factor) when the convergence criterion is easily reached.
+This greatly improve the performance of the code since less timesteps need to be computed.
 
 
-% \subsection{Experimental validation}
 
-% \input{chapters/verification_and_validation/experimental_validation.tex}
+\section{Verification \& Validation}
+\subsection{Analytical verification}
+\input{chapters/verification_and_validation/analytical_verification.tex}
+
+
+\subsection{Experimental validation}
+
+\input{chapters/verification_and_validation/experimental_validation.tex}
 
 \section{Summary}
