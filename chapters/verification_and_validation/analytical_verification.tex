@@ -134,7 +134,7 @@ The implementation of the trapping/detrapping coupling in FESTIM has already bee
 
 \subsubsection{Method of Exact Solutions (MES)}
 
-\begin{figure} [h]
+\begin{figure*} [h]
     \centering
     \begin{subfigure}{0.5\linewidth}
         \centering
@@ -149,7 +149,7 @@ The implementation of the trapping/detrapping coupling in FESTIM has already bee
     \end{subfigure}
     \caption{Concentration profiles simulated by FESTIM against analytical solutions.}
     \label{fig:comparison MES}
-\end{figure}
+\end{figure}*
 
 The uni-dimensional test case considered in this Section was made of two subdomains $\Omega_1$ and $\Omega_2$ and is described as follow:
 \begin{subequations}
@@ -358,8 +358,7 @@ Nonetheless, the error was found to remain orders of magnitude lower than the ac
 %             c^- = c^+  \label{eq: cconservation} 
 % \end{equation}
 
-In order to assess the influence of interface conditions on the outgassing flux, simulations are performed with chemical potential continuity (Equation \ref{eq: c/s conservation}) or mobile concentration continuity assuming in both cases flux conservation (Equation \ref{eq: flux conservation}).
-For the sake of simplicity and to emphasis on the influence of interface conditions, no trapping was assumed and idea Dirichlet boundary conditions were set.
-Simulations were performed on two test cases: W/Cu and Cu/EUROFER.
-The materials properties used for the simulations can be found in Table \ref{tab:materials properties_1}.
-In both cases the solute concentration $c_\mathrm{m}$ was set to \SI{1e20}{m^{-3}} at $x=0$ and zero on the other boundary.
+\subsubsection{Heat transfer}
+
+TODO: verification of the heat transfer equation
+2D case
