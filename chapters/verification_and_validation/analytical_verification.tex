@@ -8,10 +8,10 @@ Only one trap is considered in this case and its density $n_1$ is homogeneously 
 
 The trapping parameter $\zeta$ is defined in \sidecite{longhurst_verification_2005} as follow:
 \begin{equation}
-    \zeta = \frac{\lambda^2 \: n_\mathrm{solute} \: \nu_0}{D_0 \: n_1}\exp\bigg(\frac{E_\mathrm{diff} - E_1}{k_B \: T}\bigg) + \frac{c_m}{n_1}
+    \zeta = \frac{\lambda^2 \: n_\mathrm{solute} \: \nu_0}{D_0 \: n_1}\exp\bigg(\frac{E_\mathrm{diff} - E_1}{k_B \: T}\bigg) + \frac{c_\mathrm{m}}{n_1}
 \end{equation}
 
-In our case, we choose the detrapping energy $E_1$, the concentration $c_0$ and the temperature $T$ so that $\zeta \gg \frac{c_m}{n_1}$.
+In our case, we choose the detrapping energy $E_1$, the concentration $c_0$ and the temperature $T$ so that $\zeta \gg \frac{c_\mathrm{m}}{n_1}$.
 This is known as the \textit{effective diffusivity regime} where the diffusion is almost identical to the case where there are no traps.
 The coefficient $D$ is then replaced by an effective diffusion coefficient:
 \begin{equation}
@@ -63,11 +63,11 @@ According to finite elements theory, this value will decrease with the stepsize 
 \subsubsection{Analytical verification using MMS} \label{mms}
 
 To unravel the complexity of governing equations, the Method of Manufactured Solutions (MMS) is often used \sidecite{dudson_verification_2016, roache_code_2002}.
-Manufactured solutions are exact solutions that have been modified with additional source terms.
-The sets of source terms and boundary conditions obtained are then fed into FESTIM and the error is measured.
+Manufactured solutions are exact solutions that injected in the governing equations in order to deduce source terms and boundary conditions.
+The sets of source terms and boundary conditions obtained are then fed into FESTIM and the error between the computed solution and the exact manufactured solution is measured.
 
 
-At this extent the following manufactured solutions are chosen:
+The following manufactured solutions are chosen:
 \begin{equation}
     \begin{cases}
     c_{m_D} = 1 + x^2 + \sin(t) \\
@@ -86,29 +86,29 @@ By combining Equations \ref{eq:mobile}, \ref{eq:trapped} and \ref{eq: manufactur
 \end{equation}
 
 where $g_1$ is an additional source term in Equation \ref{eq:trapped}.
-The Dirichlet boundary conditions for $c_m$ and $c_{t,1}$ are:
+The Dirichlet boundary conditions for $c_\mathrm{m}$ and $c_{t,1}$ are:
 
 \begin{equation}
     \begin{cases}
-    c_m = 1 + x^2 + \sin(t) \quad \text{on } \partial \Omega \\
+    c_\mathrm{m} = 1 + x^2 + \sin(t) \quad \text{on } \partial \Omega \\
     c_{t,1} = 1 + x^2 + \cos(t) \quad \text{on } \partial \Omega 
     \end{cases}
 \end{equation}
 where $\partial\Omega$ is the boundary of the domain.
-Finally, initial values for $c_m$ and $c_{t,i}$ are:
+Finally, initial values for $c_\mathrm{m}$ and $c_{t,i}$ are:
 \begin{equation}
     \begin{cases}
-    c_m(t=0) = 1 + x^2 \\
+    c_\mathrm{m}(t=0) = 1 + x^2 \\
     c_{t,1}(t=0) = 2 + x^2
     \end{cases}
 \end{equation}
 Once all these parameters are fed into FESTIM, one can easily compare the computed solution with the exact solution in Equation \ref{eq: manufactured solutions}.
-The L2-norm $E_{c_m}$ can then be calculated as follow:
+The L2-norm $E_{c_\mathrm{m}}$ can then be calculated as follow:
 \begin{equation}
-    E_{c_m} = \sqrt{\int_\Omega(c_{m_D} - c_m)^2dx}
+    E_{c_\mathrm{m}} = \sqrt{\int_\Omega(c_{m_D} - c_\mathrm{m})^2dx}
 \end{equation}
-The evolution of $E_{c_m}$ as function of the element size $h$ is shown on Figure \ref{fig:error vs h}.
-One can notice that $E_{c_m}$ increases as $A\cdot h^k$.
+The evolution of $E_{c_\mathrm{m}}$ as function of the element size $h$ is shown on Figure \ref{fig:error vs h}.
+One can notice that $E_{c_\mathrm{m}}$ increases as $A\cdot h^k$.
 This is known as the \textit{asymptotic regime} and the coefficient $k$ is called the convergence rate.
 $k$ typically tends to N+1 as $h$ approaches $0$, $N$ being the order of the finite elements.
 In this simulation, $k$ approaches $2$ as expected since elements of order $1$ have been used.
@@ -120,17 +120,62 @@ In this simulation, $k$ approaches $2$ as expected since elements of order $1$ h
     \label{fig:error vs h}
 \end{figure}
 
-The results of the verification cases studied in Sections \ref{analytical} and \ref{mms} show that FESTIM reliably solves the governing Equations \ref{eq:mobile} and \ref{eq:trapped}.
-It has also been shown that the convergence rate is in accordance with the theory of finite elements meaning that the code is free of errors that could lead to unreliable results in the future.
-Validation can then be performed to ensure that the MRE model described in Section \ref{description_H_transport_model} can be used to reproduce experimental results.
+The same method can be applied to a 2D case.
+Let us choose the following steady state test problem on a domain $\Omega = [0, 1] \times [0, 1]$ with the manufactured solution $c_D(x, y) = \sin(\omega \pi x) \sin(\omega \pi y)$.
+
+\begin{align}
+    \nabla \cdot D \nabla c_\mathrm{m} &= -f_1 \\
+    k c_\mathrm{m} (n - c_\mathrm{t}) - p c_\mathrm{t} &= -f_2 \\
+    c_\mathrm{m} &= c_\mathrm{t} = c_D \text{  on  } \partial \Omega \\
+    D &= 2 \\
+    p &= 3 \\
+    k &= 2 \\
+\end{align}
+
+The source terms $f_1$ and $f_2$ and the boundary conditions can be obtained in a similar fashion by replacing $c_\mathrm{m}$ and $c_\mathrm{t}$ in the governing equations.
+
+It was shown that the computed solutions was similar to the exact solutions (see Figure \ref{fig: results MMS 2D H transport}).
+Moreover, the convergence rates confirm the mesh dependency of the computed solutions accuracy (see Figure \ref{fig: convergence rates H}).
+A super-convergence is observed for the P2 elements.
+
+\begin{figure*}
+    \centering
+    \begin{subfigure}{0.3\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figures/Chapter2/c_m.pdf}
+        \caption{Computed $c_\mathrm{m}$ $N=64$}
+    \end{subfigure}%
+    \begin{subfigure}{0.3\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figures/Chapter2/c_t.pdf}
+        \caption{Computed $c_\mathrm{t}$ $N=64$}
+    \end{subfigure}%
+    \begin{subfigure}{0.3\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figures/Chapter2/c_exact.pdf}
+        \caption{Exact solution $c_D$}
+    \end{subfigure}
+    \caption{Comparison of the computed concentrations with the exact solution}
+    \label{fig: results MMS 2D H transport}
+\end{figure*}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter2/convergence_rate_H.pdf}
+    \caption{Convergence rates}
+    \label{fig: convergence rates H}
+\end{figure}
+
+
+% The results of the verification cases studied in Sections \ref{analytical} and \ref{mms} show that FESTIM reliably solves the governing Equations \ref{eq:mobile} and \ref{eq:trapped}.
+% It has also been shown that the convergence rate is in accordance with the theory of finite elements meaning that the code is free of errors that could lead to unreliable results in the future.
+% Validation can then be performed to ensure that the MRE model described in Section \ref{description_H_transport_model} can be used to reproduce experimental results.
 
 \subsection{Conservation of chemical potential verification}
 To ensure the implementation of the interface model in FESTIM is error free, analytical verification is required since physical trend tests are not rigorous enough. The verification process aims at checking the code is correctly solving the governing Equations \ref{eq: flux conservation}, \ref{eq: c/s conservation}, \ref{eq: diffusion equation} and \ref{eq: diffusion equation changed}.
 To this end, two methods were used: the Method of Exact Solutions (MES) and the Method of Manufactured Solutions (MMS).
 It is worth noting that these two methods do not require to be physically realistic since this is a purely mathematical exercise.
 In practice, not having real life properties or realistic domain sizes can even facilitate the construction of a general test case and therefore ease the results reproduction by others.
-A complete H transport problem would include coupling with trapping/detrapping (as in Section \ref{iter case}).
-The implementation of the trapping/detrapping coupling in FESTIM has already been analytically verified in \sidecite{delaporte-mathurin_finite_2019} therefore this Section will only focus on verifying the solving of Equations \ref{eq: flux conservation}, \ref{eq: c/s conservation}, \ref{eq: diffusion equation} and \ref{eq: diffusion equation changed}.
 
 \subsubsection{Method of Exact Solutions (MES)}
 
@@ -260,7 +305,7 @@ The domain $\Omega$ for this test problem is a unit square composed of two subdo
     \Omega_2 &= [x_\mathrm{int}, 1] \times [0, 1] \\
 \end{align}
 \end{subequations}
-In order to unravel the complexity of an analytical resolution of the direct problem, a manufactured solution $c_M$ was constructed (see Equation \ref{eq: manufactured solution}) and the problem was solved backwards.
+In order to unravel the complexity of an analytical resolution of the direct problem, a manufactured solution $c_\mathrm{m}$ was constructed (see Equation \ref{eq: manufactured solution}) and the problem was solved backwards.
 
 \begin{equation}
         c_M= 
@@ -353,12 +398,51 @@ Nonetheless, the error was found to remain orders of magnitude lower than the ac
 \end{figure*}
 
 
-% The chemical potential continuity at interface is not directly equivalent to a concentration continuity (see Equation \ref{eq: cconservation})  since the chemical potential in a reference state is not the same in different materials \sidecite{kirchheim_25_2014}, as the lattice site concentration.
-% \begin{equation}
-%             c^- = c^+  \label{eq: cconservation} 
-% \end{equation}
-
 \subsubsection{Heat transfer}
 
-TODO: verification of the heat transfer equation
-2D case
+The heat transfer module in FESTIM can also be verified using the method of manufactured solutions.
+
+Let us choose the following test problem on a domain $\Omega = [0, 1] \times [0, 1]$ with the manufactured solution $T_D(x, y) = \sin(\omega \pi x) \sin(\omega \pi y)$.
+
+\begin{align}
+    \nabla \cdot \lambda \nabla T &= -f \\
+    T &= T_D \text{  on  } \partial \Omega \\
+    \lambda(x, y) &= 2 + T_D^2 \\
+\end{align}
+
+The source term $f$ is therefore:
+\begin{align}
+    f &= 2 \pi^{2} \omega^{2} f_0 \sin{\left (\pi \omega x \right )} \sin{\left (\pi \omega y \right )} \\
+    f_0 &= \left(3 f_1 f_2 - f_1 - f_2 + 2\right) \\
+    f_1 &= \sin^{2}{\left (\pi \omega x \right )} \\
+    f_2 &= \sin^{2}{\left (\pi \omega y \right )} \\
+\end{align}
+
+The computed FESTIM solution is extremely similar to the exact solution (see Figure \ref{fig: results MMS heat transfer}).
+It is also possible to compute the L2-error for several number of cell divisions in the x and y directions $N$ to ensure the error decreases as a power law of $N$.
+Moreover, the L2-error (the exponent of the power law) should vary as $h^{d+1}$ where $h=1/N$ and $d$ is the polynomial degree of the elements.
+This was verified for P1 and P3 elements and a super-convergence rate was observed for the P2 elements (see Figure \ref{fig: convergence rates heat transfer}).
+
+\begin{figure*}
+    \centering
+    \begin{subfigure}{0.5\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figures/Chapter2/T.pdf}
+        \caption{Computed temperature $N=64$}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figures/Chapter2/T_exact.pdf}
+        \caption{Exact temperature}
+    \end{subfigure}
+
+    \caption{Verification of the heat transfer module in FESTIM}
+    \label{fig: results MMS heat transfer}
+\end{figure*}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter2/convergence_rate_heat_transfer.pdf}
+    \caption{Convergence rates}
+    \label{fig: convergence rates heat transfer}
+\end{figure}
