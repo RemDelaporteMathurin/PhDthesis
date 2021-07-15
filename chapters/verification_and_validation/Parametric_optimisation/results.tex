@@ -6,7 +6,7 @@ The fitting procedure has been employed to reproduce thermo-desorption experimen
 
 \subsubsection{Tungsten}
 
-The TPD spectrum measured by Ogorodnikova \textit{et al} presented in Section \ref{optimisation algorithms} has been reproduced by setting all traps parameters as free parameters.
+The TPD spectrum measured by Ogorodnikova \textit{et al} \sidecite{ogorodnikova_deuterium_2003} has been reproduced by setting all traps parameters as free parameters.
 The fitting procedure has been run for several numbers of traps as shown on Figure \ref{fig:number of traps comparison}.
 It is clear that setting only one trap is not sufficient to reproduce the experimental data.
 The two traps case shows better results but also has a discrepancy near \SI{600}{K}.
@@ -14,7 +14,7 @@ This discrepancy is removed when setting a third extrinsic trap to the simulatio
 
 For this last case, the five free parameters are the detrapping energies $E_{p, 1}$, $E_{p, 2}$, $E_{p, 3}$ and densities $n_1$, $n_2$ (the third trapping site being created during the implantation, for which the creation parameters are not part of the free parameters and taken from \sidecite{ogorodnikova_deuterium_2003} or \sidecite{hodille_macroscopic_2015}).
 This optimisation case is therefore a 5D optimisation problem.
-Every other parameters are taken from \sidecite{hodille_macroscopic_2015}.
+Every other parameter is taken from \sidecite{hodille_macroscopic_2015}.
 The resulting fit is shown on Figure \ref{fig:5D TPD} alongside with the contribution of each trap to the total spectrum.
 % (1 trap [ 0.88368005  1.44347635] 2 traps [ 0.83582125  1.23768655  0.98708714  6.85457283])
 \begin{figure*} [ht]
@@ -58,7 +58,7 @@ The identified trap energy is $E_p$ \SI{1.06}{eV} for all spectra whereas the tr
 For all simulations the attempt frequency $p_0$ is \SI{1e13}{s^{-1}} and the diffusion coefficient is taken from \sidecite{esteban_hydrogen_2007}.
 
 The total fitting procedure took less than two hours for fitting the three spectra.
-A more thorough study of these experiments could involve constraining the algorithm with profilometry data obtained by Hollingsworth \textit{et al} \sidecite{hollingsworth_comparative_2019}.
+A more thorough study of these experiments could involve constraining the algorithm with profilometry data obtained by Hollingsworth \textit{et al} \cite{hollingsworth_comparative_2019}.
 Indeed, having a non-homogeneous trapping site distribution could help having a better fit of both the profilometry data and the TPD spectra. 
 
 \subsubsection{Aluminium}
@@ -66,7 +66,7 @@ Indeed, having a non-homogeneous trapping site distribution could help having a 
 The experiment performed on Aluminium by Quiros \textit{et al} \sidecite{quiros_blistering_2019, quiros_blister_2017} has also been reproduced with FESTIM.
 
 Only one trap has been set in the simulation and its energy $E_p$ and density $n$ are set as free parameters.
-Every other parameters are fixed and taken from \sidecite{quiros_blister_2017, quiros_blistering_2019}.
+Every other parameters are fixed and taken from \cite{quiros_blister_2017, quiros_blistering_2019}.
 The resulting simulated TPD spectrum is shown on Figure \ref{fig:TPD alu}.
 \begin{figure} [ht]
     \centering
@@ -77,7 +77,7 @@ The resulting simulated TPD spectrum is shown on Figure \ref{fig:TPD alu}.
 
 
 The identified parameters are $n = \SI{1.8e-2}{at.fr.}$ and $E =\SI{1.1}{eV}$.
-The trapping sites density is significantly higher than the one described in \sidecite{quiros_blister_2017}.
+The trapping sites density is significantly higher than the one described in \cite{quiros_blister_2017}.
 However, the TPD spectrum obtained with this procedure better fits the experimental data since the one obtained by Quiros \textit{et al} requires a 10-fold increase.
 The fitting procedure took less than a hundred cost function evaluations, which corresponds in total to a few dozens of minutes.
 
@@ -87,11 +87,11 @@ In this experiment, a \SI{1}{\micro m} thick Be-D layer is grown on Tungsten at 
 Following the strategy proposed by Baldwin \textit{et al}, only the thermo-desorption phase has been simulated with two trapping sites with homogeneously distributed densities and with initial occupancies $f_i$.
 There are therefore three free parameters per trap (energy, density and initial occupancy) which makes this optimisation problem 6D.
 It is assumed that the surface flux is the net balance between incoming flux from the chamber (very low since the pressure is $\SI{1}{\micro Pa}$) and the molecular recombination flux.
-All the other parameters are described in \sidecite{baldwin_experimental_2014}.
+All the other parameters are described in \cite{baldwin_experimental_2014}.
 
 The resulting optimised TPD spectrum is shown on Figure \ref{fig:tpd baldwin}.
 The optimised parameters are $E_{p, 1} = \SI{0.75}{eV}$, $n_1 = \SI{1.09e-1}{at.fr.}$, $f_1=0.73$, $E_{p, 2} = \SI{0.93}{eV}$, \newline ${n_2 = \SI{3.40e-2}{at.fr.}}$, $f_2=0.28$.
-These values are in agreement with the ones found by Baldwin \textit{et al} \sidecite{baldwin_experimental_2014} and took only a few of minutes to compute since the implantation phase was not simulated.
+These values are in agreement with the ones found by Baldwin \textit{et al} \cite{baldwin_experimental_2014} and took only a few of minutes to compute since the implantation phase was not simulated.
 
 \begin{figure}
     \centering
@@ -119,7 +119,7 @@ But artificially adding more and more traps is not necessarily realistic and cou
 \end{figure}
 
 In the first case with only one trapping site, as described by Hurley \textit{et al} in \sidecite{hurley_numerical_2015}, the binding energy is \SI{0.55}{eV} and the trap density is \SI{2.08e24}{m^{-3}}.
-The appearance of two peaks is due to the desorption on different sides of the sample as explained in \sidecite{hurley_numerical_2015}.
+The appearance of two peaks is due to the desorption on different sides of the sample as explained in \cite{hurley_numerical_2015}.
 In the second case, the curve as been reproduced with two trapping sites which energies and densities are respectively \SI{0.51}{eV} and \SI{0.57}{eV} and \SI{2.02e24}{m^{-3}} and \SI{2.12e24}{m^{-3}}.
 In the third case, it has been reproduced with three trapping sites which energies and densities are respectively \SI{0.55}{eV}, \SI{0.38}{eV} and \SI{0.51}{eV} and \SI{2.12e24}{m^{-3}}, \SI{2.26e24}{m^{-3}} and \newline \SI{2.13e24}{m^{-3}}.
 

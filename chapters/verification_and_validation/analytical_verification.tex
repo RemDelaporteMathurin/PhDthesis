@@ -1,6 +1,22 @@
-\subsubsection{Effective diffusivity case} \label{analytical}
+Verification is the process of ensuring the governing equations are correctly solved in FESTIM.
+This is an integral part of every simulation code for it guarantees the code is error free.
+It is generally hard to simply substitute this process by code comparison (cross-checks between two different codes) because often the codes are implemented differently.
+Moreover, if the code we are comparing with is not verified, then obtaining similar results does not give any guarantee on the code accuracy.
 
-Although validation against experiments could show that FESTIM is able reproduce the data with a given set of parameters, objective verification against analytical solutions is first required to ensure that the governing Equations \ref{eq:mobile} and \ref{eq:trapped} are solved correctly.
+Several methods can be used to verify a code but the Method of Exact Solutions (MES) and the Method of Manufactured Solutions (MMS) are employed here.
+
+Both methods consist in comparing a computed solution with an analytical solution and measuring the error.
+The analytical solution in the MES is obtained by solving the governing equations.
+With the MMS, on the other hand, the problem is reversed: an arbitrary analytical solution (called manufactured solution) is chosen and injected in the governing equations.
+It is then possible to determine source terms and boundary conditions.
+These are then fed into the code and the computed solution is compared to the manufactured (analytical) solution.
+
+This MMS method is often used to unravel the complexity of governing equations \sidecite{dudson_verification_2016, roache_code_2002}.
+This is particularly usefull when dealing with complex geometries or to exercise non-trivial material propoerties.
+
+\subsubsection{H transport (MES)} \label{analytical}
+
+% Although validation against experiments could show that FESTIM is able reproduce the data with a given set of parameters, objective verification against analytical solutions is first required to ensure that the governing Equations \ref{eq:mobile} and \ref{eq:trapped} are solved correctly.
 
 For this verification case, a 1D slab is considered with a thickness $l$.
 The concentration of mobile particles was set to $c_0$ on one side of the slab and set to zero on the other side.
@@ -60,12 +76,8 @@ According to finite elements theory, this value will decrease with the stepsize 
     \caption{Temporal evolution of the particle flux $\varphi_H$ ($t_f = \SI{e-8}{s}$)}
     \label{fig:FESTIM vs analytical}
 \end{figure}
-\subsubsection{Analytical verification using MMS} \label{mms}
 
-To unravel the complexity of governing equations, the Method of Manufactured Solutions (MMS) is often used \sidecite{dudson_verification_2016, roache_code_2002}.
-Manufactured solutions are exact solutions that injected in the governing equations in order to deduce source terms and boundary conditions.
-The sets of source terms and boundary conditions obtained are then fed into FESTIM and the error between the computed solution and the exact manufactured solution is measured.
-
+\subsubsection{H transport (MMS)} \label{mms}
 
 The following manufactured solutions are chosen:
 \begin{equation}
@@ -166,18 +178,8 @@ A super-convergence is observed for the P2 elements.
     \label{fig: convergence rates H}
 \end{figure}
 
-
-% The results of the verification cases studied in Sections \ref{analytical} and \ref{mms} show that FESTIM reliably solves the governing Equations \ref{eq:mobile} and \ref{eq:trapped}.
-% It has also been shown that the convergence rate is in accordance with the theory of finite elements meaning that the code is free of errors that could lead to unreliable results in the future.
-% Validation can then be performed to ensure that the MRE model described in Section \ref{description_H_transport_model} can be used to reproduce experimental results.
-
-\subsection{Conservation of chemical potential verification}
-To ensure the implementation of the interface model in FESTIM is error free, analytical verification is required since physical trend tests are not rigorous enough. The verification process aims at checking the code is correctly solving the governing Equations \ref{eq: flux conservation}, \ref{eq: c/s conservation}, \ref{eq: diffusion equation} and \ref{eq: diffusion equation changed}.
-To this end, two methods were used: the Method of Exact Solutions (MES) and the Method of Manufactured Solutions (MMS).
-It is worth noting that these two methods do not require to be physically realistic since this is a purely mathematical exercise.
-In practice, not having real life properties or realistic domain sizes can even facilitate the construction of a general test case and therefore ease the results reproduction by others.
-
-\subsubsection{Method of Exact Solutions (MES)}
+\subsubsection{Conservation of chemical potential (MES)}
+This verification case aims at checking the FESTIM code is correctly solving the governing Equations \ref{eq: flux conservation}, \ref{eq: c/s conservation}, \ref{eq: diffusion equation} and \ref{eq: diffusion equation changed}.
 
 \begin{figure*} [h]
     \centering
@@ -292,10 +294,9 @@ For instance, this analytical solution is only uni-dimensional, steady state is 
 Having an exact solution from an analytical resolution for a general problem (multidimensional, transient, heterogeneous material properties, etc...) is often complex.
 In order to exercise all these terms, the Method of Manufactured Solutions (MMS) will therefore be employed for it offers a good alternative to unravel these complexities.
 
-\subsubsection{Method of Manufactured Solutions (MMS)}
+\subsubsection{Conservation of chemical potential (MMS)}
 
-The goal of Method of Manufactured Solutions (MMS) is to have an exact solution which is general enough to exercise all the terms of the governing equations.
-This method also allows to test the implementation of the FESTIM code on a multidimensional problem.
+This verification case aims at checking the FESTIM code is correctly solving the governing Equations \ref{eq: flux conservation}, \ref{eq: c/s conservation}, \ref{eq: diffusion equation} and \ref{eq: diffusion equation changed}.
 
 The domain $\Omega$ for this test problem is a unit square composed of two subdomains $\Omega_1$ and $\Omega_2$ (see Equation \ref{eq: MMS domain}).
 \begin{subequations} \label{eq: MMS domain}
@@ -398,7 +399,9 @@ Nonetheless, the error was found to remain orders of magnitude lower than the ac
 \end{figure*}
 
 
-\subsubsection{Heat transfer}
+\subsubsection{Heat transfer (MMS)}
+
+% why not use a complex geometry? like an elbow
 
 The heat transfer module in FESTIM can also be verified using the method of manufactured solutions.
 
