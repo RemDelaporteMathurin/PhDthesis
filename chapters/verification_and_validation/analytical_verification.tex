@@ -5,11 +5,11 @@ Moreover, if the code we are comparing with is not verified, then obtaining simi
 
 Several methods can be used to verify a code but the Method of Exact Solutions (MES) and the Method of Manufactured Solutions (MMS) are employed here.
 
-Both methods consist in comparing a computed solution with an analytical solution and measuring the error.
-The analytical solution in the MES is obtained by solving the governing equations.
-With the MMS, on the other hand, the problem is reversed: an arbitrary analytical solution (called manufactured solution) is chosen and injected in the governing equations.
+Both methods consist in comparing a computed solution with an exact solution and measuring the error.
+The exact solution in the MES is obtained by solving the governing equations analytically.
+When using the MMS, on the other hand, the problem is reversed: an arbitrary exact solution (called \textit{manufactured solution}) is chosen and injected in the governing equations.
 It is then possible to determine source terms and boundary conditions.
-These are then fed into the code and the computed solution is compared to the manufactured (analytical) solution.
+These are then fed into the code and the computed solution is compared to the manufactured (exact) solution.
 
 This MMS method is often used to unravel the complexity of governing equations \sidecite{dudson_verification_2016, roache_code_2002}.
 This is particularly usefull when dealing with complex geometries or to exercise non-trivial material propoerties.
@@ -77,9 +77,13 @@ According to finite elements theory, this value will decrease with the stepsize 
     \label{fig:FESTIM vs analytical}
 \end{figure}
 
+Since this test case is very similar to a pure diffusion case, it does not exercise all terms of the governing equations.
+To do so, the governing equations would have to be solved for a generic case which proves to be complex.
+This is why the MMS will be used instead.
+
 \subsubsection{H transport (MMS)} \label{mms}
 
-The following manufactured solutions are chosen:
+In order to exercise all terms of Equations \ref{eq:mobile} and \ref{eq:trapped}, the following manufactured solutions are chosen:
 \begin{equation}
     \begin{cases}
     c_{m_D} = 1 + x^2 + \sin(t) \\
@@ -239,15 +243,6 @@ By integrating Equation \ref{eq: diffusion equation} and assuming steady-state (
 \label{eq:MES c}
 \end{equation}
 
-% \begin{equation}
-%         c_\mathrm{m}= 
-% \begin{cases}
-%     \frac{-f}{2D_1} x^2 + a_1 x + b_1,& \text{ in } \Omega_1\\
-%     \frac{-f}{2D_2} x^2 + a_2 x + b_2,& \text{ in } \Omega_2
-% \end{cases}
-% \tilde
-% \label{eq:MES c}
-% \end{equation}
 where $a_1$, $b_1$, $a_2$, $b_2$ are the unknowns of the problem to be determined.
 The boundary conditions and the equilibrium law at the interface are defined as:
 \begin{subequations} \label{eq: bcs MES}
@@ -260,17 +255,7 @@ The boundary conditions and the equilibrium law at the interface are defined as:
 \end{subequations}
 
 
-Equation \ref{eq:MES c} can be solved with these constraints and coefficients describing $c_\mathrm{m}$ therefore read:
-
-% \begin{align}
-%     \begin{split}
-%         a_1 &= \frac{- 2 D_{1} D_{2} S_{2} c_{0} + D_{1} S_{1} \left(2 D_{2} c_L - f L^{2}\right) + f x_\mathrm{int}^{2} \left(D_{1} S_{1} - D_{2} S_{2}\right)}{2 D_{1} \left(D_{1} S_{1} L - D_{1} S_{1} x_\mathrm{int} + D_{2} S_{2} x_\mathrm{int}\right)}  \\
-%         b_1 &= c_0 \\
-%         a_2 &= \frac{- 2 D_{1} D_{2} S_{2} c_{0} + D_{1} S_{1} \left(2 D_{2} c_{L} - f L ^{2}\right) + f x_\mathrm{int}^{2} \left(D_{1} S_{1} - D_{2} S_{2}\right)}{2 D_{2} \left(D_{1} S_{1} L  - D_{1} S_{1} x_\mathrm{int} + D_{2} S_{2} x_\mathrm{int}\right)}\\
-%         b_2 &= \frac{2 D_{1} D_{2} L S_{2} c_{0} - x_\mathrm{int} \left(D_{1} S_{1} - D_{2} S_{2}\right) \left((L f x_\mathrm{int} +  \left(2 D_{2} c_{L} - L^{2} f\right)\right)}{2 D_{2} \left(D_{1} S_{1} L - D_{1} S_{1} x_\mathrm{int} + D_{2} S_{2} x_\mathrm{int}\right)} 
-%     \end{split}
-% \end{align}
-
+Equation \ref{eq:MES c} can be solved with these constraints and coefficients describing $\tilde{c_\mathrm{m}}$ therefore read:
 
 \begin{align}
     \begin{split}
@@ -405,11 +390,12 @@ Nonetheless, the error was found to remain orders of magnitude lower than the ac
 
 The heat transfer module in FESTIM can also be verified using the method of manufactured solutions.
 
-Let us choose the following test problem on a domain $\Omega = [0, 1] \times [0, 1]$ with the manufactured solution $T_D(x, y) = \sin(\omega \pi x) \sin(\omega \pi y)$.
+Let us choose the following test problem on a elbow domain $\Omega = [0, 1] \times [0, 0.5] \cup [0, 0.5] \times [0.5, 1]$ with the manufactured solution $T_D(x, y) = \sin(\omega \pi x) \sin(\omega \pi y)$.
 
 \begin{align}
     \nabla \cdot \lambda \nabla T &= -f \\
-    T &= T_D \text{  on  } \partial \Omega \\
+    T &= T_D \text{  on  } y \in [0, 1] \\
+    -\lambda \nabla T \cdot \mathbf{n} &= -\lambda \nabla T_D \cdot \mathbf{n} \text{  on  other surfaces} \\
     \lambda(x, y) &= 2 + T_D^2 \\
 \end{align}
 

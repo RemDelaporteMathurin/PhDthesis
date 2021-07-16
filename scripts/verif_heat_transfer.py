@@ -125,14 +125,14 @@ if __name__ == "__main__":
     T_exact = interpolate(T_exact, V)
 
     plt.figure()
-    CF = plot(T)
+    CF = plot(T, cmap="plasma")
     plt.colorbar(CF)
     for c in CF.collections:
         c.set_edgecolor("face")
     plt.savefig("T.pdf")
 
     plt.figure()
-    CF = plot(T_exact)
+    CF = plot(T_exact, cmap="plasma")
     plt.colorbar(CF)
     for c in CF.collections:
         c.set_edgecolor("face")
