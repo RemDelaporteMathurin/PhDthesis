@@ -4,10 +4,10 @@
 Pull the texlive Docker image
 
 ```
-docker run -it -v $(pwd):/workdir danteev/texlive
+docker run -it -v $(pwd):/workdir danteev/texlive:edge
 ```
 
-Update Latex packages
+Update Latex packages (if needed)
 ```
 tlmgr update --all
 ```
