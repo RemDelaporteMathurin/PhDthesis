@@ -12,9 +12,9 @@ It is clear that setting only one trap is not sufficient to reproduce the experi
 The two traps case shows better results but also has a discrepancy near \SI{600}{K}.
 This discrepancy is removed when setting a third extrinsic trap to the simulation.
 
-For this last case, the five free parameters are the detrapping energies $E_{p, 1}$, $E_{p, 2}$, $E_{p, 3}$ and densities $n_1$, $n_2$ (the third trapping site being created during the implantation, for which the creation parameters are not part of the free parameters and taken from \sidecite{ogorodnikova_deuterium_2003} or \sidecite{hodille_macroscopic_2015}).
+For this last case, the five free parameters are the detrapping energies $E_{p, 1}$, $E_{p, 2}$, $E_{p, 3}$ and densities $n_1$, $n_2$ (the third trapping site being created during the implantation, for which the creation parameters are not part of the free parameters and taken from \cite{ogorodnikova_deuterium_2003} or \sidecite{hodille_macroscopic_2015}).
 This optimisation case is therefore a 5D optimisation problem.
-Every other parameter is taken from \sidecite{hodille_macroscopic_2015}.
+Every other parameter is taken from \cite{hodille_macroscopic_2015}.
 The resulting fit is shown on Figure \ref{fig:5D TPD} alongside with the contribution of each trap to the total spectrum.
 % (1 trap [ 0.88368005  1.44347635] 2 traps [ 0.83582125  1.23768655  0.98708714  6.85457283])
 \begin{figure*} [ht]
@@ -36,7 +36,7 @@ The resulting fit is shown on Figure \ref{fig:5D TPD} alongside with the contrib
     \caption{Fitting TPD spectrum performed on Tungsten by Ogorodnikova \textit{et  al} \cite{ogorodnikova_deuterium_2003}. Dots correspond to experimental data.}
     \label{fig:TPD ogorodnikova}
 \end{figure*}
-The identified parameters are similar to the ones found by Hodille \textit{et al.} in \sidecite{hodille_macroscopic_2015}.
+The identified parameters are similar to the ones found by Hodille \textit{et al.} in \cite{hodille_macroscopic_2015}.
 The total fitting procedure took a few hundred of cost function evaluations.
 One single cost function evaluation "costing" less than \SI{20}{s} to compute (for that specific case), the total procedure lasted less than \SI{3}{h}.
 
