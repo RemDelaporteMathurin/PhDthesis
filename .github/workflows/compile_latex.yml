@@ -1,16 +1,21 @@
 name: Build LaTeX document
 
 # Triggers the workflow on push or pull request events
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
   
 jobs:
   build_latex:
     runs-on: ubuntu-latest
     steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.6.0
+        with:
+          access_token: ${{ github.token }}
+          
       - name: Set up Git repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: Compile LaTeX document
-        uses: dante-ev/latex-action@latest
+        uses: dante-ev/latex-action@edge
         with:
           root_file: main.tex
