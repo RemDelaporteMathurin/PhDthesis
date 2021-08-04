@@ -1,24 +1,8 @@
 # PhDthesis
 
+[Download the latest release (pdf)](https://github.com/remdelaportemathurin/phdthesis/releases/latest/download/main.pdf)
 
-Pull the texlive Docker image
-
-```
-docker run -it -v $(pwd):/workdir danteev/texlive:edge
-```
-
-Update Latex packages (if needed)
-```
-tlmgr update --all
-```
-
-Compile the main.tex file
-
-```
-latexmk -pdf main.tex
-```
-
-Alternatively, you can run the single command:
+To compile locally, simply run:
 
 ```
 docker run --rm -it -v $(pwd):/workdir danteev/texlive:edge latexmk -pdf main.tex
