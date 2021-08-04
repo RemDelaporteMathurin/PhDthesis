@@ -1,4 +1,5 @@
 \setchapterimage{divertor}
+\setchapterpreamble[u]{\margintoc}
 \chapter{Divertor inventory estimation}
 \section{Introduction}
 Hydrogen isotopes (H\footnote{H will be used to refer to all isotopes and mainly tritium}) transport in tokamaks is a crucial issue for several reasons.
@@ -11,9 +12,9 @@ Numerical modelling of H transport and retention in and outgassing from plasma f
 These simulations are supported by experimental work to determine key properties of fusion materials.
 H transport in monoblocks has been studied in 1D \sidecite{hodille_estimation_2017}.
 However, it was shown in \sidecite{delaporte-mathurin_finite_2019} that the 2D edge effects had to be considered to have a better estimate of the H retention in the actively cooled divertor monoblocks.
-A recent major effort has been made to perform multi-dimensional simulations \sidecite{delaporte-mathurin_finite_2019, delaporte-mathurin_parametric_2020, delaporte-mathurin_influence_2021, benannoune_multidimensional_2020}.
+A recent major effort has been made to perform multi-dimensional simulations \cite{delaporte-mathurin_finite_2019, delaporte-mathurin_parametric_2020, delaporte-mathurin_influence_2021, benannoune_multidimensional_2020}.
 
-In a previous study \sidecite{delaporte-mathurin_parametric_2020}, the finite element code FESTIM \sidecite{delaporte-mathurin_finite_2019, delaporte-mathurin_influence_2021} was employed to simulate H isotopes transport in ITER-like monoblocks with the geometry given in \sidecite{richou_realization_2017} coupled to heat transfer.
+In a previous study \cite{delaporte-mathurin_parametric_2020}, the finite element code FESTIM \sidecite{delaporte-mathurin_finite_2019, delaporte-mathurin_influence_2021} was employed to simulate H isotopes transport in ITER-like monoblocks with the geometry given in \sidecite{richou_realization_2017} coupled to heat transfer.
 A novel method was developed to rapidly estimate the H inventory in the whole ITER divertor from plasma code results without having to run additional finite element simulation. Instead, a behaviour law relying on a data base of 600 FESTIM simulations correlates the H inventory in a monoblock to its surface temperature and surface concentrations (using a gaussian regression process as described in \sidecite{chris_bowman_c-bowmaninference-tools_2020}).
 
 The current work applies this technique to estimate the H inventory in the divertors of WEST and ITER based on SolEdge3X-EIRENE \sidecite{bufferand_three-dimensional_2019} and SOLPS-ITER \sidecite{kaveeva_solps-iter_2020} plasma simulations, respectively.
@@ -21,12 +22,12 @@ The influence of control parameters such as the input power, the puffing rate an
 
 
 \section{Methodology}
-\begin{figure*}[h!]
+\begin{figure}[h!]
     \centering
-    \includegraphics[width=0.65\linewidth]{Figures/divertor/coordinates.pdf}
+    \includegraphics[width=0.95\linewidth]{Figures/divertor/coordinates.pdf}
     \caption{Geometry of WEST and ITER divertors}
     \label{fig: reactors}
-\end{figure*}
+\end{figure}
 
 The H inventory of the WEST and ITER divertors will be computed by making use of a database of FESTIM simulations of H transport in ITER-like monoblocks from which a behaviour law is extracted using a gaussian regression process from the inference-tools python package \sidecite{chris_bowman_c-bowmaninference-tools_2020}.
 These simulations model H transport in monoblocks for a fixed plasma exposure duration of \SI{e7}{s}.
