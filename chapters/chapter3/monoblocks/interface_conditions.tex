@@ -1,12 +1,11 @@
 In order to assess the influence of interface conditions on the outgassing flux, simulations are performed with chemical potential continuity (Equation \ref{eq: c/s conservation}) or mobile concentration continuity assuming in both cases flux conservation (Equation \ref{eq: flux conservation}).
-For the sake of simplicity and to emphasis on the influence of interface conditions, no trapping was assumed and idea Dirichlet boundary conditions were set.
+For the sake of simplicity and to emphasis on the influence of interface conditions, no trapping was assumed and ideal Dirichlet boundary conditions were set.
 Simulations were performed on two test cases: W/Cu and Cu/EUROFER.
 The materials properties used for the simulations can be found in Table \ref{tab:materials properties_1}.
 In both cases the solute concentration $c_\mathrm{m}$ was set to \SI{1e20}{m^{-3}} at $x=0$ and zero on the other boundary.
 
 \subsection{W/Cu case}
 A \SI{4}{mm}-thick slab made of \SI{2}{mm} of W (referred as $\Omega_1$) and \SI{2}{mm} of Cu (referred as $\Omega_2$)  at $T=\SI{500}{K}$ was first simulated.
-
 
 
 \begin{figure*}
@@ -43,9 +42,8 @@ For a given temperature (and therefore given diffusion coefficients), this impli
 \subsection{Cu/EUROFER case}
 
 A \SI{4}{mm}-thick slab made of \SI{2}{mm} of Cu (referred as $\Omega_1$) and \SI{2}{mm} of EUROFER (referred as $\Omega_2$) at $T=\SI{600}{K}$ was simulated.
-Contrarily to the previous case, since the solubility of EUROFER is lower than that of Cu, the steady-state concentration gradients (see Figure \ref{fig: solute profiles cu eurofer}) were lower compared to the case with concentration continuity.
+Since the solubility of EUROFER is lower than that of Cu, the steady-state concentration gradients (see Figure \ref{fig: solute profiles cu eurofer}) were lower compared to the case with concentration continuity.
 The outgassing flux was therefore lower in the case of chemical potential conservation (see Figure \ref{fig: outgassing flux cu eurofer}).
-
 
 
 \subsection{Identification technique}
@@ -226,12 +224,12 @@ All traps are homogeneously distributed in the materials, except for Trap 2 whic
 
 \begin{figure}
     \centering
-    \begin{subfigure}{0.75\linewidth}
+    \begin{subfigure}{\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/thermal_prop.pdf}
         \caption{Thermal properties}
     \end{subfigure}
-    \begin{subfigure}{0.75\linewidth}
+    \begin{subfigure}{\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/H_properties.pdf}
         \caption{H transport properties}
@@ -420,4 +418,4 @@ It is shown that this has very low influence up to \SI{5e6}{s} and that discrepa
 This is because interfaces are far from the exposed surface and hydrogen atoms only reach these interface after a long exposure time.
 The continuity of mobile concentration can therefore be employed safely for monoblocks H transport simulations in order to assess monoblocks inventory.
 This is especially true when desorption is assumed on the edges of the monoblock where less H particles will reach the interfaces.
-In other words, the effect of the interfaces conditions is negligible compared to the edge effects.
+In other words, the effect of the interfaces conditions is negligible compared to the edge effects (this will be shown in more details in Section \ref{3D edge effects}).
