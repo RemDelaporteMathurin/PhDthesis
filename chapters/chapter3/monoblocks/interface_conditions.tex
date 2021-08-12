@@ -1,12 +1,11 @@
 In order to assess the influence of interface conditions on the outgassing flux, simulations are performed with chemical potential continuity (Equation \ref{eq: c/s conservation}) or mobile concentration continuity assuming in both cases flux conservation (Equation \ref{eq: flux conservation}).
-For the sake of simplicity and to emphasis on the influence of interface conditions, no trapping was assumed and idea Dirichlet boundary conditions were set.
+For the sake of simplicity and to emphasis on the influence of interface conditions, no trapping was assumed and ideal Dirichlet boundary conditions were set.
 Simulations were performed on two test cases: W/Cu and Cu/EUROFER.
 The materials properties used for the simulations can be found in Table \ref{tab:materials properties_1}.
 In both cases the solute concentration $c_\mathrm{m}$ was set to \SI{1e20}{m^{-3}} at $x=0$ and zero on the other boundary.
 
 \subsection{W/Cu case}
 A \SI{4}{mm}-thick slab made of \SI{2}{mm} of W (referred as $\Omega_1$) and \SI{2}{mm} of Cu (referred as $\Omega_2$)  at $T=\SI{500}{K}$ was first simulated.
-
 
 
 \begin{figure*}
@@ -43,9 +42,8 @@ For a given temperature (and therefore given diffusion coefficients), this impli
 \subsection{Cu/EUROFER case}
 
 A \SI{4}{mm}-thick slab made of \SI{2}{mm} of Cu (referred as $\Omega_1$) and \SI{2}{mm} of EUROFER (referred as $\Omega_2$) at $T=\SI{600}{K}$ was simulated.
-Contrarily to the previous case, since the solubility of EUROFER is lower than that of Cu, the steady-state concentration gradients (see Figure \ref{fig: solute profiles cu eurofer}) were lower compared to the case with concentration continuity.
+Since the solubility of EUROFER is lower than that of Cu, the steady-state concentration gradients (see Figure \ref{fig: solute profiles cu eurofer}) were lower compared to the case with concentration continuity.
 The outgassing flux was therefore lower in the case of chemical potential conservation (see Figure \ref{fig: outgassing flux cu eurofer}).
-
 
 
 \subsection{Identification technique}
@@ -88,6 +86,8 @@ Moreover, surface effects and the presence of traps often complicate the analysi
 Therefore, a more thorough identification technique would be to use embedded hydrogen transport codes such as FESTIM in a parametric optimisation algorithm as described in previous work \sidecite{delaporte-mathurin_parametric_2021}.
 Such a process could be able to determine materials properties such as diffusion coefficients, solubilities and trap densities.
 
+\subsection{ITER-like monoblocks}
+
 This implementation of chemical potential continuity was applied to a test case in order to simulate hydrogen transport an ITER-like monoblock.
 For this application, trapping of hydrogen in defects was taken into account.
 The governing equations for hydrogen transport therefore read:
@@ -127,10 +127,6 @@ The chemical potential is conserved across interfaces by ensuring Equations \ref
 \begin{equation}
     {S = S_0 \cdot \exp\big(-E_S/ (k_B \cdot T )\big)}
 \end{equation} is the solubility coefficient in \si{m^{-3}.Pa^{-0.5}}.
-
-A comparison test was first performed and the FESTIM code was compared to TMAP7 \sidecite{longhurst_tmap7_2008} and Abaqus on a 1D case.
-2D simulations of ITER-like monoblocks were then performed.
-The influence of interface conditions on hydrogen inventory was studied in both cases.
 
 The materials properties that have been set are detailed in Table \ref{tab:materials properties_1} and their thermal dependency is shown on Figure \ref{fig:properties_1}.
 The trap properties in each material are detailed in Table \ref{tab:traps monoblock_1}.
@@ -228,12 +224,12 @@ All traps are homogeneously distributed in the materials, except for Trap 2 whic
 
 \begin{figure}
     \centering
-    \begin{subfigure}{0.75\linewidth}
+    \begin{subfigure}{\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/thermal_prop.pdf}
         \caption{Thermal properties}
     \end{subfigure}
-    \begin{subfigure}{0.75\linewidth}
+    \begin{subfigure}{\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/H_properties.pdf}
         \caption{H transport properties}
@@ -266,7 +262,12 @@ All traps are homogeneously distributed in the materials, except for Trap 2 whic
 
 \subsection{1D case and comparison with TMAP7 and Abaqus}
 
-\begin{figure}
+The FESTIM code was compared to TMAP7 \sidecite{longhurst_tmap7_2008} and Abaqus on a 1D case.
+The influence of interface conditions on hydrogen inventory was studied in both cases.
+
+% redo this figure showing W Cu and CuCrZr
+
+\begin{figure*}
     \centering
     \begin{subfigure}{0.5\linewidth}                              
         \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/temperature_1D.pdf}
@@ -280,7 +281,7 @@ All traps are homogeneously distributed in the materials, except for Trap 2 whic
     \end{subfigure}%
     \caption{Monoblock temperature simulated by FESTIM}
     \label{fig: temperature}
-\end{figure}
+\end{figure*}
 
 \begin{figure}
     \centering
@@ -362,7 +363,7 @@ This boundary condition accounts for recombination on the lateral sides of the m
 with $\varphi_\mathrm{imp} = \SI{5e23}{m^{-2}.s^{-1}}$ the implanted particle flux, $R_p = \SI{1.25}{nm}$ the implantation depth, $\vec{n}$ the normal vector and $K_\mathrm{CuCrZr} = 2.9 \times 10^{-14}\cdot \exp{(-1.92/(k_B\cdot T))}$ the recombination coefficient of the copper alloy (in vacuum) expressed in \si{m^4.s^{-1}} \sidecite{anderl_deuterium_1999}.
 
 
-\begin{figure}s
+\begin{figure}
     \centering
     \begin{subfigure}{0.5\linewidth}
         \centering
@@ -401,3 +402,20 @@ Moreover, outgassing flux through the cooling pipe greatly depends on the bounda
 Therefore, in order to assess the impact of interface conditions on the outgassing flux through the cooling pipe, uncertainties must first be lift regarding the recombination process occurring on surfaces in contact with water.
 
 \subsection{Summary}
+
+The influence of interface conditions between materials has been studied with FESTIM.
+A novel approach has been implemented in FESTIM in order to ensure equilibrium at the interfaces.
+The implementation has been verified using the Method of Exact Solutions and the Method of Manufactured Solutions.
+A comparison test has been performed with TMAP7 and Abaqus and the three codes show very good agreement.
+
+H transport through Cu/EUROFER and W/Cu composite slabs has been studied.
+It is shown that the interface condition can have an impact on the outgassing flux.
+This modelling work will help design future permeation barriers in DEMO.
+A method for identifying material properties with either an analytical solution or with the FESTIM code is also described.
+
+The influence of interface conditions is also studied on the ITER monoblock test case in both 1D and 2D.
+It is shown that this has very low influence up to \SI{5e6}{s} and that discrepancies only start to appear after a very long exposure time.
+This is because interfaces are far from the exposed surface and hydrogen atoms only reach these interface after a long exposure time.
+The continuity of mobile concentration can therefore be employed safely for monoblocks H transport simulations in order to assess monoblocks inventory.
+This is especially true when desorption is assumed on the edges of the monoblock where less H particles will reach the interfaces.
+In other words, the effect of the interfaces conditions is negligible compared to the edge effects (this will be shown in more details in Section \ref{3D edge effects}).

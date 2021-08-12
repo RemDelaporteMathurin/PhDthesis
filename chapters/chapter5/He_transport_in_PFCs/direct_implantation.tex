@@ -11,7 +11,7 @@ Finally, the model is compared against experimental data.
     \label{fig:tendril profiles}
 \end{figure*}
 
-The tendril application case described in \sidecite{faney_spatially_2015} was simulated in 1D with the current implementation and the results were compared.
+The tendril application case described in \cite{faney_spatially_2015} was simulated in 1D with the current implementation and the results were compared.
 
 The domain size is \SI{30}{nm} and the volumetric source term is described as follows:
 \begin{equation}
@@ -21,7 +21,7 @@ where $\varphi_\mathrm{imp} = \SI{5e25}{m^{-2} s^{-1}}$ is the implanted He flux
 
 Mobile He clusters concentrations were set to zero at the tendril's surfaces ($x=\SI{0}{nm}$ and $x=\SI{30}{nm}$).
 
-Concentration profiles computed by the current implementation showed good agreement with the ones obtained by Faney et al\sidecite{faney_spatially_2015} (see Figure \ref{fig:tendril profiles}).
+Concentration profiles computed by the current implementation showed good agreement with the ones obtained by Faney et al\cite{faney_spatially_2015} (see Figure \ref{fig:tendril profiles}).
 The discrepancies are likely due to a difference in the set of dissociation energies that have been used.
 Indeed, at low temperature, where dissociation is not activated, the discrepancies were very small whereas at high temperature, differences increased because dissociation became more dominant.
 When $c_b$ is small compared to $c_{\mathrm{He}_1}$, the equilibrium of $\mathrm{He}_1$ is independent of these dissociation energies and the profiles for $\mathrm{He}_1$ are identical.

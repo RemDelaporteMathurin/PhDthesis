@@ -1,12 +1,16 @@
-\setchapterimage[3cm]{seaside}
+\setchapterimage{model}
+\setchapterpreamble[u]{\margintoc}
 \chapter{Model description}
 \label{Chapter2} % For referencing the chapter elsewhere, use \ref{Chapter2} 
 \section{Introduction}
 This Chapter describes the mathematical models needed to simulate H transport in tokamaks plasma facing components.
-The numerical scheme to simulate these models and its implementation in FESTIM are also presented alongside with an introduction to the finite element method.
-Finally, the verification \& validation of the FESTIM code is performed to guaranty its reliability.
+The numerical scheme to solve these equations and its implementation in the FESTIM code are also presented alongside with an introduction to the finite element method.
+Finally, the verification \& validation of FESTIM is performed to guaranty its reliability.
 
 \section{H transport} \label{description_H_transport_model}
+
+This Section describes the main model for simulating H transport in materials.
+
 \subsection{Bulk model}
 As in most of MRE models, HIs are split in several populations which are the mobile and the trapped ones in the i-th trap, described using their concentration (respectively $c_\mathrm{m}$ and $c_{\mathrm{t},i}$).
 The spatio temporal evolution of these concentrations are commonly described by the following reaction-diffusion system:
@@ -291,8 +295,8 @@ The variational form therefore reads:
 \end{equation}
 where the last term of the equation either vanishes due to Dirichlet boundary conditions or is imposed.
 
-From Equation \ref{eq: weak form 2}, a system of $N+1$ equations can be solved that can be solved to determine the coefficients $c_i$ in Equation \ref{eq: FEM solution}
-Once the $c_i$ coefficients are known, an approximated solution can be computed.
+From Equation \ref{eq: weak form 2}, a system of $N+1$ equations can be solved to determine the coefficients $u_i$ in Equation \ref{eq: FEM solution}
+Once the $u_i$ coefficients are known, an approximated solution can be computed.
 
 \subsection{Main features of FESTIM}
 FESTIM provides an even higher level of abstraction than FEniCS by providing a user-friendly interface dedicated to H transport and H transfer problems.
@@ -302,7 +306,7 @@ Users only have to provide inputs such as material properties, traps properties,
 Multi-dimensional transient simulations coupled with heat transfer can therefore be run fairly easily without finite element knowledge.
 Nevertheless, since FESTIM is object-oriented, advanced users will always be able to turn FESTIM inside-out to adapt the code to their specific needs (specific boundary conditions, slight changes in the governing equations...).
 Since FESTIM is written in python - which is a fairly easy-to-learn programming langage - no advanced level of coding is required.
-For example, the simple code below is all that is required to simulate a bi-material case (see Figure \ref{fig: example FESTIM}).
+For example, the simple code below is all that is required to simulate H transport in a bi-material case (see Figure \ref{fig: example FESTIM}).
 
 
 \begin{lstlisting}[language=Python]
@@ -394,7 +398,7 @@ Users can also decide to use the FEniCS built-in meshing tool.
 \begin{marginfigure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter2/example_mesh.png}
-    \caption{Example of a complex 3D breeding blanket mesh readable by FESTIM}
+    \caption{Example of a complex 3D breeding blanket mesh readable by FESTIM.}
     \label{fig: example mesh}
 \end{marginfigure}
 
@@ -422,18 +426,25 @@ This Section details the V\&V of the FESTIM code.
 Not all cases were be shown here.
 
 \subsection{Analytical verification}
-\input{chapters/verification_and_validation/analytical_verification.tex}
+\input{chapters/chapter2/verification_and_validation/analytical_verification.tex}
 
 
 \subsection{Experimental validation}
 
-\input{chapters/verification_and_validation/experimental_validation.tex}
+\input{chapters/chapter2/verification_and_validation/experimental_validation.tex}
 
 \section{Summary}
 
 The macroscopic rate equations model describing the transport (diffusion and trapping) of H in solids was presented alongside with additional models such as the conservation of chemical potential at interfaces.
-Due to the presence of thermally activated processes (diffusion, trapping, detrapping, surface processes), the heat transfer equation has to be solved numerically.
-All these equations are solved with the finite element code FESTIM.
-Thanks to the verification \& validation process undergone with FESTIM, it was shown that (1) the governing equations were correctly solved and (2) these equations can represent real life processes.
+Due to the presence of thermally activated processes (diffusion, trapping, detrapping, surface processes, ...), the heat transfer equation has to be solved numerically.
+All these equations are solved with the finite element code FESTIM, which heavily relies of FEniCS.
+
+FESTIM has been verified using methods such as the Method of Exact Solutions and the Method of Manufactured Solutions.
+On the other hand, it was shown that FESTIM could be employed to reproduce real-life experiments (TDS experiments) performed on Tungsten, Aluminium, Beryllium and EUROFER.
+This validation process could be extended by reproducing other types of experiments such as permeation experiments and profilometry.
+However, this set of equation (shared amongst H transport codes) has already proven to be capable of reproducing these experiments.
+This has been done, for instance, during the validation of TMAP7 \sidecite{longhurst_tmap7_2008}.
+
+Thanks to this verification \& validation process, it was shown that (1) the governing equations were correctly solved and (2) these equations can represent real life processes.
 
 The FESTIM code can then be safely employed to perform analysis on tokamak components.
