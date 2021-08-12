@@ -89,7 +89,7 @@ The expression of $c_\mathrm{max}$ can be obtained by expressing the flux balanc
     \varphi_\mathrm{imp} = \varphi_\mathrm{recomb} + \varphi_\mathrm{bulk}
     \label{eq:flux balance}
 \end{equation}
-where $\varphi_\mathrm{recombination}$ is the recombination flux and $\varphi_\mathrm{bulk}$ is the migration flux.
+where $\varphi_\mathrm{recomb}$ is the recombination flux and $\varphi_\mathrm{bulk}$ is the migration flux.
 
 $\varphi_\mathrm{bulk}$ can be expressed as:
 \begin{equation}
@@ -112,10 +112,10 @@ Moreover, according to Fick's law, $\varphi_\mathrm{recomb}$ can be expressed as
     \label{eq:c_max}
 \end{eqnarray}
 
-$\varphi_\mathrm{recombination}$ can also be expressed as a function of the recombination coefficient $K$:
+$\varphi_\mathrm{recomb}$ can also be expressed as a function of the recombination coefficient $K$:
 
 \begin{eqnarray}
-    \varphi_\mathrm{recombination} &= K c_{0}^{2} = \varphi_\mathrm{imp}\\
+    \varphi_\mathrm{recomb} &= K c_{0}^{2} = \varphi_\mathrm{imp}\\
     \Leftrightarrow c_{0} &= \sqrt{\frac{\varphi_\mathrm{imp}}{K}}
     \label{eq:c_0}
 \end{eqnarray}
@@ -130,7 +130,7 @@ As the recombination process becomes fast (\textit{ie} $K \rightarrow \infty$), 
 
 Since the main driver for the diffusion is the value $c_\mathrm{max}$, when $R_p$ is negligeable compared to the dimension of the simulation domain, one can simply impose this value at the surface.
 This analytical simplification is especially useful to simulate implanted sources near the surface (\textit{eg} plasma implantation) without having to finely discretise the domain to fully represent the gaussian distribution.
-Such a discretisation can be easily done for 1D simulations but is very complex and often makes the mesh very large which increases drastically the computational cost.
+Such a discretisation can be easily done for 1D simulations but is very complex in 2D and 3D and often makes the mesh very large which increases drastically the computational cost.
 
 
 \subsection{Interface condition: conservation of chemical potential}
