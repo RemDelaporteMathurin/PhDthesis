@@ -13,10 +13,27 @@ This Section describes the main model for simulating H transport in materials.
 
 \subsection{Bulk model}
 As in most of MRE models, HIs are split in several populations which are the mobile and the trapped ones in the i-th trap, described using their concentration (respectively $c_\mathrm{m}$ and $c_{\mathrm{t},i}$).
+
+Fick's first law of diffusion states that the particle flux is driven by the concentration gradient.
+The particle flux $J$ is therefore expressed by:
+\begin{equation}
+    J = - D \nabla c_\mathrm{m}
+\end{equation}
+where $D$ is the diffusion coefficient of hydrogen expressed in \si{m^{2}.s^{-1}}. 
+
+This particle flux can be expressed differently if additionnal physics are accounted for.
+For instance, taking into account the Soret effect (also called thermodiffusion or thermophoresis), the particle flux is expressed as:
+\begin{equation}
+    J = - D \nabla c_\mathrm{m} - D \frac{c_\mathrm{m} Q}{R T^2} \nabla T
+\end{equation}
+where $Q$ is the Soret coefficient (or heat of transport) expressed in \si{J.mol^{-1}}, $T$ is the temperature in \si{K} and $R=\SI{8.314}{J.mol^{-1}.K^{-1}}$ is the gas constant.
+This effect will enhance the diffusion when particles diffuse from a hot region to a cold region.
+It should be noted however that the Soret coefficient is fairly difficult to measure.
+
 The spatio temporal evolution of these concentrations are commonly described by the following reaction-diffusion system:
 
 \begin{equation}
-    \frac{\partial c_\mathrm{m}}{\partial t}=\vec{\nabla} \cdot\left(D(T) \vec{\nabla}c_\mathrm{m}\right)+\Gamma-\sum \frac{\partial c_{\mathrm{t}, i}}{\partial t}
+    \frac{\partial c_\mathrm{m}}{\partial t}=\vec{\nabla} \cdot J+\Gamma-\sum \frac{\partial c_{\mathrm{t}, i}}{\partial t}
     \label{eq:mobile}
 \end{equation}
 
@@ -26,9 +43,9 @@ The spatio temporal evolution of these concentrations are commonly described by 
 \end{equation}
 
 In Equation \ref{eq:mobile}, ${D(T)=D_0 \exp\big(\frac{-E_\mathrm{D}}{k_B \cdot T}\big)}$ is the diffusion coefficient in \si{m^2.s^{-1}}, $T$ being the temperature in $\si{K}$ and ${k_B = 8.617 \times 10^{-5} \si{eV.K^{-1}}}$ the Boltzmann constant, $\Gamma$ is the volumetric source term of particles in \si{m^{-3}.s^{-1}}, $k(T)=k_0\exp{\big(\frac{-E_{k, i}}{k_B \cdot T}\big)}$ and $p(T)=p_0\exp{\big(\frac{-E_{p, i}}{k_B \cdot T}\big)}$ are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively and $n_i$ is the trap density in \si{m^{-3}}.
+The volumetric source term can be used to simulate any process producing H in the bulk.
+This is the case for plasma implantation and nuclear reactions producing H.
 The unit of the different concentration, $c_\mathrm{m}$ and $c_{\mathrm{t},i}$ are in $ \si{m^{-3}}$ but can be expressed in atomic fraction (at.fr.) by normalising them to the atomic density of the material.
-
-% maybe write something about the soret effect
 
 \subsection{Boundary conditions}
 
@@ -36,7 +53,7 @@ Several boundary conditions will be employed in order to constrain either the ac
 
 \subsubsection{Imposed concentration}
 
-Concentration can be fixed at the surface by applying Dirichlet boundary conditions as described in Equation \ref{eq:dirichlet bc}.
+The mobile hydrogen concentration can be fixed at the surface by applying Dirichlet boundary conditions as described in Equation \ref{eq:dirichlet bc}.
 \begin{equation}
     c_\mathrm{m} = c_0(x, t) \quad \text { on } \partial \Omega
     \label{eq:dirichlet bc}
@@ -46,6 +63,7 @@ where $\partial \Omega$ is the domain boundary.
 $c_0$ can be calculated from Sievert's law of equilibrium and Equation \ref{eq:dirichlet bc} reads:
 \begin{equation}
     c_\mathrm{m} = S(T) \sqrt{P}\quad \text { on } \partial \Omega
+    \label{eq: Sievert's law}
 \end{equation}
 where $P$ is the partial pressure of hydrogen at the boundary in \si{Pa}, $S(T)=S_0 \exp(\frac{-E_S}{k_B T})$ is the material solubility in \si{m^{-3}.Pa^{-1/2}} and $T$ is the local temperature in \si{K}.
 This law of equilibrium is a steady-state approximation of a more complex model which takes into account flux exchanges between adsorbed and mobile concentrations at the boundary.
@@ -67,6 +85,8 @@ $f$ can also be expressed as a molecular recombination flux:
     \label{eq: recombination flux}
 \end{equation}
 where $K_r(T) = K_{r_0} \exp(\frac{-E_{K_r}}{k_B T}) $ is the recombination coefficient expressed in \si{m^{3n-2}.s^{-1}}, $\mathbf{n}$ is the boundary normal vector and $n \in \{1, 2\}$ is the order of the recombination.
+Recombination occurs when hydrogen particles located at the surface of the material combine with other particles (which can be other hydrogen particles) and are no longer bonded with the metal surface.
+It can happen both in presence of a vacuum or when the metal is in contact with a fluid (gas or fluid).
 
 Similarily, a dissociation flux can be applied when a surface is in contact with a gas atmosphere of H (see Equation \ref{eq: dissociation flux}).
 \begin{equation}
@@ -74,9 +94,21 @@ Similarily, a dissociation flux can be applied when a surface is in contact with
     \label{eq: dissociation flux}
 \end{equation}
 where $K_d(T) = K_{d_0} \exp(\frac{-E_{K_d}}{k_B T}) $ is the dissociation coefficient expressed in \si{m^{-3}.Pa^{-1}} and $\mathbf{n}$ is the boundary normal vector.
+Dissociation is the opposite process of recombination and occurs when particles in the surrounding atmosphere or fluid reach the metal surface and are adsorbed.
+These particle can then reach the bulk and diffuse in the metal.
+
+A steady-state approximation of the flux balance between recombination and dissociation fluxes is the Sievert's law (see Equation \ref{eq: Sievert's law}).
 
 \subsubsection{Analytical simplification for implanted sources of H} \label{triangle model}
-Let us consider a volumetric source term of H $\Gamma = \varphi_\mathrm{imp} \; f(x)$ where $f$ is a narrow Gaussian distribution.
+
+Plasma implantation of hydrogen particles can be modelled by a volumetric source.
+Typically, the depth of the implantation profile is a few nanometres (depending on the incident particles energy).
+These profiles can be simulated by Monte Carlo codes like SRIM \sidecite{ziegler_srim_2010} and have a gaussian-like shape.
+In order to accurately model this source term, the size of the cells constituing the mesh (the spatial discretisation of the domain) must be less than a nanometre.
+This can be done easily in 1D but is very complicated in higher dimensions, especially when simulating centimetre-sized components.
+Fortunately, an analytical simplification can be done to convert this volumetric source term into a Dirichlet boundary condition (\textit{ie} enforcing the mobile particle concentration at the exposed surface).
+
+Let us consider a volumetric source term of hydrogen $\Gamma = \varphi_\mathrm{imp} \; f(x)$ where $f$ is a narrow Gaussian distribution.
 The mobile particles concentration profile can be approximated by a triangular shape \sidecite{schmid_diffusion-trapping_2016} (see Figure \ref{fig:recomb sketch}).
 
 \begin{figure*}[h!]
@@ -148,7 +180,7 @@ Assuming that only free hydrogen atoms contribute to the overall flux in the mat
 \begin{equation}
     J = - D \nabla c_\mathrm{m}
 \end{equation}
-where $D$ is the diffusion coefficient of hydrogen in a non-stress lattice expressed in \si{m^{2}.s^{-1}}. 
+where $D$ is the diffusion coefficient of hydrogen expressed in \si{m^{2}.s^{-1}}. 
 
 
 The local equilibrium at the interface between two materials must ensure  the continuity of both the chemical potential $\mu$ (see Equation \ref{eq: muconservation}) and the particle flux (see Equation \ref{eq: flux conservation}).
@@ -166,7 +198,7 @@ The chemical potential continuity can also be ensured by the continuity of the q
 Here, the quantity $c_\mathrm{m}/S$, with $S$ the solubility of hydrogen expressed in \si{m^{-3}.Pa^{-0.5}}, is equivalent to the root square of the pressure of an imaginary gas in thermodynamic equilibrium between the two solids and for which Sievert's law is applied.  
 
 This assumption is correct as long as the time needed to reach the equilibrium is low compared to the time of the simulation.
-For long exposure time as well as for high temperatures, it was shown in \sidecite{delaporte-mathurin_influence_2021} that the characteristic time is small enough for the equilibrium model to be valid.
+For long exposure time as well as for high temperatures, the characteristic time is small enough for the equilibrium model to be valid (see page \refpage{Interface transient model}).
 
 From Equation \ref{eq: c/s conservation}, one can deduce that a solubility discontinuity across an interface induces a discontinuity of mobile hydrogen concentration $c_\mathrm{m}$.
 This can also be interpreted as the chemical potentials at a reference state being different in different materials \sidecite{kirchheim_25_2014}, as the lattice site concentration.
@@ -398,7 +430,7 @@ Users can also decide to use the FEniCS built-in meshing tool.
 \begin{marginfigure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter2/example_mesh.png}
-    \caption{Example of a complex 3D breeding blanket mesh readable by FESTIM.}
+    \caption{Example of a complex 3D geometry (here a breeding blanket section) mesh readable by FESTIM.}
     \label{fig: example mesh}
 \end{marginfigure}
 
