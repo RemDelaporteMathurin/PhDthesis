@@ -35,11 +35,12 @@ Depending on the simulation case (with or without desorption on the gaps), the o
 
 \begin{subequations}
     \begin{align}
-    -\lambda \vec{\nabla} T \cdot \vec{n} &=\varphi_{H} \quad  &\text { on } \Gamma_\mathrm{top}\\
+    -\lambda \vec{\nabla} T \cdot \vec{n} &=\varphi_{heat} \quad  &\text { on } \Gamma_\mathrm{top}\\
     -\lambda \vec{\nabla} T\cdot \vec{n} &= -h \cdot \left(T_\mathrm{coolant} - T\right)\quad &\text { on } \Gamma_\mathrm{coolant}
     \end{align}
     \label{eq: bc thermal DEMO monoblock}
 \end{subequations}
+where $\varphi_{heat}=\SI{10}{MW}$, $h=\SI{7e4}{W.m^{-2}.K^{-1}}$ is the heat exchange coefficient and $T_\mathrm{coolant} = \SI{323}{K}$ is the coolant temperature.
 
 \begin{subequations}
     \begin{align}
@@ -50,8 +51,53 @@ Depending on the simulation case (with or without desorption on the gaps), the o
     \label{eq: bc H transport DEMO monoblock}
 \end{subequations}
 
+Two intrinsic traps were set in W, one trap un the Cu interlayer and two traps in the CuCrZr cooling pipe (see Table \ref{tab:traps monoblock DEMO}).
+
+\begin{table*}
+    \centering
+    \begin{tabular}{L{1.5cm} L{1.5cm} R{1.6cm} R{1.1cm} R{1.6cm} R{1.1cm} R{2cm}}
+         & Material & $k_0 (\si{m^3.s^{-1}})$ &  $E_k (\si{eV})$ & $p_0 (\si{s^{-1}})$ & $E_p (\si{eV})$ & $n_i (\si{at.fr.})$ \\
+        \hline
+        \\
+        Trap 1 & W & $9.0 \times 10^{-17}$ & 0.39 & $1 \times 10^{13}$& 0.78 & $1.0 \times 10^{-3}$ \\
+        \\
+       Trap 2 & W & $9.0 \times 10^{-17}$ & 0.39 & $1 \times 10^{13}$& 1.00 & $4.0 \times 10^{-4}$ \\
+        \\
+        Trap 3 & Cu & $6.0 \times 10^{-17}$ & 0.39 & $8.0 \times 10^{13}$ & 0.50 &$5.0 \times 10^{-5}$\\
+        \\
+        Trap 4 & CuCrZr & $1.2\times 10^{-16}$ & 0.42 & $8.0 \times 10^{13}$ & 0.50 &$5.0 \times 10^{-5}$\\
+        \\
+        Trap 5 & CuCrZr & $1.2\times 10^{-16}$ & 0.42 & $8.0 \times 10^{13}$ & 0.83 &$4.0 \times 10^{-2}$\\
+        \\
+    \end{tabular}
+    \caption{Traps properties used in the 3D DEMO monoblocks simulations.}
+    \label{tab:traps monoblock DEMO}
+\end{table*}
+
+Transient simulations up to \SI{e7}{s} were run.
 
 \subsection{Standard case}
+
+FESTIM simulations were run with and without desorption on the gaps.
+
+% Temperature field
+
+The temperature field obtained was very similar to the 2D case (see Figure \ref{fig: T field 3D monoblock}) with a top surface temperature of approximately \SI{1200}{K}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/temperature_3D_monoblock.png}
+    \caption{Temperature field.}
+    \label{fig: T field 3D monoblock}
+\end{figure}
+
+
+% Retention fields
+As expected, a higher retention was observed in the case without desorption (see Figure \ref{fig:retention fields 3D monoblocks}).
+This is explained by the surface losses.
+The maximum retention for the case with desorption is three orders of magnitude lower than that of the case without desorption.
+In both cases, the higher retention was found to be in the CuCrZr cooling pipe.
+This is consistent with the obsverations made previously.
 
 \begin{figure}
     \centering
@@ -65,20 +111,34 @@ Depending on the simulation case (with or without desorption on the gaps), the o
         \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/MB 3D no desorption.png}
         \caption{No desorption on the gaps.}
     \end{subfigure}
-    \caption{Retention fields of the DEMO monoblock with or without recombination on the gaps showing the isometric view (left), a central slice (top right) and a central clip showing the cooling pipe (bottom right).}
+    \caption{Retention fields of the DEMO monoblock after \SI{e7}{s} of continuous exposure with or without recombination on the gaps showing the isometric view (left), a central slice (top right) and a central clip showing the cooling pipe (bottom right). Note that the colour bars are different.}
+    \label{fig:retention fields 3D monoblocks}
 \end{figure}
+
+% Inventory
+The total H inventory in the monoblock was also between one and three orders of magnitude lower in the case with desorption (see Figure \ref{fig: inventory vs time DEMO monoblock}).
+This difference increased with the exposure time.
+Moreover, the steady state was reached way earlier for the case with desorption whereas the inventory kept increasing after \SI{e7}{s} for the insulated case.
+This means that not taking desorption from the gaps into account in 2D simulations is a conservative assumption in terms of H inventory.
+The simulations performed in Section \ref{influence of exposure conditions} then overestimate the monoblock H inventory.
 
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/inventory.pdf}
     \caption{Temporal evolution of the monoblock inventory.}
+    \label{fig: inventory vs time DEMO monoblock}
 \end{figure}
 
+% fluxes
+However, the outgassing fluxes from the monoblock gaps cannot be estimated with 2D (or 1D) simulations.
+These fluxes were found to be five orders of magnitude higher than the permeation flux to the coolant: the particle flux towards the vacuum vessel was approximately \SI{e12}{H.s^{-1}} whereas the flux towards the cooling channel was below \SI{e8}{H.s^{-1}} (see Figure \ref{fig: fluxes DEMO monoblock}).
+% TODO add comparison to retro desorbed flux
 
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/fluxes.pdf}
-    \caption{Temporal evolution of outgassing fluxes.}
+    \caption{Temporal evolution of outgassing fluxes for the case with desorption from the gaps.}
+    \label{fig: fluxes DEMO monoblock}
 \end{figure}
 
 \subsection{Influence of the monoblock thickness}
