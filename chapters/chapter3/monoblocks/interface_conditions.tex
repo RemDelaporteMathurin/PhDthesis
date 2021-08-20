@@ -4,6 +4,17 @@ Simulations were performed on two test cases: W/Cu and Cu/EUROFER.
 The materials properties used for the simulations can be found in Table \ref{tab:materials properties_1}.
 In both cases the solute concentration $c_\mathrm{m}$ was set to \SI{1e20}{m^{-3}} at $x=0$ and zero on the other boundary.
 
+The governing equations for the diffusion problem with conservation of chemical potential read:
+\begin{subequations}
+    \begin{align}
+        \frac{\partial c_\mathrm{m}}{\partial t} &=\nabla \cdot\left(D(T) \nabla c_\mathrm{m}\right) \\
+        D^- \nabla c_\mathrm{m}^- &= D^+ \nabla c_\mathrm{m}^+ \\
+        \left(\frac{c_\mathrm{m}}{S}\right)^- &= \left(\frac{c_\mathrm{m}}{S}\right)^+
+    \end{align}
+\end{subequations}
+where $c_\mathrm{m}$ is the concentration of mobile H in \si{m^{-3}}, $D$ is the diffusion coefficient in \si{m^2.s^{-1}}, $S$ is the solubility of H in the material in \si{m^{-3}.Pa^{-0.5}}.
+The exponents $+$ and $-$ denote the two sides of the interface between the two subdomains.
+
 \subsection{W/Cu case}
 A \SI{4}{mm}-thick slab made of \SI{2}{mm} of W (referred as $\Omega_1$) and \SI{2}{mm} of Cu (referred as $\Omega_2$)  at $T=\SI{500}{K}$ was first simulated.
 
@@ -58,6 +69,7 @@ The steady-state flux $\varphi_\infty$ can be expressed from Equations \ref{eq:M
     \end{align}
     \label{eq: steady state flux 1}
 \end{subequations}
+where the indexes $1$ and $2$ denote the left and right subdomains respectively and $L$ is the size of the domain in total.
 
 If this method allows to measure solubilities, it is however not always convenient considering the time required to reach steady-state.
 One way to overcome this difficulty is to compute an equivalent effective diffusion coefficient noted $D_\mathrm{eff}$.
@@ -160,7 +172,7 @@ All traps are homogeneously distributed in the materials, except for Trap 2 whic
             \put(40, 41){\large$\Gamma_\mathrm{coolant}$}
         \end{overpic}
      }
-     \caption{Monoblock geometry showing W armour \cruleme[grey]{0.3cm}{0.3cm}, Cu interlayer \cruleme[orange]{0.3cm}{0.3cm}, CuCrZr alloy cooling pipe  \cruleme[yellow]{0.3cm}{0.3cm}}\label{fig: monoblock geometry}
+     \caption{1D and 2D ITER monoblock geometry showing W armour \cruleme[grey]{0.3cm}{0.3cm}, Cu interlayer \cruleme[orange]{0.3cm}{0.3cm}, CuCrZr alloy cooling pipe  \cruleme[yellow]{0.3cm}{0.3cm}}\label{fig: monoblock geometry}
 \end{figure*}
 
 \begin{table*}
@@ -279,7 +291,7 @@ The influence of interface conditions on hydrogen inventory was studied in both 
         \caption{2D case}
         \label{fig: 2D temperature}
     \end{subfigure}%
-    \caption{Monoblock temperature simulated by FESTIM}
+    \caption{ITER monoblock temperature simulated by FESTIM (1D and 2D).}
     \label{fig: temperature}
 \end{figure*}
 
