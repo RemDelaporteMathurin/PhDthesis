@@ -290,4 +290,12 @@ Moreover the impact of neutrons must be assessed as neutron-induced traps have a
 % Helium
 
 Finally, helium implantation in the materials and bubble formation could modify the hydrogen transport in monoblocks.
+
 \subsection{Summary}
+ITER-like monoblocks have been studied using a novel method in order to estimate the hydrogen content as a function of exposure conditions such as the implanted particle flux, the ion energy, the heat load and the monoblock surface temperature.
+Several hundred data points have been simulated with FESTIM and analysed to estimate the hydrogen inventory in monoblocks for any input conditions using a Gaussian regression process, a machine learning algorithm which calculates the confidence interval for each point.
+Thanks to this relation, one can easily estimate hydrogen content in the whole divertor without having to run all the simulations.
+An application has been made based on the output from a SOLPS calculation of exposure conditions distribution on the ITER divertor and shows that for these conditions the inventory could reach \SI{e20}{H} per monoblock near strike points after a \SI{e7}{s} exposure.
+The total hydrogen content in ITER divertor is estimated to be \SI{8}{g} which is well below the inner-vessel safety limit of \SI{1}{kg}.
+
+This behaviour law will be used in \refch{Divertor inventory estimation} to estimate the hydrogen inventory of WEST and ITER divertors.
