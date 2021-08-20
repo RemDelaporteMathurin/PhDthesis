@@ -35,12 +35,12 @@ Depending on the simulation case (with or without desorption on the gaps), the o
 
 \begin{subequations}
     \begin{align}
-    -\lambda \vec{\nabla} T \cdot \vec{n} &=\varphi_{heat} \quad  &\text { on } \Gamma_\mathrm{top}\\
+    -\lambda \vec{\nabla} T \cdot \vec{n} &=\varphi_\mathrm{heat} \quad  &\text { on } \Gamma_\mathrm{top}\\
     -\lambda \vec{\nabla} T\cdot \vec{n} &= -h \cdot \left(T_\mathrm{coolant} - T\right)\quad &\text { on } \Gamma_\mathrm{coolant}
     \end{align}
     \label{eq: bc thermal DEMO monoblock}
 \end{subequations}
-where $\varphi_{heat}=\SI{10}{MW}$, $h=\SI{7e4}{W.m^{-2}.K^{-1}}$ is the heat exchange coefficient and $T_\mathrm{coolant} = \SI{323}{K}$ is the coolant temperature.
+where $\varphi_\mathrm{heat}=\SI{10}{MW}$, $h=\SI{7e4}{W.m^{-2}.K^{-1}}$ is the heat exchange coefficient and $T_\mathrm{coolant} = \SI{323}{K}$ is the coolant temperature.
 
 \begin{subequations}
     \begin{align}
@@ -50,8 +50,9 @@ where $\varphi_{heat}=\SI{10}{MW}$, $h=\SI{7e4}{W.m^{-2}.K^{-1}}$ is the heat ex
     \end{align}
     \label{eq: bc H transport DEMO monoblock}
 \end{subequations}
+where $\varphi_\mathrm{imp} = \SI{1.6e22}{H.m^{-2}.s^{-1}}$ is the implanted particle flux, $R_p = \SI{1e-9}{m}$ is the particle implantation depth, $K_\mathrm{CuCrZr}=2.9\times 10^{-14}\exp{-1.92/(k_B T)}$ is the H recombination coefficient in CuCrZr expressed in \si{m^4.s^{-1}}.
 
-Two intrinsic traps were set in W, one trap un the Cu interlayer and two traps in the CuCrZr cooling pipe (see Table \ref{tab:traps monoblock DEMO}).
+Two intrinsic traps were set in W, one trap in the Cu interlayer and two traps in the CuCrZr cooling pipe (see Table \ref{tab:traps monoblock DEMO}).
 
 \begin{table*}
     \centering
@@ -84,10 +85,10 @@ FESTIM simulations were run with and without desorption on the gaps.
 
 The temperature field obtained was very similar to the 2D case (see Figure \ref{fig: T field 3D monoblock}) with a top surface temperature of approximately \SI{1200}{K}.
 
-\begin{figure}
+\begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/temperature_3D_monoblock.png}
-    \caption{Temperature field.}
+    \caption{Temperature field of the 3D DEMO monoblock.}
     \label{fig: T field 3D monoblock}
 \end{figure}
 
@@ -99,7 +100,7 @@ The maximum retention for the case with desorption is three orders of magnitude 
 In both cases, the higher retention was found to be in the CuCrZr cooling pipe.
 This is consistent with the obsverations made previously.
 
-\begin{figure}
+\begin{figure} [h]
     \centering
     \begin{subfigure}{\linewidth}
         \centering
@@ -122,7 +123,7 @@ Moreover, the steady state was reached way earlier for the case with desorption 
 This means that not taking desorption from the gaps into account in 2D simulations is a conservative assumption in terms of H inventory.
 The simulations performed in Section \ref{influence of exposure conditions} then overestimate the monoblock H inventory.
 
-\begin{figure}
+\begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/inventory.pdf}
     \caption{Temporal evolution of the monoblock inventory.}
@@ -132,9 +133,13 @@ The simulations performed in Section \ref{influence of exposure conditions} then
 % fluxes
 However, the outgassing fluxes from the monoblock gaps cannot be estimated with 2D (or 1D) simulations.
 These fluxes were found to be five orders of magnitude higher than the permeation flux to the coolant: the particle flux towards the vacuum vessel was approximately \SI{e12}{H.s^{-1}} whereas the flux towards the cooling channel was below \SI{e8}{H.s^{-1}} (see Figure \ref{fig: fluxes DEMO monoblock}).
-% TODO add comparison to retro desorbed flux
+These fluxes can be compared to the retrodesorbed flux (\textit{ie} the flux of implanted particles that diffuse back to the exposed surface).
+According to Equation \ref{eq:flux balance}, the value of this flux is equal to $\varphi_\mathrm{imp} \times \SI{23}{mm} \times \SI{4}{mm} = \SI{1.5e18}{H.s^{-1}}$.
+The values of the outgassing fluxes from both the gaps and the cooling surface are therefore orders of magnitude lower than that of the retrodesorbed flux.
+This means 3D edge effects will not affect previous results regarding the outgassing to the vessel.
+They will however impact the value of the contamination flux towards the coolant as assuming an instantaneous recombination on the gaps will lead to way less particles reaching the cooling surface and therefore a lower flux.
 
-\begin{figure}
+\begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/fluxes.pdf}
     \caption{Temporal evolution of outgassing fluxes for the case with desorption from the gaps.}
@@ -143,7 +148,7 @@ These fluxes were found to be five orders of magnitude higher than the permeatio
 
 \subsection{Influence of the monoblock thickness}
 
-\begin{figure}
+\begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/influence_of_thickness.pdf}
     \caption{Temporal evolution of the ratio $\mathrm{inv}_\mathrm{desorption} / \mathrm{inv}_\mathrm{no desorption}$ for several thicknesses.}
