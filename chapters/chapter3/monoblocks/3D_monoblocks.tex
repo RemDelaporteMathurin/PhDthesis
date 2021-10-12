@@ -148,10 +148,29 @@ They will however impact the value of the contamination flux towards the coolant
 
 \subsection{Influence of the monoblock thickness}
 
+The same simulations were run with different monoblock thicknesses (3, 4 and \SI{14}{mm}).
+In order to investigate the influence of the recombination on the gaps, the ratio $\mathrm{inv}_\mathrm{desorption} / \mathrm{inv}_\mathrm{no desorption}$ (monoblock inventories with or without desorption) was computed for each simulation case.
+The closer the ratio is to unity, the less significant the desorption.
+
+Increasing the monoblock thickness lead to an increase of the ratio (see Figure \ref{fig: ratio 3D thickness monoblock}).
+For the smallest thickness (\SI{3}{mm}), the ratio $\mathrm{inv}_\mathrm{desorption} / \mathrm{inv}_\mathrm{no desorption}$ was approximately \SI{10}{\%} at \SI{10000}{s}.
+It decreased down to $3\times 10^{-4}$ after \SI{1e7}{s} of exposure.
+The same behaviour was observed for all thicknesses though the decrease was less significant for higher thicknesses.
+
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/influence_of_thickness.pdf}
     \caption{Temporal evolution of the ratio $\mathrm{inv}_\mathrm{desorption} / \mathrm{inv}_\mathrm{no desorption}$ for several thicknesses.}
+    \label{fig: ratio 3D thickness monoblock}
 \end{figure}
 
 \subsection{Summary}
+The influence of H desorption on poloidal and toroidal gaps between monoblocks was investigated.
+The DEMO baseline geometry (based on an ITER-like concept) was simulated with FESTIM.
+It was shown that taking into account recombination on these gaps could drastically decrease the monoblock H inventory (by several orders of magnitude).
+Said otherwise, this makes the 2D assumption for monoblocks less valid for 1) thin monoblocks 2) long exposure times.
+Indeed, a 2D assumption implies assuming an infinite monoblock thickness (which is totally unrealistic for the ITER and DEMO designs).
+However, this assumption is conservative since it will only overestimate the H inventory.
+Moreover, performing 3D simulations is more computationaly expensive than 2D simulations.
+
+Regarding the outgassing flux assessment, taking into acount
