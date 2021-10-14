@@ -58,6 +58,7 @@
 \usepackage{overpic}
 \usepackage{lipsum}
 \usepackage[dvipsnames]{xcolor}
+\usepackage{calrsfs}
 
 % package for code blocks
 \usepackage{listings}
@@ -115,6 +116,19 @@
 %\counterwithin*{sidenote}{chapter}
 
 %----------------------------------------------------------------------------------------
+
+% Changing the width between text and margin
+\renewcommand{\marginlayout}{%
+    \newgeometry{
+        top=27.4mm,             % height of the top margin
+        bottom=27.4mm,          % height of the bottom margin
+        inner=24.8mm,           % width of the inner margin
+        textwidth=127mm,        % width of the text
+        marginparsep=8.2mm,     % width between text and margin
+        marginparwidth=29.4mm,  % width of the margin
+    }%
+}
+
 
 \begin{document}
 
