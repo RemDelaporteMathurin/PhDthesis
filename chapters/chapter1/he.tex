@@ -1,0 +1,120 @@
+\subsubsection{Clustering}
+Single He atoms implanted into the material will diffuse rapidly due to the high W-He repulsion.
+This high repulsive W-He interaction is such that interstitial He atoms will preferably rearrange into groups of atoms in order to minimise the number of repulsive interactions \cite{hamid_molecular_2019, hammond_large-scale_2018}.
+This phenomena is called "clustering".
+Small clusters are themselves mobile as long as all the He atoms within the cluster are occupying interstitial position in the solid lattice.
+The activation energy for interstitial He atoms and clusters ranges from 0.15 to 0.45 eV according to Perez \textit{et al} \cite{perez_mobility_2017}.
+He clusters will eventually grow by interacting with either interstitial He atoms or other clusters.
+If their size is big enough then their pressure will be sufficient to knock off a W atom from the lattice thus creating a W vacancy and an interstitial W atom (a Frenkel pair).
+This process is called trap mutation or "self-trapping" and the trapped clusters act as nuclei for bubble formation.
+
+\subsubsection{Bubble nucleation}
+
+Trap mutation has been modelled in W using DFT \cite{boisse_modelling_2014} and Monte Carlo computations \cite{de_backer_modeling_2015}.
+It has been shown that this phenomena depends not only on the number of He atoms in the cluster but also on temperature, position of the cluster to the free surface or even the crystal orientation \cite{blondel_modeling_2017, hu_interactions_2014, hu_dynamics_2014}.
+At this point, the trapped cluster occupies the newly created W vacancy position.
+It is considered immobile since it would requires either diffusion of another vacancy next to it, or recombination of the Frenkel pair in order to diffuse \cite{morishita_nucleation_2007}.
+
+\subsubsection{Bubble growth}
+
+Once a bubble nucleus is created via trap mutation, it can continue to grow via three main mechanisms: absorption of clusters, loop punching or blistering.
+Two or more bubbles can also coalesce and form a bigger bubble.
+
+Each of these mechanisms can become dominant over another depending on the implantation and the W conditions. 
+\subsubsection{Vacancies clustering}
+
+Bubbles can continue to grow by absorbing interstitial He atoms or mobile He clusters (\textit{ie} that haven't self trapped).
+Considering that vacancies are mobile in the solid, the volume of a bubble could also increase if a vacancy or a vacancy cluster interact with a He bubble.
+The same is true for He-vacancies clusters.
+
+There is no experimental evidence of He clustering with interstitial W atoms \cite{faney_spatially_2014}.
+
+This process is described by cluster dynamics equations in which interaction between the clusters is governed by pairs of association and dissociation rates.
+\subsubsection{Dislocation loop}
+
+During the growth of a He bubble by absorbing He atoms, if the pressure increases until reaching a critical value, dislocation loop punching can occur.
+During the punching event, a whole facet of W atoms is pushed and the vacant lattice sites are absorbed by the bubble allowing the bubble to expand and reducing the pressure in it \cite{sefta_surface_2013}.
+The produced self-interstitial W atoms will likely be attracted by \textit{image forces} at the surface and will contribute to the roughening of the surface and/or formation of surface structures.
+
+Dislocation loops happen at very high pressure and if the number of vacancies in the lattice is low compared to the amount of He atoms.
+This is the case when a high He flux is applied and the He ions energy is low so that no displacement damaged is produced \cite{sefta_surface_2013}.
+If vacancies were created via He ions implantation, they could interact with existing He bubbles which would have the effect of increasing the volume and thus decreasing the pressure (assuming no change in temperature and no other implantation mechanism).
+
+\subsubsection{Blistering}
+
+When He is implanted at low temperature (<1000K) in W surfaces, appearance of blisters is observed \cite{baldwin_formation_2010}.
+These blisters are plastic deformation (swelling) of the metal near the surface due to high pressure in He bubbles.
+This phenomena is separated from the loop punching even though loop punching can be considered as a plastic deformation.
+Blistering happens only at low temperatures because only then the growth rate of the bubble is greater than the dissolution in the bulk (which depends on the thermally activated diffusion coefficient and/or solubility).
+Eventually if the rate of incoming He atoms is greater that the rate of re-dissolution in the bulk, blisters can rupture.
+Similarly, if the rate of incoming He atoms is lesser than the rate of re-dissolution in the bulk, the blister will collapse.
+
+\subsubsection{Bubble coalescence}
+Coalescence of He bubbles has been observed in MD simulations \cite{hamid_molecular_2019, hammond_helium_2019, zhang_simulation_2019} and would tend to increase the bubble size decreasing the bubble density at the same time.
+This may not have an impact on He concentration on the macroscopic scale but might influence bubble bursts.
+\subsubsection{Bubble pressure}
+The pressure inside the bubble and the bubble radius are two parameters of interest and are correlated.
+Sefta and co-workers \cite{sefta_surface_2013} proposed to use the Wolfer equation of state in order to determine the number of He atoms contained in a He bubble based on its pressure, the latter being calculated from its radius and its surface tension.
+Quir\'os \textit{et al} proposed a post-processing method to asses bubble radius and pressure from concentration profiles applied on H blistering \cite{quiros_blister_2017}.
+One must be aware that if radii and pressure of bubbles computation is quite straightforward using MD \cite{zhang_simulation_2019} or cluster dynamics \cite{faney_spatially_2014-1} simulations it will be more complex to estimate these metrics considering a continuum model that does not keep track of every type of clusters but only a few of them.
+The only information \textit{a priori} available in this case is indeed the local helium concentration and an equivalence could be found by either having a high density of small bubbles or a low density of big bubbles.
+
+\subsubsection{Bursting}
+
+When a bubble grows near the surface and is over-pressurised, bursting can occur.
+After several increases of the bubble volume via punching loops making the W lattice to be deformed and the ligament thickness to decrease, the latter can rupture which would make all the He atoms contained in the bubble to be released to the vacuum.
+This is why He bursting is characterised by sharp drops in the He inventory.
+
+It has been observed by Sefta and co-workers that bursting is more likely to happen at high temperatures.
+This phenomena contributes to surface roughening and could be the beginning of the formation of nano-fuzz \cite{sefta_helium_2013}.
+Indeed, a bursting event could either form a crater on the W surface or an empty cavity due to self-healing.
+In the last case, called a \textit{pinhole} bursting event, the cavity can be re-pressurised with He atoms.
+Blondel \textit{et al} proposed to model bursting as a stochastic function of depth in the material rather than a calculation of the bubble pressure.
+They have also shown that simulation parameters have an impact on the retention \cite{blondel_continuum-scale_2018}.
+These differences are mainly due to 2D effects as more bursting events occur but with smaller bubbles.
+They have shown that the size of the reaction network size (using cluster dynamics) does not seem to have an influence (between 250 and 200) as the first bursting events happen at clusters of size $\text{He}_{80}$.
+Other simulation parameters (depth of the sample, pre-existing vacancies, bubble growth trajectory...) don't affect the simulations results as they converge for long time steps (100 s).
+
+If bursting is not included in continuum simulations, the volume fraction of He present in the W could become very large and the dilute limit approximation could no longer be valid \cite{sefta_surface_2013}.
+Care must though be taken considering what metric should be considered in continuum simulation in order to estimate bursting probability.
+
+
+Bursting has been experimentally observed \cite{hamid_molecular_2019, woller_dynamic_2015} leading to craters formation.
+
+
+\subsubsection{W tendrils or "nano-fuzz"}
+
+When He is implanted in W surfaces at high temperature, modification of the surface can occur.
+Nano structures have been observed at high temperature (>1000K), high flux (>\SI{1e21}{He^+.m^{-2}.s^{-1}}) and long exposure (t>\SI{1e2}{s}) \cite{baldwin_formation_2010}.
+These structures are composed of tendrils (similar to nanometric cylinders) that are fragile \cite{nishijima_sputtering_2011}.
+If these structures were to be removed during a plasma operation via erosion, W atoms could be fed into the plasma and therefore reduce the performance of the tokamak.
+Moreover, this phenomena could increase the W dust formation in the reactor and lead to contamination and safety issues.
+
+Fuzz formation could be due to bursting events and/or accumulation of self interstitial W atoms at the surface \cite{baldwin_effects_2009, baldwin_helium_2008, woller_dynamic_2015, hammond_helium_2017}.
+Thermal properties of the media is also affected by the formation of W fuzz \cite{wirtz_influence_2016} which could have a severe impact during ELM-like events.
+After 1h of plasma implantation, nanostructuring can be found deep in the bulk (up to several hundred of $\mu$m).
+According to Baldwin and Doerner \cite{baldwin_formation_2010}, heavy alloying helps to reduce formation of He induced fuzz.
+
+Bernard \textit{et al} shown that temperature has a strong influence on fuzz formation \cite{bernard_temperature_2017} and Takamura \textit{et al} shown fuzz could be grown under relevant tokamak conditions (high-flux He plasma irradiation and surface temperature greater than \SI{1250}{K}) \cite{takamura_formation_2006}.
+
+
+Fuzz formation has been observed on the Alcator C-Mod divertor by Wright \textit{et al} \cite{wright_tungsten_2012}.
+
+\subsubsection{Cracks}
+
+It is not clear that He implantation has a role to play in cracks formation since cracks have also been observed during pure thermal shock on W PFC \cite{wirtz_influence_2016}.
+Under some specific conditions, cracks can close due to thermal expansion which induce frictional loads on the structure.
+The formation of W nano-fuzz could also bridge those cracks as observed by Lemahieu \textit{et al} \cite{lemahieu_h/he_2016}.
+
+\subsubsection{Diminution of thermal performances}
+
+Several of the above phenomena can have an impact on plasma facing materials thermal performances.
+First, having a network of bubbles will lead to a reduction of local apparent conductivity as thermal constriction will occur between the bubbles.
+Therefore, for a given heat load of the surface of a PFC, temperature will likely increase.
+Then, development of surface structures will be accompanied by surface roughening therefore modifying the reflectivity and emissivity \cite{tokunaga_synergistic_2004}.
+For a given incident flux, the net radiative flux to which the surface of the component is exposed will then increase.
+This could lead to reduction of the PFC heat exhaust capacity and furthermore local melting \cite{wirtz_influence_2016}.
+
+Having He transport affecting heat transfer significantly would lead to a strong coupling between the two (since He transport is strongly temperature dependent) which would imply to think of proper ways to deal with this coupling numerically.
+
+NOTE: an interesting study would be to investigate thermal constriction due to the presence of inhomogeneities (He bubbles) in which thermal conductivity is low compared to the one of the W.

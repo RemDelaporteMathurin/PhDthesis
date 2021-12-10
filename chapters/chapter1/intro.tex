@@ -1,11 +1,21 @@
 % Chapter 1
 \setchapterimage{jet}
 \setchapterpreamble[u]{\margintoc}
-\chapter{Fusion: general introduction} % Main chapter title
-\label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1} 
-\section{Thermonuclear fusion: principles}
-\lipsum[6]
-\lipsum[6]
+\chapter{Fusion: general introduction}\label{Chapter1}
+% For referencing the chapter elsewhere, use \ref{Chapter1} 
+
+blablabla need for clean and abundant energy
+
+\section{Thermonuclear fusion}
+\begin{itemize}
+    \item e=mc2
+    \item DT reaction
+    \item magnetic confinement --> Tokamak
+    \item triple product
+    \item Choice of a plasma facing material
+\end{itemize}
+
+\subsection{Principle}
 
 \begin{figure} [h]
     \centering
@@ -13,8 +23,6 @@
     \caption{My caption}
 \end{figure}
 
-\lipsum[6]
-\lipsum[6]
 
 \begin{figure} [h]
     \centering
@@ -22,8 +30,6 @@
     \caption{My caption}
 \end{figure}
 
-\lipsum[6]
-\lipsum[6]
 
 \begin{figure} [h]
     \centering
@@ -34,8 +40,6 @@
 
 \subsection{Tokamaks: how to put the sun in a bottle}
 
-\lipsum[6]
-\lipsum[6]
 
 \begin{figure}
     \centering
@@ -43,14 +47,71 @@
     \caption{My caption}
 \end{figure}
 
-\subsection{Main challenges}
-\section{Plasma-surface interactions in tokamaks}
-\lipsum[6]
-\lipsum[6]
+\subsection{Alternative fusion reactor concepts}
+\begin{itemize}
+    \item stellarators
+    \item intertial fusion
+\end{itemize}
 
-\subsection{H/W, He/W and He/H interactions}
+\section{Plasma-surface interactions in tokamaks}
+
+\begin{itemize}
+    \item sktech with tiny balls
+    \item migration
+    \item trapping
+    \item erosion
+    \item recombination
+    \item collision and damage creation
+    \item detached/attached plasma
+\end{itemize}
+
+
+\subsection{H/W}
+\begin{itemize}
+    \item sketch of H / metal interactions
+    \item potential energy diagram
+\end{itemize}
+\subsection{He/W}
+\begin{itemize}
+    \item sketch of H / metal interactions
+    \item clustering
+    \item bubble growth
+    \item self-trapping
+    \item loop punching
+\end{itemize}
+\input{chapters/chapter1/he.tex}
+
+\subsection{He/H}
+Lee \textit{et al} studied the influence of He implantation on D retention.
+They showed with ERD depth profiles (up to 40 nm) that D is trapped where He is trapped and proposed that He bubbles produce secondary defects around them which can trap D \cite{lee_hydrogen_2007}.
+These defects can be interstitial loops produced by loop punching.
+Lee \textit{et al} also suggested that no evidence had been found on trapping of D by chemisorption on the inner surface of a He bubble nor by molecular interaction with the He cluster.
+The privileged mechanism is therefore the trapping of D in the defects made by the stress field induced by the He bubble to the crystalline structure of the W.
+
+It has been shown by Ueda \textit{et al} that He implantation (even in small amounts) greatly affects H blistering in W \cite{ueda_simultaneous_2009}.
+With only 0.1\% of He in the ion beam one can observe that H blistering is completely suppressed for temperature greater than \SI{653}{K}.
+At lower temperature, H blistering occurs but is reduced significantly.
+This phenomena is due to the fact that H migration to the bulk and accumulation at grain boundaries is avoided by He bubbles at the near surface which act as a diffusion plug for H.
+The same phenomena has been observed by Miyamoto \textit{et al} \cite{miyamoto_microscopic_2011} which contributes to reducing H retention.
+Markelj \textit{et al} \cite{markelj_hydrogen_2017} shown however that He implantation does increase D retention in the He clustering zone.
+This implies that observed reduction or increase of D retention in mixed H-He plasma experiment are depending on the depth of implantation.
+
 \subsection{Experimental methods}
+\begin{itemize}
+    \item TDS
+    \item Permeation
+    \item Profilometry
+    \begin{itemize}
+        \item NRA
+        \item SIMS Secondary Ion Mass Spectrometry
+        \item ERDA Elastic Recoil Detection Analysis
+    \end{itemize}
+    \item 
+\end{itemize}
 \subsection{Modelling methods}
+\begin{itemize}
+    \item codes review (TMAP, TESSIM, CRDS, HIIPC, etc...)
+\end{itemize}
 \section{Roadmap}
 
 
