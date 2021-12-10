@@ -19,32 +19,54 @@ blablabla need for clean and abundant energy
 
 \begin{figure} [h]
     \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter1/nuc_fus.pdf}
-    \caption{My caption}
+    \includegraphics[width=\linewidth]{Figures/Chapter1/binding_energy_per_nucleon.pdf}
+    \caption{Binding energy per nucleon}
 \end{figure}
-
 
 \begin{figure} [h]
     \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter1/binding_energy_per_nucleon.pdf}
-    \caption{My caption}
+    \includegraphics[width=\linewidth]{Figures/Chapter1/potential_energy.pdf}
+    \caption{Potential energy diagram}
 \end{figure}
 
 
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/cross_sections_vs_temperature__Bosch.pdf}
-    \caption{My caption}
+    \caption{Fusion cross sections}
 \end{figure}
 
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter1/nuc_fus.pdf}
+    \caption{DT reaction}
+\end{figure}
 
 \subsection{Tokamaks: how to put the sun in a bottle}
+
+A these temperatures, the DT gas becomes a plasma where electrons are teared out from the nuclei.
+The principle of magnetic confinement reactors is to trap the electrically charged particles in a magnetic cages.
+The electrons and ions will gyrate around the magnetic field lines.
+The Larmor radius of the gyration is given by:
+\begin{equation}
+    R =  \frac{\sqrt{2 m T}}{e B}
+\end{equation}
+where $m$ is the mass of the particle, $T$ its temperature, $e$ its charge and $B$ the magnetic field.
+In a hot plasma (\SI{10}{keV}) with a strong magnetic field of \SI{3}{T}, the Larmor radius of ions is $\approx \SI{1}{mm}$, which is much smaller compared to the size of a reactor.
+The Larmor radius of an electron is orders of magnitude smaller due to its lower mass.
+Straight magnetic lines can therefore confine charged particles in the direction perpendicular to the field lines.
+The particles are however not confined in the parrallel direction.
+
+This issue is simply solved by closing the field lines, forming a torus-shaped magnetic field.
+However, this configuration poses another problem: the 
+
+[Derivation of the triple product]
 
 
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/triple_product_vs_T.pdf}
-    \caption{My caption}
+    \caption{Triple product}
 \end{figure}
 
 \subsection{Alternative fusion reactor concepts}
@@ -67,18 +89,20 @@ blablabla need for clean and abundant energy
 
 
 \subsection{H/W}
+\begin{figure}
+    \includegraphics[width=\linewidth]{Figures/Chapter1/HI transport sketch.pdf}
+    \caption{H in metals}
+\end{figure}
+
 \begin{itemize}
-    \item sketch of H / metal interactions
     \item potential energy diagram
 \end{itemize}
 \subsection{He/W}
-\begin{itemize}
-    \item sketch of H / metal interactions
-    \item clustering
-    \item bubble growth
-    \item self-trapping
-    \item loop punching
-\end{itemize}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{Figures/Chapter1/He transport sketch.pdf}
+    \caption{He in metals}
+\end{figure}
 \input{chapters/chapter1/he.tex}
 
 \subsection{He/H}
