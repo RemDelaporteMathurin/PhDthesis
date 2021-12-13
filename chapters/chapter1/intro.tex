@@ -15,8 +15,6 @@ blablabla need for clean and abundant energy
     \item Choice of a plasma facing material
 \end{itemize}
 
-\subsection{Principle: the DT reaction}
-
 The fundamental principle of nuclear fusion is to fuse two light nuclei into a heavier nucleus.
 The mass difference between the products and the reactants is released in the form of energy (see Equation \ref{eq: emc2}).
 \begin{equation}
@@ -31,7 +29,7 @@ When looking at the different binding energies per nucleon of the elements (see 
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/binding_energy_per_nucleon.pdf}
-    \caption{Binding energy per nucleon.}
+    \caption{Binding energy per nucleon \cite{kohn-seemann_alfkoehnfusion_plots_2021}}
     \label{fig: binding energy per nucleon}
 \end{figure}
 
@@ -56,39 +54,51 @@ where $k_B = \SI{1.3806e-23}{m^2.s^{-2}.kg.K^{-1}}$ is the Boltzmann constant, $
     \label{fig: potential energy diagram fusion}
 \end{figure}
 
-Since hydrogen is the lightest element, it has the lowest fusion temperature.
+Hydrogen, as the lightest element, has the lowest fusion temperature.
+It is also the most abundant element on Earth (although bond to other elements).
+Depending on which hydrogen isotope is used, different fusion reactions are available (see Equations \ref{eq: fusion reactions}).
+Each of these reactions has a different cross-section.
 
 \begin{subequations}
     \begin{equation}
-         \ce{^2H + ^2H -> ^3He + n}
+         \ce{^2H + ^2H -> ^3H (\SI{1.01}{MeV})+ n (\SI{3.02}{MeV})}
     \end{equation}
     \begin{equation}
-        \ce{^2H + ^2H -> ^4He + n}
+        \ce{^2H + ^2H -> ^3He (\SI{0.82}{MeV}) + n (\SI{2.45}{MeV})}
     \end{equation}
     \begin{equation}
-        \ce{^2H + ^3H -> ^4He + n}
+        \ce{^2H + ^3H -> ^4He (\SI{3.5}{MeV}) + n (\SI{14.1}{MeV})}
     \end{equation}
+    \begin{equation}
+        \ce{^2H + ^3He -> ^4He (\SI{3.6}{MeV}) + p (\SI{14.7}{MeV})}
+    \end{equation}
+    \label{eq: fusion reactions}
 \end{subequations}
 
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/cross_sections_vs_temperature__Bosch.pdf}
     \caption{Fusion cross sections}
+    \label{fig: fusion cross sections}
 \end{figure}
 
-\begin{figure} [h]
-    \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter1/nuc_fus.pdf}
-    \caption{DT reaction}
-\end{figure}
+The deuterium-tritium (DT) reaction is the one with the highest cross-section (probability) at "low" temperature (see Figure \ref{fig: fusion cross sections}).
+This is the reason why this reaction has been the focus of nuclear fusion for decades.
+More recently, private companies have started experimenting with more exotic reactions like proton-boron (TAE Technologies) or D-He3 (Helion Energy).
 
-\subsection{Tokamaks: how to bottle a star}
+% \begin{figure} [h]
+%     \centering
+%     \includegraphics[width=\linewidth]{Figures/Chapter1/nuc_fus.pdf}
+%     \caption{DT reaction}
+% \end{figure}
 
-\subsubsection{Technology}
+\section{Tokamaks: how to bottle a star}
+
+\subsection{Technology}
+As explained above, for fusion to occur, the fuel must be heated up to millions of degrees.
 A these temperatures, the DT gas becomes a plasma where electrons are teared out from the nuclei.
-The principle of magnetic confinement reactors is to trap the electrically charged particles in a magnetic cages.
-The electrons and ions will gyrate around the magnetic field lines.
-The Larmor radius of the gyration is given by:
+The principle of magnetic confinement reactors is to trap the electrically charged particles in a magnetic cage.
+The electrons and ions then gyrate around the magnetic field lines and the Larmor radius of the gyration is given by:
 \begin{equation}
     R =  \frac{\sqrt{2 m T}}{e B}
 \end{equation}
@@ -96,9 +106,9 @@ where $m$ is the mass of the particle, $T$ its temperature, $e$ its charge and $
 In a hot plasma (\SI{10}{keV}) with a strong magnetic field of \SI{3}{T}, the Larmor radius of ions is $\approx \SI{1}{mm}$, which is much smaller compared to the size of a reactor.
 The Larmor radius of an electron is orders of magnitude smaller due to its lower mass.
 Straight magnetic lines can therefore confine charged particles in the direction perpendicular to the field lines.
-The particles are however not confined in the parrallel direction.
+However, the particles are not confined in the parrallel direction.
 
-This issue is simply solved by closing the field lines, forming a torus-shaped magnetic field.
+This issue can be solved by closing the field lines, forming a torus-shaped magnetic field.
 However, this configuration poses another problem: bending the field lines creates a magnetic field gradient in the radial direction.
 This magnetic field gradient and the centrifugal force cause the particles to drift upwards (or downwards depending on their charge).
 Due to this drift, the particles end up escaping the magnetic confinement until they touch the walls of the chamber and neutralise (making it impossible for them to fuse).
@@ -108,7 +118,7 @@ The first is to add a poloidal component to the magnetic field and twist the mag
 This is done by inducting a current in the plasma thanks to a central solenoïd (see Figure~\ref{fig:tokamak magnetic field}).
 This configuration is called Tokamak which stands for "toroidalnaïa kamera s magnitnymi katouchkami" (toroidal chamber with magnetic coils).
 
-\begin{figure}
+\begin{figure}[h]
     \includegraphics[width=\linewidth]{Figures/Chapter1/tokamak_magnetic_fields.png}
     \caption{Magnetic field lines in a tokamak. Contribution of the toroidal and poloidal components.}
     \label{fig:tokamak magnetic field}
@@ -121,16 +131,80 @@ This is because the central solenoid has a limited capacity.
 The main drawback of the the stellarator is the complexity of the coils.
 Since each coil has a unique shape, the cost of manufacturing such a reactor is higher than tokamaks for which coils can be manufactured in serial.
 
-\subsubsection{Triple product}
+\subsection{Triple product}
+The power balance in a fusion reactor is given by:
+\begin{equation}
+    \frac{\partial W}{\partial t} = P_\mathrm{fusion} + P_\mathrm{heating} - P_\mathrm{losses}
+    \label{eq: plasma energy balance}
+\end{equation}
+$W$ is the thermal energy stored in the plasma and can be expressed in \si{J.m^{-3}} by:
+\begin{equation}
+    W = 3 n T
+\end{equation}
+where $n$ is the plasma density in \si{m^{-3}} and $T$ is the plasma temperature in \si{eV}.
+$P_\mathrm{fusion}$, expressed in \si{W.m^{-3}}, is the power generated from fusion reactions themselves and can be expressed by:
+\begin{equation}
+    P_\mathrm{fusion} = n_D n_T \left\langle \sigma \right\rangle E
+\end{equation}
+where $n_D$ and $n_T$ are the densities in \si{m^{-3}} of deuterium and tritium respectively, $\left\langle \sigma \right\rangle$ is the DT cross-section in \si{m^3.s^{-1}} and $E$ is the energy of the fusion reaction in \si{J}.
+Because the neutrons have little interaction with the plasma, $E \approx E_\alpha = \SI{3.56}{MeV}$.
+Moreover, assuming a 50\%-50\% mixture of deuterieum and tritium, $n_D = n_T = \frac{1}{2} n$.
+The fusion power can therefore be written as:
+\begin{equation}
+    P_\mathrm{fusion} = \frac{1}{4} n^2 \left\langle \sigma \right\rangle E_\alpha
+\end{equation}
+
+The amplification factor $Q$ defines the ratio of the fusion power by the heating power.
+The heating power $P_\mathrm{heating}$ is therefore written as:
+\begin{equation}
+    P_\mathrm{heating} = \frac{P_\mathrm{fusion}}{Q}
+\end{equation}
+
+Finally, $P_\mathrm{losses}$ is the rate at which the plasma loses energy, either by losing mass (particles escaping the magnetic cage) or by radiation.
+It is characterised by an energy confinement time $\tau_E$ and can be expressed as:
+\begin{equation}
+    P_\mathrm{losses} = \frac{W}{\tau_E} = \frac{3 n T}{\tau_E}
+\end{equation}
+
+Assuming energy equilibrium (\textit{ie} $\frac{\partial W}{\partial t} = 0$) Equation \ref{eq: plasma energy balance} can therefore be written as:
+\begin{align}
+    P_\mathrm{losses} &= P_\mathrm{fusion} + P_\mathrm{heating} \\
+    \Leftrightarrow \frac{3 n T}{\tau_E} &= \frac{1}{4} n^2 \left\langle \sigma \right\rangle E_\alpha + \frac{P_\mathrm{fusion}}{Q}
+\end{align}
+
+Re-arranging the terms, one can obtain:
+\begin{equation}
+    n T \tau_E = \frac{12 T^2}{\left\langle \sigma \right\rangle E_\alpha} \cdot \frac{1}{1 + \frac{1}{Q}}
+    \label{eq: triple product}
+\end{equation}
+
+$n T \tau_E$ is known as the \textit{triple product}, a figure of merit describing the performance of a fusion reactor.
+Equation \ref{eq: triple product} gives the triple-product required to achieve a given amplification factor $Q$ at a given temperature $T$.
+
+When $P_\mathrm{heating}$ approaches zero (\textit{ie} the auxilliary heating systems are shut down), the amplification factor $Q$ approaches $\infty$.
+Therefore 
+\begin{equation}
+    n T \tau_E \rightarrow \frac{12 T^2}{\left\langle \sigma \right\rangle E_\alpha} \geq \SI{3e21}{keV.s.m^{-3}}
+\end{equation}
+
+This is known as the Lawson criterion, which needs to be satisfied in order to reach \textit{ignition} ($Q = \infty$).
 
 
-[Derivation of the triple product]
-
+Fusion devices can therefore be classified into three categories.
+Stars like our Sun have very high confinement times and densities while remaining at relatively low temperatures (the sun Core is at \SI{1.2}{keV}).
+Magnetic confinement devices (tokamaks, stellarators, etc.) exhibit temperatures orders of magnitude higher than stars but have confinement times of the order of $\sim \SI{1}{s}$.
+A third way of achieving fusion is to heat and compress a target of fuel with either lasers (NIF, Laser Mega Joule), pistons (General Fusion) or by smashing it at high speed with a projectile (First Light Fusion).
+These devices, known as \textit{inertial fusion devices}, exhibit extremely high densities ($\sim \SI{e31}{m^{-3}}$) but short confinement times ($\sim \SI{e-11}{s}$).
+ 
+So far, no fusion device has been able to even reach \textit{break-even} ($Q = 1$) (see Figure \ref{fig: triple product vs T}).
+The record of $Q = 0.68$ by the European tokamak JET (Joint European Torus) and was performed in 1997.
+The objective of the ITER tokamak, currently under construction in France, is to demonstrate an amplification factor of $Q=10$ over \SI{400}{s}. 
 
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/triple_product_vs_T.pdf}
-    \caption{Triple product}
+    \caption{Triple product. An interactive version of this plot is available at \href{https://remdelaportemathurin.github.io/fusion-world/}.}
+    \label{fig: triple product vs T}
 \end{figure}
 
 
@@ -148,7 +222,7 @@ Since each coil has a unique shape, the cost of manufacturing such a reactor is 
 
 
 \subsection{H/W}
-\begin{figure}
+\begin{figure}[h]
     \includegraphics[width=\linewidth]{Figures/Chapter1/HI transport sketch.pdf}
     \caption{H in metals}
 \end{figure}
@@ -158,7 +232,7 @@ Since each coil has a unique shape, the cost of manufacturing such a reactor is 
 \end{itemize}
 \subsection{He/W}
 
-\begin{figure}
+\begin{figure}[h]
     \includegraphics[width=\linewidth]{Figures/Chapter1/He transport sketch.pdf}
     \caption{He in metals}
 \end{figure}
@@ -166,17 +240,17 @@ Since each coil has a unique shape, the cost of manufacturing such a reactor is 
 
 \subsection{He/H}
 Lee \textit{et al} studied the influence of He implantation on D retention.
-They showed with ERD depth profiles (up to 40 nm) that D is trapped where He is trapped and proposed that He bubbles produce secondary defects around them which can trap D \cite{lee_hydrogen_2007}.
+They showed with ERD depth profiles (up to 40 nm) that D is trapped where He is trapped and proposed that He bubbles produce secondary defects around them which can trap D \sidecite{lee_hydrogen_2007}.
 These defects can be interstitial loops produced by loop punching.
 Lee \textit{et al} also suggested that no evidence had been found on trapping of D by chemisorption on the inner surface of a He bubble nor by molecular interaction with the He cluster.
 The privileged mechanism is therefore the trapping of D in the defects made by the stress field induced by the He bubble to the crystalline structure of the W.
 
-It has been shown by Ueda \textit{et al} that He implantation (even in small amounts) greatly affects H blistering in W \cite{ueda_simultaneous_2009}.
+It has been shown by Ueda \textit{et al} that He implantation (even in small amounts) greatly affects H blistering in W \sidecite{ueda_simultaneous_2009}.
 With only 0.1\% of He in the ion beam one can observe that H blistering is completely suppressed for temperature greater than \SI{653}{K}.
-At lower temperature, H blistering occurs but is reduced significantly.
+At lower temperature, H blistering occurs but is significantly reduced.
 This phenomena is due to the fact that H migration to the bulk and accumulation at grain boundaries is avoided by He bubbles at the near surface which act as a diffusion plug for H.
-The same phenomena has been observed by Miyamoto \textit{et al} \cite{miyamoto_microscopic_2011} which contributes to reducing H retention.
-Markelj \textit{et al} \cite{markelj_hydrogen_2017} shown however that He implantation does increase D retention in the He clustering zone.
+The same phenomena has been observed by Miyamoto \textit{et al} \sidecite{miyamoto_microscopic_2011} which contributes to reducing H retention.
+Markelj \textit{et al} \sidecite{markelj_hydrogen_2017} shown however that He implantation does increase D retention in the He clustering zone.
 This implies that observed reduction or increase of D retention in mixed H-He plasma experiment are depending on the depth of implantation.
 
 \subsection{Experimental methods}
