@@ -15,20 +15,60 @@ blablabla need for clean and abundant energy
     \item Choice of a plasma facing material
 \end{itemize}
 
-\subsection{Principle}
+\subsection{Principle: the DT reaction}
+
+The fundamental principle of nuclear fusion is to fuse two light nuclei into a heavier nucleus.
+The mass difference between the products and the reactants is released in the form of energy (see Equation \ref{eq: emc2}).
+\begin{equation}
+    E = \Delta m c^2
+    \label{eq: emc2}
+\end{equation}
+where $\Delta m$ is the mass difference, $c$ is the speed of light.
+This process is the opposite process of nuclear fission, powering the current nuclear plants.
+
+When looking at the different binding energies per nucleon of the elements (see Figure \ref{fig: binding energy per nucleon}), it becomes clear that light elements release energy from fusion and heavy elements release energy from fission.
 
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/binding_energy_per_nucleon.pdf}
-    \caption{Binding energy per nucleon}
+    \caption{Binding energy per nucleon.}
+    \label{fig: binding energy per nucleon}
 \end{figure}
+
+Nuclei are positively charged.
+To be able to fuse, these must overcome the Coulomb barrier induced by the electromagnetic repulsion (see Figure \ref{fig: potential energy diagram fusion}).
+This Coulomb barrier increases with the charge of the nuclei (\textit{ie} the number of protons).
+This means that the nuclei must collide with a high enough velocity.
+At the atomistic scale, the velocity $v_\mathrm{th}$ is a function of temperature (see Equation \ref{eq: thermal velocity}).
+This is one of the reasons why the probability of a fusion reaction (called cross-section) is temperature dependent.
+
+\begin{equation}
+    v_\mathrm{th} = \sqrt{\frac{k_B T}{m}}
+    \label{eq: thermal velocity}
+\end{equation}
+where $k_B = \SI{1.3806e-23}{m^2.s^{-2}.kg.K^{-1}}$ is the Boltzmann constant, $T$ is the nucleus temperature in \si{K} and $m$ is the nucleus mass in \si{kg}.
+
 
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/potential_energy.pdf}
     \caption{Potential energy diagram}
+    \label{fig: potential energy diagram fusion}
 \end{figure}
 
+Since hydrogen is the lightest element, it has the lowest fusion temperature.
+
+\begin{subequations}
+    \begin{equation}
+         \ce{^2H + ^2H -> ^3He + n}
+    \end{equation}
+    \begin{equation}
+        \ce{^2H + ^2H -> ^4He + n}
+    \end{equation}
+    \begin{equation}
+        \ce{^2H + ^3H -> ^4He + n}
+    \end{equation}
+\end{subequations}
 
 \begin{figure} [h]
     \centering
@@ -42,8 +82,9 @@ blablabla need for clean and abundant energy
     \caption{DT reaction}
 \end{figure}
 
-\subsection{Tokamaks: how to put the sun in a bottle}
+\subsection{Tokamaks: how to bottle a star}
 
+\subsubsection{Technology}
 A these temperatures, the DT gas becomes a plasma where electrons are teared out from the nuclei.
 The principle of magnetic confinement reactors is to trap the electrically charged particles in a magnetic cages.
 The electrons and ions will gyrate around the magnetic field lines.
@@ -58,7 +99,30 @@ Straight magnetic lines can therefore confine charged particles in the direction
 The particles are however not confined in the parrallel direction.
 
 This issue is simply solved by closing the field lines, forming a torus-shaped magnetic field.
-However, this configuration poses another problem: the 
+However, this configuration poses another problem: bending the field lines creates a magnetic field gradient in the radial direction.
+This magnetic field gradient and the centrifugal force cause the particles to drift upwards (or downwards depending on their charge).
+Due to this drift, the particles end up escaping the magnetic confinement until they touch the walls of the chamber and neutralise (making it impossible for them to fuse).
+
+Two options exist to compensate this drift.
+The first is to add a poloidal component to the magnetic field and twist the magnetic lines.
+This is done by inducting a current in the plasma thanks to a central solenoïd (see Figure~\ref{fig:tokamak magnetic field}).
+This configuration is called Tokamak which stands for "toroidalnaïa kamera s magnitnymi katouchkami" (toroidal chamber with magnetic coils).
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{Figures/Chapter1/tokamak_magnetic_fields.png}
+    \caption{Magnetic field lines in a tokamak. Contribution of the toroidal and poloidal components.}
+    \label{fig:tokamak magnetic field}
+\end{figure}
+
+The second option is to twist the magnetic field by twisting the toroidal coils themselves.
+This configuration is called a stellarator and has the advantage of not having an induced current and is therefore inherently steady-state.
+The tokamak, on the other hand, is a pulsed device.
+This is because the central solenoid has a limited capacity.
+The main drawback of the the stellarator is the complexity of the coils.
+Since each coil has a unique shape, the cost of manufacturing such a reactor is higher than tokamaks for which coils can be manufactured in serial.
+
+\subsubsection{Triple product}
+
 
 [Derivation of the triple product]
 
@@ -69,11 +133,6 @@ However, this configuration poses another problem: the
     \caption{Triple product}
 \end{figure}
 
-\subsection{Alternative fusion reactor concepts}
-\begin{itemize}
-    \item stellarators
-    \item intertial fusion
-\end{itemize}
 
 \section{Plasma-surface interactions in tokamaks}
 
