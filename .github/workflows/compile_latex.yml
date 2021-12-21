@@ -16,6 +16,6 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Compile LaTeX document
-        uses: dante-ev/latex-action@2021-12-01
+        uses: dante-ev/latex-action@master
         with:
           root_file: main.tex
