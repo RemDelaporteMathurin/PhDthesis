@@ -244,95 +244,110 @@ All traps are homogeneously distributed in the materials, except for Trap 2 whic
     \label{tab:traps monoblock_1}
 \end{table*}
 
+% THIS IS NOT NEEDED HERE, OR MAYBE AS A COMPARISON (TMAP only) IN THE CHAPTER 2
+% \subsection{1D case and comparison with TMAP7 and Abaqus}
 
-\subsection{1D case and comparison with TMAP7 and Abaqus}
+% The FESTIM code was compared to TMAP7 \sidecite{longhurst_tmap7_2008} and Abaqus on a 1D case.
+% The influence of interface conditions on hydrogen inventory was studied in both cases.
 
-The FESTIM code was compared to TMAP7 \sidecite{longhurst_tmap7_2008} and Abaqus on a 1D case.
-The influence of interface conditions on hydrogen inventory was studied in both cases.
+% % redo this figure showing W Cu and CuCrZr
 
-% redo this figure showing W Cu and CuCrZr
+% \begin{figure*}
+%     \centering
+%     \begin{subfigure}{0.5\linewidth}                              
+%         \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/temperature_1D.pdf}
+%         \caption{1D case}
+%         \label{fig: 1D temperature}
+%     \end{subfigure}%
+%     \begin{subfigure}{0.5\linewidth}                          
+%         \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/temperature_field_2d.pdf}
+%         \caption{2D case}
+%         \label{fig: 2D temperature}
+%     \end{subfigure}%
+%     \caption{ITER monoblock temperature simulated by FESTIM (1D and 2D).}
+%     \label{fig: temperature}
+% \end{figure*}
 
+% \begin{figure}
+%     \centering
+%     \begin{subfigure}{1\linewidth}
+%         \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/comparison_inventory_1d.pdf}
+%         \caption{1D case}
+%         \label{fig: 1D inventories}
+%     \end{subfigure}
+%     \begin{subfigure}{1\linewidth} 
+%         \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/comparison_inventory_2d.pdf}
+%         \caption{2D case}
+%         \label{fig: 2D inventories}
+%     \end{subfigure}
+%     \caption{Influence of chemical potential conservation on hydrogen inventory}
+% \end{figure}
+
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/comparison_profiles.pdf}
+%     \caption{Comparison of concentrations profiles at several times}
+%     \label{fig: concentrations profiles 1D}
+% \end{figure}
+
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/comparison_codes.pdf}
+%     \caption{Comparison of results provided by FESTIM, TMAP7 and ABAQUS}
+%     \label{fig: code comparison}
+% \end{figure}
+
+% The 1D simulation case is a \SI{8.5}{mm}-thick composite slab made of W, Cu and CuCrZr (see Figure \ref{fig: monoblock 1D geometry}).
+% The plasma facing surface $\Gamma_\mathrm{top}$ is located at $x=\SI{0}{mm}$ and the surface cooled by water $\Gamma_\mathrm{coolant}$ is located at $x=\SI{8.5}{mm}$.
+
+
+% The boundary conditions are detailed in Equation \ref{eq: 1D BCs}.
+
+% \begin{subequations}
+%     \begin{align}
+%     T &= \SI{1200}{K}\quad \text { on } \Gamma_\mathrm{top}\\
+%     c_\mathrm{m} &=  \frac{\varphi_\mathrm{imp} \cdot R_p}{D} \quad \text { on } \Gamma_\mathrm{top}\\
+%     T &= \SI{373}{K} \quad \text { on } \Gamma_\mathrm{coolant}\\
+%     -D \nabla c_\mathrm{m} \cdot \vec{n} &= K_\mathrm{CuCrZr} \cdot c_\mathrm{m}^{2} \quad \text { on } \Gamma_\mathrm{coolant}  
+%     \end{align}
+%     \label{eq: 1D BCs}
+% \end{subequations}
+% with $\varphi_\mathrm{imp} = \SI{5e23}{m^{-2}.s^{-1}}$ the implanted particle flux, $R_p = \SI{1.25}{nm}$ the implantation depth, $\vec{n}$ the normal vector and $K_\mathrm{CuCrZr} = 2.9 \times 10^{-14}\cdot \exp{(-1.92/(k_B\cdot T))}$ the recombination coefficient of the CuCrZr (in vacuum) expressed in \si{m^4.s^{-1}} \sidecite{anderl_deuterium_1999}.
+
+% The Dirichlet boundary condition on $\Gamma_\mathrm{top}$ for the hydrogen transport corresponds to a flux balance between the implanted flux and the flux that is retro-desorbed at the surface.
+% The details can be found in \sidecite{delaporte-mathurin_parametric_2020}.
+
+% A comparison test was made with the codes TMAP7 and Abaqus with this set of parameters and very good agreement was found between the two codes (see Figure \ref{fig: code comparison}).
+
+
+
+% Two simulations were run, one ensuring mobile concentration $c_\mathrm{m}$ continuity at interfaces and the other ensuring the continuity of chemical potential $\mu$.
+
+% Up to \SI{5e6}{s}, the total hydrogen inventory was found to be insensitive to the conservation of chemical potential (see Figure \ref{fig: 1D inventories}).
+% It is only after this implantation that the inventory of the simulation with continuity of chemical potential started to diverge.
+% At $t=\SI{2.4e7}{s}$, the inventory with continuity of $\mu$ was more than two times higher than that of the one with continuity of $c_\mathrm{m}$.
+% This is explained by the high solubility ratio between Cu and CuCrZr leading to a higher concentration of mobile particles in CuCrZr and therefore a higher trapping rate.
+% Before reaching the W/Cu interface, the $c_\mathrm{m}$ and retention profiles are identical regardless of the interface condition (see Figure \ref{fig: concentrations profiles 1D}).
+% Once this interface is reached, the $c_\mathrm{m}$ profiles are affected by the interface condition.
+% However, even then, the trap density in Cu being low compared to other materials, the global inventory is not affected much.
+% For these two reasons, the inventories are identical before \SI{5e6}{s}.
+
+\subsection{2D case}
 \begin{figure*}
     \centering
-    \begin{subfigure}{0.5\linewidth}                              
-        \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/temperature_1D.pdf}
-        \caption{1D case}
-        \label{fig: 1D temperature}
-    \end{subfigure}%
-    \begin{subfigure}{0.5\linewidth}                          
-        \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/temperature_field_2d.pdf}
-        \caption{2D case}
-        \label{fig: 2D temperature}
-    \end{subfigure}%
+    \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/temperature_field_2d.pdf}
+    \label{fig: 2D temperature}
     \caption{ITER monoblock temperature simulated by FESTIM (1D and 2D).}
-    \label{fig: temperature}
+    % \label{fig: temperature}
 \end{figure*}
 
 \begin{figure}
     \centering
-    \begin{subfigure}{1\linewidth}
-        \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/comparison_inventory_1d.pdf}
-        \caption{1D case}
-        \label{fig: 1D inventories}
-    \end{subfigure}
-    \begin{subfigure}{1\linewidth} 
-        \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/comparison_inventory_2d.pdf}
-        \caption{2D case}
-        \label{fig: 2D inventories}
-    \end{subfigure}
+    \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/comparison_inventory_2d.pdf}
+    \label{fig: 2D inventories}
     \caption{Influence of chemical potential conservation on hydrogen inventory}
 \end{figure}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/comparison_profiles.pdf}
-    \caption{Comparison of concentrations profiles at several times}
-    \label{fig: concentrations profiles 1D}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/comparison_codes.pdf}
-    \caption{Comparison of results provided by FESTIM, TMAP7 and ABAQUS}
-    \label{fig: code comparison}
-\end{figure}
-
-The 1D simulation case is a \SI{8.5}{mm}-thick composite slab made of W, Cu and CuCrZr (see Figure \ref{fig: monoblock 1D geometry}).
-The plasma facing surface $\Gamma_\mathrm{top}$ is located at $x=\SI{0}{mm}$ and the surface cooled by water $\Gamma_\mathrm{coolant}$ is located at $x=\SI{8.5}{mm}$.
-
-
-The boundary conditions are detailed in Equation \ref{eq: 1D BCs}.
-
-\begin{subequations}
-    \begin{align}
-    T &= \SI{1200}{K}\quad \text { on } \Gamma_\mathrm{top}\\
-    c_\mathrm{m} &=  \frac{\varphi_\mathrm{imp} \cdot R_p}{D} \quad \text { on } \Gamma_\mathrm{top}\\
-    T &= \SI{373}{K} \quad \text { on } \Gamma_\mathrm{coolant}\\
-    -D \nabla c_\mathrm{m} \cdot \vec{n} &= K_\mathrm{CuCrZr} \cdot c_\mathrm{m}^{2} \quad \text { on } \Gamma_\mathrm{coolant}  
-    \end{align}
-    \label{eq: 1D BCs}
-\end{subequations}
-with $\varphi_\mathrm{imp} = \SI{5e23}{m^{-2}.s^{-1}}$ the implanted particle flux, $R_p = \SI{1.25}{nm}$ the implantation depth, $\vec{n}$ the normal vector and $K_\mathrm{CuCrZr} = 2.9 \times 10^{-14}\cdot \exp{(-1.92/(k_B\cdot T))}$ the recombination coefficient of the CuCrZr (in vacuum) expressed in \si{m^4.s^{-1}} \sidecite{anderl_deuterium_1999}.
-
-The Dirichlet boundary condition on $\Gamma_\mathrm{top}$ for the hydrogen transport corresponds to a flux balance between the implanted flux and the flux that is retro-desorbed at the surface.
-The details can be found in \sidecite{delaporte-mathurin_parametric_2020}.
-
-A comparison test was made with the codes TMAP7 and Abaqus with this set of parameters and very good agreement was found between the two codes (see Figure \ref{fig: code comparison}).
-
-
-
-Two simulations were run, one ensuring mobile concentration $c_\mathrm{m}$ continuity at interfaces and the other ensuring the continuity of chemical potential $\mu$.
-
-Up to \SI{5e6}{s}, the total hydrogen inventory was found to be insensitive to the conservation of chemical potential (see Figure \ref{fig: 1D inventories}).
-It is only after this implantation that the inventory of the simulation with continuity of chemical potential started to diverge.
-At $t=\SI{2.4e7}{s}$, the inventory with continuity of $\mu$ was more than two times higher than that of the one with continuity of $c_\mathrm{m}$.
-This is explained by the high solubility ratio between Cu and CuCrZr leading to a higher concentration of mobile particles in CuCrZr and therefore a higher trapping rate.
-Before reaching the W/Cu interface, the $c_\mathrm{m}$ and retention profiles are identical regardless of the interface condition (see Figure \ref{fig: concentrations profiles 1D}).
-Once this interface is reached, the $c_\mathrm{m}$ profiles are affected by the interface condition.
-However, even then, the trap density in Cu being low compared to other materials, the global inventory is not affected much.
-For these two reasons, the inventories are identical before \SI{5e6}{s}.
-
-\subsection{2D case}
 The boundary conditions for the 2D case are similar with an additional Dirichlet boundary condition on $\Gamma_\mathrm{lateral}$.
 This boundary condition accounts for recombination on the lateral sides of the monoblock.
 \begin{subequations}
