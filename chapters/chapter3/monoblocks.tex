@@ -3,14 +3,14 @@
 \chapter{Monoblocks}
 
 \section{Introduction}
-ITER and DEMO divertors will be composed of monoblocks (see Figure \ref{fig: inner target photo}).
-Typically, monoblocks are made of a tungsten substrate with a cooling pipe running through.
+ITER and DEMO divertors will be composed of small unit bricks called \textit{monoblocks} (see Figure \ref{fig: inner target photo}).
+Monoblocks are typically made of a tungsten substrate with a cooling pipe running through.
 This cooling channel is necessary to keep the component's temperature below its operating limit.
 
-Several monoblock designs are currently studied for DEMO with varying dimensions, different materials for the cooling pipe or the interlayer, etc.
-The main candidate is the ITER-like design (the type of monoblock that will be used in ITER).
+Several monoblock designs are currently studied for DEMO with varying dimensions, different materials for the cooling pipe or the interlayer, etc \side{vizvary_european_2020, huang_tungsten_2016, hirai_use_2016, domptail_design_2020}.
+The main candidate is the ITER-like design, which is the type of monoblock that will be used in ITER \cite{hirai_use_2016}.
 This design has a tunsgten substrate with a CuCrZr cooling pipe and a Cu interlayer for compliance (see Figure \ref{fig: monoblocks with pipe}).
-In ITER, monoblocks will be \SI{12}{mm}-thick whereas they will be thiner in DEMO (\SI{4}{mm}).
+In ITER, monoblocks will be \SI{12}{mm}-thick whereas they will be thiner in DEMO (\SI{4}{mm}) \sidecite{you_european_2018}.
 
 \begin{figure}
     \centering
@@ -21,28 +21,28 @@ In ITER, monoblocks will be \SI{12}{mm}-thick whereas they will be thiner in DEM
 
 \begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks_with_pipe.png}
+    \includegraphics[width=0.7\linewidth]{Figures/Chapter3/monoblocks_with_pipe.png}
     \caption{ITER-like monoblocks.}
     \label{fig: monoblocks with pipe}
 \end{figure}
 
 In order to assess the behaviour of H in the divertor, component-level simulations of monoblocks are required.
 
-This chapter will focus on simulating H transport in ITER-like monoblocks in 2D.
+This chapter will focus on simulating H transport in ITER-like monoblocks.
 First, the influence of interface conditions at the W/Cu and Cu/CuCrZr interfaces will be evaluated.
-Then, the impact of load cycling (heat and particles fluxes) will be assessed.
+% Then, the impact of load cycling (heat and particles fluxes) will be assessed.
 A parametric study will then be performed to link the monoblock H inventory to the exposure conditions.
-Finally, the 3D edge effects will be highlighted.
+Finally, the influence of edge effects (desorption on poloidal and toroidal gaps) will be highlighted.
 
 \section{Influence of interface conditions}
 \input{chapters/chapter3/monoblocks/interface_conditions}
 
-\section{Influence of cycling}
+% \section{Influence of cycling}
 
-\begin{itemize}
-    \item Redo one or two sims in Etienne paper ?
-    \item continuous first to load the monoblock then cycling
-\end{itemize}
+% \begin{itemize}
+%     \item Redo one or two sims in Etienne paper ?
+%     \item continuous first to load the monoblock then cycling
+% \end{itemize}
 
 \section{Influence of exposure conditions} \label{influence of exposure conditions}
 \input{chapters/chapter3/monoblocks/parametric_study}
