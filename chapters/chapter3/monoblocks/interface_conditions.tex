@@ -100,29 +100,7 @@ In both cases the solute concentration $c_\mathrm{m}$ was set to \SI{1e20}{m^{-3
 
 \subsection{ITER-like monoblocks}
 
-This implementation of chemical potential continuity was applied to a test case in order to simulate hydrogen transport an ITER-like monoblock.
-For this application, trapping of hydrogen in defects was taken into account.
-The governing equations for hydrogen transport therefore read:
-
-\begin{subequations}
-    \begin{align}
-        \frac{\partial c_\mathrm{m}}{\partial t} &=\nabla \cdot\left(D(T) \nabla c_\mathrm{m}\right) + \varphi_\mathrm{imp} \cdot U(\textbf{x}) -\sum \frac{\partial c_{\mathrm{t}, i}}{\partial t} \\
-        \frac{\partial c_{\mathrm{t}, i}}{\partial t} &=k(T) \cdot c_\mathrm{m} \cdot\left(n_{i}-c_{\mathrm{t}, i}\right)-p(T) \cdot c_{\mathrm{t}, i}
-    \end{align}
-\end{subequations}
-
-where ${D(T)=D_0 \cdot \exp\big(-E_\mathrm{diff}/ (k_B \cdot T )\big)}$ is the diffusion coefficient in \si{m^2.s^{-1}}, $T$ the temperature in $\si{K}$ and ${k_B = \SI{8.617e-5}{eV.K^{-1}}}$ the Boltzmann constant, $c_{\mathrm{t}, i}$ is the concentration in \si{m^{-3}} of particles trapped in the i-th trap,
-\begin{equation}
-    k(T)=k_0\exp{\big(-E_{k} / (k_B \cdot T ) \big)}
-\end{equation} and 
-\begin{equation}
-    p(T)=p_0\exp{\big(-E_{p}/ (k_B \cdot T )\big)}
-\end{equation} 
-are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively, $n_i$ is the trap density in \si{m^{-3}}, $\varphi_\mathrm{imp}$ is the implanted particle flux in \si{m^{-2}.s^{-1}} and $U(\textbf{x})$ is the spatial distribution of the implanted particle flux.
-
-The thorough description of this model as well as the verification of its implementation in FESTIM is given in \sidecite{delaporte-mathurin_finite_2019}.
-
-The source term $\varphi_\mathrm{imp}$ is equal to \SI{5e23}{m^{-2}.s^{-1}} and its spatial distribution is:
+The source term $\varphi_\mathrm{imp}$ is equal to \SI{5e23}{m^{-2}.s^{-1}} and its spatial distribution $U(\textbf{x})$ is:
 
 \begin{equation}
     U(\textbf{x}) = \begin{cases}
@@ -131,14 +109,9 @@ The source term $\varphi_\mathrm{imp}$ is equal to \SI{5e23}{m^{-2}.s^{-1}} and 
     \end{cases}
 \end{equation}
 where $R_p = \SI{2.5}{nm}$ is the implantation range.
-Since the implantation range is very small compared to the monoblock dimensions, this source is equivalent to applying a Dirichlet boundary condition on the exposed surface \sidecite{delaporte-mathurin_parametric_2020}.
+Since the implantation range is very small compared to the monoblock dimensions, this source is equivalent to applying a Dirichlet boundary condition on the exposed surface (see Section \ref{triangle model}).
 The value of this boundary condition therefore depends on $\varphi_\mathrm{imp}$, the implantation range $R_p$ and the diffusion coefficient $D$.
 
-
-The chemical potential is conserved across interfaces by ensuring Equations \ref{eq: flux conservation} and \ref{eq: c/s conservation} where 
-\begin{equation}
-    {S = S_0 \cdot \exp\big(-E_S/ (k_B \cdot T )\big)}
-\end{equation} is the solubility coefficient in \si{m^{-3}.Pa^{-0.5}}.
 
 The materials properties that have been set are detailed in Table \ref{tab:materials properties_1} and their thermal dependency is shown on Figure \ref{fig:properties_1}.
 The trap properties in each material are detailed in Table \ref{tab:traps monoblock_1}.
