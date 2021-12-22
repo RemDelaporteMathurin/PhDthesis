@@ -4,99 +4,99 @@ Simulations were performed on two test cases: W/Cu and Cu/EUROFER.
 The materials properties used for the simulations can be found in Table \ref{tab:materials properties_1}.
 In both cases the solute concentration $c_\mathrm{m}$ was set to \SI{1e20}{m^{-3}} at $x=0$ and zero on the other boundary.
 
-The governing equations for the diffusion problem with conservation of chemical potential read:
-\begin{subequations}
-    \begin{align}
-        \frac{\partial c_\mathrm{m}}{\partial t} &=\nabla \cdot\left(D(T) \nabla c_\mathrm{m}\right) \\
-        D^- \nabla c_\mathrm{m}^- &= D^+ \nabla c_\mathrm{m}^+ \\
-        \left(\frac{c_\mathrm{m}}{S}\right)^- &= \left(\frac{c_\mathrm{m}}{S}\right)^+
-    \end{align}
-\end{subequations}
-where $c_\mathrm{m}$ is the concentration of mobile H in \si{m^{-3}}, $D$ is the diffusion coefficient in \si{m^2.s^{-1}}, $S$ is the solubility of H in the material in \si{m^{-3}.Pa^{-0.5}}.
-The exponents $+$ and $-$ denote the two sides of the interface between the two subdomains.
+% The governing equations for the diffusion problem with conservation of chemical potential read:
+% \begin{subequations}
+%     \begin{align}
+%         \frac{\partial c_\mathrm{m}}{\partial t} &=\nabla \cdot\left(D(T) \nabla c_\mathrm{m}\right) \\
+%         D^- \nabla c_\mathrm{m}^- &= D^+ \nabla c_\mathrm{m}^+ \\
+%         \left(\frac{c_\mathrm{m}}{S}\right)^- &= \left(\frac{c_\mathrm{m}}{S}\right)^+
+%     \end{align}
+% \end{subequations}
+% where $c_\mathrm{m}$ is the concentration of mobile H in \si{m^{-3}}, $D$ is the diffusion coefficient in \si{m^2.s^{-1}}, $S$ is the solubility of H in the material in \si{m^{-3}.Pa^{-0.5}}.
+% The exponents $+$ and $-$ denote the two sides of the interface between the two subdomains.
 
-\subsection{W/Cu case}
-A \SI{4}{mm}-thick slab made of \SI{2}{mm} of W (referred as $\Omega_1$) and \SI{2}{mm} of Cu (referred as $\Omega_2$)  at $T=\SI{500}{K}$ was first simulated.
-
-
-\begin{figure*}
-    \centering
-    \subfloat[Solute profiles at steady state (W/Cu)]{%
-        \label{fig: solute profiles w cu}
-        \begin{overpic}[width=0.5\linewidth]{Figures/Chapter3/monoblocks/interface_condition/w_cu/solute_profiles.pdf}
-            \put(35, 55){W}
-            \put(65, 35){Cu}
-        \end{overpic}
-    }
-    \subfloat[Outgassing flux (W/Cu)]{%
-        \label{fig: outgassing flux w cu}
-        \includegraphics[width=0.5\linewidth]{Figures/Chapter3/monoblocks/interface_condition/w_cu/comparison_fluxes.pdf}
-    } \\
-    \subfloat[Solute profiles at steady state (Cu/EUROFER)]{%
-        \label{fig: solute profiles cu eurofer}
-        \begin{overpic}[width=0.5\linewidth]{Figures/Chapter3/monoblocks/interface_condition/cu_eurofer/solute_profiles_cu_eurofer.pdf}
-            \put(35, 55){Cu}
-            \put(65, 35){EUROFER}
-        \end{overpic}
-     }
-    \subfloat[Outgassing flux (Cu/EUROFER)]{%
-        \label{fig: outgassing flux cu eurofer}
-        \includegraphics[width=0.5\linewidth]{Figures/Chapter3/monoblocks/interface_condition/cu_eurofer/comparison_fluxes_cu_eurofer.pdf}
-     }
-    \caption{Influence of chemical potential conservation}
-    \label{fig: influence of mu bi material}
-\end{figure*}
-
-In this case, the conservation of chemical potential resulted in higher steady-state concentration gradients (see Figure \ref{fig: solute profiles w cu}) due to the higher solubility of Cu.
-For a given temperature (and therefore given diffusion coefficients), this implied an increase of the outgassing flux (see Figure \ref{fig: outgassing flux w cu}) compared to the case with concentration continuity.
-
-\subsection{Cu/EUROFER case}
-
-A \SI{4}{mm}-thick slab made of \SI{2}{mm} of Cu (referred as $\Omega_1$) and \SI{2}{mm} of EUROFER (referred as $\Omega_2$) at $T=\SI{600}{K}$ was simulated.
-Since the solubility of EUROFER is lower than that of Cu, the steady-state concentration gradients (see Figure \ref{fig: solute profiles cu eurofer}) were lower compared to the case with concentration continuity.
-The outgassing flux was therefore lower in the case of chemical potential conservation (see Figure \ref{fig: outgassing flux cu eurofer}).
+% not necessary...
+% \subsection{W/Cu case}
+% A \SI{4}{mm}-thick slab made of \SI{2}{mm} of W (referred as $\Omega_1$) and \SI{2}{mm} of Cu (referred as $\Omega_2$)  at $T=\SI{500}{K}$ was first simulated.
 
 
-\subsection{Identification technique}
-Assuming the diffusion coefficients are known, the solubility coefficients in both materials can be identified by determining an effective diffusion coefficient.
+% \begin{figure*}
+%     \centering
+%     \subfloat[Solute profiles at steady state (W/Cu)]{%
+%         \label{fig: solute profiles w cu}
+%         \begin{overpic}[width=0.5\linewidth]{Figures/Chapter3/monoblocks/interface_condition/w_cu/solute_profiles.pdf}
+%             \put(35, 55){W}
+%             \put(65, 35){Cu}
+%         \end{overpic}
+%     }
+%     \subfloat[Outgassing flux (W/Cu)]{%
+%         \label{fig: outgassing flux w cu}
+%         \includegraphics[width=0.5\linewidth]{Figures/Chapter3/monoblocks/interface_condition/w_cu/comparison_fluxes.pdf}
+%     } \\
+%     \subfloat[Solute profiles at steady state (Cu/EUROFER)]{%
+%         \label{fig: solute profiles cu eurofer}
+%         \begin{overpic}[width=0.5\linewidth]{Figures/Chapter3/monoblocks/interface_condition/cu_eurofer/solute_profiles_cu_eurofer.pdf}
+%             \put(35, 55){Cu}
+%             \put(65, 35){EUROFER}
+%         \end{overpic}
+%      }
+%     \subfloat[Outgassing flux (Cu/EUROFER)]{%
+%         \label{fig: outgassing flux cu eurofer}
+%         \includegraphics[width=0.5\linewidth]{Figures/Chapter3/monoblocks/interface_condition/cu_eurofer/comparison_fluxes_cu_eurofer.pdf}
+%      }
+%     \caption{Influence of chemical potential conservation}
+%     \label{fig: influence of mu bi material}
+% \end{figure*}
 
-The steady-state flux $\varphi_\infty$ can be expressed from Equations \ref{eq:MES c} and \ref{eq: MES c coefficients} as follow:
-\begin{subequations}
-    \begin{align}
-        \varphi_\infty &= -D_2 \nabla c_2 =  -D_1 \nabla c_1 \\
-        &= -D_2 a_2 \frac{c_\mathrm{m}(x=0)}{L} = -D_1 a_1 \frac{c_\mathrm{m}(x=0)}{L}\\
-        &= -a_0 D_\mathrm{eq} \frac{c_\mathrm{m}(x=0)}{L}
-    \end{align}
-    \label{eq: steady state flux 1}
-\end{subequations}
-where the indexes $1$ and $2$ denote the left and right subdomains respectively and $L$ is the size of the domain in total.
+% In this case, the conservation of chemical potential resulted in higher steady-state concentration gradients (see Figure \ref{fig: solute profiles w cu}) due to the higher solubility of Cu.
+% For a given temperature (and therefore given diffusion coefficients), this implied an increase of the outgassing flux (see Figure \ref{fig: outgassing flux w cu}) compared to the case with concentration continuity.
 
-If this method allows to measure solubilities, it is however not always convenient considering the time required to reach steady-state.
-One way to overcome this difficulty is to compute an equivalent effective diffusion coefficient noted $D_\mathrm{eff}$.
-$D_\mathrm{eff}$ is computed by assuming an homogeneous material and a linear steady state profile.
-The steady-state flux can therefore be written as:
-\begin{subequations}
-    \begin{align}
-        \varphi_\infty &= -D_\mathrm{eff} \nabla c \\
-        &= -D_\mathrm{eff} \frac{c_\mathrm{m}(x=L) - c_\mathrm{m}(x=0)}{L} \\
-    \end{align}
-    \label{eq: steady state flux 2}
-\end{subequations}
+% \subsection{Cu/EUROFER case}
 
-By combining Equations \ref{eq: steady state flux 1} and \ref{eq: steady state flux 2}, $D_\mathrm{eff}$ reads:
-\begin{equation}
-    D_\mathrm{eff} = \frac{a_0 \; D_\mathrm{eq} \; c_\mathrm{m}(x=0) }{c_\mathrm{m}(x=L) - c_\mathrm{m}(x=0)}
-\end{equation}
+% A \SI{4}{mm}-thick slab made of \SI{2}{mm} of Cu (referred as $\Omega_1$) and \SI{2}{mm} of EUROFER (referred as $\Omega_2$) at $T=\SI{600}{K}$ was simulated.
+% Since the solubility of EUROFER is lower than that of Cu, the steady-state concentration gradients (see Figure \ref{fig: solute profiles cu eurofer}) were lower compared to the case with concentration continuity.
+% The outgassing flux was therefore lower in the case of chemical potential conservation (see Figure \ref{fig: outgassing flux cu eurofer}).
 
-By fitting measurements of the outgassing flux with either an analytical transient solution or a simulation code (see Figures \ref{fig: outgassing flux w cu} and \ref{fig: outgassing flux cu eurofer}), one can estimate $D_\mathrm{eff}$ and therefore the coefficient $a_0$ which can finally be correlated to material properties (see Equation \ref{eq: MES c coefficients}).
+% \subsection{Identification technique}
+% Assuming the diffusion coefficients are known, the solubility coefficients in both materials can be identified by determining an effective diffusion coefficient.
 
-However, some discrepancies were found between this method and the actual outgassing curve during the transient phase.
-One way of getting rid of these is to fit the curve with an analytical solution of transient mass transfer in a 1D composite slab with conservation of chemical potential.
-This can be utterly complex and is well beyond the scope of this study.
+% The steady-state flux $\varphi_\infty$ can be expressed from Equations \ref{eq:MES c} and \ref{eq: MES c coefficients} as follow:
+% \begin{subequations}
+%     \begin{align}
+%         \varphi_\infty &= -D_2 \nabla c_2 =  -D_1 \nabla c_1 \\
+%         &= -D_2 a_2 \frac{c_\mathrm{m}(x=0)}{L} = -D_1 a_1 \frac{c_\mathrm{m}(x=0)}{L}\\
+%         &= -a_0 D_\mathrm{eq} \frac{c_\mathrm{m}(x=0)}{L}
+%     \end{align}
+%     \label{eq: steady state flux 1}
+% \end{subequations}
+% where the indexes $1$ and $2$ denote the left and right subdomains respectively and $L$ is the size of the domain in total.
 
-Moreover, surface effects and the presence of traps often complicate the analysis of the experimental data.
-Therefore, a more thorough identification technique would be to use embedded hydrogen transport codes such as FESTIM in a parametric optimisation algorithm as described in previous work \sidecite{delaporte-mathurin_parametric_2021}.
-Such a process could be able to determine materials properties such as diffusion coefficients, solubilities and trap densities.
+% If this method allows to measure solubilities, it is however not always convenient considering the time required to reach steady-state.
+% One way to overcome this difficulty is to compute an equivalent effective diffusion coefficient noted $D_\mathrm{eff}$.
+% $D_\mathrm{eff}$ is computed by assuming an homogeneous material and a linear steady state profile.
+% The steady-state flux can therefore be written as:
+% \begin{subequations}
+%     \begin{align}
+%         \varphi_\infty &= -D_\mathrm{eff} \nabla c \\
+%         &= -D_\mathrm{eff} \frac{c_\mathrm{m}(x=L) - c_\mathrm{m}(x=0)}{L} \\
+%     \end{align}
+%     \label{eq: steady state flux 2}
+% \end{subequations}
+
+% By combining Equations \ref{eq: steady state flux 1} and \ref{eq: steady state flux 2}, $D_\mathrm{eff}$ reads:
+% \begin{equation}
+%     D_\mathrm{eff} = \frac{a_0 \; D_\mathrm{eq} \; c_\mathrm{m}(x=0) }{c_\mathrm{m}(x=L) - c_\mathrm{m}(x=0)}
+% \end{equation}
+
+% By fitting measurements of the outgassing flux with either an analytical transient solution or a simulation code (see Figures \ref{fig: outgassing flux w cu} and \ref{fig: outgassing flux cu eurofer}), one can estimate $D_\mathrm{eff}$ and therefore the coefficient $a_0$ which can finally be correlated to material properties (see Equation \ref{eq: MES c coefficients}).
+
+% However, some discrepancies were found between this method and the actual outgassing curve during the transient phase.
+% One way of getting rid of these is to fit the curve with an analytical solution of transient mass transfer in a 1D composite slab with conservation of chemical potential.
+% This can be utterly complex and is well beyond the scope of this study.
+
+% Moreover, surface effects and the presence of traps often complicate the analysis of the experimental data.
+% Therefore, a more thorough identification technique would be to use embedded hydrogen transport codes such as FESTIM in a parametric optimisation algorithm as described in previous work \sidecite{delaporte-mathurin_parametric_2021}.
+% Such a process could be able to determine materials properties such as diffusion coefficients, solubilities and trap densities.
 
 \subsection{ITER-like monoblocks}
 
