@@ -4,115 +4,116 @@ The first step of the work was to simulate the hydrogenic transport and trapping
 
 Moreover, a parametric study will be carried out in order to simulate the whole range of the implantation conditions encountered in the ITER divertor.
 
-\subsubsection{Geometry}
-The geometry used in this work is that of a non-shaped ITER monoblock (see Figure \ref{fig:monoblock geometry}).
-The monoblocks use tungsten armour and a \SI{1.5}{mm}-thick CuCrZr pipe as heat sink.
-The pipe is jointed to the tungsten.
-A \SI{1}{mm}-thick Cu interlayer is used in order to handle stress resulting from differential thermal expansion \sidecite{richou_realization_2017}.
-The surface $\Gamma_\mathrm{top}$ is facing the plasma and $\Gamma_\mathrm{coolant}$ is cooled by water.
+% NO NEED TO PUT THE GEOMETRY HERE AGAIN
+% \subsubsection{Geometry}
+% The geometry used in this work is that of a non-shaped ITER monoblock (see Figure \ref{fig:monoblock geometry}).
+% The monoblocks use tungsten armour and a \SI{1.5}{mm}-thick CuCrZr pipe as heat sink.
+% The pipe is jointed to the tungsten.
+% A \SI{1}{mm}-thick Cu interlayer is used in order to handle stress resulting from differential thermal expansion \sidecite{richou_realization_2017}.
+% The surface $\Gamma_\mathrm{top}$ is facing the plasma and $\Gamma_\mathrm{coolant}$ is cooled by water.
 
-\begin{figure} [ht!]
-    \centering
-    \begin{overpic}[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/monoblock_sketch.pdf}
-        \put(42, 5){\SI{28}{mm}}
-        \put(97, 50){\SI{28}{mm}}
-        \put(10, 32){\SI{13.5}{mm}}
-        \put(42, 62){ \diameter \SI{12}{mm}}
-        \put(42, 71){ \diameter \SI{15}{mm}}
-        \put(42, 78){ \diameter \SI{17}{mm}}
-        \put(20, 80){\large$\Gamma_\mathrm{top}$}
-        \put(40, 41){\large$\Gamma_\mathrm{coolant}$}
-    \end{overpic}
-    \caption{Monoblock geometry showing W armour \cruleme[grey]{0.3cm}{0.3cm}, Cu interlayer \cruleme[orange]{0.3cm}{0.3cm}, CuCrZr alloy cooling pipe  \cruleme[yellow]{0.3cm}{0.3cm}}
-    \label{fig:monoblock geometry}
-\end{figure}
+% \begin{figure} [ht!]
+%     \centering
+%     \begin{overpic}[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/monoblock_sketch.pdf}
+%         \put(42, 5){\SI{28}{mm}}
+%         \put(97, 50){\SI{28}{mm}}
+%         \put(10, 32){\SI{13.5}{mm}}
+%         \put(42, 62){ \diameter \SI{12}{mm}}
+%         \put(42, 71){ \diameter \SI{15}{mm}}
+%         \put(42, 78){ \diameter \SI{17}{mm}}
+%         \put(20, 80){\large$\Gamma_\mathrm{top}$}
+%         \put(40, 41){\large$\Gamma_\mathrm{coolant}$}
+%     \end{overpic}
+%     \caption{Monoblock geometry showing W armour \cruleme[grey]{0.3cm}{0.3cm}, Cu interlayer \cruleme[orange]{0.3cm}{0.3cm}, CuCrZr alloy cooling pipe  \cruleme[yellow]{0.3cm}{0.3cm}}
+%     \label{fig:monoblock geometry}
+% \end{figure}
 
-\subsubsection{Material properties}
-The material properties used in these simulations are described in Tables \ref{tab:materials properties_2} and their temperature dependence is shown in Figure \ref{fig:properties_2}.
-The trap parameters are described in Table \ref{tab:traps monoblock}.
-Influence of mechanical fields such as thermal expansion on trap creation \sidecite{benannoune_multidimensional_2020} was not taken into account in this work.
-Hodille \textit{et al} described an extrinsic trap in tungsten created by ion implantation \sidecite{hodille_macroscopic_2015}.
-This trap is assumed to have only a small influence on the macroscopic behaviour of the monoblock and is therefore not taken into account in this work for the sake of simplicity.
+% \subsubsection{Material properties}
+% The material properties used in these simulations are described in Tables \ref{tab:materials properties_2} and their temperature dependence is shown in Figure \ref{fig:properties_2}.
+% The trap parameters are described in Table \ref{tab:traps monoblock}.
+% Influence of mechanical fields such as thermal expansion on trap creation \sidecite{benannoune_multidimensional_2020} was not taken into account in this work.
+% Hodille \textit{et al} described an extrinsic trap in tungsten created by ion implantation \sidecite{hodille_macroscopic_2015}.
+% This trap is assumed to have only a small influence on the macroscopic behaviour of the monoblock and is therefore not taken into account in this work for the sake of simplicity.
 
-\begin{table*}[ht]
-    \centering
-    \begin{tabular}{p{1.7cm}  R{3cm}  R{3cm}  R{1.8cm}  R{2.1cm} }
-         & \multicolumn{2}{c}{Thermal properties} & \multicolumn{2}{c}{Hydrogen transport}\\
-        \hline
-        Material & $\rho \cdot C_p \newline(\si{J.K^{-1}.m^{-3}})$ & $\lambda \newline(\si{W.m^{-1}.K^{-1}})$ & $D_0 \newline(\si{m^2.s^{-1}})$ & $E_\mathrm{diff} \newline(\si{eV})$\\
-        \hline
-        \\
-        W & %
-        $5.1\times 10^{-6} \cdot T^3 \newline - 8.3\times 10^{-2}\cdot T^2 \newline + 6.0 \times 10^{2}\cdot T \newline +2.4\times 10^6$ &%
-        $-7.8\times 10^{-9}\cdot T^3 \newline %
-        +5.0\times 10^{-5}\cdot T^2 \newline%
-        -1.1\times 10^{-1} \cdot T \newline%
-        +1.8\times 10^{2}$ &%
-        $1.9\times 10^{-7}$ & 0.20 \\
-        \\
-        Cu &%
-        $1.7\times 10^{-4}\cdot T^3\newline %
-        +6.1\times 10^{-2}\cdot T^2\newline %
-        +4.7\times 10^2\cdot T\newline %
-        +3.5\times 10^6$ &%
+% \begin{table*}[ht]
+%     \centering
+%     \begin{tabular}{p{1.7cm}  R{3cm}  R{3cm}  R{1.8cm}  R{2.1cm} }
+%          & \multicolumn{2}{c}{Thermal properties} & \multicolumn{2}{c}{Hydrogen transport}\\
+%         \hline
+%         Material & $\rho \cdot C_p \newline(\si{J.K^{-1}.m^{-3}})$ & $\lambda \newline(\si{W.m^{-1}.K^{-1}})$ & $D_0 \newline(\si{m^2.s^{-1}})$ & $E_\mathrm{diff} \newline(\si{eV})$\\
+%         \hline
+%         \\
+%         W & %
+%         $5.1\times 10^{-6} \cdot T^3 \newline - 8.3\times 10^{-2}\cdot T^2 \newline + 6.0 \times 10^{2}\cdot T \newline +2.4\times 10^6$ &%
+%         $-7.8\times 10^{-9}\cdot T^3 \newline %
+%         +5.0\times 10^{-5}\cdot T^2 \newline%
+%         -1.1\times 10^{-1} \cdot T \newline%
+%         +1.8\times 10^{2}$ &%
+%         $1.9\times 10^{-7}$ & 0.20 \\
+%         \\
+%         Cu &%
+%         $1.7\times 10^{-4}\cdot T^3\newline %
+%         +6.1\times 10^{-2}\cdot T^2\newline %
+%         +4.7\times 10^2\cdot T\newline %
+%         +3.5\times 10^6$ &%
 
-        $-3.9\times 10^{-8}\cdot T^3\newline %
-        +3.8\times 10^{-5}\cdot T^2\newline %
-        -7.9\times 10^{-2}\cdot T\newline %
-        +4.0\times 10^2 $&%
+%         $-3.9\times 10^{-8}\cdot T^3\newline %
+%         +3.8\times 10^{-5}\cdot T^2\newline %
+%         -7.9\times 10^{-2}\cdot T\newline %
+%         +4.0\times 10^2 $&%
 
-        $6.6\times 10^{-7}$ &%
-        0.39\\
-        \\
-        CuCrZr & %
-        $-1.8\times 10^{-4}\cdot T^3 \newline %
-        +1.5\times 10^{-1}\cdot T^2\newline %
-        +6.2\times 10^2\cdot T\newline %
-        +3.5\times 10^6$ &%
+%         $6.6\times 10^{-7}$ &%
+%         0.39\\
+%         \\
+%         CuCrZr & %
+%         $-1.8\times 10^{-4}\cdot T^3 \newline %
+%         +1.5\times 10^{-1}\cdot T^2\newline %
+%         +6.2\times 10^2\cdot T\newline %
+%         +3.5\times 10^6$ &%
 
-        $5.3\times 10^{-7}\cdot T^3\newline %
-        -6.5\times 10^{-4}\cdot T^2\newline %
-        +2.6\times 10^{-1}\cdot T\newline %
-        +3.1\times 10^2$ & %
+%         $5.3\times 10^{-7}\cdot T^3\newline %
+%         -6.5\times 10^{-4}\cdot T^2\newline %
+%         +2.6\times 10^{-1}\cdot T\newline %
+%         +3.1\times 10^2$ & %
 
-        $3.9\times 10^{-7}$ & %
-        0.42\\
-        \\
-    \end{tabular}
-    \caption{Materials properties used in the simulations. Thermal properties are fitted from ANSYS. \cite{reiter_compilation_1996, serra_hydrogen_1998, fernandez_hydrogen_2015}}
-    \label{tab:materials properties_2}
-\end{table*}
+%         $3.9\times 10^{-7}$ & %
+%         0.42\\
+%         \\
+%     \end{tabular}
+%     \caption{Materials properties used in the simulations. Thermal properties are fitted from ANSYS. \cite{reiter_compilation_1996, serra_hydrogen_1998, fernandez_hydrogen_2015}}
+%     \label{tab:materials properties_2}
+% \end{table*}
 
-\begin{figure*} [h!]
-    \centering
-    \begin{subfigure}{0.5\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/thermal_prop.pdf}
-    \end{subfigure}%
-    \begin{subfigure}{0.5\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/D_coeff.pdf}
-    \end{subfigure}
-    \caption{Material properties used in the simulations \cite{reiter_compilation_1996, serra_hydrogen_1998, fernandez_hydrogen_2015}}
-    \label{fig:properties_2}
-\end{figure*}
+% \begin{figure*} [h!]
+%     \centering
+%     \begin{subfigure}{0.5\linewidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/thermal_prop.pdf}
+%     \end{subfigure}%
+%     \begin{subfigure}{0.5\linewidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/D_coeff.pdf}
+%     \end{subfigure}
+%     \caption{Material properties used in the simulations \cite{reiter_compilation_1996, serra_hydrogen_1998, fernandez_hydrogen_2015}}
+%     \label{fig:properties_2}
+% \end{figure*}
 
-\begin{table*} [ht]
-    \centering
-    \begin{tabular}{L{1.5cm} L{1.5cm} R{1.6cm} R{1.1cm} R{1.6cm} R{1.1cm} R{2cm}}
-         & Material & $k_0 (\si{m^3.s^{-1}})$ &  $E_k (\si{eV})$ & $p_0 (\si{s^{-1}})$ & $E_p (\si{eV})$ & $n_i (\si{at.fr.})$ \\
-        \hline
-        \\
-       Trap 1 & W & $3.1 \times 10^{-16}$ & 0.20 & $8.4 \times 10^{12}$& 1.00 & $1.1 \times 10^{-3}$ \\
-        \\
-        Trap 2 & Cu & $6.0 \times 10^{-17}$ & \textcolor{black}{0.39} & $8.0 \times 10^{13}$ & 0.50 &$5.0 \times 10^{-5}$\\
-        \\
-        Trap 3 & CuCrZr & $1.2 \times 10^{-16}$ & \textcolor{black}{0.42} & $8.0 \times 10^{13}$ & 0.85 &$5.0 \times 10^{-5}$\\
-        \\
-    \end{tabular}
-    \caption{Traps properties used in the simulations \cite{hodille_macroscopic_2015, dolan_assessment_1994}}
-    \label{tab:traps monoblock}
-\end{table*}
+% \begin{table*} [ht]
+%     \centering
+%     \begin{tabular}{L{1.5cm} L{1.5cm} R{1.6cm} R{1.1cm} R{1.6cm} R{1.1cm} R{2cm}}
+%          & Material & $k_0 (\si{m^3.s^{-1}})$ &  $E_k (\si{eV})$ & $p_0 (\si{s^{-1}})$ & $E_p (\si{eV})$ & $n_i (\si{at.fr.})$ \\
+%         \hline
+%         \\
+%        Trap 1 & W & $3.1 \times 10^{-16}$ & 0.20 & $8.4 \times 10^{12}$& 1.00 & $1.1 \times 10^{-3}$ \\
+%         \\
+%         Trap 2 & Cu & $6.0 \times 10^{-17}$ & \textcolor{black}{0.39} & $8.0 \times 10^{13}$ & 0.50 &$5.0 \times 10^{-5}$\\
+%         \\
+%         Trap 3 & CuCrZr & $1.2 \times 10^{-16}$ & \textcolor{black}{0.42} & $8.0 \times 10^{13}$ & 0.85 &$5.0 \times 10^{-5}$\\
+%         \\
+%     \end{tabular}
+%     \caption{Traps properties used in the simulations \cite{hodille_macroscopic_2015, dolan_assessment_1994}}
+%     \label{tab:traps monoblock}
+% \end{table*}
 
 \subsubsection{Boundary conditions}
 
