@@ -98,7 +98,7 @@ In both cases the solute concentration $c_\mathrm{m}$ was set to \SI{1e20}{m^{-3
 % Therefore, a more thorough identification technique would be to use embedded hydrogen transport codes such as FESTIM in a parametric optimisation algorithm as described in previous work \sidecite{delaporte-mathurin_parametric_2021}.
 % Such a process could be able to determine materials properties such as diffusion coefficients, solubilities and trap densities.
 
-\subsection{ITER-like monoblocks}
+\subsection{Methodology}
 
 The source term $\varphi_\mathrm{imp}$ is equal to \SI{5e23}{m^{-2}.s^{-1}} and its spatial distribution $U(\textbf{x})$ is:
 
@@ -244,6 +244,21 @@ All traps are homogeneously distributed in the materials, except for Trap 2 whic
     \label{tab:traps monoblock_1}
 \end{table*}
 
+The boundary conditions for the 2D case are similar with an additional Dirichlet boundary condition on $\Gamma_\mathrm{lateral}$.
+This boundary condition accounts for recombination on the lateral sides of the monoblock.
+\begin{subequations}
+    \begin{align}
+        T &=  \SI{1200}{K}\quad \text { on } \Gamma_\mathrm{top}\\
+        c_\mathrm{m} &=  \frac{\varphi_\mathrm{imp} \cdot R_p}{D}\quad \text { on } \Gamma_\mathrm{top}\\
+        T &= \SI{373}{K}\quad \text { on } \Gamma_\mathrm{coolant}\\
+        -D \nabla c_\mathrm{m} \cdot \vec{n} &= K_\mathrm{CuCrZr} \cdot c_\mathrm{m}^{2} \quad \text { on } \Gamma_\mathrm{coolant} \\
+        c_\mathrm{m} &= 0 \quad \text { on } \Gamma_\mathrm{lateral}
+    \end{align}
+\end{subequations}
+
+with $\varphi_\mathrm{imp} = \SI{5e23}{m^{-2}.s^{-1}}$ the implanted particle flux, $R_p = \SI{1.25}{nm}$ the implantation depth, $\vec{n}$ the normal vector and $K_\mathrm{CuCrZr} = 2.9 \times 10^{-14}\cdot \exp{(-1.92/(k_B\cdot T))}$ the recombination coefficient of the copper alloy (in vacuum) expressed in \si{m^4.s^{-1}} \sidecite{anderl_deuterium_1999}.
+
+
 % THIS IS NOT NEEDED HERE, OR MAYBE AS A COMPARISON (TMAP only) IN THE CHAPTER 2
 % \subsection{1D case and comparison with TMAP7 and Abaqus}
 
@@ -332,7 +347,7 @@ All traps are homogeneously distributed in the materials, except for Trap 2 whic
 % However, even then, the trap density in Cu being low compared to other materials, the global inventory is not affected much.
 % For these two reasons, the inventories are identical before \SI{5e6}{s}.
 
-\subsection{2D case}
+\subsection{Results}
 \begin{figure*}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/temperature_field_2d.pdf}
@@ -347,21 +362,6 @@ All traps are homogeneously distributed in the materials, except for Trap 2 whic
     \label{fig: 2D inventories}
     \caption{Influence of chemical potential conservation on hydrogen inventory}
 \end{figure}
-
-The boundary conditions for the 2D case are similar with an additional Dirichlet boundary condition on $\Gamma_\mathrm{lateral}$.
-This boundary condition accounts for recombination on the lateral sides of the monoblock.
-\begin{subequations}
-    \begin{align}
-        T &=  \SI{1200}{K}\quad \text { on } \Gamma_\mathrm{top}\\
-        c_\mathrm{m} &=  \frac{\varphi_\mathrm{imp} \cdot R_p}{D}\quad \text { on } \Gamma_\mathrm{top}\\
-        T &= \SI{373}{K}\quad \text { on } \Gamma_\mathrm{coolant}\\
-        -D \nabla c_\mathrm{m} \cdot \vec{n} &= K_\mathrm{CuCrZr} \cdot c_\mathrm{m}^{2} \quad \text { on } \Gamma_\mathrm{coolant} \\
-        c_\mathrm{m} &= 0 \quad \text { on } \Gamma_\mathrm{lateral}
-    \end{align}
-\end{subequations}
-
-with $\varphi_\mathrm{imp} = \SI{5e23}{m^{-2}.s^{-1}}$ the implanted particle flux, $R_p = \SI{1.25}{nm}$ the implantation depth, $\vec{n}$ the normal vector and $K_\mathrm{CuCrZr} = 2.9 \times 10^{-14}\cdot \exp{(-1.92/(k_B\cdot T))}$ the recombination coefficient of the copper alloy (in vacuum) expressed in \si{m^4.s^{-1}} \sidecite{anderl_deuterium_1999}.
-
 
 \begin{figure}
     \centering
