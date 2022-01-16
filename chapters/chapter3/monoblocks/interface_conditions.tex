@@ -112,11 +112,8 @@ where $R_p = \SI{2.5}{nm}$ is the implantation range.
 Since the implantation range is very small compared to the monoblock dimensions, this source is equivalent to applying a Dirichlet boundary condition on the exposed surface (see Section \ref{triangle model}).
 The value of this boundary condition therefore depends on $\varphi_\mathrm{imp}$, the implantation range $R_p$ and the diffusion coefficient $D$.
 
-
-The materials properties that have been set are detailed in Table \ref{tab:materials properties_1} and their thermal dependency is shown on Figure \ref{fig:properties_1}.
-The trap properties in each material are detailed in Table \ref{tab:traps monoblock_1}.
-All traps are homogeneously distributed in the materials, except for Trap 2 which is only located in the first micrometre behind the plasma facing surface $\Gamma_\mathrm{top}$ (see Figure \ref{fig: monoblock geometry}) to account for damage creation.
-
+\subsubsection{Geometry}
+The 2D geometry is defined on Figure \ref{fig: monoblock 2d geometry}.
 
 \begin{figure}
     %  \subfloat[1D geometry \label{fig: monoblock 1D geometry}]{%
@@ -131,7 +128,7 @@ All traps are homogeneously distributed in the materials, except for Trap 2 whic
     %         \put(85, 25){\large$\Gamma_\mathrm{coolant}$}
     %     \end{overpic}
     %  }
-     \subfloat[2D geometry  \label{fig: monoblock 2d geometry}]{%
+     \subfloat[2D geometry]{%
         \begin{overpic}[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/monoblock_sketch.pdf}
             \put(42, 5){\SI{28}{mm}}
             \put(97, 50){\SI{28}{mm}}
@@ -146,7 +143,13 @@ All traps are homogeneously distributed in the materials, except for Trap 2 whic
         \end{overpic}
      }
      \caption{2D ITER monoblock geometry showing W armour \cruleme[grey]{0.3cm}{0.3cm}, Cu interlayer \cruleme[orange]{0.3cm}{0.3cm}, CuCrZr alloy cooling pipe  \cruleme[yellow]{0.3cm}{0.3cm}}\label{fig: monoblock geometry}
-\end{figure}
+     \label{fig: monoblock 2d geometry}
+    \end{figure}
+
+\subsubsection{Materials properties}
+The materials properties that have been set are detailed in Table \ref{tab:materials properties_1} and their thermal dependency is shown on Figure \ref{fig:properties_1}.
+The trap properties in each material are detailed in Table \ref{tab:traps monoblock_1}.
+All traps are homogeneously distributed in the materials, except for Trap 2 which is only located in the first micrometre behind the plasma facing surface $\Gamma_\mathrm{top}$ (see Figure \ref{fig: monoblock geometry}) to account for damage creation.
 
 \begin{table*}
     \centering
@@ -243,6 +246,9 @@ All traps are homogeneously distributed in the materials, except for Trap 2 whic
     \caption{Traps properties used in the simulations \cite{hodille_macroscopic_2015, dolan_assessment_1994}}
     \label{tab:traps monoblock_1}
 \end{table*}
+
+
+\subsubsection{Boundary conditions}
 
 The boundary conditions for the 2D case are similar with an additional Dirichlet boundary condition on $\Gamma_\mathrm{lateral}$.
 This boundary condition accounts for recombination on the lateral sides of the monoblock.
