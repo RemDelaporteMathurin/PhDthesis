@@ -99,19 +99,6 @@ In both cases the solute concentration $c_\mathrm{m}$ was set to \SI{1e20}{m^{-3
 % Such a process could be able to determine materials properties such as diffusion coefficients, solubilities and trap densities.
 
 \subsection{Methodology}
-
-The source term $\varphi_\mathrm{imp}$ is equal to \SI{5e23}{m^{-2}.s^{-1}} and its spatial distribution $U(\textbf{x})$ is:
-
-\begin{equation}
-    U(\textbf{x}) = \begin{cases}
-    R_p^{-1},& \text{ if } x < R_p\\
-    0,& \text{ else }
-    \end{cases}
-\end{equation}
-where $R_p = \SI{2.5}{nm}$ is the implantation range.
-Since the implantation range is very small compared to the monoblock dimensions, this source is equivalent to applying a Dirichlet boundary condition on the exposed surface (see Section \ref{triangle model}).
-The value of this boundary condition therefore depends on $\varphi_\mathrm{imp}$, the implantation range $R_p$ and the diffusion coefficient $D$.
-
 \subsubsection{Geometry}
 The 2D geometry is defined on Figure \ref{fig: monoblock 2d geometry}.
 
@@ -249,8 +236,18 @@ All traps are homogeneously distributed in the materials, except for Trap 2 whic
 
 
 \subsubsection{Boundary conditions}
+The source term $\varphi_\mathrm{imp}$ is equal to \SI{5e23}{m^{-2}.s^{-1}} and its spatial distribution $U(\textbf{x})$ is:
 
-The boundary conditions for the 2D case are similar with an additional Dirichlet boundary condition on $\Gamma_\mathrm{lateral}$.
+\begin{equation}
+    U(\textbf{x}) = \begin{cases}
+    R_p^{-1},& \text{ if } x < R_p\\
+    0,& \text{ else }
+    \end{cases}
+\end{equation}
+where $R_p = \SI{2.5}{nm}$ is the implantation range.
+Since the implantation range is very small compared to the monoblock dimensions, this source is equivalent to applying a Dirichlet boundary condition on the exposed surface (see Section \ref{triangle model}).
+The value of this boundary condition therefore depends on $\varphi_\mathrm{imp}$, the implantation range $R_p$ and the diffusion coefficient $D$.
+
 This boundary condition accounts for recombination on the lateral sides of the monoblock.
 \begin{subequations}
     \begin{align}
@@ -266,7 +263,6 @@ with $\varphi_\mathrm{imp} = \SI{5e23}{m^{-2}.s^{-1}}$ the implanted particle fl
 
 
 \subsection{Results}
-
 % TODO : redo this figure with profiles extracted from the 2D field?
 % \begin{figure}
 %     \centering
@@ -276,20 +272,22 @@ with $\varphi_\mathrm{imp} = \SI{5e23}{m^{-2}.s^{-1}}$ the implanted particle fl
 % \end{figure}
 
 
+The steady-state temperature field exhibits high temperature gradients between the plasma-facing surface and the cooling surface (see Figure \ref{fig: temperature}).
+
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/temperature_field_2d.pdf}
-    \label{fig: 2D temperature}
-    \caption{2D temperature field of an ITER-like monoblock simulated with FESTIM.}
-    % \label{fig: temperature}
+    \includegraphics[width=0.8\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/temperature_field_2d.pdf}
+    \caption{Steady-state temperature field of an ITER-like monoblock simulated with FESTIM.}
+    \label{fig: temperature}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/comparison_inventory_2d.pdf}
+    \caption{Influence of chemical potential conservation on hydrogen inventory.}
     \label{fig: 2D inventories}
-    \caption{Influence of chemical potential conservation on hydrogen inventory}
 \end{figure}
+
 
 \begin{figure}
     \centering
@@ -316,22 +314,22 @@ with $\varphi_\mathrm{imp} = \SI{5e23}{m^{-2}.s^{-1}}$ the implanted particle fl
     \caption{2D concentration fields at $t=\SI{2.4e7}{s}$}
     \label{fig: concentrations fields 2d}
 \end{figure}
-Two simulations were run, one ensuring mobile concentration $c_\mathrm{m}$ continuity at interfaces and the other ensuring the continuity of chemical potential.
+Two cases were examined, one with mobile concentration $c_\mathrm{m}$ continuity at interfaces and the other with continuity of chemical potential (\textit{ie.} continuity of $c_\mathrm{m}/S$).
 
-Up to \SI{5e6}{s}, the total hydrogen inventory was found to be insensitive to the conservation of chemical potential (see Figure \ref{fig: 2D inventories}).
-It is only after this implantation that the inventory of the simulation with continuity of chemical potential started to diverge.
-At $t=\SI{2.4e7}{s}$, the inventory with continuity of chemical potential was higher than with continuity of $c_\mathrm{m}$.
+Up to \SI{5e6}{s}, there was no difference in the total hydrogen inventory between the two cases (see Figure \ref{fig: 2D inventories}).
+It is only after this implantation that the inventory of the two cases started to diverge.
+At $t=\SI{2.4e7}{s}$, the inventory of the continuity of chemical potential case was higher than with continuity of $c_\mathrm{m}$.
 This is explained by the high solubility ratio between Cu and CuCrZr leading to a higher concentration of mobile particles in CuCrZr and therefore a higher trapping rate.
 However, even then, the trap density in Cu being low compared to other materials, the global inventory is not affected much.
-For these two reasons, the inventories are identical before \SI{5e6}{s}.
+For these two reasons, the inventories are unaffected before \SI{5e6}{s}.
 
-Before reaching the W/Cu interface, the $c_\mathrm{m}$ and retention profiles are identical regardless of the interface condition (see Figure \ref{fig: concentrations profiles 2d}).
+Similarily, before reaching the W/Cu interface, the $c_\mathrm{m}$ and retention profiles are identical regardless of the interface condition (see Figure \ref{fig: concentrations fields 2d}).
 Once the W/Cu interface is reached, the $c_\mathrm{m}$ profiles are affected by the interface condition.
 The interface condition had no influence whatsoever on the mobile particle concentration $c_\mathrm{m}$ in the W.
 However, $c_\mathrm{m}$ was higher in Cu and CuCrZr in the case with chemical potential conservation (up to \SI{1.5e24}{m^{-3}} in CuCrZr at $t=\SI{2.4e7}{s}$).
-As in the 1D case, this increase of $c_\mathrm{m}$ lead to an increase of the trap occupancy and therefore an increase of the local retention.
+This increase of $c_\mathrm{m}$ leads to an increase of the trap occupancy and therefore an increase of the local retention.
 
-The flux which is retro-desorbed from the monoblock to the plasma does not depend on the interface conditions since interfaces are far from the exposed surface.
+The retro-desorbed flux (from the monoblock to the plasma) does not depend on the interface conditions since interfaces are far from the exposed surface.
 Moreover, outgassing flux through the cooling pipe greatly depends on the boundary condition imposed at the cooling surface.
 Therefore, in order to assess the impact of interface conditions on the outgassing flux through the cooling pipe, uncertainties must first be lift regarding the recombination process occurring on surfaces in contact with water.
 
