@@ -1,101 +1,21 @@
+Monoblocks in a fusion reactor will be exposed to a wide range of exposure conditions (heat and particle fluxes) and their behaviour (both in terms of heat transfer and hydrogen transport) will change based on these conditions.
+In ITER, these fluxes range from $\approx$ \SI{10}{MW.m^{-2}} and $\approx$ \SI{e23}{H.m^{-2}.s^{-1}} to $\approx$ \SI{10}{MW.m^{-2}} and $\approx$ \SI{e23}{H.m^{-2}.s^{-1}} at the inner strike point.
+The distribution of these fluxes depend on many operation parameters.
+
+One way of simulating a whole divertor would be to simulate each and every monoblock for a given scenario along one Plasma-Facing Unit.
+However, this method would be computationally expensive as it requires to redo the simulations for every scenario.
+
+Another, more efficient method, is to perform a parametric study on a monoblock.
+The exposure parameters are varied and for each set of parameters, the quantity of interest (here the hydrogen inventory) is computed.
+A relationship is then produced between the exposure parameters and the quantity of interest.
+This method is more robust in the sense that it does not require to run additional simulations once this relationship is obtained but simply use this relationship to obtain the quantity of interest.
+
+In this work, we employed the second method.
+The goal of this Section is to establish the relationship between the exposure conditions of the monoblock and its hydrogen content at a given time.
 
 \subsection{Simulation description}
-The first step of the work was to simulate the hydrogenic transport and trapping in a tungsten monoblock as a function of the loading conditions.
 
-Moreover, a parametric study will be carried out in order to simulate the whole range of the implantation conditions encountered in the ITER divertor.
-
-\subsubsection{Geometry}
-The geometry used in this work is that of a non-shaped ITER monoblock (see Figure \ref{fig:monoblock geometry}).
-The monoblocks use tungsten armour and a \SI{1.5}{mm}-thick CuCrZr pipe as heat sink.
-The pipe is jointed to the tungsten.
-A \SI{1}{mm}-thick Cu interlayer is used in order to handle stress resulting from differential thermal expansion \sidecite{richou_realization_2017}.
-The surface $\Gamma_\mathrm{top}$ is facing the plasma and $\Gamma_\mathrm{coolant}$ is cooled by water.
-
-\begin{figure} [ht!]
-    \centering
-    \begin{overpic}[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/monoblock_sketch.pdf}
-        \put(42, 5){\SI{28}{mm}}
-        \put(97, 50){\SI{28}{mm}}
-        \put(10, 32){\SI{13.5}{mm}}
-        \put(42, 62){ \diameter \SI{12}{mm}}
-        \put(42, 71){ \diameter \SI{15}{mm}}
-        \put(42, 78){ \diameter \SI{17}{mm}}
-        \put(20, 80){\large$\Gamma_\mathrm{top}$}
-        \put(40, 41){\large$\Gamma_\mathrm{coolant}$}
-    \end{overpic}
-    \caption{Monoblock geometry showing W armour \cruleme[grey]{0.3cm}{0.3cm}, Cu interlayer \cruleme[orange]{0.3cm}{0.3cm}, CuCrZr alloy cooling pipe  \cruleme[yellow]{0.3cm}{0.3cm}}
-    \label{fig:monoblock geometry}
-\end{figure}
-
-\subsubsection{Material properties}
-The material properties used in these simulations are described in Tables \ref{tab:materials properties_2} and their temperature dependence is shown in Figure \ref{fig:properties_2}.
-The trap parameters are described in Table \ref{tab:traps monoblock}.
-Influence of mechanical fields such as thermal expansion on trap creation \sidecite{benannoune_multidimensional_2020} was not taken into account in this work.
-Hodille \textit{et al} described an extrinsic trap in tungsten created by ion implantation \sidecite{hodille_macroscopic_2015}.
-This trap is assumed to have only a small influence on the macroscopic behaviour of the monoblock and is therefore not taken into account in this work for the sake of simplicity.
-
-\begin{table*}[ht]
-    \centering
-    \begin{tabular}{p{1.7cm}  R{3cm}  R{3cm}  R{1.8cm}  R{2.1cm} }
-         & \multicolumn{2}{c}{Thermal properties} & \multicolumn{2}{c}{Hydrogen transport}\\
-        \hline
-        Material & $\rho \cdot C_p \newline(\si{J.K^{-1}.m^{-3}})$ & $\lambda \newline(\si{W.m^{-1}.K^{-1}})$ & $D_0 \newline(\si{m^2.s^{-1}})$ & $E_\mathrm{diff} \newline(\si{eV})$\\
-        \hline
-        \\
-        W & %
-        $5.1\times 10^{-6} \cdot T^3 \newline - 8.3\times 10^{-2}\cdot T^2 \newline + 6.0 \times 10^{2}\cdot T \newline +2.4\times 10^6$ &%
-        $-7.8\times 10^{-9}\cdot T^3 \newline %
-        +5.0\times 10^{-5}\cdot T^2 \newline%
-        -1.1\times 10^{-1} \cdot T \newline%
-        +1.8\times 10^{2}$ &%
-        $1.9\times 10^{-7}$ & 0.20 \\
-        \\
-        Cu &%
-        $1.7\times 10^{-4}\cdot T^3\newline %
-        +6.1\times 10^{-2}\cdot T^2\newline %
-        +4.7\times 10^2\cdot T\newline %
-        +3.5\times 10^6$ &%
-
-        $-3.9\times 10^{-8}\cdot T^3\newline %
-        +3.8\times 10^{-5}\cdot T^2\newline %
-        -7.9\times 10^{-2}\cdot T\newline %
-        +4.0\times 10^2 $&%
-
-        $6.6\times 10^{-7}$ &%
-        0.39\\
-        \\
-        CuCrZr & %
-        $-1.8\times 10^{-4}\cdot T^3 \newline %
-        +1.5\times 10^{-1}\cdot T^2\newline %
-        +6.2\times 10^2\cdot T\newline %
-        +3.5\times 10^6$ &%
-
-        $5.3\times 10^{-7}\cdot T^3\newline %
-        -6.5\times 10^{-4}\cdot T^2\newline %
-        +2.6\times 10^{-1}\cdot T\newline %
-        +3.1\times 10^2$ & %
-
-        $3.9\times 10^{-7}$ & %
-        0.42\\
-        \\
-    \end{tabular}
-    \caption{Materials properties used in the simulations. Thermal properties are fitted from ANSYS. \cite{reiter_compilation_1996, serra_hydrogen_1998, fernandez_hydrogen_2015}}
-    \label{tab:materials properties_2}
-\end{table*}
-
-\begin{figure*} [h!]
-    \centering
-    \begin{subfigure}{0.5\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/thermal_prop.pdf}
-    \end{subfigure}%
-    \begin{subfigure}{0.5\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/D_coeff.pdf}
-    \end{subfigure}
-    \caption{Material properties used in the simulations \cite{reiter_compilation_1996, serra_hydrogen_1998, fernandez_hydrogen_2015}}
-    \label{fig:properties_2}
-\end{figure*}
+The monoblock model has one trap per material for the sake of simplicity and computational time, but the method could be applied to any set of trapping parameters.
 
 \begin{table*} [ht]
     \centering
@@ -116,12 +36,14 @@ This trap is assumed to have only a small influence on the macroscopic behaviour
 
 \subsubsection{Boundary conditions}
 
-Mobile particles concentration $c_\mathrm{m}$ is imposed on $\Gamma_\mathrm{top}$ which allows to simulate particle implantation without having to include a volumetric source term applied on the first few nanometres.
-This approximation allows to have a broader mesh and therefore saves computation time without affecting the macroscopic behaviour.
+The concentration of mobile particles $c_\mathrm{m}$ is imposed on $\Gamma_\mathrm{top}$.
 Molecular recombination is assumed on $\Gamma_\mathrm{coolant}$.
-Even though it could be assumed on the gaps between monoblocks, it can be shown that its influence on the macroscopic behaviour remains low.
+Even though it could be assumed on the toroidal gaps between monoblocks, it can be shown that its influence on the macroscopic behaviour remains low.
+This is because the maximum retention zone is observed near the cooling pipe and not near the gaps.
 Desorption from the other surfaces is therefore assumed to be zero for simplification purposes.
-\textcolor{black}{Uniform} heat loads $\varphi_H$ are applied on the surface $\Gamma_\mathrm{top}$ with a Neumman boundary condition or temperature is constrained on $\Gamma_\mathrm{top}$ with a Dirichlet boundary condition and a convective exchange condition is set on surface $\Gamma_\mathrm{coolant}$.
+Uniform heat loads $\varphi_H$ are first applied on the surface $\Gamma_\mathrm{top}$ with a Neumman boundary condition.
+The temperature will then be constrained on $\Gamma_\mathrm{top}$ with a Dirichlet boundary condition in Section \ref{relationship_T_surf_c_surf}.
+A convective exchange condition is set on surface $\Gamma_\mathrm{coolant}$.
 All the other surfaces are assumed thermally insulated.
 The set of boundary conditions can finally be described as follow:
 
@@ -160,33 +82,33 @@ With $\varphi_H = \SI{1}{MW.m^{-2}}$, the surface temperature of the monoblock w
     \begin{subfigure}{0.7\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/temperature_phi_H.pdf}
-        \caption{\textcolor{black}{Evolution of surface temperature as a function of heat flux}}
+        \caption{Evolution of surface temperature as a function of heat flux}
         \label{fig:T phi_H}
     \end{subfigure}
     \caption{Thermal behaviour of the monoblock}
 \end{figure*}
 
-$T_\mathrm{surface}$ \textcolor{black}{therefore} increases linearly with the heat load and can be modelled by Equation \ref{eq:thermal behaviour law} (see Figure \ref{fig:T phi_H}).
+The average surface temperature $T_\mathrm{surface}$ therefore increases linearly with the heat load and can be modelled by Equation \ref{eq:thermal behaviour law} (see Figure \ref{fig:T phi_H}).
 \begin{equation}
     T_\mathrm{surface} = 1.1 \times 10^{-4} \cdot \varphi_H + T_\mathrm{coolant}
     \label{eq:thermal behaviour law}
 \end{equation}
 
 This was found to be in very good agreement with experimental measurements performed in \sidecite{hirai_use_2016}.
+Using a mean surface temperature had low influence on the hydrogen transport results compared to a non-homogeneous surface temperature that could be obtained with a heat flux condition since surface temperature gradient was low compared to the one between the top surface and the cooling surface.
 
-\subsection{Influence of \texorpdfstring{$T_\mathrm{surface}$}{Tsurface} and \texorpdfstring{$c_\mathrm{surface}$}{csurface} on hydrogen inventory}
+\subsection{Influence of \texorpdfstring{$T_\mathrm{surface}$}{Tsurface} and \texorpdfstring{$c_\mathrm{surface}$}{csurface} on hydrogen inventory} \label{relationship_T_surf_c_surf}
 
 In this section, the total inventory of hydrogen in monoblocks has been calculated as a function of $T_\mathrm{surface}$ and $c_\mathrm{surface}$.
-Temperature and mobile concentration of hydrogen were imposed with Dirichlet boundary conditions on $\Gamma_\mathrm{top}$ with $T_\mathrm{surface}$ varying from $T_\mathrm{coolant}$ to \SI{1200}{K} and $c_\mathrm{surface}$ varying \textcolor{black}{arbitrarily} from \SI{e20}{m^{-3}} to \SI{6e22}{m^{-3}}.
-The assumption of a constant surface temperature had low influence on the results compared to a non-homogeneous surface temperature that could be obtained with a heat flux condition since surface temperature gradient was low compared to the one between the top surface and the cooling surface.
+Temperature and mobile concentration of hydrogen were imposed with Dirichlet boundary conditions on $\Gamma_\mathrm{top}$ with $T_\mathrm{surface}$ varying from $T_\mathrm{coolant}$ to \SI{1200}{K} and $c_\mathrm{surface}$ varying arbitrarily from \SI{e20}{m^{-3}} to \SI{6e22}{m^{-3}}.
 For surface temperatures below \SI{500}{K}, 1D simulations were performed for the penetration depth of hydrogen remained very low (a few microns) and 1D approximation was sufficient \sidecite{benannoune_numerical_2019}.
 For temperatures above \SI{500}{K} for which edge effects become dominant, 2D simulations have been performed.
 
 After $ \SI{e7}{s}$ a high retention zone appeared far from the exposed surface $\Gamma_\mathrm{top}$ (see Figure \ref{fig:retention fields}).
-As described in \sidecite{delaporte-mathurin_finite_2019}, this is due to thermal effects.
+This high retention zone is due to thermal effects.
 As seen in Figures \ref{fig:T field 1 MW} and \ref{fig:T field 10 MW}, the temperature was found to decrease in regions close to the cooling pipe $\Gamma_\mathrm{coolant}$ leading to an increase in trap occupancy, creating this high retention zone.
-This was however not true for monoblocks where $T_\mathrm{surface} \approx T_\mathrm{coolant}$ since the temperature gradient in the domain is very low.
-Instead, trap occupancy was close to one and the retention was high in the whole region where hydrogen had penetrated and not only far from the top surface.
+This is however not true for monoblocks where $T_\mathrm{surface} \approx T_\mathrm{coolant}$ since the temperature gradient in the domain is very low.
+Instead, trap occupancy is close to one and the retention is high in the whole region where hydrogen has penetrated and not only far from the top surface.
 
 \begin{figure*}
     \centering
@@ -200,16 +122,15 @@ Instead, trap occupancy was close to one and the retention was high in the whole
         \includegraphics[height=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/retention_T=1.000e+03;c=1.00e+21.pdf}
         \caption{$T_\mathrm{surface} = \SI{1000}{K}$ and $c_\mathrm{surface} = \SI{e21}{m^{-3}}$}
     \end{subfigure}
-    \caption{Retention fields in \si{m^{-3}} after a \SI{e7}{s} exposure}
+    \caption{Example retention fields in \si{m^{-3}} after a \SI{e7}{s} exposure}
     \label{fig:retention fields}
 \end{figure*}
 
 
-Hydrogen inventory in monoblocks as a function of $T_\mathrm{surface}$ and $c_\mathrm{surface}$ is shown in Figure \ref{fig:inventory T c}.
-In order to obtain this continuous field, more than 600 simulations randomly distributed on the parameter plane were run and analysed using a Gaussian process machine learning algorithm \sidecite{rasmussen_gaussian_2006} as in \sidecite{shimwell_multiphysics_2019} based on the python package inference-tools \sidecite{chris_bowman_c-bowmaninference-tools_2020}.
-In Figure \ref{fig:inventory T c}, the inventory obtained by the Gaussian regression process is given for a constant value of $c_\mathrm{surf}=\SI{2e21}{m^{-3}}$ (top inset) and a constant temperature $T=\SI{850}{K}$ (left inset).
-The Gaussian regression process was particularly appropriate as it calculates a confidence interval based on the standard deviation $\sigma$.
-As expected, the lower the density of simulation points, the higher was the value of $\sigma$ (for example around \SI{850}{K} on the top inset of Figure \ref{fig:inventory T c}).
+In order to obtain this continuous field (see Figure \ref{fig:inventory T c}), more than 600 simulations randomly distributed on the parameter plane were run and analysed using a Gaussian process machine learning algorithm \sidecite{rasmussen_gaussian_2006} as in \sidecite{shimwell_multiphysics_2019} based on the python package inference-tools \sidecite{chris_bowman_c-bowmaninference-tools_2020}.
+The inventory obtained by the Gaussian regression process is also given for a constant value of $c_\mathrm{surf}=\SI{2e21}{m^{-3}}$ (top inset) and a constant temperature $T=\SI{850}{K}$ (left inset).
+The Gaussian regression process was particularly appropriate as it calculates a local standard deviation $\sigma$ based on the localisation of the datapoints and the deviation of the computed inventories.
+The lower the density of simulation points, the higher was the value of $\sigma$ (for example around \SI{850}{K} on the top inset of Figure \ref{fig:inventory T c}).
 However, despite the lack of simulation in this region, the value of $\sigma$ was still acceptable (only a few percents of the inventory) ensuring the quality of the resulting interpolation.
 
 As expected, inventory was found to globally increase with $c_\mathrm{surface}$.
@@ -228,40 +149,35 @@ Indeed, to estimate the inventory with different exposure conditions, one only n
 \end{figure*}
 
 \subsection{Discussion}
-If this methodology provides a rapid way of estimating hydrogen content in the whole divertor, several assumptions have however been made.
+Even though this methodology provides a rapid way of estimating hydrogen content in the whole divertor, several assumptions have however been made.
 
 
 % Influence of cycling
 First, a steady state exposure was considered for simplification purposes.
 This result is however conservative.
-As seen in \sidecite{delaporte-mathurin_finite_2019, hodille_estimation_2017}, cycling effects could have an influence in regions where $T_\mathrm{surface}$ varies a lot, for example \textcolor{black}{within \SI{10}{cm} on both sides of the strike points}.
+As seen in \sidecite{delaporte-mathurin_finite_2019, hodille_estimation_2017}, cycling effects could have an influence in regions where $T_\mathrm{surface}$ varies a lot, for example within \SI{10}{cm} on both sides of the strike points.
 Though, since a large majority of monoblocks stay at room temperature, even during operations the thermal effect should remain low and discrepancies would rather be due to particle flux evolution along the target.
-
-% shaping
-Shaping of monoblocks (\textit{e.g.} chamfers) was not taken into account in this work for simplification purposes.
-Such shaping can have an influence on the incident particle and heat loads on the plasma facing surface of the monoblocks.
-
-
 
 % Be deposits
 This study presents the hydrogen trapping in W monoblocks.
 It shows that the latter remains low but, as already pointed out by JET studies, the trapping on Be co-deposited layers is expected to be the main mechanism for tritium retention in ITER \sidecite{brezinsek_beryllium_2015, heinola_fuel_2015}.
-Such layers could be found in the cold regions of the divertor but as soon as the strike points hit these layers, they should be sputtered away (as sputtering of Be is possible even at low energy \sidecite{bjorkas_variables_2013} \cite{brezinsek_beryllium_2015}).
+Such layers could be found in the cold regions of the divertor but as soon as the strike points hit these layers, they should be sputtered away (as sputtering of Be is possible even at low energy \cite{bjorkas_variables_2013, brezinsek_beryllium_2015}).
 The retention where the deposited layers are not present (either sputtered or not formed anyway) would then be given by the model presented here.
 
 % Coolant recombination
 The molecular recombination coefficient at the surface of the cooling pipe was taken from \sidecite{anderl_deuterium_1999} and was measured in vacuum.
 One could argue that recombination in presence of water will be facilitated.
-It can however be shown that this parameter has very low influence on the inventory since it was dominated by retention in tungsten.
+This parameter has a very low influence on the inventory since it is dominated by retention in tungsten.
 This parameter will however have an influence on the permeation flux and should be studied in future work.
 
 % Gap recombination
-\textcolor{black}{Similarly, the influence on molecular recombination on the sides of the monoblock was found to have a low impact on the results.
+Similarly, the influence on molecular recombination on the sides of the monoblock was found to have a low impact on the results.
 By assuming an instantaneous recombination coefficient, the relative error on the monoblock inventory was found to be significant only in hot regions (\textit{ie} within \SI{10}{cm} on both sides of the strike points).
-The influence on the total divertor inventory is therefore low (less than \SI{5}{\%} after a \SI{e7}{s} exposure) since it is dominated by regions where $T_\mathrm{surface} \approx T_\mathrm{coolant}$.}
+The influence on the total divertor inventory is therefore low (less than \SI{5}{\%} after a \SI{e7}{s} exposure) since it is dominated by regions where $T_\mathrm{surface} \approx T_\mathrm{coolant}$.
 
 % ELMs
-It should be noted that specific scenarii like edge localised modes (ELMs) were also not taken into account in this work since their time scale is very short.
+It should be noted that specific scenarios like edge localised modes (ELMs) were also not taken into account in this work since their time scale is very short.
+ELMs are transient plasma events releasing thermal energy and locally increasing the heat flux at the surface of the monoblock.
 MRE simulations by Hu and Hassanein \sidecite{hu_predicting_2015} suggest that a \SI{400}{s} discharge with \SI{1}{Hz} or \SI{10}{Hz} ELMs significantly reduces (77 \%) the inventory in W materials.
 However, the modelling of the ELM is simulated by increasing the temperature for a very short time without changing the incident flux of particles that can also be much higher thus balancing the fuel retention reduction.
 Another study by Schmid \textit{et al} \sidecite{schmid_diffusion-trapping_2016} also simulated the effect of \SI{1}{Hz} ELMs on fuel retention in W.
@@ -273,7 +189,7 @@ In this study the model to link the concentration of mobile particles at the sur
 However, if an exothermic process is considered as in \sidecite{ogorodnikova_recombination_2019}, this should have low influence since recombination is very quick at a temperature close to that of the coolant.
 
 On the other hand, experimental results \sidecite{t_hoen_strongly_2013} suggest that for ion energy below \SI{5}{eV/H}, typical of detached plasma as the one treated in the previous section, the surface process can be important and limits the uptake of hydrogen, i.e. the adsorption on the surface and the further absorption from surface to bulk could be the limiting process for the growth of $c_\mathrm{surface}$ during such exposure.
-The evolution of $c_\mathrm{surface}$ to the exposure condition for that range of energy would therefore be different and therefore the inventory.
+The evolution of $c_\mathrm{surface}$ to the exposure condition for that range of energy (and therefore the inventory) would then be different.
 The advantage of the presented method is that taking into account such process is realtively easy as no expensive simulations are needed.
 One would only need to modify the model giving $c_\mathrm{surface}$
 as a function of $(E_\mathrm{inc},\varphi_\mathrm{inc})$ to include the different surface processes.
@@ -291,11 +207,12 @@ Moreover the impact of neutrons must be assessed as neutron-induced traps have a
 
 Finally, helium implantation in the materials and bubble formation could modify the hydrogen transport in monoblocks.
 
-\subsection{Summary}
-ITER-like monoblocks have been studied using a novel method in order to estimate the hydrogen content as a function of exposure conditions such as the implanted particle flux, the ion energy, the heat load and the monoblock surface temperature.
-Several hundred data points have been simulated with FESTIM and analysed to estimate the hydrogen inventory in monoblocks for any input conditions using a Gaussian regression process, a machine learning algorithm which calculates the confidence interval for each point.
-Thanks to this relation, one can easily estimate hydrogen content in the whole divertor without having to run all the simulations.
-An application has been made based on the output from a SOLPS calculation of exposure conditions distribution on the ITER divertor and shows that for these conditions the inventory could reach \SI{e20}{H} per monoblock near strike points after a \SI{e7}{s} exposure.
-The total hydrogen content in ITER divertor is estimated to be \SI{8}{g} which is well below the inner-vessel safety limit of \SI{1}{kg}.
+% Yann doesn't like Summaries, we'll see what the others say
+% \subsection{Summary}
+% ITER-like monoblocks have been studied using a novel method in order to estimate the hydrogen content as a function of exposure conditions such as the implanted particle flux, the ion energy, the heat load and the monoblock surface temperature.
+% Several hundred data points have been simulated with FESTIM and analysed to estimate the hydrogen inventory in monoblocks for any input conditions using a Gaussian regression process, a machine learning algorithm which calculates the confidence interval for each point.
+% Thanks to this relation, one can easily estimate hydrogen content in the whole divertor without having to run all the simulations.
+% An application has been made based on the output from a SOLPS calculation of exposure conditions distribution on the ITER divertor and shows that for these conditions the inventory could reach \SI{e20}{H} per monoblock near strike points after a \SI{e7}{s} exposure.
+% The total hydrogen content in ITER divertor is estimated to be \SI{8}{g} which is well below the inner-vessel safety limit of \SI{1}{kg}.
 
-This behaviour law will be used in \refch{Divertor inventory estimation} to estimate the hydrogen inventory of WEST and ITER divertors.
+% This behaviour law will be used in \refch{Divertor inventory estimation} to estimate the hydrogen inventory of WEST and ITER divertors.
