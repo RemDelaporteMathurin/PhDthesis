@@ -207,35 +207,63 @@ The objective of the ITER tokamak, currently under construction in France, is to
     \label{fig: triple product vs T}
 \end{figure}
 
+\subsection{Divertor}
+\begin{itemize}
+    \item Particle and heat exhaust
+    \item Different types of divertors (double null, super x, snowflake...)
+\end{itemize}
+
 \subsection{Plasma-facing materials}
-blablabla tungsten is great because because because
+\begin{itemize}
+    \item checklist of a plasma facing material
+    \item candidates (tungsten, berylium)
+\end{itemize}
 
 \section{Plasma-surface interactions in tokamaks}
 
-As explained in the previous Section, the plasma of fusion reactors will contain high energy hydrogen ions (deuterium and tritium) and helium ions as well as some impurities.
+The wall of a fusion reactor (first wall and divertor) is bombarded with high energy hydrogen (deuterium and tritium) and helium ions.
+Due to their small size, these ions can penetrate the metal lattice and be implanted in the material.
 
-\begin{itemize}
-    \item sktech with tiny balls
-    \item migration
-    \item trapping
-    \item erosion
-    \item recombination
-    \item collision and damage creation
-    \item detached/attached plasma
-\end{itemize}
-
+Many interactions occur between hydrogen, helium and tungsten atoms.
 
 \subsection{H/W}
 \begin{figure}[h]
     \includegraphics[width=\linewidth]{Figures/Chapter1/HI transport sketch.pdf}
     \caption{H in metals}
 \end{figure}
-
 \begin{itemize}
     \item potential energy diagram
 \end{itemize}
-\subsection{He/W}
 
+\subsubsection{Diffusion}
+Hydrogen diffusion is thermally activated and the diffusion coefficient $D$ expressed in \si{m^2.s^{-1}} follows an Arrhenius law:
+\begin{equation}
+    D = D_0 \exp{-E_D/k_B T}
+\end{equation}
+Hydrogen diffusion in metals has been studied both experimentally and numerically.
+
+\begin{itemize}
+    \item how to calculate D with MD
+    \item how to calculate D with permeation experiments (permeability)
+\end{itemize}
+
+\subsubsection{Surface processes}
+\begin{itemize}
+    \item recombination
+    \item dissociation
+    \item sievert's law or henry's law of solubility
+\end{itemize}
+
+\subsubsection{Trapping at defects}
+
+\begin{itemize}
+    \item can be measured by TDS
+    \item can be computed from DFT
+\end{itemize}
+
+
+\subsection{He/W}
+% same processes as H in W with additional processes specific to He
 \begin{figure}[h]
     \includegraphics[width=\linewidth]{Figures/Chapter1/He transport sketch.pdf}
     \caption{He in metals}
@@ -254,26 +282,29 @@ With only 0.1\% of He in the ion beam one can observe that H blistering is compl
 At lower temperature, H blistering occurs but is significantly reduced.
 This phenomena is due to the fact that H migration to the bulk and accumulation at grain boundaries is avoided by He bubbles at the near surface which act as a diffusion plug for H.
 The same phenomena has been observed by Miyamoto \textit{et al} \sidecite{miyamoto_microscopic_2011} which contributes to reducing H retention.
-Markelj \textit{et al} \sidecite{markelj_hydrogen_2017} shown however that He implantation does increase D retention in the He clustering zone.
+Markelj \textit{et al} \sidecite{markelj_hydrogen_2017} showed however that He implantation can increase D retention in the He clustering zone.
 This implies that observed reduction or increase of D retention in mixed H-He plasma experiment are depending on the depth of implantation.
 
-\subsection{Experimental methods}
-\begin{itemize}
-    \item TDS
-    \item Permeation
-    \item Profilometry
-    \begin{itemize}
-        \item NRA
-        \item SIMS Secondary Ion Mass Spectrometry
-        \item ERDA Elastic Recoil Detection Analysis
-    \end{itemize}
-    \item 
-\end{itemize}
-\subsection{Modelling methods}
-\begin{itemize}
-    \item codes review (TMAP, TESSIM, CRDS, HIIPC, etc...)
-\end{itemize}
+[ADD Mykola's experiment]
+
+% \subsection{Experimental methods}
+% \begin{itemize}
+%     \item TDS
+%     \item Permeation
+%     \item Profilometry
+%     \begin{itemize}
+%         \item NRA
+%         \item SIMS Secondary Ion Mass Spectrometry
+%         \item ERDA Elastic Recoil Detection Analysis
+%     \end{itemize}
+%     \item 
+% \end{itemize}
+% \subsection{Modelling methods}
+% \begin{itemize}
+%     \item DFT, MD
+% \end{itemize}
+
 \section{Roadmap}
 
-
+why we care about Hydrogen in materials: safety, embrittlement, recycling fluxes (plasma)
 
