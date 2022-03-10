@@ -248,11 +248,41 @@ Hydrogen diffusion in metals has been studied both experimentally and numericall
 \end{itemize}
 
 \subsubsection{Surface processes}
-\begin{itemize}
-    \item recombination
-    \item dissociation
-    \item sievert's law or henry's law of solubility
-\end{itemize}
+
+When a surface is in contact with a gas, absorption of species can be described by an absorption flux:
+\begin{equation}
+    \varphi_\mathrm{abs} = n K_\mathrm{abs} P
+\end{equation}
+where $n$ is the absorption order, $K_\mathrm{abs}$ is the absorption coefficient expressed in \si{m^{-2}.s^{-1}.Pa^{-1}} and $P$ is the partial pressure of hydrogen in \si{Pa}.
+
+Desorption of solute species at the surface is expressed by a desorption flux:
+\begin{equation}
+    \varphi_\mathrm{des} = K_\mathrm{des} c_\mathrm{surface}^n
+\end{equation}
+where $K_\mathrm{des}$ is the desorption coefficient expressed in \si{m^{-2+3n}.s^{-1}}, $c_\mathrm{surface}$ is the surface concentration in \si{m^{-3}}, and $n$ is the order of the desorption.
+
+When the equilibrium between absorption and desorption is reached, $\varphi_\mathrm{abs} = \varphi_\mathrm{des}$, which gives:
+\begin{equation}
+    n K_\mathrm{abs} P = K_\mathrm{des} c_\mathrm{surface}^n
+    \label{eq: equilibrium absorption desorption}
+\end{equation}
+
+By rearranging Equation \ref{eq: equilibrium absorption desorption}:
+\begin{equation}
+    c_\mathrm{surface} = \sqrt[n]{n \frac{K_\mathrm{abs}}{K_\mathrm{des}}} \sqrt[n]{P}
+\end{equation}
+
+When the absorption/desorption order is $n=1$ (monoatomic absorption):
+\begin{equation}
+    c_\mathrm{surface} = K_H P
+\end{equation}
+This relationship is known as Henry's law of solubility and $K_H = \frac{K_\mathrm{abs}}{K_\mathrm{des}}$ is the material solubility expressed in \si{m^{-3}.Pa^{-1}}.
+
+When the absorption/desorption order is $n=2$ (diatomic absorption):
+\begin{equation}
+    c_\mathrm{surface} = K_S \sqrt{P}
+\end{equation}
+This equilbrium is known as Sievert's law of solubility and $K_S = \sqrt{2 \frac{K_\mathrm{abs}}{K_\mathrm{des}}}$ is the material solubility expressed in \si{m^{-3}.Pa^{-0.5}}.
 
 \subsubsection{Trapping at defects}
 
