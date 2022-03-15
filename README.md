@@ -5,5 +5,5 @@
 To compile locally, simply run:
 
 ```
-docker run --rm -it -v $(pwd):/workdir danteev/texlive:edge latexmk -pdf main.tex
+docker run --rm -it -v $(pwd):/workdir danteev/texlive latexmk -pdf main.tex
 ```

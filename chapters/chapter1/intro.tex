@@ -203,7 +203,7 @@ The objective of the ITER tokamak, currently under construction in France, is to
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/triple_product_vs_T.pdf}
-    \caption{Triple product. An interactive version of this plot is available at \href{https://remdelaportemathurin.github.io/fusion-world/}.}
+    \caption{Triple product. An interactive version of this plot is available at \href{https://remdelaportemathurin.github.io/fusion-world/}{https://remdelaportemathurin.github.io/fusion-world/}.}
     \label{fig: triple product vs T}
 \end{figure}
 
@@ -227,21 +227,52 @@ Due to their small size, these ions can penetrate the metal lattice and be impla
 
 Many interactions occur between hydrogen, helium and tungsten atoms.
 
-\subsection{H/W}
-\begin{figure}[h]
-    \includegraphics[width=\linewidth]{Figures/Chapter1/HI transport sketch.pdf}
-    \caption{H in metals}
-\end{figure}
+\subsection{H/W \& He/W interactions}
+\begin{figure*}[h!]
+    \begin{subfigure}{0.9\linewidth}
+        \includegraphics[width=\linewidth]{Figures/Chapter1/HI transport sketch.pdf}
+        \caption{H}
+    \end{subfigure}
+    \begin{subfigure}{0.9\linewidth}
+        \includegraphics[width=\linewidth]{Figures/Chapter1/He transport sketch.pdf}
+        \caption{He}
+    \end{subfigure}
+    \caption{Interactions of solute species in tungsten}
+\end{figure*}
+
 \begin{itemize}
     \item potential energy diagram
 \end{itemize}
 
 \subsubsection{Diffusion}
-Hydrogen diffusion is thermally activated and the diffusion coefficient $D$ expressed in \si{m^2.s^{-1}} follows an Arrhenius law:
+Diffusion of solute species is thermally activated and the diffusion coefficient $D$ expressed in \si{m^2.s^{-1}} usually follows an Arrhenius law:
 \begin{equation}
-    D = D_0 \exp{-E_D/k_B T}
+    D = D_0 \exp{(-E_D/k_B T)}
 \end{equation}
-Hydrogen diffusion in metals has been studied both experimentally and numerically.
+
+% MD simulations
+Diffusion coefficients (also called diffusivities) can be computed by Molecular Dynamics (MD).
+The principle of Molecular Dynamics is to calculate the trajectory of atoms in a simulation box.
+The trajectory of a particle $i$ in a system of $N$ particles can be computed from Newton's second law of motion:
+
+\begin{equation}
+    m_i \vec{a_i} = \sum_{j=1 \, j \neq i}^N \vec{F}_{i,j}
+\end{equation}
+where $m_i$ is the mass of the particle, $\vec{a_i}$ is its acceleration, $\vec{F}_{i,j}$ is the force applied to the particle due to its interaction with particle $j$.
+The forces between atoms is only a function of the interatomic potentials that can be estimated from \textit{ab initio} computations (Density Functional Theory) [insert refs] or from methods based on machine learning (pseudo-potentials) [insert refs].
+
+By measuring the trajectory of a diffusing species from MD simulations for a long time, its diffusion coefficient $D$ can be estimated from Einstein equation \cite{einstein_uber_1905}:
+\begin{equation}
+    \lim_{x\to\infty} \frac{\langle R^2(t) \rangle}{6t} = D
+\end{equation}
+where $\langle R^2(t) \rangle$ is the mean squared displacement of the species.
+
+Faney estimated the diffusion coefficient of He with this method \cite{faney_numerical_2013,faney_spatially_2014,faney_spatially_2015}.
+
+
+% Experiments
+
+% if you have time, it'd be nice to have a graph showing the diffusion coefficients of H and He according to different authors
 
 \begin{itemize}
     \item how to calculate D with MD
@@ -249,11 +280,41 @@ Hydrogen diffusion in metals has been studied both experimentally and numericall
 \end{itemize}
 
 \subsubsection{Surface processes}
-\begin{itemize}
-    \item recombination
-    \item dissociation
-    \item sievert's law or henry's law of solubility
-\end{itemize}
+
+When a surface is in contact with a gas, absorption of species can be described by an absorption flux:
+\begin{equation}
+    \varphi_\mathrm{abs} = n K_\mathrm{abs} P
+\end{equation}
+where $n$ is the absorption order, $K_\mathrm{abs}$ is the absorption coefficient expressed in \si{m^{-2}.s^{-1}.Pa^{-1}} and $P$ is the partial pressure of hydrogen in \si{Pa}.
+
+Desorption of solute species at the surface is expressed by a desorption flux:
+\begin{equation}
+    \varphi_\mathrm{des} = K_\mathrm{des} c_\mathrm{surface}^n
+\end{equation}
+where $K_\mathrm{des}$ is the desorption coefficient expressed in \si{m^{-2+3n}.s^{-1}}, $c_\mathrm{surface}$ is the surface concentration in \si{m^{-3}}, and $n$ is the order of the desorption.
+
+When the equilibrium between absorption and desorption is reached, $\varphi_\mathrm{abs} = \varphi_\mathrm{des}$, which gives:
+\begin{equation}
+    n K_\mathrm{abs} P = K_\mathrm{des} c_\mathrm{surface}^n
+    \label{eq: equilibrium absorption desorption}
+\end{equation}
+
+By rearranging Equation \ref{eq: equilibrium absorption desorption}:
+\begin{equation}
+    c_\mathrm{surface} = \sqrt[n]{n \frac{K_\mathrm{abs}}{K_\mathrm{des}}} \sqrt[n]{P}
+\end{equation}
+
+When the absorption/desorption order is $n=1$ (monoatomic absorption):
+\begin{equation}
+    c_\mathrm{surface} = K_H P
+\end{equation}
+This relationship is known as Henry's law of solubility and $K_H = K_\mathrm{abs}/K_\mathrm{des}$ is the material solubility expressed in \si{m^{-3}.Pa^{-1}}.
+
+When the absorption/desorption order is $n=2$ (diatomic absorption):
+\begin{equation}
+    c_\mathrm{surface} = K_S \sqrt{P}
+\end{equation}
+This equilbrium is known as Sievert's law of solubility and $K_S = \sqrt{2 K_\mathrm{abs}/K_\mathrm{des}}$ is the material solubility expressed in \si{m^{-3}.Pa^{-0.5}}.
 
 \subsubsection{Trapping at defects}
 
@@ -263,15 +324,9 @@ Hydrogen diffusion in metals has been studied both experimentally and numericall
 \end{itemize}
 
 
-\subsection{He/W}
-% same processes as H in W with additional processes specific to He
-\begin{figure}[h]
-    \includegraphics[width=\linewidth]{Figures/Chapter1/He transport sketch.pdf}
-    \caption{He in metals}
-\end{figure}
 \input{chapters/chapter1/he.tex}
 
-\subsection{He/H}
+\subsection{He/H interactions}
 Lee \textit{et al} studied the influence of He implantation on D retention.
 They showed with ERD depth profiles (up to 40 nm) that D is trapped where He is trapped and proposed that He bubbles produce secondary defects around them which can trap D \sidecite{lee_hydrogen_2007}.
 These defects can be interstitial loops produced by loop punching.
