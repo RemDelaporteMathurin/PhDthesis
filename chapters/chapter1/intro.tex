@@ -244,11 +244,34 @@ Many interactions occur between hydrogen, helium and tungsten atoms.
 \end{itemize}
 
 \subsubsection{Diffusion}
-Hydrogen diffusion is thermally activated and the diffusion coefficient $D$ expressed in \si{m^2.s^{-1}} follows an Arrhenius law:
+Diffusion of solute species is thermally activated and the diffusion coefficient $D$ expressed in \si{m^2.s^{-1}} usually follows an Arrhenius law:
 \begin{equation}
     D = D_0 \exp{(-E_D/k_B T)}
 \end{equation}
-Hydrogen diffusion in metals has been studied both experimentally and numerically.
+
+% MD simulations
+Diffusion coefficients (also called diffusivities) can be computed by Molecular Dynamics (MD).
+The principle of Molecular Dynamics is to calculate the trajectory of atoms in a simulation box.
+The trajectory of a particle $i$ in a system of $N$ particles can be computed from Newton's second law of motion:
+
+\begin{equation}
+    m_i \vec{a_i} = \sum_{j=1 \, j \neq i}^N \vec{F}_{i,j}
+\end{equation}
+where $m_i$ is the mass of the particle, $\vec{a_i}$ is its acceleration, $\vec{F}_{i,j}$ is the force applied to the particle due to its interaction with particle $j$.
+The forces between atoms is only a function of the interatomic potentials that can be estimated from \textit{ab initio} computations (Density Functional Theory) [insert refs] or from methods based on machine learning (pseudo-potentials) [insert refs].
+
+By measuring the trajectory of a diffusing species from MD simulations for a long time, its diffusion coefficient $D$ can be estimated from Einstein equation \cite{einstein_uber_1905}:
+\begin{equation}
+    \lim_{x\to\infty} \frac{\langle R^2(t) \rangle}{6t} = D
+\end{equation}
+where $\langle R^2(t) \rangle$ is the mean squared displacement of the species.
+
+Faney estimated the diffusion coefficient of He with this method \cite{faney_numerical_2013,faney_spatially_2014,faney_spatially_2015}.
+
+
+% Experiments
+
+% if you have time, it'd be nice to have a graph showing the diffusion coefficients of H and He according to different authors
 
 \begin{itemize}
     \item how to calculate D with MD
