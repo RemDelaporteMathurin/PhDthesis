@@ -240,9 +240,19 @@ Many interactions occur between hydrogen, helium and tungsten atoms.
     \caption{Interactions of solute species in tungsten}
 \end{figure*}
 
-\begin{itemize}
-    \item potential energy diagram
-\end{itemize}
+\begin{figure} [h!]
+    \centering
+    \begin{subfigure}{\linewidth}
+        \includegraphics[width=\linewidth]{Figures/Chapter1/potential_energy_diagram.pdf}
+        % \begin{overpic}[width=\linewidth, grid]{Figures/Chapter1/potential_energy_diagram.pdf}
+
+        % \end{overpic}
+    \end{subfigure}
+    \begin{subfigure}{\linewidth}
+        \includegraphics[width=\linewidth]{Figures/Chapter1/potential_energy_3D.pdf}
+    \end{subfigure}
+    \caption{}
+\end{figure}
 
 \subsubsection{Diffusion}
 Diffusion of solute species is thermally activated and the diffusion coefficient $D$ expressed in \si{m^2.s^{-1}} usually follows an Arrhenius law:
@@ -252,7 +262,7 @@ Diffusion of solute species is thermally activated and the diffusion coefficient
 
 % MD simulations
 Diffusion coefficients (also called diffusivities) can be computed by Molecular Dynamics (MD).
-The principle of Molecular Dynamics is to calculate the trajectory of atoms in a simulation box.
+The principle of Molecular Dynamics is to calculate the trajectory of atoms in a simulation box (see Figure \ref{fig: md faney}).
 The trajectory of a particle $i$ in a system of $N$ particles can be computed from Newton's second law of motion:
 
 \begin{equation}
@@ -261,24 +271,35 @@ The trajectory of a particle $i$ in a system of $N$ particles can be computed fr
 where $m_i$ is the mass of the particle, $\vec{a_i}$ is its acceleration, $\vec{F}_{i,j}$ is the force applied to the particle due to its interaction with particle $j$.
 The forces between atoms is only a function of the interatomic potentials that can be estimated from \textit{ab initio} computations (Density Functional Theory) \cite{connetable_diffusion_2019,fernandez_hydrogen_2015,boisse_modelling_2014,boisse_modeling_2014,becquart_microstructural_2010} or from methods based on machine learning (pseudo-potentials) [insert refs].
 
+\begin{figure} [h!]
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter1/faney_md.jpg}
+    \caption{Example of the trajectory of a He$_2$ cluster. Reproduced from \cite{faney_numerical_2013}}
+    \label{fig: md faney}
+\end{figure}
+
 By measuring the trajectory of a diffusing species from MD simulations for a long time, its diffusion coefficient $D$ can be estimated from Einstein equation \cite{einstein_uber_1905}:
 \begin{equation}
     \lim_{x\to\infty} \frac{\langle R^2(t) \rangle}{6t} = D
 \end{equation}
 where $\langle R^2(t) \rangle$ is the mean squared displacement of the species.
 
-This method was used to estiamte the diffusion coefficient of H in W \cite{wang_molecular_2020, zhou_molecular_2016,kato_super-saturated_2015,liu_hydrogen_2014} and for He in W \cite{faney_numerical_2013,faney_spatially_2014,faney_spatially_2015,sefta_surface_2013,perez_mobility_2017}.
-\begin{figure}
-    \centering
-    \includegraphics[width=0.7\linewidth]{Figures/Chapter1/faney_md.jpg}
-    \caption{Example of the trajectory of a He$_2$ cluster. Reproduced from \cite{faney_numerical_2013}}
-    \label{fig: md faney}
-\end{figure}
+This modelling technique was used to estiamte the diffusion coefficient of H in W \cite{wang_molecular_2020, zhou_molecular_2016,kato_super-saturated_2015,liu_hydrogen_2014} and for He in W \cite{faney_numerical_2013,faney_spatially_2014,faney_spatially_2015,sefta_surface_2013,perez_mobility_2017}.
 
 % Experiments
-Diffusivity of hydrogen has also been measured experimentally in W \cite{frauenfelder_solution_1969, anderl_hydrogen_1990}, EUROFER \cite{montupet-leblond_permeation_2021,esteban_hydrogen_2007,aiello_hydrogen_2002}, Copper and copper alloys (CuCrZr) \cite{anderl_deuterium_1992}.
-
+Diffusivity of hydrogen has also been measured experimentally in W \cite{frauenfelder_solution_1969, anderl_hydrogen_1990}, EUROFER \cite{montupet-leblond_permeation_2021,esteban_hydrogen_2007,aiello_hydrogen_2002}, Copper and copper alloys (CuCrZr) \cite{anderl_deuterium_1992} and other metals.
+Because He tends to cluster (as explained below), measuring its diffusivity experimentally is extremely complicated and therefore most estimations of He diffusion coefficient are numerical.
 % if you have time, it'd be nice to have a graph showing the diffusion coefficients of H and He according to different authors
+
+\subsubsection{Trapping at defects}
+
+Species can be trapped at defects (vacancies, interstitial atoms, impurities, etc.).
+
+\begin{figure} [h!]
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter1/tds_helium_nicolas.pdf}
+    \caption{H TDS spectra of pre-damaged W. Reproduced from \cite{ialovega_hydrogen_2020}.}
+\end{figure}
 
 \subsubsection{Surface processes}
 
@@ -317,24 +338,18 @@ When the absorption/desorption order is $n=2$ (diatomic absorption):
 \end{equation}
 This equilbrium is known as Sievert's law of solubility and $K_S = \sqrt{2 K_\mathrm{abs}/K_\mathrm{des}}$ is the material solubility expressed in \si{m^{-3}.Pa^{-0.5}}.
 
-\subsubsection{Trapping at defects}
-
-\begin{itemize}
-    \item can be measured by TDS
-    \item can be computed from DFT
-\end{itemize}
-
 \subsubsection{Clustering}
-Single He atoms implanted into the material will diffuse rapidly due to the high W-He repulsion.
-This high repulsive W-He interaction is such that interstitial He atoms will preferably rearrange into groups of atoms in order to minimise the number of repulsive interactions \sidecite{hamid_molecular_2019, hammond_large-scale_2018}.
-This phenomena is called "clustering".
+Single He atoms implanted into the material diffuse rapidly due to the high W-He repulsion.
+This high repulsive W-He interaction is such that interstitial He atoms preferably rearrange into groups of atoms in order to minimise the number of repulsive interactions \sidecite{hamid_molecular_2019, hammond_large-scale_2018}.
+This phenomena, called "clustering", was highlighted by DFT studies \cite{becquart_density_2009,dunn_rate_2013} and MD simulations \cite{henriksson_molecular_2006}.
 Small clusters are themselves mobile as long as all the He atoms within the cluster are occupying interstitial position in the solid lattice.
-The activation energy for interstitial He atoms and clusters ranges from 0.15 to 0.45 eV according to Perez \textit{et al} \sidecite{perez_mobility_2017}.
+The activation energy for interstitial He atoms and clusters in W ranges from 0.15 to \SI{0.45}{eV} according to Perez \textit{et al} \sidecite{perez_mobility_2017}.
 He clusters will eventually grow by interacting with either interstitial He atoms or other clusters.
-If their size is big enough then their pressure will be sufficient to knock off a W atom from the lattice thus creating a W vacancy and an interstitial W atom (a Frenkel pair).
-This process is called trap mutation or "self-trapping" and the trapped clusters act as nuclei for bubble formation.
 
 \subsubsection{Bubble nucleation}
+
+If their size is big enough the cluster pressure is sufficient to knock off a W atom from the lattice, creating a W vacancy and an interstitial W atom (a Frenkel pair).
+This process is called trap mutation or \textit{self-trapping} and the trapped clusters act as nuclei for bubble formation.
 
 Trap mutation has been modelled in W using DFT \sidecite{boisse_modelling_2014} and Monte Carlo computations \sidecite{de_backer_modeling_2015}.
 It has been shown that this phenomena depends not only on the number of He atoms in the cluster but also on temperature, position of the cluster to the free surface or even the crystal orientation \sidecite{blondel_modeling_2017, hu_interactions_2014, hu_dynamics_2014}.
@@ -347,17 +362,13 @@ Once a bubble nucleus is created via trap mutation, it can continue to grow via 
 Two or more bubbles can also coalesce and form a bigger bubble.
 
 Each of these mechanisms can become dominant over another depending on the implantation and the W conditions. 
-\subsubsection{Vacancies clustering}
-
 Bubbles can continue to grow by absorbing interstitial He atoms or mobile He clusters (\textit{ie} that haven't self trapped).
 Considering that vacancies are mobile in the solid, the volume of a bubble could also increase if a vacancy or a vacancy cluster interact with a He bubble.
 The same is true for He-vacancies clusters.
 
 There is no experimental evidence of He clustering with interstitial W atoms \sidecite{faney_spatially_2014}.
 
-This process is described by cluster dynamics equations in which interaction between the clusters is governed by pairs of association and dissociation rates.
-\subsubsection{Dislocation loop}
-
+% This process is described by cluster dynamics equations in which interaction between the clusters is governed by pairs of association and dissociation rates.
 During the growth of a He bubble by absorbing He atoms, if the pressure increases until reaching a critical value, dislocation loop punching can occur.
 During the punching event, a whole facet of W atoms is pushed and the vacant lattice sites are absorbed by the bubble allowing the bubble to expand and reducing the pressure in it \sidecite{sefta_surface_2013}.
 The produced self-interstitial W atoms will likely be attracted by \textit{image forces} at the surface and will contribute to the roughening of the surface and/or formation of surface structures.
@@ -366,8 +377,18 @@ Dislocation loops happen at very high pressure and if the number of vacancies in
 This is the case when a high He flux is applied and the He ions energy is low so that no displacement damaged is produced \sidecite{sefta_surface_2013}.
 If vacancies were created via He ions implantation, they could interact with existing He bubbles which would have the effect of increasing the volume and thus decreasing the pressure (assuming no change in temperature and no other implantation mechanism).
 
-\subsubsection{Blistering}
+Coalescence of He bubbles has been observed in MD simulations \sidecite{hamid_molecular_2019, hammond_helium_2019, zhang_simulation_2019} and would tend to increase the bubble size decreasing the bubble density at the same time.
+This may not have an impact on He concentration on the macroscopic scale but might influence bubble bursting.
 
+The pressure inside the bubble and the bubble radius are two parameters of interest and are correlated.
+Sefta and co-workers \sidecite{sefta_surface_2013} proposed to use the Wolfer equation of state in order to determine the number of He atoms contained in a He bubble based on its pressure, the latter being calculated from its radius and its surface tension.
+Quir\'os \textit{et al} proposed a post-processing method to asses bubble radius and pressure from concentration profiles applied on H blistering \sidecite{quiros_blister_2017}.
+One must be aware that if radii and pressure of bubbles computation is quite straightforward using MD \sidecite{zhang_simulation_2019} or cluster dynamics \sidecite{faney_spatially_2015} simulations it will be more complex to estimate these metrics considering a continuum model that does not keep track of every type of clusters but only a few of them.
+The only information \textit{a priori} available in this case is indeed the local helium concentration and an equivalence could be found by either having a high density of small bubbles or a low density of big bubbles.
+
+\subsubsection{Consequences of bubble growth}
+
+% blistering
 When He is implanted at low temperature (<1000K) in W surfaces, appearance of blisters is observed \sidecite{baldwin_formation_2010}.
 These blisters are plastic deformation (swelling) of the metal near the surface due to high pressure in He bubbles.
 This phenomena is separated from the loop punching even though loop punching can be considered as a plastic deformation.
@@ -375,19 +396,19 @@ Blistering happens only at low temperatures because only then the growth rate of
 Eventually if the rate of incoming He atoms is greater that the rate of re-dissolution in the bulk, blisters can rupture.
 Similarly, if the rate of incoming He atoms is lesser than the rate of re-dissolution in the bulk, the blister will collapse.
 
-\subsubsection{Bubble coalescence}
-Coalescence of He bubbles has been observed in MD simulations \sidecite{hamid_molecular_2019, hammond_helium_2019, zhang_simulation_2019} and would tend to increase the bubble size decreasing the bubble density at the same time.
-This may not have an impact on He concentration on the macroscopic scale but might influence bubble bursting.
-\subsubsection{Bubble pressure}
-The pressure inside the bubble and the bubble radius are two parameters of interest and are correlated.
-Sefta and co-workers \sidecite{sefta_surface_2013} proposed to use the Wolfer equation of state in order to determine the number of He atoms contained in a He bubble based on its pressure, the latter being calculated from its radius and its surface tension.
-Quir\'os \textit{et al} proposed a post-processing method to asses bubble radius and pressure from concentration profiles applied on H blistering \sidecite{quiros_blister_2017}.
-One must be aware that if radii and pressure of bubbles computation is quite straightforward using MD \sidecite{zhang_simulation_2019} or cluster dynamics \sidecite{faney_spatially_2014-1} simulations it will be more complex to estimate these metrics considering a continuum model that does not keep track of every type of clusters but only a few of them.
-The only information \textit{a priori} available in this case is indeed the local helium concentration and an equivalence could be found by either having a high density of small bubbles or a low density of big bubbles.
+H blistering was also observed in W \sidecite{haasz_effect_1999} and aluminium and beryllium \sidecite{quiros_blistering_2019,quiros_blister_2017}.
+Causey \textit{et al} also reviewed a wide range of studies showing H exposure leads to blistering \sidecite{causey_hydrogen_2002}.
 
-\subsubsection{Bursting}
+% bursting
 
-When a bubble grows near the surface and is over-pressurised, bursting can occur.
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter1/bubble_bursting_zhou.jpg}
+    \caption{Molecular dynamics simulation of He bubble bursting in W. Reproduced from \cite{zhou_growth_2019}.}
+    \label{fig: bubble bursting zhou}
+\end{figure}
+
+When a bubble grows near the surface and is over-pressurised, bursting can occur (see Figure \ref{fig: bubble bursting zhou}).
 After several increases of the bubble volume via punching loops making the W lattice to be deformed and the ligament thickness to decrease, the latter can rupture which would make all the He atoms contained in the bubble to be released to the vacuum.
 This is why He bursting is characterised by sharp drops in the He inventory.
 
@@ -423,27 +444,26 @@ According to Baldwin and Doerner \sidecite{baldwin_formation_2010}, heavy alloyi
 
 Bernard \textit{et al} shown that temperature has a strong influence on fuzz formation \sidecite{bernard_temperature_2017} and Takamura \textit{et al} shown fuzz could be grown under relevant tokamak conditions (high-flux He plasma irradiation and surface temperature greater than \SI{1250}{K}) \sidecite{takamura_formation_2006}.
 
-
 Fuzz formation has been observed on the Alcator C-Mod divertor by Wright \textit{et al} \sidecite{wright_tungsten_2012}.
 
 \subsubsection{Cracks}
 
-It is not clear that He implantation has a role to play in cracks formation since cracks have also been observed during pure thermal shock on W PFC \sidecite{wirtz_influence_2016}.
+The role of He implantation in cracks formation is still unclear since cracks have also been observed during pure thermal shock on W PFC \sidecite{wirtz_influence_2016}.
 Under some specific conditions, cracks can close due to thermal expansion which induce frictional loads on the structure.
 The formation of W nano-fuzz could also bridge those cracks as observed by Lemahieu \textit{et al} \sidecite{lemahieu_h/he_2016}.
 
 \subsubsection{Diminution of thermal performances}
 
-Several of the above phenomena can have an impact on plasma facing materials thermal performances.
+Several of the above phenomena can have an impact on plasma facing materials thermal performances \sidecite{cui_thermal_2017,buzi_response_2017}.
 First, having a network of bubbles will lead to a reduction of local apparent conductivity as thermal constriction will occur between the bubbles.
 Therefore, for a given heat load of the surface of a PFC, temperature will likely increase.
 Then, development of surface structures will be accompanied by surface roughening therefore modifying the reflectivity and emissivity \sidecite{tokunaga_synergistic_2004}.
 For a given incident flux, the net radiative flux to which the surface of the component is exposed will then increase.
 This could lead to reduction of the PFC heat exhaust capacity and furthermore local melting \sidecite{wirtz_influence_2016}.
 
-Having He transport affecting heat transfer significantly would lead to a strong coupling between the two (since He transport is strongly temperature dependent) which would imply to think of proper ways to deal with this coupling numerically.
+% Having He transport affecting heat transfer significantly would lead to a strong coupling between the two (since He transport is strongly temperature dependent) which would imply to think of proper ways to deal with this coupling numerically.
 
-NOTE: an interesting study would be to investigate thermal constriction due to the presence of inhomogeneities (He bubbles) in which thermal conductivity is low compared to the one of the W.
+% NOTE: an interesting study would be to investigate thermal constriction due to the presence of inhomogeneities (He bubbles) in which thermal conductivity is low compared to the one of the W.
 
 \subsection{He/H interactions}
 Lee \textit{et al} studied the influence of He implantation on D retention.
@@ -478,6 +498,11 @@ This implies that observed reduction or increase of D retention in mixed H-He pl
 % \begin{itemize}
 %     \item DFT, MD
 % \end{itemize}
+
+\section{Code review}
+\begin{itemize}
+    \item Code review of MHIMS TESSIM HIIPC etc
+\end{itemize}
 
 \section{Roadmap}
 
