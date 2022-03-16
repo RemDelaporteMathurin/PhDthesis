@@ -243,15 +243,21 @@ Many interactions occur between hydrogen, helium and tungsten atoms.
 \begin{figure} [h!]
     \centering
     \begin{subfigure}{\linewidth}
-        \includegraphics[width=\linewidth]{Figures/Chapter1/potential_energy_diagram.pdf}
-        % \begin{overpic}[width=\linewidth, grid]{Figures/Chapter1/potential_energy_diagram.pdf}
-
-        % \end{overpic}
+        \begin{overpic}[width=\linewidth]{Figures/Chapter1/potential_energy_diagram.pdf}
+            \put(37, 29){$E_{\mathrm{b}, 1}$}
+            \put(37, 47){$E_{k, 1}$}
+            \put(65, 35){$E_{\mathrm{b}, 2}$}
+            \put(65, 47){$E_{k, 2}$}
+            \put(89, 47){$E_D$}
+        \end{overpic}
+        \caption{Simplified potential energy diagram showing two different types of defects.}
     \end{subfigure}
     \begin{subfigure}{\linewidth}
         \includegraphics[width=\linewidth]{Figures/Chapter1/potential_energy_3D.pdf}
+        \caption{3D representation of the potential energy of a solute species in a metal lattice with one defect.}
     \end{subfigure}
-    \caption{}
+    \caption{Potential of a solute species in a metal lattice.}
+    \label{fig: potential diagrams}
 \end{figure}
 
 \subsubsection{Diffusion}
@@ -269,7 +275,7 @@ The trajectory of a particle $i$ in a system of $N$ particles can be computed fr
     m_i \vec{a_i} = \sum_{j=1 \, j \neq i}^N \vec{F}_{i,j}
 \end{equation}
 where $m_i$ is the mass of the particle, $\vec{a_i}$ is its acceleration, $\vec{F}_{i,j}$ is the force applied to the particle due to its interaction with particle $j$.
-The forces between atoms is only a function of the interatomic potentials that can be estimated from \textit{ab initio} computations (Density Functional Theory) \cite{connetable_diffusion_2019,fernandez_hydrogen_2015,boisse_modelling_2014,boisse_modeling_2014,becquart_microstructural_2010} or from methods based on machine learning (pseudo-potentials) [insert refs].
+The forces between atoms is only a function of the interatomic potentials that can be estimated from \textit{ab initio} computations (Density Functional Theory) \sidecite{connetable_diffusion_2019,fernandez_hydrogen_2015,boisse_modelling_2014,boisse_modeling_2014,becquart_microstructural_2010} or from methods based on machine learning (pseudo-potentials) [insert refs].
 
 \begin{figure} [h!]
     \centering
@@ -293,13 +299,37 @@ Because He tends to cluster (as explained below), measuring its diffusivity expe
 
 \subsubsection{Trapping at defects}
 
-Species can be trapped at defects (vacancies, interstitial atoms, impurities, etc.).
+As shown on Figure \ref{fig: potential diagrams}, defects can act as a potential well for solute species.
+Once in that attractive well, species can escape it only if their vibrational energy (\textit{ie} their energy/temperature) is high enough.
+Species can be trapped at vacancies, interstitial atoms, impurities, etc.
+
+The trapping process can be described as:
+\begin{equation}
+    \ce{S + T <=>[k][p] S^*}
+\end{equation}
+where S is the particle in an interstitial site (\textit{ie} mobile), T is the defect and S$^*$ represents the particle trapped in the defect T.
+The trapping rate and detrapping rate can be respectively expressed as:
+\begin{align}
+    k &= k_0 \exp{\frac{-E_k}{k_B T}} \\
+    p &= p_0 \exp{\frac{-(E_\mathrm{b} + E_k)}{k_B T}} = p_0 \exp{\frac{-E_p}{k_B T}}
+\end{align}
+where $E_k$ is the trapping energy in \si{eV}, $k_B$ is the Boltzmann constant in \si{eV.K^{-1}}, $T$ is the temperature in \si{K}, $E_\mathrm{b}$ is the binding energy of the particle with the defect and $E_p = E_\mathrm{b} + E_k$ is the detrapping energy.
+A common assumption is that $E_k = E_D$.
+
+Each rate therefore has two parameters: the pre-activation factor and the activation energy.
+These parameters can be measured from fitting Thermo-Desorption Spectrometry (TDS) experiments.
+TDS experiments consist in loading a metal sample with the studied species (\textit{eg} H or He) and heat it at different temperatures (typically with a well controlled temperature ramp) while measuring the desorption flux.
+This results in a spectrum which typically has one or several desorption peaks corresponding to different traps (see Equation \ref{fig: TDS example ialovega}).
+Peaks appearing at high temperatures correspond to "deep" traps with a high detrapping energy $E_p$.
 
 \begin{figure} [h!]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/tds_helium_nicolas.pdf}
     \caption{H TDS spectra of pre-damaged W. Reproduced from \cite{ialovega_hydrogen_2020}.}
+    \label{fig: TDS example ialovega}
 \end{figure}
+
+These parameters can also be obtained from DFT calculations \sidecite{hodille_modelling_2021, hodille_hydrogen_2018, backer_multiscale_2017,lu_review_2014}.
 
 \subsubsection{Surface processes}
 
