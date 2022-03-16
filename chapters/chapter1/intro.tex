@@ -259,7 +259,7 @@ The trajectory of a particle $i$ in a system of $N$ particles can be computed fr
     m_i \vec{a_i} = \sum_{j=1 \, j \neq i}^N \vec{F}_{i,j}
 \end{equation}
 where $m_i$ is the mass of the particle, $\vec{a_i}$ is its acceleration, $\vec{F}_{i,j}$ is the force applied to the particle due to its interaction with particle $j$.
-The forces between atoms is only a function of the interatomic potentials that can be estimated from \textit{ab initio} computations (Density Functional Theory) [insert refs] or from methods based on machine learning (pseudo-potentials) [insert refs].
+The forces between atoms is only a function of the interatomic potentials that can be estimated from \textit{ab initio} computations (Density Functional Theory) \cite{connetable_diffusion_2019,fernandez_hydrogen_2015,boisse_modelling_2014,boisse_modeling_2014,becquart_microstructural_2010} or from methods based on machine learning (pseudo-potentials) [insert refs].
 
 By measuring the trajectory of a diffusing species from MD simulations for a long time, its diffusion coefficient $D$ can be estimated from Einstein equation \cite{einstein_uber_1905}:
 \begin{equation}
@@ -267,8 +267,13 @@ By measuring the trajectory of a diffusing species from MD simulations for a lon
 \end{equation}
 where $\langle R^2(t) \rangle$ is the mean squared displacement of the species.
 
-This method was used to estiamte the diffusion coefficient of H in W \cite{wang_molecular_2020, zhou_molecular_2016,,kato_super-saturated_2015,liu_hydrogen_2014} and for He in W \cite{faney_numerical_2013,faney_spatially_2014,faney_spatially_2015,sefta_surface_2013,perez_mobility_2017}.
-[ADD FIGURE SHOWING DIFFUSION OF SPECIES IN MD]
+This method was used to estiamte the diffusion coefficient of H in W \cite{wang_molecular_2020, zhou_molecular_2016,kato_super-saturated_2015,liu_hydrogen_2014} and for He in W \cite{faney_numerical_2013,faney_spatially_2014,faney_spatially_2015,sefta_surface_2013,perez_mobility_2017}.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{Figures/Chapter1/faney_md.jpg}
+    \caption{Example of the trajectory of a He$_2$ cluster. Reproduced from \cite{faney_numerical_2013}}
+    \label{fig: md faney}
+\end{figure}
 
 % Experiments
 Diffusivity of hydrogen has also been measured experimentally in W \cite{frauenfelder_solution_1969, anderl_hydrogen_1990}, EUROFER \cite{montupet-leblond_permeation_2021,esteban_hydrogen_2007,aiello_hydrogen_2002}, Copper and copper alloys (CuCrZr) \cite{anderl_deuterium_1992}.
