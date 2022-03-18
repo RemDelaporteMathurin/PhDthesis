@@ -390,7 +390,7 @@ It is considered immobile since it would requires either diffusion of another va
 
 \subsubsection{Bubble growth}
 
-\begin{figure}
+\begin{figure} [h!]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/helium_bubbles_ialovega.jpg}
     \caption{Transmission electron microscopy image of tungsten irradiated with He ions at different fluxes (Low Flux (LF) = \SI{2.9e20}{m^{-2}.s^{-1}} and High Flux (HF) = \SI{2.3e22}{m^{-2}.s^{-1}}) showing the presence of He bubbles. Reproduced from \cite{ialovega_hydrogen_2020}.}
@@ -441,7 +441,7 @@ Causey \textit{et al} also reviewed a wide range of studies showing H exposure l
 
 % bursting
 
-\begin{figure}
+\begin{figure} [h!]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/bubble_bursting_zhou.jpg}
     \caption{Molecular dynamics simulation of He bubble bursting in W. Reproduced from \cite{zhou_growth_2019}.}
@@ -471,27 +471,43 @@ Bursting has been experimentally observed \sidecite{hamid_molecular_2019, woller
 
 \subsubsection{W tendrils or "nano-fuzz"}
 
-\begin{figure}
+\begin{figure} [h!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Figures/Chapter1/fuzz_alcator_wright.jpg}
+    \caption{W fuzz observed in Alcator C-Mod. Reproduced from \cite{wright_tungsten_2012}}
+    \label{fig: w fuzz wright}
+\end{figure}
+
+In 2012, Wright \textit{et al} \sidecite{wright_tungsten_2012} observed the formation of nanostructures on the surfaces of the W divertor of the reactor Alcator C-mod.
+These nanostructures are made of W tendrils (see Figure \ref{fig: w fuzz wright}).
+These structures are called W fuzz, nano-fuzz or even fuzzy W.
+Because a small portion of the divertor grew W fuzz, no conclusion was made regarding its influence on the plasma operation.
+However, if these structures were to be removed during plasma operation via erosion, W atoms could be fed into the plasma, affecting the tokamak performances.
+Moreover, this phenomena could increase the W dust formation in the reactor and lead to contamination and safety issues.
+
+W fuzz has been observed at high temperature (>1000K), high flux (>\SI{1e21}{He^+.m^{-2}.s^{-1}}) and long exposure (t>\SI{1e2}{s}) \sidecite{baldwin_formation_2010, nishijima_sputtering_2011}.
+
+The reason of the fuzz formation is still unclear but could be due to bursting events and/or accumulation of self interstitial W atoms at the surface \sidecite{baldwin_effects_2009, baldwin_helium_2008, woller_dynamic_2015, hammond_helium_2017}.
+Thermal properties of the media are also affected by the formation of W fuzz \sidecite{wirtz_influence_2016} which could have a severe impact during ELM-like events.
+After 1h of plasma implantation, nanostructuring can be found deep in the bulk (up to several hundred of $\mu$m).
+According to Baldwin and Doerner \sidecite{baldwin_formation_2010}, heavy alloying helps reducing the formation of He induced fuzz.
+
+Bernard \textit{et al} showed that temperature has a strong influence on fuzz formation \sidecite{bernard_temperature_2017} and Takamura \textit{et al} showed fuzz could be grown under relevant tokamak conditions (high-flux He plasma irradiation and surface temperature greater than \SI{1250}{K}) \sidecite{takamura_formation_2006}.
+
+\begin{figure} [h!]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/fuzz_mccarthy.jpg}
     \caption{Reproduced from \cite{mccarthy_enhanced_2020}}
     \label{fig: w fuzz mccarthy}
 \end{figure}
 
-When He is implanted in W surfaces at high temperature, modification of the surface can occur.
-Nano structures have been observed at high temperature (>1000K), high flux (>\SI{1e21}{He^+.m^{-2}.s^{-1}}) and long exposure (t>\SI{1e2}{s}) \sidecite{baldwin_formation_2010}.
-These structures are composed of tendrils (similar to nanometric cylinders) that are fragile \sidecite{nishijima_sputtering_2011}.
-If these structures were to be removed during a plasma operation via erosion, W atoms could be fed into the plasma and therefore reduce the performance of the tokamak.
-Moreover, this phenomena could increase the W dust formation in the reactor and lead to contamination and safety issues.
+McCarthy \textit{et al} studied the formation of W fuzz (see Figure \ref{fig: w fuzz mccarthy}) at helium fluences ranging from \SI{4e23}{m^{-2}} to \SI{e25}{m^{-2}}, temperatures ranging from \SI{1050}{K} to \SI{1150}{K} and He ion energies from \SI{80}{eV} to \SI{100}{eV}.
+They identified different fuzz growth regimes depending on the He fluence due to the change in porosity of the fuzzy layer during the growth process.
+The rate of growth was found to be dependent on the temperature and the state (ion or atom) of the incident He particles.
 
-Fuzz formation could be due to bursting events and/or accumulation of self interstitial W atoms at the surface \sidecite{baldwin_effects_2009, baldwin_helium_2008, woller_dynamic_2015, hammond_helium_2017}.
-Thermal properties of the media is also affected by the formation of W fuzz \sidecite{wirtz_influence_2016} which could have a severe impact during ELM-like events.
-After 1h of plasma implantation, nanostructuring can be found deep in the bulk (up to several hundred of $\mu$m).
-According to Baldwin and Doerner \sidecite{baldwin_formation_2010}, heavy alloying helps to reduce formation of He induced fuzz.
+Recent modelling work also showed temperature could significantly affect the bursting of He bubbles and therefore the growth of W fuzz \sidecite{niu_effect_2021}.
 
-Bernard \textit{et al} shown that temperature has a strong influence on fuzz formation \sidecite{bernard_temperature_2017} and Takamura \textit{et al} shown fuzz could be grown under relevant tokamak conditions (high-flux He plasma irradiation and surface temperature greater than \SI{1250}{K}) \sidecite{takamura_formation_2006}.
-
-Fuzz formation has been observed on the Alcator C-Mod divertor by Wright \textit{et al} \sidecite{wright_tungsten_2012}.
+De Temmerman \textit{et al} concluded that temperature was the most critical parameter controlling W fuzz growth \sidecite{de_temmerman_nanostructuring_2012}.
 
 \subsubsection{Cracks}
 
