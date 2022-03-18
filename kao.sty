@@ -16,7 +16,6 @@
 \RequirePackage{afterpage} % Run commands after specific pages
 \RequirePackage{imakeidx} % For the index; must be loaded before the 'caption' and 'hyperref' packages
 \RequirePackage{varioref} % For the cross-references; must be loaded before the 'hyperref' and 'cleveref' packages
-\RequirePackage{scrhack} % Make some packages compatible with KOMAScript
 
 % Define \Ifthispageodd (with a capital 'i') to make kaobook compatible with older KOMAScript versions
 \@ifpackagelater{scrbase}{2019/12/22}{%
@@ -73,7 +72,6 @@
 \setlength{\hscale}{1mm}
 \setlength{\vscale}{1mm}
 
-% Define hscale and vscale for all types of paper
 \@ifclasswith{\@baseclass}{a0paper}{\setlength{\hscale}{4mm}\setlength{\vscale}{4mm}}{}
 \@ifclasswith{\@baseclass}{a1paper}{\setlength{\hscale}{2.828mm}\setlength{\vscale}{2.828mm}}{}
 \@ifclasswith{\@baseclass}{a2paper}{\setlength{\hscale}{2mm}\setlength{\vscale}{2mm}}{}
@@ -188,11 +186,11 @@
 \setlength{\headsep}{11\vscale}
 
 % Define some LaTeX lengths used in the page headers
-\newlength{\headtextwidth} % This is the width of the text
-\newlength{\headmarginparsep} % This is the width of the whitespace between text and margin
-\newlength{\headmarginparwidth} % This is the width of the margin
+\newlength{\headtextwidth}
+\newlength{\headmarginparsep}
+\newlength{\headmarginparwidth}
 \newlength{\headtotal} % This is the total width of the header
-\newcommand{\recalchead}{% Command to recalculate the header-related length when needed
+\newcommand{\recalchead}{%
     \setlength{\headtextwidth}{\textwidth}%
 	\setlength{\headmarginparsep}{\marginparsep}%
 	\setlength{\headmarginparwidth}{\marginparwidth}%
@@ -203,7 +201,7 @@
     \recalchead%
 }
 
-% Header style with chapter number, chapter title, and page in the header (used throughout the document)
+% Style with chapter number, chapter title, and page in the header (used throughout the document)
 \renewpagestyle{scrheadings}{%
     {\smash{\hspace{-\headmarginparwidth}\hspace{-\headmarginparsep}\makebox[\headtotal][l]{%
         \makebox[7\hscale][r]{\thepage}%
@@ -223,7 +221,7 @@
 	{}%
 }
 
-% Header style with neither header nor footer (used for special pages)
+% Style with neither header nor footer (used for special pages)
 \renewpagestyle{plain.scrheadings}{%
 	{}%
 	{}%
@@ -234,7 +232,7 @@
 	{}%
 }
 
-% Header style with an empty header and the page number in the footer
+% Style with an empty header and the page number in the footer
 \newpagestyle{pagenum.scrheadings}{%
     {}%
     {}%
@@ -245,7 +243,7 @@
     {\makebox[\textwidth][l]{\thepage}}%
 }
 
-% Header style with an empty header and the page number in the footer
+% Style with an empty header and the page number in the footer
 \newpagestyle{centeredpagenum.scrheadings}{%
     {}%
     {}%
@@ -398,11 +396,11 @@
 }
 
 % Command to detect whether we are inside an mdframed environment
-\newif\ifinfloat % First, set this flag whenever we are in an mdframed environment...
+\newif\ifinfloat
 \AtBeginEnvironment{mdframed}{\infloattrue}
 \AtBeginEnvironment{minipage}{\infloattrue}
 
-\def\IfInFloatingEnvir{% Then, detect the flag
+\def\IfInFloatingEnvir{%
     \ifinfloat%
         \expandafter\@firstoftwo%
     \else%
@@ -428,7 +426,7 @@
 	}%
 }
 
-% Initially set the sidenote counter to zero instead of 1, and update it before printing the sidenote.
+% Initially set the counter to zero instead of 1, and update it before printing the sidenote.
 \setcounter{sidenote}{0}%
 \RenewDocumentCommand\sidenote{ o o +m }{%
 	\IfNoValueOrEmptyTF{#1}{%
@@ -440,8 +438,15 @@
 	\@sidenotes@multimarker%
 }
 
-% Formatting sidenote markers
-\RenewDocumentCommand\@sidenotes@thesidenotemark{ m }{% Format the marker
+% % Formatting sidenotes
+% \setsidenotes{
+% 	text-mark-format=\textsuperscript{\normalfont#1}, % Use a superscript for the marker in the text
+% 	note-mark-format=#1:, % Use a normal font for the marker in the margin; use a colon after the sidenote number
+% 	note-mark-sep=\enskip, % Set the space after the marker
+% }
+
+% Formatting sidenotes
+\RenewDocumentCommand\@sidenotes@thesidenotemark{ m }{%
 	\leavevmode%
 	\ifhmode%
 		\edef\@x@sf{\the\spacefactor}%
@@ -454,7 +459,6 @@
 	\relax%
 }%
 
-% Formatting the sidenote text
 \RenewDocumentCommand\sidenotetext{ o o +m }{% number, offset, text
 	\IfNoValueOrEmptyTF{#1}{%
         \marginnote[#2]{\thesidenote:\enskip#3}%
@@ -484,6 +488,7 @@
 % \newcommand{\pp@g@sidenote}{}
 \RequirePackage{floatrow} % Set up captions of floats
 %\RequirePackage{dblfloatfix} % Better positioning of wide figures and tables
+\AtEndPreamble{\RequirePackage{scrhack}} % Make packages compatible with KOMA Script (must be loaded last: https://tex.stackexchange.com/questions/156240/latex-packages-minted-and-scrhack)
 
 % Improve the figure placing (see https://www.overleaf.com/learn/latex/Tips)
 \def\topfraction{.9}%
@@ -818,7 +823,7 @@
 %	TOC, LOF & LOT
 %----------------------------------------------------------------------------------------
 
-\RequirePackage{tocbasic} % Required to customise the TOC
+\RequirePackage{tocbasic}
 
 % Show an entry for the TOC in the TOC
 \setuptoc{toc}{totoc}
@@ -850,7 +855,7 @@
 \RequirePackage{etoc} % Required to insert local tables of contents
 
 \newcounter{margintocdepth} % Set the depth of the margintoc
-\setcounter{margintocdepth}{\subsectiontocdepth} % By default to subsections
+\setcounter{margintocdepth}{\subsectiontocdepth}
 
 \newlength{\mtocshift} % Length of the vertical offset used for margin tocs
 \setlength{\mtocshift}{1\vscale}% \mtocshift is overridden by \setchapterstyle
@@ -860,13 +865,13 @@
 % We want to create an additional entries in the toc which is to be used for the margintoc
 % We define these as mtocsection and mtocsubsection for section and subsection`
 \newcommand{\mtocsection}[1]{
-    \etoctoccontentsline{mtocsection}{%
+    \addcontentsline{toc}{mtocsection}{%
         \ifnum\value{secnumdepth}>0 \protect\numberline{\thesection}%
         \else \protect\nonumberline%
         \fi #1}%
 }
 \newcommand{\mtocsubsection}[1]{
-    \etoctoccontentsline{mtocsubsection}{%
+    \addcontentsline{toc}{mtocsubsection}{%
         \ifnum\value{secnumdepth}>1 \protect\numberline{\thesubsection}%
         \else \protect\nonumberline%
         \fi #1}%
@@ -893,19 +898,14 @@
             \oldsection[#2]{#3}%
         }%
         \IfNoValueTF{#4}{% optional label given, if not we do nothing
-            % \mtocsection{#3}%
-            \IfNoValueTF{#2}{%
-                \mtocsection{#3}% when no optional toc title, use main title
-            }{% no TOC arg
-                \mtocsection{#2}% when toc optional title is given, use it
-            }%
+            \mtocsection{#3}%
         }{%
             \mtocsection{#4}%
         }%
     }%
 }
 
-\RenewDocumentCommand\subsection{s o m o}{%
+\RenewDocumentCommand\subsection{s o m o}{
     \IfBooleanTF{#1}{%
         \oldsubsection*{#3}%
         \IfNoValueF{#2}{% if TOC arg is given create a TOC entry
@@ -918,11 +918,7 @@
             \oldsubsection[#2]{#3}%
         }%
         \IfNoValueTF{#4}{% optional label given, if not we do nothing
-            \IfNoValueTF{#2}{%
-                \mtocsubsection{#3}% when no optional toc title, use main title
-            }{% no TOC arg
-                \mtocsubsection{#2}% when toc optional title is given, use it
-            }%
+            \mtocsubsection{#3}%
         }{%
             \mtocsubsection{#4}%
         }%
@@ -957,8 +953,8 @@
           {}%
         \etocsetstyle{mtocsubsection}%
           {}%
-          {\setbox0\hbox{\usekomafont{section}\small\mdseries\etocthenumber\kern.8mm}%
-           \setbox1\hbox{\usekomafont{section}\small\mdseries\etocthepage}}%
+          {\setbox0\hbox{\usekomafont{section}\small\etocthenumber\kern.8mm}%
+           \setbox1\hbox{\usekomafont{section}\small\etocthepage}}%
           {\ifdim\wd0>\margintocnumwidth \edef\margintocnumwidth{\the\wd0} \fi%
            \ifdim\wd1>\margintocpagenumwidth \edef\margintocpagenumwidth{\the\wd1} \fi}%
           {}%
@@ -981,14 +977,14 @@
         % Set the style for section entries
         \etocsetstyle{mtocsection}%
         {\parindent 0pt \parskip 2.5pt \parfillskip 0pt \RaggedRight}%
-        {\leftskip \margintocnumwidth \rightskip \margintocpagenumwidth}%
+        {\leftskip \margintocnumwidth \rightskip \margintocpagenumwidth} %
         {\makebox[0pt][r]{\makebox[\margintocnumwidth][l]{\etocnumber}}\etocname\nobreak\leaders\hbox{\hbox to 1.5ex {\hss.\hss}}\hfill\rlap{\makebox[\margintocpagenumwidth][r]{\etocpage}}\par}%
         {}%
 		% Set the style for subsection entries
         \etocsetstyle{mtocsubsection}%
         {\parindent 0pt \parskip 0pt \parfillskip 0pt \RaggedRight}%
         {\leftskip \margintocnumwidth \rightskip \margintocpagenumwidth}%
-        {\makebox[0pt][r]{\makebox[\margintocnumwidth][l]{\mdseries\etocnumber}}{\mdseries\etocname\nobreak\leaders\hbox{\hbox to 1.5ex {\hss.\hss}}\hfill\rlap{\makebox[\margintocpagenumwidth][r]{\mdseries\etocpage}}}\par}%
+        {\makebox[0pt][r]{\makebox[\margintocnumwidth][l]{\etocnumber}}\etocname\nobreak\leaders\hbox{\hbox to 1.5ex {\hss.\hss}}\hfill\rlap{\makebox[\margintocpagenumwidth][r]{\etocpage}}\par}%
         {\parskip 2.5pt}%
 		% Set the global style of the toc
         \etocsettocstyle{\usekomafont{section}\small}{}%
@@ -1020,19 +1016,19 @@
 	\RequirePackage{amssymb} % Must be loaded before unicode-math
 	\RequirePackage[force]{filehook} % Fixes an error
 	\RequirePackage{unicode-math} % Math fonts in xetexorluatex
-    \setromanfont[ % Libertinus Serif font
+    \setromanfont[
 		Scale=1.04
 	]{Libertinus Serif}
-    \setsansfont[ % Libertinus Sans font
+	\setsansfont[
 		Scale=1
 	]{Libertinus Sans}
-    \setmonofont[ % Libertinus Mono font
+	\setmonofont[
 		Scale=.89
 	]{Liberation Mono}
-    \setmathfont{Libertinus Math} % Libertinus Math font
+	\setmathfont{Libertinus Math}
     \ifluatex
     \else
-        \RequirePackage{morewrites} % Fix some errors related to floats (not necessary with LuaLaTeX
+        \RequirePackage{morewrites} % Fix some errors related to floats
     \fi
 \else
 	\RequirePackage[utf8]{inputenc} % utf8 encoding in the input (.tex) file
@@ -1099,7 +1095,6 @@
 	\relax
 }
 
-% Redefine the \thanks command to allow users to use \label within \thanks without getting warnings
 \let\oldthanks\thanks
 \renewcommand\thanks[1]{%
     \label{bhfn:0}%
@@ -1133,7 +1128,6 @@
 %\addtokomafont{captionlabel}{\color{Blue}}
 %\addtokomafont{pagenumber}{\color{Maroon}}
 
-% Choose the default colors
 \hypersetup{
 	%anchorcolor=Red,
 	%citecolor=DarkOrange!70!black,
@@ -1150,9 +1144,9 @@
 %	ITEMS
 %----------------------------------------------------------------------------------------
 
-\renewcommand{\labelitemi}{\small$\blacktriangleright$} % Use a black triangle for the first level of \item's
-\renewcommand{\labelitemii}{\textbullet} % Use a bullet for the second level of \item's
-\RequirePackage[inline]{enumitem} % Used to customise lists (in particular, we don't want to put whitespace between items)
+\renewcommand{\labelitemi}{\small$\blacktriangleright$}
+\renewcommand{\labelitemii}{\textbullet}
+\RequirePackage{enumitem}
 \setlist[itemize]{noitemsep}
 \setlist[enumerate]{noitemsep}
 \setlist[description]{noitemsep}
@@ -1165,7 +1159,6 @@
 \RequirePackage{tikz}
 \RequirePackage[framemethod=TikZ]{mdframed}
 
-% Define a new style for mdframed boxes
 %\mdfsetup{skipabove=\topskip,skipbelow=0pt}
 \mdfdefinestyle{kaoboxstyle}{
 	skipabove=1.5\topskip,
@@ -1191,7 +1184,6 @@
 	%frametitlebackgroundcolor=LightBlue,
 }
 
-% Define a new environment using the style created above
 \newmdenv[
 	style=kaoboxstyle,
 	backgroundcolor=RoyalBlue!25!White,
@@ -1202,7 +1194,6 @@
 %	ENVIRONMENT WITH A COUNTER
 %----------------------------------------------------------------------------------------
 
-% Define an environment titled 'Comment' and numbered incrementally
 \newenvironment{kaocounter}{
 	\refstepcounter{kaocounter}
 	\begin{kaobox}[frametitle=Comment~\thekaocounter\autodot]
@@ -1210,7 +1201,6 @@
 	\end{kaobox}
 }
 
-% Define the commands to manage the counter for the 'kaocounter' environment
 \newcounter{kaocounter}
 \counterwithin{kaocounter}{section}
 \newcommand*{\kaocounterformat}{% Format for the caption
@@ -1222,25 +1212,23 @@
 %	FLOATING ENVIRONMENT WITH TOC ENTRIES
 %----------------------------------------------------------------------------------------
 
-% Define a floating environment
 \newenvironment{kaofloating}{%
 	\@float{kaofloating}%
 }{%
 	\end@float%
 }
 
-% Configure the 'kaofloating' environment
-\newcommand*{\fps@floatingbox}{tbph}% Allowed positions for the environment (top, bottom, own page, here)
-\newcommand*{\ftype@floatingbox}{5}% Set the type of float (floats of the same type cannot change their order; figures and tables are type 1 and 2 respectively)
-\newcommand*{\floatingboxformat}{% Set a title of the environment
+\newcommand*{\fps@floatingbox}{tbph}
+\newcommand*{\ftype@floatingbox}{5}
+\newcommand*{\floatingboxformat}{%
 	Insight~\thefloatingbox\csname autodot\endcsname}
-\newcommand*{\fnum@floatingbox}{\floatingboxformat}% Use the environment title
-\newcommand*{\ext@floatingbox}{loi}% Choose the extension of the auxiliary file for this environment
+\newcommand*{\fnum@floatingbox}{\floatingboxformat}
+\newcommand*{\ext@floatingbox}{loi}
 
-\addtotoclist[float]{loi}% Keep track of 'kaofloating' environments for a "List of Insights"
-\newcommand*{\listofloiname}{List of Insights}% Choose the title for the "List of Insights"
-\newcommand*{\l@floatingbox}{\l@figure}% Format the LOI
-\newcommand*{\listofinsights}{\listoftoc{loi}}% User-friendly command to print the LOI
+\addtotoclist[float]{loi}
+\newcommand*{\listofloiname}{List of Insights}
+\newcommand*{\l@floatingbox}{\l@figure}
+\newcommand*{\listofinsights}{\listoftoc{loi}}
 
 %----------------------------------------------------------------------------------------
 %	ADDITIONAL PACKAGES
@@ -1253,15 +1241,13 @@
 
 % Listings code
 \RequirePackage{listings} % Code
-%\RequirePackage{minted} (must be loaded before scrhack)
+%\RequirePackage{minted}
 
-% Configure the listings
 \definecolor{listingkeywords}{rgb}{0.0, 0.5, 0.0}
 \definecolor{listingidentifiers}{rgb}{0, 0, 0}
 \definecolor{listingcomments}{rgb}{0.25, 0.5, 0.5}
 \definecolor{listingstrings}{rgb}{0.73, 0.13, 0.13}
 \definecolor{listingnumbers}{rgb}{0.25, 0.25, 0.25}
-% Define a fancy style
 \lstdefinestyle{kaolst}{
 	aboveskip=0.7\topskip,
 	belowskip=0.1\topskip,
@@ -1287,7 +1273,6 @@
 	tabsize=4,
 	defaultdialect=[LaTeX]Tex,
 }
-% Define a plain style as well
 \lstdefinestyle{kaolstplain}{
 	aboveskip=0.6\topskip,
 	belowskip=-0.1\topskip,
@@ -1310,7 +1295,7 @@
 	tabsize=4,
 	defaultdialect=[LaTeX]Tex,
 }
-\lstset{style=kaolst}% Use the fancy style
+\lstset{style=kaolst}
 
 % Verbatim
 %\RequirePackage{fancyvrb} % Customization of verbatim environments
