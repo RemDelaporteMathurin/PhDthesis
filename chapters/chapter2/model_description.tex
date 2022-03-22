@@ -14,13 +14,14 @@ This Section describes the main model for simulating H transport in materials.
 \subsection{Bulk model}
 [describe where these MRE models come from, chemical reactions, etc.]
 As in most of MRE models, HIs are split in several populations which are the mobile and the trapped ones in the i-th trap, described using their concentration in \si{H.m^{-3}} (respectively $c_\mathrm{m}$ and $c_{\mathrm{t},i}$).
+The unit of the different concentration, $c_\mathrm{m}$ and $c_{\mathrm{t},i}$ are in $ \si{m^{-3}}$ but can be expressed in atomic fraction (at.fr.) by normalising them to the atomic density of the material.
 
 Fick's first law of diffusion states that the particle flux is driven by the concentration gradient.
 The particle flux $J$ is therefore expressed by:
 \begin{equation}
     J = - D \nabla c_\mathrm{m}
 \end{equation}
-where ${D(T)=D_0 \exp\big(\frac{-E_\mathrm{D}}{k_B \cdot T}\big)}$ is the diffusion coefficient in \si{m^2.s^{-1}}, $T$ being the temperature in $\si{K}$ and ${k_B = 8.617 \times 10^{-5} \si{eV.K^{-1}}}$ the Boltzmann constant. 
+where $D$ is the diffusion coefficient in \si{m^2.s^{-1}}. 
 
 This particle flux can be expressed differently if additionnal physics are accounted for.
 For instance, taking into account the Soret effect (also called thermodiffusion or thermophoresis), the particle flux is expressed as:
@@ -49,8 +50,7 @@ In Equation \ref{eq:mobile}, $\Gamma$ is the volumetric source term of particles
 The volumetric source term can be used to simulate any process producing H in the bulk.
 This is the case for plasma implantation and nuclear reactions producing H.
 
-In Equation \ref{eq: trapped}, $k(T)=k_0\exp{\big(\frac{-E_{k, i}}{k_B \cdot T}\big)}$ and $p(T)=p_0\exp{\big(\frac{-E_{p, i}}{k_B \cdot T}\big)}$ are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively and $n_i$ is the trap density in \si{m^{-3}}.
-The unit of the different concentration, $c_\mathrm{m}$ and $c_{\mathrm{t},i}$ are in $ \si{m^{-3}}$ but can be expressed in atomic fraction (at.fr.) by normalising them to the atomic density of the material.
+In Equation \ref{eq: trapped}, $k$ and $p$ are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively and $n_i$ is the trap density in \si{m^{-3}}.
 
 \subsection{Boundary conditions}
 
