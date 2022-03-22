@@ -20,7 +20,7 @@ The particle flux $J$ is therefore expressed by:
 \begin{equation}
     J = - D \nabla c_\mathrm{m}
 \end{equation}
-where $D$ is the diffusion coefficient of hydrogen expressed in \si{m^{2}.s^{-1}}. 
+where ${D(T)=D_0 \exp\big(\frac{-E_\mathrm{D}}{k_B \cdot T}\big)}$ is the diffusion coefficient in \si{m^2.s^{-1}}, $T$ being the temperature in $\si{K}$ and ${k_B = 8.617 \times 10^{-5} \si{eV.K^{-1}}}$ the Boltzmann constant. 
 
 This particle flux can be expressed differently if additionnal physics are accounted for.
 For instance, taking into account the Soret effect (also called thermodiffusion or thermophoresis), the particle flux is expressed as:
@@ -45,9 +45,11 @@ The spatio temporal evolution of these concentrations are commonly described by 
 
 [Add the assumptions behind this model]
 
-In Equation \ref{eq:mobile}, ${D(T)=D_0 \exp\big(\frac{-E_\mathrm{D}}{k_B \cdot T}\big)}$ is the diffusion coefficient in \si{m^2.s^{-1}}, $T$ being the temperature in $\si{K}$ and ${k_B = 8.617 \times 10^{-5} \si{eV.K^{-1}}}$ the Boltzmann constant, $\Gamma$ is the volumetric source term of particles in \si{m^{-3}.s^{-1}}, $k(T)=k_0\exp{\big(\frac{-E_{k, i}}{k_B \cdot T}\big)}$ and $p(T)=p_0\exp{\big(\frac{-E_{p, i}}{k_B \cdot T}\big)}$ are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively and $n_i$ is the trap density in \si{m^{-3}}.
+In Equation \ref{eq:mobile}, $\Gamma$ is the volumetric source term of particles in \si{m^{-3}.s^{-1}}.
 The volumetric source term can be used to simulate any process producing H in the bulk.
 This is the case for plasma implantation and nuclear reactions producing H.
+
+In Equation \ref{eq: trapped}, $k(T)=k_0\exp{\big(\frac{-E_{k, i}}{k_B \cdot T}\big)}$ and $p(T)=p_0\exp{\big(\frac{-E_{p, i}}{k_B \cdot T}\big)}$ are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively and $n_i$ is the trap density in \si{m^{-3}}.
 The unit of the different concentration, $c_\mathrm{m}$ and $c_{\mathrm{t},i}$ are in $ \si{m^{-3}}$ but can be expressed in atomic fraction (at.fr.) by normalising them to the atomic density of the material.
 
 \subsection{Boundary conditions}
