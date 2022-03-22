@@ -11,10 +11,12 @@ Finally, the verification \& validation of FESTIM is performed to guaranty its r
 
 This Section describes the main model for simulating H transport in materials.
 
-\subsection{Bulk model}
-[describe where these MRE models come from, chemical reactions, etc.]
-As in most of MRE models, HIs are split in several populations which are the mobile and the trapped ones in the i-th trap, described using their concentration in \si{H.m^{-3}} (respectively $c_\mathrm{m}$ and $c_{\mathrm{t},i}$).
-The unit of the different concentration, $c_\mathrm{m}$ and $c_{\mathrm{t},i}$ are in $ \si{m^{-3}}$ but can be expressed in atomic fraction (at.fr.) by normalising them to the atomic density of the material.
+\subsection{Macroscopic Rate Equations model}
+
+The Macroscopic Rate Equations (MRE) model will be employed.
+The principle is to split the hydrogen isotopes into several populations: the mobile hydrogen particles and the hydrogen particles trapped in the i-th trap.
+Their concentration in \si{H.m^{-3}} are respectively $c_\mathrm{m}$ and $c_{\mathrm{t},i}$.
+The unit of the different concentrations are in $ \si{m^{-3}}$ but can be expressed in atomic fraction (at.fr.) by normalising them to the atomic density of the material.
 
 Fick's first law of diffusion states that the particle flux is driven by the concentration gradient.
 The particle flux $J$ is therefore expressed by:
@@ -40,17 +42,15 @@ The spatio temporal evolution of these concentrations are commonly described by 
 \end{equation}
 
 \begin{equation}
-    \frac{\partial c_{\mathrm{t}, i}}{\partial t}=k(T) \cdot c_\mathrm{m} \cdot\left(n_{i}-c_{\mathrm{t}, i}\right)-p(T) \cdot c_{\mathrm{t}, i}
+    \frac{\partial c_{\mathrm{t}, i}}{\partial t}=k \cdot c_\mathrm{m} \cdot\left(n_{i}-c_{\mathrm{t}, i}\right)-p \cdot c_{\mathrm{t}, i}
     \label{eq:trapped}
 \end{equation}
-
-[Add the assumptions behind this model]
 
 In Equation \ref{eq:mobile}, $\Gamma$ is the volumetric source term of particles in \si{m^{-3}.s^{-1}}.
 The volumetric source term can be used to simulate any process producing H in the bulk.
 This is the case for plasma implantation and nuclear reactions producing H.
 
-In Equation \ref{eq: trapped}, $k$ and $p$ are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively and $n_i$ is the trap density in \si{m^{-3}}.
+In Equation \ref{eq:trapped}, $k$ and $p$ are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively and $n_i$ is the trap density in \si{m^{-3}}.
 
 \subsection{Boundary conditions}
 
