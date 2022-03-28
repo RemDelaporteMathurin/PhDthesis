@@ -219,7 +219,7 @@ The objective of the ITER tokamak, currently under construction in France, is to
 
 Tritium is an issue for safety, but is also the key ingredient of nuclear fusion.
 
-\subsection{Tritium breeding}
+\subsection{Breeding}
 \begin{itemize}
     \item Tritium self sufficiency
     \item tritium is radioactive and decays
@@ -228,7 +228,16 @@ Tritium is an issue for safety, but is also the key ingredient of nuclear fusion
     \item Breeding blankets or molten salts
 \end{itemize}
 
-\subsection{Divertor}
+\subsection{Safety}
+Safety
+\begin{itemize}
+    \item Half life of 12 yrs
+    \item beta emmitter
+    \item tritiated wastes
+\end{itemize}
+
+
+In the divertor
 \begin{itemize}
     \item Particle and heat exhaust
     \item Different types of divertors (double null, super x, snowflake...)
@@ -581,12 +590,30 @@ This works gives evidence of an interaction between He and H in W.
 %     \item DFT, MD
 % \end{itemize}
 
-\section{Code review}
-\begin{figure}
+\section{Macroscopic scale modelling of hydrogen transport}
+
+Several simulation tools have been developed throughout the years (see Table \ref{tab: code comparison}).
+Many of them rely of Finite Differences (FD) whereas the HIT code \cite{candido_integrated_2020} relies on Finite Element (FE).
+Most of these codes are not able to run multi-material, multi-dimensional simulations.
+Moreover, not all of them have an integrated heat transfer solver.
+
+
+\begin{table*}
     \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter1/code_comparison_table.png}
-    \label{TO BE REPLACED BY AN ACTUAL TABLE}
-\end{figure}
+    \begin{tabular}{L{2cm} L{0.5cm} L{0.5cm} L{0.5cm} L{1.7cm} l l l l}
+              & 1D & 2D & 3D & Multimaterial & Numerical method & Heat transfer & Based on free software \\
+        \hline \\
+        TMAP7 \cite{longhurst_tmap7_2008} & $\checkmark$ & & & & FD & & $\checkmark$ \\
+        HIIPC \cite{sang_modelling_2012} & $\checkmark$ & & & & FD & $\checkmark$ & $\checkmark$ \\
+        MHIMS \cite{hodille_study_2016} & $\checkmark$ & & & & FD & & $\checkmark$ \\
+        TESSIM \cite{schmid_transport_2014} & $\checkmark$ & & & & FD & & \\
+        HIT \cite{candido_integrated_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & FE & $\checkmark$ & \\
+        \\
+    \end{tabular}
+    \caption{Comparison of some hydrogen transport modelling tools.}
+    \label{tab: code comparison}
+\end{table*}
+
 
 \section{Roadmap}
 
