@@ -237,23 +237,39 @@ For this reason, the ITER divertor will be made of tungsten but the first wall (
 
 \section{The tritium issue} \label{the tritium issue}
 
-Tritium is an issue for safety, but is also the key ingredient of nuclear fusion.
-
 \subsection{Breeding}
-\begin{itemize}
-    \item Tritium self sufficiency
-    \item tritium is radioactive and decays
-    \item T must be produced
-    \item Li + T
-    \item Breeding blankets or molten salts
-\end{itemize}
+Tritium is a radioactive isotope of hydrogen.
+Its half-life is approximately 12 years and it decays into helium-3 emitting a beta particle of \SI{0.018590}{MeV}.
+For this reason, tritium is very rare on Earth.
+The current reserve of tritium in the world is a few dozens of kilograms.
+It is naturally produced by interaction of comsic rays with the nitrogen in the atmosphere (\SI{0.2}{kg} per year).
+Tritium is however produced in larger quantities in fission CANDU reactors as a by-product (\SI{130}{g} per year per CANDU reactor \sidecite{ni_tritium_2013}).
+
+ITER itself will consume around \SI{18}{kg} of tritium over the duration of its operation \sidecite{glugla_iter_2007}, which represent a yearly consumption of \SI{0.9}{kg} for a 20-year lifetime.
+A \SI{800}{MWe} DEMO-type commercial fusion reactor would burn around \SI{300}{g} of tritium per day ($\approx \SI{100}{kg}$ a year).
+
+For all these reasons, tritium must be produced on-site in large quantities for a fusion economy to be possible.
+
+To this end, the neutrons of the DT fusion reactions will be harnessed in a component called the \textit{breeding blanket} containing lithium (Li).
+Depending on the Li isotope, two reactions can occur:
+
+\begin{align}
+    \text{n} + \text{\textsuperscript{6}Li}  \ \ &\xrightarrow{} \ \ \text{\textsuperscript{3}H} + \alpha + \SI{4.8}{MeV}\\
+    \text{n} + \text{\textsuperscript{7}Li}  \ \ &\xrightarrow{} \ \ \text{\textsuperscript{3}H} + \alpha + \text{n}' - \SI{2.5}{MeV} 
+\end{align}
+
+Several blankets designs have been proposed divided in three main categories: ceramic concepts, liquid metal concepts, and molten-salts concepts.
+All designs differ in the choice of tritium breeder, coolant and geometry.
+
+The european candidates for breeding blankets in DEMO are the Water-Cooled-Lithium-Lead (WCLL), the Helium-Cooled-Pebble-Bed (HCPB), the Helium-Cooled-Liquid-Lead (HCLL) and the Dual-Coolant-Lithium-Lead (cooled by water and helium).
+
+Hydrogen transport in these components is key for retention of tritium in solid parts of the blankets could reduce their performances as it would be hard to recover it.
+A high retention in the blanket would also lead to a high startup inventory (\textit{ie} the inventory needed when commissioning the fusion power plant) making fusion energy more expensive.
 
 \subsection{Safety}
-Safety
 \begin{itemize}
-    \item Half life of 12 yrs
-    \item beta emmitter
-    \item tritiated wastes
+    \item tritiated wastes (retention)
+    \item permation and contamination of coolants
 \end{itemize}
 
 \subsection{Fueling}
