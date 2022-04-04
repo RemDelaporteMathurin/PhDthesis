@@ -171,7 +171,7 @@ It is characterised by an energy confinement time $\tau_E$ and can be expressed 
     P_\mathrm{losses} = \frac{W}{\tau_E} = \frac{3 n T}{\tau_E}
 \end{equation}
 
-Assuming energy equilibrium (\textit{ie} $\frac{\partial W}{\partial t} = 0$) Equation \ref{eq: plasma energy balance} can therefore be written as:
+Assuming energy equilibrium (\textit{ie} $\frac{\partial W}{\partial t} = 0$), Equation \ref{eq: plasma energy balance} can therefore be written as:
 \begin{align}
     P_\mathrm{losses} &= P_\mathrm{fusion} + P_\mathrm{heating} \\
     \Leftrightarrow \frac{3 n T}{\tau_E} &= \frac{1}{4} n^2 \left\langle \sigma \right\rangle E_\alpha + \frac{P_\mathrm{fusion}}{Q}
@@ -187,9 +187,18 @@ $n T \tau_E$ is known as the \textit{triple product}, a figure of merit describi
 Equation \ref{eq: triple product} gives the triple-product required to achieve a given amplification factor $Q$ at a given temperature $T$.
 
 When $P_\mathrm{heating}$ approaches zero (\textit{ie} the auxilliary heating systems are shut down), the amplification factor $Q$ approaches $\infty$.
-Therefore 
+Therefore:
 \begin{equation}
-    n T \tau_E \rightarrow \frac{12 T^2}{\left\langle \sigma \right\rangle E_\alpha} \geq \SI{3e21}{keV.s.m^{-3}}
+    n T \tau_E \rightarrow \frac{12 T^2}{\left\langle \sigma \right\rangle E_\alpha}
+    \label{eq: triple product infinity}
+\end{equation}
+
+The quantity $T^2/\langle \sigma \rangle$ has a minimum around $T=\SI{14}{keV}$.
+Furthermore, when $\SI{10}{keV} < T < \SI{20}{keV}$, the DT reactivity can be approximated by $\langle \sigma \rangle \approx 1.1 \times 10^{-24} T^2$.
+
+Equation \ref{eq: triple product infinity} can therefore be written as:
+\begin{equation}
+    n T \tau_E \geq \SI{3e21}{keV.s.m^{-3}}
 \end{equation}
 
 This is known as the Lawson criterion, which needs to be satisfied in order to reach \textit{ignition} ($Q = \infty$).
