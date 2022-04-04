@@ -4,16 +4,21 @@
 \chapter{Fusion: general introduction}\label{Chapter1}
 % For referencing the chapter elsewhere, use \ref{Chapter1} 
 
-blablabla need for clean and abundant energy
+"\textit{I would put my money on the sun! What a source of power! I hope we don't have to wait until oil and coal run out before we tackle that.}" Thomas Edison once said.
+The use of fossil fuels (coal, gas, oil) has allowed the modern human civilisation to reach its current standard of living.
+However, their intensive use led to astronomical carbon dioxyde (CO2) emissions.
+Since Edison died in 1931, 1500 billion tonnes of CO2 have been emitted on Earth from burning fossil fuels and about 33 bilion tonnes of CO2 are still being released every year \cite{friedlingstein_global_2021}.
+The consequence of these emissions is global warming and these CO2 emissions must stop in order to limit it to an "acceptable" level - regardless of the remaining oil and coal reserves.
+Reducing the CO2 emissions implies reducing the world energy consumption while developping clean sources of energy.
+It is very unlikely that these new sources will be able to completely replace fossil fuels.
+They would however act as a shock absorber in the energy crisis mankind is facing.
+
+When looking at the Sun, Edison saw how massive and inexhaustible its energy was.
+The process powering the stars is called \textit{nuclear fusion}.
+It does not release any greenhouse gases, it is energetically dense and its fuel is abundant on Earth.
+Could it be one of these new sources of energy?
 
 \section{Thermonuclear fusion}
-\begin{itemize}
-    \item e=mc2
-    \item DT reaction
-    \item magnetic confinement --> Tokamak
-    \item triple product
-    \item Choice of a plasma facing material
-\end{itemize}
 
 The fundamental principle of nuclear fusion is to fuse two light nuclei into a heavier nucleus.
 The mass difference between the products and the reactants is released in the form of energy (see Equation \ref{eq: emc2}).
@@ -61,7 +66,7 @@ Each of these reactions has a different cross-section.
 
 \begin{subequations}
     \begin{equation}
-         \ce{^2H + ^2H -> ^3H (\SI{1.01}{MeV})+ n (\SI{3.02}{MeV})}
+         \ce{^2H + ^2H -> ^3H (\SI{1.01}{MeV}) + n (\SI{3.02}{MeV})}
     \end{equation}
     \begin{equation}
         \ce{^2H + ^2H -> ^3He (\SI{0.82}{MeV}) + n (\SI{2.45}{MeV})}
@@ -199,6 +204,8 @@ These devices, known as \textit{inertial fusion devices}, exhibit extremely high
 So far, no fusion device has been able to even reach \textit{break-even} ($Q = 1$) (see Figure \ref{fig: triple product vs T}).
 The record of $Q = 0.68$ by the European tokamak JET (Joint European Torus) and was performed in 1997.
 The objective of the ITER tokamak, currently under construction in France, is to demonstrate an amplification factor of $Q=10$ over \SI{400}{s}. 
+Other designs aim at demonstrating plasma gain (\textit{ie} $Q > 1$) sooner than ITER and at a smaller scale.
+This is the case of SPARC and ARC developed by Commonwealth Fusion Systems and MIT \sidecite{sorbom_arc_2015,creely_overview_2020}.
 
 \begin{figure}
     \centering
@@ -619,10 +626,16 @@ Moreover, not all of them have an integrated heat transfer solver.
               & 1D & 2D & 3D & Multimaterial & Numerical method & Heat transfer & Based on free software \\
         \hline \\
         TMAP7 \cite{longhurst_tmap7_2008} & $\checkmark$ & & & & FD & & $\checkmark$ \\
+        \\
         HIIPC \cite{sang_modelling_2012} & $\checkmark$ & & & & FD & $\checkmark$ & $\checkmark$ \\
+        \\
         MHIMS \cite{hodille_study_2016} & $\checkmark$ & & & & FD & & $\checkmark$ \\
+        \\
         TESSIM \cite{schmid_transport_2014} & $\checkmark$ & & & & FD & & \\
+        \\
         HIT \cite{candido_integrated_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & FE & $\checkmark$ & \\
+        \\
+        ACHLYS \cite{} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & FE & $\checkmark$ & $\checkmark$ \\
         \\
     \end{tabular}
     \caption{Comparison of some hydrogen transport modelling tools.}
@@ -632,7 +645,7 @@ Moreover, not all of them have an integrated heat transfer solver.
 
 \section{Roadmap}
 
-This PhD work aims at estimating the retention H isotopes in tokamak divertors.
+This PhD work aims at estimating the retention of H isotopes in tokamak components and how the presence of helium could affect it.
 The first part of this work is to develop a modelling tool capable of solving H transport problem in 2D/3D (Chapter \ref{Chapter2}).
 This new modelling tool is then applied to component scale problems and H retention is estimated at the monoblock level (Chapter \ref{Chapter3}).
 The next stage is to scale up from a monoblock model to a full divertor model (Chapter \ref{Chapter4}).
