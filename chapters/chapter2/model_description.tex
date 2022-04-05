@@ -346,83 +346,83 @@ Users only have to provide inputs such as material properties, traps properties,
 Multi-dimensional transient simulations coupled with heat transfer can therefore be run fairly easily without finite element knowledge.
 Nevertheless, since FESTIM is object-oriented, advanced users will always be able to turn FESTIM inside-out to adapt the code to their specific needs (specific boundary conditions, slight changes in the governing equations...).
 Since FESTIM is written in python - which is a fairly easy-to-learn programming langage - no advanced level of coding is required.
-For example, the simple code below is all that is required to simulate H transport in a bi-material case (see Figure \ref{fig: example FESTIM}).
+% For example, the simple code below is all that is required to simulate H transport in a bi-material case (see Figure \ref{fig: example FESTIM}).
 
 
-\begin{lstlisting}[language=Python]
+% \begin{lstlisting}[language=Python]
 
-import FESTIM
-import numpy as np
+% import FESTIM
+% import numpy as np
 
-parameters = {
-    "materials": [
-        {  # material 1
-            "D_0": 1,  # diffusion coefficient
-            "E_D": 0.2,
-            "borders": [0, 5],
-            "id": 1
-        },
-        {  # material 2
-            "D_0": 0.5,
-            "E_D": 0.2,
-            "borders": [5, 10],
-            "id": 2
-        },
-    ],
-    "boundary_conditions": [
-        {
-            "type": "dc",
-            "value": 0,  # c_m = 0 on boundaries
-            "surfaces": [1, 2],  # left and right
-        }
-    ],
-    "source_term": {
-        "value": 0.1  # volumetric source of H
-    },
-    "temperature": {
-        "type": "expression",
-        "value": 600 + 10*FESTIM.x
-    },
-    "traps": [
-        {
-            "k_0": 1,  # trapping rate
-            "E_k": 0,
-            "p_0": 1,  # detrapping rate
-            "E_p": 0,
-            "density": 10,
-            "materials": [1]
-        }
-    ],
-    "mesh_parameters": {
-        "vertices": np.linspace(0, 10, num=500)
-    },
-    "exports": {},
-    "solving_parameters": {
-        "type": "solve_stationary",
-        "newton_solver": {
-            "absolute_tolerance": 1e-10,
-            "relative_tolerance": 1e-10,
-            "maximum_iterations": 15
-        },
-        "traps_element_type": "DG"
-    }
-}
+% parameters = {
+%     "materials": [
+%         {  # material 1
+%             "D_0": 1,  # diffusion coefficient
+%             "E_D": 0.2,
+%             "borders": [0, 5],
+%             "id": 1
+%         },
+%         {  # material 2
+%             "D_0": 0.5,
+%             "E_D": 0.2,
+%             "borders": [5, 10],
+%             "id": 2
+%         },
+%     ],
+%     "boundary_conditions": [
+%         {
+%             "type": "dc",
+%             "value": 0,  # c_m = 0 on boundaries
+%             "surfaces": [1, 2],  # left and right
+%         }
+%     ],
+%     "source_term": {
+%         "value": 0.1  # volumetric source of H
+%     },
+%     "temperature": {
+%         "type": "expression",
+%         "value": 600 + 10*FESTIM.x
+%     },
+%     "traps": [
+%         {
+%             "k_0": 1,  # trapping rate
+%             "E_k": 0,
+%             "p_0": 1,  # detrapping rate
+%             "E_p": 0,
+%             "density": 10,
+%             "materials": [1]
+%         }
+%     ],
+%     "mesh_parameters": {
+%         "vertices": np.linspace(0, 10, num=500)
+%     },
+%     "exports": {},
+%     "solving_parameters": {
+%         "type": "solve_stationary",
+%         "newton_solver": {
+%             "absolute_tolerance": 1e-10,
+%             "relative_tolerance": 1e-10,
+%             "maximum_iterations": 15
+%         },
+%         "traps_element_type": "DG"
+%     }
+% }
 
-output = FESTIM.run(parameters)
+% output = FESTIM.run(parameters)
 
-from fenics import plot
-import matplotlib.pyplot as plt
+% from fenics import plot
+% import matplotlib.pyplot as plt
 
-plot(output["solutions"]["retention"])
-plt.show()
-\end{lstlisting}
+% plot(output["solutions"]["retention"])
+% plt.show()
+% \end{lstlisting}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.7\linewidth]{Figures/Chapter2/example.pdf}
-    \caption{Example retention profile in a bi-material case produced by FESTIM}
-    \label{fig: example FESTIM}
-\end{figure}
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=0.7\linewidth]{Figures/Chapter2/example.pdf}
+%     \caption{Example retention profile in a bi-material case produced by FESTIM}
+%     \label{fig: example FESTIM}
+% \end{figure}
 
 % physics
 As mentioned above, FESTIM simulates the transport (diffusion and trapping) of H and additional physics can be incorporated, such as the Soret effect (also called heat of transport) and conservation of chemical potential at interfaces...
