@@ -97,7 +97,7 @@
 \usepackage{kaobiblio}
 \addbibresource{bibfile.bib} % Bibliography file
 
-\RenewDocumentCommand{\formatmargincitation}{m}{
+\RenewDocumentCommand{\formatmargincitation}{m}{%
 	\parencite{#1} \citeauthor*{#1} (\citeyear{#1})\\
 }
 
