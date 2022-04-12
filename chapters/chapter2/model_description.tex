@@ -67,24 +67,6 @@ Moreover, the mobile H concentration is independent of trapping effects.
 
 Several boundary conditions will be employed in order to constrain either the actual solution (Dirichlet) or the solution gradient (Neumann, Robin) at the domain's boundaries.
 
-\subsubsection{Imposed concentration}
-
-The mobile hydrogen concentration can be fixed at the surface by applying Dirichlet boundary conditions as described in Equation \ref{eq:dirichlet bc}.
-\begin{equation}
-    c_\mathrm{m} = c_0(x, t) \quad \text { on } \partial \Omega
-    \label{eq:dirichlet bc}
-\end{equation}
-where $x$ is the spatial coordinate, $t$ is the time, $\partial \Omega$ is a domain boundary.
-
-$c_0$ can be calculated from Sievert's law of equilibrium and Equation \ref{eq:dirichlet bc} reads:
-\begin{equation}
-    c_\mathrm{m} = S(T) \sqrt{P}\quad \text { on } \partial \Omega
-    \label{eq: Sievert's law}
-\end{equation}
-where $P$ is the partial pressure of hydrogen at the boundary in \si{Pa}, $S(T)=S_0 \exp(\frac{-E_S}{k_B T})$ is the material solubility in \si{m^{-3}.Pa^{-1/2}} and $T$ is the local temperature in \si{K}.
-This law of equilibrium is a steady-state approximation of a more complex model which takes into account flux exchanges between adsorbed and mobile concentrations at the boundary.
-It is therefore valid when applied to cases where the kinetics are fast enough for the system to remain at equilibrium.
-
 \subsubsection{Dissociation and recombination fluxes}
 
 The concentration gradient can also be constrained on the boundaries (see Equation \ref{eq: neuman robin bc}).
@@ -115,15 +97,23 @@ These particle can then reach the bulk and diffuse in the metal.
 
 A steady-state approximation of the flux balance between recombination and dissociation fluxes is the Sievert's law (see Equation \ref{eq: Sievert's law}).
 
+\begin{equation}
+    c_\mathrm{m} = S(T) \sqrt{P}\quad \text { on } \partial \Omega
+    \label{eq: Sievert's law}
+\end{equation}
+where $P$ is the partial pressure of hydrogen at the boundary in \si{Pa}, $S(T)=S_0 \exp(\frac{-E_S}{k_B T})$ is the material solubility in \si{m^{-3}.Pa^{-1/2}} and $T$ is the local temperature in \si{K}.
+This law of equilibrium is a steady-state approximation of a more complex model which takes into account flux exchanges between adsorbed and mobile concentrations at the boundary.
+It is therefore valid when applied to cases where the kinetics are fast enough for the system to remain at equilibrium.
+
 \subsubsection{Analytical simplification for implanted sources of H} \label{triangle model}
 [say that cmax also has a transient component]
 
-Plasma implantation of hydrogen particles can be modelled by a volumetric source.
+Plasma implantation of hydrogen particles can be modelled with a volumetric source.
 Typically, the depth of the implantation profile is a few nanometres (depending on the incident particles energy).
 These profiles can be simulated by Monte Carlo codes like SRIM \sidecite{ziegler_srim_2010} and have a gaussian-like shape.
-In order to accurately model this source term, the size of the cells constituing the mesh (the spatial discretisation of the domain) must be less than a nanometre.
-This can be done easily in 1D but is very complicated in higher dimensions, especially when simulating centimetre-sized components.
-Fortunately, an analytical simplification can be done to convert this volumetric source term into a Dirichlet boundary condition (\textit{ie} enforcing the mobile particle concentration at the exposed surface).
+% In order to accurately model this source term, the size of the cells constituing the mesh (the spatial discretisation of the domain) must be less than a nanometre.
+% This can be done easily in 1D but is very complicated in higher dimensions, especially when simulating centimetre-sized components.
+This volumetric source term can be simplified into a Dirichlet boundary condition (\textit{ie} enforcing the mobile particle concentration at the exposed surface).
 
 Let us consider a volumetric source term of hydrogen $\Gamma = \varphi_\mathrm{imp} \; f(x)$ where $f$ is a narrow Gaussian distribution.
 The mobile particles concentration profile can be approximated by a triangular shape \sidecite{schmid_diffusion-trapping_2016} (see Figure \ref{fig:recomb sketch}).
@@ -165,7 +155,7 @@ Moreover, according to Fick's law, $\varphi_\mathrm{recomb}$ can be expressed as
     \label{eq:c_max}
 \end{eqnarray}
 
-$\varphi_\mathrm{recomb}$ can also be expressed as a function of the recombination coefficient $K$:
+Assuming second order recombination, $\varphi_\mathrm{recomb}$ can also be expressed as a function of the recombination coefficient $K$:
 
 \begin{eqnarray}
     \varphi_\mathrm{recomb} &= K c_{0}^{2} = \varphi_\mathrm{imp}\\
@@ -182,8 +172,8 @@ By replacing Equation \ref{eq:c_0} in Equation \ref{eq:c_max} one can obtain:
 As the recombination process becomes fast (\textit{ie} $K \rightarrow \infty$), $c_0 \approx 0$ and $c_\mathrm{max} \approx \frac{\varphi_\mathrm{imp} R_{p}}{D}$.
 
 Since the main driver for the diffusion is the value $c_\mathrm{max}$, when $R_p$ is negligeable compared to the dimension of the simulation domain, one can simply impose this value at the surface.
-This analytical simplification is especially useful to simulate implanted sources near the surface (\textit{eg} plasma implantation) without having to finely discretise the domain to fully represent the gaussian distribution.
-Such a discretisation can be easily done for 1D simulations but is very complex in 2D and 3D and often makes the mesh very large which increases drastically the computational cost.
+% This analytical simplification is especially useful to simulate implanted sources near the surface (\textit{eg} plasma implantation) without having to finely discretise the domain to fully represent the gaussian distribution.
+% Such a discretisation can be easily done for 1D simulations but is very complex in 2D and 3D and often makes the mesh very large which increases drastically the computational cost.
 
 
 \subsection{Interface condition: conservation of chemical potential}
@@ -193,11 +183,11 @@ According to Krom \textit{et al} \sidecite{krom_hydrogen_2000}, since the solubi
 \end{equation}
 where $\mu_0$ is the chemical potential in a reference state in \si{J.mol^{-1}}, $R$ the ideal gas constant, $T$ the temperature in \si{K}, $c_\mathrm{m}$ the mobile hydrogen concentration in \si{m^{-3}} and $N_L$ the lattice site concentration in \si{m^{-3}}.
 
-Assuming that only free hydrogen atoms contribute to the overall flux in the material, the particle flux $J$ in \si{m^{-2}.s^{-1}} can be expressed by Fick's law:
-\begin{equation}
-    J = - D \nabla c_\mathrm{m}
-\end{equation}
-where $D$ is the diffusion coefficient of hydrogen expressed in \si{m^{2}.s^{-1}}. 
+% Assuming that only free hydrogen atoms contribute to the overall flux in the material, the particle flux $J$ in \si{m^{-2}.s^{-1}} can be expressed by Fick's law:
+% \begin{equation}
+%     J = - D \nabla c_\mathrm{m}
+% \end{equation}
+% where $D$ is the diffusion coefficient of hydrogen expressed in \si{m^{2}.s^{-1}}. 
 
 
 The local equilibrium at the interface between two materials must ensure  the continuity of both the chemical potential $\mu$ (see Equation \ref{eq: muconservation}) and the particle flux (see Equation \ref{eq: flux conservation}).
