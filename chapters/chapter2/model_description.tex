@@ -231,17 +231,7 @@ with $S$ the solubility of H in the materials expressed in \si{m^{-3}.Pa^{-0.5}}
 % From Equation \ref{eq: c/s conservation}, one can deduce that a solubility discontinuity across an interface induces a discontinuity of mobile hydrogen concentration $c_\mathrm{m}$.
 % This can also be interpreted as the chemical potentials at a reference state being different in different materials \sidecite{kirchheim_25_2014}, as the lattice site concentration.
 
-To ensure a correct treatment of the material interface in hydrogen transport codes, two approaches can be employed.
-The most straightforward approach is to solve the hydrogen mobile concentration transport in both materials (see Equation \ref{eq: diffusion equation}) and enforce the concentration jump at the interface between the two materials with an internal condition verifying  Equation \ref{eq: c/s conservation} \sidecite{longhurst_tmap7_2008}.
-
-[is this equation really needed?]
-\begin{equation}
-    \frac{\partial c_\mathrm{m}}{\partial t}=\nabla \cdot\left(D \nabla c_\mathrm{m}\right) + f
-   \label{eq: diffusion equation}
-\end{equation}
-where $f$ is the source term in \si{m^{-3}.s^{-1}}.
-
-Another method is to perform a change of variable in Fick's second law of diffusion with $\phi = c_\mathrm{m}/S$ \sidecite{smith_abaqusstandard_2009} when internal conditions cannot be set.
+A method to ensure continuity of chemical potential is to perform a change of variable in Fick's second law of diffusion with $\phi = c_\mathrm{m}/S$ (in the case of a metal) \sidecite{smith_abaqusstandard_2009} when internal conditions cannot be set.
 Equation \ref{eq: diffusion equation} therefore reads:
 
 \begin{align}

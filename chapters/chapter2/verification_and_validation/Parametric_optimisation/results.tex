@@ -20,7 +20,7 @@ An interesting feature of this spectrum is the negative area of the contribution
 Because not all of these traps are saturated, when trap 1 is empyting, some of the hydrogen particles are nearly instantly trapped in the second trap which has a higher detrapping energy.
 
 % (1 trap [ 0.88368005  1.44347635] 2 traps [ 0.83582125  1.23768655  0.98708714  6.85457283])
-\begin{figure*} [ht]
+\begin{figure*} [h!]
     \centering
         \begin{subfigure}[t]{0.5\linewidth}
             \centering
@@ -48,9 +48,9 @@ One single cost function evaluation "costing" less than \SI{20}{s} to compute (f
 Hollingsworth \textit{et al} performed thermo-desorption on pre-damaged EUROFER at several damage levels \sidecite{hollingsworth_comparative_2019}.
 Three spectra with similar exposure conditions have been fitted with one trapping site (since only one peak appears on the spectra) as shown on Figure \ref{fig:TPD EUROFER}.
 
-\begin{figure} [ht]
+\begin{figure} [h!]
     \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter3/Parametric_optimisation/EUROFER_hollingsworth.pdf}
+    \includegraphics[width=0.9\linewidth]{Figures/Chapter3/Parametric_optimisation/EUROFER_hollingsworth.pdf}
     \caption{TPD spectra of damaged EUROFER \cite{hollingsworth_comparative_2019}. Fitted with one trapping site (solid line) $E=\SI{1.06}{eV}$ and densities of \SI{8.9e-3}{at.fr}, \SI{2.8e-2}{at.fr} and \SI{5.0e-2}{at.fr} for \SI{0}{dpa}, \SI{0.01}{dpa} and \SI{0.1}{dpa}, respectively. Dashed lines correspond to optimisations with an unweighted cost function. Dots correspond to experimental data.}
     \label{fig:TPD EUROFER}
 \end{figure}
@@ -71,9 +71,9 @@ The experiment performed on Aluminium by Quiros \textit{et al} \sidecite{quiros_
 Only one trap has been set in the simulation and its energy $E_p$ and density $n$ are set as free parameters.
 Every other parameters are fixed and taken from \cite{quiros_blister_2017, quiros_blistering_2019}.
 The resulting simulated TPD spectrum is shown on Figure \ref{fig:TPD alu}.
-\begin{figure} [ht]
+\begin{figure} [h!]
     \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter3/Parametric_optimisation/alu_quiros.pdf}
+    \includegraphics[width=0.9\linewidth]{Figures/Chapter3/Parametric_optimisation/alu_quiros.pdf}
     \caption{TPD spectrum of aluminium exposed to \SI{3e23}{H.m^{-2}} at \SI{618}{K} \cite{quiros_blister_2017, quiros_blistering_2019}. Fitted with one trapping site $n = \SI{1.8e-2}{at.fr.}$ and $E =\SI{1.1}{eV}$. Dots correspond to experimental data. Dashed lines correspond to the temporal evolution of each trapping population's inventory.}
     \label{fig:TPD alu}
 \end{figure}
@@ -96,9 +96,9 @@ The resulting optimised TPD spectrum is shown on Figure \ref{fig:tpd baldwin}.
 The optimised parameters are $E_{p, 1} = \SI{0.75}{eV}$, $n_1 = \SI{1.09e-1}{at.fr.}$, $f_1=0.73$, $E_{p, 2} = \SI{0.93}{eV}$, \newline ${n_2 = \SI{3.40e-2}{at.fr.}}$, $f_2=0.28$.
 These values are in agreement with the ones found by Baldwin \textit{et al} \cite{baldwin_experimental_2014} and took only a few of minutes to compute since the implantation phase was not simulated.
 
-\begin{figure}
+\begin{figure} [h!]
     \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter3/Parametric_optimisation/baldwin_be.pdf}
+    \includegraphics[width=0.9\linewidth]{Figures/Chapter3/Parametric_optimisation/baldwin_be.pdf}
     \caption{TPD spectrum of co-deposited Be-D \cite{baldwin_experimental_2014} simulated with two trapping sites. Dots correspond to experimental data.}
     \label{fig:tpd baldwin}
 \end{figure}
@@ -114,9 +114,9 @@ This means that the cost function with several traps as free parameters can have
 Adding traps to an optimisation problem can also help having a better fit of the experimental data in some cases.
 But artificially adding more and more traps is not necessarily realistic and could lead to misinterpretation of the results.
 
-\begin{figure}[ht]
+\begin{figure}[h!]
     \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter3/Parametric_optimisation/hurley_comparison.pdf}
+    \includegraphics[width=0.9\linewidth]{Figures/Chapter3/Parametric_optimisation/hurley_comparison.pdf}
     \caption{TPD spectrum reproduced with several sets of parameters showing the existence of several solutions to a single optimisation problem.}
     \label{fig:hurley_comparison}
 \end{figure}
