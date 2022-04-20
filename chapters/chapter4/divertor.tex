@@ -102,7 +102,7 @@ These exposure conditions are converted into distributions of surface temperatur
 \end{equation}
 where $\varphi_\mathrm{heat}$ is the surface heat flux in \si{W.m^{-2}}.
 
-The relation between the heat flux $\varphi_\mathrm{heat}$ and the surface temperature $T_\mathrm{surface}$ (see Equation \eqref{eq: thermal behaviour}) has been obtained from heat transfer simulations of ITER monoblocks \sidecite{delaporte-mathurin_parametric_2020}.
+The relation between the heat flux $\varphi_\mathrm{heat}$ and the surface temperature $T_\mathrm{surface}$ (see Equation \eqref{eq: thermal behaviour}) has been obtained from heat transfer simulations of ITER monoblocks (see Section \ref{monoblock thermal behaviour}).
 
 \begin{align}
     \label{eq: c_surface}
@@ -112,7 +112,7 @@ The relation between the heat flux $\varphi_\mathrm{heat}$ and the surface tempe
 where the reflection coefficients $r_i$ and implantation depths $R_{p, i}$ in \si{m} depend on the particle energy and angle of incidence and computed with SRIM \sidecite{ziegler_srim_2010}, $\varphi_{i}$ are the particles fluxes in \si{m^{-2}.s^{-1}} and $D$ is the H diffusion coefficient in \si{m^{2}.s^{-1}}.
 
 
-According to the behaviour law obtained in \sidecite{delaporte-mathurin_parametric_2020}, the temporal evolution of the H inventory along the divertors can be estimated from the surface concentration of mobile hydrogen and surface temperature (see Figure \ref{fig: behaviour law example}).
+According to the behaviour law obtained in Chapter \ref{Chapter3}, the temporal evolution of the H inventory along the divertors can be estimated from the surface concentration of mobile hydrogen and surface temperature (see Figure \ref{fig: behaviour law example}).
 % This inventory distribution can then be projected onto the whole divertor geometry for better visualisation (see Figure \ref{fig: top view}).
 
 
@@ -132,10 +132,9 @@ The reflection coefficient varies from around 0.5 at \SI{0}{^\circ} to 0.8 at \S
 According to \sidecite{park_assessment_2020}, the incident angles for ions and atoms were assumed to be \SI{60}{^\circ} and \SI{45}{^\circ}, respectively.
 It should be noted that since SRIM is based on the binary collision approximation, values around \SI{10}{eV} might not be fully valid.
 
-The source-code of the tool described in this work (divHretention) is under version control and openly available via Github under a MIT licence \sidecite{delaporte-mathurin_irfmdivhretention_2021}.
+The source-code of the tool described in this work (divHretention) is under version control and openly available via Github under a MIT licence \cite{delaporte-mathurin_irfmdivhretention_2021}.
 The divHretention python package is distributed via PyPi \cite{delaporte-mathurin_divhretention_nodate}.
-
-
+Moreover, all the results obtained in this Chapter can be reproduced with the scripts available at \href{https://github.com/RemDelaporteMathurin/divHretention-Nucl.Fusion-2021}{https://github.com/RemDelaporteMathurin/divHretention-Nucl.Fusion-2021}.
 
 \section{ITER results}
 
