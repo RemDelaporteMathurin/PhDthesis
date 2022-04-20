@@ -97,7 +97,7 @@
 \usepackage{kaobiblio}
 \addbibresource{bibfile.bib} % Bibliography file
 
-\RenewDocumentCommand{\formatmargincitation}{m}{
+\RenewDocumentCommand{\formatmargincitation}{m}{%
 	\parencite{#1} \citeauthor*{#1} (\citeyear{#1})\\
 }
 
@@ -261,6 +261,7 @@
 \input{chapters/appendix.tex}
 \input{chapters/breeding_blankets}
 \input{chapters/codeposition_model}
+\input{chapters/v_and_v}
 
 %----------------------------------------------------------------------------------------
 

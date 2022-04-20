@@ -3,12 +3,12 @@
 % H transport model
 \begin{equation}
     \frac{\partial c_\mathrm{m}}{\partial t}=\vec{\nabla} \cdot\left(D(T) \vec{\nabla}c_\mathrm{m}\right)+S-\sum \frac{\partial c_{\mathrm{t}, i}}{\partial t}
-    \label{eq:mobile}
+    \label{eq:mobile_ch5}
 \end{equation}
 
 \begin{equation}
     \frac{\partial c_{\mathrm{t}, i}}{\partial t}=k(T) \cdot c_\mathrm{m} \cdot\left(n_{i}-c_{\mathrm{t}, i}\right)-p(T) \cdot c_{\mathrm{t}, i}
-    \label{eq:trapped}
+    \label{eq:trapped_ch5}
 \end{equation}
 
 In Equation \ref{eq:mobile}, ${D(T)=D_0 \cdot \exp\big(-E_\mathrm{diff}/ (k_B \cdot T )\big)}$ is the diffusion coefficient in \si{m^2.s^{-1}}, $T$ the temperature in $\si{K}$ and ${k_B = 8.617 \times 10^{-5} \si{eV.K^{-1}}}$ the Boltzmann constant, $S$ is the volumetric source term of mobile particles in \si{m^{-3}.s^{-1}} (which can take into account plasma implantation), $k(T)=k_0\exp{\big(-E_{k} / (k_B \cdot T ) \big)}$ and $p(T)=p_0\exp{\big(-E_{p}/ (k_B \cdot T )\big)}$ are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively.
