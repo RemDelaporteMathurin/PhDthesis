@@ -212,6 +212,7 @@ $P_\mathrm{eq}$ can be expressed by the solubility law at the surface of each ma
 In the case of two metallic surfaces (\textit{ie} behaving according to Sievert's law of solubility):
 \begin{equation}
     P_\mathrm{eq} = (c_\mathrm{m}^-/S^-)^2 = (c_\mathrm{m}^+/S^+)^2
+    \label{eq: c/s conservation}
 \end{equation}
 with $S$ the solubility of H in the materials expressed in \si{m^{-3}.Pa^{-0.5}}.
 
@@ -232,7 +233,7 @@ with $S$ the solubility of H in the materials expressed in \si{m^{-3}.Pa^{-0.5}}
 % This can also be interpreted as the chemical potentials at a reference state being different in different materials \sidecite{kirchheim_25_2014}, as the lattice site concentration.
 
 A method to ensure continuity of chemical potential is to perform a change of variable in Fick's second law of diffusion with $\phi = c_\mathrm{m}/S$ (in the case of a metal) \sidecite{smith_abaqusstandard_2009} when internal conditions cannot be set.
-Equation \ref{eq: diffusion equation} therefore reads:
+Equation \ref{eq:mobile} (ignoring trapping) therefore reads:
 
 \begin{align}
     \frac{\partial \phi S}{\partial t} &= \nabla \cdot\left(D \nabla \phi S\right) + f \nonumber \\
