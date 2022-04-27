@@ -331,7 +331,7 @@ Many interactions occur between hydrogen, helium and tungsten atoms.
         \caption{3D representation of the potential energy of a solute species in a metal lattice with one defect.}
     \end{subfigure}
     \caption{Potential of a solute species in a metal lattice.}
-    \label{fig: potential diagrams}
+    \label{fig: potential energy diagram metal lattice}
 \end{figure}
 
 \subsubsection{Diffusion}
@@ -373,7 +373,7 @@ Because He tends to cluster (as explained below), measuring its diffusivity expe
 
 \subsubsection{Trapping at defects}
 
-Due to the repulsion between solute species and the surrounding metal atoms, defects can act as wells of potential energy for solute species (see Figure \ref{fig: potential diagrams}).
+Due to the repulsion between solute species and the surrounding metal atoms, defects can act as wells of potential energy for solute species (see Figure \ref{fig: potential energy diagram metal lattice}).
 Once in that attractive well, species can escape it only if their vibrational energy (\textit{ie} their energy/temperature) is high enough.
 Species can be trapped at vacancies, disolcation loops, self-interstitial atoms (in the case of hydrogen in tungsten), impurities, etc.
 
@@ -422,7 +422,19 @@ Similarly, the binding energy of a hydrogen atom in a mono-vacancy varies from \
 
 \subsubsection{Surface processes}
 
-When a surface is in contact with a gas, absorption of species can be described by an absorption flux:
+When a surface is in contact with a gas, molecular species (\textit{eg.} $\text{H}_2$, $\text{T}_2$, $\text{HD}$...) can dissociate into mono-atomic species.
+After their dissociation, the atomic particles can be adsorbed on the surface (on adsorption sites).
+This dissociation is described by a sticking propability usually associated with an Arrhenius law $s = s_0 \exp{(-E_s/k_B T)}$.
+DFT calculations can calculate energy barriers for adsorption and migration of solute species on surfaces \sidecite{heinola_first-principles_2010}.
+Studies have however shown that this process is not thermally activated (\textit{ie} $E_s=0$) \sidecite{alnot_adsorption_1989, tamm_interaction_1970} but rather depends on the \textit{surface coverage}, the ratio of the surface concentration of the species (hydrogen or helium) by the concentration of adsorption sites.
+When $\theta = 1$, the surface is fully saturated and when $\theta = 0$ all the adsorption sites are available.
+Moreover, the presence of impurities occupying adsorption sites can decrease the sticking probability of a species.
+
+Adsorbed particles can then be \textit{absorbed} in the bulk (see Figure \ref{fig: potential energy diagram metal lattice}).
+This thermally activated process is associated with an absorption coefficient following an Arrhenius law $A=A_0 \exp{(-E_A/k_B T)}$.
+The absorption process is modelled using DFT and absorption activation energies $E_A$ can be determined for different surface orientations \sidecite{johnson_hydrogen_2010, nojima_theoretical_2007,alnot_adsorption_1989}.
+
+ALl these processes (dissociation, adsorption and absorption) can be described by an absorption flux:
 \begin{equation}
     \varphi_\mathrm{abs} = n K_\mathrm{abs} P
 \end{equation}
