@@ -375,7 +375,7 @@ Because He tends to cluster (as explained below), measuring its diffusivity expe
 
 Due to the repulsion between solute species and the surrounding metal atoms, defects can act as wells of potential energy for solute species (see Figure \ref{fig: potential diagrams}).
 Once in that attractive well, species can escape it only if their vibrational energy (\textit{ie} their energy/temperature) is high enough.
-Species can be trapped at vacancies, disolcation loops, impurities, etc.
+Species can be trapped at vacancies, disolcation loops, self-interstitial atoms (in the case of hydrogen in tungsten), impurities, etc.
 
 The trapping process can be described as:
 \begin{equation}
@@ -404,6 +404,21 @@ Peaks appearing at high temperatures correspond to "deep" traps with a high detr
 \end{figure}
 
 These parameters can also be obtained from DFT calculations \sidecite{hodille_modelling_2021, hodille_hydrogen_2018, backer_multiscale_2017,lu_review_2014}.
+
+Some defects can trap several hydrogen/helium atoms.
+For instance, up to approximately seven helium atoms can be trapped in a mono-vacancy \sidecite{faney_spatially_2015}.
+DFT calculations also show that defects like mono-vacancies, dislocations or grain boundaries can retain multiple hydrogen atoms (see Figure \ref{fig: trapping energy hydrogen in tungsten}).
+As the number of trapped particles (helium or hydrogen) increases, the binding energy of a particle with the defect usually decreases.
+In other words, the more particles are trapped in a defect the easier it is for a hydrogen atom to escape.
+For instance, the binding energy of a helium atom in an empty mono-vacancy is around \SI{4}{eV} and around \SI{2.5}{eV} if the vacancy already retains four helium atoms \cite{faney_spatially_2015}.
+Similarly, the binding energy of a hydrogen atom in a mono-vacancy varies from \SI{0.5}{eV} (with six hydrogen atoms trapped) to \SI{1.3}{eV} (empty vacancy).
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter1/trapping_energy_hydrogen_in_tungsten.pdf}
+    \caption{Detrapping energy of a hydrogen atom in several vacancies, impurities, self-interstitial atoms (SIA), grain boundaries (GB), in tungsten depending on the number of trapped hydrogen atoms. Reproduced from \cite{hodille_study_2016}.}
+    \label{fig: trapping energy hydrogen in tungsten}
+\end{figure*}
 
 \subsubsection{Surface processes}
 
