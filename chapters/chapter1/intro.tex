@@ -302,12 +302,40 @@ Permeation barriers are being studied to greatly reduce the permeation of tritiu
 The idea is to coat inner and/or outer surfaces of cooling pipes with alumina-based coatings.
 These coatings can also act as an anti-corrosion barrier.
 
-\section{Plasma-surface interactions in tokamaks}
+\section{Helium and Hydrogen in metals}
 
-The wall of a fusion reactor (first wall and divertor) is bombarded with high energy hydrogen (deuterium and tritium) and helium ions.
+% Many interactions occur between hydrogen, helium and tungsten atoms.
+
+\subsection{Particle sources}
+
+\subsubsection{Hydrogen}
+Deuterium and tritium being the fuel of the fusion reactors, the first source of hydrogen in the divertor is the plasma itself.
+The wall of a fusion reactor (first wall and divertor) is bombarded with high energy hydrogen ions.
 Due to their small size, these ions can penetrate the metal lattice and be implanted in the material.
 
-Many interactions occur between hydrogen, helium and tungsten atoms.
+Components are also exposed to neutral hydrogen particles either in the atomic or molecular form.
+This is also the case for the divertor region where recycling can occur depending on the plasma detachment \sidecite{denis_dynamic_2019, causey_hydrogen_2002}.
+
+Tritium can also be produced by the neutron capture of helium-3 \sidecite{shimada_tritium_2017, knoll_radiation_1989} (see Equation \ref{eq: he3 neutron capture reaction}).
+
+\begin{equation}
+    \ce{^3He + n -> ^1H + ^3H + \SI{0.764}{MeV}}
+    \label{eq: he3 neutron capture reaction}
+\end{equation}
+
+Finally, interactions of lithium with neutrons represent a major source of hydrogen in tritium breeding components \sidecite{dark_influence_2021}.
+
+\subsubsection{Helium}
+Helium is the product of the fusion reaction.
+Therefore, the wall of a fusion reactor is also bombarded with helium ions.
+This is the primary source of helium in plasma-facing materials.
+
+Helium can also be produced in materials indirectly.
+Since tritium decays into helium-3 (see Equation \ref{eq: tritium decay}), regions with high tritium retention are expected to act as a source of helium over time \cite{shimada_tritium_2017}.
+Moreover, interactions of neutrons (from the fusion reactions) with metallic elements (\textit{eg} tungsten or iron) can produce helium via transmutation \sidecite{watanabe_status_2011}.
+This \textit{transmutation gas} production has been estimated using well-established neutronics simulations (Monte-Carlo simulations modelling the path of neutroncs in matter) \sidecite{gilbert_neutron-induced_2013, gilbert_integrated_2012}.
+Depending on the position in the DEMO divertor, cumulative helium production over the course of three full power years (FPY) could reach more than \SI{400}{appm}.
+
 
 \subsection{H/W \& He/W interactions}
 \begin{figure*}[h!]
