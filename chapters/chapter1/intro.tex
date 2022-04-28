@@ -720,6 +720,7 @@ Moreover, not all of them have an integrated heat transfer solver - essential fo
 Some of these codes rely on proprietary software like Abaqus or COMSOL for HIT - limiting their accessibility and scalability (parrallel computing).
 The code ACHLYS meets all these requirements and is the only one available open-source but was only released in mid 2021.
 Finally, good computing performances were required in order to simulate the full divertor.
+This ruled out the use of Abaqus in its current state.
 
 \begin{table*} [h]
     \centering
@@ -745,10 +746,25 @@ Finally, good computing performances were required in order to simulate the full
     \label{tab: code comparison}
 \end{table*}
 
-
-The first part of this work was to develop a modelling tool - FESTIM - capable of solving hydrogen transport problem in 2D/3D (Chapter \ref{Chapter2}).
-Monoblock level FESTIM simulations were then run and the tritium retention was estimated (Chapter \ref{Chapter3}).
-The next stage was to scale up from a monoblock model to a full divertor model (Chapter \ref{Chapter4}).
-Finally, the influence of helium exposure and the presence of helium bubbles was studied (Chapter \ref{Chapter5}).
+\begin{itemize}
+    \item \textbf{\refch{Chapter2}} \newline
+The first part of this work was to develop a modelling tool - FESTIM - capable of solving hydrogen transport problem in 2D/3D.
+This Chapter will describe the mathematical models used in FESTIM as well as the global numerical implementation.
+Finally, the analytical verification and experimental validation strategy will be explained.
+This last point includes a code comparison with the reference code TMAP7.
+    \item \textbf{\refch{Chapter3}} \newline
+This Chapter will focus on estimating the tritium retention in monoblocks.
+To this end, a FESTIM model of ITER-like monoblock will be developped.
+A behaviour law linking the monoblock inventory to exposure conditions (surface concentration and surface temperature) will be obtained.
+    \item \textbf{\refch{Chapter4}} \newline
+The next stage is to scale up from a monoblock model to a full divertor model.
+The behaviour law obtained in \refch{Chapter3} will be coupled to plasma simulations (providing distributions of exposure conditions).
+The inventory of the ITER and WEST divertors will be computed for several plasma scenarios.
+This Chapter will answer the questions \textit{"How does the tritium inventory evolve over the lifespan of the fusion reactor?"} and
+\textit{"Does it remain within the safety limits?"}
+    \item \textbf{\refch{Chapter5}} \newline
+Finally, the influence of helium exposure and the presence of helium bubbles was studied.
 To this end, a finite element solver was first developed to simulate helium transport and clustering in tungsten.
 This helium transport code was then coupled to FESTIM to estimate the potential impact of helium on the tritium inventory estimations.
+This Chapter will answer the question \textit{"What is the impact of the presence of helium?"}.
+\end{itemize}
