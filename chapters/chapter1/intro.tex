@@ -302,7 +302,7 @@ In ITER for instance, the in-vessel inventory of tritium is limited to \SI{1}{kg
 This limit has been determined to avoid evacuation of population around the reactor in the event of a loss of vacuum accident.
 
 Moreover, as tritium can migrate in materials, components that have been in contact with it are considered as tritiated waste and must be handled.
-Tritium migration through complete material layers (permeation) to the cooling tubes \sidecite{ararredondo_preliminary_2021, shimada_tritium_2018} or the atmosphere can lead to contamination of coolants and must be taken into account in the detritiation process.
+Tritium migration through complete material layers (permeation) to the cooling tubes \sidecite{arredondo_preliminary_2021, shimada_tritium_2018} or the atmosphere can lead to contamination of coolants and must be taken into account in the detritiation process.
 
 Detritiation techniques are being developped to reduce the volume of tritiated waste in future fusion reactors \sidecite{liger_overview_2018}.
 These techniques mainly consist in heating the tritiated samples and recovering the tritiated gas \sidecite{lefebvre_preliminary_2012} that can be reused as fuel.
@@ -702,30 +702,43 @@ Ialovega \textit{et al} performed sequential H implantation/desorption cycles on
 He bubbles were found in the near surface region (see Figure \ref{fig: he bubbles ialovega}) and significantly different TDS spectra were observed after several H implantations/desorptions (see Figure \ref{fig: TDS example ialovega}).
 This works gives evidence of an interaction between He and H in W.
 
-\section{Macroscopic scale modelling of hydrogen transport}
+\section{Main issue}
+
+The main focus of this PhD work is the estimation of the H isotopes retention and permeation in tokamaks.
+\textit{How does the tritium inventory evolve over the lifespan of the fusion reactor?}
+\textit{Does it remain within the safety limits?}
+\textit{What is the impact of the presence of helium?}
+
+Due to the time scales at play and the complexity of the components, answering these question experimentally is complex.
+Numerical models can however be used to simulate components over long time scales and with complex geometries.
+However, the tools currently available didn't meet the requirements of either dimensionality, physics, performance or availability.
 
 Several simulation tools have been developed throughout the years (see Table \ref{tab: code comparison}).
-Many of them rely of Finite Differences (FD) whereas the HIT code \cite{candido_integrated_2020} relies on Finite Element (FE).
 Most of these codes are not able to run multi-material, multi-dimensional simulations.
-Moreover, not all of them have an integrated heat transfer solver.
-
+Many of them rely on the Finite Differences Method (FDM) whereas HIT \sidecite{candido_integrated_2020}, Abaqus \sidecite{benannoune_multidimensional_2020} and ACHLYS \sidecite{stephen-dixon_aurora-multiphysicsachlys_2021} rely on the Finite Element Method (FEM).
+Moreover, not all of them have an integrated heat transfer solver - essential for an accurate estimation of temperature fields and therefore thermally activated processes.
+Some of these codes rely on proprietary software like Abaqus or COMSOL for HIT - limiting their accessibility and scalability (parrallel computing).
+The code ACHLYS meets all these requirements and is the only one available open-source but was only released in mid 2021.
+Finally, good computing performances were required in order to simulate the full divertor.
 
 \begin{table*} [h]
     \centering
     \begin{tabular}{L{2cm} L{0.5cm} L{0.5cm} L{0.5cm} L{1.7cm} l l l l}
               & 1D & 2D & 3D & Multimaterial & Numerical method & Heat transfer & Based on free software \\
         \hline \\
-        TMAP7 \cite{longhurst_tmap7_2008} & $\checkmark$ & & & & FD & & $\checkmark$ \\
+        TMAP7 \cite{longhurst_tmap7_2008} & $\checkmark$ & & & $\checkmark$ & FDM & & $\checkmark$ \\
         \\
-        HIIPC \cite{sang_modelling_2012} & $\checkmark$ & & & & FD & $\checkmark$ & $\checkmark$ \\
+        HIIPC \cite{sang_modelling_2012} & $\checkmark$ & & & & FDM & $\checkmark$ & $\checkmark$ \\
         \\
-        MHIMS \cite{hodille_study_2016} & $\checkmark$ & & & & FD & & $\checkmark$ \\
+        MHIMS \cite{hodille_study_2016} & $\checkmark$ & & & & FDM & & $\checkmark$ \\
         \\
-        TESSIM \cite{schmid_transport_2014} & $\checkmark$ & & & & FD & & \\
+        TESSIM \cite{schmid_transport_2014} & $\checkmark$ & & & & FDM & & \\
         \\
-        HIT \cite{candido_integrated_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & FE & $\checkmark$ & \\
+        HIT \cite{candido_integrated_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & FEM & $\checkmark$ & \\
         \\
-        ACHLYS \cite{stephen-dixon_aurora-multiphysicsachlys_2021} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & FE & $\checkmark$ & $\checkmark$ \\
+        Abaqus \cite{benannoune_multidimensional_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & FEM & $\checkmark$ & \\
+        \\
+        ACHLYS \cite{stephen-dixon_aurora-multiphysicsachlys_2021} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & FEM & $\checkmark$ & $\checkmark$ \\
         \\
     \end{tabular}
     \caption{Comparison of some hydrogen transport modelling tools.}
@@ -733,10 +746,9 @@ Moreover, not all of them have an integrated heat transfer solver.
 \end{table*}
 
 
-\section{Roadmap}
-
-This PhD work aims at estimating the retention of H isotopes in tokamak components and how the presence of helium could affect it.
-The first part of this work is to develop a modelling tool capable of solving H transport problem in 2D/3D (Chapter \ref{Chapter2}).
-This new modelling tool is then applied to component scale problems and H retention is estimated at the monoblock level (Chapter \ref{Chapter3}).
-The next stage is to scale up from a monoblock model to a full divertor model (Chapter \ref{Chapter4}).
-Finally, the influence of He exposure is studied (Chapter \ref{Chapter5}).
+The first part of this work was to develop a modelling tool - FESTIM - capable of solving hydrogen transport problem in 2D/3D (Chapter \ref{Chapter2}).
+Monoblock level FESTIM simulations were then run and the tritium retention was estimated (Chapter \ref{Chapter3}).
+The next stage was to scale up from a monoblock model to a full divertor model (Chapter \ref{Chapter4}).
+Finally, the influence of helium exposure and the presence of helium bubbles was studied (Chapter \ref{Chapter5}).
+To this end, a finite element solver was first developed to simulate helium transport and clustering in tungsten.
+This helium transport code was then coupled to FESTIM to estimate the potential impact of helium on the tritium inventory estimations.
