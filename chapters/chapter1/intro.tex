@@ -258,9 +258,9 @@ In most tokamaks, the escaping plasma is diverted towards a dedicated component 
 Such a configuration is called a \textit{divertor} configuration.
 The X-divertor is a common configuration (used in WEST, JET, ITER) but more advanced configurations exist such as the Super-X divertor (MAST-U) \sidecite{havlickova_effect_2015}, X-Point Target (SPARC) \sidecite{rodriguez-fernandez_overview_2022, kuang_divertor_2020} or the Snowflake configurations \sidecite{ryutov_snowflake_2015}.
 
-\begin{figure}
+\begin{figure} [h]
     \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter1/sketch_divertor.png}
+    \includegraphics[width=0.5\linewidth]{Figures/Chapter1/sketch_divertor.png}
     \caption{Sketch of the tokamak divertor configuration (source: EFDA-JET).}
     \label{fig: divertor diagram}
 \end{figure}
@@ -271,22 +271,38 @@ Monoblocks are typically made of a tungsten substrate with a cooling pipe runnin
 This cooling channel is necessary to keep the component's temperature below its operating limit and exhaust heat.
 
 Several monoblock designs are currently studied for DEMO with varying dimensions, different materials for the cooling pipe or the interlayer, etc \sidecite{vizvary_european_2020, huang_tungsten_2016, hirai_use_2016, domptail_design_2020}.
-The main candidate is the ITER-like design, which is the type of monoblock that will be used in ITER \cite{hirai_use_2016}.
+The main candidate is the ITER-like design, the type of monoblock that will be used in ITER \cite{hirai_use_2016}.
 This design has a tunsgten substrate with a CuCrZr cooling pipe and a Cu interlayer for compliance (see Figure \ref{fig: monoblocks with pipe}).
 In ITER, monoblocks will be \SI{12}{mm}-thick whereas they will be thiner in DEMO (\SI{4}{mm}) \sidecite{you_european_2018}.
 
-\begin{figure}
+\begin{figure} [h]
     \centering
     \includegraphics[width=0.8\linewidth]{Figures/Chapter1/inner_target_iter.jpg}
     \caption{Prototype of the inner vertical target (source: ITER Organization).}
     \label{fig: inner target photo}
 \end{figure}
 
-\begin{figure}
+\begin{figure} [h]
     \centering
     \includegraphics[width=0.5\linewidth]{Figures/Chapter1/monoblocks_with_pipe.png}
-    \caption{ITER-like monoblocks.}
+    \caption{ITER-like monoblocks design.}
     \label{fig: monoblocks with pipe}
+\end{figure}
+
+Studies on ITER-like monoblocks have demonstrated the resistance of the monoblock design to high heat loads while investigating the effect of tungsten recrystallisation \sidecite{durif_impact_2019,durif_modelisation_2019,visca_manufacturing_2018} (see \reffig{monoblock_temperature_exp_model}).
+
+\begin{figure} [h]
+    \centering
+    \begin{subfigure}[t]{0.45\linewidth}
+            \includegraphics[width=\linewidth]{Figures/Chapter1/alan_durif_monoblock.png}
+            \caption{Simulated temperature field in a monoblock under at \SI{20}{MW.m ^{-2}} heat load, water cooling at \SI{120}{\celsius}. Reproduced from \cite{durif_modelisation_2019}.}
+    \end{subfigure}\hfill%%
+    \begin{subfigure}[t]{0.45\linewidth}
+            \includegraphics[width=\linewidth]{Figures/Chapter1/monoblock_experimental_temperature_field.png}
+            \caption{Experimental measurement of monoblocks thermal response at \SI{20}{MW.m ^{-2}} heat loading, water cooling at \SI{130}{\celsius}. Reproduced from \cite{visca_manufacturing_2018}.}
+    \end{subfigure}
+    \caption{Thermal response of ITER-like monoblocks.}
+    \labfig{monoblock_temperature_exp_model}
 \end{figure}
 
 \section{The tritium issue} \label{the tritium issue}
