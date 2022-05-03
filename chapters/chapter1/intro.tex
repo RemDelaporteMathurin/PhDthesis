@@ -419,23 +419,22 @@ Depending on the position in the DEMO divertor, cumulative helium production ove
 \subsection{H/W \& He/W interactions}
 
 
-\begin{figure} [h!]
+\begin{figure} [h]
     \centering
-    \begin{subfigure}{\linewidth}
-        \begin{overpic}[width=\linewidth]{Figures/Chapter1/potential_energy_diagram.pdf}
-            \put(37, 29){$E_{\mathrm{b}, 1}$}
-            \put(37, 47){$E_{k, 1}$}
-            \put(65, 35){$E_{\mathrm{b}, 2}$}
-            \put(65, 47){$E_{k, 2}$}
-            \put(89, 47){$E_D$}
-        \end{overpic}
-        \caption{Simplified potential energy diagram showing two different types of defects.}
-    \end{subfigure}
-    \begin{subfigure}{\linewidth}
-        \includegraphics[width=\linewidth]{Figures/Chapter1/potential_energy_3D.pdf}
-        \caption{3D representation of the potential energy of a solute species in a metal lattice with one defect.}
-    \end{subfigure}
-    \caption{Potential of a solute species in a metal lattice.}
+    % \begin{subfigure}{\linewidth}
+    \begin{overpic}[width=\linewidth]{Figures/Chapter1/potential_energy_diagram.pdf}
+        \put(37, 29){$E_{\mathrm{b}, 1}$}
+        \put(37, 47){$E_{k, 1}$}
+        \put(65, 35){$E_{\mathrm{b}, 2}$}
+        \put(65, 47){$E_{k, 2}$}
+        \put(89, 47){$E_D$}
+    \end{overpic}
+    \caption{Simplified potential energy diagram showing two different types of defects.}
+    % \end{subfigure}
+    % \begin{subfigure}{\linewidth}
+    %     \includegraphics[width=\linewidth]{Figures/Chapter1/potential_energy_3D.pdf}
+    %     \caption{3D representation of the potential energy of a solute species in a metal lattice with one defect.}
+    % \end{subfigure}
     \label{fig: potential energy diagram metal lattice}
 \end{figure}
 
@@ -457,7 +456,7 @@ where $m_i$ is the mass of the particle, $\vec{a_i}$ is its acceleration, $\vec{
 The forces between atoms is only a function of the interatomic potentials.
 These potentials can be found in literature or can be estimated from \textit{ab initio} computations (DFT) \sidecite{connetable_diffusion_2019,fernandez_hydrogen_2015,boisse_modelling_2014,boisse_modeling_2014,becquart_microstructural_2010} or from methods based on machine learning \sidecite{lam_modeling_2021,behler_constructing_2015}.
 
-\begin{figure*} [h!]
+\begin{figure*}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/faney_md.jpg}
     \caption{Example of the trajectory of a He$_2$ cluster in tungsten. Reproduced from \cite{faney_numerical_2013}}
