@@ -447,7 +447,7 @@ Diffusion is a thermally activated process governed by a diffusion coefficient $
     D = D_0 \exp{(-E_D/k_B T)}
 \end{equation}
 where $E_D$ is the activation energy of diffusion in \si{eV}, $T$ is the temperature in \si{K}, $k_B$ is the Boltzmann constant in \si{eV.K^{-1}}.
-The "height" of the potential energy wells can be associated with the activation energy $E_D$, also called \textit{energy barrier}.
+The "height" of the potential energy wells can be associated with the activation energy $E_D$, also called \textit{energy barrier} (see Figure \ref{fig: potential energy diagram metal lattice}).
 
 Diffusion can also be assisted by temperature gradients (called the \textit{Soret effect} or \textit{thermophoresis}) \sidecite{martinez_thermal_2021, hodille_estimation_2017} or hydrostatic pressure gradients \sidecite{benannoune_multidimensional_2020}.
 
@@ -484,11 +484,34 @@ Because He tends to cluster (as explained below), measuring its diffusivity expe
 
 \reffig{diffusivity solubility materials} is a collection of diffusivity and solubility values found in literature (measured experimentally or computed) for tungsten, copper and CuCrZr.
 
+The diffusivities of copper and CuCrZr are comparable (see \reffig{diffusivity solubility copper} and \reffig{diffusivity solubility cucrzr}).
+
 \begin{figure}
     \centering
-    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/diffusivity_solubility_materials.pdf}
-    \caption{Diffusivity and solubility values for tungsten \cite{reiter_compilation_1996,frauenfelder_solution_1969}, copper \cite{reiter_compilation_1996} and CuCrZr \cite{serra_hydrogen_1998}.}
+    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/materials_properties_review_comparison.pdf}
+    \caption{Diffusivity and solubility values for tungsten \cite{heinola_first-principles_2010, frauenfelder_solution_1969}, copper \cite{reiter_compilation_1996} and CuCrZr \cite{serra_hydrogen_1998}.}
     \labfig{diffusivity solubility materials}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/tungsten_properties_review.pdf}
+    \caption{Diffusivity and solubility values for tungsten.}
+    \labfig{diffusivity solubility tungsten}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/copper_properties_review.pdf}
+    \caption{Diffusivity and solubility values for copper.}
+    \labfig{diffusivity solubility copper}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/cucrzr_properties_review.pdf}
+    \caption{Diffusivity and solubility values for CuCrZr.}
+    \labfig{diffusivity solubility cucrzr}
 \end{figure}
 
 \subsubsection{Trapping at defects}
@@ -554,7 +577,7 @@ Adsorbed particles can then be \textit{absorbed} in the bulk (see Figure \ref{fi
 This thermally activated process is associated with an absorption coefficient following an Arrhenius law $A=A_0 \exp{(-E_A/k_B T)}$.
 The absorption process is modelled using DFT and absorption activation energies $E_A$ can be determined for different surface orientations \sidecite{johnson_hydrogen_2010, nojima_theoretical_2007,alnot_adsorption_1989}.
 
-ALl these processes (dissociation, adsorption and absorption) can be described by an absorption flux:
+All these processes (dissociation, adsorption and absorption) can be described by an absorption flux:
 \begin{equation}
     \varphi_\mathrm{abs} = n K_\mathrm{abs} P
 \end{equation}
@@ -588,6 +611,7 @@ When the absorption/desorption order is $n=2$ (diatomic absorption):
     c_\mathrm{surface} = K_S \sqrt{P}
 \end{equation}
 This equilbrium is known as Sievert's law of solubility and $K_S = \sqrt{2 K_\mathrm{abs}/K_\mathrm{des}}$ is the material solubility expressed in \si{m^{-3}.Pa^{-0.5}}.
+The solubility of tungsten, copper and CuCrZr are described in \reffig{diffusivity solubility materials}, \reffig{diffusivity solubility tungsten}, \reffig{diffusivity solubility copper} and \reffig{diffusivity solubility cucrzr}.
 
 \subsubsection{Clustering}
 Single He atoms implanted into the material diffuse rapidly due to the high W-He repulsion.
