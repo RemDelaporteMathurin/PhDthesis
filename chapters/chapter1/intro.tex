@@ -254,7 +254,7 @@ For this reason, the ITER divertor will be made of tungsten but the first wall (
 \subsection{Divertor}
 
 In a fusion reactor, heat and particles (fusion ashes) need to be extracted.
-In most tokamaks, the escaping plasma is diverted towards a dedicated component that is heat-resistant (see Figure \ref{fig: divertor diagram}).
+In most tokamaks, the escaping plasma is diverted towards a dedicated component that is heat-resistant.
 Such a configuration is called a \textit{divertor} configuration.
 The X-divertor is a common configuration (used in WEST, JET, ITER) but more advanced configurations exist such as the Super-X divertor (MAST-U) \sidecite{havlickova_effect_2015}, X-Point Target (SPARC) \sidecite{rodriguez-fernandez_overview_2022, kuang_divertor_2020} or the Snowflake configurations \sidecite{ryutov_snowflake_2015}.
 
@@ -262,9 +262,19 @@ The X-divertor is a common configuration (used in WEST, JET, ITER) but more adva
     \centering
     \includegraphics[width=0.5\linewidth]{Figures/Chapter1/sketch_divertor.png}
     \caption{Sketch of the tokamak divertor configuration (source: EFDA-JET).}
-    \label{fig: divertor diagram}
+    \labfig{divertor diagram}
 \end{figure}
 
+In a divertor configuration, the intersection between the magnetic field lines and the targets are called strike points.
+The X-divertor has two strike points on the inner and outer targets (see Figure \reffig{divertor diagram}).
+At these strike points, the targets will experience very intense heat and particle fluxes (see \reffig{divertor exposure conditions}).
+
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Figures/Chapter1/divertor_exposure_conditions.pdf}
+    \caption{.}
+    \labfig{divertor exposure conditions}
+\end{figure}
 
 The divertors of ITER and DEMO will be composed of small unit bricks called \textit{monoblocks} (see Figure \ref{fig: inner target photo}).
 Monoblocks are typically made of a tungsten substrate with a cooling pipe running through.
@@ -273,7 +283,7 @@ This cooling channel is necessary to keep the component's temperature below its 
 Several monoblock designs are currently studied for DEMO with varying dimensions, different materials for the cooling pipe or the interlayer, etc \sidecite{vizvary_european_2020, huang_tungsten_2016, hirai_use_2016, domptail_design_2020}.
 The main candidate is the ITER-like design, the type of monoblock that will be used in ITER \cite{hirai_use_2016}.
 This design has a tunsgten substrate with a CuCrZr cooling pipe and a Cu interlayer for compliance (see Figure \ref{fig: monoblocks with pipe}).
-In ITER, monoblocks will be \SI{12}{mm}-thick whereas they will be thiner in DEMO (\SI{4}{mm}) \sidecite{you_european_2018}.
+In ITER, monoblocks will be \SI{12}{mm}-thick whereas they will be thiner (\SI{4}{mm}) in DEMO \sidecite{you_european_2018}.
 
 \begin{figure} [h]
     \centering
