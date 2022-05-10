@@ -31,7 +31,7 @@ class Diagram:
         return x_new, y_smooth
 
     def add_arrow(
-        self, state1, state2, text="", offset=0, kwargs_arrow={}, kwargs_text={}
+        self, state1, state2, text="", loc_text="middle-right", kwargs_arrow={}, kwargs_text={}
     ):
         # arrow
         plt.annotate(
@@ -42,12 +42,25 @@ class Diagram:
             **kwargs_arrow
         )
 
+        if loc_text == "middle-right":
+            xytext = (self.states.index(state1) + 0.1, (state1.E + state2.E) / 2)
+            ha = "left"
+        elif loc_text == "middle-left":
+            xytext = (self.states.index(state1) - 0.1, (state1.E + state2.E) / 2)
+            ha = "right"
+        elif loc_text == "top":
+            xytext = (self.states.index(state1), (state1.E + state2.E)/2 + abs(state1.E - state2.E)/2 + 0.1)
+            ha = "center"
+        elif loc_text == "bottom":
+            xytext = (self.states.index(state1), (state1.E + state2.E) / 2 - abs(state1.E - state2.E)/2 - 0.1)
+            ha = "center"
+
         # text
         plt.annotate(
             text=text,
-            xy=(self.states.index(state1), (state1.E + state2.E) / 2),
-            xytext=(self.states.index(state1), offset + (state1.E + state2.E) / 2),
-            ha="left",
+            xy=xytext,
+            ha=ha,
+            va="center",
             **kwargs_text
         )
 
@@ -62,7 +75,7 @@ class Diagram:
         )
 
 
-energies = [0, 0.4, -1, 1.3, *[0, 1] * 12]
+energies = [-0.5, 0.2, -1, 1.3, *[0, 1] * 12]
 
 
 states = [State(E=E) for E in energies]
@@ -71,25 +84,36 @@ states[10].E = -2.5
 states[20].E = -1.5
 my_diagram = Diagram(states)
 
-plt.figure(figsize=(7.5, 4.8))
+plt.figure(figsize=(10, 4.8))
 plt.plot(my_diagram.x, my_diagram.y)
 
 my_diagram.add_dotted_line(states[20], dx_right=2)
 my_diagram.add_dotted_line(states[21], dx_right=1)
 my_diagram.add_arrow(states[22], states[20], "$E_{\mathrm{b},2}$")
-my_diagram.add_arrow(states[22], states[23], "$E_{\mathrm{k},2}$", offset=0.6)
+my_diagram.add_arrow(states[22], states[23], "$E_{\mathrm{k},2}$", loc_text="top")
 
 my_diagram.add_dotted_line(states[15], dx_right=1)
-my_diagram.add_arrow(states[16], states[17], "$E_\mathrm{D}$", offset=0.6)
+my_diagram.add_arrow(states[16], states[17], "$E_\mathrm{D}$", loc_text="top")
 
 my_diagram.add_dotted_line(states[10], dx_right=2)
 my_diagram.add_dotted_line(states[11], dx_right=1)
 my_diagram.add_arrow(states[12], states[10], "$E_{\mathrm{b},1}$")
-my_diagram.add_arrow(states[12], states[13], "$E_{\mathrm{k},1}$", offset=0.6)
+my_diagram.add_arrow(states[12], states[13], "$E_{\mathrm{k},1}$", loc_text="top")
 
 
 my_diagram.add_dotted_line(states[3], dx_right=1)
-my_diagram.add_arrow(states[4], states[3], "$E_{\mathrm{recomb}}$", offset=0.6)
+my_diagram.add_arrow(states[4], states[3], "$E_{\mathrm{des}}$", loc_text="top")
+
+my_diagram.add_dotted_line(states[1], dx_right=1, dx_left=1)
+my_diagram.add_arrow(states[2], states[1], "$E_{\mathrm{recomb}}$", loc_text="bottom")
+
+my_diagram.add_dotted_line(states[2], dx_right=1)
+my_diagram.add_arrow(states[3], states[2], "$E_{\mathrm{abs}}$", loc_text="top")
+my_diagram.add_arrow(states[0], states[1], "$E_{\mathrm{diss}}$", loc_text="top")
+
+my_diagram.add_dotted_line(states[0], dx_right=4)
+my_diagram.add_arrow(states[4], states[0], "$E_{\mathrm{S}}$")
+
 
 # plt.scatter(my_diagram.x_raw, my_diagram.energies)
 
