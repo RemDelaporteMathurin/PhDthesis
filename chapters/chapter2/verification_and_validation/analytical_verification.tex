@@ -11,11 +11,11 @@ When using the MMS, the problem is reversed: an arbitrary exact solution (called
 It is then possible to determine source terms and boundary conditions.
 These are then fed into the code and the computed solution is compared to the manufactured (exact) solution.
 
-This MMS method is often used to unravel the complexity of governing equations \sidecite{dudson_verification_2016, roache_code_2002}.
-This is particularly usefull when dealing with complex geometries or to exercise non-trivial material propoerties.
+This MMS is often used to unravel the complexity of governing equations \sidecite{dudson_verification_2016, roache_code_2002}.
+This is particularly useful when dealing with complex geometries or to exercise non-trivial material propoerties.
 
 This section describes two verification cases of FESTIM.
-The first one uses the MES method and the second one the MMS method.
+The first one uses the MES and the second one the MMS.
 More complex and thorough verification cases are shown in Appendix \ref{appendix verification}.
 
 \subsubsection{H transport (MES)} \label{analytical}
@@ -89,7 +89,53 @@ This is why the MMS will be used instead.
 
 \subsubsection{H transport (MMS)} \label{mms}
 
-In order to exercise all terms of Equations \ref{eq:mobile} and \ref{eq:trapped}, the following manufactured solutions are chosen:
+The MMS is often used to unravel the complexity of governing equations \sidecite{dudson_verification_2016, roache_code_2002}.
+This is particularly useful when dealing with complex geometries or to exercise non-trivial material propoerties.
+
+The principle of the MMS is to manufacture an exact solution.
+Again, physical realism is not a concern here as verification is a mathematical exercise.
+This manufactured solution needs to be non trivial in order to test the robustness of the implementation.
+It is then passed through the governing equations (either the heat equation or the hydrogen transport equations) and source terms are obtained.
+
+Let us take a simple example with the Poisson equation defined on a 1D domain $[x_1, x_2]$:
+\begin{equation}
+    \frac{\partial u}{\partial t} = \frac{\partial^2 u}{\partial x^2} + q
+    \labeq{poisson eq demo mms}
+\end{equation}
+where $u$ is the unknown, $q$ is the source term.
+
+The manufactured solution is:
+\begin{equation}
+    U(t, x) = A + \sin{(x + B t)}
+\end{equation}
+where $A$ and $B$ are real numbers, $t$ is the time, and $x$ is the spatial coordinate.
+By replacing $u$ by $U(t, x)$ in \refeq{poisson eq demo mms}, we can identify the source term $q$ that would produce the solution $U(t, x)$:
+
+\begin{equation}
+    Q(t, x) = B \cos{(x + B t)} + \sin{(x + B t)}
+\end{equation}
+
+Several boundary conditions can be used to produce $U(t, x)$.
+We can for instance set a Dirichlet boundary condition on the boundaries $x=x_1$ and $x=x_2$:
+\begin{align}
+    u(t, x_1) &= U(t, x_1) \\
+    u(t, x_2) &= U(t, x_2)
+\end{align}
+
+or Neumann boundary conditions:
+\begin{align}
+    \frac{\partial u(t, x)}{\partial x}\Big | _{ x=x_1} &= \frac{\partial U(t, x)}{\partial x} \Big | _{ x=x_1} \\
+    \frac{\partial u(t, x)}{\partial x}\Big | _{ x=x_2} &= \frac{\partial U(t, x)}{\partial x} \Big | _{ x=x_2}
+\end{align}
+
+or even a combination of Dirichlet and Neumann boundary conditions.
+
+By solving \refeq{poisson eq demo mms} with $q = Q(t, x)$ and initial condition $u = U(0, x)$, we can obtain the computed solution $u_\mathrm{computed}$.
+The error between the computed solution $u_\mathrm{computed}$ and the exact solution $U(t, x)$ can be calculated to assess the 
+
+% Application
+Let us apply the MMS to the hydrogen transport model.
+In order to exercise all terms in Equations \ref{eq:mobile} and \ref{eq:trapped}, the following manufactured solutions are chosen:
 \begin{equation}
     \begin{cases}
     c_{m_D} = 1 + x^2 + \sin(t) \\
