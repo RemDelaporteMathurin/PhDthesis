@@ -76,7 +76,7 @@ class Diagram:
         )
 
 
-energies = [-0.5, 0.2, -1, 1.3, *[0, 1] * 12]
+energies = [-0.5, 0.2, -1, 1.3, *[0, 1] * 10]
 
 
 states = [State(E=E) for E in energies]
@@ -103,13 +103,13 @@ with plt.style.context(matplotx.styles.dufte):
 
 
     my_diagram.add_dotted_line(states[3], dx_right=1)
-    my_diagram.add_arrow(states[4], states[3], "$E_{\mathrm{des}}$", loc_text="top")
+    my_diagram.add_arrow(states[4], states[3], "$E_{\mathrm{recomb}}$", loc_text="top")
 
     my_diagram.add_dotted_line(states[1], dx_right=1, dx_left=1)
-    my_diagram.add_arrow(states[2], states[1], "$E_{\mathrm{recomb}}$", loc_text="bottom")
+    my_diagram.add_arrow(states[2], states[1], "$E_{\mathrm{des}}$", loc_text="bottom")
 
     my_diagram.add_dotted_line(states[2], dx_right=1)
-    my_diagram.add_arrow(states[3], states[2], "$E_{\mathrm{abs}}$", loc_text="top")
+    my_diagram.add_arrow(states[3], states[2], "$E_{\mathrm{A}}$", loc_text="bottom")
     my_diagram.add_arrow(states[0], states[1], "$E_{\mathrm{diss}}$", loc_text="top")
 
     my_diagram.add_dotted_line(states[0], dx_right=4)
