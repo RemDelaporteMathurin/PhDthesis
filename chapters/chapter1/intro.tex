@@ -338,7 +338,24 @@ A \SI{800}{MWe} DEMO-type commercial fusion reactor would burn around \SI{300}{g
 
 For all these reasons, tritium must be produced on-site in large quantities for a fusion economy to be possible.
 
-To this end, the neutrons of the DT fusion reactions will be harnessed in a component called the \textit{breeding blanket} containing lithium (Li).
+To this end, the neutrons of the DT fusion reactions will be harnessed in a component containing lithium (Li) surrounding the plasma called the \textit{breeding blanket} (see \reffig{blanket_shimwell}).
+
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics{Figures/Chapter1/blanket_shimwell_top_view.png}
+        \caption{View from above}
+    \end{subfigure}%
+    \qquad
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics{Figures/Chapter1/blanket_shimwell_side_view.png}
+        \caption{Side view}
+    \end{subfigure}
+    \caption{DEMO model showing HCLL blankets \cruleme[lithiumgreen]{0.3cm}{0.3cm}, plasma \cruleme[plasmapink]{0.3cm}{0.3cm}, magnets \cruleme[magnetred]{0.3cm}{0.3cm}, and structural steel \cruleme[steelgray]{0.3cm}{0.3cm}. Reproduced from \cite{shimwell_multiphysics_2019}.}
+    \labfig{blanket_shimwell}
+\end{figure}
+
 Depending on the Li isotope, two reactions can occur:
 
 \begin{align}
@@ -349,10 +366,49 @@ Depending on the Li isotope, two reactions can occur:
 Several blankets designs have been proposed divided in three main categories: ceramic concepts, liquid metal concepts, and molten-salts concepts.
 All designs differ in the choice of tritium breeder, coolant and geometry.
 
-The european candidates for breeding blankets in DEMO are the Water-Cooled-Lithium-Lead (WCLL), the Helium-Cooled-Pebble-Bed (HCPB), the Helium-Cooled-Liquid-Lead (HCLL) and the Dual-Coolant-Lithium-Lead (cooled by water and helium).
+The european candidates for breeding blankets in DEMO are the Water-Cooled-Lithium-Lead (WCLL) \sidecite{aubert_design_2020, del_nevo_recent_2019}, the Helium-Cooled-Pebble-Bed (HCPB) \sidecite{hernandez_overview_2018, hernandez_new_2017,pereslavtsev_neutronic_2017}, the Helium-Cooled-Liquid-Lead (HCLL) \sidecite{aubert_status_2018,jaboulay_nuclear_2017} and the Dual-Coolant-Lithium-Lead (cooled by water and helium) \sidecite{urgorri_tritium_2017, palermo_neutronic_2015} \sidecite{federici_overview_2019}.
 
-Hydrogen transport in these components is key for retention of tritium in solid parts of the blankets could reduce their performances as it would be hard to recover it.
-A high retention in the blanket would also lead to a high startup inventory (\textit{ie} the inventory needed when commissioning the fusion power plant) making fusion energy more expensive.
+In order to ensure tritium self-sufficiency, the tritium breeding ratio (TBR) of the blanket must be greater than or equal to one \sidecite{abdou_blanketfirst_2015}.
+
+The TBR is defined by the number of tritium atoms produced by generated neutrons.
+A TBR greater than one can only be obtained by neutron multiplication with lead or beryllium.
+
+Moreover, the TBR must account for:
+\begin{itemize}
+    \item losses via permeation, trapping, radioactive decay (5\% per year)
+    \item safety reserve in case of interruption of the fuel cycle
+    \item supply of new reactors, also called the \textit{startup inventory}
+\end{itemize}
+
+The TBR target in conventional power plants is around 1.05 \sidecite{shimwell_multiphysics_2019}.
+Though this would achieve self-sufficiency, it is not be enough to sustain the development of a fusion energy market.
+
+% The desired doubling time of fusion power plants will drive this last point \sidecite{bockhoff_tritium_1983}.
+The evolution of the maximum fusion power on the grid $P_\mathrm{max}$ can be expressed as:
+
+\begin{equation}
+    P_\mathrm{max} = P_\mathrm{plant} \times 2^{t/\tau_2}
+\end{equation}
+where $\tau_2$ the doubling time (\textit{ie} the time after which a plant has doubled its initial tritium inventory), $t$ is the time, and $P_\mathrm{plant}$ is the power of a single plant.
+This expression assumes the only source of tritium is the reactors currently under operation.
+
+Assuming $P_\mathrm{plant} = \SI{1}{GW}$, with a doubling time $\tau_2 = \SI{2}{years}$, it will take \SI{20}{years} to produce \SI{1}{TWh} of fusion electricity on the grid (see \reffig{fusion power doubling time}).
+This time reaches \SI{50}{years} with a doubling time of \SI{5}{years}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{Figures/Chapter1/doubling_time.pdf}
+    \caption{Evolution of the maximum fusion power on the grid for different doubling times.}
+    \labfig{fusion power doubling time}
+\end{figure}
+
+For fusion power plants to achieve a doubling time $\tau_2 \leq \SI{3}{years}$ (doubling times in power industry are typically \SI{5}{years}), the TBR must be greater than 1.15 \sidecite{abdou_physics_2020}.
+Other key parameters influence the required TBR (for a given doubling time) like the tritium burn-up fraction, the fueling efficiency, the plant availability factor...
+
+Tritium transport in breeding blankets is crucial as trapped tritium in solid parts would increase the startup inventory.
+For a given doubling time, a higher startup inventory means a higher TBR requirement.
+The blanket inventory in the solid parts can be reduced by (1) reduce the amount of solid components (this will also increase the TBR \cite{shimwell_multiphysics_2019}) (2) designing permeation barriers \sidecite{utili_design_2022}.
+% Understanding hydrogen transport in these components is therefore crucial for the future of nuclear fusion technology.
 
 \subsection{Safety}
 Tritium is also an issue in terms of nuclear safety.
