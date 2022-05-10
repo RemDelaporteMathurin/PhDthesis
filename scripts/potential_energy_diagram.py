@@ -62,21 +62,35 @@ class Diagram:
         )
 
 
-energies = [0, 0.4, -1, 1.3, *[0, 1] * 10]
+energies = [0, 0.4, -1, 1.3, *[0, 1] * 12]
 
 
 states = [State(E=E) for E in energies]
 
 states[10].E = -2.5
-states[18].E = -1.5
+states[20].E = -1.5
 my_diagram = Diagram(states)
 
 plt.figure(figsize=(7.5, 4.8))
 plt.plot(my_diagram.x, my_diagram.y)
 
-my_diagram.add_dotted_line(states[18], dx_right=2)
-my_diagram.add_dotted_line(states[20], dx_left=1)
-my_diagram.add_arrow(states[20], states[18], "$E_{\mathrm{b},2}$")
-my_diagram.add_arrow(states[20], states[21], "$E_{\mathrm{k},2}$")
+my_diagram.add_dotted_line(states[20], dx_right=2)
+my_diagram.add_dotted_line(states[21], dx_right=1)
+my_diagram.add_arrow(states[22], states[20], "$E_{\mathrm{b},2}$")
+my_diagram.add_arrow(states[22], states[23], "$E_{\mathrm{k},2}$", offset=0.6)
+
+my_diagram.add_dotted_line(states[15], dx_right=1)
+my_diagram.add_arrow(states[16], states[17], "$E_\mathrm{D}$", offset=0.6)
+
+my_diagram.add_dotted_line(states[10], dx_right=2)
+my_diagram.add_dotted_line(states[11], dx_right=1)
+my_diagram.add_arrow(states[12], states[10], "$E_{\mathrm{b},1}$")
+my_diagram.add_arrow(states[12], states[13], "$E_{\mathrm{k},1}$", offset=0.6)
+
+
+my_diagram.add_dotted_line(states[3], dx_right=1)
+my_diagram.add_arrow(states[4], states[3], "$E_{\mathrm{recomb}}$", offset=0.6)
+
 # plt.scatter(my_diagram.x_raw, my_diagram.energies)
+
 plt.show()
