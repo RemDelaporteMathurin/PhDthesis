@@ -101,6 +101,12 @@
 \usepackage{kaobiblio}
 \addbibresource{bibfile.bib} % Bibliography file
 
+\AtEveryBibitem{
+    \clearfield{urlyear}
+    \clearfield{urldate}
+    \clearfield{urlmonth}
+}
+
 \RenewDocumentCommand{\formatmargincitation}{m}{%
 	\parencite{#1} \citeauthor*{#1} (\citeyear{#1})\\
 }
