@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotx
 from scipy.interpolate import interp1d
 
 
@@ -83,38 +84,40 @@ states = [State(E=E) for E in energies]
 states[10].E = -2.5
 states[20].E = -1.5
 my_diagram = Diagram(states)
+with plt.style.context(matplotx.styles.dufte):
+    plt.figure(figsize=(10, 4.8))
+    plt.plot(my_diagram.x, my_diagram.y)
 
-plt.figure(figsize=(10, 4.8))
-plt.plot(my_diagram.x, my_diagram.y)
+    my_diagram.add_dotted_line(states[20], dx_right=2)
+    my_diagram.add_dotted_line(states[21], dx_right=1)
+    my_diagram.add_arrow(states[22], states[20], "$E_{\mathrm{b},2}$")
+    my_diagram.add_arrow(states[22], states[23], "$E_{\mathrm{k},2}$", loc_text="top")
 
-my_diagram.add_dotted_line(states[20], dx_right=2)
-my_diagram.add_dotted_line(states[21], dx_right=1)
-my_diagram.add_arrow(states[22], states[20], "$E_{\mathrm{b},2}$")
-my_diagram.add_arrow(states[22], states[23], "$E_{\mathrm{k},2}$", loc_text="top")
+    my_diagram.add_dotted_line(states[15], dx_right=1)
+    my_diagram.add_arrow(states[16], states[17], "$E_\mathrm{D}$", loc_text="top")
 
-my_diagram.add_dotted_line(states[15], dx_right=1)
-my_diagram.add_arrow(states[16], states[17], "$E_\mathrm{D}$", loc_text="top")
-
-my_diagram.add_dotted_line(states[10], dx_right=2)
-my_diagram.add_dotted_line(states[11], dx_right=1)
-my_diagram.add_arrow(states[12], states[10], "$E_{\mathrm{b},1}$")
-my_diagram.add_arrow(states[12], states[13], "$E_{\mathrm{k},1}$", loc_text="top")
-
-
-my_diagram.add_dotted_line(states[3], dx_right=1)
-my_diagram.add_arrow(states[4], states[3], "$E_{\mathrm{des}}$", loc_text="top")
-
-my_diagram.add_dotted_line(states[1], dx_right=1, dx_left=1)
-my_diagram.add_arrow(states[2], states[1], "$E_{\mathrm{recomb}}$", loc_text="bottom")
-
-my_diagram.add_dotted_line(states[2], dx_right=1)
-my_diagram.add_arrow(states[3], states[2], "$E_{\mathrm{abs}}$", loc_text="top")
-my_diagram.add_arrow(states[0], states[1], "$E_{\mathrm{diss}}$", loc_text="top")
-
-my_diagram.add_dotted_line(states[0], dx_right=4)
-my_diagram.add_arrow(states[4], states[0], "$E_{\mathrm{S}}$")
+    my_diagram.add_dotted_line(states[10], dx_right=2)
+    my_diagram.add_dotted_line(states[11], dx_right=1)
+    my_diagram.add_arrow(states[12], states[10], "$E_{\mathrm{b},1}$")
+    my_diagram.add_arrow(states[12], states[13], "$E_{\mathrm{k},1}$", loc_text="top")
 
 
-# plt.scatter(my_diagram.x_raw, my_diagram.energies)
+    my_diagram.add_dotted_line(states[3], dx_right=1)
+    my_diagram.add_arrow(states[4], states[3], "$E_{\mathrm{des}}$", loc_text="top")
 
-plt.show()
+    my_diagram.add_dotted_line(states[1], dx_right=1, dx_left=1)
+    my_diagram.add_arrow(states[2], states[1], "$E_{\mathrm{recomb}}$", loc_text="bottom")
+
+    my_diagram.add_dotted_line(states[2], dx_right=1)
+    my_diagram.add_arrow(states[3], states[2], "$E_{\mathrm{abs}}$", loc_text="top")
+    my_diagram.add_arrow(states[0], states[1], "$E_{\mathrm{diss}}$", loc_text="top")
+
+    my_diagram.add_dotted_line(states[0], dx_right=4)
+    my_diagram.add_arrow(states[4], states[0], "$E_{\mathrm{S}}$")
+
+    plt.ylim(-3, 2)
+    plt.xticks([])
+    plt.yticks([])
+    # plt.scatter(my_diagram.x_raw, my_diagram.energies)
+    plt.tight_layout()
+    plt.show()
