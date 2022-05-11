@@ -328,7 +328,7 @@ The second step is to build a variational formulation (also called weak form) of
 To do so, the recipe is to multiply the PDE by a function $v$ (called the test function) and integrate over an arbitrary element $\Omega_e$.
 The following expression is obtained:
 \begin{equation}
-    \int_{\Omega_e} -\nabla^2 u v dx = \int_{\Omega_e} f v dx
+    \int_{\Omega_e} -\nabla^2 u v dx = \int_{\Omega_e} f v dx \quad \forall v
     \label{eq: weak form 1}
 \end{equation}
 
@@ -344,7 +344,7 @@ To do so, Gauss-Green's lemma is employed:
 
 The variational form therefore reads:
 \begin{equation}
-    \int_{\Omega_e} \nabla u \cdot \nabla v dx = \int_{\Omega_e} f v dx + \int_{\partial \Omega_e} \frac{\partial u}{\partial n} v dx
+    \int_{\Omega_e} \nabla u \cdot \nabla v dx = \int_{\Omega_e} f v dx + \int_{\partial \Omega_e} \frac{\partial u}{\partial n} v dx \quad \forall v
     \label{eq: weak form 2}
 \end{equation}
 where the last term of the equation either vanishes due to Dirichlet boundary conditions or is imposed.
