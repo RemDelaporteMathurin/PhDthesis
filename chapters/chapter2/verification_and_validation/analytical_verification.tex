@@ -18,7 +18,7 @@ This section describes two verification cases of FESTIM.
 The first one uses the MES and the second one the MMS.
 More complex and thorough verification cases are shown in Appendix \ref{appendix verification}.
 
-\subsubsection{H transport (MES)} \label{analytical}
+\subsubsection{Case 1: H transport (MES)} \label{analytical}
 
 % Although validation against experiments could show that FESTIM is able reproduce the data with a given set of parameters, objective verification against analytical solutions is first required to ensure that the governing Equations \ref{eq:mobile} and \ref{eq:trapped} are solved correctly.
 
@@ -69,7 +69,7 @@ These parameters have been chosen for the sake of verification and do not necess
         $t_f$ & $\si{s}$ & 2000 \\
         \\
     \end{tabular}
-    \caption{Parameters used for the analytical verification}
+    \caption{Parameters used for the analytical verification (Case 1).}
     \label{tab:parameters analytical verification}
 \end{table}
 One can notice on Figure \ref{fig:FESTIM vs analytical} that the numerical results are in good agreement with the analytical solution.
@@ -86,7 +86,7 @@ Since this test case is very similar to a pure diffusion case, it does not exerc
 To do so, the governing equations would have to be solved for a generic case which proves to be complex.
 This is why the MMS will be used instead.
 
-\subsubsection{H transport (MMS)} \label{mms}
+\subsubsection{Case 2: H transport (MMS)} \label{mms}
 
 The MMS is often used to unravel the complexity of governing equations \sidecite{dudson_verification_2016, roache_code_2002}.
 This is particularly useful when dealing with complex geometries or to exercise non-trivial material propoerties.
@@ -183,7 +183,7 @@ In this simulation, $k$ approaches $2$ as expected since elements of order $1$ h
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{"Figures/Chapter3/L2 error on Cm vs h"}
-    \caption{Evolution of the L2 norm of the error as function of element size h for the 1D H transport case.}
+    \caption{Evolution of the L2 norm of the error as function of element size h for the 1D H transport case (Case 2).}
     \label{fig:error vs h}
 \end{figure}
 
@@ -222,7 +222,7 @@ Moreover, the convergence rates confirm the mesh dependency of the computed solu
         \includegraphics[width=\linewidth]{Figures/Chapter2/c_exact.pdf}
         \caption{Exact solution $c_D$}
     \end{subfigure}
-    \caption{Comparison of the computed concentrations with the exact solution.}
+    \caption{Comparison of the computed concentrations with the exact solution (Case 2).}
     \label{fig: results MMS 2D H transport}
 \end{figure*}
 
