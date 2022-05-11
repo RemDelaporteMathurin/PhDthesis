@@ -24,14 +24,14 @@ More complex and thorough verification cases are shown in Appendix \ref{appendix
 
 For this verification case, a 1D slab is considered with a thickness $l$.
 The concentration of mobile particles was set to $c_0$ on one side of the slab and set to zero on the other side.
-Only one trap is considered in this case and its density $n_1$ is homogeneously distributed.
+Only one trap is considered in this case and its density $n$ is homogeneously distributed.
 
 The trapping parameter $\zeta$ is defined in \sidecite{longhurst_verification_2005} as follow:
 \begin{equation}
-    \zeta = \frac{\lambda^2 \: n_\mathrm{solute} \: \nu_0}{D_0 \: n_1}\exp\bigg(\frac{E_\mathrm{diff} - E_1}{k_B \: T}\bigg) + \frac{c_\mathrm{m}}{n_1}
+    \zeta = \frac{p}{k \: n} + \frac{c_\mathrm{m}}{n}
 \end{equation}
 
-In our case, we choose the detrapping energy $E_1$, the concentration $c_0$ and the temperature $T$ so that $\zeta \gg \frac{c_\mathrm{m}}{n_1}$.
+In our case, we choose the trapping and detrapping rates $k$ and $p$, the concentration $c_0$ and the temperature $T$ so that $\zeta \gg \frac{c_\mathrm{m}}{n_1}$.
 This is known as the \textit{effective diffusivity regime} where the diffusion is almost identical to the case where there are no traps.
 In this regime, the governing equations are identical as a pure diffusion regime and are therefore easy to solve analytically.
 
@@ -41,7 +41,7 @@ The coefficient $D$ is then replaced by an effective diffusion coefficient:
 \end{equation}
 The particle flux at the background surface is expressed in $\SI{}{H.m^{-2}.s^{-1}}$ and finally defined in \sidecite{longhurst_verification_2005} by:
 \begin{equation}
-    \varphi_H(t) = \frac{c_0 D}{l}\bigg[1+2\sum_{m=1}^{\infty}(-1)^m \exp\bigg(-m^2\frac{\pi^2 \:D_\mathrm{eff} \: t}{l^2}\bigg)\bigg]
+    \varphi(t) = \frac{c_0 D}{l}\bigg[1+2\sum_{m=1}^{\infty}(-1)^m \exp\bigg(-m^2\frac{\pi^2 \:D_\mathrm{eff} \: t}{l^2}\bigg)\bigg]
 \label{eq:flux analytical}
 \end{equation}
 All the parameters are defined in Table \ref{tab:parameters analytical verification}.
@@ -52,22 +52,21 @@ These parameters have been chosen for the sake of verification and do not necess
         Parameter & Units & Value \\
         \hline
         \\
-        $\rho$ & $\si{m^{-3}}$ &$\SI{3.16e22}{}$ \\
-        $n_1$ & & $\SI{1.00e-1}{} \rho$ \\
-        $c_0$ & & $\SI{1.00e-4}{} \rho$\\
-        $n_\mathrm{solute}$ & & $2 \:\rho$\\
+        $D_0$ & $\si{m^2.s^{-1}}$ & 2.0 \\
+        $k_0$ & $\si{m^3.s^{-1}}$ & 0.01 \\
+        $p_0$ & $\si{s^{-1}}$ & 1.0 \\
         \\
-        $E_1$ & $\si{eV}$ & $\SI{8.6e-3}{}$ \\
-        $E_\mathrm{diff}$ & & $0$ \\
+        $E_D$ & $\si{eV}$ & 0.2 \\
+        $E_k$ & $\si{eV}$ & 0.1 \\
+        $E_p$ & $\si{eV}$ & 0.1 \\
         \\
-        $\lambda$ & $\si{m}$ & $\SI{3.16e-8}{}$  \\
-        $l$ & & $\SI{5e-5}{}$\\
+        $c_0$ & $\si{m^{-3}}$ & 2.0 \\
+        $n$ & $\si{m^{-3}}$ & 2.0 \\
+        $l$ & $\si{m}$ & 1.5\\
         \\
-        $T$ & $\si{K}$ & 1000 \\
+        $T$ & $\si{K}$ & 300 \\
         \\
-        $t_f$ & $\si{s}$ & \SI{e-8}{} \\
-        $\nu_0$ & $\si{s^{-1}}$ & $\SI{e13}{}$ \\
-        $D_0$ & $\si{m^2.s^{-1}}$ & $1$ \\
+        $t_f$ & $\si{s}$ & 2000 \\
         \\
     \end{tabular}
     \caption{Parameters used for the analytical verification}
@@ -78,8 +77,8 @@ The maximum error between analytical and numerical solutions is calculated to be
 According to finite elements theory, this value will decrease with the stepsize and with the element size.
 \begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter3/FESTIM_vs_analytical.pdf}
-    \caption{Temporal evolution of the particle flux $\varphi_H$ ($t_f = \SI{e-8}{s}$).}
+    \includegraphics[width=\linewidth]{Figures/Chapter3/mes_festim_effective_diffusion.pdf}
+    \caption{Temporal evolution of the particle flux $\varphi$.}
     \label{fig:FESTIM vs analytical}
 \end{figure}
 
