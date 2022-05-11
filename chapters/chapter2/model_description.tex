@@ -186,45 +186,46 @@ where $\tau$ is a characteristic time expressed by:
 In this expression, $R_i = (p / (k c_\mathrm{max}) + 1)^{-1}$ represents the maximum filling ratio of the trap $i$ and $n_i$ is the trap density.
 
 \subsection{Interface condition: conservation of chemical potential}
-According to Krom \textit{et al} \sidecite{krom_hydrogen_2000}, since the solubility of hydrogen atoms in solids is low, the chemical potential of solute hydrogen $\mu$ is expressed by:
-\begin{equation}
-    \mu = \mu_0 + RT \ln\left( \frac{c_\mathrm{m}}{N_L}\right)
-\end{equation}
-where $\mu_0$ is the chemical potential in a reference state in \si{J.mol^{-1}}, $R$ the ideal gas constant, $T$ the temperature in \si{K}, $c_\mathrm{m}$ the mobile hydrogen concentration in \si{m^{-3}} and $N_L$ the lattice site concentration in \si{m^{-3}}.
-
-% Assuming that only free hydrogen atoms contribute to the overall flux in the material, the particle flux $J$ in \si{m^{-2}.s^{-1}} can be expressed by Fick's law:
+% According to Krom \textit{et al} \sidecite{krom_hydrogen_2000}, since the solubility of hydrogen atoms in solids is low, the chemical potential of solute hydrogen $\mu$ is expressed by:
 % \begin{equation}
-%     J = - D \nabla c_\mathrm{m}
+%     \mu = \mu_0 + RT \ln\left( \frac{c_\mathrm{m}}{N_L}\right)
 % \end{equation}
-% where $D$ is the diffusion coefficient of hydrogen expressed in \si{m^{2}.s^{-1}}. 
+% where $\mu_0$ is the chemical potential in a reference state in \si{J.mol^{-1}}, $R$ the ideal gas constant, $T$ the temperature in \si{K}, $c_\mathrm{m}$ the mobile hydrogen concentration in \si{m^{-3}} and $N_L$ the lattice site concentration in \si{m^{-3}}.
+
+% % Assuming that only free hydrogen atoms contribute to the overall flux in the material, the particle flux $J$ in \si{m^{-2}.s^{-1}} can be expressed by Fick's law:
+% % \begin{equation}
+% %     J = - D \nabla c_\mathrm{m}
+% % \end{equation}
+% % where $D$ is the diffusion coefficient of hydrogen expressed in \si{m^{2}.s^{-1}}. 
 
 
-The local equilibrium at the interface between two materials must ensure  the continuity of both the chemical potential $\mu$ (see Equation \ref{eq: muconservation}) and the particle flux (see Equation \ref{eq: flux conservation}).
-\begin{equation}
-    \mu^- = \mu^+  \label{eq: muconservation}  
-\end{equation}
+% The local equilibrium at the interface between two materials must ensure  the continuity of both the chemical potential $\mu$ (see Equation \ref{eq: muconservation}) and the particle flux (see Equation \ref{eq: flux conservation}).
+% \begin{equation}
+%     \mu^- = \mu^+  \label{eq: muconservation}  
+% \end{equation}
     
-\begin{equation}
-    D^- \nabla c_\mathrm{m}^- = D^+ \nabla c_\mathrm{m}^+ \label{eq: flux conservation} 
-\end{equation}
+% \begin{equation}
+%     D^- \nabla c_\mathrm{m}^- = D^+ \nabla c_\mathrm{m}^+ \label{eq: flux conservation} 
+% \end{equation}
 
-A way to picture the continuity of chemical potential is to imagine a gas layer at the interface between two materials at a partial pressure $P_\mathrm{eq}$.
-$P_\mathrm{eq}$ can be expressed by the solubility law at the surface of each material.
-In the case of two metallic surfaces (\textit{ie} behaving according to Sievert's law of solubility):
+The continuity of chemical potential is conveyed by the continuity of $P$, the local partial pressure of hydrogen at equilibrium.
+In a metal, $P$ can be expressed from Sievert's law of solubility:
 \begin{equation}
-    P_\mathrm{eq} = (c_\mathrm{m}^-/S^-)^2 = (c_\mathrm{m}^+/S^+)^2
+    P = (c_\mathrm{m}^-/S^-)^2
 \end{equation}
 with $S$ the solubility of H in the materials expressed in \si{m^{-3}.Pa^{-0.5}}.
-
-The chemical potential continuity is therefore conveyed by the continuity of the quantity $c_\mathrm{m}/S$.
-% Here, the quantity $c_\mathrm{m}/S$, with $S$ the solubility of hydrogen expressed in \si{m^{-3}.Pa^{-0.5}}, is equivalent to the root square of the pressure of an imaginary gas in thermodynamic equilibrium between the two solids and for which Sievert's law is applied.  
+% A way to picture the continuity of chemical potential is to imagine a gas layer at the interface between two materials at a partial pressure $P_\mathrm{eq}$.
+% $P_\mathrm{eq}$ can be expressed by the solubility law at the surface of each material.
+At the interface between two metallic surfaces, the chemical potential continuity is therefore conveyed by the continuity of the quantity $c_\mathrm{m}/S$.:
+\begin{equation}
+    (c_\mathrm{m}^-/S^-)^2 = (c_\mathrm{m}^+/S^+)^2
+\end{equation}
 
 In the case of a metal in contact with a non-metallic liquid behaving according to Henry's law (\textit{eg} a molten salt):
 \begin{equation}
-    P_\mathrm{eq} = (c_\mathrm{m}^-/S^-)^2 = c_\mathrm{m}^+/S^+
+    (c_\mathrm{m}^-/S^-)^2 = c_\mathrm{m}^+/S^+
 \end{equation}
 with $S$ the solubility of H in the materials expressed in \si{m^{-3}.Pa^{-0.5}} or \si{m^{-3}.Pa^{-1}}.
-
 
 % This assumption is correct as long as the time needed to reach the equilibrium is low compared to the time of the simulation.
 % For long exposure time as well as for high temperatures, the characteristic time is small enough for the equilibrium model to be valid (see page \refpage{Interface transient model}).
@@ -232,19 +233,20 @@ with $S$ the solubility of H in the materials expressed in \si{m^{-3}.Pa^{-0.5}}
 % From Equation \ref{eq: c/s conservation}, one can deduce that a solubility discontinuity across an interface induces a discontinuity of mobile hydrogen concentration $c_\mathrm{m}$.
 % This can also be interpreted as the chemical potentials at a reference state being different in different materials \sidecite{kirchheim_25_2014}, as the lattice site concentration.
 
-A method to ensure continuity of chemical potential is to perform a change of variable in Fick's second law of diffusion with $\phi = c_\mathrm{m}/S$ (in the case of a metal) \sidecite{smith_abaqusstandard_2009} when internal conditions cannot be set.
-Equation \ref{eq: diffusion equation} therefore reads:
+FESTIM ensures the continuity of chemical potential by performing a change of variable in Fick's second law of diffusion with $\phi = c_\mathrm{m}/S$ (in the case of a metal) \sidecite{smith_abaqusstandard_2009} when internal conditions cannot be set.
+Neglecting the trapping and generation terms, Equation \ref{eq:mobile} therefore reads:
 
 \begin{align}
     \frac{\partial \phi S}{\partial t} &= \nabla \cdot\left(D \nabla \phi S\right) + f \nonumber \\
     &=\nabla \cdot\left( D S \nabla \phi + D \phi \nabla S\right) + f \label{eq: diffusion equation changed}
 \end{align}
 
-Because $\phi$ is computed, the ratio $c_\mathrm{m}/S$ is continuous by default at the material interfaces.
+% Because $\phi$ is computed, the ratio $c_\mathrm{m}/S$ is continuous by default at the material interfaces.
 
 % This second approach is used for instance in the \textit{mass-diffusion} procedure of the Abaqus code \sidecite{smith_abaqusstandard_2009}.
 % This interface model has also been implemented into the current hydrogen transport code FESTIM \sidecite{delaporte-mathurin_finite_2019} using FEniCS \sidecite{alnaes_fenics_2015}.
 
+After solving Equation \ref{eq: diffusion equation changed} for $\phi$, $c_m$ can be retrieved by multiplying the solution by $S$.
 
 \section{Heat transfer}
 Due to the numerous processes that are thermally activated, it is essential have an accurate temperature field.
