@@ -876,37 +876,39 @@ We will try to answer the following questions:
     \item What is the impact of the presence of helium?
 \end{itemize}
 
-Due to the time scales at play and the complexity of the components, answering these question experimentally is complex.
+Due to the time scales at play and the complexity of the components, answering these questions experimentally is complex.
 Numerical models can however be used to simulate components over long time scales and with complex geometries.
 However, the tools currently available did not meet the requirements of either dimensionality, physics, performance or availability.
 
 Several simulation tools have been developed throughout the years (see Table \ref{tab: code comparison}).
-Most of these codes are not able to run multi-material, multi-dimensional simulations.
+Most of these codes are not able to run multimaterial and/or multi-dimensional simulations.
 Many of them rely on the Finite Differences Method (FDM) whereas HIT \sidecite{candido_integrated_2020}, Abaqus \sidecite{benannoune_multidimensional_2020} and ACHLYS \sidecite{stephen-dixon_aurora-multiphysicsachlys_2021} rely on the Finite Element Method (FEM).
 Moreover, some do not have an integrated heat transfer solver - essential for an accurate estimation of temperature fields and therefore thermally activated processes.
 Some of these codes rely on proprietary software like Abaqus or COMSOL for HIT - limiting their accessibility and scalability (parrallel computing).
 The code ACHLYS meets all these requirements and is the only one available open-source but was only released in mid 2021.
 Finally, good computing performances were required in order to simulate the full divertor.
-This ruled out the use of Abaqus in its current state as its initially designed for thermo-mechanical simulations.
+This ruled out the use of Abaqus in its current state as it was initially designed for thermo-mechanical simulations.
 
 \begin{table*} [h]
     \centering
-    \begin{tabular}{L{2cm} L{0.5cm} L{0.5cm} L{0.5cm} L{1.7cm} l l l l}
-              & 1D & 2D & 3D & Multimaterial & Numerical method & Heat transfer & Based on free software \\
+    \begin{tabular}{L{2cm} L{0.5cm} L{0.5cm} L{0.6cm} L{1.7cm} l l l }
+        & 1D & 2D & 3D & Multimaterial & Heat transfer & Open-source & Programming language \\
         \hline \\
-        TMAP7 \cite{longhurst_tmap7_2008} & $\checkmark$ & & & $\checkmark$ & FDM & & $\checkmark$ \\
+        TMAP7 \cite{longhurst_tmap7_2008} & $\checkmark$ & & & $\checkmark$ & & & Fortran\\
         \\
-        HIIPC \cite{sang_modelling_2012} & $\checkmark$ & & & & FDM & $\checkmark$ & $\checkmark$ \\
+        HIIPC \cite{sang_modelling_2012} & $\checkmark$ & & & & $\checkmark$ & & Fortran\\
         \\
-        MHIMS \cite{hodille_study_2016} & $\checkmark$ & & & & FDM & & $\checkmark$ \\
+        CRDS \cite{matveev_reaction-diffusion_2018} & $\checkmark$ & & & & & & Mathematica \\
         \\
-        TESSIM \cite{schmid_transport_2014} & $\checkmark$ & & & & FDM & & \\
+        MHIMS \cite{hodille_study_2016} & $\checkmark$ & & & & & & Fortran \\
         \\
-        HIT \cite{candido_integrated_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & FEM & $\checkmark$ & \\
+        TESSIM \cite{schmid_transport_2014} & $\checkmark$ & & & & & & \\
         \\
-        Abaqus \cite{benannoune_multidimensional_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & FEM & $\checkmark$ & \\
+        HIT \cite{candido_integrated_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & & COMSOL\\
         \\
-        ACHLYS \cite{stephen-dixon_aurora-multiphysicsachlys_2021} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & FEM & $\checkmark$ & $\checkmark$ \\
+        Abaqus \cite{benannoune_multidimensional_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & & Fortran\\
+        \\
+        ACHLYS \cite{stephen-dixon_aurora-multiphysicsachlys_2021} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & C++\\
         \\
     \end{tabular}
     \caption{Comparison of some hydrogen transport modelling tools.}
