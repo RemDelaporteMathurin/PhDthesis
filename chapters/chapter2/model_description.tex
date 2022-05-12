@@ -16,7 +16,7 @@ This Section describes the main model for simulating H transport in materials.
 The Macroscopic Rate Equations (MRE) model will be employed.
 The principle is to split the hydrogen isotopes into several populations: the mobile hydrogen particles and the hydrogen particles trapped in the i-th trap.
 Their concentration in \si{H.m^{-3}} are respectively $c_\mathrm{m}$ and $c_{\mathrm{t},i}$.
-The unit of the different concentrations are in $ \si{m^{-3}}$ but can be expressed in atomic fraction (at.fr.) by normalising them to the atomic density of the material.
+They can be expressed in atomic fraction (at.fr.) by normalising them to the atomic density of the material.
 
 Fick's first law of diffusion states that the particle flux is driven by the concentration gradient.
 The particle flux $J$ is therefore expressed by:
@@ -35,7 +35,7 @@ This expression neglects the Soret effect or the effect of hydrostatic pressure.
 % This effect will enhance the diffusion when particles diffuse from a hot region to a cold region.
 % It should be noted however that the Soret coefficient is fairly difficult to measure.
 
-The spatio temporal evolution of these concentrations are commonly described by the following reaction-diffusion system:
+The spatio-temporal evolution of these concentrations is commonly described by the following reaction-diffusion system:
 
 \begin{equation}
     \frac{\partial c_\mathrm{m}}{\partial t}=\nabla \cdot J+\Gamma-\sum \frac{\partial c_{\mathrm{t}, i}}{\partial t}
@@ -53,20 +53,19 @@ This is the case for plasma implantation and nuclear reactions producing H.
 
 In Equation \ref{eq:trapped}, $k$ and $p$ are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively and $n_i$ is the trap density in \si{m^{-3}}.
 
-At steady state (\textit{ie} $\frac{\partial c_\mathrm{m}}{\partial t} = 0$ and $\frac{\partial c_{\mathrm{t}, i}}{\partial t} = 0$), the mobile H concentration is independent of trapping effects.
+At steady state (\textit{ie} $\frac{\partial c_\mathrm{m}}{\partial t} = 0$ and $\frac{\partial c_{\mathrm{t}, i}}{\partial t} = 0$), the mobile H concentration is independent of $c_{\mathrm{t}, i}$.
 Equation \ref{eq:trapped} can be rewritten as:
 \begin{equation}
     c_{\mathrm{t}, i} = n_i \frac{1}{\frac{p}{k c_\mathrm{m}} + 1}
     \label{eq: steady state ct}
 \end{equation}
 The quantity $(p / (k c_\mathrm{m}) + 1)^{-1}$ determines the filling ratio of the trap. 
-When it approaches one (high mobile concentration, low detrapping rate or high trapping rate), the trapped concentration approaches the trap density.
-When it approahces zero (high detrapping rate, low mobile concentration or low trapping rate), the trapped concentration approaches zero.
-Moreover, the mobile H concentration is independent of trapping effects.
+As it approaches one (high mobile concentration, low detrapping rate or high trapping rate), the trapped concentration approaches the trap density.
+As it approaches zero (high detrapping rate, low mobile concentration or low trapping rate), the trapped concentration approaches zero.
 
 \subsection{Boundary conditions}
 
-Several boundary conditions will be employed in order to constrain either the actual solution (Dirichlet) or the solution gradient (Neumann, Robin) at the domain's boundaries.
+Several boundary conditions will be employed in order to constrain either the concentration (Dirichlet boundary condition) or the concentration gradient (Neumann, Robin boundary condition) at the domain's boundaries.
 
 \subsubsection{Dissociation and recombination fluxes}
 
@@ -84,6 +83,7 @@ $f$ can also be expressed as a molecular recombination flux:
     \label{eq: recombination flux}
 \end{equation}
 where $K_r(T) = K_{r_0} \exp(\frac{-E_{K_r}}{k_B T}) $ is the recombination coefficient expressed in \si{m^{3n-2}.s^{-1}}, $\mathbf{n}$ is the boundary normal vector and $n \in \{1, 2\}$ is the order of the recombination.
+In a metal, $n=2$ and in a non-metallic liquid, $n=1$.
 Recombination occurs when hydrogen particles located at the surface of the material combine with other particles (which can be other hydrogen particles) and are no longer bonded with the metal surface.
 It can happen both in presence of a vacuum or when the metal is in contact with a fluid (gas or fluid).
 
@@ -96,7 +96,7 @@ where $K_d(T) = K_{d_0} \exp(\frac{-E_{K_d}}{k_B T}) $ is the dissociation coeff
 Dissociation is the opposite process of recombination and occurs when particles in the surrounding atmosphere or fluid reach the metal surface and are adsorbed.
 These particle can then reach the bulk and diffuse in the metal.
 
-A steady-state approximation of the flux balance between recombination and dissociation fluxes is the Sievert's law (see Equation \ref{eq: Sievert's law}).
+With $n=2$, a steady-state approximation of the flux balance between recombination and dissociation fluxes is the Sievert's law (see Equation \ref{eq: Sievert's law}).
 
 \begin{equation}
     c_\mathrm{m} = S(T) \sqrt{P}\quad \text { on } \partial \Omega
