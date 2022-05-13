@@ -1,7 +1,7 @@
 Verification is the process of ensuring the governing equations are correctly solved in FESTIM.
 This is an integral part of every simulation code for it guarantees the code is error free.
 It is generally hard to simply substitute this process by code comparison (cross-checks between two different codes) because often the codes are implemented differently.
-Moreover, if the code we are comparing with is not verified, then obtaining similar results does not give any guarantee on the code accuracy.
+Moreover, if the code we are comparing with is not verified, then obtaining similar results does not give any guarantee on the code accuracy as two different codes can have the same bug.
 
 Several methods can be used to verify a code but the Method of Exact Solutions (MES) and the Method of Manufactured Solutions (MMS) are employed here.
 
@@ -75,7 +75,7 @@ These parameters have been chosen for the sake of verification and do not necess
     \label{tab:parameters analytical verification}
 \end{table}
 One can notice on Figure \ref{fig:FESTIM vs analytical} that the numerical results are in good agreement with the analytical solution.
-The maximum error between analytical and numerical solutions is calculated to be \SI{6.56e20}{H.m^{-2}.s^{-1}} with 50000 piecewise linear elements (P1) which corresponds to \SI{1}{\%} of the maximum value.
+The L2 error between analytical and numerical solutions was found to be \SI{6.7e-5}{m^{-2}.s^{-1}} with 1000 piecewise linear elements (P1) and a stepsize of \SI{1}{s}.
 According to finite elements theory, this value will decrease with the stepsize and with the element size.
 \begin{figure}
     \centering
