@@ -76,11 +76,19 @@ These parameters have been chosen for the sake of verification and do not necess
 \end{table}
 One can notice on Figure \ref{fig:FESTIM vs analytical} that the numerical results are in good agreement with the analytical solution.
 The L2 error between analytical and numerical solutions was found to be \SI{6.7e-5}{m^{-2}.s^{-1}} with 1000 piecewise linear elements (P1) and a stepsize of \SI{1}{s}.
-According to finite elements theory, this value will decrease with the stepsize and with the element size.
+This value decreases with the stepsize and with the element size (see \reffig{MES evolution of L2 error as function of dt and dx}).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter2/error_vs_element_size_and_dt.pdf}
+    \caption{Evolution of the L2 error on $\varphi$ as a function of the stepsize and element length.}
+    \labfig{MES evolution of L2 error as function of dt and dx}
+\end{figure}
+
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/mes_festim_effective_diffusion.pdf}
-    \caption{Temporal evolution of the particle flux $\varphi$.}
+    \caption{Temporal evolution of the particle flux $\varphi$ (Case 1).}
     \label{fig:FESTIM vs analytical}
 \end{figure}
 
@@ -91,7 +99,7 @@ This is why the MMS will be used instead.
 \subsubsection{Case 2: H transport (MMS)} \label{mms}
 
 The MMS is often used to unravel the complexity of governing equations \sidecite{dudson_verification_2016, roache_code_2002}.
-This is particularly useful when dealing with complex geometries or to exercise non-trivial material propoerties.
+This is particularly useful when dealing with complex geometries or to exercise non-trivial material properties.
 
 The principle of the MMS is to manufacture an exact solution.
 Again, physical realism is not a concern here as verification is a mathematical exercise.
