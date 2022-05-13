@@ -4,6 +4,7 @@
 
 import FESTIM as F
 import numpy as np
+import matplotlib.pyplot as plt
 
 my_model = F.Simulation()
 
@@ -38,11 +39,6 @@ my_model.exports = F.Exports(
     ]
 )
 
-my_model.initialise()
-my_model.run()
-
-import matplotlib.pyplot as plt
-
 
 def exact_flux(t: np.array, model: F.Simulation):
     c_0 = model.boundary_conditions[0].value
@@ -76,6 +72,10 @@ def max_flux(model: F.Simulation):
     return c_0 * D / l
 
 
+my_model.initialise()
+my_model.run()
+
+
 t_final = my_model.settings.final_time
 
 t_2 = np.linspace(0.01, 2000, num=500)
@@ -85,6 +85,10 @@ plt.plot(t_2 / t_final, exact_flux(t_2, my_model) / max_flux(my_model), label="e
 
 t = np.array(derived_quantities.data[1:])[:, 0]
 flux = -np.array(derived_quantities.data[1:])[:, 1]
+
+flux_ref = exact_flux(t, my_model)
+error = np.linalg.norm(flux - flux_ref, 2)
+print(error)
 plt.plot(t / t_final, flux / max_flux(my_model), label="computed", linestyle="dashed")
 plt.ylabel(r"$\varphi / \max{(\varphi)}$")
 plt.xlabel("$t/t_f$")
@@ -95,3 +99,61 @@ plt.gca().spines["right"].set_visible(False)
 plt.gca().spines["top"].set_visible(False)
 plt.tight_layout()
 plt.savefig("mes_festim_effective_diffusion.pdf")
+
+# MAKE DT AND DX VARY
+
+errors = []
+dts = np.logspace(1, 3, num=6)
+for dt in dts:
+    my_model.dt = F.Stepsize(dt)
+    my_model.t = 0
+    my_model.initialise()
+    my_model.run()
+
+    t_sim = np.array(derived_quantities.data[1:])[:, 0]
+    flux_ref = exact_flux(t_sim, my_model)
+    computed_flux = -np.array(derived_quantities.data[1:])[:, 1]
+    error = np.linalg.norm(computed_flux - flux_ref, 2)
+    print(error)
+    errors.append(error)
+
+fig, axs = plt.subplots(1, 2, sharey=True)
+plt.sca(axs[0])
+
+plt.plot(dts, errors, marker="+")
+plt.xscale("log")
+plt.xlabel("$\Delta t$ (s)")
+plt.ylabel("L2 error")
+plt.gca().spines["right"].set_visible(False)
+plt.gca().spines["top"].set_visible(False)
+plt.tight_layout()
+
+errors = []
+Ns = np.logspace(np.log10(3), 3, num=5)
+for N in Ns:
+    my_model.mesh = F.MeshFromVertices(np.linspace(0, 1.5, num=int(N)))
+
+    my_model.dt = F.Stepsize(1)
+    my_model.t = 0
+    my_model.initialise()
+    my_model.run()
+
+    t_sim = np.array(derived_quantities.data[1:])[:, 0]
+    flux_ref = exact_flux(t_sim, my_model)
+    computed_flux = -np.array(derived_quantities.data[1:])[:, 1]
+    error = np.linalg.norm(computed_flux - flux_ref, 2)
+    print(error)
+    errors.append(error)
+
+hs = [1 / N for N in Ns]
+
+plt.sca(axs[1])
+plt.plot(hs, errors, marker="+")
+plt.xscale("log")
+plt.yscale("log")
+plt.xlabel("Element size (m)")
+plt.gca().spines["right"].set_visible(False)
+plt.gca().spines["top"].set_visible(False)
+plt.tight_layout()
+plt.savefig("error_vs_element_size_and_dt.png")
+plt.savefig("error_vs_element_size_and_dt.pdf")
