@@ -20,6 +20,13 @@ More complex and thorough verification cases are shown in Appendix \ref{appendix
 
 \subsubsection{Case 1: H transport (MES)} \label{analytical}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter3/mes_festim_effective_diffusion.pdf}
+    \caption{Temporal evolution of the particle flux $\varphi$ (Case 1).}
+    \label{fig:FESTIM vs analytical}
+\end{figure}
+
 % Although validation against experiments could show that FESTIM is able reproduce the data with a given set of parameters, objective verification against analytical solutions is first required to ensure that the governing Equations \ref{eq:mobile} and \ref{eq:trapped} are solved correctly.
 
 For this verification case, a 1D slab is considered with a thickness $l$.
@@ -77,26 +84,21 @@ These parameters have been chosen for the sake of verification and do not necess
 One can notice on Figure \ref{fig:FESTIM vs analytical} that the numerical results are in good agreement with the analytical solution.
 The L2 error between analytical and numerical solutions was found to be \SI{6.7e-5}{m^{-2}.s^{-1}} with 1000 piecewise linear elements (P1) and a stepsize of \SI{1}{s}.
 This value decreases with the stepsize and with the element size (see \reffig{MES evolution of L2 error as function of dt and dx}).
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter3/mes_festim_effective_diffusion.pdf}
-    \caption{Temporal evolution of the particle flux $\varphi$ (Case 1).}
-    \label{fig:FESTIM vs analytical}
-\end{figure}
-
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter2/error_vs_element_size_and_dt.pdf}
-    \caption{Evolution of the L2 error on $\varphi$ as a function of the stepsize and element length.}
+    \caption{Evolution of the L2 error on $\varphi$ as a function of the stepsize and element length (Case 1).}
     \labfig{MES evolution of L2 error as function of dt and dx}
 \end{figure}
+
+
 Since this test case is very similar to a pure diffusion case, it does not exercise all terms of the governing equations.
 To do so, the governing equations would have to be solved for a generic case which proves to be complex.
 This is why the MMS will be used instead.
 
 \subsubsection{Case 2: H transport (MMS)} \label{mms}
 
+\paragraph{Principle}
 The MMS is often used to unravel the complexity of governing equations \sidecite{dudson_verification_2016, roache_code_2002}.
 This is particularly useful when dealing with complex geometries or to exercise non-trivial material properties.
 
@@ -141,8 +143,9 @@ or even a combination of Dirichlet and Neumann boundary conditions.
 By solving \refeq{poisson eq demo mms} with $q = Q(t, x)$ and initial condition $u = U(0, x)$, we can obtain the computed solution $u_\mathrm{computed}$.
 The error between the computed solution $u_\mathrm{computed}$ and the exact solution $U(t, x)$ can be calculated to assess the 
 
-% Application
-Let us apply the MMS to the hydrogen transport model.
+\paragraph{Case 2a: Application to 1D hydrogen transport}
+
+Let us apply the MMS to the hydrogen transport model on a 1D domain $\Omega$.
 In order to exercise all terms in Equations \ref{eq:mobile} and \ref{eq:trapped}, the following manufactured solutions are chosen:
 \begin{equation}
     \begin{cases}
@@ -186,15 +189,18 @@ The L2-norm $E_{c_\mathrm{m}}$ can then be calculated as follow:
 The evolution of $E_{c_\mathrm{m}}$ as function of the element size $h$ is shown on Figure \ref{fig:error vs h}.
 One can notice that $E_{c_\mathrm{m}}$ increases as $A\cdot h^k$.
 This is known as the \textit{asymptotic regime} and the coefficient $k$ is called the convergence rate.
-$k$ typically tends to N+1 as $h$ approaches $0$, $N$ being the order of the finite elements.
-In this simulation, $k$ approaches $2$ as expected since elements of order $1$ have been used.
+$k$ typically approaches $N+1$ as $h$ approaches zero, $N$ being the order of the finite elements.
+In this case, $k \approx 2$ as expected since first order finite elements have been used.
 
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{"Figures/Chapter3/L2 error on Cm vs h"}
-    \caption{Evolution of the L2 norm of the error as function of element size h for the 1D H transport case (Case 2).}
+    \caption{Evolution of the L2 norm of the error as function of element size h for the 1D H transport case (Case 2a).}
     \label{fig:error vs h}
 \end{figure}
+
+\paragraph{Case 2b: Application to 2D hydrogen transport}
+
 
 The same method can be applied to a 2D case.
 Let us choose the following steady state test problem on a domain $\Omega = [0, 1] \times [0, 1]$ with the manufactured solution $c_D(x, y) = \sin(\omega \pi x) \sin(\omega \pi y)$.
@@ -231,13 +237,13 @@ Moreover, the convergence rates confirm the mesh dependency of the computed solu
         \includegraphics[width=\linewidth]{Figures/Chapter2/c_exact.pdf}
         \caption{Exact solution $c_D$}
     \end{subfigure}
-    \caption{Comparison of the computed concentrations with the exact solution (Case 2).}
+    \caption{Comparison of the computed concentrations with the exact solution (Case 2b).}
     \label{fig: results MMS 2D H transport}
 \end{figure*}
 
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter2/convergence_rate_H.pdf}
-    \caption{Evolution of the L2 error on $c_\mathrm{m}$ (left) and $c_\mathrm{t}$ (right) showing the convergence rates for the 2D H transport case.}
+    \caption{Evolution of the L2 error on $c_\mathrm{m}$ (left) and $c_\mathrm{t}$ (right) showing the convergence rates for the 2D H transport case (Case 2b).}
     \label{fig: convergence rates H}
 \end{figure}
