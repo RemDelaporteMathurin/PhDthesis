@@ -50,7 +50,7 @@
 % \usepackage{natbib}
 \usepackage{amsmath}
 \usepackage{siunitx}
-\sisetup{group-separator = {,}}
+\sisetup{group-separator = {\,}}
 \usepackage{subcaption}
 \usepackage{todonotes}
 \usepackage[version=4]{mhchem}
@@ -71,6 +71,10 @@
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{plasmapink}{RGB}{239, 0, 255}
+\definecolor{lithiumgreen}{RGB}{0, 110, 50}
+\definecolor{steelgray}{RGB}{138,138,138}
+\definecolor{magnetred}{RGB}{237,41,57}
 
 \lstdefinestyle{mystyle}{
     backgroundcolor=\color{backcolour},   
@@ -96,6 +100,12 @@
 % Load the bibliography package
 \usepackage{kaobiblio}
 \addbibresource{bibfile.bib} % Bibliography file
+
+\AtEveryBibitem{
+    \clearfield{urlyear}
+    \clearfield{urldate}
+    \clearfield{urlmonth}
+}
 
 \RenewDocumentCommand{\formatmargincitation}{m}{%
 	\parencite{#1} \citeauthor*{#1} (\citeyear{#1})\\

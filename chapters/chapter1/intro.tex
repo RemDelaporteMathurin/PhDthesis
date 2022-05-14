@@ -39,7 +39,7 @@ When looking at the different binding energies per nucleon of the elements (see 
 \end{figure}
 
 Nuclei are positively charged.
-To be able to fuse, these must overcome the Coulomb barrier induced by the electromagnetic repulsion (see Figure \ref{fig: potential energy diagram fusion}).
+To be able to fuse, they must overcome the Coulomb barrier induced by the electromagnetic repulsion (see Figure \ref{fig: potential energy diagram fusion}).
 This Coulomb barrier increases with the charge of the nuclei (\textit{ie} the number of protons).
 This means that the nuclei must collide with a high enough velocity.
 At the atomistic scale, the velocity $v_\mathrm{th}$ is a function of temperature (see Equation \ref{eq: thermal velocity}).
@@ -61,7 +61,7 @@ where $k_B = \SI{1.3806e-23}{m^2.s^{-2}.kg.K^{-1}}$ is the Boltzmann constant, $
 
 Hydrogen, as the lightest element, has the lowest fusion temperature.
 It is also the most abundant element on Earth (although bond to other elements).
-Depending on which hydrogen isotope is used, different fusion reactions are available (see Equations \ref{eq: fusion reactions}).
+Depending on which hydrogen isotope is used, different fusion reactions are possible (see Equations \ref{eq: fusion reactions}).
 Each of these reactions has a different cross-section.
 
 \begin{subequations}
@@ -153,7 +153,7 @@ $P_\mathrm{fusion}$, expressed in \si{W.m^{-3}}, is the power generated from fus
 \end{equation}
 where $n_D$ and $n_T$ are the densities in \si{m^{-3}} of deuterium and tritium respectively, $\left\langle \sigma \right\rangle$ is the DT cross-section in \si{m^3.s^{-1}} and $E$ is the energy of the fusion reaction in \si{J}.
 Because the neutrons have little interaction with the plasma, $E \approx E_\alpha = \SI{3.56}{MeV}$.
-Moreover, assuming a 50\%-50\% mixture of deuterieum and tritium, $n_D = n_T = \frac{1}{2} n$.
+Moreover, assuming a 50\%-50\% mixture of deuterium and tritium, $n_D = n_T = \frac{1}{2} n$.
 The fusion power can therefore be written as:
 \begin{equation}
     P_\mathrm{fusion} = \frac{1}{4} n^2 \left\langle \sigma \right\rangle E_\alpha
@@ -228,35 +228,107 @@ This is the case of SPARC and ARC developed by Commonwealth Fusion Systems and M
 The walls of a fusion reactor are exposed to intense heat and particle fluxes.
 The choice of plasma-facing materials (PFM) is therefore crucial.
 
-A good PFM must have good thermal properties to withstand the extreme heat fluxes.
-A high thermal conductivity is required as well as a very high melting point.
+An appropriate PFM must have good thermal properties to withstand the extreme heat fluxes.
+A high thermal conductivity is required as well as a very high melting point to enhance heat exhaust but also minimise the impact of arcing (material release from erosion) \sidecite{ivanova_plasma-facing_2012, mccracken_review_1980}.
 The material must also resist to thermal chocs encountered during short plasma discharges or transient events in the plasma \sidecite{van_den_kerkhof_impact_2021}.
 
 In order to maximise the components lifespan, PFMs must resist erosion.
-This is even more important when the eroded particle reduce plasma performances by making it radiate and cool.
+This is even more important when the eroded particle reduce plasma performances by making it radiate and cool down.
 
 The choice of a PFM is also important from the nuclear safety point of view.
-First, the quantity of tritium retained in the materials need to be minimised (see point will be detailed in Section \ref{the tritium issue}).
+First, the quantity of tritium retained in the materials need to be minimised (this point will be detailed in Section \ref{the tritium issue}).
 Second, neutron activation of the material can increase the quantity of radioactive waste and must be minimised.
 
-One of the first PFM was carbon fiber composite (CFC).
+One of the first PFM was carbon fiber composite (CFC) \sidecite{linke_challenges_2019}.
 CFC had the great advantage of not melting and withstand very high heat fluxes.
-Using CFC also increased the plasma performances greatly.
-Unfortunately, graphite being porous, hydrogen (and therefore tritium) retention was high.
+Using CFC also increased the plasma performances greatly \sidecite{federici_plasma-material_2001}.
+Unfortunately, graphite being porous, hydrogen (and therefore tritium) retention was high \sidecite{sugiyama_measurement_2004}.
 Plus carbon can react with plasma particles forming methane.
 Methane is then deposited on locations hard to access in the reactor trapping tritium even more.
 For these two safety reasons, CFC was replaced with tungsten or beryllium (or both).
 
-Tungsten has a very high melting point (\SI{3422}{°C}) and retains less tritium.
-However, tungsten being a high-Z element, eroded tungsten in the form of dust particles or powder will make the plasma radiate and cool it down.
+Tungsten has a very high melting point (\SI{3422}{°C}) and retains less tritium \sidecite{pajuste_tritium_2021}.
+However, tungsten being a high-Z element, eroded tungsten will make the plasma radiate and cool it down.
 For this reason, the ITER divertor will be made of tungsten but the first wall (which has a large surface area) will be made of beryllium.
+
+\subsection{Divertor}
+
+In a fusion reactor, heat and particles (fusion ashes) need to be extracted.
+In most tokamaks, the escaping plasma is diverted towards a dedicated component that is heat-resistant.
+Such a configuration is called a \textit{divertor} configuration.
+The X-divertor is a common configuration (used in WEST, JET, ITER) but more advanced configurations exist such as the Super-X divertor (MAST-U) \sidecite{havlickova_effect_2015}, X-Point Target (SPARC) \sidecite{rodriguez-fernandez_overview_2022, kuang_divertor_2020} or the Snowflake configurations \sidecite{ryutov_snowflake_2015}.
+
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Figures/Chapter1/sketch_divertor.png}
+    \caption{Sketch of the tokamak divertor configuration (source: EFDA-JET).}
+    \labfig{divertor diagram}
+\end{figure}
+
+In a divertor configuration, the intersection between the magnetic field lines and the targets are called strike points.
+The X-divertor has two strike points on the inner and outer targets (see Figure \reffig{divertor diagram}).
+At these strike points, the targets will experience very intense heat and particle fluxes (see \reffig{divertor exposure conditions}).
+
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter1/divertor_exposure_conditions.pdf}
+    \caption{Heat flux, particle flux and particle energy along the ITER divertor computed by SOLPS (shot \#122399).}
+    \labfig{divertor exposure conditions}
+\end{figure}
+
+The divertors of ITER and DEMO will be composed of small unit bricks called \textit{monoblocks} (see Figure \ref{fig: inner target photo}).
+Monoblocks are typically made of a tungsten substrate with a cooling pipe running through.
+This cooling channel is necessary to keep the component's temperature below its operating limit and exhaust heat.
+
+Several monoblock designs are currently studied for DEMO with varying dimensions, different materials for the cooling pipe or the interlayer, etc \sidecite{vizvary_european_2020, huang_tungsten_2016, hirai_use_2016, domptail_design_2020}.
+The main candidate is the ITER-like design, the type of monoblock that will be used in ITER \cite{hirai_use_2016}.
+This design has a tunsgten substrate with a CuCrZr cooling pipe and a Cu interlayer for compliance (see Figure \ref{fig: monoblocks with pipe}).
+In ITER, monoblocks will be \SI{12}{mm}-thick whereas they will be thiner (\SI{4}{mm}) in DEMO \sidecite{you_european_2018}.
+
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Figures/Chapter1/inner_target_iter.jpg}
+    \caption{Prototype of the inner vertical target (source: ITER Organization).}
+    \label{fig: inner target photo}
+\end{figure}
+
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Figures/Chapter1/monoblocks_with_pipe.png}
+    \caption{ITER-like monoblocks design.}
+    \label{fig: monoblocks with pipe}
+\end{figure}
+
+Studies on ITER-like monoblocks have demonstrated the resistance of the monoblock design to high heat loads while investigating the effect of tungsten recrystallisation \sidecite{durif_impact_2019,durif_modelisation_2019,visca_manufacturing_2018} (see \reffig{monoblock_temperature_exp_model}).
+
+\begin{figure} [h]
+    \centering
+    \begin{subfigure}[t]{0.45\linewidth}
+            \includegraphics[width=\linewidth]{Figures/Chapter1/alan_durif_monoblock.png}
+            \caption{Simulated temperature field in a monoblock under at \SI{20}{MW.m ^{-2}} heat load, water cooling at \SI{120}{\celsius}. Reproduced from \cite{durif_modelisation_2019}.}
+    \end{subfigure}\hfill%%
+    \begin{subfigure}[t]{0.45\linewidth}
+            \includegraphics[width=\linewidth]{Figures/Chapter1/monoblock_experimental_temperature_field.png}
+            \caption{Experimental measurement of monoblocks thermal response at \SI{20}{MW.m ^{-2}} heat loading, water cooling at \SI{130}{\celsius}. Reproduced from \cite{visca_manufacturing_2018}.}
+    \end{subfigure}
+    \caption{Thermal response of ITER-like monoblocks.}
+    \labfig{monoblock_temperature_exp_model}
+\end{figure}
 
 \section{The tritium issue} \label{the tritium issue}
 
-\subsection{Breeding}
 Tritium is a radioactive isotope of hydrogen.
-Its half-life is approximately 12 years and it decays into helium-3 emitting a beta particle of \SI{0.018590}{MeV}.
-For this reason, tritium is very rare on Earth.
+Its half-life is approximately 12 years and it decays into helium-3 emitting a beta particle (see Equation \ref{eq: tritium decay}).
+
+\begin{equation}
+    \ce{^3H -> ^3He + e^- (\SI{0.018590}{MeV})}
+    \label{eq: tritium decay}
+\end{equation}
+
+This is an issue for both the fuel supply chain and nuclear safety.
+
+\subsection{Breeding}
+Due to its radioactive nature, tritium is very rare on Earth.
 The current reserve of tritium in the world is a few dozens of kilograms.
 It is naturally produced by interaction of comsic rays with the nitrogen in the atmosphere (\SI{0.2}{kg} per year).
 Tritium is however produced in larger quantities in fission CANDU reactors as a by-product (\SI{130}{g} per year per CANDU reactor \sidecite{ni_tritium_2013}).
@@ -266,7 +338,24 @@ A \SI{800}{MWe} DEMO-type commercial fusion reactor would burn around \SI{300}{g
 
 For all these reasons, tritium must be produced on-site in large quantities for a fusion economy to be possible.
 
-To this end, the neutrons of the DT fusion reactions will be harnessed in a component called the \textit{breeding blanket} containing lithium (Li).
+To this end, the neutrons of the DT fusion reactions will be harnessed in a component containing lithium (Li) surrounding the plasma called the \textit{breeding blanket} (see \reffig{blanket_shimwell}).
+
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics{Figures/Chapter1/blanket_shimwell_top_view.png}
+        \caption{View from above}
+    \end{subfigure}%
+    \qquad
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics{Figures/Chapter1/blanket_shimwell_side_view.png}
+        \caption{Side view}
+    \end{subfigure}
+    \caption{DEMO model showing HCLL blankets \cruleme[lithiumgreen]{0.3cm}{0.3cm}, plasma \cruleme[plasmapink]{0.3cm}{0.3cm}, magnets \cruleme[magnetred]{0.3cm}{0.3cm}, and structural steel \cruleme[steelgray]{0.3cm}{0.3cm}. Reproduced from \cite{shimwell_multiphysics_2019}.}
+    \labfig{blanket_shimwell}
+\end{figure}
+
 Depending on the Li isotope, two reactions can occur:
 
 \begin{align}
@@ -277,31 +366,77 @@ Depending on the Li isotope, two reactions can occur:
 Several blankets designs have been proposed divided in three main categories: ceramic concepts, liquid metal concepts, and molten-salts concepts.
 All designs differ in the choice of tritium breeder, coolant and geometry.
 
-The european candidates for breeding blankets in DEMO are the Water-Cooled-Lithium-Lead (WCLL), the Helium-Cooled-Pebble-Bed (HCPB), the Helium-Cooled-Liquid-Lead (HCLL) and the Dual-Coolant-Lithium-Lead (cooled by water and helium).
+The european candidates for breeding blankets in DEMO are the Water-Cooled-Lithium-Lead (WCLL) \sidecite{aubert_design_2020, del_nevo_recent_2019}, the Helium-Cooled-Pebble-Bed (HCPB) \sidecite{hernandez_overview_2018, hernandez_new_2017,pereslavtsev_neutronic_2017}, the Helium-Cooled-Liquid-Lead (HCLL) \sidecite{aubert_status_2018,jaboulay_nuclear_2017} and the Dual-Coolant-Lithium-Lead (cooled by water and helium) \sidecite{urgorri_tritium_2017, palermo_neutronic_2015} \sidecite{federici_overview_2019}.
 
-Hydrogen transport in these components is key for retention of tritium in solid parts of the blankets could reduce their performances as it would be hard to recover it.
-A high retention in the blanket would also lead to a high startup inventory (\textit{ie} the inventory needed when commissioning the fusion power plant) making fusion energy more expensive.
+The TBR is defined by the number of tritium atoms produced by generated neutrons.
+In order to ensure tritium self-sufficiency, the tritium breeding ratio (TBR) of the blanket must be greater than or equal to one \sidecite{abdou_blanketfirst_2015}.
+A TBR greater than one can only be obtained by neutron multiplication with lead or beryllium.
+
+Moreover, the TBR must account for:
+\begin{itemize}
+    \item losses via permeation, trapping, radioactive decay (5\% per year)
+    \item safety reserve in case of interruption of the fuel cycle
+    \item supply of new reactors, also called the \textit{startup inventory}
+\end{itemize}
+
+The TBR target in conventional power plants is around 1.05 \sidecite{shimwell_multiphysics_2019}.
+Though this would achieve self-sufficiency, it is not be enough to sustain the development of a fusion energy market.
+
+% The desired doubling time of fusion power plants will drive this last point \sidecite{bockhoff_tritium_1983}.
+The evolution of the maximum fusion power on the grid $P_\mathrm{max}$ can be expressed as:
+
+\begin{equation}
+    P_\mathrm{max} = P_\mathrm{plant} \times 2^{t/\tau_2}
+\end{equation}
+where $\tau_2$ is the doubling time (\textit{ie} the time after which a plant has doubled its initial tritium inventory), $t$ is the time, and $P_\mathrm{plant}$ is the power of a single plant.
+This expression assumes the only source of tritium is the reactors currently under operation.
+
+Assuming $P_\mathrm{plant} = \SI{1}{GW}$, with a doubling time $\tau_2 = \SI{2}{years}$, it will take \SI{20}{years} to produce \SI{1}{TWh} of fusion electricity on the grid (see \reffig{fusion power doubling time}).
+This time reaches \SI{50}{years} with a doubling time of \SI{5}{years}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{Figures/Chapter1/doubling_time.pdf}
+    \caption{Evolution of the maximum fusion power on the grid for different doubling times.}
+    \labfig{fusion power doubling time}
+\end{figure}
+
+For fusion power plants to achieve a doubling time $\tau_2 \leq \SI{3}{years}$ (doubling times in power industry are typically \SI{5}{years}), the TBR must be greater than 1.15 \sidecite{abdou_physics_2020}.
+Other key parameters influence the required TBR (for a given doubling time) like the tritium burn-up fraction, the fueling efficiency, the plant availability factor...
+
+Tritium transport in breeding blankets is crucial as trapped tritium in solid parts would increase the startup inventory.
+For a given doubling time, a higher startup inventory means a higher TBR requirement.
+The blanket inventory in the solid parts can be reduced by (1) reduce the amount of solid components (this will also increase the TBR \cite{shimwell_multiphysics_2019}) (2) designing permeation barriers \sidecite{utili_design_2022}.
+% Understanding hydrogen transport in these components is therefore crucial for the future of nuclear fusion technology.
 
 \subsection{Safety}
 Tritium is also an issue in terms of nuclear safety.
-As a radioactive isotope, its ingestion is a health hazard.
-To limit the potential environmental releases due to a loss of vacuum accident, its inventory in fusion reactors must be controlled \sidecite{honda_analyses_2000}.
-In ITER for instance, the in-vessel inventory of tritium is limited to \SI{1}{kg}.
-As tritium can migrate in materials, components that have been in contact with it are considered as tritiated waste and must be handled.
-Tritium migration through complete material layers (permeation) to the cooling tubes or the atmosphere can lead to contamination of coolants and must be taken into account in the detritiation process.
+As a radioactive isotope, its ingestion - in the form of tritiated water HTO - is a health hazard.
+Its biological half-life (\textit{ie} once ingested by humans) is around 10 days - which can be considered as low toxicity \sidecite{bridges_review_2007,janssens_emerging_2007}.
+Tritium's half-life once incorporated in organic compounds increases to 40 days and is associated with a higher toxicity \cite{bridges_review_2007}.
+To put tritium toxicity in perspective, it has been estimated that drinking \SI{2}{L} of water with the highest permissible level of tritium contamination (\SI{10000}{Bq.L^{-1}}) each day for a year results in a total radiation dose of \SI{0.1}{mSv}, which is equivalent to two weeks natural radioactivity exposure \sidecite{hyatt_radioactive_2021}.
+
+To limit the potential environmental releases due to a loss of vacuum accident, its inventory in fusion reactors must be limited \sidecite{honda_analyses_2000}.
+In ITER for instance, the in-vessel inventory of tritium is limited to \SI{1}{kg} including \SI{120}{g} retained in cryo-pumps \sidecite{roth_tritium_2008}.
+This limit has been determined to avoid evacuation of population around the reactor in the event of a loss of vacuum accident.
+
+Moreover, as tritium can migrate in materials, components that have been in contact with it are considered as tritiated waste and must be handled.
+Tritium migration through complete material layers (permeation) to the cooling tubes \sidecite{arredondo_preliminary_2021, shimada_tritium_2018} or to the atmosphere can lead to contamination of coolants and must be taken into account in the detritiation process.
+
+Detritiation techniques are being developped to reduce the volume of tritiated waste in future fusion reactors \sidecite{liger_overview_2018}.
+These techniques mainly consist in heating the tritiated samples and recovering the tritiated gas \sidecite{lefebvre_preliminary_2012} that can be reused as fuel.
+Tritium minimisation techniques such as Laser Induced Desorption or "baking" are also being developed to reduce the tritium inventory during operations \sidecite{de_temmerman_efficiency_2017}.
 
 Permeation barriers are being studied to greatly reduce the permeation of tritium to the coolants \sidecite{causey_416_2012,utili_design_2022,utili_development_2021}.
-The idea is to coat inner and/or outer surfaces of cooling pipes with alumina-based coatings.
+The idea is to coat inner and/or outer surfaces of cooling pipes with alumina-based coatings or ceramics (\textit{eg} $\mathrm{Al_2 O_3}$, $\mathrm{Cr_2 O_3}$, $\mathrm{Er_2 O_3}$).
+Natural oxides are also considered for permeation barriers.
 These coatings can also act as an anti-corrosion barrier.
+The use of these permeation barriers - by definition minimising permeation - could potentially increase materials inventories.
 
-\section{Plasma-surface interactions in tokamaks}
+\section{Helium and Hydrogen in metals}
 
-The wall of a fusion reactor (first wall and divertor) is bombarded with high energy hydrogen (deuterium and tritium) and helium ions.
-Due to their small size, these ions can penetrate the metal lattice and be implanted in the material.
+This Section summarises the main processes at stake (see Figure \ref{fig: helium and hydrogen in metals sketch}) when helium and hydrogen particles interact with metals and with each other.
 
-Many interactions occur between hydrogen, helium and tungsten atoms.
-
-\subsection{H/W \& He/W interactions}
 \begin{figure*}[h!]
     \begin{subfigure}{0.9\linewidth}
         \includegraphics[width=\linewidth]{Figures/Chapter1/HI transport sketch.pdf}
@@ -312,51 +447,87 @@ Many interactions occur between hydrogen, helium and tungsten atoms.
         \caption{He}
     \end{subfigure}
     \caption{Interactions of solute species in tungsten}
+    \label{fig: helium and hydrogen in metals sketch}
 \end{figure*}
 
-\begin{figure} [h!]
+\subsection{Particle sources}
+
+\subsubsection{Hydrogen}
+Deuterium and tritium being the fuel of fusion reactors, the primary source of hydrogen in the divertor is the plasma itself.
+The wall of a fusion reactor (first wall and divertor) is bombarded with high energy hydrogen ions.
+Due to their small size, these ions can penetrate the metal lattice and be implanted in the material.
+
+Components are also exposed to neutral hydrogen particles either in the atomic or molecular form.
+This is also the case for the divertor region where recycling can occur depending on the plasma detachment \sidecite{denis_dynamic_2019, causey_hydrogen_2002}.
+
+Tritium can also be produced by the neutron capture of helium-3 \sidecite{shimada_tritium_2017, knoll_radiation_1989} (see Equation \ref{eq: he3 neutron capture reaction}).
+
+\begin{equation}
+    \ce{^3He + n -> ^1H + ^3H + \SI{0.764}{MeV}}
+    \label{eq: he3 neutron capture reaction}
+\end{equation}
+
+Finally, interactions of lithium with neutrons represent a major source of hydrogen in tritium breeding components \sidecite{dark_influence_2021}.
+
+\subsubsection{Helium}
+Helium is the product of the fusion reaction (see Equation \ref{eq: fusion reactions}).
+Therefore, the wall of a fusion reactor is also bombarded with helium ions.
+This is the primary source of helium in plasma-facing materials.
+
+Helium can also be produced in materials indirectly.
+Since tritium decays into helium-3 (see Equation \ref{eq: tritium decay}), regions with high tritium retention are expected to act as a source of helium over time \cite{shimada_tritium_2017}.
+Moreover, interactions of neutrons (from the fusion reactions) with metallic elements (\textit{eg} tungsten or iron) can produce helium via transmutation \sidecite{watanabe_status_2011}.
+This \textit{transmutation gas} production has been estimated using well-established neutronics simulations (Monte-Carlo simulations modelling the path of neutroncs in matter) \sidecite{gilbert_neutron-induced_2013, gilbert_integrated_2012}.
+Depending on the position in the DEMO divertor, cumulative helium production over the course of three full power years (FPY) could reach more than \SI{400}{appm}.
+
+
+\subsection{H/W \& He/W interactions}
+
+
+\begin{figure} [h]
     \centering
-    \begin{subfigure}{\linewidth}
-        \begin{overpic}[width=\linewidth]{Figures/Chapter1/potential_energy_diagram.pdf}
-            \put(37, 29){$E_{\mathrm{b}, 1}$}
-            \put(37, 47){$E_{k, 1}$}
-            \put(65, 35){$E_{\mathrm{b}, 2}$}
-            \put(65, 47){$E_{k, 2}$}
-            \put(89, 47){$E_D$}
-        \end{overpic}
-        \caption{Simplified potential energy diagram showing two different types of defects.}
-    \end{subfigure}
-    \begin{subfigure}{\linewidth}
-        \includegraphics[width=\linewidth]{Figures/Chapter1/potential_energy_3D.pdf}
-        \caption{3D representation of the potential energy of a solute species in a metal lattice with one defect.}
-    \end{subfigure}
-    \caption{Potential of a solute species in a metal lattice.}
-    \label{fig: potential diagrams}
+    % \begin{subfigure}{\linewidth}
+    \includegraphics[width=\linewidth]{Figures/Chapter1/potential_energy_diagram.pdf}
+    \caption{Simplified potential energy diagram showing two different types of defects.}
+    % \end{subfigure}
+    % \begin{subfigure}{\linewidth}
+    %     \includegraphics[width=\linewidth]{Figures/Chapter1/potential_energy_3D.pdf}
+    %     \caption{3D representation of the potential energy of a solute species in a metal lattice with one defect.}
+    % \end{subfigure}
+    \label{fig: potential energy diagram metal lattice}
 \end{figure}
 
 \subsubsection{Diffusion}
-Diffusion of solute species is thermally activated and the diffusion coefficient $D$ expressed in \si{m^2.s^{-1}} usually follows an Arrhenius law:
+The repulsion of metal atoms with solute species creates wells of potential energy located at interstitial sites.
+The soluted atoms in metals can then jump from interstitial site to another thanks to thermal vibration.
+This process is called \textit{diffusion}.
+Diffusion is a thermally activated process governed by a diffusion coefficient $D$ expressed in \si{m^2.s^{-1}}, which usually follows an Arrhenius law:
 \begin{equation}
     D = D_0 \exp{(-E_D/k_B T)}
 \end{equation}
+where $E_D$ is the activation energy of diffusion in \si{eV}, $T$ is the temperature in \si{K}, $k_B$ is the Boltzmann constant in \si{eV.K^{-1}}.
+The "height" of the potential energy wells can be associated with the activation energy $E_D$, also called \textit{energy barrier} (see Figure \ref{fig: potential energy diagram metal lattice}).
+
+Diffusion can also be assisted by temperature gradients (called the \textit{Soret effect} or \textit{thermophoresis}) \sidecite{martinez_thermal_2021, hodille_estimation_2017} or hydrostatic pressure gradients \sidecite{benannoune_multidimensional_2020}.
 
 % MD simulations
-Diffusion coefficients (also called diffusivities) can be computed by Molecular Dynamics (MD).
-The principle of Molecular Dynamics is to calculate the trajectory of atoms in a simulation box (see Figure \ref{fig: md faney}).
+Diffusion coefficients (also called diffusivities) can be computed by Molecular Dynamics (MD) and Density Functional Theory (DFT).
+The principle of MD is to calculate the trajectory of atoms in a simulation box (see Figure \ref{fig: md faney}).
 The trajectory of a particle $i$ in a system of $N$ particles can be computed from Newton's second law of motion:
 
 \begin{equation}
     m_i \vec{a_i} = \sum_{j=1 \, j \neq i}^N \vec{F}_{i,j}
 \end{equation}
 where $m_i$ is the mass of the particle, $\vec{a_i}$ is its acceleration, $\vec{F}_{i,j}$ is the force applied to the particle due to its interaction with particle $j$.
-The forces between atoms is only a function of the interatomic potentials that can be estimated from \textit{ab initio} computations (Density Functional Theory) \sidecite{connetable_diffusion_2019,fernandez_hydrogen_2015,boisse_modelling_2014,boisse_modeling_2014,becquart_microstructural_2010} or from methods based on machine learning (pseudo-potentials) \sidecite{lam_modeling_2021,behler_constructing_2015}.
+The forces between atoms is only a function of the interatomic potentials.
+These potentials can be found in literature or can be estimated from \textit{ab initio} computations (DFT) \sidecite{connetable_diffusion_2019,fernandez_hydrogen_2015,boisse_modelling_2014,boisse_modeling_2014,becquart_microstructural_2010} or from methods based on machine learning \sidecite{lam_modeling_2021,behler_constructing_2015}.
 
-\begin{figure} [h!]
+\begin{figure*}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/faney_md.jpg}
-    \caption{Example of the trajectory of a He$_2$ cluster. Reproduced from \cite{faney_numerical_2013}}
+    \caption{Example of the trajectory of a He$_2$ cluster in tungsten. Reproduced from \cite{faney_numerical_2013}}
     \label{fig: md faney}
-\end{figure}
+\end{figure*}
 
 By measuring the trajectory of a diffusing species from MD simulations for a long time, its diffusion coefficient $D$ can be estimated from Einstein equation \cite{einstein_uber_1905}:
 \begin{equation}
@@ -364,18 +535,49 @@ By measuring the trajectory of a diffusing species from MD simulations for a lon
 \end{equation}
 where $\langle R^2(t) \rangle$ is the mean squared displacement of the species.
 
-This modelling technique was used to estiamte the diffusion coefficient of H in W \sidecite{wang_molecular_2020, zhou_molecular_2016,kato_super-saturated_2015,liu_hydrogen_2014} and for He in W \sidecite{faney_numerical_2013,faney_spatially_2014,faney_spatially_2015,sefta_surface_2013,perez_mobility_2017}.
+This modelling technique was used to estimate the diffusion coefficient of H in W \sidecite{wang_molecular_2020, zhou_molecular_2016,kato_super-saturated_2015,liu_hydrogen_2014} and for He in W \sidecite{faney_numerical_2013,faney_spatially_2014,faney_spatially_2015,sefta_surface_2013,perez_mobility_2017}.
 
 % Experiments
-Diffusivity of hydrogen has also been measured experimentally in W \sidecite{frauenfelder_solution_1969, anderl_hydrogen_1990}, EUROFER \sidecite{montupet-leblond_permeation_2021,esteban_hydrogen_2007,aiello_hydrogen_2002}, Copper and copper alloys (CuCrZr) \sidecite{anderl_deuterium_1992} and other metals.
+Diffusivity of hydrogen has also been measured experimentally in W \sidecite{frauenfelder_solution_1969, anderl_hydrogen_1990}, EUROFER \sidecite{montupet-leblond_permeation_2021,esteban_hydrogen_2007,aiello_hydrogen_2002}, copper and copper alloys (CuCrZr) \sidecite{anderl_deuterium_1992} and other metals.
 Because He tends to cluster (as explained below), measuring its diffusivity experimentally is extremely complicated and therefore most estimations of He diffusion coefficient are numerical.
-% if you have time, it'd be nice to have a graph showing the diffusion coefficients of H and He according to different authors
+
+\reffig{diffusivity solubility materials} is a collection of diffusivity and solubility values found in literature (measured experimentally or computed) for tungsten, copper and CuCrZr.
+
+The diffusivities of copper and CuCrZr are comparable (see \reffig{diffusivity solubility copper} and \reffig{diffusivity solubility cucrzr}).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/materials_properties_review_comparison.pdf}
+    \caption{Diffusivity and solubility values for tungsten \cite{heinola_first-principles_2010, frauenfelder_solution_1969}, copper \cite{reiter_compilation_1996} and CuCrZr \cite{serra_hydrogen_1998}.}
+    \labfig{diffusivity solubility materials}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/tungsten_properties_review.pdf}
+    \caption{Diffusivity and solubility values for tungsten.}
+    \labfig{diffusivity solubility tungsten}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/copper_properties_review.pdf}
+    \caption{Diffusivity and solubility values for copper.}
+    \labfig{diffusivity solubility copper}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/cucrzr_properties_review.pdf}
+    \caption{Diffusivity and solubility values for CuCrZr.}
+    \labfig{diffusivity solubility cucrzr}
+\end{figure}
 
 \subsubsection{Trapping at defects}
 
-As shown on Figure \ref{fig: potential diagrams}, defects can act as a potential well for solute species.
-Once in that attractive well, species can escape it only if their vibrational energy (\textit{ie} their energy/temperature) is high enough.
-Species can be trapped at vacancies, interstitial atoms, impurities, etc.
+Due to the repulsion between solute species and the surrounding metal atoms, defects can act as wells of potential energy for solute species (see Figure \ref{fig: potential energy diagram metal lattice}).
+Once in that attractive well, species can escape it only if their kinetic energy (\textit{ie} the temperature) is high enough.
+Species can be trapped at vacancies, disolcation loops, self-interstitial atoms (in the case of hydrogen in tungsten), impurities, etc.
 
 The trapping process can be described as:
 \begin{equation}
@@ -392,8 +594,8 @@ A common assumption is that $E_k = E_D$.
 
 Each rate therefore has two parameters: the pre-activation factor and the activation energy.
 These parameters can be measured from fitting Thermo-Desorption Spectrometry (TDS) experiments.
-TDS experiments consist in loading a metal sample with the studied species (\textit{eg} H or He) and heat it at different temperatures (typically with a well controlled temperature ramp) while measuring the desorption flux.
-This results in a spectrum which typically has one or several desorption peaks corresponding to different traps (see Equation \ref{fig: TDS example ialovega}).
+TDS experiments consist in loading a metal sample with the studied species (\textit{eg} H or He) and heat it at different temperatures with a well controlled temperature ramp (\textit{eg} \SI{1}{K.s^{-1}}, \SI{10}{K.s^{-1}}...) while measuring the desorption flux.
+This results in a spectrum which typically has one or several desorption peaks corresponding to different traps (see Figure \ref{fig: TDS example ialovega}).
 Peaks appearing at high temperatures correspond to "deep" traps with a high detrapping energy $E_p$.
 
 \begin{figure} [h!]
@@ -405,9 +607,37 @@ Peaks appearing at high temperatures correspond to "deep" traps with a high detr
 
 These parameters can also be obtained from DFT calculations \sidecite{hodille_modelling_2021, hodille_hydrogen_2018, backer_multiscale_2017,lu_review_2014}.
 
-\subsubsection{Surface processes}
+Some defects can trap several hydrogen/helium atoms.
+For instance, up to approximately seven helium atoms can be trapped in a mono-vacancy \sidecite{faney_spatially_2015}.
+DFT calculations also show that defects like mono-vacancies, dislocations or grain boundaries can retain multiple hydrogen atoms (see Figure \ref{fig: trapping energy hydrogen in tungsten}).
+As the number of trapped particles (helium or hydrogen) increases, the binding energy of a particle with the defect usually decreases.
+In other words, the more particles are trapped in a defect the easier it is for a hydrogen atom to escape.
+For instance, the binding energy of a helium atom in an empty mono-vacancy is around \SI{4}{eV} and around \SI{2.5}{eV} if the vacancy already retains four helium atoms \cite{faney_spatially_2015}.
+Similarly, the binding energy of a hydrogen atom in a mono-vacancy varies from \SI{0.5}{eV} (with six hydrogen atoms trapped) to \SI{1.3}{eV} (empty vacancy).
 
-When a surface is in contact with a gas, absorption of species can be described by an absorption flux:
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter1/trapping_energy_hydrogen_in_tungsten.pdf}
+    \caption{Detrapping energy of a hydrogen atom in several vacancies, impurities, self-interstitial atoms (SIA), grain boundaries (GB), in tungsten depending on the number of trapped hydrogen atoms. Reproduced from \cite{hodille_study_2016}.}
+    \label{fig: trapping energy hydrogen in tungsten}
+\end{figure*}
+
+\subsubsection{Surface dissolution}
+
+When a surface is in contact with a gas, molecular species (\textit{eg.} $\text{H}_2$, $\text{T}_2$, $\text{HD}$...) can dissociate into mono-atomic species.
+After their dissociation, the atomic particles can be adsorbed on the surface (on adsorption sites).
+This dissociation is described by a sticking propability usually associated with an Arrhenius law $s = s_0 \exp{(-E_s/k_B T)}$.
+DFT calculations can calculate energy barriers for adsorption and migration of solute species on surfaces \sidecite{heinola_first-principles_2010}.
+Studies have however shown that this process is not thermally activated (\textit{ie} $E_s=0$) \sidecite{alnot_adsorption_1989, tamm_interaction_1970} but rather depends on the ratio of the surface concentration of the species (hydrogen or helium) by the concentration of adsorption sites.
+This quantity is called the \textit{surface coverage} $\theta$. 
+When $\theta = 1$, the surface is fully saturated and when $\theta = 0$ all the adsorption sites are available.
+Moreover, the presence of impurities occupying adsorption sites can decrease the sticking probability of a species.
+
+Adsorbed particles can then be \textit{absorbed} in the bulk (see Figure \ref{fig: potential energy diagram metal lattice}).
+This thermally activated process is associated with an absorption coefficient following an Arrhenius law $A=A_0 \exp{(-E_A/k_B T)}$.
+The absorption process is modelled using DFT and absorption activation energies $E_A$ can be determined for different surface orientations \sidecite{johnson_hydrogen_2010, nojima_theoretical_2007,alnot_adsorption_1989}.
+
+All these processes (dissociation, adsorption and absorption) can be described by an absorption flux:
 \begin{equation}
     \varphi_\mathrm{abs} = n K_\mathrm{abs} P
 \end{equation}
@@ -441,6 +671,7 @@ When the absorption/desorption order is $n=2$ (diatomic absorption):
     c_\mathrm{surface} = K_S \sqrt{P}
 \end{equation}
 This equilbrium is known as Sievert's law of solubility and $K_S = \sqrt{2 K_\mathrm{abs}/K_\mathrm{des}}$ is the material solubility expressed in \si{m^{-3}.Pa^{-0.5}}.
+The solubility of tungsten, copper and CuCrZr are described in \reffig{diffusivity solubility materials}, \reffig{diffusivity solubility tungsten}, \reffig{diffusivity solubility copper} and \reffig{diffusivity solubility cucrzr}.
 
 \subsubsection{Clustering}
 Single He atoms implanted into the material diffuse rapidly due to the high W-He repulsion.
@@ -488,7 +719,7 @@ During the punching event, a whole facet of W atoms is pushed and the vacant lat
 The produced self-interstitial W atoms will likely be attracted by \textit{image forces} at the surface and will contribute to the roughening of the surface and/or formation of surface structures.
 
 Dislocation loops happen at very high pressure and if the number of vacancies in the lattice is low compared to the amount of He atoms.
-This is the case when a high He flux is applied and the He ions energy is low so that no displacement damaged is produced \sidecite{sefta_surface_2013}.
+This is the case when a high He flux is applied and the He ions energy is low so that no displacement damaged is produced \cite{sefta_surface_2013}.
 If vacancies were created via He ions implantation, they could interact with existing He bubbles which would have the effect of increasing the volume and thus decreasing the pressure (assuming no change in temperature and no other implantation mechanism).
 
 Coalescence of He bubbles has been observed in MD simulations \sidecite{hamid_molecular_2019, hammond_helium_2019, zhang_simulation_2019} and would tend to increase the bubble size decreasing the bubble density at the same time.
@@ -499,20 +730,37 @@ Sefta and co-workers \sidecite{sefta_surface_2013} proposed to use the Wolfer eq
 Quir\'os \textit{et al} proposed a post-processing method to asses bubble radius and pressure from concentration profiles applied on H blistering \sidecite{quiros_blister_2017}.
 One must be aware that if radii and pressure of bubbles computation is quite straightforward using MD \sidecite{zhang_simulation_2019} or cluster dynamics \sidecite{faney_spatially_2015} simulations it will be more complex to estimate these metrics considering a continuum model that does not keep track of every type of clusters but only a few of them.
 The only information \textit{a priori} available in this case is indeed the local helium concentration and an equivalence could be found by either having a high density of small bubbles or a low density of big bubbles.
+An effort has been made by Ialovega and co-workers to measure the pressure inside helium bubbles using EELS (Electron Energy Loss Spectroscopy) \sidecite{ialovega_influence_2021}.
+This technique, consisting in analysing the electron energy loss as they interact with matter \sidecite{pyper_excited_2017}, showed evidence that the observed cavities (see Figure \ref{fig: he bubbles ialovega}) were filled with helium.
 
-\subsubsection{Consequences of bubble growth}
+\subsubsection{Blistering}
 
-% blistering
-When He is implanted at low temperature (<1000K) in W surfaces, appearance of blisters is observed \sidecite{baldwin_formation_2010}.
-These blisters are plastic deformation (swelling) of the metal near the surface due to high pressure in He bubbles.
-This phenomena is separated from the loop punching even though loop punching can be considered as a plastic deformation.
-Blistering happens only at low temperatures because only then the growth rate of the bubble is greater than the dissolution in the bulk (which depends on the thermally activated diffusion coefficient and/or solubility).
-Eventually if the rate of incoming He atoms is greater that the rate of re-dissolution in the bulk, blisters can rupture.
-Similarly, if the rate of incoming He atoms is lesser than the rate of re-dissolution in the bulk, the blister will collapse.
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter1/h_blisters_in_tungsten.jpg}
+    \caption{Scanning Electron Microscopy images of the surface of W samples exposed to \SI{50}{eV} H plasma at \SI{573}{K} and \SI{1273}{K}. Reproduced from \cite{chen_irradiation_2019}.}
+    \labfig{h blisters in tungsten}
+\end{figure}
 
-H blistering was also observed in W \sidecite{haasz_effect_1999} and aluminium and beryllium \sidecite{quiros_blistering_2019,quiros_blister_2017}.
+During helium or hydrogen implantation, \textit{blistering} can be observed under certain conditions.
+Blisters are plastic deformation (swelling) of the metal near the surface due to high pressure in bubbles (see \reffig{h blisters in tungsten}).
+This phenomenon is separated from loop punching even though loop punching can be considered as a plastic deformation.
+Blistering usually happens at low temperatures because only then the growth rate of the bubble is greater than the dissolution in the bulk (which depends on the thermally activated diffusion coefficient and/or solubility).
+Eventually, if the rate of incoming atoms is greater that the rate of re-dissolution in the bulk, blisters can rupture.
+Similarly, if the rate of incoming atoms is less than the rate of re-dissolution in the bulk, the blister will collapse.
+
+Helium blistering has been observed in W at low temperature ($< \SI{1000}{K}$) \sidecite{baldwin_formation_2010}.
+H blistering was also observed in W \sidecite{haasz_effect_1999}, aluminium and beryllium \sidecite{quiros_blistering_2019,quiros_blister_2017}.
 Causey \textit{et al} also reviewed a wide range of studies showing H exposure leads to blistering \sidecite{causey_hydrogen_2002}.
+Blistering was found to lead to hardening in W due to the production of dislocations \sidecite{chen_irradiation_2019}.
+It can also form cracks depending on the alloying elements in W and the microstructure \sidecite{ueda_hydrogen_2005}.
 
+Hydrogen blistering was observed under high energy irradiation (typically from a few \si{keV} to \si{MeV}).
+These energies are orders of magnitudes higher than the ones expected in the ITER divertor (see \reffig{divertor exposure conditions}).
+
+It was also found that hydrogen blister formation was avoided in tungsten at temperatures above \SI{600}{K} \sidecite{wang_blister_2001,shimada_blister_2003}.
+
+\subsubsection{Bursting}
 % bursting
 
 \begin{figure} [h!]
@@ -523,8 +771,9 @@ Causey \textit{et al} also reviewed a wide range of studies showing H exposure l
 \end{figure}
 
 When a bubble grows near the surface and is over-pressurised, bursting can occur (see Figure \ref{fig: bubble bursting zhou}).
-After several increases of the bubble volume via punching loops making the W lattice to be deformed and the ligament thickness to decrease, the latter can rupture which would make all the He atoms contained in the bubble to be released to the vacuum.
-This is why He bursting is characterised by sharp drops in the He inventory.
+As the bubble size increases via loop punching, the W lattice is deformed and the ligament thickness decreases.
+The latter can rupture which would make all the He atoms contained in the bubble to be released to the vacuum.
+This is why He bursting is characterised by sharp drops in the He inventory \sidecite{hammond_helium_2019}.
 
 Sefta and co-workers observed that bursting is more likely to happen at high temperatures.
 This phenomena contributes to surface roughening and could be the beginning of the formation of nano-fuzz \sidecite{sefta_helium_2013}.
@@ -532,16 +781,12 @@ Indeed, a bursting event could either form a crater on the W surface or an empty
 In the last case, called a \textit{pinhole} bursting event, the cavity can be re-pressurised with He atoms.
 Blondel \textit{et al} proposed to model bursting as a stochastic function of depth in the material rather than a calculation of the bubble pressure.
 They have also shown that simulation parameters have an impact on the retention \sidecite{blondel_continuum-scale_2018}.
-These differences are mainly due to 2D effects as more bursting events occur but with smaller bubbles.
-They have shown that the size of the reaction network size (using cluster dynamics) does not seem to have an influence (between 250 and 200) as the first bursting events happen at clusters of size $\text{He}_{80}$.
-Other simulation parameters (depth of the sample, pre-existing vacancies, bubble growth trajectory...) don't affect the simulations results as they converge for long time steps (100 s).
+% These differences are mainly due to 2D effects as more bursting events occur but with smaller bubbles.
+They have shown that the size of the reaction network size (using cluster dynamics) does not seem to have an influence (between 250 and 200) as the first bursting events happen with clusters of size $\text{He}_{80}$.
+% Other simulation parameters (depth of the sample, pre-existing vacancies, bubble growth trajectory...) don't affect the simulations results as they converge for long time steps (100 s).
 
-If bursting is not included in continuum simulations, the volume fraction of He present in the W could become very large and the dilute limit approximation could no longer be valid \sidecite{sefta_surface_2013}.
-Care must though be taken considering what metric should be considered in continuum simulation in order to estimate bursting probability.
-
-
-Bursting has been experimentally observed \sidecite{hamid_molecular_2019, woller_dynamic_2015} leading to craters formation.
-
+If bursting is not included in continuum simulations, the volume fraction of He present in W could become very large and the dilute limit approximation could no longer be valid \sidecite{sefta_surface_2013}.
+The correct metric for estimating bursting probabilities must therefore be chosen with care.
 
 \subsubsection{W tendrils or "nano-fuzz"}
 
@@ -557,7 +802,7 @@ These nanostructures are made of W tendrils (see Figure \ref{fig: w fuzz wright}
 These structures are called W fuzz, nano-fuzz or even fuzzy W.
 Because a small portion of the divertor grew W fuzz, no conclusion was made regarding its influence on the plasma operation.
 However, if these structures were to be removed during plasma operation via erosion, W atoms could be fed into the plasma, affecting the tokamak performances.
-Moreover, this phenomena could increase the W dust formation in the reactor and lead to contamination and safety issues.
+Moreover, this phenomena could increase the W dust formation in the reactor and lead to contamination and safety issues \sidecite{grisolia_tritium_2015}.
 
 W fuzz has been observed at high temperature (>1000K), high flux (>\SI{1e21}{He^+.m^{-2}.s^{-1}}) and long exposure (t>\SI{1e2}{s}) \sidecite{baldwin_formation_2010, nishijima_sputtering_2011}.
 
@@ -589,7 +834,7 @@ The role of He implantation in cracks formation is still unclear since cracks ha
 Under some specific conditions, cracks can close due to thermal expansion which induce frictional loads on the structure.
 The formation of W nano-fuzz could also bridge those cracks as observed by Lemahieu \textit{et al} \sidecite{lemahieu_h/he_2016}.
 
-\subsubsection{Diminution of thermal performances}
+\subsubsection{Reduction of thermal performances}
 
 Several of the above phenomena can have an impact on plasma facing materials thermal performances \sidecite{cui_thermal_2017,buzi_response_2017}.
 First, having a network of bubbles will lead to a reduction of local apparent conductivity as thermal constriction will occur between the bubbles.
@@ -604,58 +849,92 @@ This could lead to reduction of the PFC heat exhaust capacity and furthermore lo
 
 \subsection{He/H interactions}
 Lee \textit{et al} studied the influence of He implantation on D retention.
-They showed with ERD depth profiles (up to 40 nm) that D is trapped where He is trapped and proposed that He bubbles produce secondary defects around them which can trap D \sidecite{lee_hydrogen_2007}.
-These defects can be interstitial loops produced by loop punching.
+They showed with Elastic Recoil Detection depth profiles (up to 40 nm) that D is trapped where He is trapped and proposed that He bubbles produce secondary defects around them which can trap D \sidecite{lee_hydrogen_2007}.
+These defects can be interstitial loops produced by loop punching or even vacancies created by stress field induced by overpressurised bubbles.
 Lee \textit{et al} also suggested that no evidence had been found on trapping of D by chemisorption on the inner surface of a He bubble nor by molecular interaction with the He cluster.
 The privileged mechanism is therefore the trapping of D in the defects made by the stress field induced by the He bubble to the crystalline structure of the W.
 
 It has been shown by Ueda \textit{et al} that He implantation (even in small amounts) greatly affects H blistering in W \sidecite{ueda_simultaneous_2009}.
 With only 0.1\% of He in the ion beam one can observe that H blistering is completely suppressed for temperature greater than \SI{653}{K}.
 At lower temperature, H blistering occurs but is significantly reduced.
-This phenomena is due to the fact that H migration to the bulk and accumulation at grain boundaries is avoided by He bubbles at the near surface which act as a diffusion plug for H.
-The same phenomena has been observed by Miyamoto \textit{et al} \sidecite{miyamoto_microscopic_2011} which contributes to reducing H retention.
+This phenomenon is due to the fact that H migration to the bulk and accumulation at grain boundaries is avoided by He bubbles at the near surface which act as a diffusion plug for H.
+The same phenomenon has been observed by Miyamoto \textit{et al} \sidecite{miyamoto_microscopic_2011} which contributes to reducing H retention.
 Markelj \textit{et al} \sidecite{markelj_hydrogen_2017} showed however that He implantation can increase D retention in the He clustering zone.
-This implies that observed reduction or increase of D retention in mixed H-He plasma experiment are depending on the depth of implantation.
+This suggests that observed reduction or increase of D retention in mixed H-He plasma experiment are depending on the depth of implantation.
 
 Ialovega \textit{et al} performed sequential H implantation/desorption cycles on W samples pre-damaged with He \sidecite{ialovega_hydrogen_2020}.
 He bubbles were found in the near surface region (see Figure \ref{fig: he bubbles ialovega}) and significantly different TDS spectra were observed after several H implantations/desorptions (see Figure \ref{fig: TDS example ialovega}).
 This works gives evidence of an interaction between He and H in W.
 
-\section{Macroscopic scale modelling of hydrogen transport}
+\section{Problem definition}
+
+The main focus of this PhD work is the estimation of H isotopes retention and permeation in tokamaks.
+We will try to answer the following questions:
+\begin{itemize}
+    \item How does the tritium inventory evolve over the lifespan of the fusion reactor?
+    \item Does it remain within the safety limits?
+    \item What is the impact of the presence of helium?
+\end{itemize}
+
+Due to the time scales at play and the complexity of the components, answering these questions experimentally is complex.
+Numerical models can however be used to simulate components over long time scales and with complex geometries.
+However, the tools currently available did not meet the requirements of either dimensionality, physics, performance or availability.
 
 Several simulation tools have been developed throughout the years (see Table \ref{tab: code comparison}).
-Many of them rely of Finite Differences (FD) whereas the HIT code \cite{candido_integrated_2020} relies on Finite Element (FE).
-Most of these codes are not able to run multi-material, multi-dimensional simulations.
-Moreover, not all of them have an integrated heat transfer solver.
-
+Most of these codes are not able to run multimaterial and/or multi-dimensional simulations.
+Many of them rely on the Finite Differences Method (FDM) whereas HIT \sidecite{candido_integrated_2020}, Abaqus \sidecite{benannoune_multidimensional_2020} and ACHLYS \sidecite{stephen-dixon_aurora-multiphysicsachlys_2021} rely on the Finite Element Method (FEM).
+Moreover, some do not have an integrated heat transfer solver - essential for an accurate estimation of temperature fields and therefore thermally activated processes.
+Some of these codes rely on proprietary software like Abaqus or COMSOL for HIT - limiting their accessibility and scalability (parrallel computing).
+The code ACHLYS meets all these requirements and is the only one available open-source but was only released in mid 2021.
+Finally, good computing performances were required in order to simulate the full divertor.
+This ruled out the use of Abaqus in its current state as it was initially designed for thermo-mechanical simulations.
 
 \begin{table*} [h]
     \centering
-    \begin{tabular}{L{2cm} L{0.5cm} L{0.5cm} L{0.5cm} L{1.7cm} l l l l}
-              & 1D & 2D & 3D & Multimaterial & Numerical method & Heat transfer & Based on free software \\
+    \begin{tabular}{L{2cm} L{0.5cm} L{0.5cm} L{0.6cm} L{1.7cm} l l l }
+        & 1D & 2D & 3D & Multimaterial & Heat transfer & Open-source & Programming language \\
         \hline \\
-        TMAP7 \cite{longhurst_tmap7_2008} & $\checkmark$ & & & & FD & & $\checkmark$ \\
+        TMAP7 \cite{longhurst_tmap7_2008} & $\checkmark$ & & & $\checkmark$ & & & Fortran\\
         \\
-        HIIPC \cite{sang_modelling_2012} & $\checkmark$ & & & & FD & $\checkmark$ & $\checkmark$ \\
+        HIIPC \cite{sang_modelling_2012} & $\checkmark$ & & & & $\checkmark$ & & Fortran\\
         \\
-        MHIMS \cite{hodille_study_2016} & $\checkmark$ & & & & FD & & $\checkmark$ \\
+        CRDS \cite{matveev_reaction-diffusion_2018} & $\checkmark$ & & & & & & Mathematica \\
         \\
-        TESSIM \cite{schmid_transport_2014} & $\checkmark$ & & & & FD & & \\
+        MHIMS \cite{hodille_study_2016} & $\checkmark$ & & & & & & Fortran \\
         \\
-        HIT \cite{candido_integrated_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & FE & $\checkmark$ & \\
+        TESSIM \cite{schmid_transport_2014} & $\checkmark$ & & & & & & \\
         \\
-        ACHLYS \cite{stephen-dixon_aurora-multiphysicsachlys_2021} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & FE & $\checkmark$ & $\checkmark$ \\
+        HIT \cite{candido_integrated_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & & COMSOL\\
+        \\
+        Abaqus \cite{benannoune_multidimensional_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & & Fortran\\
+        \\
+        ACHLYS \cite{stephen-dixon_aurora-multiphysicsachlys_2021} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & C++\\
         \\
     \end{tabular}
     \caption{Comparison of some hydrogen transport modelling tools.}
     \label{tab: code comparison}
 \end{table*}
 
-
-\section{Roadmap}
-
-This PhD work aims at estimating the retention of H isotopes in tokamak components and how the presence of helium could affect it.
-The first part of this work is to develop a modelling tool capable of solving H transport problem in 2D/3D (Chapter \ref{Chapter2}).
-This new modelling tool is then applied to component scale problems and H retention is estimated at the monoblock level (Chapter \ref{Chapter3}).
-The next stage is to scale up from a monoblock model to a full divertor model (Chapter \ref{Chapter4}).
-Finally, the influence of He exposure is studied (Chapter \ref{Chapter5}).
+\begin{itemize}
+    \item \textbf{\refch{Chapter2}} \newline
+The first part of this work was to develop a modelling tool - FESTIM - capable of solving hydrogen transport problem in 2D/3D.
+This Chapter will describe the mathematical models used in FESTIM as well as the global numerical implementation.
+Finally, it will detail the analytical verification and experimental validation strategy.
+This last point includes a code comparison with the reference code TMAP7.
+    \item \textbf{\refch{Chapter3}} \newline
+This Chapter will focus on estimating the tritium retention in monoblocks.
+To this end, a FESTIM model of ITER-like monoblock will be developped.
+A behaviour law linking the monoblock inventory to exposure conditions (surface concentration and surface temperature) will be obtained.
+    \item \textbf{\refch{Chapter4}} \newline
+The next stage is to scale up from a monoblock model to a full divertor model.
+The behaviour law obtained in \refch{Chapter3} will be coupled to plasma simulations (providing distributions of exposure conditions).
+The inventory of the ITER and WEST divertors will be computed for several plasma scenarios.
+This Chapter will answer the questions \textit{"How does the tritium inventory evolve over the lifespan of the fusion reactor?"} and
+\textit{"Does it remain within the safety limits?"}
+    \item \textbf{\refch{Chapter5}} \newline
+Finally, the influence of helium exposure and the presence of helium bubbles was studied.
+To this end, a finite element solver was first developed to simulate helium transport and clustering in tungsten.
+This code was compared to the Xolotl code \sidecite{blondel_continuum-scale_2018}.
+This helium transport code was then coupled to FESTIM to estimate the potential impact of helium on the tritium inventory estimations.
+This Chapter will answer the question \textit{"What is the impact of the presence of helium?"}.
+\end{itemize}
