@@ -127,7 +127,7 @@ This is explained by the surface losses.
         \includegraphics[trim=500 0 300 0, clip, width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/retention_1e6s.png}
         \caption{$t=\SI{1e6}{s}$}
     \end{subfigure}
-    \caption{Retention fields of the DEMO monoblock with (left) or without (right) recombination on the poloidal gaps. Note the colour bars are different.}
+    \caption{Retention fields of the DEMO monoblock with (left) or without (right) recombination on the poloidal gaps (standard case). Note the colour bars are different.}
     \label{fig:retention fields 3D monoblocks}
 \end{figure}
 
@@ -141,16 +141,16 @@ The simulations performed in Section \ref{influence of exposure conditions} then
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/inventory_standard_case_w_wo_recomb.pdf}
-    \caption{Temporal evolution of the monoblock inventory.}
+    \caption{Temporal evolution of the monoblock inventory (standard case).}
     \label{fig: inventory vs time DEMO monoblock}
 \end{figure}
 
 % fluxes
-However, the outgassing fluxes from the monoblock gaps cannot be estimated with 2D (or 1D) simulations.
-These fluxes were found to be five orders of magnitude higher than the permeation flux to the coolant: the particle flux towards the vacuum vessel was approximately \SI{e12}{H.s^{-1}} whereas the flux towards the cooling channel was below \SI{e8}{H.s^{-1}} (see Figure \ref{fig: fluxes DEMO monoblock}).
-These fluxes can be compared to the retrodesorbed flux (\textit{ie} the flux of implanted particles that diffuse back to the exposed surface).
-According to Equation \ref{eq:flux balance}, the value of this flux is equal to $\varphi_\mathrm{imp} \times \SI{23}{mm} \times \SI{4}{mm} = \SI{1.5e18}{H.s^{-1}}$.
-The values of the outgassing fluxes from both the gaps and the cooling surface are therefore orders of magnitude lower than that of the retrodesorbed flux.
+These 3D simulations are however essential to estimate the outgassing fluxes from the poloidal gaps.
+The particle flux at the poloidal gap is six times higher than the flux at the toroidal gap  (see Figure \ref{fig: fluxes DEMO monoblock}).
+The permeation flux to the coolant is five to six orders orders of magnitude lower than the fluxes at the gaps.
+The particle fluxes at the gaps (poloidal and toroidal) were approximately \SI{e12}{H.s^{-1}} whereas the flux towards the cooling channel was below \SI{e7}{H.s^{-1}}.
+The values of the outgassing fluxes from both the gaps are orders of magnitude lower than that of the retrodesorbed flux (\textit{ie} the flux of implanted particles that diffuse back to the exposed surface).
 This means 3D edge effects will not affect previous results regarding the outgassing to the vessel.
 They will however impact the value of the contamination flux towards the coolant as assuming an instantaneous recombination on the gaps will lead to way less particles reaching the cooling surface and therefore a lower flux.
 
@@ -163,14 +163,14 @@ They will however impact the value of the contamination flux towards the coolant
 
 \subsection{Influence of the monoblock thickness}
 
-The same simulations were run with different monoblock thicknesses (3, 4 and \SI{14}{mm}).
-In order to investigate the influence of the recombination on the gaps, the ratio $\mathrm{inv}_\mathrm{desorption} / \mathrm{inv}_\mathrm{no desorption}$ (monoblock inventories with or without desorption) was computed for each simulation case.
-The closer the ratio is to unity, the less significant the desorption.
+Several simulations were run with monoblock thicknesses varying from \SI{4}{mm} to \SI{14}{mm}.
 
-Increasing the monoblock thickness lead to an increase of the ratio (see Figure \ref{fig: ratio 3D thickness monoblock}).
-For the smallest thickness (\SI{3}{mm}), the ratio $\mathrm{inv}_\mathrm{desorption} / \mathrm{inv}_\mathrm{no desorption}$ was approximately \SI{10}{\%} at \SI{10000}{s}.
-It decreased down to $3\times 10^{-4}$ after \SI{1e7}{s} of exposure.
-The same behaviour was observed for all thicknesses though the decrease was less significant for higher thicknesses.
+% inventory
+As the thickness increases, the inventory per unit thickness increases for the case with instantaneous recombination on the poloidal gap (see Figure \ref{fig: inventory vs time DEMO monoblock}).
+It remains constant for the case with no recombination since it is equivalent to a 2D case (the decrease observed at low thicknesses is due to the impact of the CuCrZr pipe between monoblocks as shown on Figure \ref{fig: fig: geometry DEMO monoblock}).
+The relative difference between the cases with or without recombination on the poloidal gap decreases as the thickness increases.
+After \SI{1e6}{s} of exposure, for a thickness of \SI{4}{mm} the relative difference is \SI{200}{\%} and drops at \SI{30}{\%} for \SI{14}{mm}.
+This result was expected as the edge effects become negligible at high thicknesses.
 
 \begin{figure} [h]
     \centering
@@ -178,6 +178,15 @@ The same behaviour was observed for all thicknesses though the decrease was less
     \caption{}
     \label{fig: ratio 3D thickness monoblock}
 \end{figure}
+
+% flux
+% The permeation flux towards the cooling channel 
+% \begin{figure} [h]
+%     \centering
+%     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/permeation_flux_vs_thickness.pdf}
+%     \caption{Temporal evolution of the permeation flux with or without recombination at the poloidal gap for several monoblock thicknesses.}
+%     \label{fig: flux to coolant DEMO monoblock}
+% \end{figure}
 
 \subsection{Summary}
 The influence of H desorption on poloidal and toroidal gaps between monoblocks was investigated.
