@@ -20,9 +20,9 @@ The DEMO monoblock geometry differs slightly from the ITER geometry (see Figure 
             \put(0, 60){\large$\Gamma_\mathrm{toroidal}$}
             \put(43, 60){\large$\Gamma_\mathrm{toroidal}$}
             \put(21, 45){\large$\Gamma_\mathrm{coolant}$}
-            \put(70, 71){e}
+            \put(68, 71){e}
             \put(66, 50){e + \SI{1}{mm}}
-            \put(66, 60){\large$\Gamma_\mathrm{poloidal}$}
+            \put(60, 60){\large$\Gamma_\mathrm{poloidal}$}
             \put(75, 60){\large$\Gamma_\mathrm{poloidal}$}
         \end{overpic}
     \caption{3D geometry of the DEMO monoblock used for the simulations showing W armour \cruleme[grey]{0.3cm}{0.3cm}, Cu interlayer \cruleme[orange]{0.3cm}{0.3cm}, CuCrZr alloy cooling pipe  \cruleme[yellow]{0.3cm}{0.3cm}.}
@@ -157,7 +157,7 @@ They will however impact the value of the contamination flux towards the coolant
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/desorption_flux_standard_case.pdf}
-    \caption{Temporal evolution of outgassing fluxes for the standard case with desorption from the poloidal gaps.}
+    \caption{Temporal evolution of outgassing fluxes for the standard case with desorption from the poloidal gaps. Blue lines correspond to the fluxes towards the vacuum vessel, the orange line is the flux towards the coolant.}
     \label{fig: fluxes DEMO monoblock}
 \end{figure}
 
@@ -175,7 +175,7 @@ This result was expected as the edge effects become negligible at high thickness
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/inventory_vs_thickness.pdf}
-    \caption{}
+    \caption{Evolution of the inventory with or without recombination at the poloidal gap for several monoblock thicknesses at $t=\SI{1e6}{s}$}
     \label{fig: ratio 3D thickness monoblock}
 \end{figure}
 
@@ -187,8 +187,19 @@ Similarly to the inventory, the relative difference between the cases with or wi
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/permeation_flux_vs_thickness.pdf}
-    \caption{Temporal evolution of the permeation flux with or without recombination at the poloidal gap for several monoblock thicknesses.}
+    \caption{Evolution of the permeation flux to the coolant with or without recombination at the poloidal gap for several monoblock thicknesses at $t=\SI{1e6}{s}$.}
     \label{fig: flux to coolant DEMO monoblock}
+\end{figure}
+
+% impact of the extrusion
+Finally, the extrusion of the CuCrZr pipe between monoblocks has an impact on the permeation flux and the inventory.
+Without this extrusion, the case without recombination on the poloidal gap corresponds to a pure 2D case and the inventory is independent of the thickness (see Figure \ref{fig: inventory monoblock vs thickness no gap}).
+
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/inventory_vs_thickness_no_gap.pdf}
+    \caption{Evolution of the permeation flux with or without recombination at the poloidal gap for several monoblock thicknesses without CuCrZr extrusion at $t=\SI{1e6}{s}$.}
+    \label{fig: inventory monoblock vs thickness no gap}
 \end{figure}
 
 \subsection{Summary}
@@ -197,5 +208,5 @@ The DEMO baseline geometry (based on an ITER-like concept) was simulated with FE
 It was shown that taking into account recombination on these gaps could drastically decrease the monoblock H inventory (by several orders of magnitude).
 In other words, this makes the 2D assumption for monoblocks less valid for (1) thin monoblocks (2) long exposure times.
 Indeed, a 2D assumption implies assuming an infinitely thick monoblock (which is totally unrealistic for the ITER and DEMO designs).
-However, this assumption is conservative since it will only overestimate the H inventory and the permeation flux to the coolant.
+However, this assumption is conservative since it will overestimate the H inventory and the permeation flux to the coolant.
 Moreover, performing 3D simulations is more computationaly expensive than 2D simulations.
