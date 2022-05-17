@@ -412,12 +412,18 @@ This can be written in a matrix form:
     \label{eq: variational problem matrix form}
 \end{equation}
 where
-\begin{align}
-    A_{ji} &= \int_\Omega \nabla \phi_i \cdot \nabla \hat{\phi}_j \ dx \\
-    b_{j} &= \int_\Omega f \ \hat{\phi}_j \ dx - \int_{\Gamma_N} g \ \hat{\phi}_j \ ds \\
-\end{align}
+\begin{subequations}
+    \begin{align}
+        A_{ji} &= \int_\Omega \nabla \phi_i \cdot \nabla \hat{\phi}_j \ dx \\
+        b_{j} &= \int_\Omega f \ \hat{\phi}_j \ dx - \int_{\Gamma_N} g \ \hat{\phi}_j \ ds
+    \end{align}
+    \labeq{eq: matrices A and b}
+\end{subequations}
+
+The integral terms in \refeq{eq: matrices A and b} can be computed with Gauss-Legendre quadrature.
 
 After solving Equation \ref{eq: variational problem matrix form}, the $U_i$ coefficients are known and the approximated solution $u_h$ can be computed.
+Non-linear problems are solved in a similar manner where the solution is approached using Newton's method.
 
 \subsection{Main features of FESTIM}
 FESTIM provides an even higher level of abstraction than FEniCS by providing a user-friendly interface dedicated to H transport and heat transfer problems.
