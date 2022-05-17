@@ -87,7 +87,7 @@ In a metal, $n=2$ and in a non-metallic liquid, $n=1$.
 Recombination occurs when hydrogen particles located at the surface of the material combine with other particles (which can be other hydrogen particles) and are no longer bonded with the metal surface.
 It can happen both in presence of a vacuum or when the metal is in contact with a fluid (gas or fluid).
 
-Similarily, a dissociation flux can be applied when a surface is in contact with a gas atmosphere of H (see Equation \ref{eq: dissociation flux}).
+Similarly, a dissociation flux can be applied when a surface is in contact with a gas atmosphere of H (see Equation \ref{eq: dissociation flux}).
 \begin{equation}
     - D(T)\nabla c_\mathrm{m} \cdot \mathbf{n} = K_d(T) P \quad \text { on } \partial \Omega
     \label{eq: dissociation flux}
@@ -318,21 +318,81 @@ The finite element method is a versatile tool that can solve any partial differe
 The main advantage of this method compared to the finite difference method is the simplicity of its application to complex geometries and unstructured meshes.
 Indeed, implementing a finite difference scheme for such a problem would be tedious and extra care must be taken for mistakes in the implementation could result in losses in efficiency and accuracy of the numerical solution.
 
-This section will illustrate the finite element method applied to a simple diffusion equation (see Equation \ref{eq: example poisson}).
+This section illustrates the finite element method applied to the Poisson equation \sidecite{logg_automated_2012}.
 
-\begin{align}
-    -\nabla^2 u &= f \\
-    u &= 0 \quad \text{on    } \delta \Omega
+The mathematical problem can be described by Equation \ref{eq: example poisson}.
+The value of $u$ is prescribed on the subset $\Gamma_D$ (Dirichlet boundary condition) whereas the value of the normal derivative of $u$ is prescribed on the remaining boundary $\Gamma_N$ (Neumann boundary condition) (see \reffig{fe problem sketch}).
+
+\begin{subequations}
+    \begin{align}
+        -\nabla^2 u &= f \quad \text{on    } \Omega \\
+        u &= u_0 \quad \text{on    } \Gamma_D  \subset \delta \Omega \\
+        -\frac{\partial u}{\partial n} &= g \quad \text{on    } \Gamma_N  \subset \delta \Omega
+    \end{align}
     \label{eq: example poisson}
-\end{align}
+\end{subequations}
 
-The first step of the finite element method is to represent the solution $u$ as a combination of piecewise polynomials (see Equation \ref{eq: FEM solution}).
 
+\begin{figure} [h]
+    \centering
+    \includegraphics[trim=50 0 200 0, clip, width=0.7\linewidth]{Figures/Chapter2/finite_element_problem_sketch.pdf}
+    \caption{Representation of the mathematical problem.}
+    \labfig{fe problem sketch}
+\end{figure}
+
+The first step of the finite element method is to build a variational formulation (also called \textit{weak form}) of the governing equation \ref{eq: example poisson}.
+To do so, the "recipe" is to multiply the equation by a function $v$ (called the \textit{test function}) and integrate over the domain $\Omega$.
+The following expression is obtained:
 \begin{equation}
-    u = \sum^N_{i=0}u_i \phi_i(x, y, z)
+    \int_{\Omega} -\nabla^2 \ u \ v \ dx = \int_{\Omega} f \ v \ dx \quad \forall \ v \in \hat{V}
+    \label{eq: weak form 1}
+\end{equation}
+
+The function space $\hat{V}$ is defined as:
+\begin{equation}
+    \hat{V} = \{ v \in H^1(\Omega) \ : \ v=0 \ \text{on} \ \Gamma_D \}
+\end{equation}
+
+Equation \ref{eq: weak form 1} needs now to be rewritten in order to only have first order derivatives.
+To do so, Gauss-Green's lemma is employed:
+\begin{equation}
+    \int_{\Omega} -\nabla^2 u \ v \ dx = \int_{\Omega} \nabla u \cdot \nabla \ v \ dx - \int_{\partial \Omega} \frac{\partial u}{\partial n} \ v \ ds
+    \label{eq: gauss-green}
+\end{equation}
+
+The variational formulation therefore reads:
+\begin{equation}
+    \int_{\Omega} \nabla u \cdot \nabla \ v \ dx = \int_{\Omega} f \ v \ dx + \int_{\Gamma_N} \frac{\partial u}{\partial n} \ v \ ds + \int_{\Gamma_D} \frac{\partial u}{\partial n} \ v \ ds \quad \forall \ v \in \hat{V}
+    \label{eq: weak form 2}
+\end{equation}
+
+Since the test function $v$ vanishes on $\Gamma_D$, the following variational problem is obtained: find $u \in V$ such that
+\begin{equation}
+    \int_{\Omega} \nabla u \cdot \nabla v  \ dx = \int_{\Omega} f \ v \ dx - \int_{\Gamma_N} g \ v \ ds \quad \forall \ v \in \hat{V}
+    \label{eq: weak form 3}
+\end{equation}
+
+The function space $V$ is defined as:
+\begin{equation}
+    V = \{ v \in H^1(\Omega) \ : \ v=u_0 \ \text{on} \ \Gamma_D \}
+\end{equation}
+
+Poisson's equation can now be discretised by restricting the variational problem \ref{eq: weak form 3} to discrete function spaces $V_h$ and $\hat{V}_h$ : find $u_h \in V_h \subset V$
+\begin{equation}
+    \int_{\Omega} \nabla u_h \cdot \nabla v  \ dx = \int_{\Omega} f \ v \ dx - \int_{\Gamma_N} g \ v \ ds \quad \forall \ v \in \hat{V}_h \subset \hat{V}
+    \label{eq: discrete variational problem}
+\end{equation}
+
+To solve Equation \ref{eq: discrete variational problem}, a suitable pair of discrete function spaces $V_h$ and $\hat{V}_h$ must be constructed.
+Piecewise polynomials basis functions $\{ \phi_i \}_{i=1}^N$ are defined for $V_h$ and $\{ \hat{\phi}_j \}_{j=1}^N$ for $\hat{V}_h$.
+
+The approximated solution $u_h$ therefore reads (see Figure \ref{fig: example approximated solution}):
+\begin{equation}
+    u_h(x) = \sum^N_{i=1}U_i \phi_i(x)
     \label{eq: FEM solution}
 \end{equation}
-where $N$ is the number of degrees of freedom, $u_i$ are the coefficient to be determined (called degrees of freedom) and $\phi_i$ are polynomials (see Figure \ref{fig: example approximated solution}).
+where $U_i$ are the coefficient to be determined (called degrees of freedom).
+$N$ is the number of finite elements used to discretise the domain.
 
 \begin{figure}
     \centering
@@ -341,34 +401,30 @@ where $N$ is the number of degrees of freedom, $u_i$ are the coefficient to be d
     \label{fig: example approximated solution}
 \end{figure}
 
+By replacing $u_h$ in Equation \ref{eq: discrete variational problem} with Equation \ref{eq: FEM solution} and varying the basis functions $\hat{\phi}_j$:
 
-The second step is to build a variational formulation (also called \textit{weak form}) of the governing equation \ref{eq: example poisson}.
-To do so, the "recipe" is to multiply the PDE by a function $v$ (called the \textit{test function}) and integrate over an arbitrary element $\Omega_e$.
-The following expression is obtained:
 \begin{equation}
-    \int_{\Omega_e} -\nabla^2 u v dx = \int_{\Omega_e} f v dx \quad \forall v
-    \label{eq: weak form 1}
+    \sum^N_{i=1} U_i \int_\Omega \nabla \phi_i \cdot \nabla \hat{\phi}_j \ dx = \int_\Omega f \ \hat{\phi}_j \ dx - \int_{\Gamma_N} g \ \hat{\phi}_j \ ds , \quad \ j = 1, \ 2, \ ..., \ N
 \end{equation}
 
-When using $N+1$ different test functions, Equation \ref{eq: weak form 1} then gives rise to a system of $N+1$ equations.
-This form is called the weak form because it relaxes the requirement of Equation \ref{eq: example poisson} and instead requires to solve Equation \ref{eq: weak form 1} for all test functions.
-
-Equation \ref{eq: weak form 1} needs now to be rewritten in order to only have first order derivatives.
-To do so, Gauss-Green's lemma is employed:
+This can be written in a matrix form:
 \begin{equation}
-    \int_{\Omega_e} -\nabla^2 u v dx = \int_{\Omega_e} \nabla u \cdot \nabla v dx - \int_{\partial \Omega_e} \frac{\partial u}{\partial n} v dx
-    \label{eq: gauss-green}
+    AU = b
+    \label{eq: variational problem matrix form}
 \end{equation}
+where
+\begin{subequations}
+    \begin{align}
+        A_{ji} &= \int_\Omega \nabla \phi_i \cdot \nabla \hat{\phi}_j \ dx \\
+        b_{j} &= \int_\Omega f \ \hat{\phi}_j \ dx - \int_{\Gamma_N} g \ \hat{\phi}_j \ ds
+    \end{align}
+    \labeq{eq: matrices A and b}
+\end{subequations}
 
-The variational form therefore reads:
-\begin{equation}
-    \int_{\Omega_e} \nabla u \cdot \nabla v dx = \int_{\Omega_e} f v dx + \int_{\partial \Omega_e} \frac{\partial u}{\partial n} v dx \quad \forall v
-    \label{eq: weak form 2}
-\end{equation}
-where the last term of the equation either vanishes due to Dirichlet boundary conditions (or is imposed).
+The integral terms in \refeq{eq: matrices A and b} can be computed with Gauss-Legendre quadrature.
 
-From Equation \ref{eq: weak form 2}, a system of $N+1$ equations can be solved to determine the coefficients $u_i$ in Equation \ref{eq: FEM solution}.
-Once the $u_i$ coefficients are known, an approximated solution can be computed.
+After solving Equation \ref{eq: variational problem matrix form}, the $U_i$ coefficients are known and the approximated solution $u_h$ can be computed.
+Non-linear problems are solved in a similar manner where the solution is approached using Newton's method.
 
 \subsection{Main features of FESTIM}
 FESTIM provides an even higher level of abstraction than FEniCS by providing a user-friendly interface dedicated to H transport and heat transfer problems.
