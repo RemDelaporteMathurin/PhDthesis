@@ -336,44 +336,42 @@ The value of $u$ is prescribed on the subset $\Gamma_D$ (Dirichlet boundary cond
     \labfig{fe problem sketch}
 \end{figure}
 
-\begin{equation}
-    u = \sum^N_{i=0}u_i \phi_i(x, y, z)
-    \label{eq: FEM solution}
-\end{equation}
-where $N$ is the number of finite elements, $u_i$ are the coefficient to be determined (called degrees of freedom) and $\phi_i$ are polynomials (see Figure \ref{fig: example approximated solution}).
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter2/approximated_solution.pdf}
-    \caption{1D example of an approximated solution $u$ (exact in blue, approximated in orange) with basis functions $\phi_i$}
-    \label{fig: example approximated solution}
-\end{figure}
-
-
-The second step is to build a variational formulation (also called \textit{weak form}) of the governing equation \ref{eq: example poisson}.
-To do so, the "recipe" is to multiply the PDE by a function $v$ (called the \textit{test function}) and integrate over an arbitrary element $\Omega_e$.
+The first step of the finite element method is to build a variational formulation (also called \textit{weak form}) of the governing equation \ref{eq: example poisson}.
+To do so, the "recipe" is to multiply the equation by a function $v$ (called the \textit{test function}) and integrate over the domain $\Omega$.
 The following expression is obtained:
 \begin{equation}
-    \int_{\Omega_e} -\nabla^2 u v dx = \int_{\Omega_e} f v dx \quad \forall v
+    \int_{\Omega} -\nabla^2 \ u \ v \ dx = \int_{\Omega} f \ v \ dx \quad \forall \ v \in \hat{V}
     \label{eq: weak form 1}
 \end{equation}
 
-When using $N+1$ different test functions, Equation \ref{eq: weak form 1} then gives rise to a system of $N+1$ equations.
-This form is called the weak form because it relaxes the requirement of Equation \ref{eq: example poisson} and instead requires to solve Equation \ref{eq: weak form 1} for all test functions.
+The function space $\hat{V}$ is defined as:
+\begin{equation}
+    \hat{V} = \{ v \in H^1(\Omega) \ : \ v=0 \ \text{on} \ \Gamma_D \}
+\end{equation}
 
 Equation \ref{eq: weak form 1} needs now to be rewritten in order to only have first order derivatives.
 To do so, Gauss-Green's lemma is employed:
 \begin{equation}
-    \int_{\Omega_e} -\nabla^2 u v dx = \int_{\Omega_e} \nabla u \cdot \nabla v dx - \int_{\partial \Omega_e} \frac{\partial u}{\partial n} v dx
+    \int_{\Omega_e} -\nabla^2 u \ v \ dx = \int_{\Omega_e} \nabla u \cdot \nabla \ v \ dx - \int_{\partial \Omega_e} \frac{\partial u}{\partial n} \ v \ dx
     \label{eq: gauss-green}
 \end{equation}
 
 The variational form therefore reads:
 \begin{equation}
-    \int_{\Omega_e} \nabla u \cdot \nabla v dx = \int_{\Omega_e} f v dx + \int_{\partial \Omega_e} \frac{\partial u}{\partial n} v dx \quad \forall v
+    \int_{\Omega} \nabla u \cdot \nabla \ v \ dx = \int_{\Omega} f \ v \ dx + \int_{\Gamma_N} \frac{\partial u}{\partial n} \ v \ dx + \int_{\Gamma_D} \frac{\partial u}{\partial n} \ v \ dx \quad \forall \ v \in \hat{V}
     \label{eq: weak form 2}
 \end{equation}
-where the last term of the equation either vanishes due to Dirichlet boundary conditions (or is imposed).
+
+Since the test function $v$ vanishes on $\Gamma_D$, the following variational problem is obtained: find $u \in V$ such that
+\begin{equation}
+    \int_{\Omega} \nabla u \cdot \nabla v  \ dx = \int_{\Omega} f \ v \ dx - \int_{\Gamma_N} g \ v \ dx \quad \forall \ v \in \hat{V}
+    \label{eq: weak form 3}
+\end{equation}
+
+The test function $V$ is defined as:
+\begin{equation}
+    V = \{ v \in H^1(\Omega) \ : \ v=u_0 \ \text{on} \ \Gamma_D \}
+\end{equation}
 
 From Equation \ref{eq: weak form 2}, a system of $N+1$ equations can be solved to determine the coefficients $u_i$ in Equation \ref{eq: FEM solution}.
 Once the $u_i$ coefficients are known, an approximated solution can be computed.
