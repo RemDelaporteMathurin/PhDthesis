@@ -317,15 +317,24 @@ The finite element method is a versatile tool that can solve any partial differe
 The main advantage of this method compared to the finite difference method is the simplicity of its application to complex geometries and unstructured meshes.
 Indeed, implementing a finite difference scheme for such a problem would be tedious and extra care must be taken for mistakes in the implementation could result in losses in efficiency and accuracy of the numerical solution.
 
-This section will illustrate the finite element method applied to a simple diffusion equation (see Equation \ref{eq: example poisson}).
+This section will illustrate the finite element method applied to the Poisson equation \sidecite{logg_automated_2012}.
+
+The mathematical problem can be described by Equation \ref{eq: example poisson}.
+The value of $u$ is prescribed on the subset $\Gamma_D$ (Dirichlet boundary condition) whereas the value of the normal derivative of $u$ is prescribed on the remaining boundary $\Gamma_N$ (Neumann boundary condition) (see \reffig{fe problem sketch}).
 
 \begin{align}
-    -\nabla^2 u &= f \\
-    u &= 0 \quad \text{on    } \delta \Omega
+    -\nabla^2 u &= f \quad \text{on    } \Omega \\
+    u &= 0 \quad \text{on    } \Gamma_D  \subset \delta \Omega \\
+    -\frac{\partial u}{\partial n} &= g \quad \text{on    } \Gamma_N  \subset \delta \Omega \\
     \label{eq: example poisson}
 \end{align}
 
-The first step of the finite element method is to represent the solution $u$ as a combination of piecewise polynomials (see Equation \ref{eq: FEM solution}).
+\begin{figure} [h]
+    \centering
+    \includegraphics[trim=100 0 250 0, clip, width=0.5\linewidth]{Figures/Chapter2/finite_element_problem_sketch.pdf}
+    \caption{Representation of the mathematical problem.}
+    \labfig{fe problem sketch}
+\end{figure}
 
 \begin{equation}
     u = \sum^N_{i=0}u_i \phi_i(x, y, z)
