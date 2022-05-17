@@ -352,29 +352,69 @@ The function space $\hat{V}$ is defined as:
 Equation \ref{eq: weak form 1} needs now to be rewritten in order to only have first order derivatives.
 To do so, Gauss-Green's lemma is employed:
 \begin{equation}
-    \int_{\Omega_e} -\nabla^2 u \ v \ dx = \int_{\Omega_e} \nabla u \cdot \nabla \ v \ dx - \int_{\partial \Omega_e} \frac{\partial u}{\partial n} \ v \ dx
+    \int_{\Omega} -\nabla^2 u \ v \ dx = \int_{\Omega} \nabla u \cdot \nabla \ v \ dx - \int_{\partial \Omega} \frac{\partial u}{\partial n} \ v \ ds
     \label{eq: gauss-green}
 \end{equation}
 
-The variational form therefore reads:
+The variational formulation therefore reads:
 \begin{equation}
-    \int_{\Omega} \nabla u \cdot \nabla \ v \ dx = \int_{\Omega} f \ v \ dx + \int_{\Gamma_N} \frac{\partial u}{\partial n} \ v \ dx + \int_{\Gamma_D} \frac{\partial u}{\partial n} \ v \ dx \quad \forall \ v \in \hat{V}
+    \int_{\Omega} \nabla u \cdot \nabla \ v \ dx = \int_{\Omega} f \ v \ dx + \int_{\Gamma_N} \frac{\partial u}{\partial n} \ v \ ds + \int_{\Gamma_D} \frac{\partial u}{\partial n} \ v \ ds \quad \forall \ v \in \hat{V}
     \label{eq: weak form 2}
 \end{equation}
 
 Since the test function $v$ vanishes on $\Gamma_D$, the following variational problem is obtained: find $u \in V$ such that
 \begin{equation}
-    \int_{\Omega} \nabla u \cdot \nabla v  \ dx = \int_{\Omega} f \ v \ dx - \int_{\Gamma_N} g \ v \ dx \quad \forall \ v \in \hat{V}
+    \int_{\Omega} \nabla u \cdot \nabla v  \ dx = \int_{\Omega} f \ v \ dx - \int_{\Gamma_N} g \ v \ ds \quad \forall \ v \in \hat{V}
     \label{eq: weak form 3}
 \end{equation}
 
-The test function $V$ is defined as:
+The function space $V$ is defined as:
 \begin{equation}
     V = \{ v \in H^1(\Omega) \ : \ v=u_0 \ \text{on} \ \Gamma_D \}
 \end{equation}
 
-From Equation \ref{eq: weak form 2}, a system of $N+1$ equations can be solved to determine the coefficients $u_i$ in Equation \ref{eq: FEM solution}.
-Once the $u_i$ coefficients are known, an approximated solution can be computed.
+Poisson's equation can now be discretised by restricting the variational problem \ref{eq: weak form 3} to discrete function spaces $V_h$ and $\hat{V}_h$ : find $u_h \in V_h \subset V$
+\begin{equation}
+    \int_{\Omega} \nabla u_h \cdot \nabla v  \ dx = \int_{\Omega} f \ v \ dx - \int_{\Gamma_N} g \ v \ ds \quad \forall \ v \in \hat{V}_h \subset \hat{V}
+    \label{eq: discrete variational problem}
+\end{equation}
+
+To solve Equation \ref{eq: discrete variational problem}, a suitable pair of discrete function spaces $V_h$ and $\hat{V}_h$ must be constructed.
+Piecewise polynomials basis functions $\{ \phi_i \}_{i=1}^N$ are defined for $V_h$ and $\{ \hat{\phi}_j \}_{j=1}^N$ for $\hat{V}_h$.
+
+The approximated solution $u_h$ therefore reads (see Figure \ref{fig: example approximated solution}):
+\begin{equation}
+    u_h(x) = \sum^N_{i=1}U_i \phi_i(x)
+    \label{eq: FEM solution}
+\end{equation}
+where $U_i$ are the coefficient to be determined (called degrees of freedom).
+$N$ is the number of finite elements used to discretise the domain.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter2/approximated_solution.pdf}
+    \caption{1D example of an approximated solution $u$ (exact in blue, approximated in orange) with basis functions $\phi_i$}
+    \label{fig: example approximated solution}
+\end{figure}
+
+By replacing $u_h$ in Equation \ref{eq: discrete variational problem} with Equation \ref{eq: FEM solution} and varying the basis functions $\hat{\phi}_j$:
+
+\begin{equation}
+    \sum^N_{i=1} U_i \int_\Omega \nabla \phi_i \cdot \nabla \hat{\phi}_j \ dx = \int_\Omega f \ \hat{\phi}_j \ dx - \int_{\Gamma_N} g \ \hat{\phi}_j \ ds , \quad \ j = 1, \ 2, \ ..., \ N
+\end{equation}
+
+This can be written in a matrix form:
+\begin{equation}
+    AU = b
+    \label{eq: variational problem matrix form}
+\end{equation}
+where
+\begin{align}
+    A_{ji} &= \int_\Omega \nabla \phi_i \cdot \nabla \hat{\phi}_j \ dx \\
+    b_{j} &= \int_\Omega f \ \hat{\phi}_j \ dx - \int_{\Gamma_N} g \ \hat{\phi}_j \ ds \\
+\end{align}
+
+After solving Equation \ref{eq: variational problem matrix form}, the $U_i$ coefficients are known and the approximated solution $u_h$ can be computed.
 
 \subsection{Main features of FESTIM}
 FESTIM provides an even higher level of abstraction than FEniCS by providing a user-friendly interface dedicated to H transport and heat transfer problems.
