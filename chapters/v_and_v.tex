@@ -1,9 +1,7 @@
 \setchapterstyle{lines}
 \chapter{FESTIM verification}\label{appendix verification}
 
-\section{Verification}
-
-\subsubsection{Conservation of chemical potential (MES)}
+\section{Conservation of chemical potential (MES)}
 This verification case aims at checking the FESTIM code is correctly solving the governing Equations \ref{eq: c/s conservation}, \ref{eq:mobile} and \ref{eq: diffusion equation changed}.
 
 \begin{figure*} [h]
@@ -100,7 +98,7 @@ For instance, this analytical solution is only uni-dimensional, steady state is 
 Having an exact solution from an analytical resolution for a general problem (multidimensional, transient, heterogeneous material properties, etc...) is often complex.
 In order to exercise all these terms, the Method of Manufactured Solutions (MMS) will therefore be employed for it offers a good alternative to unravel these complexities.
 
-\subsubsection{Conservation of chemical potential (MMS)}
+\section{Conservation of chemical potential (MMS)}
 
 This verification case aims at checking the FESTIM code is correctly solving the governing Equations \ref{eq: c/s conservation}, \ref{eq:mobile} and \ref{eq: diffusion equation changed}.
 
@@ -205,7 +203,7 @@ Nonetheless, the error was found to remain orders of magnitude lower than the ac
 \end{figure*}
 
 
-\subsubsection{Heat transfer (MMS)}
+\section{Heat transfer (MMS)}
 
 % why not use a complex geometry? like an elbow
 
@@ -256,5 +254,3 @@ This was verified for P1 and P3 elements and a super-convergence rate was observ
     \caption{Evolution of the L2 error on $T$ showing the convergence rates for the 2D heat transfer case.}
     \label{fig: convergence rates heat transfer}
 \end{figure}
-
-\section{Validation}
