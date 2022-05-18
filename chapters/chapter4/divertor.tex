@@ -77,7 +77,7 @@ These have been run in baseline burning plasma conditions (Q=10) and with an ave
     \label{fig: behaviour law example}
 \end{figure}
 
-\subsection{Application to divertors}
+\subsection{Estimation of exposure conditions}
 
 \begin{figure*}[h]
     \centering
@@ -94,6 +94,9 @@ These have been run in baseline burning plasma conditions (Q=10) and with an ave
     \caption{Evolution of the implantation range and the reflection coefficient as a function of incident energy $E$ and angle of incidence.}
 \end{figure*}
 
+According to the behaviour law obtained in Chapter \ref{Chapter3}, the temporal evolution of the H inventory along the divertors can be estimated from the surface concentration of mobile hydrogen and surface temperature (see Figure \ref{fig: behaviour law example}).
+% This inventory distribution can then be projected onto the whole divertor geometry for better visualisation (see Figure \ref{fig: top view}).
+
 The distribution of the exposure conditions (angles of incidence, particles energies, particles fluxes and heat flux) are produced by SOLEDGE/SOLPS along the divertors of WEST and ITER (see Figures \ref{fig: reactors} and \ref{fig: behaviour law example}).
 These exposure conditions are converted into distributions of surface temperature $T_\mathrm{surface}$ and surface hydrogen concentration $c_\mathrm{surface}$ by Equations \eqref{eq: thermal behaviour} and \eqref{eq: c_surface}.
 
@@ -105,20 +108,15 @@ where $\varphi_\mathrm{heat}$ is the surface heat flux in \si{W.m^{-2}}.
 
 The relation between the heat flux $\varphi_\mathrm{heat}$ and the surface temperature $T_\mathrm{surface}$ (see Equation \eqref{eq: thermal behaviour}) has been obtained from heat transfer simulations of ITER monoblocks (see Section \ref{monoblock thermal behaviour}).
 
-\begin{align}
+\begin{equation}
     \label{eq: c_surface}
-    c_\mathrm{surface} = \ &(1 - r_\mathrm{atoms}) \ \frac{R_{p, \mathrm{atoms}} \ \varphi_\mathrm{atoms}}{D(T_\mathrm{surface})} + \\ &(1 - r_\mathrm{ions}) \nonumber \ \frac{R_{p, \mathrm{ions}} \ \varphi_\mathrm{ions}}{D(T_\mathrm{surface})}
-\end{align}
+    c_\mathrm{surface} = \ (1 - r_\mathrm{atoms}) \ \frac{R_{p, \mathrm{atoms}} \ \varphi_\mathrm{atoms}}{D(T_\mathrm{surface})} + (1 - r_\mathrm{ions}) \nonumber \ \frac{R_{p, \mathrm{ions}} \ \varphi_\mathrm{ions}}{D(T_\mathrm{surface})}
+\end{equation}
 
-where the reflection coefficients $r_i$ and implantation depths $R_{p, i}$ in \si{m} depend on the particle energy and angle of incidence and computed with SRIM \sidecite{ziegler_srim_2010}, $\varphi_{i}$ are the particles fluxes in \si{m^{-2}.s^{-1}} and $D$ is the H diffusion coefficient in \si{m^{2}.s^{-1}}.
+where the reflection coefficients $r_i$ and implantation depths $R_{p, i}$ in \si{m}, $\varphi_{i}$ are the particles fluxes in \si{m^{-2}.s^{-1}} and $D$ is the H diffusion coefficient in \si{m^{2}.s^{-1}}.
 
-
-According to the behaviour law obtained in Chapter \ref{Chapter3}, the temporal evolution of the H inventory along the divertors can be estimated from the surface concentration of mobile hydrogen and surface temperature (see Figure \ref{fig: behaviour law example}).
-% This inventory distribution can then be projected onto the whole divertor geometry for better visualisation (see Figure \ref{fig: top view}).
-
-
-
-The relation between the implantation range $R_p$ and the incident energy and angle of incidence can be obtained from SRIM \sidecite{ziegler_srim_2010} results (see Figure \ref{fig: implantation range vs energy}).
+The implantation range $R_p$ and the reflection coefficient $r$ depend on the incident energy and angle of incidence of particles.
+These relations can be obtained from SRIM \sidecite{ziegler_srim_2010} simulations (see Figure \ref{fig: implantation range vs energy}).
 It was found that the angle of incidence had low influence on the implantation range.
 $R_p$ can then be expressed (in \si{m}) as a function of the incident energy only (see Equation \eqref{eq: implantation range}).
 
