@@ -2,13 +2,14 @@
 \setchapterpreamble[u]{\margintoc}
 \chapter{Divertor inventory estimation}\label{Chapter4}\labch{Chapter4}
 \labch{Divertor inventory estimation}
-\section{Introduction}
 
-In this Chapter focusses on the estimation of the H inventory in the divertors of WEST and ITER.
-This estimation relies on monoblocks behaviour law computed in Chapter \ref{Chapter3}.
+% \section{Introduction}
+
+This Chapter focusses on the estimation of the H inventory in the divertors of WEST and ITER.
+This estimation relies on monoblocks behaviour law computed in \refch{Chapter3}.
 This behaviour law allows rapid evaluations of the monoblocks H inventory.
-Inputs are taken from SolEdge3X-EIRENE \sidecite{bufferand_three-dimensional_2019} and SOLPS-ITER \sidecite{kaveeva_solps-iter_2020} plasma simulations.
-The influence of control parameters such as the input power, the puffing rate and the divertor neutral pressure is investigated.
+Inputs are taken from SolEdge3X-EIRENE \cite{bufferand_three-dimensional_2019} and SOLPS-ITER \cite{kaveeva_solps-iter_2020} plasma simulations.
+The influence of several control parameters is investigated: the input power (\textit{ie} how much heating power is injected in the plasma), the gas puffing rate (used in most tokamaks to increase the plasma density \cite{zweben_effect_2014}), and the divertor pressure of neutral particles in ITER.
 
 
 \section{Methodology}
@@ -26,21 +27,6 @@ The influence of control parameters such as the input power, the puffing rate an
 
 % These results are then interfaced with the exposure conditions obtained with the plasma simulations performed with the codes SOLPS \sidecite{kaveeva_solps-iter_2020} and SOLEDGE \sidecite{bufferand_three-dimensional_2019}.
 
-
-\begin{figure*}[h]
-    \centering
-    \begin{subfigure}{0.5\linewidth}
-        \includegraphics[width=\linewidth]{Figures/divertor/implantation_range.pdf}
-        \caption{Implantation range $R_p$}
-        \label{fig: implantation range vs energy}
-    \end{subfigure}%
-    \begin{subfigure}{0.5\linewidth}                          
-        \includegraphics[width=\linewidth]{Figures/divertor/reflection_coeff.pdf}
-        \caption{Reflection coefficient $r$}
-        \label{fig: reflection coeff vs energy}
-    \end{subfigure}
-    \caption{Evolution of the implantation range and the reflection coefficient as a function of incident energy $E$ and angle of incidence.}
-\end{figure*}
 
 \subsection{Plasma simulations}
 This Section describes the parameters of the plasma simulations.
@@ -92,6 +78,21 @@ These have been run in baseline burning plasma conditions (Q=10) and with an ave
 \end{figure}
 
 \subsection{Application to divertors}
+
+\begin{figure*}[h]
+    \centering
+    \begin{subfigure}{0.5\linewidth}
+        \includegraphics[width=\linewidth]{Figures/divertor/implantation_range.pdf}
+        \caption{Implantation range $R_p$}
+        \label{fig: implantation range vs energy}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\linewidth}                          
+        \includegraphics[width=\linewidth]{Figures/divertor/reflection_coeff.pdf}
+        \caption{Reflection coefficient $r$}
+        \label{fig: reflection coeff vs energy}
+    \end{subfigure}
+    \caption{Evolution of the implantation range and the reflection coefficient as a function of incident energy $E$ and angle of incidence.}
+\end{figure*}
 
 The distribution of the exposure conditions (angles of incidence, particles energies, particles fluxes and heat flux) are produced by SOLEDGE/SOLPS along the divertors of WEST and ITER (see Figures \ref{fig: reactors} and \ref{fig: behaviour law example}).
 These exposure conditions are converted into distributions of surface temperature $T_\mathrm{surface}$ and surface hydrogen concentration $c_\mathrm{surface}$ by Equations \eqref{eq: thermal behaviour} and \eqref{eq: c_surface}.
