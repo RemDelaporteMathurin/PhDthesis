@@ -2,6 +2,8 @@ The FESTIM code was compared to TMAP7 \sidecite{longhurst_tmap7_2008} on a 1D ca
 
 The 1D simulation case is a \SI{8.5}{mm}-thick composite slab made of W, Cu and CuCrZr (see Figure \ref{fig: monoblock 1D geometry}).
 The plasma facing surface $\Gamma_\mathrm{top}$ is located at $x=\SI{0}{mm}$ and the surface cooled by water $\Gamma_\mathrm{coolant}$ is located at $x=\SI{8.5}{mm}$.
+The trapping parameters are detailed in Table \ref{tab:materials properties_1}.
+The boundary conditions are detailed in Equation \ref{eq: code comparison BCs}.
 
 \begin{figure}
     \begin{overpic}[width=0.75\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/Monoblock 1D.pdf}
@@ -14,13 +16,9 @@ The plasma facing surface $\Gamma_\mathrm{top}$ is located at $x=\SI{0}{mm}$ and
         \put(6, 25){\large$\Gamma_\mathrm{top}$}
         \put(85, 25){\large$\Gamma_\mathrm{coolant}$}
     \end{overpic}
-     \caption{2D ITER monoblock geometry showing W armour \cruleme[grey]{0.3cm}{0.3cm}, Cu interlayer \cruleme[orange]{0.3cm}{0.3cm}, CuCrZr alloy cooling pipe  \cruleme[yellow]{0.3cm}{0.3cm}}
+     \caption{TMAP7 - FESTIM comparison 1D geometry showing W \cruleme[grey]{0.3cm}{0.3cm}, Cu \cruleme[orange]{0.3cm}{0.3cm}, CuCrZr \cruleme[yellow]{0.3cm}{0.3cm}}
      \label{fig: monoblock 1D geometry}
 \end{figure}
-
-The trapping parameters are detailed in Table \ref{tab:materials properties_1}.
-
-The boundary conditions are detailed in Equation \ref{eq: code comparison BCs}.
 
 \begin{subequations}
     \begin{align}
