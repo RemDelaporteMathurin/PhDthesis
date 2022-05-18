@@ -73,7 +73,7 @@ These have been run in baseline burning plasma conditions (Q=10) and with an ave
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{Figures/divertor/example.pdf}
-    \caption{Method of H inventory estimation based on the surface concentration, the surface temperature and the behaviour law obtained in \cite{delaporte-mathurin_parametric_2020}.}
+    \caption{Method of divertor H inventory estimation based on the surface concentration, the surface temperature and the behaviour law obtained in \refch{Chapter3}.}
     \label{fig: behaviour law example}
 \end{figure}
 
@@ -131,7 +131,9 @@ The reflection coefficient varies from around 0.5 at \SI{0}{^\circ} to 0.8 at \S
 According to \sidecite{park_assessment_2020}, the incident angles for ions and atoms were assumed to be \SI{60}{^\circ} and \SI{45}{^\circ}, respectively.
 It should be noted that since SRIM is based on the binary collision approximation, values around \SI{10}{eV} might not be fully valid.
 
-The source-code of the tool described in this work (divHretention) is under version control and openly available via Github under a MIT licence \cite{delaporte-mathurin_irfmdivhretention_2021}.
+All of these steps have been automated and packaged into a tool called divHretention.
+divHretention can directly link SOLPS/SOLEDGE output files and produce a distribution of monoblock inventory as in Figure \ref{fig: behaviour law example}.
+The source-code of the tool is under version control and openly available via Github under a MIT licence \cite{delaporte-mathurin_irfmdivhretention_2021}.
 The divHretention python package is distributed via PyPi \cite{delaporte-mathurin_divhretention_nodate}.
 Moreover, all the results obtained in this Chapter can be reproduced with the scripts available at \href{https://github.com/RemDelaporteMathurin/divHretention-Nucl.Fusion-2021}{https://github.com/RemDelaporteMathurin/divHretention-Nucl.Fusion-2021}.
 
@@ -492,8 +494,7 @@ However, it should be noted that both machines do not operate in the same regime
 While WEST operates at low input power, ITER operates at high input power with a high recycling divertor.
 These differences in the operation regime can explain different trends.
 
-The maximum hydrogen inventory in the ITER divertor was $\approx \SI{14}{g}$ after \SI{e7}{s} of continuous plasma exposure.
-This is well below the safety limit (\SI{1}{kg}).
+The maximum hydrogen inventory in the ITER divertor was approximately \SI{14}{g} after \SI{e7}{s} of continuous plasma exposure (25 000 ITER discharges), which is well below the safety limit (\SI{1}{kg}).
 Moreover, since the behaviour law is based on 2D monoblock simulations, this value is a upper estimate.
 2D simulations are indeed conservative in terms of inventory (see \ref{3D edge effects}).
 
