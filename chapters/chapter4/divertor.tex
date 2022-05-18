@@ -481,8 +481,9 @@ The divertor inventory was found to increase as a power law of time.
 \section{Summary}
 
 
-The monoblock behaviour law proposed in Chapter \ref{Chapter3} was used to estimate ruel retention in both the WEST and the ITER divertors.
-The influence of key control parameters such as the input power, the puffing rate and the divertor neutral pressure was investigated.
+The monoblock behaviour law proposed in Chapter \ref{Chapter3} was used to estimate fuel retention in the divertors of WEST and ITER.
+Key control parameters were investigated: the input power, the puffing rate and the divertor neutral pressure.
+Their impact on the divertor inventory was studied.
 
 It was shown that the inventory in WEST increases as the power $0.3$ of the input power and as the power $0.2$ of the puffing rate.
 The inventory in the ITER divertor was found to first increase with the neutral pressure up to \SI{7}{Pa} then decrease, though the variation was smoother.
@@ -493,15 +494,16 @@ However, it should be noted that both machines do not operate in the same regime
 While WEST operates at low input power, ITER operates at high input power with a high recycling divertor.
 These differences in the operation regime can explain different trends.
 
+The maximum hydrogen inventory in the ITER divertor was $\approx \SI{14}{g}$ after \SI{e7}{s} of continuous plasma exposure.
+This is well below the safety limit (\SI{1}{kg}).
+Moreover, since the behaviour law is based on 2D monoblock simulations, this value is a upper estimate.
+2D simulations are indeed conservative in terms of inventory (see \ref{3D edge effects}).
+
 The underlying monoblock model has also a few limitations, as detailed in Chapter \ref{Chapter3}.
 First, the set of trapping parameters that was used may not be relevant for every region of the divertor.
-These properties can however be estimated from further experimental work.
+These properties can however be experimentally estimated.
 The accuracy of the results could therefore be improved by running a new batch of FESTIM monoblock simulations with different trapping parameters like neutron-induced traps.
 
 Then, this model does not take into account retention in Be co-deposited layers.
 These are expected to be the main driver for H retention in ITER \sidecite{de_temmerman_data_2021}.
 However, this work is still relevant for full-W environments like WEST or DEMO.
-
-Additionally, the FESTIM results used in this model are 2D simulations.
-3D edge effects due to desorption from the gaps between the monoblocks would decrease the estimated inventory.
-The current assumption is therefore conservative and represents a "worst-case scenario" where no desorption from the gaps is assumed.
