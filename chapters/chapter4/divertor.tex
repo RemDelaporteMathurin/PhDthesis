@@ -2,24 +2,14 @@
 \setchapterpreamble[u]{\margintoc}
 \chapter{Divertor inventory estimation}\label{Chapter4}\labch{Chapter4}
 \labch{Divertor inventory estimation}
-\section{Introduction}
-Hydrogen isotopes (H\footnote{H will be used to refer to all isotopes and mainly tritium}) transport in tokamaks is a crucial issue for several reasons.
-First, for safety reasons, the total inventory of radioactive material trapped in the reactor must be limited to a certain amount.
-In ITER, the limit of tritium in the vacuum vessel is \SI{1}{kg} \sidecite{temmerman_influence_2018}.
-Second, outgassing of hydrogen from the monoblocks composing the divertor and from the tokamak first wall can reduce the plasma performances \sidecite{grisolia_plasma_1999}.
-Finally, the lifespan of plasma facing components can be reduced due to hydrogen-induced damage (including embrittlement \sidecite{dwivedi_hydrogen_2018}).
 
-Numerical modelling of H transport and retention in and outgassing from plasma facing components \sidecite{delaporte-mathurin_parametric_2020, delaporte-mathurin_influence_2021, denis_dynamic_2019, dark_influence_2021} is therefore often required in order to tackle both issues. 
-These simulations are supported by experimental work to determine key properties of fusion materials.
-H transport in monoblocks has been studied in 1D \sidecite{hodille_estimation_2017}.
-However, it was shown in \sidecite{delaporte-mathurin_finite_2019} that the 2D edge effects had to be considered to have a better estimate of the H retention in the actively cooled divertor monoblocks.
-A recent major effort has been made to perform multi-dimensional simulations \cite{delaporte-mathurin_finite_2019, delaporte-mathurin_parametric_2020, delaporte-mathurin_influence_2021, benannoune_multidimensional_2020}.
+% \section{Introduction}
 
-In a previous study \cite{delaporte-mathurin_parametric_2020}, the finite element code FESTIM \sidecite{delaporte-mathurin_finite_2019, delaporte-mathurin_influence_2021} was employed to simulate H isotopes transport in ITER-like monoblocks with the geometry given in \sidecite{richou_realization_2017} coupled to heat transfer.
-A novel method was developed to rapidly estimate the H inventory in the whole ITER divertor from plasma code results without having to run additional finite element simulation. Instead, a behaviour law relying on a data base of 600 FESTIM simulations correlates the H inventory in a monoblock to its surface temperature and surface concentrations (using a gaussian regression process as described in \sidecite{chris_bowman_c-bowmaninference-tools_2020}).
-
-The current work applies this technique to estimate the H inventory in the divertors of WEST and ITER based on SolEdge3X-EIRENE \sidecite{bufferand_three-dimensional_2019} and SOLPS-ITER \sidecite{kaveeva_solps-iter_2020} plasma simulations, respectively.
-The influence of control parameters such as the input power, the puffing rate and the divertor neutral pressure is investigated.
+This Chapter focusses on the estimation of the H inventory in the divertors of WEST and ITER.
+This estimation relies on monoblocks behaviour law computed in \refch{Chapter3}.
+This behaviour law allows rapid evaluations of the monoblocks H inventory.
+Inputs are taken from SolEdge3X-EIRENE \cite{bufferand_three-dimensional_2019} and SOLPS-ITER \cite{kaveeva_solps-iter_2020} plasma simulations.
+The influence of several control parameters is investigated: the input power (\textit{ie} how much heating power is injected in the plasma), the gas puffing rate (used in most tokamaks to increase the plasma density \cite{zweben_effect_2014}), and the divertor pressure of neutral particles in ITER.
 
 
 \section{Methodology}
@@ -30,36 +20,21 @@ The influence of control parameters such as the input power, the puffing rate an
     \label{fig: reactors}
 \end{figure}
 
-The H inventory of the WEST and ITER divertors will be computed by making use of a database of FESTIM simulations of H transport in ITER-like monoblocks from which a behaviour law is extracted using a gaussian regression process from the inference-tools python package \sidecite{chris_bowman_c-bowmaninference-tools_2020}.
-These simulations model H transport in monoblocks for a fixed plasma exposure duration of \SI{e7}{s}.
-This corresponds to approximately 25 000 concatenated ITER discharges of \SI{400}{s} each.
-As shown in \sidecite{hodille_modelling_2021}, this approximation does not affect the H inventory in monoblocks with the current conditions.
+% The H inventory of the WEST and ITER divertors will be computed by making use of a database of FESTIM simulations of H transport in ITER-like monoblocks from which a behaviour law is extracted using a gaussian regression process from the inference-tools python package \sidecite{chris_bowman_c-bowmaninference-tools_2020}.
+% These simulations model H transport in monoblocks for a fixed plasma exposure duration of \SI{e7}{s}.
+% This corresponds to approximately 25 000 concatenated ITER discharges of \SI{400}{s} each.
+% As shown in \sidecite{hodille_modelling_2021}, this approximation does not affect the H inventory in monoblocks with the current conditions.
 
-These results are then interfaced with the exposure conditions obtained with the plasma simulations performed with the codes SOLPS \sidecite{kaveeva_solps-iter_2020} and SOLEDGE \sidecite{bufferand_three-dimensional_2019}.
+% These results are then interfaced with the exposure conditions obtained with the plasma simulations performed with the codes SOLPS \sidecite{kaveeva_solps-iter_2020} and SOLEDGE \sidecite{bufferand_three-dimensional_2019}.
 
-
-\begin{figure*}[h]
-    \centering
-    \begin{subfigure}{0.5\linewidth}
-        \includegraphics[width=\linewidth]{Figures/divertor/implantation_range.pdf}
-        \caption{Implantation range $R_p$}
-        \label{fig: implantation range vs energy}
-    \end{subfigure}%
-    \begin{subfigure}{0.5\linewidth}                          
-        \includegraphics[width=\linewidth]{Figures/divertor/reflection_coeff.pdf}
-        \caption{Reflection coefficient $r$}
-        \label{fig: reflection coeff vs energy}
-    \end{subfigure}
-    \caption{Evolution of the implantation range and the reflection coefficient as a function of incident energy $E$ and angle of incidence.}
-\end{figure*}
 
 \subsection{Plasma simulations}
-In this Section, the set-ups for the computation of the plasma exposure parameters are described.
-For the SolEdge3X-EIRENE runs, the puff rate and the input power were used as control parameters.
+This Section describes the parameters of the plasma simulations.
+For the SolEdge3X-EIRENE runs, the puffing rate and the input power were used as control parameters.
 For SOLPS-ITER calculation, the divertor neutral pressure is the control parameter.
 \subsubsection{SolEdge3X-EIRENE runs}
 The Lower-Single-Null magnetic configuration used for the 2D simulations in SolEdge3X-EIRENE transport code (v588.165) are based on the experimental WEST plasma discharge \#54903 at $T_\mathrm{flat-top} = \SI{8}{s}$ (see Figure \ref{fig: reactors}).
-In order to get as many divertor conditions as possible, the puff rate was varied from \SI{4.5e20}{molecule.s^{-1}} to \SI{4.72e21}{molecule.s^{-1}} and the input power from \SI{0.449}{MW} to \SI{2.5}{MW}.
+In order to get as many divertor conditions as possible, the puffing rate was varied from \SI{4.5e20}{molecule.s^{-1}} to \SI{4.72e21}{molecule.s^{-1}} and the input power from \SI{0.449}{MW} to \SI{2.5}{MW}.
 The setup parameters of the simulation are listed in Table \ref{tab: my_tab}.
 $R_\mathrm{wall}$ is the recycling coefficient of main chamber wall, $R_\mathrm{pump}$ is the recycling coefficient of the pump, $D_\mathrm{m}$ is the cross-field mass diffusivity perpendicular to the flux surface, $\nu$ is the momentum diffusivity, $\chi_e$ and $\chi_i$ are the heat flux diffusivity for electrons and ions, respectively.
 The gas puff position is set inside the private region and the pump position is set under the baffle.
@@ -76,7 +51,7 @@ The gas puff position is set inside the private region and the pump position is 
     \\
     SOL input power & from \SI{0.449}{MW} to \SI{2.5}{MW} \\
     \\
-    Gas puff rate & from \SI{4.5e20}{molecule.s^{-1}} to \SI{4.72e21}{molecule.s^{-1}} \\
+    Gas puffing rate & from \SI{4.5e20}{molecule.s^{-1}} to \SI{4.72e21}{molecule.s^{-1}} \\
     \\
     Drifts & - \\
     \\
@@ -98,11 +73,29 @@ These have been run in baseline burning plasma conditions (Q=10) and with an ave
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{Figures/divertor/example.pdf}
-    \caption{Method of H inventory estimation based on the surface concentration, the surface temperature and the behaviour law obtained in \cite{delaporte-mathurin_parametric_2020}.}
+    \caption{Method of divertor H inventory estimation based on the surface concentration, the surface temperature and the behaviour law obtained in \refch{Chapter3}.}
     \label{fig: behaviour law example}
 \end{figure}
 
-\subsection{Application to divertors}
+\subsection{Estimation of exposure conditions}
+
+\begin{figure*}[h]
+    \centering
+    \begin{subfigure}{0.5\linewidth}
+        \includegraphics[width=\linewidth]{Figures/divertor/implantation_range.pdf}
+        \caption{Implantation range $R_p$}
+        \label{fig: implantation range vs energy}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\linewidth}                          
+        \includegraphics[width=\linewidth]{Figures/divertor/reflection_coeff.pdf}
+        \caption{Reflection coefficient $r$}
+        \label{fig: reflection coeff vs energy}
+    \end{subfigure}
+    \caption{Evolution of the implantation range and the reflection coefficient as a function of incident energy $E$ and angle of incidence.}
+\end{figure*}
+
+According to the behaviour law obtained in Chapter \ref{Chapter3}, the temporal evolution of the H inventory along the divertors can be estimated from the surface concentration of mobile hydrogen and surface temperature (see Figure \ref{fig: behaviour law example}).
+% This inventory distribution can then be projected onto the whole divertor geometry for better visualisation (see Figure \ref{fig: top view}).
 
 The distribution of the exposure conditions (angles of incidence, particles energies, particles fluxes and heat flux) are produced by SOLEDGE/SOLPS along the divertors of WEST and ITER (see Figures \ref{fig: reactors} and \ref{fig: behaviour law example}).
 These exposure conditions are converted into distributions of surface temperature $T_\mathrm{surface}$ and surface hydrogen concentration $c_\mathrm{surface}$ by Equations \eqref{eq: thermal behaviour} and \eqref{eq: c_surface}.
@@ -113,22 +106,17 @@ These exposure conditions are converted into distributions of surface temperatur
 \end{equation}
 where $\varphi_\mathrm{heat}$ is the surface heat flux in \si{W.m^{-2}}.
 
-The relation between the heat flux $\varphi_\mathrm{heat}$ and the surface temperature $T_\mathrm{surface}$ (see Equation \eqref{eq: thermal behaviour}) has been obtained from heat transfer simulations of ITER monoblocks \sidecite{delaporte-mathurin_parametric_2020}.
+The relation between the heat flux $\varphi_\mathrm{heat}$ and the surface temperature $T_\mathrm{surface}$ (see Equation \eqref{eq: thermal behaviour}) has been obtained from heat transfer simulations of ITER monoblocks (see Section \ref{monoblock thermal behaviour}).
 
-\begin{align}
+\begin{equation}
     \label{eq: c_surface}
-    c_\mathrm{surface} = \ &(1 - r_\mathrm{atoms}) \ \frac{R_{p, \mathrm{atoms}} \ \varphi_\mathrm{atoms}}{D(T_\mathrm{surface})} + \\ &(1 - r_\mathrm{ions}) \nonumber \ \frac{R_{p, \mathrm{ions}} \ \varphi_\mathrm{ions}}{D(T_\mathrm{surface})}
-\end{align}
+    c_\mathrm{surface} = \ (1 - r_\mathrm{atoms}) \ \frac{R_{p, \mathrm{atoms}} \ \varphi_\mathrm{atoms}}{D(T_\mathrm{surface})} + (1 - r_\mathrm{ions}) \nonumber \ \frac{R_{p, \mathrm{ions}} \ \varphi_\mathrm{ions}}{D(T_\mathrm{surface})}
+\end{equation}
 
-where the reflection coefficients $r_i$ and implantation depths $R_{p, i}$ in \si{m} depend on the particle energy and angle of incidence and computed with SRIM \sidecite{ziegler_srim_2010}, $\varphi_{i}$ are the particles fluxes in \si{m^{-2}.s^{-1}} and $D$ is the H diffusion coefficient in \si{m^{2}.s^{-1}}.
+where the reflection coefficients $r_i$ and implantation depths $R_{p, i}$ in \si{m}, $\varphi_{i}$ are the particles fluxes in \si{m^{-2}.s^{-1}} and $D$ is the H diffusion coefficient in \si{m^{2}.s^{-1}}.
 
-
-According to the behaviour law obtained in \sidecite{delaporte-mathurin_parametric_2020}, the temporal evolution of the H inventory along the divertors can be estimated from the surface concentration of mobile hydrogen and surface temperature (see Figure \ref{fig: behaviour law example}).
-% This inventory distribution can then be projected onto the whole divertor geometry for better visualisation (see Figure \ref{fig: top view}).
-
-
-
-The relation between the implantation range $R_p$ and the incident energy and angle of incidence can be obtained from SRIM \sidecite{ziegler_srim_2010} results (see Figure \ref{fig: implantation range vs energy}).
+The implantation range $R_p$ and the reflection coefficient $r$ depend on the incident energy and angle of incidence of particles.
+These relations can be obtained from SRIM \sidecite{ziegler_srim_2010} simulations (see Figure \ref{fig: implantation range vs energy}).
 It was found that the angle of incidence had low influence on the implantation range.
 $R_p$ can then be expressed (in \si{m}) as a function of the incident energy only (see Equation \eqref{eq: implantation range}).
 
@@ -143,10 +131,11 @@ The reflection coefficient varies from around 0.5 at \SI{0}{^\circ} to 0.8 at \S
 According to \sidecite{park_assessment_2020}, the incident angles for ions and atoms were assumed to be \SI{60}{^\circ} and \SI{45}{^\circ}, respectively.
 It should be noted that since SRIM is based on the binary collision approximation, values around \SI{10}{eV} might not be fully valid.
 
-The source-code of the tool described in this work (divHretention) is under version control and openly available via Github under a MIT licence \sidecite{delaporte-mathurin_irfmdivhretention_2021}.
-The divHretention python package is distributed via PyPi \sidecite{delaporte-mathurin_divhretention_nodate}.
-
-
+All of these steps have been automated and packaged into a tool called divHretention.
+divHretention can directly link SOLPS/SOLEDGE output files and produce a distribution of monoblock inventory as in Figure \ref{fig: behaviour law example}.
+The source-code of the tool is under version control and openly available via Github under a MIT licence \cite{delaporte-mathurin_irfmdivhretention_2021}.
+The divHretention python package is distributed via PyPi \cite{delaporte-mathurin_divhretention_nodate}.
+Moreover, all the results obtained in this Chapter can be reproduced with the scripts available at \href{https://github.com/RemDelaporteMathurin/divHretention-Nucl.Fusion-2021}{https://github.com/RemDelaporteMathurin/divHretention-Nucl.Fusion-2021}.
 
 \section{ITER results}
 
@@ -333,27 +322,25 @@ The divHretention python package is distributed via PyPi \sidecite{delaporte-mat
 
 % peak temperature
 Peak temperatures at strike points increased when decreasing the divertor neutral pressure (see Figure \ref{fig: distrib outer target}).
-The peak temperature at the outer strike point reached \SI{2000}{K} at \SI{2}{Pa} and more than \SI{1000}{K} at the inner strike point which is in accordance with the results obtained by Pitts \textit{et al} \sidecite{pitts_physics_2019}.
+The peak temperature at the outer strike point reached \SI{2000}{K} at \SI{2}{Pa} and more than \SI{1000}{K} at the inner strike point, which is in accordance with the results obtained by Pitts \textit{et al} \sidecite{pitts_physics_2019}.
 
 % global inventory
 The inventory in the whole divertor is computed as follow:
 \begin{equation}
-\begin{split}
-    \mathrm{inv_{divertor}} = N_\mathrm{cassettes} \cdot \big(&N_\mathrm{PFU-IVT} \cdot \int \mathrm{inv_{IVT}}(x)\: dx + \\ &N_\mathrm{PFU-OVT} \cdot\int \mathrm{inv_{OVT}}(x) \: dx \big)
-\end{split}
+    \mathrm{inv_{divertor}} = N_\mathrm{cassettes} \cdot \left( N_\mathrm{PFU-IVT} \cdot \int \mathrm{inv_{IVT}}(x)\: dx + N_\mathrm{PFU-OVT} \cdot\int \mathrm{inv_{OVT}}(x) \: dx \right)
 \end{equation}
 with $N_\mathrm{cassettes}=54$ the number of cassettes, $N_\mathrm{PFU-IVT}=16$ and $N_\mathrm{PFU-OVT}=22$ the number of plasma facing units per cassette in the inner and outer targets respectively, $\mathrm{inv_{IVT}}$ and $\mathrm{inv_{OVT}}$ the hydrogen inventory profile along the inner and outer targets respectively and $x$ the distance along the targets.
 
 The inventory in the outer target was found to be nearly twice that of the inner target.
-This is greatly explained by the larger number of plasma facing units in the outer target and therefore a greater exposed surface.
+This is largely explained by the larger number of plasma facing units in the outer target and therefore a greater exposed surface.
 The global inventory increased with the divertor neutral pressure and a roll-over is observed above \SI{7}{Pa} (see Figure \ref{fig: inventory vs neutral pressure}).
 This roll-over is consistent with the results obtained in \sidecite{pitts_physics_2019}.
 The inventory increase was found to be more important in the outer vertical target.
 This was explained by the fact that the plasma is more detached at the inner target.
 Therefore the surface temperature reduction is more significant in the outer vertical target and the surface concentration is increased (see Figure \ref{fig: distrib outer target}).
 
-The maximum inventory was found at around \SI{7}{Pa} and was approximately \SI{14}{g} of H which is well below the ITER in-vessel safety limit of tritium (\SI{1}{kg}), especially considering only half of this quantity will be tritium.
-This is especially true considering that this was for a very long exposure time of \SI{e7}{s} which corresponds to 25 000 pulses of \SI{400}{s}.
+The maximum inventory was found at around \SI{7}{Pa} and was approximately \SI{14}{g} of H, which is well below the ITER in-vessel safety limit of tritium (\SI{1}{kg}), especially considering only half of this quantity will be tritium.
+This is especially true considering that this was for a very long exposure time of \SI{e7}{s}, which corresponds to 25 000 pulses of \SI{400}{s}.
 
 
 % local inventories
@@ -459,7 +446,7 @@ The input power was fixed to \SI{0.45}{MW}.
     \centering
     \includegraphics[width=\linewidth]{Figures/divertor/WEST/inventory_vs_puffing_rate.pdf}
     \caption{Evolution of the WEST divertor inventory as a function of puffing rate.}
-    \label{fig: inventory vs puff rate}
+    \label{fig: inventory vs puffing rate}
 \end{figure}
 
 \begin{figure}[h!]
@@ -467,33 +454,34 @@ The input power was fixed to \SI{0.45}{MW}.
     \begin{subfigure}{\linewidth}
         \includegraphics[width=\linewidth]{Figures/divertor/WEST/inventory_at_sp_and_private_zone.pdf}
         \caption{Inventory per unit thickness after \SI{e7}{s} of exposure. The area corresponds to the 95\% confidence interval.}
-        \label{fig: local retention vs puff rate}
+        \label{fig: local retention vs puffing rate}
     \end{subfigure}
     \begin{subfigure}{\linewidth}
         \includegraphics[width=\linewidth]{Figures/divertor/WEST/ion_ratio_at_sp_and_private_zone.pdf}
         \caption{Contribution of ions to the surface concentration of H. ISP and OSP stand for Inner Strike Point and Outer Strike Point respectively.}
-        \label{fig: ion contribution vs puff rate}
+        \label{fig: ion contribution vs puffing rate}
     \end{subfigure}%
     \caption{H retention at the strike points and in the private zone as a function of puffing rate with \SI{0.45}{MW} of input power.}
 \end{figure}
 
 The maximum retention was again located at the strike points for all puffing rates values (see Figure \ref{fig: divertor distr density scan}).
 The inventory at the outer strike point was higher than at the inner strike point.
-The inventory in the private zone was found to increase with the puffing rate whereas it was almost constant at the strike points (see Figure \ref{fig: local retention vs puff rate}).
-As for the power scan, the ions contribution to the inventory is rather low in the private zone (see Figure \ref{fig: ion contribution vs puff rate}).
+The inventory in the private zone was found to increase with the puffing rate whereas it was almost constant at the strike points (see Figure \ref{fig: local retention vs puffing rate}).
+As for the power scan, the ions contribution to the inventory is rather low in the private zone (see Figure \ref{fig: ion contribution vs puffing rate}).
 Moreover, the contribution of ions decreases rapidly at the strike points and represents only half of the surface concentration at \SI{4e21}{molecule.s^{-1}}.
 
 The inventory in the whole WEST divertor is computed from Equation \eqref{eq: inventory WEST}.
-As for the power scan, the divertor inventory increased as the power 0.2 of the puffing rate (see Figure \ref{fig: inventory vs puff rate}).
+As for the power scan, the divertor inventory increased as the power 0.2 of the puffing rate (see Figure \ref{fig: inventory vs puffing rate}).
 The maximum inventory was found to be \SI{5e23}{H} at \SI{4.7e21}{molecule.s^{-1}}.
 
 The divertor inventory was found to increase as a power law of time.
 
 \section{Summary}
 
-Fuel retention of both the WEST and the ITER divertors was studied.
-The technique developed in \sidecite{delaporte-mathurin_parametric_2020} has been applied to various divertor exposures.
-The influence of key control parameters such as the input power, the puffing rate and the divertor neutral pressure was investigated.
+
+The monoblock behaviour law proposed in \refch{Chapter3} was used to estimate fuel retention in the divertors of WEST and ITER.
+Key control parameters were investigated: the input power, the puffing rate and the divertor neutral pressure.
+Their impact on the divertor inventory was studied.
 
 It was shown that the inventory in WEST increases as the power $0.3$ of the input power and as the power $0.2$ of the puffing rate.
 The inventory in the ITER divertor was found to first increase with the neutral pressure up to \SI{7}{Pa} then decrease, though the variation was smoother.
@@ -504,17 +492,15 @@ However, it should be noted that both machines do not operate in the same regime
 While WEST operates at low input power, ITER operates at high input power with a high recycling divertor.
 These differences in the operation regime can explain different trends.
 
-The underlying monoblock model has also a few limitations, as detailed in \sidecite{delaporte-mathurin_parametric_2020}.
+The maximum hydrogen inventory in the ITER divertor was approximately \SI{14}{g} after \SI{e7}{s} of continuous plasma exposure (25 000 ITER discharges), which is well below the safety limit (\SI{1}{kg}).
+Moreover, since the behaviour law is based on 2D monoblock simulations, this value is a upper estimate.
+2D simulations are indeed conservative in terms of inventory (see \refsec{3D edge effects}).
+
+The underlying monoblock model has also a few limitations, as detailed in \refch{Chapter3}.
 First, the set of trapping parameters that was used may not be relevant for every region of the divertor.
-These properties can however be estimated from experimental work \sidecite{montupet-leblond_permeation_2021, delaporte-mathurin_parametric_2021}.
+These properties can however be experimentally estimated.
 The accuracy of the results could therefore be improved by running a new batch of FESTIM monoblock simulations with different trapping parameters like neutron-induced traps.
 
 Then, this model does not take into account retention in Be co-deposited layers.
 These are expected to be the main driver for H retention in ITER \sidecite{de_temmerman_data_2021}.
-However, this work is still relevant for full-W environments like WEST and DEMO.
-
-Additionally, the FESTIM results used in this model are 2D simulations.
-It could be argued that 3D edge effects due to desorption from the gaps between the monoblocks would decrease the estimated inventory.
-The current assumption is therefore conservative and is a worst-case scenario.
-However, the influence of 3D edge effects on the monoblock inventory and outgassing fluxes will be investigated in future work.
-
+However, this work is still relevant for full-W environments like WEST or DEMO.

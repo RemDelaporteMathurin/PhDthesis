@@ -4,7 +4,7 @@
 \section{Verification}
 
 \subsubsection{Conservation of chemical potential (MES)}
-This verification case aims at checking the FESTIM code is correctly solving the governing Equations \ref{eq: flux conservation}, \ref{eq: c/s conservation}, \ref{eq: diffusion equation} and \ref{eq: diffusion equation changed}.
+This verification case aims at checking the FESTIM code is correctly solving the governing Equations \ref{eq: c/s conservation}, \ref{eq:mobile} and \ref{eq: diffusion equation changed}.
 
 \begin{figure*} [h]
     \centering
@@ -53,7 +53,7 @@ The following dimensionless quantities are introduced:
 \end{subequations}
 where $D_\mathrm{eq} = (D_1 D_2)^{1/2}$.
 
-By integrating Equation \ref{eq: diffusion equation} and assuming steady-state (\textit{i.e.} $\partial c/\partial t=0$), one can obtain the following dimensionless form:
+By integrating Equation \ref{eq:mobile} and assuming steady-state (\textit{i.e.} $\partial c/\partial t=0$), one can obtain the following dimensionless form:
 
 \begin{equation}
         \tilde{c}_\mathrm{m}= 
@@ -102,7 +102,7 @@ In order to exercise all these terms, the Method of Manufactured Solutions (MMS)
 
 \subsubsection{Conservation of chemical potential (MMS)}
 
-This verification case aims at checking the FESTIM code is correctly solving the governing Equations \ref{eq: flux conservation}, \ref{eq: c/s conservation}, \ref{eq: diffusion equation} and \ref{eq: diffusion equation changed}.
+This verification case aims at checking the FESTIM code is correctly solving the governing Equations \ref{eq: c/s conservation}, \ref{eq:mobile} and \ref{eq: diffusion equation changed}.
 
 The domain $\Omega$ for this test problem is a unit square composed of two subdomains $\Omega_1$ and $\Omega_2$ (see Equation \ref{eq: MMS domain}).
 \begin{subequations} \label{eq: MMS domain}
@@ -124,7 +124,7 @@ In order to unravel the complexity of an analytical resolution of the direct pro
 \end{equation}
 where $c_{M1} = 2 + \cos(2\pi x) \cdot \cos(2\pi y) + t$
 
-It is worth noting that, when choosing a manufactured solution, one must ensure it satisfies all the governing equations (especially Equations \ref{eq: flux conservation} and \ref{eq: c/s conservation}).
+It is worth noting that, when choosing a manufactured solution, one must ensure it satisfies all the governing equations (especially \ref{eq: c/s conservation}).
 In our case, $c_M$ ensures the flux conservation at the interface and the continuity of the quantity $c_\mathrm{m}/S$.
 
 Properties are assumed time and space dependent in order to test every portion of the code (see Equation \ref{eq: MMS properties}).
@@ -140,7 +140,7 @@ Properties are assumed time and space dependent in order to test every portion o
 with ${k_B = \SI{8.617e-5}{eV.K^{-1}}}$ the Boltzmann constant, $D_{1_0} = 1$, $E_{D_1} = 0.1$, $D_{2_0} = 2$, $E_{D_2} = 0.2$, $S_{1_0} = 1$, $E_{S_1} = 0.1$, $S_{2_0} = 2$ and $E_{S_2} = 0.2$.
 The temperature $T$ varies around \SI{500}{K} so that, given the activation energies, properties do not approach zero.
 
-By injecting the manufactured solution $c_M$ into the governing Equation \ref{eq: diffusion equation}, the source term can be expressed as:
+By injecting the manufactured solution $c_M$ into the governing Equation \ref{eq:mobile}, the source term can be expressed as:
 \begin{align}
     f(x, y, t) &= \frac{\partial c_M}{\partial t} - \vec{\nabla} \cdot\left(D(x, y)
     \vec{\nabla}c_M\right) \nonumber \\
