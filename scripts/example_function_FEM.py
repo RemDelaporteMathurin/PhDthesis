@@ -37,7 +37,7 @@ plt.annotate("$u_h$", (1.5 * np.pi, u(6)), color="tab:orange")
 
 plt.xlabel("$x$")
 plt.yticks([0, 1, u(0)], ["0", "1", "$U_0$"], alpha=0.7)
-plt.xticks([], [])
+plt.xticks(x_approx[2:5], ["node $i-1$", "node $i$", "node $i+1$"], fontsize=8)
 plt.gca().spines["top"].set_visible(False)
 plt.gca().spines["bottom"].set_visible(False)
 plt.gca().spines["right"].set_visible(False)
