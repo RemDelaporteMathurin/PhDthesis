@@ -318,9 +318,10 @@ The finite element method is a versatile tool that can solve any partial differe
 The main advantage of this method compared to the finite difference method is the simplicity of its application to complex geometries and unstructured meshes.
 Indeed, implementing a finite difference scheme for such a problem would be tedious and extra care must be taken for mistakes in the implementation could result in losses in efficiency and accuracy of the numerical solution.
 
-This section illustrates the finite element method applied to the Poisson equation \sidecite{logg_automated_2012}.
+This section illustrates the finite element method applied to Poisson's equation \sidecite{logg_automated_2012}.
 
-The mathematical problem can be described by Equation \ref{eq: example poisson}.
+The mathematical problem can be described by Equation \ref{eq: example poisson} where $u$ is the unknown to be solved governed by Poisson's equation.
+The problem is constrained by boundary conditions defined on $\partial \Omega$, the boundary of the domain.
 The value of $u$ is prescribed on the subset $\Gamma_D$ (Dirichlet boundary condition) whereas the value of the normal derivative of $u$ is prescribed on the remaining boundary $\Gamma_N$ (Neumann boundary condition) (see \reffig{fe problem sketch}).
 
 \begin{subequations}
@@ -340,8 +341,8 @@ The value of $u$ is prescribed on the subset $\Gamma_D$ (Dirichlet boundary cond
     \labfig{fe problem sketch}
 \end{figure}
 
-The first step of the finite element method is to build a variational formulation (also called \textit{weak form}) of the governing equation \ref{eq: example poisson}.
-To do so, the "recipe" is to multiply the equation by a function $v$ (called the \textit{test function}) and integrate over the domain $\Omega$.
+The first step of the finite element method is to build a variational formulation (also called \textit{weak form}) of the governing equation \ref{eq: example poisson} (called the \textit{strong form}).
+To do so, the equation is multiplied by a function $v$ (called the \textit{test function}) and integrated over the domain $\Omega$.
 The following expression is obtained:
 \begin{equation}
     \int_{\Omega} -\nabla^2 \ u \ v \ dx = \int_{\Omega} f \ v \ dx \quad \forall \ v \in \hat{V}
@@ -360,16 +361,10 @@ To do so, Gauss-Green's lemma is employed:
     \label{eq: gauss-green}
 \end{equation}
 
-The variational formulation therefore reads:
-\begin{equation}
-    \int_{\Omega} \nabla u \cdot \nabla \ v \ dx = \int_{\Omega} f \ v \ dx + \int_{\Gamma_N} \frac{\partial u}{\partial n} \ v \ ds + \int_{\Gamma_D} \frac{\partial u}{\partial n} \ v \ ds \quad \forall \ v \in \hat{V}
-    \label{eq: weak form 2}
-\end{equation}
-
 Since the test function $v$ vanishes on $\Gamma_D$, the following variational problem is obtained: find $u \in V$ such that
 \begin{equation}
     \int_{\Omega} \nabla u \cdot \nabla v  \ dx = \int_{\Omega} f \ v \ dx - \int_{\Gamma_N} g \ v \ ds \quad \forall \ v \in \hat{V}
-    \label{eq: weak form 3}
+    \label{eq: weak form 2}
 \end{equation}
 
 The function space $V$ is defined as:
@@ -377,7 +372,7 @@ The function space $V$ is defined as:
     V = \{ v \in H^1(\Omega) \ : \ v=u_0 \ \text{on} \ \Gamma_D \}
 \end{equation}
 
-Poisson's equation can now be discretised by restricting the variational problem \ref{eq: weak form 3} to discrete function spaces $V_h$ and $\hat{V}_h$ : find $u_h \in V_h \subset V$
+Poisson's equation can now be discretised by restricting the variational problem \ref{eq: weak form 2} to discrete function spaces $V_h$ and $\hat{V}_h$ : find $u_h \in V_h \subset V$
 \begin{equation}
     \int_{\Omega} \nabla u_h \cdot \nabla v  \ dx = \int_{\Omega} f \ v \ dx - \int_{\Gamma_N} g \ v \ ds \quad \forall \ v \in \hat{V}_h \subset \hat{V}
     \label{eq: discrete variational problem}
@@ -392,12 +387,12 @@ The approximated solution $u_h$ therefore reads (see Figure \ref{fig: example ap
     \label{eq: FEM solution}
 \end{equation}
 where $U_i$ are the coefficient to be determined (called degrees of freedom).
-$N$ is the number of finite elements used to discretise the domain.
+$N$ is the number of nodes used to discretise the domain.
 
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter2/approximated_solution.pdf}
-    \caption{1D example of an approximated solution $u$ (exact in blue, approximated in orange) with basis functions $\phi_i$}
+    \caption{1D example of an approximated solution $u$ (exact in blue, approximated in orange) with basis function $\phi_i$ for linear finite elements with 2 nodes.}
     \label{fig: example approximated solution}
 \end{figure}
 
@@ -421,7 +416,7 @@ where
     \labeq{eq: matrices A and b}
 \end{subequations}
 
-The integral terms in \refeq{eq: matrices A and b} can be computed with Gauss-Legendre quadrature.
+The integral terms in \refeq{eq: matrices A and b} are computed with Gauss-Legendre quadrature.
 
 After solving Equation \ref{eq: variational problem matrix form}, the $U_i$ coefficients are known and the approximated solution $u_h$ can be computed.
 Non-linear problems are solved in a similar manner where the solution is approached using Newton's method.
@@ -438,6 +433,7 @@ Since FESTIM is written in python - which is a fairly easy-to-learn programming 
 
 % physics
 As mentioned above, FESTIM simulates hydrogen transport (diffusion and trapping) and additional physics can be incorporated, such as the Soret effect (also called thermophoresis) and conservation of chemical potential at interfaces...
+The hydrogen transport equations can be coupled to the heat equation (weak coupling).
 Various types of boundary conditions are available for both the H transport (imposed concentration, recombination flux, dissociation flux, implanted source approximation...) and the heat transfer problems (imposed temperature, imposed flux, convective flux...).
 Traps densities in FESTIM can also be time-dependent allowing the users to simulate extrinsic traps (\textit{eg} irradiation induced traps, stress induced traps...).
 
