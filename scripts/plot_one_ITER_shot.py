@@ -9,12 +9,12 @@ import matplotx
 
 number = 2399
 filename_inner = (
-    "../data/exposure_conditions_divertor/ITER/{}/{}_inner_target.csv".format(
+    "{}_inner_target.csv".format(
         number, number
     )
 )
 filename_outer = (
-    "../data/exposure_conditions_divertor/ITER/{}/{}_outer_target.csv".format(
+    "{}_outer_target.csv".format(
         number, number
     )
 )
@@ -105,7 +105,7 @@ with plt.style.context(matplotx.styles.dufte):
 
     plt.xlabel("Distance along divertor (m)", labelpad=40)
     axs_bot[0].set_yscale("log")
-    axs_top[0].set_ylim(bottom=0)
+    axs_top[0].set_ylim(bottom=0, top=8)
     axs_mid[0].set_ylim(bottom=0)
     axs_bot[0].set_ylim(bottom=1e-1)
 
