@@ -1,3 +1,64 @@
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract} % Add the preface to the table of contents as a chapter
 
+"\textit{I would put my money on the sun! What a source of power! I hope we don't have to wait until oil and coal run out before we tackle that.}" Thomas Edison once said.
+The use of fossil fuels (coal, gas, oil) has allowed the modern human civilisation to reach its current standard of living.
+However, their intensive use led to astronomical carbon dioxyde (CO2) emissions.
+Since Edison died in 1931, 1500 billion tonnes of CO2 have been emitted on Earth from burning fossil fuels and about 33 bilion tonnes of CO2 are still being released every year \cite{friedlingstein_global_2021}.
+The consequence of these emissions is global warming and these CO2 emissions must stop in order to limit it to an "acceptable" level - regardless of the remaining oil and coal reserves.
+Reducing the CO2 emissions implies reducing the world energy consumption while developping clean sources of energy.
+It is very unlikely that these new sources will be able to completely replace fossil fuels.
+They would however act as a shock absorber in the energy crisis mankind is facing.
+
+When looking at the Sun, Edison saw how massive and inexhaustible its energy was.
+The process powering the stars is called \textit{nuclear fusion}.
+It does not release any greenhouse gases, it is energetically dense and its fuel is abundant on Earth.
+Could it be one of these new sources of energy?
+
+Answering this question by a simple yes or no would be oversimplifying.
+Throughout the years, spectacular progress has been made.
+Until 2000, the performance of nuclear fusion devices doubled every 1.8 year - faster than Moore's law stating that the computational power of a central processing unit (CPU), which doubles every 2 years \cite{webster_fusion_2003}.
+
+However, many other challenges lie ahead: materials development, supply-chain, systems integration, maintenance...
+One of these challenges is tritium, a radioactive isotope of hydrogen essential for fusion.
+With deuterium - another isotope of hydrogen - it will be the fuel of a fusion reactor.
+
+The first main issue is the scarcity of tritium on Earth.
+Tritium decays into helium with a half-life of approximately 12 years, which means it is very rare in nature.
+The current reserves of tritium on Earth are a few kilograms and fusion reactors will require a lot more.
+For this reason, tritium will have to be produced (\textit{bred}) inside the fusion reactor.
+
+The second issue is due to the tritium radiotoxicity.
+Its ingestion - typically when present in water - is a health hazard.
+The quantity of tritium contained in the reactor must therefore be limited to minimise the effects of a potential accident or release to the environment.
+
+Hydrogen retention in materials will have an impact on both these points.
+Due to its small size (one of the smallest elements), tritium can penetrate the materials lattices and eventually be trapped in the tokamak structure.
+This would make the tritium fuel cycle even more challenging: how can we inject tritium in the reactor if a large portion of the fuel is trapped in the materials?
+Moreover, as time goes by, the components of a reactor would build up an inventory of tritium, which would increase their radioactivity, making the decomissioning of a power plant more challenging.
+Contaminated components would indeed have to be handled as radioactive waste.
+Other issues like material embrittlement are impacted by hydrogen retention.
+
+Are we able to predict tritium retention in fusion reactors?
+Will the tritium inventory remain within the safety limits over their lifespan?
+What is the influence of impurities (such as helium, present in a fusion reactor) on this retention?
+These questions are the main interest of this PhD thesis.
+
+% Method
+To answer these questions, a new modelling tool has been developed from scratch.
+FESTIM, which stands for Finite Element Simulation of Tritium In Materials, is able to simulate hydrogen transport in complex geometries encountered in tokamaks components.
+This PhD work focusses on the \textit{divertor}, a component made of tungsten exposed to very intense particle (hydrogen and helium) and heat fluxes. 
+The divertor is made of multiple unit bricks called \textit{monoblocks}.
+A method has been developed make use of monoblock-level FESTIM simulations data and scale it up to divertor-level to have an estimate of the hydrogen inventory in the entire component.
+Finally, a seperate model has been developed to study the behaviour of helium in tungsten.
+This model has then be coupled to hydrogen simulations to investigate the potential effect of helium on the previously calculated hydrogen inventory.
+
+% Results
+The main results of this PhD work are:
+\begin{itemize}
+    \item Under conservative assumptions, the total hydrogen inventory (deuterium and tritium) is well below the safety limit of \SI{1}{kg} (in ITER).
+    \item The effect of helium (creation of additional traps for hydrogen) is limited to the near surface region (small compared to the component scale)
+\end{itemize}
+
+Furthermore, it gave the opportunity to develop a new powerful simulation tool.
+FESTIM is still used by several researchers and engineers to simulate hydrogen transport in complex tokamak components.
