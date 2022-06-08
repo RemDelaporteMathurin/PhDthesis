@@ -123,17 +123,17 @@ The main drawback of the the stellarator is the complexity of the coils.
 Since each coil has a unique shape, the cost of manufacturing such a reactor is higher than tokamaks for which coils can be manufactured in serial.
 
 \subsection{Triple product}
-The power balance in a fusion reactor is given by:
+The power balance in a fusion reactor is given by \cite{mccracken_fusion_2013}:
 \begin{equation}
     \frac{\partial W}{\partial t} = P_\mathrm{fusion} + P_\mathrm{heating} - P_\mathrm{losses}
     \label{eq: plasma energy balance}
 \end{equation}
-$W$ is the thermal energy stored in the plasma and can be expressed in \si{J.m^{-3}} by:
+$W$ is the thermal energy density stored in the plasma and can be expressed in \si{J.m^{-3}} by:
 \begin{equation}
     W = 3 n T
 \end{equation}
-where $n$ is the plasma density in \si{m^{-3}} and $T$ is the plasma temperature in \si{eV}.
-$P_\mathrm{fusion}$, expressed in \si{W.m^{-3}}, is the power generated from fusion reactions themselves and can be expressed by:
+where $n$ is the plasma density in \si{m^{-3}} and $T$ is the plasma temperature in \si{J}.
+$P_\mathrm{fusion}$, expressed in \si{W.m^{-3}}, is the power density generated from fusion reactions themselves and can be expressed by:
 \begin{equation}
     P_\mathrm{fusion} = n_D n_T \left\langle \sigma \right\rangle E
 \end{equation}
