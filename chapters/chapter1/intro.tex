@@ -539,37 +539,15 @@ Diffusivity of hydrogen has also been measured experimentally in W \sidecite{fra
 Note that the diffusion coefficients measured experimentally are usually effective coefficients accounting for trapping effects (detailed below).
 % EUROFER \sidecite{montupet-leblond_permeation_2021,esteban_hydrogen_2007,aiello_hydrogen_2002}, 
 Because He tends to cluster (as explained below), measuring its diffusivity experimentally is extremely complicated and therefore most estimations of He diffusion coefficient are numerical.
+\reffig{diffusivity materials} is a collection of diffusivity values found in literature (measured experimentally or computed) for tungsten, copper and CuCrZr.
 
-\reffig{diffusivity solubility materials} is a collection of diffusivity and solubility values found in literature (measured experimentally or computed) for tungsten, copper and CuCrZr.
-
-The diffusivities of copper and CuCrZr are comparable (see \reffig{diffusivity solubility copper} and \reffig{diffusivity solubility cucrzr}).
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/materials_properties_review_comparison.pdf}
-    \caption{Diffusivity and solubility values for tungsten \cite{heinola_first-principles_2010, frauenfelder_solution_1969}, copper \cite{reiter_compilation_1996} and CuCrZr \cite{serra_hydrogen_1998}.}
-    \labfig{diffusivity solubility materials}
-\end{figure}
+% The diffusivities of copper and CuCrZr are comparable (see \reffig{diffusivity solubility copper} and \reffig{diffusivity solubility cucrzr}).
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/tungsten_properties_review.pdf}
-    \caption{Diffusivity and solubility values for tungsten.}
-    \labfig{diffusivity solubility tungsten}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/copper_properties_review.pdf}
-    \caption{Diffusivity and solubility values for copper.}
-    \labfig{diffusivity solubility copper}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/cucrzr_properties_review.pdf}
-    \caption{Diffusivity and solubility values for CuCrZr.}
-    \labfig{diffusivity solubility cucrzr}
+    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/materials_diffusivity_review_comparison.pdf}
+    \caption{Diffusivity values for tungsten, copper and CuCrZr. Data from \cite{}.}
+    \labfig{diffusivity materials}
 \end{figure}
 
 \subsubsection{Trapping at defects}
@@ -674,9 +652,16 @@ When the absorption/desorption order is $n=2$ (diatomic absorption):
     \labeq{sievert's law}
 \end{equation}
 This equilbrium is known as Sievert's law of solubility and $K_S = \sqrt{2 K_\mathrm{abs}/K_\mathrm{des}}$ is the material solubility expressed in \si{m^{-3}.Pa^{-0.5}}.
-The solubility of tungsten, copper and CuCrZr are described in \reffig{diffusivity solubility materials}, \reffig{diffusivity solubility tungsten}, \reffig{diffusivity solubility copper} and \reffig{diffusivity solubility cucrzr}.
+The solubility of tungsten, copper and CuCrZr are described in \reffig{solubility materials}.
 
 The product of the solubility and diffusivity is called \textit{permeability}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/materials_solubility_review_comparison.pdf}
+    \caption{Solubitiy values for tungsten, copper and CuCrZr. Data from \cite{}.}
+    \labfig{solubility materials}
+\end{figure}
 
 \subsubsection{Interface between materials}
 At the interface between two materials, the continuity of chemical potential has to be ensured \sidecite{krom_hydrogen_2000}.
