@@ -700,6 +700,24 @@ with $S$ the solubility of H in the materials expressed in \si{m^{-3}.Pa^{-0.5}}
 
 A jump in concentration will therefore occur at the interface bewteen two materials with different solubilities.
 
+\subsubsection{Advection in liquids}
+Advection occurs when a mobile species is in a liquid (molten salts, water, coolants...) and depends on the liquid velocity.
+This advective transport adds up to the diffusive transport.
+
+Depending on the liquid velocity and the species diffusivity in this liquid, the mass transport can be predominated by one of the two phenomena.
+The Péclet number $Pe$ is a dimensionless number employed to estimate this dominance.
+
+\begin{equation}
+    Pe = \frac{\mathrm{advective \; transport \; rate}}{\mathrm{diffusive \; transport \; rate}} = \frac{L u}{D}
+\end{equation}
+where $L$ is a charasteristic length, $u$ is the fluid velocity and $D$ is the species diffusivity in this fluid.
+
+When $Pe \gg 1$, advection is the dominant transport phenomena.
+When $Pe \ll 1$, diffusion dominates and advection can be neglected.
+
+For hydrogen diffusing in liquid LiPb (typically in a WCLL breeding blanket with a charasteristic length $L \approx \SI{1}{m}$), $Pe \approx 10^{5}$ with $D \approx 10^{-9}$ and $u \approx 10 ^{-4}$ \sidecite{dark_influence_2021}.
+Which means that advection has to be taken into account in this case.
+
 \subsubsection{Clustering}
 Single He atoms implanted into the material diffuse rapidly due to the high W-He repulsion.
 This high repulsive W-He interaction is such that interstitial He atoms preferably rearrange into groups of atoms in order to minimise the number of repulsive interactions \sidecite{hamid_molecular_2019, hammond_large-scale_2018}.
