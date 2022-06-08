@@ -491,15 +491,15 @@ Depending on the position in the DEMO divertor, cumulative helium production ove
 \end{figure}
 
 \subsubsection{Diffusion}
-The repulsion of metal atoms with solute species creates wells of potential energy located at interstitial sites.
+The repulsion of metal atoms with solute species creates wells of potential energy located at interstitial sites (see Figure \ref{fig: potential energy diagram metal lattice}).
 The soluted atoms in metals can then jump from interstitial site to another thanks to thermal vibration.
 This process is called \textit{diffusion}.
-Diffusion is a thermally activated process governed by a diffusion coefficient $D$ expressed in \si{m^2.s^{-1}}, which usually follows an Arrhenius law:
+The "height" of the potential energy wells is called the diffusion \textit{activation energy} or \textit{energy barrier} $E_D$.
+Diffusion is therefore a thermally activated process governed by a diffusion coefficient $D$ expressed in \si{m^2.s^{-1}}, which follows an Arrhenius law:
 \begin{equation}
     D = D_0 \exp{(-E_D/k_B T)}
 \end{equation}
-where $E_D$ is the activation energy of diffusion in \si{eV}, $T$ is the temperature in \si{K}, $k_B$ is the Boltzmann constant in \si{eV.K^{-1}}.
-The "height" of the potential energy wells can be associated with the activation energy $E_D$, also called \textit{energy barrier} (see Figure \ref{fig: potential energy diagram metal lattice}).
+where $E_D$ is expressed in \si{eV}, $T$ is the temperature in \si{K}, $k_B$ is the Boltzmann constant in \si{eV.K^{-1}}.
 
 Diffusion can also be assisted by temperature gradients (called the \textit{Soret effect} or \textit{thermophoresis}) \sidecite{martinez_thermal_2021, hodille_estimation_2017} or hydrostatic pressure gradients.
 The tungsten property to simulate the Soret effect (Soret coefficient or heat of transport) is currently missing from litterature (for hydrogen).
