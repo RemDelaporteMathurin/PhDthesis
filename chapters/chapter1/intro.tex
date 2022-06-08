@@ -495,7 +495,11 @@ Diffusion is a thermally activated process governed by a diffusion coefficient $
 where $E_D$ is the activation energy of diffusion in \si{eV}, $T$ is the temperature in \si{K}, $k_B$ is the Boltzmann constant in \si{eV.K^{-1}}.
 The "height" of the potential energy wells can be associated with the activation energy $E_D$, also called \textit{energy barrier} (see Figure \ref{fig: potential energy diagram metal lattice}).
 
-Diffusion can also be assisted by temperature gradients (called the \textit{Soret effect} or \textit{thermophoresis}) \sidecite{martinez_thermal_2021, hodille_estimation_2017} or hydrostatic pressure gradients \sidecite{benannoune_multidimensional_2020}.
+Diffusion can also be assisted by temperature gradients (called the \textit{Soret effect} or \textit{thermophoresis}) \sidecite{martinez_thermal_2021, hodille_estimation_2017} or hydrostatic pressure gradients.
+The tungsten property to simulate the Soret effect (Soret coefficient or heat of transport) is currently missing from litterature (for hydrogen).
+Hodille \textit{et al} used the properties of steel as an approximation \cite{hodille_estimation_2017}.
+Bennanoune and coworkers performed hydrogen transport studies with hydrostatic pressure gradients showing it could have an impact of around \SI{10}{\%} in steel components \sidecite{benannoune_multidimensional_2020}.
+Studies are currently being performed for tungsten.
 
 % MD simulations
 Diffusion coefficients (also called diffusivities) can be computed by Molecular Dynamics (MD) and Density Functional Theory (DFT).
