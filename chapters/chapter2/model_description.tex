@@ -24,7 +24,7 @@ The particle flux $J$ is therefore expressed by:
     J = - D \nabla c_\mathrm{m}
 \end{equation}
 where $D$ is the diffusion coefficient in \si{m^2.s^{-1}}.
-This expression neglects the Soret effect or the effect of hydrostatic pressure.
+The Soret effect and the effect of hydrostatic pressure are here neglected due to a lack of data.
 
 % This particle flux can be expressed differently if additionnal physics are accounted for.
 % For instance, taking into account the Soret effect (also called thermodiffusion or thermophoresis), the particle flux is expressed as:
@@ -432,7 +432,7 @@ Nevertheless, since FESTIM is object-oriented, advanced users will always be abl
 Since FESTIM is written in python - which is a fairly easy-to-learn programming langage - no advanced level of coding is required.
 
 % physics
-As mentioned above, FESTIM simulates hydrogen transport (diffusion and trapping) and additional physics can be incorporated, such as the Soret effect (also called thermophoresis) and conservation of chemical potential at interfaces...
+As mentioned above, FESTIM simulates hydrogen transport (diffusion and trapping) and additional physics can be incorporated, such as the Soret effect (even though not used in this work) and conservation of chemical potential at interfaces...
 The hydrogen transport equations can be coupled to the heat equation (weak coupling).
 Various types of boundary conditions are available for both the H transport (imposed concentration, recombination flux, dissociation flux, implanted source approximation...) and the heat transfer problems (imposed temperature, imposed flux, convective flux...).
 Traps densities in FESTIM can also be time-dependent allowing the users to simulate extrinsic traps (\textit{eg} irradiation induced traps, stress induced traps...).
