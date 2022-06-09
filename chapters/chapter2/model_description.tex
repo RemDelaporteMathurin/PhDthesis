@@ -163,21 +163,21 @@ Moreover, according to Fick's law, $\varphi_\mathrm{recomb}$ can be expressed as
     \label{eq:c_max}
 \end{eqnarray}
 
-Assuming second order recombination, $\varphi_\mathrm{recomb}$ can also be expressed as a function of the recombination coefficient $K$:
+Assuming second order recombination, $\varphi_\mathrm{recomb}$ can also be expressed as a function of the recombination coefficient $K_r$:
 
 \begin{eqnarray}
-    \varphi_\mathrm{recomb} &= K c_{0}^{2} = \varphi_\mathrm{imp}\\
-    \Leftrightarrow c_{0} &= \sqrt{\frac{\varphi_\mathrm{imp}}{K}}
+    \varphi_\mathrm{recomb} &= K_r c_{0}^{2} = \varphi_\mathrm{imp}\\
+    \Leftrightarrow c_{0} &= \sqrt{\frac{\varphi_\mathrm{imp}}{K_r}}
     \label{eq:c_0}
 \end{eqnarray}
 
 By replacing Equation \ref{eq:c_0} in Equation \ref{eq:c_max} one can obtain:
 
 \begin{equation}
-    c_\mathrm{max} = \frac{\varphi_\mathrm{imp} R_{p}}{D}+\sqrt{\frac{\varphi_\mathrm{imp}}{K}}
+    c_\mathrm{max} = \frac{\varphi_\mathrm{imp} R_{p}}{D}+\sqrt{\frac{\varphi_\mathrm{imp}}{K_r}}
 \end{equation}
 
-As the recombination process becomes fast (\textit{ie} $K \rightarrow \infty$), $c_0 \rightarrow 0$ and $c_\mathrm{max} \rightarrow \frac{\varphi_\mathrm{imp} R_{p}}{D}$.
+As the recombination process becomes fast (\textit{ie} $K_r \rightarrow \infty$), $c_0 \rightarrow 0$ and $c_\mathrm{max} \rightarrow \frac{\varphi_\mathrm{imp} R_{p}}{D}$.
 
 Since the main driver for the diffusion is the value $c_\mathrm{max}$, when $R_p$ is negligeable compared to the dimension of the simulation domain, one can simply impose this value at the surface.
 % This analytical simplification is especially useful to simulate implanted sources near the surface (\textit{eg} plasma implantation) without having to finely discretise the domain to fully represent the gaussian distribution.
