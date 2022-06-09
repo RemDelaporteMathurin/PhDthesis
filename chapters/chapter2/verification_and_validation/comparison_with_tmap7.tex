@@ -25,27 +25,28 @@ The boundary conditions are detailed in Equation \ref{eq: code comparison BCs}.
     T &= \SI{1200}{K}\quad \text { on } \Gamma_\mathrm{top}\\
     c_\mathrm{m} &=  \frac{\varphi_\mathrm{imp} \cdot R_p}{D} \quad \text { on } \Gamma_\mathrm{top}\\
     T &= \SI{373}{K} \quad \text { on } \Gamma_\mathrm{coolant}\\
-    -D \nabla c_\mathrm{m} \cdot \vec{n} &= K_\mathrm{CuCrZr} \cdot c_\mathrm{m}^{2} \quad \text { on } \Gamma_\mathrm{coolant}  
+    -D \nabla c_\mathrm{m} \cdot \mathbf{n} &= K_\mathrm{CuCrZr} \cdot c_\mathrm{m}^{2} \quad \text { on } \Gamma_\mathrm{coolant}  
     \end{align}
     \label{eq: code comparison BCs}
 \end{subequations}
-with $\varphi_\mathrm{imp} = \SI{5e23}{m^{-2}.s^{-1}}$ the implanted particle flux, $R_p = \SI{1.25}{nm}$ the implantation depth, $\vec{n}$ the normal vector and $K_\mathrm{CuCrZr} = 2.9 \times 10^{-14}\cdot \exp{(-1.92/(k_B\cdot T))}$ the recombination coefficient of the CuCrZr (in vacuum) expressed in \si{m^4.s^{-1}} \sidecite{anderl_deuterium_1999}.
+with $\varphi_\mathrm{imp} = \SI{5e23}{m^{-2}.s^{-1}}$ the implanted particle flux, $R_p = \SI{1.25}{nm}$ the implantation depth, $\mathbf{n}$ the normal vector and $K_\mathrm{CuCrZr} = 2.9 \times 10^{-14}\cdot \exp{(-1.92/(k_B\cdot T))}$ the recombination coefficient of the CuCrZr (in vacuum) expressed in \si{m^4.s^{-1}} \sidecite{anderl_deuterium_1999}.
 
 The Dirichlet boundary condition on $\Gamma_\mathrm{top}$ for the hydrogen transport corresponds to a flux balance between the implanted flux and the flux that is retro-desorbed at the surface (see Section \ref{triangle model}).
+The temperature profile in TMAP7 was fixed on the temperature profile produced by FESTIM (see \reffig{temperature}).
 
 TMAP7 and FESTIM were found to be in very good agreement (see Figure \ref{fig: code comparison}).
 
 \begin{figure*} [h]
     \centering
     \includegraphics[width=0.5\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/temperature_1D.pdf}
-    \caption{ITER monoblock temperature simulated by FESTIM (1D and 2D).}
-    \label{fig: temperature}
+    \caption{Temperature profile simulated by FESTIM for comparison case with TMAP7.}
+    \labfig{temperature}
 \end{figure*}
 
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/comparison_codes.pdf}
-    \caption{Comparison of results provided by FESTIM, TMAP7 and ABAQUS}
+    \caption{Comparison of results provided by FESTIM and TMAP7}
     \label{fig: code comparison}
 \end{figure}
 
