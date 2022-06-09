@@ -43,15 +43,14 @@ The spatio-temporal evolution of these concentrations is commonly described by t
 \end{equation}
 
 \begin{equation}
-    \frac{\partial c_{\mathrm{t}, i}}{\partial t}=k \cdot c_\mathrm{m} \cdot\left(n_{i}-c_{\mathrm{t}, i}\right)-p \cdot c_{\mathrm{t}, i}
+    \frac{\partial c_{\mathrm{t}, i}}{\partial t}=k_i \cdot c_\mathrm{m} \cdot\left(n_{i}-c_{\mathrm{t}, i}\right)-p_i \cdot c_{\mathrm{t}, i}
     \label{eq:trapped}
 \end{equation}
 
-In Equation \ref{eq:mobile}, $\Gamma$ is the volumetric source term of particles in \si{m^{-3}.s^{-1}}.
-The volumetric source term can be used to simulate any process producing H in the bulk.
+In Equation \ref{eq:mobile}, $\Gamma$ is the volumetric source term of particles in \si{m^{-3}.s^{-1}}, which can be used to simulate any process producing H in the bulk.
 This is the case for plasma implantation and nuclear reactions producing H.
 
-In Equation \ref{eq:trapped}, $k$ and $p$ are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively and $n_i$ is the trap density in \si{m^{-3}}.
+In Equation \ref{eq:trapped}, $k_i$ and $p_i$ are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively and $n_i$ is the trap density in \si{m^{-3}}.
 
 At steady state (\textit{ie} $\frac{\partial c_\mathrm{m}}{\partial t} = 0$ and $\frac{\partial c_{\mathrm{t}, i}}{\partial t} = 0$), the mobile H concentration is independent of $c_{\mathrm{t}, i}$.
 Equation \ref{eq:trapped} can be rewritten as:
@@ -59,7 +58,7 @@ Equation \ref{eq:trapped} can be rewritten as:
     c_{\mathrm{t}, i} = n_i \frac{1}{\frac{p}{k c_\mathrm{m}} + 1}
     \label{eq: steady state ct}
 \end{equation}
-The quantity $(p / (k c_\mathrm{m}) + 1)^{-1}$ determines the filling ratio of the trap. 
+The quantity $(p / (k c_\mathrm{m}) + 1)^{-1}$ determines the trap occupancy. 
 As it approaches one (high mobile concentration, low detrapping rate or high trapping rate), the trapped concentration approaches the trap density.
 As it approaches zero (high detrapping rate, low mobile concentration or low trapping rate), the trapped concentration approaches zero.
 
@@ -85,9 +84,9 @@ $f$ can also be expressed as a molecular recombination flux:
 where $K_r(T) = K_{r_0} \exp(\frac{-E_{K_r}}{k_B T}) $ is the recombination coefficient expressed in \si{m^{3n-2}.s^{-1}}, $\mathbf{n}$ is the boundary normal vector and $n \in \{1, 2\}$ is the order of the recombination.
 In a metal, $n=2$ and in a non-metallic liquid, $n=1$.
 Recombination occurs when hydrogen particles located at the surface of the material combine with other particles (which can be other hydrogen particles) and are no longer bonded with the metal surface.
-It can happen both in presence of a vacuum or when the metal is in contact with a fluid (gas or fluid).
+It can happen both in presence of a vacuum or when the metal is in contact with a fluid (gas or liquid).
 
-Similarly, a dissociation flux can be applied when a surface is in contact with a gas atmosphere of H (see Equation \ref{eq: dissociation flux}).
+Similarly, a dissociation flux can be applied when a surface is in contact with a gas atmosphere of H:
 \begin{equation}
     - D(T)\nabla c_\mathrm{m} \cdot \mathbf{n} = K_d(T) P \quad \text { on } \partial \Omega
     \label{eq: dissociation flux}
@@ -106,7 +105,7 @@ where $P$ is the partial pressure of hydrogen at the boundary in \si{Pa}, $S(T)=
 This law of equilibrium is a steady-state approximation of a more complex model which takes into account flux exchanges between adsorbed and mobile concentrations at the boundary.
 It is therefore valid when applied to cases where the kinetics are fast enough for the system to remain at equilibrium.
 
-\subsubsection{Analytical simplification for implanted sources of H} \label{triangle model}
+\subsubsection{Analytical simplification for an implanted source of H} \label{triangle model}
 
 Plasma implantation of hydrogen particles can be modelled with a volumetric source.
 Typically, the depth of the implantation profile is a few nanometres depending on the incident particles energy and incident angle.
@@ -146,6 +145,7 @@ $\varphi_\mathrm{bulk}$ can be expressed as:
 \begin{equation}
     \varphi_\mathrm{bulk} = D \cdot \frac{c_\mathrm{max}}{R_d(t) - R_p}
 \end{equation}
+with $R_d$ the diffusion depth.
 
 % When $t \rightarrow \infty$ or $R_d \gg R_p$ (a ratio of 10 or 100 is enough), $\varphi_\mathrm{bulk} \ll \varphi_\mathrm{recomb}$.
 When $R_d \gg R_p$, $\varphi_\mathrm{bulk} \rightarrow 0$.
