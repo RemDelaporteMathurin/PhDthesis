@@ -276,7 +276,7 @@ Finally, to model a convective heat flux when the surface is in contact with a f
     -\lambda \nabla T \cdot \mathbf{n} = h (T - T_\mathrm{ext}) \quad \text { on } \partial \Omega
     \label{eq: convective bc T}
 \end{equation}
-where $\lambda$ is the thermal conductivity in \si{W.m^{-1}.K^{-1}}, $\mathbf{n}$ is the boundary normal vector, $h$ is the heat transfer coefficient in \si{W.m^{-2}.K^{-1}}, $T_\mathrm{ext}$ is the fluid temperature in \si{K} and $\partial \Omega$ is the domain boundary.
+where $h$ is the heat transfer coefficient in \si{W.m^{-2}.K^{-1}}, $T_\mathrm{ext}$ is the fluid temperature in \si{K} and $\partial \Omega$ is the domain boundary.
 The heat transfer coefficient can be dependent on the temperature and the flow characteristics.
 It is obtained by computing the Nusselt number from correlations linking it to the Reynolds number of the flow and the Prandtl number of the fluid \sidecite{poirier_correlations_2016} (\textit{eg} Dittus-Boetler, Sieder-State, Gnielinski, ...).
 Once the Nusselt number is known, the heat transfer coefficient $h$ reads:
