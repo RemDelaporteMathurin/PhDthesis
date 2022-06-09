@@ -368,7 +368,7 @@ The approximated solution $u_h$ therefore reads (see Figure \ref{fig: example ap
     u_h(x) = \sum^N_{i=1}U_i \phi_i(x)
     \label{eq: FEM solution}
 \end{equation}
-where $U_i$ are the coefficient to be determined (called degrees of freedom).
+where $U_i$ are the coefficient to be determined one each node (called degrees of freedom).
 $N$ is the number of nodes used to discretise the domain.
 
 \begin{figure}
@@ -409,7 +409,7 @@ Users only have to provide inputs such as material properties, traps properties,
 In other words, users do not need to be finite element experts to run a FESTIM simulation (though knowledge and experience in finite elements will help in solving numerical problems).
 
 % user friendly
-Multi-dimensional transient simulations coupled with heat transfer can therefore be run fairly easily without finite element knowledge.
+Multi-dimensional multi-material transient simulations coupled with heat transfer can therefore be run fairly easily without finite element knowledge.
 Nevertheless, since FESTIM is object-oriented, advanced users will always be able to turn FESTIM inside-out to adapt the code to their specific needs (specific boundary conditions, slight changes in the governing equations...).
 Since FESTIM is written in python - which is a fairly easy-to-learn programming langage - no advanced level of coding is required.
 
