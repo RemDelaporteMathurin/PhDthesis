@@ -185,13 +185,14 @@ Since the main driver for the diffusion is the value $c_\mathrm{max}$, when $R_p
 
 A transient solution based on trap properties can be derived \sidecite{hodille_study_2016}:
 \begin{equation}
-    c_\mathrm{max}=\left( \frac{R_p \varphi_\mathrm{imp}}{D} + \sqrt{\frac{\varphi_\mathrm{imp}}{K}} \right) \cdot \frac{\tau}{t} \cdot\left(\sqrt{1+\frac{t}{\tau}}-1\right)^2
+    c_\mathrm{max}(t)=\left( \frac{R_p \varphi_\mathrm{imp}}{D} + \sqrt{\frac{\varphi_\mathrm{imp}}{K_r}} \right) \cdot \frac{\tau}{t} \cdot\left(\sqrt{1+\frac{t}{\tau}}-1\right)^2
 \end{equation}
 where $\tau$ is a characteristic time expressed by:
 \begin{equation}
     \tau = \frac{R_p \sum R_i \, n_i}{8 \varphi_\mathrm{imp}}
 \end{equation}
 In this expression, $R_i = (p / (k c_\mathrm{max}) + 1)^{-1}$ represents the maximum filling ratio of the trap $i$ and $n_i$ is the trap density.
+When $t \gg \tau$, $c_\mathrm{max}(t) \approx \frac{R_p \varphi_\mathrm{imp}}{D} + \sqrt{\frac{\varphi_\mathrm{imp}}{K_r}}$
 
 \subsection{Interface condition: conservation of chemical potential}
 % According to Krom \textit{et al} \sidecite{krom_hydrogen_2000}, since the solubility of hydrogen atoms in solids is low, the chemical potential of solute hydrogen $\mu$ is expressed by:
