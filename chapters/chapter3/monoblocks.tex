@@ -12,19 +12,157 @@ First, the influence of interface conditions at the W/Cu and Cu/CuCrZr interface
 A parametric study will then be performed to link the monoblock H inventory to the exposure conditions.
 Finally, the influence of edge effects (desorption on poloidal and toroidal gaps) will be highlighted.
 
+\section{Model description}
 
-\section{Simulation assumptions}
+\begin{figure}
+    \begin{overpic}[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/monoblock_sketch.pdf}
+        \put(42, 5){\SI{28}{mm}}
+        \put(97, 50){\SI{28}{mm}}
+        \put(10, 32){\SI{13.5}{mm}}
+        \put(42, 62){ \diameter \SI{12}{mm}}
+        \put(42, 71){ \diameter \SI{15}{mm}}
+        \put(42, 76){ \diameter \SI{17}{mm}}
+        \put(20, 80){\large$\Gamma_\mathrm{top}$}
+        \put(4, 60){\large$\Gamma_\mathrm{toroidal}$}
+        \put(78, 60){\large$\Gamma_\mathrm{toroidal}$}
+        \put(40, 41){\large$\Gamma_\mathrm{coolant}$}
+    \end{overpic}
+    \caption{ITER monoblock geometry showing W armour \cruleme[grey]{0.3cm}{0.3cm}, Cu interlayer \cruleme[orange]{0.3cm}{0.3cm}, CuCrZr alloy cooling pipe  \cruleme[yellow]{0.3cm}{0.3cm}. The monoblock thickness is \SI{12}{mm}.}\label{fig: monoblock geometry}
+    \label{fig: monoblock 2d geometry}
+\end{figure}
+
+\begin{subequations}
+    \begin{align}
+    -\lambda \vec{\nabla} T \cdot \vec{n} &=\varphi_\mathrm{heat} \quad  &\text { on } \Gamma_\mathrm{top}\\
+    -\lambda \vec{\nabla} T\cdot \vec{n} &= -h \cdot \left(T_\mathrm{coolant} - T\right)\quad &\text { on } \Gamma_\mathrm{coolant}
+    \end{align}
+    \label{eq: bc thermal monoblock}
+\end{subequations}
+
+\begin{subequations}
+    \begin{align}
+    c_\mathrm{m} &=  \frac{\varphi_\mathrm{imp} R_p}{D} \quad &\text { on } \Gamma_\mathrm{top}\\
+    -D \vec{\nabla} c_\mathrm{m} \cdot \vec{n} &= K_\mathrm{CuCrZr} \cdot c_\mathrm{m}^{2} \quad &\text { on } \Gamma_\mathrm{coolant} \\
+    c_\mathrm{m} &=  0 \quad &\text { on } \Gamma_\mathrm{toroidal} \text{  and  } \Gamma_\mathrm{poloidal} \\
+    \end{align}
+    \label{eq: bc H transport monoblock}
+\end{subequations}
+
+\begin{table*}
+    \centering
+    \begin{tabular}{p{1.7cm}  R{3cm}  R{3cm}  R{1.8cm}  R{1cm} R{1.8cm}  R{1cm}}
+         & \multicolumn{2}{c}{Thermal properties} & \multicolumn{4}{c}{Hydrogen transport properties}\\
+        \hline
+        Material & $\rho \cdot C_p \newline(\si{J.K^{-1}.m^{-3}})$ & $\lambda \newline(\si{W.m^{-1}.K^{-1}})$ & $D_0 \newline(\si{m^2.s^{-1}})$ & $E_\mathrm{diff} \newline(\si{eV})$ & $S_0 \newline(\si{m^{-3}.Pa^{-0.5}})$ & $E_\mathrm{S} \newline(\si{eV})$\\
+        \hline
+        \\
+        W \cite{frauenfelder_solution_1969,fernandez_hydrogen_2015}& %
+        $5.1\times 10^{-6} \cdot T^3 \newline - 8.3\times 10^{-2}\cdot T^2 \newline + 6.0 \times 10^{2}\cdot T \newline +2.4\times 10^6$ &%
+        $-7.8\times 10^{-9}\cdot T^3 \newline %
+        +5.0\times 10^{-5}\cdot T^2 \newline%
+        -1.1\times 10^{-1} \cdot T \newline%
+        +1.8\times 10^{2}$ &%
+        $1.9\times 10^{-7}$ & 0.20 &%
+        $1.87\times 10^{24}$ & 1.04\\
+        \\
+        Cu \cite{reiter_compilation_1996}&%
+        $1.7\times 10^{-4}\cdot T^3\newline %
+        +6.1\times 10^{-2}\cdot T^2\newline %
+        +4.7\times 10^2\cdot T\newline %
+        +3.5\times 10^6$ &%
+
+        $-3.9\times 10^{-8}\cdot T^3\newline %
+        +3.8\times 10^{-5}\cdot T^2\newline %
+        -7.9\times 10^{-2}\cdot T\newline %
+        +4.0\times 10^2 $&%
+
+        $6.6\times 10^{-7}$ &%
+        0.39&%
+        $3.14\times 10^{24}$ & 0.57\\
+        \\
+        CuCrZr \cite{serra_hydrogen_1998}& %
+        $-1.8\times 10^{-4}\cdot T^3 \newline %
+        +1.5\times 10^{-1}\cdot T^2\newline %
+        +6.2\times 10^2\cdot T\newline %
+        +3.5\times 10^6$ &%
+
+        $5.3\times 10^{-7}\cdot T^3\newline %
+        -6.5\times 10^{-4}\cdot T^2\newline %
+        +2.6\times 10^{-1}\cdot T\newline %
+        +3.1\times 10^2$ & %
+
+        $3.9\times 10^{-7}$ & %
+        0.42&%
+        $4.28\times 10^{23}$ & 0.39\\
+        \\
+        \\
+    \end{tabular}
+    \caption{Materials properties used in the simulations. Thermal properties are fitted from ANSYS.}
+    \label{tab:materials properties monoblock}
+\end{table*}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/thermal_prop.pdf}
+        \caption{Thermal properties}
+    \end{subfigure}
+    \begin{subfigure}{\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/H_properties.pdf}
+        \caption{H transport properties}
+    \end{subfigure}
+    \caption{Material properties used in the simulations \cite{frauenfelder_solution_1969, reiter_compilation_1996, serra_hydrogen_1998, aiello_hydrogen_2002}}
+    \label{fig:properties monoblock}
+\end{figure}
+
+\begin{table*}
+    \centering
+    \begin{tabular}{L{1.5cm} L{1.5cm} R{1.7cm} R{1.1cm} R{1.6cm} R{1.1cm} R{1.9cm}}
+         & Material & $k_0 (\si{m^3.s^{-1}})$ &  $E_k (\si{eV})$ & $p_0 (\si{s^{-1}})$ & $E_p (\si{eV})$ & $n_i (\si{at.fr.})$ \\
+        \hline
+        \\
+        Trap 1 & W & $8.96 \times 10^{-17}$ & 0.2 & $1 \times 10^{13}$& 0.87 & $1.1 \times 10^{-3}$ \\
+        \\
+        Trap 2 & W & $8.96 \times 10^{-17}$ & 0.2 & $1 \times 10^{13}$& 1.00 & $4.0 \times 10^{-4}$ \\
+        \\
+        Trap 3 & Cu & $6.0 \times 10^{-17}$ & 0.39 & $8.0 \times 10^{13}$ & 0.50 &$5.0 \times 10^{-5}$\\
+        \\
+        Trap 4 & CuCrZr & $1.2\times 10^{-16}$ & 0.42 & $8.0 \times 10^{13}$ & 0.85 &$5.0 \times 10^{-5}$\\
+        \\
+    \end{tabular}
+    \caption{Traps properties used in the simulations \cite{hodille_macroscopic_2015, dolan_assessment_1994}}
+    \label{tab:traps monoblock}
+\end{table*}
+
+\section{Simulation simplifications}
 \subsection{Influence of dimension}
-\subsection{Influence of cycling}
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/dimension_approximation.png}
+    \caption{}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/comparison_inventory_1d_2d_3d.pdf}
+    \caption{}
+\end{figure}
+
 \subsection{Influence of interface condition}
 \input{chapters/chapter3/monoblocks/interface_conditions}
+
+\subsection{Influence of cycling}
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/comparison_inventory_cycling.pdf}
+    \caption{}
+\end{figure}
 
 \section{Monoblock behaviour law} \label{influence of exposure conditions}
 
 \input{chapters/chapter3/monoblocks/parametric_study}
-
-% \section{Edge effects} \label{3D edge effects} \labsec{3D edge effects}
-% \input{chapters/chapter3/monoblocks/3D_monoblocks}
 
 \section{Summary}
 H transport in ITER-like monoblocks was simulated with FESTIM.
