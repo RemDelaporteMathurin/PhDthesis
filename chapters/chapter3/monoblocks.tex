@@ -14,6 +14,14 @@ Finally, the influence of edge effects (desorption on poloidal and toroidal gaps
 
 \section{Model description}
 
+The monoblock geometry is described on reffig{monoblock geometry}.
+The boundary conditions for the heat transfer problem are described in \refeq{bc thermal monoblock} and those for the hydrogen transport problem are described in \refeq{bc H transport monoblock}.
+An instantaneous recombination is assumed on the poloidal and toroidal gaps and at the plasma facing surface.
+This assumption is consistant with the high recombination coefficient measured by Ogorodnikova \sidecite{ogorodnikova_recombination_2019} compared to Anderl's coefficient \sidecite{anderl_deuterium_1992}.
+
+The materials properties (diffusivity, solubility, and thermal conductivity, density and heat capacity) are described in \labtab{materials properties monoblock} and plotted on \reffig{properties monoblock}.
+Finally, the traps properties are described in \reftab{traps monoblock}.
+
 \begin{figure}
     \begin{overpic}[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/monoblock_sketch.pdf}
         \put(42, 5){\SI{28}{mm}}
@@ -27,25 +35,25 @@ Finally, the influence of edge effects (desorption on poloidal and toroidal gaps
         \put(78, 60){\large$\Gamma_\mathrm{toroidal}$}
         \put(40, 41){\large$\Gamma_\mathrm{coolant}$}
     \end{overpic}
-    \caption{ITER monoblock geometry showing W armour \cruleme[grey]{0.3cm}{0.3cm}, Cu interlayer \cruleme[orange]{0.3cm}{0.3cm}, CuCrZr alloy cooling pipe  \cruleme[yellow]{0.3cm}{0.3cm}. The monoblock thickness is \SI{12}{mm}.}\label{fig: monoblock geometry}
-    \label{fig: monoblock 2d geometry}
+    \caption{ITER monoblock geometry showing W armour \cruleme[grey]{0.3cm}{0.3cm}, Cu interlayer \cruleme[orange]{0.3cm}{0.3cm}, CuCrZr alloy cooling pipe  \cruleme[yellow]{0.3cm}{0.3cm}. The monoblock thickness is \SI{12}{mm}.}
+    \labfig{monoblock geometry}
 \end{figure}
 
 \begin{subequations}
     \begin{align}
-    -\lambda \vec{\nabla} T \cdot \vec{n} &=\varphi_\mathrm{heat} \quad  &\text { on } \Gamma_\mathrm{top}\\
-    -\lambda \vec{\nabla} T\cdot \vec{n} &= -h \cdot \left(T_\mathrm{coolant} - T\right)\quad &\text { on } \Gamma_\mathrm{coolant}
+    -\lambda \nabla T \cdot \mathbf{n} &=\varphi_\mathrm{heat} \quad  &\text { on } \Gamma_\mathrm{top}\\
+    -\lambda \nabla T\cdot \mathbf{n} &= -h \cdot \left(T_\mathrm{coolant} - T\right)\quad &\text { on } \Gamma_\mathrm{coolant}
     \end{align}
-    \label{eq: bc thermal monoblock}
+    \labeq{bc thermal monoblock}
 \end{subequations}
 
 \begin{subequations}
     \begin{align}
     c_\mathrm{m} &=  \frac{\varphi_\mathrm{imp} R_p}{D} \quad &\text { on } \Gamma_\mathrm{top}\\
-    -D \vec{\nabla} c_\mathrm{m} \cdot \vec{n} &= K_\mathrm{CuCrZr} \cdot c_\mathrm{m}^{2} \quad &\text { on } \Gamma_\mathrm{coolant} \\
+    -D \nabla c_\mathrm{m} \cdot \mathbf{n} &= K_\mathrm{CuCrZr} \cdot c_\mathrm{m}^{2} \quad &\text { on } \Gamma_\mathrm{coolant} \\
     c_\mathrm{m} &=  0 \quad &\text { on } \Gamma_\mathrm{toroidal} \text{  and  } \Gamma_\mathrm{poloidal} \\
     \end{align}
-    \label{eq: bc H transport monoblock}
+    \labeq{bc H transport monoblock}
 \end{subequations}
 
 \begin{table*}
@@ -97,8 +105,8 @@ Finally, the influence of edge effects (desorption on poloidal and toroidal gaps
         \\
         \\
     \end{tabular}
-    \caption{Materials properties used in the simulations. Thermal properties are fitted from ANSYS.}
-    \label{tab:materials properties monoblock}
+    \caption{Materials properties used in the simulations. Thermal properties are fitted from ANSYS. $T$ is the temperature in \si{K}.}
+    \labtab{materials properties monoblock}
 \end{table*}
 
 \begin{figure}
@@ -114,7 +122,7 @@ Finally, the influence of edge effects (desorption on poloidal and toroidal gaps
         \caption{H transport properties}
     \end{subfigure}
     \caption{Material properties used in the simulations \cite{frauenfelder_solution_1969, reiter_compilation_1996, serra_hydrogen_1998, aiello_hydrogen_2002}}
-    \label{fig:properties monoblock}
+    \labfig{properties monoblock}
 \end{figure}
 
 \begin{table*}
@@ -133,21 +141,50 @@ Finally, the influence of edge effects (desorption on poloidal and toroidal gaps
         \\
     \end{tabular}
     \caption{Traps properties used in the simulations \cite{hodille_macroscopic_2015, dolan_assessment_1994}}
-    \label{tab:traps monoblock}
+    \labtab{traps monoblock}
 \end{table*}
 
 \section{Simulation simplifications}
-\subsection{Influence of dimension}
+\subsection{Influence of dimensionality}
+
+The first simplification that can be done is the dimensionality.
+A full 3D simulation would be the most accurate, but also the most expensive in terms of computaion time.
+Conversely, 1D simulations are faster to run, but are less accurate.
+This is sometimes refered as the \textit{curse of dimensionality}.
+A 2D approximation assumes the solution is independent of the poloidal direction.
+The hydrogen inventory is obtained by:
+
+\begin{equation}
+    \mathrm{inv} = e \int_\Omega (c_\mathrm{m} + \sum c_\mathrm{t,\, i}) \, dS
+\end{equation}
+where $e$ is the monoblock thickness.
+
+Similarily, the 1D approximation assumes the solution is independent of both the poloidal and the toroidal direction (see \reffig{dimension approximations monoblock}).
+It also cannot capture the full geometry of the monoblock as it would assume Cu and CuCrZr slabs instead of hollow cylinders.
+The hydrogen inventory is obtained by:
+
+\begin{equation}
+    \mathrm{inv} = e \, L \int_\Omega (c_\mathrm{m} + \sum c_\mathrm{t,\, i}) \, dl
+\end{equation}
+where $L$ is the monoblock width.
+
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/dimension_approximation.png}
-    \caption{}
+    \caption{Representation of the 2D and 1D approximations on a monoblock geometry. The arrows represent geometry independencies.}
+    \labfig{dimension approximations monoblock}
 \end{figure}
+
+Monoblocks simulations were run in 1D, 2D, and 3D and the inventory was computed for each case (see \reffig{monoblock inventories 1d 2d 3d}).
+Both the 1D and 2D approximations overestimate the inventory compared to the 3D reference, these approximations are therfore conservative.
+It should however be noticed that, when neglecting the recombination on the poloidal gap (\textit{ie} assuming hydrogen cannot desorb from this surface), the 2D approximation is strictly equivalent to the 3D reference (see \refch{DEMO monoblocks}).
+For these reasons, the 2D approximation will be employed in the following sections as it is the best compromise between accuracy and computational time.
 
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/comparison_inventory_1d_2d_3d.pdf}
-    \caption{}
+    \caption{Comparison of monoblock inventories for the 1D, 2D approximations and the 3D case.}
+    \labfig{monoblock inventories 1d 2d 3d}
 \end{figure}
 
 \subsection{Influence of interface condition}
