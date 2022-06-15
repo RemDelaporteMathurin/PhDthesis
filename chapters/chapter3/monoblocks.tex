@@ -147,6 +147,43 @@ where $\varphi_\mathrm{imp} = \SI{1.6e22}{m^{-2}.s^{-1}}$, $R_p = \SI{1}{nm}$, a
 \end{table*}
 
 \section{Simulation simplifications}
+
+\subsection{Thermal behaviour}\label{monoblock thermal behaviour}
+Steady-state heat transfer simulations were performed with FESTIM with varying heat fluxes $\varphi_\mathrm{heat}$.
+With $\varphi_\mathrm{heat} = \SI{1}{MW.m^{-2}}$, the surface temperature of the monoblock was found to be around \SI{400}{K} (see \reffig{T field 1 MW}) whereas with $\varphi_\mathrm{heat} = \SI{10}{MW.m^{-2}}$ the surface was around \SI{1400}{K} (see \reffig{T field 10 MW}).
+
+\begin{figure*} [h!]
+    \centering
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/T_1e6.pdf}
+        \caption{Temperature field with $\varphi_\mathrm{heat} = \SI{1}{MW.m^{-2}}$}
+        \labfig{T field 1 MW}
+    \end{subfigure}%
+    \begin{subfigure}{0.4\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/T_1e7.pdf}
+        \caption{Temperature field with $\varphi_\mathrm{heat} = \SI{10}{MW.m^{-2}}$}
+        \labfig{T field 10 MW}
+    \end{subfigure}
+    \begin{subfigure}{0.7\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/temperature_phi_H.pdf}
+        \caption{Evolution of surface temperature as a function of heat flux}
+        \labfig{surface temperature as a function of heat flux}
+    \end{subfigure}
+    \caption{Thermal behaviour of the monoblock}
+\end{figure*}
+
+The average surface temperature $T_\mathrm{surface}$ therefore increases linearly with the heat load and can be modelled by \refeq{thermal behaviour law} (see \reffig{surface temperature as a function of heat flux}).
+\begin{equation}
+    T_\mathrm{surface} = 1.1 \times 10^{-4} \cdot \varphi_\mathrm{heat} + T_\mathrm{coolant}
+    \labeq{thermal behaviour law}
+\end{equation}
+
+This was found to be in very good agreement with experimental measurements performed in \sidecite{hirai_use_2016}.
+Using a mean surface temperature had low influence on the hydrogen transport results compared to a non-homogeneous surface temperature that could be obtained with a heat flux condition since surface temperature gradient was low compared to the one between the top surface and the cooling surface.
+
 \subsection{Influence of dimensionality}
 
 The first simplification that can be done is the dimensionality.

@@ -41,46 +41,6 @@ The set of boundary conditions can finally be described as follow:
 \end{subequations}
 with $h=\SI{70000}{W.m^{-2}.K^{-1}}$ being the heat exchange coefficient calculated from the Sieder-Tate correlation for the forced convection regime, $T_\mathrm{coolant}= \SI{323}{K}$ and $\vec{n}$ the normal vector and $K_\mathrm{CuCrZr} = 2.9 \times 10^{-14}\cdot \exp{(-1.92/(k_B\cdot T))}$ the recombination coefficient of the copper alloy (in vacuum) expressed in \si{m^4.s^{-1}} \sidecite{anderl_deuterium_1999}.
 
-% The thermal response of ITER-like monoblocks to the heat load $\varphi_H$ has first been studied.
-% Then the hydrogen inventory was determined as a function of surface temperature and surface concentration and as a function of the implanted particle flux and the incident ion energy.
-% Finally, an application on ITER exposure conditions was made.
-
-\subsection{Thermal behaviour}\label{monoblock thermal behaviour}
-Steady-state heat transfer simulations were performed with FESTIM with varying heat loads $\varphi_H$.
-With $\varphi_H = \SI{1}{MW.m^{-2}}$, the surface temperature of the monoblock was found to be around \SI{400}{K} (see Figure \ref{fig:T field 1 MW}) whereas with $\varphi_H = \SI{10}{MW.m^{-2}}$ the surface was around \SI{1400}{K} (see Figure \ref{fig:T field 10 MW}).
-
-\begin{figure*} [h!]
-    \centering
-    \begin{subfigure}{0.4\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/T_1e6.pdf}
-        \caption{Temperature field with $\varphi_H = \SI{1}{MW.m^{-2}}$}
-        \label{fig:T field 1 MW}
-    \end{subfigure}%
-    \begin{subfigure}{0.4\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/T_1e7.pdf}
-        \caption{Temperature field with $\varphi_H = \SI{10}{MW.m^{-2}}$}
-        \label{fig:T field 10 MW}
-    \end{subfigure}
-    \begin{subfigure}{0.7\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/temperature_phi_H.pdf}
-        \caption{Evolution of surface temperature as a function of heat flux}
-        \label{fig:T phi_H}
-    \end{subfigure}
-    \caption{Thermal behaviour of the monoblock}
-\end{figure*}
-
-The average surface temperature $T_\mathrm{surface}$ therefore increases linearly with the heat load and can be modelled by Equation \ref{eq:thermal behaviour law} (see Figure \ref{fig:T phi_H}).
-\begin{equation}
-    T_\mathrm{surface} = 1.1 \times 10^{-4} \cdot \varphi_H + T_\mathrm{coolant}
-    \label{eq:thermal behaviour law}
-\end{equation}
-
-This was found to be in very good agreement with experimental measurements performed in \sidecite{hirai_use_2016}.
-Using a mean surface temperature had low influence on the hydrogen transport results compared to a non-homogeneous surface temperature that could be obtained with a heat flux condition since surface temperature gradient was low compared to the one between the top surface and the cooling surface.
-
 \subsection{Influence of \texorpdfstring{$T_\mathrm{surface}$}{Tsurface} and \texorpdfstring{$c_\mathrm{surface}$}{csurface} on hydrogen inventory} \label{relationship_T_surf_c_surf}
 
 In this section, the total inventory of hydrogen in monoblocks has been calculated as a function of $T_\mathrm{surface}$ and $c_\mathrm{surface}$.
