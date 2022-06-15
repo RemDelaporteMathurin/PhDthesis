@@ -235,11 +235,18 @@ To be able to compare the cases, the inventory is shown as a function of the flu
 
 For the continuous cases, the inventory evolves as a power law of the fluence.
 For the cycled simulations, spikes appear periodically (between every cycle).
-These spikes correspond to ramp-down and ramp-ups during the cycles.
+These spikes correspond to ramp-down and ramp-ups during the cycles (see \reffig{monoblock inventory one cycle}).
 During the ramp-down, as the temperature decreases, the traps filling ratio increases, which results in an increase in the inventory.
 During the resting phase (not shown on \reffig{monoblock inventory cycling} since the flux is null), the inventory is kept constant.
 During the ramp-up, the temperature increases again and the hydrogen trapped close to the plasma-facing surface is desorbed and diffuses either back to the plasma, or deeper into the bulk.
 Finally, during the plateau phase, the inventory increases as a power law of the fluence.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/inventory_one_cycle.pdf}
+    \caption{Evolution of the monoblock inventory during the sixth cycle for the high flux case.}
+    \labfig{monoblock inventory one cycle}
+\end{figure}
 
 These kinetics are observed for both the low flux and high flux cases.
 However, in the low flux case, the height of the spikes is greatly reduced.
