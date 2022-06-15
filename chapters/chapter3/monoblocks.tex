@@ -2,17 +2,15 @@
 \setchapterpreamble[u]{\margintoc}
 \chapter{Monoblocks}\label{Chapter3}\labch{Chapter3}
 
-\section{Introduction}
-
 In order to assess the behaviour of H in the divertor, component-level simulations of monoblocks are required.
 
 This chapter will focus on simulating H transport in ITER-like monoblocks.
-First, the influence of interface conditions at the W/Cu and Cu/CuCrZr interfaces will be evaluated.
-% Then, the impact of load cycling (heat and particles fluxes) will be assessed.
-A parametric study will then be performed to link the monoblock H inventory to the exposure conditions.
-Finally, the influence of edge effects (desorption on poloidal and toroidal gaps) will be highlighted.
 
-\section{Model description}
+\refsec{model description} will described the model geometry, the boundary conditions as well as the materials and trap properties.
+Then, \refsec{simulation simplifications} will review the simplifications that can be brought to the model to reduce the computation time.
+Finally, with these simplifications, a parametric study will be performed and a behaviour law linking the monoblock H inventory to the exposure conditions will be determined in \refsec{influence of exposure conditions}.
+
+\section{Model description}\labsec{model description}
 
 The monoblock geometry is described on reffig{monoblock geometry}.
 The boundary conditions for the heat transfer problem are described in \refeq{bc thermal monoblock} and those for the hydrogen transport problem are described in \refeq{bc H transport monoblock}.
@@ -146,7 +144,7 @@ where $\varphi_\mathrm{imp} = \SI{1.6e22}{m^{-2}.s^{-1}}$, $R_p = \SI{1}{nm}$, a
     \labtab{traps monoblock}
 \end{table*}
 
-\section{Simulation simplifications}
+\section{Simulation simplifications}\labsec{simulation simplifications}
 
 \subsection{Thermal behaviour}\labsec{monoblock thermal behaviour}
 Steady-state heat transfer simulations were performed with FESTIM with varying heat fluxes $\varphi_\mathrm{heat}$.
@@ -301,7 +299,7 @@ For the low flux case, it is negligble after only 1150 cycles.
 This therefore validates the continuous exposure simplification.
 
 
-\section{Monoblock behaviour law} \label{influence of exposure conditions}
+\section{Monoblock behaviour law}\labsec{influence of exposure conditions}
 
 \input{chapters/chapter3/monoblocks/parametric_study}
 
