@@ -1,6 +1,6 @@
 Fitting experimental data by manually tweaking parameters as in \sidecite{yu_deuterium_2019, hodille_macroscopic_2015} can be really time-consuming, sometimes days in some cases.
 Moreover, some possible solutions in the parameter space might be missed by the user.
-The goal of this study is to automate the parametric optimisation process by embedding FESTIM in a minimisation algorithm.
+This process has been automated by embedding FESTIM in a minimisation algorithm.
 
 As in manual fitting, the parametric optimisation problem is solved by minimising a function representing the residual between simulated results and some reference data.
 This function $f$ is called \textit{cost function}.
@@ -80,4 +80,4 @@ This will be even more true when increasing the number of free parameters since 
 It is worth noting that the Nelder-Mead algorithm is an unconstrained method.
 If constraints or bounds are needed, TNC might be a more suitable choice.
 
-Though in the following, the Nelder-Mead algorithm will be employed.
+Though in the following, the Nelder-Mead algorithm will be employed in the following cases.

@@ -9,7 +9,7 @@ Finally, the verification \& validation of FESTIM is performed to guaranty its r
 
 \section{H transport} \label{description_H_transport_model}
 
-This Section describes the main model for simulating H transport in materials.
+% This Section describes the main model for simulating H transport in materials.
 
 \subsection{Macroscopic Rate Equations model}
 
@@ -24,7 +24,7 @@ The particle flux $J$ is therefore expressed by:
     J = - D \nabla c_\mathrm{m}
 \end{equation}
 where $D$ is the diffusion coefficient in \si{m^2.s^{-1}}.
-This expression neglects the Soret effect or the effect of hydrostatic pressure.
+The Soret effect and the effect of hydrostatic pressure are here neglected due to a lack of data.
 
 % This particle flux can be expressed differently if additionnal physics are accounted for.
 % For instance, taking into account the Soret effect (also called thermodiffusion or thermophoresis), the particle flux is expressed as:
@@ -43,15 +43,14 @@ The spatio-temporal evolution of these concentrations is commonly described by t
 \end{equation}
 
 \begin{equation}
-    \frac{\partial c_{\mathrm{t}, i}}{\partial t}=k \cdot c_\mathrm{m} \cdot\left(n_{i}-c_{\mathrm{t}, i}\right)-p \cdot c_{\mathrm{t}, i}
+    \frac{\partial c_{\mathrm{t}, i}}{\partial t}=k_i \cdot c_\mathrm{m} \cdot\left(n_{i}-c_{\mathrm{t}, i}\right)-p_i \cdot c_{\mathrm{t}, i}
     \label{eq:trapped}
 \end{equation}
 
-In Equation \ref{eq:mobile}, $\Gamma$ is the volumetric source term of particles in \si{m^{-3}.s^{-1}}.
-The volumetric source term can be used to simulate any process producing H in the bulk.
+In Equation \ref{eq:mobile}, $\Gamma$ is the volumetric source term of particles in \si{m^{-3}.s^{-1}}, which can be used to simulate any process producing H in the bulk.
 This is the case for plasma implantation and nuclear reactions producing H.
 
-In Equation \ref{eq:trapped}, $k$ and $p$ are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively and $n_i$ is the trap density in \si{m^{-3}}.
+In Equation \ref{eq:trapped}, $k_i$ and $p_i$ are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively and $n_i$ is the trap density in \si{m^{-3}}.
 
 At steady state (\textit{ie} $\frac{\partial c_\mathrm{m}}{\partial t} = 0$ and $\frac{\partial c_{\mathrm{t}, i}}{\partial t} = 0$), the mobile H concentration is independent of $c_{\mathrm{t}, i}$.
 Equation \ref{eq:trapped} can be rewritten as:
@@ -59,7 +58,7 @@ Equation \ref{eq:trapped} can be rewritten as:
     c_{\mathrm{t}, i} = n_i \frac{1}{\frac{p}{k c_\mathrm{m}} + 1}
     \label{eq: steady state ct}
 \end{equation}
-The quantity $(p / (k c_\mathrm{m}) + 1)^{-1}$ determines the filling ratio of the trap. 
+The quantity $(p / (k c_\mathrm{m}) + 1)^{-1}$ determines the trap occupancy. 
 As it approaches one (high mobile concentration, low detrapping rate or high trapping rate), the trapped concentration approaches the trap density.
 As it approaches zero (high detrapping rate, low mobile concentration or low trapping rate), the trapped concentration approaches zero.
 
@@ -85,9 +84,9 @@ $f$ can also be expressed as a molecular recombination flux:
 where $K_r(T) = K_{r_0} \exp(\frac{-E_{K_r}}{k_B T}) $ is the recombination coefficient expressed in \si{m^{3n-2}.s^{-1}}, $\mathbf{n}$ is the boundary normal vector and $n \in \{1, 2\}$ is the order of the recombination.
 In a metal, $n=2$ and in a non-metallic liquid, $n=1$.
 Recombination occurs when hydrogen particles located at the surface of the material combine with other particles (which can be other hydrogen particles) and are no longer bonded with the metal surface.
-It can happen both in presence of a vacuum or when the metal is in contact with a fluid (gas or fluid).
+It can happen both in presence of a vacuum or when the metal is in contact with a fluid (gas or liquid).
 
-Similarly, a dissociation flux can be applied when a surface is in contact with a gas atmosphere of H (see Equation \ref{eq: dissociation flux}).
+Similarly, a dissociation flux can be applied when a surface is in contact with a gas atmosphere of H:
 \begin{equation}
     - D(T)\nabla c_\mathrm{m} \cdot \mathbf{n} = K_d(T) P \quad \text { on } \partial \Omega
     \label{eq: dissociation flux}
@@ -106,7 +105,7 @@ where $P$ is the partial pressure of hydrogen at the boundary in \si{Pa}, $S(T)=
 This law of equilibrium is a steady-state approximation of a more complex model which takes into account flux exchanges between adsorbed and mobile concentrations at the boundary.
 It is therefore valid when applied to cases where the kinetics are fast enough for the system to remain at equilibrium.
 
-\subsubsection{Analytical simplification for implanted sources of H} \label{triangle model}
+\subsubsection{Analytical simplification for an implanted source of H} \label{triangle model}
 
 Plasma implantation of hydrogen particles can be modelled with a volumetric source.
 Typically, the depth of the implantation profile is a few nanometres depending on the incident particles energy and incident angle.
@@ -146,6 +145,7 @@ $\varphi_\mathrm{bulk}$ can be expressed as:
 \begin{equation}
     \varphi_\mathrm{bulk} = D \cdot \frac{c_\mathrm{max}}{R_d(t) - R_p}
 \end{equation}
+with $R_d$ the diffusion depth.
 
 % When $t \rightarrow \infty$ or $R_d \gg R_p$ (a ratio of 10 or 100 is enough), $\varphi_\mathrm{bulk} \ll \varphi_\mathrm{recomb}$.
 When $R_d \gg R_p$, $\varphi_\mathrm{bulk} \rightarrow 0$.
@@ -163,21 +163,21 @@ Moreover, according to Fick's law, $\varphi_\mathrm{recomb}$ can be expressed as
     \label{eq:c_max}
 \end{eqnarray}
 
-Assuming second order recombination, $\varphi_\mathrm{recomb}$ can also be expressed as a function of the recombination coefficient $K$:
+Assuming second order recombination, $\varphi_\mathrm{recomb}$ can also be expressed as a function of the recombination coefficient $K_r$:
 
 \begin{eqnarray}
-    \varphi_\mathrm{recomb} &= K c_{0}^{2} = \varphi_\mathrm{imp}\\
-    \Leftrightarrow c_{0} &= \sqrt{\frac{\varphi_\mathrm{imp}}{K}}
+    \varphi_\mathrm{recomb} &= K_r c_{0}^{2} = \varphi_\mathrm{imp}\\
+    \Leftrightarrow c_{0} &= \sqrt{\frac{\varphi_\mathrm{imp}}{K_r}}
     \label{eq:c_0}
 \end{eqnarray}
 
 By replacing Equation \ref{eq:c_0} in Equation \ref{eq:c_max} one can obtain:
 
 \begin{equation}
-    c_\mathrm{max} = \frac{\varphi_\mathrm{imp} R_{p}}{D}+\sqrt{\frac{\varphi_\mathrm{imp}}{K}}
+    c_\mathrm{max} = \frac{\varphi_\mathrm{imp} R_{p}}{D}+\sqrt{\frac{\varphi_\mathrm{imp}}{K_r}}
 \end{equation}
 
-As the recombination process becomes fast (\textit{ie} $K \rightarrow \infty$), $c_0 \rightarrow 0$ and $c_\mathrm{max} \rightarrow \frac{\varphi_\mathrm{imp} R_{p}}{D}$.
+As the recombination process becomes fast (\textit{ie} $K_r \rightarrow \infty$), $c_0 \rightarrow 0$ and $c_\mathrm{max} \rightarrow \frac{\varphi_\mathrm{imp} R_{p}}{D}$.
 
 Since the main driver for the diffusion is the value $c_\mathrm{max}$, when $R_p$ is negligeable compared to the dimension of the simulation domain, one can simply impose this value at the surface.
 % This analytical simplification is especially useful to simulate implanted sources near the surface (\textit{eg} plasma implantation) without having to finely discretise the domain to fully represent the gaussian distribution.
@@ -185,15 +185,16 @@ Since the main driver for the diffusion is the value $c_\mathrm{max}$, when $R_p
 
 A transient solution based on trap properties can be derived \sidecite{hodille_study_2016}:
 \begin{equation}
-    c_\mathrm{max}=\left( \frac{R_p \varphi_\mathrm{imp}}{D} + \sqrt{\frac{\varphi_\mathrm{imp}}{K}} \right) \cdot \frac{\tau}{t} \cdot\left(\sqrt{1+\frac{t}{\tau}}-1\right)^2
+    c_\mathrm{max}(t)=\left( \frac{R_p \varphi_\mathrm{imp}}{D} + \sqrt{\frac{\varphi_\mathrm{imp}}{K_r}} \right) \cdot \frac{\tau}{t} \cdot\left(\sqrt{1+\frac{t}{\tau}}-1\right)^2
 \end{equation}
 where $\tau$ is a characteristic time expressed by:
 \begin{equation}
     \tau = \frac{R_p \sum R_i \, n_i}{8 \varphi_\mathrm{imp}}
 \end{equation}
 In this expression, $R_i = (p / (k c_\mathrm{max}) + 1)^{-1}$ represents the maximum filling ratio of the trap $i$ and $n_i$ is the trap density.
+When $t \gg \tau$, $c_\mathrm{max}(t) \approx \frac{R_p \varphi_\mathrm{imp}}{D} + \sqrt{\frac{\varphi_\mathrm{imp}}{K_r}}$
 
-\subsection{Interface condition: conservation of chemical potential}
+\subsection{Interface condition: conservation of chemical potential}\labsec{conservation of chemical potential}
 % According to Krom \textit{et al} \sidecite{krom_hydrogen_2000}, since the solubility of hydrogen atoms in solids is low, the chemical potential of solute hydrogen $\mu$ is expressed by:
 % \begin{equation}
 %     \mu = \mu_0 + RT \ln\left( \frac{c_\mathrm{m}}{N_L}\right)
@@ -216,25 +217,6 @@ In this expression, $R_i = (p / (k c_\mathrm{max}) + 1)^{-1}$ represents the max
 %     D^- \nabla c_\mathrm{m}^- = D^+ \nabla c_\mathrm{m}^+ \label{eq: flux conservation} 
 % \end{equation}
 
-The continuity of chemical potential is conveyed by the continuity of $P$, the local partial pressure of hydrogen at equilibrium.
-In a metal, $P$ can be expressed from Sievert's law of solubility:
-\begin{equation}
-    P = (c_\mathrm{m}^-/S^-)^2
-\end{equation}
-with $S$ the solubility of H in the materials expressed in \si{m^{-3}.Pa^{-0.5}}.
-% A way to picture the continuity of chemical potential is to imagine a gas layer at the interface between two materials at a partial pressure $P_\mathrm{eq}$.
-% $P_\mathrm{eq}$ can be expressed by the solubility law at the surface of each material.
-At the interface between two metallic surfaces, the chemical potential continuity is therefore conveyed by the continuity of the quantity $c_\mathrm{m}/S$:
-\begin{equation}
-    (c_\mathrm{m}^-/S^-)^2 = (c_\mathrm{m}^+/S^+)^2
-    \label{eq: c/s conservation}
-\end{equation}
-
-In the case of a metal in contact with a non-metallic liquid behaving according to Henry's law (\textit{eg} a molten salt):
-\begin{equation}
-    (c_\mathrm{m}^-/S^-)^2 = c_\mathrm{m}^+/S^+
-\end{equation}
-with $S$ the solubility of H in the materials expressed in \si{m^{-3}.Pa^{-0.5}} or \si{m^{-3}.Pa^{-1}}.
 
 % This assumption is correct as long as the time needed to reach the equilibrium is low compared to the time of the simulation.
 % For long exposure time as well as for high temperatures, the characteristic time is small enough for the equilibrium model to be valid (see page \refpage{Interface transient model}).
@@ -242,7 +224,7 @@ with $S$ the solubility of H in the materials expressed in \si{m^{-3}.Pa^{-0.5}}
 % From Equation \ref{eq: c/s conservation}, one can deduce that a solubility discontinuity across an interface induces a discontinuity of mobile hydrogen concentration $c_\mathrm{m}$.
 % This can also be interpreted as the chemical potentials at a reference state being different in different materials \sidecite{kirchheim_25_2014}, as the lattice site concentration.
 
-FESTIM ensures the continuity of chemical potential by performing a change of variable in Fick's second law of diffusion with $\phi = c_\mathrm{m}/S$ (in the case of a metal) \sidecite{smith_abaqusstandard_2009} when internal conditions cannot be set.
+The continuity of chemical potential can be ensured by performing a change of variable in Fick's second law of diffusion with $\phi = c_\mathrm{m}/S$ (in the case of a metal) \sidecite{smith_abaqusstandard_2009} when internal conditions cannot be set.
 Neglecting the trapping and generation terms, Equation \ref{eq:mobile} therefore reads:
 
 \begin{align}
@@ -294,7 +276,7 @@ Finally, to model a convective heat flux when the surface is in contact with a f
     -\lambda \nabla T \cdot \mathbf{n} = h (T - T_\mathrm{ext}) \quad \text { on } \partial \Omega
     \label{eq: convective bc T}
 \end{equation}
-where $\lambda$ is the thermal conductivity in \si{W.m^{-1}.K^{-1}}, $\mathbf{n}$ is the boundary normal vector, $h$ is the heat transfer coefficient in \si{W.m^{-2}.K^{-1}}, $T_\mathrm{ext}$ is the fluid temperature in \si{K} and $\partial \Omega$ is the domain boundary.
+where $h$ is the heat transfer coefficient in \si{W.m^{-2}.K^{-1}}, $T_\mathrm{ext}$ is the fluid temperature in \si{K} and $\partial \Omega$ is the domain boundary.
 The heat transfer coefficient can be dependent on the temperature and the flow characteristics.
 It is obtained by computing the Nusselt number from correlations linking it to the Reynolds number of the flow and the Prandtl number of the fluid \sidecite{poirier_correlations_2016} (\textit{eg} Dittus-Boetler, Sieder-State, Gnielinski, ...).
 Once the Nusselt number is known, the heat transfer coefficient $h$ reads:
@@ -308,7 +290,7 @@ with $\lambda$ the thermal conductivity of the fluid in \si{W.m^{-1}.K^{-1}}, $\
 
 
 The models described in this Section can be hard to solve analytically for complex problems (complex geometries, transients, combined boundary conditions, etc).
-The code FESTIM \sidecite{delaporte-mathurin_finite_2019} was therefore developped in order to solve these equations numerically.
+The code FESTIM \sidecite{delaporte-mathurin_finite_2019} was therefore developped in order to numerically solve these coupled equations.
 
 \subsection{The finite element method: FEniCS}
 FESTIM is based on the Finite Element Method to solve this set of differential equations and boundary conditions.
@@ -386,7 +368,7 @@ The approximated solution $u_h$ therefore reads (see Figure \ref{fig: example ap
     u_h(x) = \sum^N_{i=1}U_i \phi_i(x)
     \label{eq: FEM solution}
 \end{equation}
-where $U_i$ are the coefficient to be determined (called degrees of freedom).
+where $U_i$ are the coefficient to be determined one each node (called degrees of freedom).
 $N$ is the number of nodes used to discretise the domain.
 
 \begin{figure}
@@ -427,12 +409,12 @@ Users only have to provide inputs such as material properties, traps properties,
 In other words, users do not need to be finite element experts to run a FESTIM simulation (though knowledge and experience in finite elements will help in solving numerical problems).
 
 % user friendly
-Multi-dimensional transient simulations coupled with heat transfer can therefore be run fairly easily without finite element knowledge.
+Multi-dimensional multi-material transient simulations coupled with heat transfer can therefore be run fairly easily without finite element knowledge.
 Nevertheless, since FESTIM is object-oriented, advanced users will always be able to turn FESTIM inside-out to adapt the code to their specific needs (specific boundary conditions, slight changes in the governing equations...).
 Since FESTIM is written in python - which is a fairly easy-to-learn programming langage - no advanced level of coding is required.
 
 % physics
-As mentioned above, FESTIM simulates hydrogen transport (diffusion and trapping) and additional physics can be incorporated, such as the Soret effect (also called thermophoresis) and conservation of chemical potential at interfaces...
+As mentioned above, FESTIM simulates hydrogen transport (diffusion and trapping) and additional physics can be incorporated, such as the Soret effect (even though not used in this work) and conservation of chemical potential at interfaces...
 The hydrogen transport equations can be coupled to the heat equation (weak coupling).
 Various types of boundary conditions are available for both the H transport (imposed concentration, recombination flux, dissociation flux, implanted source approximation...) and the heat transfer problems (imposed temperature, imposed flux, convective flux...).
 Traps densities in FESTIM can also be time-dependent allowing the users to simulate extrinsic traps (\textit{eg} irradiation induced traps, stress induced traps...).
@@ -490,10 +472,10 @@ This Section details the V\&V of FESTIM.
 
 The macroscopic rate equations model describing the transport (diffusion and trapping) of H in solids was presented alongside with additional models such as the conservation of chemical potential at interfaces.
 Due to the presence of thermally activated processes (diffusion, trapping, detrapping, surface processes, ...), the heat transfer equation has to be solved numerically.
-All these equations are solved with the finite element code FESTIM, which heavily relies of FEniCS.
+All these equations are solved with the newly developed finite element code FESTIM, which heavily relies of FEniCS.
 
 FESTIM has been verified using methods such as the Method of Exact Solutions and the Method of Manufactured Solutions.
-On the other hand, it was shown that FESTIM could be employed to reproduce experiments (TDS experiments) performed on Tungsten, Aluminium, Beryllium and EUROFER.
+On the other hand, it was shown that FESTIM could be employed to reproduce experiments (TDS experiments) performed on tungsten.
 This validation process could be extended by reproducing other types of experiments such as permeation experiments and profilometry.
 However, this set of equation (shared amongst H transport codes) has already proven to be capable of reproducing these experiments.
 This has been done, for instance, during the validation of TMAP7 \sidecite{longhurst_tmap7_2008}.

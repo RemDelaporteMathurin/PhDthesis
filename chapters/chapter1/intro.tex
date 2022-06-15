@@ -4,19 +4,6 @@
 \chapter{Fusion: general introduction}\label{Chapter1}
 % For referencing the chapter elsewhere, use \ref{Chapter1} 
 
-"\textit{I would put my money on the sun! What a source of power! I hope we don't have to wait until oil and coal run out before we tackle that.}" Thomas Edison once said.
-The use of fossil fuels (coal, gas, oil) has allowed the modern human civilisation to reach its current standard of living.
-However, their intensive use led to astronomical carbon dioxyde (CO2) emissions.
-Since Edison died in 1931, 1500 billion tonnes of CO2 have been emitted on Earth from burning fossil fuels and about 33 bilion tonnes of CO2 are still being released every year \cite{friedlingstein_global_2021}.
-The consequence of these emissions is global warming and these CO2 emissions must stop in order to limit it to an "acceptable" level - regardless of the remaining oil and coal reserves.
-Reducing the CO2 emissions implies reducing the world energy consumption while developping clean sources of energy.
-It is very unlikely that these new sources will be able to completely replace fossil fuels.
-They would however act as a shock absorber in the energy crisis mankind is facing.
-
-When looking at the Sun, Edison saw how massive and inexhaustible its energy was.
-The process powering the stars is called \textit{nuclear fusion}.
-It does not release any greenhouse gases, it is energetically dense and its fuel is abundant on Earth.
-Could it be one of these new sources of energy?
 
 \section{Thermonuclear fusion}
 
@@ -26,7 +13,7 @@ The mass difference between the products and the reactants is released in the fo
     E = \Delta m c^2
     \label{eq: emc2}
 \end{equation}
-where $\Delta m$ is the mass difference, $c$ is the speed of light.
+where $\Delta m$ is the mass difference, $c$ is the speed of light in vacuum.
 This process is the opposite process of nuclear fission, powering the current nuclear plants.
 
 When looking at the different binding energies per nucleon of the elements (see Figure \ref{fig: binding energy per nucleon}), it becomes clear that light elements release energy from fusion and heavy elements release energy from fission.
@@ -55,14 +42,13 @@ where $k_B = \SI{1.3806e-23}{m^2.s^{-2}.kg.K^{-1}}$ is the Boltzmann constant, $
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/potential_energy.pdf}
-    \caption{Potential energy diagram}
+    \caption{Evolution of the potential energy of two nuclei with their relative distance. Reproduced from \cite{mccracken_fusion_2013}.}
     \label{fig: potential energy diagram fusion}
 \end{figure}
 
 Hydrogen, as the lightest element, has the lowest fusion temperature.
 It is also the most abundant element on Earth (although bond to other elements).
-Depending on which hydrogen isotope is used, different fusion reactions are possible (see Equations \ref{eq: fusion reactions}).
-Each of these reactions has a different cross-section.
+Depending on which hydrogen isotope is used, different fusion reactions are possible (see Equations \ref{eq: fusion reactions}) \cite{forrest_fendl-3_2012}.
 
 \begin{subequations}
     \begin{equation}
@@ -83,13 +69,13 @@ Each of these reactions has a different cross-section.
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/cross_sections_vs_temperature__Bosch.pdf}
-    \caption{Fusion cross sections}
+    \caption{Fusion cross sections \cite{forrest_fendl-3_2012}.}
     \label{fig: fusion cross sections}
 \end{figure}
-
-The deuterium-tritium (DT) reaction is the one with the highest cross-section (probability) at "low" temperature (see Figure \ref{fig: fusion cross sections}).
+Each of these reactions has a different cross-section (measure of the reaction probability).
+The deuterium-tritium (DT) reaction is the one with the highest cross-section at "low" temperature (see Figure \ref{fig: fusion cross sections}).
 This is the reason why this reaction has been the focus of nuclear fusion for decades.
-More recently, private companies have started experimenting with more exotic reactions like proton-boron (TAE Technologies) or D-He3 (Helion Energy).
+More recently, private companies have started experimenting with more exotic reactions like proton-boron (TAE Technologies) or $^2$H-$^3$He (Helion Energy).
 
 % \begin{figure} [h]
 %     \centering
@@ -99,7 +85,7 @@ More recently, private companies have started experimenting with more exotic rea
 
 \section{Tokamaks: how to bottle a star}
 
-\subsection{Technology}
+\subsection{Technology \cite{mccracken_fusion_2013}}
 As explained above, for fusion to occur, the fuel must be heated up to millions of degrees.
 A these temperatures, the DT gas becomes a plasma where electrons are teared out from the nuclei.
 The principle of magnetic confinement reactors is to trap the electrically charged particles in a magnetic cage.
@@ -137,21 +123,21 @@ The main drawback of the the stellarator is the complexity of the coils.
 Since each coil has a unique shape, the cost of manufacturing such a reactor is higher than tokamaks for which coils can be manufactured in serial.
 
 \subsection{Triple product}
-The power balance in a fusion reactor is given by:
+The power balance in a fusion reactor is given by \cite{mccracken_fusion_2013}:
 \begin{equation}
     \frac{\partial W}{\partial t} = P_\mathrm{fusion} + P_\mathrm{heating} - P_\mathrm{losses}
     \label{eq: plasma energy balance}
 \end{equation}
-$W$ is the thermal energy stored in the plasma and can be expressed in \si{J.m^{-3}} by:
+$W$ is the thermal energy density stored in the plasma and can be expressed in \si{J.m^{-3}} by:
 \begin{equation}
     W = 3 n T
 \end{equation}
-where $n$ is the plasma density in \si{m^{-3}} and $T$ is the plasma temperature in \si{eV}.
-$P_\mathrm{fusion}$, expressed in \si{W.m^{-3}}, is the power generated from fusion reactions themselves and can be expressed by:
+where $n$ is the plasma density in \si{m^{-3}} and $T$ is the plasma temperature in \si{J}.
+$P_\mathrm{fusion}$, expressed in \si{W.m^{-3}}, is the power density generated from fusion reactions themselves and can be expressed by:
 \begin{equation}
     P_\mathrm{fusion} = n_D n_T \left\langle \sigma \right\rangle E
 \end{equation}
-where $n_D$ and $n_T$ are the densities in \si{m^{-3}} of deuterium and tritium respectively, $\left\langle \sigma \right\rangle$ is the DT cross-section in \si{m^3.s^{-1}} and $E$ is the energy of the fusion reaction in \si{J}.
+where $n_D$ and $n_T$ are the densities in \si{m^{-3}} of deuterium and tritium respectively, $\left\langle \sigma \right\rangle$ is the DT reactivity in \si{m^3.s^{-1}} and $E$ is the energy of the fusion reaction in \si{J}.
 Because the neutrons have little interaction with the plasma, $E \approx E_\alpha = \SI{3.56}{MeV}$.
 Moreover, assuming a 50\%-50\% mixture of deuterium and tritium, $n_D = n_T = \frac{1}{2} n$.
 The fusion power can therefore be written as:
@@ -207,20 +193,27 @@ This is known as the Lawson criterion, which needs to be satisfied in order to r
 Fusion devices can therefore be classified into three categories.
 Stars like our Sun have very high confinement times and densities while remaining at relatively low temperatures (the sun Core is at \SI{1.2}{keV}).
 Magnetic confinement devices (tokamaks, stellarators, etc.) exhibit temperatures orders of magnitude higher than stars but have confinement times of the order of $\sim \SI{1}{s}$.
-A third way of achieving fusion is to heat and compress a target of fuel with either lasers (NIF, Laser Mega Joule), pistons (General Fusion) or by smashing it at high speed with a projectile (First Light Fusion).
+A third way of achieving fusion is to heat and compress a target of fuel with either lasers (NIF \sidecite{zylstra_burning_2022}, Laser Mega Joule \sidecite{miquel_laser_2016}), pistons (General Fusion) or by smashing it at high speed with a projectile (First Light Fusion).
 These devices, known as \textit{inertial fusion devices}, exhibit extremely high densities ($\sim \SI{e31}{m^{-3}}$) but short confinement times ($\sim \SI{e-11}{s}$).
  
 So far, no fusion device has been able to even reach \textit{break-even} ($Q = 1$) (see Figure \ref{fig: triple product vs T}).
-The record of $Q = 0.68$ by the European tokamak JET (Joint European Torus) and was performed in 1997.
-The objective of the ITER tokamak, currently under construction in France, is to demonstrate an amplification factor of $Q=10$ over \SI{400}{s}. 
-Other designs aim at demonstrating plasma gain (\textit{ie} $Q > 1$) sooner than ITER and at a smaller scale.
-This is the case of SPARC and ARC developed by Commonwealth Fusion Systems and MIT \sidecite{sorbom_arc_2015,creely_overview_2020}.
+The record of $Q = 0.68$ by the European tokamak JET (Joint European Torus) and was performed in 1997 \sidecite{mailloux_overview_2022}.
+The objective of the ITER tokamak, currently under construction in France, is to demonstrate an amplification factor of $Q=10$ over \SI{400}{s} \sidecite{casper_development_2013}. 
+Note that ITER will not produce any electricity as this will be the role of a future fusion reactor: DEMO \sidecite{federici_overview_2014}.
+Other designs aim at demonstrating plasma gain (\textit{ie} $Q > 1$) sooner than ITER and at a smaller scale (see \reffig{comparison reactors}).
+This is the case of SPARC and ARC developed by Commonwealth Fusion Systems and MIT \sidecite{sorbom_arc_2015,creely_overview_2020} or STEP designed by the United Kingdom Atomic Energy Authority (UKAEA) \sidecite{wilson_steppathway_2020}.
 
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/triple_product_vs_T.pdf}
-    \caption{Triple product. An interactive version of this plot is available at \href{https://remdelaportemathurin.github.io/fusion-world/}{https://remdelaportemathurin.github.io/fusion-world/}.}
+    \caption{Triple product. An interactive version of this plot is available at \cite{delaporte-mathurin_remdelaportemathurinfusion-world_2022}.}
     \label{fig: triple product vs T}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=0.9\linewidth]{Figures/Chapter1/comparison_reactors.pdf}
+    \caption{Comparison of the tokamaks ITER, JET, ARC, WEST and SPARC. Data from \cite{delaporte-mathurin_remdelaportemathurinfusion-world_2022}.}
+    \labfig{comparison reactors}
 \end{figure}
 
 \subsection{Plasma-facing materials}
@@ -251,7 +244,7 @@ Tungsten has a very high melting point (\SI{3422}{°C}) and retains less tritium
 However, tungsten being a high-Z element, eroded tungsten will make the plasma radiate and cool it down.
 For this reason, the ITER divertor will be made of tungsten but the first wall (which has a large surface area) will be made of beryllium.
 
-\subsection{Divertor}
+\subsection{Divertor}\label{divertor section}
 
 In a fusion reactor, heat and particles (fusion ashes) need to be extracted.
 In most tokamaks, the escaping plasma is diverted towards a dedicated component that is heat-resistant.
@@ -272,11 +265,11 @@ At these strike points, the targets will experience very intense heat and partic
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/divertor_exposure_conditions.pdf}
-    \caption{Heat flux, particle flux and particle energy along the ITER divertor computed by SOLPS (shot \#122399).}
+    \caption{Heat flux, particle flux and particle energy along the ITER divertor computed by SOLPS (shot \#122399) \cite{pitts_physics_2019}.}
     \labfig{divertor exposure conditions}
 \end{figure}
 
-The divertors of ITER and DEMO will be composed of small unit bricks called \textit{monoblocks} (see Figure \ref{fig: inner target photo}).
+The divertors of ITER and DEMO will be composed of small unit bricks of a few dozens of milimetres called \textit{monoblocks} (see Figure \ref{fig: inner target photo}).
 Monoblocks are typically made of a tungsten substrate with a cooling pipe running through.
 This cooling channel is necessary to keep the component's temperature below its operating limit and exhaust heat.
 
@@ -317,8 +310,8 @@ Studies on ITER-like monoblocks have demonstrated the resistance of the monobloc
 
 \section{The tritium issue} \label{the tritium issue}
 
-Tritium is a radioactive isotope of hydrogen.
-Its half-life is approximately 12 years and it decays into helium-3 emitting a beta particle (see Equation \ref{eq: tritium decay}).
+Tritium is a radioactive isotope of hydrogen with a half-life is approximately 12 years \sidecite{jordan_half-life_1967}.
+It decays into $^3$He emitting a beta particle (see Equation \ref{eq: tritium decay}).
 
 \begin{equation}
     \ce{^3H -> ^3He + e^- (\SI{0.018590}{MeV})}
@@ -498,17 +491,21 @@ Depending on the position in the DEMO divertor, cumulative helium production ove
 \end{figure}
 
 \subsubsection{Diffusion}
-The repulsion of metal atoms with solute species creates wells of potential energy located at interstitial sites.
+The repulsion of metal atoms with solute species creates wells of potential energy located at interstitial sites (see Figure \ref{fig: potential energy diagram metal lattice}).
 The soluted atoms in metals can then jump from interstitial site to another thanks to thermal vibration.
 This process is called \textit{diffusion}.
-Diffusion is a thermally activated process governed by a diffusion coefficient $D$ expressed in \si{m^2.s^{-1}}, which usually follows an Arrhenius law:
+The "height" of the potential energy wells is called the diffusion \textit{activation energy} or \textit{energy barrier} $E_D$.
+Diffusion is therefore a thermally activated process governed by a diffusion coefficient $D$ expressed in \si{m^2.s^{-1}}, which follows an Arrhenius law:
 \begin{equation}
     D = D_0 \exp{(-E_D/k_B T)}
 \end{equation}
-where $E_D$ is the activation energy of diffusion in \si{eV}, $T$ is the temperature in \si{K}, $k_B$ is the Boltzmann constant in \si{eV.K^{-1}}.
-The "height" of the potential energy wells can be associated with the activation energy $E_D$, also called \textit{energy barrier} (see Figure \ref{fig: potential energy diagram metal lattice}).
+where $E_D$ is expressed in \si{eV}, $T$ is the temperature in \si{K}, $k_B$ is the Boltzmann constant in \si{eV.K^{-1}}.
 
-Diffusion can also be assisted by temperature gradients (called the \textit{Soret effect} or \textit{thermophoresis}) \sidecite{martinez_thermal_2021, hodille_estimation_2017} or hydrostatic pressure gradients \sidecite{benannoune_multidimensional_2020}.
+Diffusion can also be assisted by temperature gradients (called the \textit{Soret effect} or \textit{thermophoresis}) \sidecite{martinez_thermal_2021, hodille_estimation_2017} or hydrostatic pressure gradients.
+The tungsten property to simulate the Soret effect (Soret coefficient or heat of transport) is currently missing from litterature (for hydrogen).
+Hodille \textit{et al} used the properties of steel as an approximation \cite{hodille_estimation_2017}.
+Bennanoune and coworkers performed hydrogen transport studies with hydrostatic pressure gradients showing it could have an impact of around \SI{10}{\%} in steel components \sidecite{benannoune_multidimensional_2020}.
+Studies are currently being performed for tungsten.
 
 % MD simulations
 Diffusion coefficients (also called diffusivities) can be computed by Molecular Dynamics (MD) and Density Functional Theory (DFT).
@@ -539,46 +536,25 @@ This modelling technique was used to estimate the diffusion coefficient of H in 
 
 % Experiments
 Diffusivity of hydrogen has also been measured experimentally in W \sidecite{frauenfelder_solution_1969, anderl_hydrogen_1990}, copper and copper alloys (CuCrZr) \sidecite{anderl_deuterium_1992} and other metals.
+Note that the diffusion coefficients measured experimentally are usually effective coefficients accounting for trapping effects (detailed below).
 % EUROFER \sidecite{montupet-leblond_permeation_2021,esteban_hydrogen_2007,aiello_hydrogen_2002}, 
 Because He tends to cluster (as explained below), measuring its diffusivity experimentally is extremely complicated and therefore most estimations of He diffusion coefficient are numerical.
+\reffig{diffusivity materials} is a collection of diffusivity values found in literature (measured experimentally or computed) for tungsten, copper and CuCrZr.
 
-\reffig{diffusivity solubility materials} is a collection of diffusivity and solubility values found in literature (measured experimentally or computed) for tungsten, copper and CuCrZr.
-
-The diffusivities of copper and CuCrZr are comparable (see \reffig{diffusivity solubility copper} and \reffig{diffusivity solubility cucrzr}).
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/materials_properties_review_comparison.pdf}
-    \caption{Diffusivity and solubility values for tungsten \cite{heinola_first-principles_2010, frauenfelder_solution_1969}, copper \cite{reiter_compilation_1996} and CuCrZr \cite{serra_hydrogen_1998}.}
-    \labfig{diffusivity solubility materials}
-\end{figure}
+% The diffusivities of copper and CuCrZr are comparable (see \reffig{diffusivity solubility copper} and \reffig{diffusivity solubility cucrzr}).
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/tungsten_properties_review.pdf}
-    \caption{Diffusivity and solubility values for tungsten.}
-    \labfig{diffusivity solubility tungsten}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/copper_properties_review.pdf}
-    \caption{Diffusivity and solubility values for copper.}
-    \labfig{diffusivity solubility copper}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/cucrzr_properties_review.pdf}
-    \caption{Diffusivity and solubility values for CuCrZr.}
-    \labfig{diffusivity solubility cucrzr}
+    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/materials_diffusivity_review_comparison.pdf}
+    \caption{Diffusivity values for tungsten, copper and CuCrZr. Data from \cite{delaporte-mathurin_remdelaportemathurinh-transport-materials_2022}.}
+    \labfig{diffusivity materials}
 \end{figure}
 
 \subsubsection{Trapping at defects}
 
 Due to the repulsion between solute species and the surrounding metal atoms, defects can act as wells of potential energy for solute species (see Figure \ref{fig: potential energy diagram metal lattice}).
 Once in that attractive well, species can escape it only if their kinetic energy (\textit{ie} the temperature) is high enough.
-Species can be trapped at vacancies, disolcation loops, self-interstitial atoms (in the case of hydrogen in tungsten), impurities, etc.
+Species can be trapped at vacancies, dislocation loops, self-interstitial atoms (in the case of hydrogen in tungsten), impurities, etc.
 
 The trapping process can be described as:
 \begin{equation}
@@ -594,7 +570,7 @@ where $E_k$ is the trapping energy in \si{eV}, $k_B$ is the Boltzmann constant i
 A common assumption is that $E_k = E_D$.
 
 Each rate therefore has two parameters: the pre-activation factor and the activation energy.
-These parameters can be measured from fitting Thermo-Desorption Spectrometry (TDS) experiments.
+These parameters can be identified from fitting Thermo-Desorption Spectrometry (TDS) experiments.
 TDS experiments consist in loading a metal sample with the studied species (\textit{eg} H or He) and heat it at different temperatures with a well controlled temperature ramp (\textit{eg} \SI{1}{K.s^{-1}}, \SI{10}{K.s^{-1}}...) while measuring the desorption flux.
 This results in a spectrum which typically has one or several desorption peaks corresponding to different traps (see Figure \ref{fig: TDS example ialovega}).
 Peaks appearing at high temperatures correspond to "deep" traps with a high detrapping energy $E_p$.
@@ -614,14 +590,17 @@ DFT calculations also show that defects like mono-vacancies, dislocations or gra
 As the number of trapped particles (helium or hydrogen) increases, the binding energy of a particle with the defect usually decreases.
 In other words, the more particles are trapped in a defect the easier it is for a hydrogen atom to escape.
 For instance, the binding energy of a helium atom in an empty mono-vacancy is around \SI{4}{eV} and around \SI{2.5}{eV} if the vacancy already retains four helium atoms \cite{faney_spatially_2015}.
-Similarly, the binding energy of a hydrogen atom in a mono-vacancy varies from \SI{0.5}{eV} (with six hydrogen atoms trapped) to \SI{1.3}{eV} (empty vacancy).
+Similarly, the binding energy of a hydrogen atom in a mono-vacancy varies from \SI{0.5}{eV} (with six hydrogen atoms trapped) to \SI{1.3}{eV} (empty vacancy) (see Figure \ref{fig: trapping energy hydrogen in tungsten}).
 
 \begin{figure*}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/trapping_energy_hydrogen_in_tungsten.pdf}
-    \caption{Detrapping energy of a hydrogen atom in several vacancies, impurities, self-interstitial atoms (SIA), grain boundaries (GB), in tungsten depending on the number of trapped hydrogen atoms. Reproduced from \cite{hodille_study_2016}.}
+    \caption{Detrapping energy of a hydrogen atom in several defects in tungsten: vacancies, impurities, self-interstitial atoms (SIA), grain boundaries (GB), in tungsten depending on the number of trapped hydrogen atoms. Reproduced from \cite{hodille_study_2016}.}
     \label{fig: trapping energy hydrogen in tungsten}
 \end{figure*}
+
+Defects can either be pre-existent in the material (sometimes called \textit{intrinsic} defects): impurities, grain boundaries, etc.
+They can also be created from external factors (\textit{extrinsic} defects) like particle bombardment (ions, neutrons) \sidecite{ogorodnikova_deuterium_2003} or mechanical stress \sidecite{benannoune_multidimensional_2020}.
 
 \subsubsection{Surface dissolution}
 
@@ -670,9 +649,60 @@ This relationship is known as Henry's law of solubility and $K_H = K_\mathrm{abs
 When the absorption/desorption order is $n=2$ (diatomic absorption):
 \begin{equation}
     c_\mathrm{surface} = K_S \sqrt{P}
+    \labeq{sievert's law}
 \end{equation}
 This equilbrium is known as Sievert's law of solubility and $K_S = \sqrt{2 K_\mathrm{abs}/K_\mathrm{des}}$ is the material solubility expressed in \si{m^{-3}.Pa^{-0.5}}.
-The solubility of tungsten, copper and CuCrZr are described in \reffig{diffusivity solubility materials}, \reffig{diffusivity solubility tungsten}, \reffig{diffusivity solubility copper} and \reffig{diffusivity solubility cucrzr}.
+The solubility of tungsten, copper and CuCrZr are described in \reffig{solubility materials}.
+
+The product of the solubility and diffusivity is called \textit{permeability}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/materials_solubility_review_comparison.pdf}
+    \caption{Solubitity values for tungsten, copper and CuCrZr. Data from \cite{delaporte-mathurin_remdelaportemathurinh-transport-materials_2022}.}
+    \labfig{solubility materials}
+\end{figure}
+
+\subsubsection{Interface between materials}
+At the interface between two materials, the continuity of chemical potential has to be ensured \sidecite{krom_hydrogen_2000}.
+The continuity of chemical potential is conveyed by the continuity of $P$, the local partial pressure of hydrogen at equilibrium.
+In a metal, $P$ can be expressed from Sievert's law of solubility (see \refeq{sievert's law}):
+\begin{equation}
+    P = (c_\mathrm{m}^-/S^-)^2
+\end{equation}
+with $c_\mathrm{m}$ the concentration of mobile species in the material, $S$ the solubility in the materials expressed in \si{m^{-3}.Pa^{-0.5}}.
+% A way to picture the continuity of chemical potential is to imagine a gas layer at the interface between two materials at a partial pressure $P_\mathrm{eq}$.
+% $P_\mathrm{eq}$ can be expressed by the solubility law at the surface of each material.
+At the interface between two metallic surfaces, the chemical potential continuity is therefore conveyed by the continuity of the quantity $c_\mathrm{m}/S$:
+\begin{equation}
+    (c_\mathrm{m}^-/S^-)^2 = (c_\mathrm{m}^+/S^+)^2
+    \label{eq: c/s conservation}
+\end{equation}
+
+In the case of a metal in contact with a non-metallic liquid behaving according to Henry's law (\textit{eg} a molten salt):
+\begin{equation}
+    (c_\mathrm{m}^-/S^-)^2 = c_\mathrm{m}^+/S^+
+\end{equation}
+with $S$ the solubility of H in the materials expressed in \si{m^{-3}.Pa^{-0.5}} or \si{m^{-3}.Pa^{-1}}.
+
+A jump in concentration will therefore occur at the interface bewteen two materials with different solubilities.
+
+\subsubsection{Advection in liquids}
+Advection occurs when a mobile species is in a liquid (molten salts, water, coolants...) and depends on the liquid velocity.
+This advective transport adds up to the diffusive transport.
+
+Depending on the liquid velocity and the species diffusivity in this liquid, the mass transport can be predominated by one of the two phenomena.
+The Péclet number $\mathrm{Pe}$ is a dimensionless number employed to estimate this dominance.
+
+\begin{equation}
+    \mathrm{Pe} = \frac{\mathrm{advective \; transport \; rate}}{\mathrm{diffusive \; transport \; rate}} = \frac{L u}{D}
+\end{equation}
+where $L$ is a charasteristic length, $u$ is the fluid velocity and $D$ is the species diffusivity in this fluid.
+
+When $\mathrm{Pe} \gg 1$, advection is the dominant transport phenomena.
+When $\mathrm{Pe} \ll 1$, diffusion dominates and advection can be neglected.
+
+For hydrogen diffusing in liquid LiPb (typically in a WCLL breeding blanket with a charasteristic length $L \approx \SI{1}{m}$), with $D \approx \SI{1e-9}{m^2.s^{-1}}$ and $u \approx \SI{1e-4}{m.s^{-1}}$ \sidecite{dark_influence_2021}, $\mathrm{Pe} \approx 10^{5}$, which means that advection dominates the mass transport and cannot be neglected.
 
 \subsubsection{Clustering}
 Single He atoms implanted into the material diffuse rapidly due to the high W-He repulsion.
@@ -728,10 +758,9 @@ This may not have an impact on He concentration on the macroscopic scale but mig
 
 The pressure inside the bubble and the bubble radius are two parameters of interest and are correlated.
 Sefta and co-workers \sidecite{sefta_surface_2013} proposed to use the Wolfer equation of state in order to determine the number of He atoms contained in a He bubble based on its pressure, the latter being calculated from its radius and its surface tension.
-Quir\'os \textit{et al} proposed a post-processing method to asses bubble radius and pressure from concentration profiles applied on H blistering \sidecite{quiros_blister_2017}.
 One must be aware that if radii and pressure of bubbles computation is quite straightforward using MD \sidecite{zhang_simulation_2019} or cluster dynamics \sidecite{faney_spatially_2015} simulations it will be more complex to estimate these metrics considering a continuum model that does not keep track of every type of clusters but only a few of them.
 The only information \textit{a priori} available in this case is indeed the local helium concentration and an equivalence could be found by either having a high density of small bubbles or a low density of big bubbles.
-An effort has been made by Ialovega and co-workers to measure the pressure inside helium bubbles using EELS (Electron Energy Loss Spectroscopy) \sidecite{ialovega_influence_2021}.
+An effort has been made by Ialovega and co-workers to measure the pressure inside helium bubbles using EELS (Electron Energy Loss Spectroscopy) \sidecite{ialovega_surface_2021}.
 This technique, consisting in analysing the electron energy loss as they interact with matter \sidecite{pyper_excited_2017}, showed evidence that the observed cavities (see Figure \ref{fig: he bubbles ialovega}) were filled with helium.
 
 \subsubsection{Blistering}
@@ -751,7 +780,7 @@ Eventually, if the rate of incoming atoms is greater that the rate of re-dissolu
 Similarly, if the rate of incoming atoms is less than the rate of re-dissolution in the bulk, the blister will collapse.
 
 Helium blistering has been observed in W at low temperature ($< \SI{1000}{K}$) \sidecite{baldwin_formation_2010}.
-H blistering was also observed in W \sidecite{haasz_effect_1999}, aluminium and beryllium \sidecite{quiros_blistering_2019,quiros_blister_2017}.
+H blistering was also observed in W \sidecite{haasz_effect_1999}.
 Causey \textit{et al} also reviewed a wide range of studies showing H exposure leads to blistering \sidecite{causey_hydrogen_2002}.
 Blistering was found to lead to hardening in W due to the production of dislocations \sidecite{chen_irradiation_2019}.
 It can also form cracks depending on the alloying elements in W and the microstructure \sidecite{ueda_hydrogen_2005}.
@@ -883,6 +912,7 @@ However, the tools currently available did not meet the requirements of either d
 
 Several simulation tools have been developed throughout the years (see Table \ref{tab: code comparison}).
 Most of these codes are not able to run multimaterial and/or multi-dimensional simulations.
+These features are however essential to fully simulate monoblocks (see \ref{divertor section}).
 Many of them rely on the Finite Differences Method (FDM) whereas HIT \sidecite{candido_integrated_2020}, Abaqus \sidecite{benannoune_multidimensional_2020} and ACHLYS \sidecite{stephen-dixon_aurora-multiphysicsachlys_2021} rely on the Finite Element Method (FEM).
 Moreover, some do not have an integrated heat transfer solver - essential for an accurate estimation of temperature fields and therefore thermally activated processes.
 Some of these codes rely on proprietary software like Abaqus or COMSOL for HIT - limiting their accessibility and scalability (parrallel computing).
@@ -918,7 +948,7 @@ This ruled out the use of Abaqus in its current state as it was initially design
 
 \begin{itemize}
     \item \textbf{\refch{Chapter2}} \newline
-The first part of this work was to develop a modelling tool - FESTIM - capable of solving hydrogen transport problem in 2D/3D.
+The first part of this work was to develop a model and a simulation tool - FESTIM - capable of solving hydrogen transport problem in 2D/3D.
 This Chapter will describe the mathematical models used in FESTIM as well as the global numerical implementation.
 Finally, it will detail the analytical verification and experimental validation strategy.
 This last point includes a code comparison with the reference code TMAP7.
@@ -930,12 +960,9 @@ A behaviour law linking the monoblock inventory to exposure conditions (surface 
 The next stage is to scale up from a monoblock model to a full divertor model.
 The behaviour law obtained in \refch{Chapter3} will be coupled to plasma simulations (providing distributions of exposure conditions).
 The inventory of the ITER and WEST divertors will be computed for several plasma scenarios.
-This Chapter will answer the questions \textit{"How does the tritium inventory evolve over the lifespan of the fusion reactor?"} and
-\textit{"Does it remain within the safety limits?"}
     \item \textbf{\refch{Chapter5}} \newline
 Finally, the influence of helium exposure and the presence of helium bubbles was studied.
 To this end, a finite element solver was first developed to simulate helium transport and clustering in tungsten.
 This code was compared to the Xolotl code \sidecite{blondel_continuum-scale_2018}.
 This helium transport code was then coupled to FESTIM to estimate the potential impact of helium on the tritium inventory estimations.
-This Chapter will answer the question \textit{"What is the impact of the presence of helium?"}.
 \end{itemize}
