@@ -307,23 +307,16 @@ This therefore validates the continuous exposure simplification.
 
 \section{Summary}
 H transport in ITER-like monoblocks was simulated with FESTIM.
-Several aspects of the simulations were studied.
 
-It was shown that the choice of interface conditions (continuity of chemical potential or continuity of mobile concentration) had low impact on the monoblock inventory.
-Depending on the boundary condition used at the cooling surface of the monoblock, it could however have an impact on the permeation flux.
-
+The validity of various simplifications and assumptions was first studied.
+A relationship between the average surface temperature and the heat flux was obtained.
+It was then shown that the choice of interface conditions (continuity of chemical potential or continuity of mobile concentration) had low impact on the monoblock inventory.
+Moreover, the 2D approximation was found to be the best compromise between accuracy of the solution and computational time.
 The effect of loading cycles was also investigated.
 Between plasma pulses, a zone with higher retention appears near the plasma exposed surface due to the temperature variation.
 These modifications of the retention fields vanish as soon as the next cycle starts again and this zone is heated up again.
 This means that cycling has no effect on the global retention field and that cycles can safely be concatenated (continuous exposure) to simulate H transport.
 
 A parametric study was then performed in order to assess the influence of exposure conditions (surface concentration and surface temperature).
-A 2D behaviour law was obtained correlating exposure conditions to the monoblock inventory.
-This law will be extremely useful to estimate H retention in divertors since not all monoblocks will be exposed to the same exposure.
-
-Finally, 3D simulations of DEMO ITER-like monoblocks have been run.
-The desorption on the poloidal and toroidal gaps drastically reduced the inventory while increasing the outgassing flux to the vacuum chamber.
-The permeation flux to the coolant decreased.
-This means that 2D simulations are conservative in terms of H inventory.
-This however undersestimates outgassing fluxes.
-Future work should involve refining the behaviour law obtained in Section \ref{influence of exposure conditions} by running new 3D simulations and compute not only the H inventory but also the total outgassing.
+A behaviour law was obtained correlating exposure conditions to the monoblock inventory at a given exposure time.
+This law will be extremely useful to estimate H retention in divertors in \refch{Divertor inventory estimation} since not all monoblocks will be exposed to the same exposure.
