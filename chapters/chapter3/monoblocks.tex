@@ -193,11 +193,69 @@ For these reasons, the 2D approximation will be employed in the following sectio
 \input{chapters/chapter3/monoblocks/interface_conditions}
 
 \subsection{Influence of cycling}
+
+In ITER, the plasma operation will not be continuous.
+Instead, pulses of \SI{600}{s} will be shot \sidecite{lister_plasma_2006} with a ramp-up of \SI{100}{s}, a plateau during \SI{400}{s}, a ramp-down of \SI{100}{s} and \SI{1000}{s} of dwell time between pulses (see \reffig{plasma cycle}).
+Simulating these transient cycles would require stepsizes of $\approx \SI{10}{s}$ in order to capture the ramp-up and ramp-down phases.
+Simulating one cycle would therefore require more than 60 steps (excluding the resting phase).
+
+On the other hand, FESTIM has an adaptive stepsize feature allowing the stepsize to increase (resp. decrease) when steps are solved in less (resp. more) than 5 Newton iterations.
+Therefore, if a continuous plasma exposure was simulated, the adaptive stepsize would allow the stepsize to increase up to thousands of seconds, reducing a lot the simulation time.
+
+To verify the validity of this approximation, 1D simulations were run with plasma cycles or continuous exposure.
+For the cycled simulation, both the heat flux $\varphi_\mathrm{heat}$ and the particle flux $\varphi_\mathrm{imp}$ were varied from zero during the resting phases to their nominal values during the plateau phase (see \reffig{plasma cycle}).
+
+Two cases were run:
+\begin{itemize}
+    \item High flux: $\varphi_\mathrm{heat} = \SI{13}{MW.m^{-2}}$ and $\varphi_\mathrm{imp} = \SI{1.6e22}{m^{-2}.s^{-1}}$
+    \item Low flux: $\varphi_\mathrm{heat} = \SI{5}{MW.m^{-2}}$ and $\varphi_\mathrm{imp} = \SI{5.0e21}{m^{-2}.s^{-1}}$
+\end{itemize}
+
+In the high flux case, the surface temperature is about $\SI{1400}{K}$ during the plateau whereas it is only $\approx \SI{500}{K}$ for the low flux case.
+The evolution of the inventory for both cases was calculated with or without cycling (see \reffig{monoblock inventory cycling}).
+To be able to compare the cases, the inventory is shown as a function of the fluence:
+\begin{equation}
+    \mathrm{fluence}(t) = \int_0^t \varphi_\mathrm{imp}(t) \, dt
+\end{equation}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/cycle.pdf}
+    \caption{}
+    \labfig{plasma cycle}
+\end{figure}
+
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/comparison_inventory_cycling.pdf}
     \caption{}
+    \labfig{monoblock inventory cycling}
 \end{figure}
+
+For the continuous cases, the inventory evolves as a power law of the fluence (straight line on a log-log scale).
+For the cycled simulations, spikes appear periodically (between every cycle).
+These spikes correspond to ramp-down and ramp-ups during the cycles.
+During the ramp-down, as the temperature decreases, the traps filling ratio increases, which results in an increase in the inventory.
+During the resting phase (not shown on \reffig{monoblock inventory cycling} since the flux is null), the inventory is kept constant.
+During the ramp-up, the temperature increases again and the hydrogen trapped close to the plasma-facing surface is desorbed and diffuses either back to the plasma, or deeper into the bulk.
+Finally, during the plateau phase, the inventory increases as a power law of the fluence.
+
+These kinetics are observed for both the low flux and high flux cases.
+However, in the low flux case, the height of the spikes is greatly reduced.
+This is explained by the lower temperature difference between the resting phase and the plateau phase.
+
+In both cases, the evolution trends are the same with or without cycling and the inventory evolution during the plateau phases nearly match the continuous case.
+These results are consistent with the one observed in \sidecite{hodille_modelling_2021} with other trapping parameters.
+For a monoblock where the flux is even lower and the temperature difference is almost zero, no spikes will appear, and the cycled and continuous cases will match.
+
+Moreover, the "height" of these spikes is constant.
+This means that, after more cycles, these spikes will become negligible compared to the bulk inventory.
+For the high flux case, the inventory spike will be negligible (10\% of the total inventory) after approximately 4000 cycles.
+For the low flux case, it is negligble after only 1150 cycles.
+
+This therefore validates the continuous exposure simplification.
+
 
 \section{Monoblock behaviour law} \label{influence of exposure conditions}
 
