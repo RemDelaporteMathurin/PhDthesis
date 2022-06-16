@@ -100,19 +100,27 @@ The distribution of the exposure conditions (angles of incidence, particles ener
 These exposure conditions are converted into distributions of surface temperature $T_\mathrm{surface}$ and surface hydrogen concentration $c_\mathrm{surface}$ by \refeq{thermal behaviour law} and \refeq{c_surface}.
 
 Note: see \refsec{monoblock thermal behaviour} for more details on the monoblock thermal behaviour.
-
 \begin{equation}
-    c_\mathrm{surface} = \ (1 - r_\mathrm{atoms}) \ \frac{R_{p, \mathrm{atoms}} \ \varphi_\mathrm{atoms}}{D(T_\mathrm{surface})} + (1 - r_\mathrm{ions})  \ \frac{R_{p, \mathrm{ions}} \ \varphi_\mathrm{ions}}{D(T_\mathrm{surface})}
+    c_\mathrm{surface} = c_\mathrm{surface, \, ions} + c_\mathrm{surface, \, atoms}
     \labeq{c_surface}
 \end{equation}
+$c_\mathrm{surface, \, ions}$ and $c_\mathrm{surface, \, atoms}$ are the contributions of the ions and atoms to the surface hydrogen concentration.
+They can be expressed as:
+\begin{equation}
+    c_\mathrm{surface, \, i} = \frac{R_{p, \mathrm{i}} \ \varphi_\mathrm{imp, \,i}}{D(T_\mathrm{surface})}
+\end{equation}
+where $R_{p, i}$ is the implantation depth in \si{m}, $\varphi_{\mathrm{imp}, \,i}$ is the implanted particles fluxe in \si{m^{-2}.s^{-1}} and $D$ is the H diffusion coefficient in \si{m^{2}.s^{-1}}.
 
-where the reflection coefficients $r_i$ and implantation depths $R_{p, i}$ in \si{m}, $\varphi_{i}$ are the particles fluxes in \si{m^{-2}.s^{-1}} and $D$ is the H diffusion coefficient in \si{m^{2}.s^{-1}}.
+Finally, the implanted flux can be expressed as:
+\begin{equation}
+    \varphi_{\mathrm{imp}, \,i} = (1 - r_\mathrm{i}) \, \varphi_{\mathrm{incident} \, i}
+\end{equation}
+where $r_i$ is the reflection coefficient and, $\varphi_{\mathrm{incident} \, i}$ is the incident particle flux expressed in \si{m^{-2}.s^{-1}}.
 
 The implantation range $R_p$ and the reflection coefficient $r$ depend on the incident energy and angle of incidence of particles.
 These relations can be obtained from SRIM \sidecite{ziegler_srim_2010} simulations (see \reffig{implantation range vs energy}).
 It was found that the angle of incidence had low influence on the implantation range.
-$R_p$ can then be expressed (in \si{m}) as a function of the incident energy only (see \refeq{implantation range}).
-
+$R_p$ can therefore be expressed as a function of the incident energy only:.
 \begin{equation}
     R_p = 1.9\times 10^{-10} E ^{0.59}
     \labeq{implantation range}
