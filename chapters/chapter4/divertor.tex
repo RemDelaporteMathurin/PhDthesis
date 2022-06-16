@@ -17,7 +17,7 @@ The influence of several control parameters is investigated: the input power (\t
     \centering
     \includegraphics[width=0.95\linewidth]{Figures/Chapter4/coordinates.pdf}
     \caption{Geometry of WEST and ITER divertors}
-    \label{fig: reactors}
+    \labfig{reactors}
 \end{figure}
 
 % The H inventory of the WEST and ITER divertors will be computed by making use of a database of FESTIM simulations of H transport in ITER-like monoblocks from which a behaviour law is extracted using a gaussian regression process from the inference-tools python package \sidecite{chris_bowman_c-bowmaninference-tools_2020}.
@@ -33,9 +33,9 @@ This Section describes the parameters of the plasma simulations.
 For the SolEdge3X-EIRENE runs, the puffing rate and the input power were used as control parameters.
 For SOLPS-ITER calculation, the divertor neutral pressure is the control parameter.
 \subsubsection{SolEdge3X-EIRENE runs}
-The Lower-Single-Null magnetic configuration used for the 2D simulations in SolEdge3X-EIRENE transport code (v588.165) are based on the experimental WEST plasma discharge \#54903 at $T_\mathrm{flat-top} = \SI{8}{s}$ (see Figure \ref{fig: reactors}).
+The Lower-Single-Null magnetic configuration used for the 2D simulations in SolEdge3X-EIRENE transport code (v588.165) are based on the experimental WEST plasma discharge \#54903 at $T_\mathrm{flat-top} = \SI{8}{s}$ (see \reffig{reactors}).
 In order to get as many divertor conditions as possible, the puffing rate was varied from \SI{4.5e20}{molecule.s^{-1}} to \SI{4.72e21}{molecule.s^{-1}} and the input power from \SI{0.449}{MW} to \SI{2.5}{MW}.
-The setup parameters of the simulation are listed in Table \ref{tab: my_tab}.
+The setup parameters of the simulation are listed in \reftab{my_tab}.
 $R_\mathrm{wall}$ is the recycling coefficient of main chamber wall, $R_\mathrm{pump}$ is the recycling coefficient of the pump, $D_\mathrm{m}$ is the cross-field mass diffusivity perpendicular to the flux surface, $\nu$ is the momentum diffusivity, $\chi_e$ and $\chi_i$ are the heat flux diffusivity for electrons and ions, respectively.
 The gas puff position is set inside the private region and the pump position is set under the baffle.
 
@@ -59,7 +59,7 @@ The gas puff position is set inside the private region and the pump position is 
      & $\nu = \SI{0.3}{m^2.s^{-1}}$ \\
      & $\chi_e = \chi_i = \SI{1.0}{m^2.s^{-1}}$ \\
     \end{tabular}
-    \label{tab: my_tab}
+    \labtab{my_tab}
 \end{table}
 
 
@@ -74,7 +74,7 @@ These have been run in baseline burning plasma conditions (Q=10) and with an ave
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter4/example.pdf}
     \caption{Method of divertor H inventory estimation based on the surface concentration, the surface temperature and the behaviour law obtained in \refch{Chapter3}.}
-    \label{fig: behaviour law example}
+    \labfig{behaviour law example}
 \end{figure}
 
 \subsection{Estimation of exposure conditions}
@@ -84,55 +84,49 @@ These have been run in baseline burning plasma conditions (Q=10) and with an ave
     \begin{subfigure}{0.5\linewidth}
         \includegraphics[width=\linewidth]{Figures/Chapter4/implantation_range.pdf}
         \caption{Implantation range $R_p$}
-        \label{fig: implantation range vs energy}
+        \labfig{implantation range vs energy}
     \end{subfigure}%
     \begin{subfigure}{0.5\linewidth}                          
         \includegraphics[width=\linewidth]{Figures/Chapter4/reflection_coeff.pdf}
         \caption{Reflection coefficient $r$}
-        \label{fig: reflection coeff vs energy}
+        \labfig{reflection coeff vs energy}
     \end{subfigure}
     \caption{Evolution of the implantation range and the reflection coefficient as a function of incident energy $E$ and angle of incidence.}
 \end{figure*}
 
-According to the behaviour law obtained in Chapter \ref{Chapter3}, the temporal evolution of the H inventory along the divertors can be estimated from the surface concentration of mobile hydrogen and surface temperature (see Figure \ref{fig: behaviour law example}).
+According to the behaviour law obtained in \refch{Chapter3}, the temporal evolution of the H inventory along the divertors can be estimated from the surface concentration of mobile hydrogen and surface temperature (see \reffig{behaviour law example}).
 % This inventory distribution can then be projected onto the whole divertor geometry for better visualisation (see Figure \ref{fig: top view}).
 
-The distribution of the exposure conditions (angles of incidence, particles energies, particles fluxes and heat flux) are produced by SOLEDGE/SOLPS along the divertors of WEST and ITER (see Figures \ref{fig: reactors} and \ref{fig: behaviour law example}).
-These exposure conditions are converted into distributions of surface temperature $T_\mathrm{surface}$ and surface hydrogen concentration $c_\mathrm{surface}$ by Equations \eqref{eq: thermal behaviour} and \eqref{eq: c_surface}.
+The distribution of the exposure conditions (angles of incidence, particles energies, particles fluxes and heat flux) are produced by SOLEDGE/SOLPS along the divertors of WEST and ITER (see \reffig{reactors} and \reffig{behaviour law example}).
+These exposure conditions are converted into distributions of surface temperature $T_\mathrm{surface}$ and surface hydrogen concentration $c_\mathrm{surface}$ by \refeq{thermal behaviour law} and \refeq{c_surface}.
+
+Note: see Section \refsec{monoblock thermal behaviour} for more details on the monoblock thermal behaviour.
 
 \begin{equation}
-    T_\mathrm{surface} = 1.1\times 10^{-4} \varphi_\mathrm{heat} + 323
-    \label{eq: thermal behaviour}
-\end{equation}
-where $\varphi_\mathrm{heat}$ is the surface heat flux in \si{W.m^{-2}}.
-
-The relation between the heat flux $\varphi_\mathrm{heat}$ and the surface temperature $T_\mathrm{surface}$ (see Equation \eqref{eq: thermal behaviour}) has been obtained from heat transfer simulations of ITER monoblocks (see Section \refsec{monoblock thermal behaviour}).
-
-\begin{equation}
-    \label{eq: c_surface}
-    c_\mathrm{surface} = \ (1 - r_\mathrm{atoms}) \ \frac{R_{p, \mathrm{atoms}} \ \varphi_\mathrm{atoms}}{D(T_\mathrm{surface})} + (1 - r_\mathrm{ions}) \nonumber \ \frac{R_{p, \mathrm{ions}} \ \varphi_\mathrm{ions}}{D(T_\mathrm{surface})}
+    c_\mathrm{surface} = \ (1 - r_\mathrm{atoms}) \ \frac{R_{p, \mathrm{atoms}} \ \varphi_\mathrm{atoms}}{D(T_\mathrm{surface})} + (1 - r_\mathrm{ions})  \ \frac{R_{p, \mathrm{ions}} \ \varphi_\mathrm{ions}}{D(T_\mathrm{surface})}
+    \labeq{c_surface}
 \end{equation}
 
 where the reflection coefficients $r_i$ and implantation depths $R_{p, i}$ in \si{m}, $\varphi_{i}$ are the particles fluxes in \si{m^{-2}.s^{-1}} and $D$ is the H diffusion coefficient in \si{m^{2}.s^{-1}}.
 
 The implantation range $R_p$ and the reflection coefficient $r$ depend on the incident energy and angle of incidence of particles.
-These relations can be obtained from SRIM \sidecite{ziegler_srim_2010} simulations (see Figure \ref{fig: implantation range vs energy}).
+These relations can be obtained from SRIM \sidecite{ziegler_srim_2010} simulations (see Figure \reffig{implantation range vs energy}).
 It was found that the angle of incidence had low influence on the implantation range.
-$R_p$ can then be expressed (in \si{m}) as a function of the incident energy only (see Equation \eqref{eq: implantation range}).
+$R_p$ can then be expressed (in \si{m}) as a function of the incident energy only (see \refeq{implantation range}).
 
 \begin{equation}
     R_p = 1.9\times 10^{-10} E ^{0.59}
-    \label{eq: implantation range}
+    \labeq{implantation range}
 \end{equation}
 where $E$ is the incident energy in \si{eV}.
 
 The evolution of the reflection coefficient $r$ can also be estimated with SRIM.
-The reflection coefficient varies from around 0.5 at \SI{0}{^\circ} to 0.8 at \SI{80}{^\circ} (see Figure \ref{fig: reflection coeff vs energy}).
+The reflection coefficient varies from around 0.5 at \SI{0}{^\circ} to 0.8 at \SI{80}{^\circ} (see \reffig{reflection coeff vs energy}).
 According to \sidecite{park_assessment_2020}, the incident angles for ions and atoms were assumed to be \SI{60}{^\circ} and \SI{45}{^\circ}, respectively.
 It should be noted that since SRIM is based on the binary collision approximation, values around \SI{10}{eV} might not be fully valid.
 
 All of these steps have been automated and packaged into a tool called divHretention.
-divHretention can directly link SOLPS/SOLEDGE output files and produce a distribution of monoblock inventory as in Figure \ref{fig: behaviour law example}.
+divHretention can directly link SOLPS/SOLEDGE output files and produce a distribution of monoblock inventory as in \reffig{behaviour law example}.
 The source-code of the tool is under version control and openly available via Github under a MIT licence \cite{delaporte-mathurin_irfmdivhretention_2021}.
 The divHretention python package is distributed via PyPi \cite{delaporte-mathurin_divhretention_nodate}.
 Moreover, all the results obtained in this Chapter can be reproduced with the scripts available at \href{https://github.com/RemDelaporteMathurin/divHretention-Nucl.Fusion-2021}{https://github.com/RemDelaporteMathurin/divHretention-Nucl.Fusion-2021}.
@@ -143,7 +137,7 @@ Moreover, all the results obtained in this Chapter can be reproduced with the sc
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter4/ITER/inventory_along_outer_divertor.pdf}
     \caption{Surface temperature, surface concentration and inventory along ITER outer vertical target with neutral pressures varying from \SI{2}{Pa} to \SI{11}{Pa}. The area corresponds to the 95\% confidence interval.}
-    \label{fig: distrib outer target}
+    \labfig{distrib outer target}
 \end{figure}
 
 
@@ -151,7 +145,7 @@ Moreover, all the results obtained in this Chapter can be reproduced with the sc
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter4/ITER/inventory_vs_divertor_pressure.pdf}
     \caption{Hydrogen inventory in the ITER divertor as a function of neutral pressure after \SI{e7}{s} of exposure (approximately 25 000 discharges).}
-    \label{fig: inventory vs neutral pressure}
+    \labfig{inventory vs neutral pressure}
 \end{figure}
 
 
@@ -160,12 +154,12 @@ Moreover, all the results obtained in this Chapter can be reproduced with the sc
     \begin{subfigure}{\linewidth}
         \includegraphics[width=\linewidth]{Figures/Chapter4/ITER/inventory_at_strike_points.pdf}
         \caption{Inventory per unit thickness after \SI{e7}{s} of exposure (approximately 25 000 discharges). Area corresponds to the 95\% confidence interval.}
-        \label{fig: local inventory neutral pressure}
+        \labfig{local inventory neutral pressure}
     \end{subfigure}
     \begin{subfigure}{\linewidth}
         \includegraphics[width=\linewidth]{Figures/Chapter4/ITER/ratio_ions_atoms.pdf}
         \caption{Contribution of ions to the surface concentration of H.}
-        \label{fig: ion contribution neutral pressure}
+        \labfig{ion contribution neutral pressure}
     \end{subfigure}%
     \caption{H retention at the strike points (defined as maximum temperature) as a function of the divertor neutral pressure.}
 \end{figure}
@@ -174,12 +168,12 @@ Moreover, all the results obtained in this Chapter can be reproduced with the sc
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter4/ITER/inventory_vs_time.pdf}
     \caption{Evolution of the H inventory of the ITER divertor with the number of \SI{400}{s} discharges.}
-    \label{fig: iter vs time}
+    \labfig{iter vs time}
 \end{figure}
 
 
 % peak temperature
-Peak temperatures at strike points increased when decreasing the divertor neutral pressure (see Figure \ref{fig: distrib outer target}).
+Peak temperatures at strike points increased when decreasing the divertor neutral pressure (see Figure \reffig{distrib outer target}).
 The peak temperature at the outer strike point reached \SI{2000}{K} at \SI{2}{Pa} and more than \SI{1000}{K} at the inner strike point, which is in accordance with the results obtained by Pitts \textit{et al} \sidecite{pitts_physics_2019}.
 
 % global inventory
@@ -191,24 +185,24 @@ with $N_\mathrm{cassettes}=54$ the number of cassettes, $N_\mathrm{PFU-IVT}=16$ 
 
 The inventory in the outer target was found to be nearly twice that of the inner target.
 This is largely explained by the larger number of plasma facing units in the outer target and therefore a greater exposed surface.
-The global inventory increased with the divertor neutral pressure and a roll-over is observed above \SI{7}{Pa} (see Figure \ref{fig: inventory vs neutral pressure}).
+The global inventory increased with the divertor neutral pressure and a roll-over is observed above \SI{7}{Pa} (see \reffig{inventory vs neutral pressure}).
 This roll-over is consistent with the results obtained in \sidecite{pitts_physics_2019}.
 The inventory increase was found to be more important in the outer vertical target.
 This was explained by the fact that the plasma is more detached at the inner target.
-Therefore the surface temperature reduction is more significant in the outer vertical target and the surface concentration is increased (see Figure \ref{fig: distrib outer target}).
+Therefore the surface temperature reduction is more significant in the outer vertical target and the surface concentration is increased (see \reffig{distrib outer target}).
 
 The maximum inventory was found at around \SI{7}{Pa} and was approximately \SI{14}{g} of H, which is well below the ITER in-vessel safety limit of tritium (\SI{1}{kg}), especially considering only half of this quantity will be tritium.
 This is especially true considering that this was for a very long exposure time of \SI{e7}{s}, which corresponds to 25 000 pulses of \SI{400}{s}.
 
 
 % local inventories
-The inventory at the inner and outer strike points globally increases with the divertor neutral pressure (see Figure \ref{fig: local inventory neutral pressure}).
-The contribution of ions to the surface concentration at the inner strike point is around 50 \% and tends to decrease with increasing neutral pressure (see Figure \ref{fig: ion contribution neutral pressure}).
+The inventory at the inner and outer strike points globally increases with the divertor neutral pressure (see \reffig{local inventory neutral pressure}).
+The contribution of ions to the surface concentration at the inner strike point is around 50 \% and tends to decrease with increasing neutral pressure (see \reffig{ion contribution neutral pressure}).
 At low divertor neutral pressure, the contribution of ions at the outer strike point is around 90 \% and tends to decrease with increasing neutral pressure.
 This can be explained by the fact that in both inner and outer targets, the integrated flux of ions decreases with increasing neutral pressure whereas the integrated flux of atoms increases, leading to a greater proportion of neutral particles.
 
 % temporal evolution
-For all divertor neutral pressures, the temporal evolution of the divertor inventory is approximately the same (see Figure \ref{fig: iter vs time}).
+For all divertor neutral pressures, the temporal evolution of the divertor inventory is approximately the same (see \reffig{iter vs time}).
 The additional inventory per \SI{400}{s} discharge was found to decrease with time.
 Past 300 discharges, the additional inventory per discharge decreases with the number of discharges.
 The maximum is around \SI{5}{mg/discharge} between 30 and 100 discharges.
@@ -228,7 +222,7 @@ Two puffing rate values were used: \SI{2.5e21}{molecule.s^{-1}} and \SI{4.4e21}{
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter4/WEST/inventory_along_divertor_input_power.pdf}
     \caption{Distribution of surface temperature $T_\mathrm{surface}$, surface concentration $c_\mathrm{surface}$ and inventory along the WEST divertor with input powers varying from \SI{0.49}{MW} to \SI{2.0}{MW} with a puffing rate of \SI{2.5e21}{molecule.s^{-1}}.}
-    \label{fig:divertor distr power scan}
+    \labfig{divertor distr power scan}
 \end{figure}
 
 \begin{figure}[h]
@@ -236,12 +230,12 @@ Two puffing rate values were used: \SI{2.5e21}{molecule.s^{-1}} and \SI{4.4e21}{
     \begin{subfigure}{\linewidth}
         \includegraphics[width=\linewidth]{Figures/Chapter4/WEST/inventory_at_sps_and_private_zone_vs_input_power.pdf}
         \caption{Inventory per unit thickness after \SI{e7}{s} of exposure. The area corresponds to the 95\% confidence interval.}
-        \label{fig: local retention vs input power}
+        \labfig{local retention vs input power}
     \end{subfigure}
     \begin{subfigure}{\linewidth}                          
         \includegraphics[width=\linewidth]{Figures/Chapter4/WEST/ions_ratio_vs_input_power.pdf}
         \caption{Contribution of ions to the surface concentration of H. ISP and OSP stand for Inner Strike Point and Outer Strike Point respectively.}
-        \label{fig: ion ration vs input power}
+        \labfig{ion ration vs input power}
     \end{subfigure}%
     \caption{H inventory at the strike points and in the private zone as a function of the input power with a puffing rate of \SI{2.5e21}{molecule.s^{-1}}.}
 \end{figure}
@@ -250,7 +244,7 @@ Two puffing rate values were used: \SI{2.5e21}{molecule.s^{-1}} and \SI{4.4e21}{
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter4/WEST/inventory_vs_input_power.pdf}
     \caption{Evolution of the WEST divertor inventory as a function of input power for several puffing rates.}
-    \label{fig:inventory vs input power}
+    \labfig{inventory vs input power}
 \end{figure}
 
 % \begin{figure*}[h]
@@ -261,33 +255,33 @@ Two puffing rate values were used: \SI{2.5e21}{molecule.s^{-1}} and \SI{4.4e21}{
 % \end{figure*}
 
 % local inventories
-The maximum retention was found to be located at the strike points (see Figure \ref{fig:divertor distr power scan}).
+The maximum retention was found to be located at the strike points (see \reffig{divertor distr power scan}).
 The inventory at the outer strike point was higher than at the inner strike point.
-The retention at the strike points was found to increase with the input power whereas it slightly decreased in the private zone (see Figure \ref{fig: local retention vs input power}).
+The retention at the strike points was found to increase with the input power whereas it slightly decreased in the private zone (see \reffig{local retention vs input power}).
 This was explained by an attachment of the plasma decreasing the particle flux in the private zone.
-Since the surface temperature is constant, this leads to a decrease in the surface concentration of hydrogen as seen on Figure \ref{fig:divertor distr power scan}.
+Since the surface temperature is constant, this leads to a decrease in the surface concentration of hydrogen as seen on \reffig{divertor distr power scan}.
 On the other hand, the increasing temperature at the strike points only enhanced the diffusion process while remaining low enough so that hydrogen could get trapped.
 
 The total inventory in the WEST divertor is computed as follows:
 \begin{equation}
     \mathrm{inv}_\mathrm{divertor} = N_\mathrm{PFU} \cdot \int \mathrm{inv}_\mathrm{PFU}(x)\: dx
-    \label{eq: inventory WEST}
+    \labeq{inventory WEST}
 \end{equation}
-where $N_\mathrm{PFU} = 480$ is the number of PFU (Plasma Facing Units) in WEST, $\mathrm{inv}_\mathrm{PFU}$ is the inventory per unit thickness in \si{H.m^{-1}} (see Figure \ref{fig:divertor distr power scan}) and $x$ the distance along the target in \si{m}.
+where $N_\mathrm{PFU} = 480$ is the number of PFU (Plasma Facing Units) in WEST, $\mathrm{inv}_\mathrm{PFU}$ is the inventory per unit thickness in \si{H.m^{-1}} (see \reffig{divertor distr power scan}) and $x$ the distance along the target in \si{m}.
 
-The divertor inventory increased with the input power (see Figure \ref{fig:inventory vs input power}) and evolved as the power 0.3 of the input power.
+The divertor inventory increased with the input power (see \reffig{inventory vs input power}) and evolved as the power 0.3 of the input power.
 The maximum divertor inventory was \SI{8.8e23}{H} at \SI{2.0}{MW} of input power.
 This value of input power is still relatively low.
 Increasing the puffing rate lead to an increase in the inventory.
-This will be explained more thoroughly in Section \ref{density scan}.
+This will be explained more thoroughly in Section \refsec{density scan}.
 
-At the strike points, the retention is dominated by the ion flux whereas neutrals are dominant in the private zone (see Figure \ref{fig: ion ration vs input power}).
+At the strike points, the retention is dominated by the ion flux whereas neutrals are dominant in the private zone (see \reffig{ion ration vs input power}).
 The contribution of ions at the strike points increased with the input power but remained approximately constant in the private zone.
 
 The divertor inventory was found to increase as a power law of time.
 
 
-\subsection{Influence of the puffing rate} \label{density scan}
+\subsection{Influence of the puffing rate} \labsec{density scan}
 
 A parametric study on the puffing rate was performed.
 The puffing rate was varied between \SI{4.4e20}{molecule.s^{-1}} and \SI{4.7e21}{molecule.s^{-1}}.
@@ -297,14 +291,14 @@ The input power was fixed to \SI{0.45}{MW}.
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter4/WEST/inventory_along_divertor.pdf}
     \caption{Distribution of surface temperature $T_\mathrm{surface}$, surface concentration $c_\mathrm{surface}$ and inventory along the WEST divertor with a puffing rate varying from \SI{4.4e20}{s^{-1}} to \SI{4.7e21}{s^{-1}} with \SI{0.45}{MW} of input power.}
-    \label{fig: divertor distr density scan}
+    \labfig{divertor distr density scan}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter4/WEST/inventory_vs_puffing_rate.pdf}
     \caption{Evolution of the WEST divertor inventory as a function of puffing rate.}
-    \label{fig: inventory vs puffing rate}
+    \labfig{inventory vs puffing rate}
 \end{figure}
 
 \begin{figure}[h!]
@@ -312,24 +306,24 @@ The input power was fixed to \SI{0.45}{MW}.
     \begin{subfigure}{\linewidth}
         \includegraphics[width=\linewidth]{Figures/Chapter4/WEST/inventory_at_sp_and_private_zone.pdf}
         \caption{Inventory per unit thickness after \SI{e7}{s} of exposure. The area corresponds to the 95\% confidence interval.}
-        \label{fig: local retention vs puffing rate}
+        \labfig{local retention vs puffing rate}
     \end{subfigure}
     \begin{subfigure}{\linewidth}
         \includegraphics[width=\linewidth]{Figures/Chapter4/WEST/ion_ratio_at_sp_and_private_zone.pdf}
         \caption{Contribution of ions to the surface concentration of H. ISP and OSP stand for Inner Strike Point and Outer Strike Point respectively.}
-        \label{fig: ion contribution vs puffing rate}
+        \labfig{ion contribution vs puffing rate}
     \end{subfigure}%
     \caption{H retention at the strike points and in the private zone as a function of puffing rate with \SI{0.45}{MW} of input power.}
 \end{figure}
 
-The maximum retention was again located at the strike points for all puffing rates values (see Figure \ref{fig: divertor distr density scan}).
+The maximum retention was again located at the strike points for all puffing rates values (see \reffig{divertor distr density scan}).
 The inventory at the outer strike point was higher than at the inner strike point.
-The inventory in the private zone was found to increase with the puffing rate whereas it was almost constant at the strike points (see Figure \ref{fig: local retention vs puffing rate}).
-As for the power scan, the ions contribution to the inventory is rather low in the private zone (see Figure \ref{fig: ion contribution vs puffing rate}).
+The inventory in the private zone was found to increase with the puffing rate whereas it was almost constant at the strike points (see \reffig{local retention vs puffing rate}).
+As for the power scan, the ions contribution to the inventory is rather low in the private zone (see \reffig{ion contribution vs puffing rate}).
 Moreover, the contribution of ions decreases rapidly at the strike points and represents only half of the surface concentration at \SI{4e21}{molecule.s^{-1}}.
 
-The inventory in the whole WEST divertor is computed from Equation \eqref{eq: inventory WEST}.
-As for the power scan, the divertor inventory increased as the power 0.2 of the puffing rate (see Figure \ref{fig: inventory vs puffing rate}).
+The inventory in the whole WEST divertor is computed from Equation \refeq{inventory WEST}.
+As for the power scan, the divertor inventory increased as the power 0.2 of the puffing rate (see \reffig{inventory vs puffing rate}).
 The maximum inventory was found to be \SI{5e23}{H} at \SI{4.7e21}{molecule.s^{-1}}.
 
 The divertor inventory was found to increase as a power law of time.
