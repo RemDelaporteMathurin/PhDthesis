@@ -72,17 +72,17 @@ The condition to have such steady-state is:
     E_{S,1}-E_{S,2} = E_\mathrm{i\rightarrow 1}-E_\mathrm{i\rightarrow 2}-E_\mathrm{1\rightarrow i} +E_\mathrm{2\rightarrow i}
     \label{eq:steady}
 \end{equation}
-% This is equivalent to Equation~\ref{eq: c/s conservation} used in this study.
+% This is equivalent to Equation~\refeq{c/s conservation} used in this study.
 
 \section{Test case}
-\indent The simple kinetic presented here allows us to see how fast the equilibrium given by Equation~\ref{eq: c/s conservation} is reached.
+\indent The simple kinetic presented here allows us to see how fast the equilibrium given by \refeq{c/s conservation} is reached.
 % If it is much faster than the characteristic time of the simulation presented in section~\ref{iter case}, one can consider that the use of such kinetic model is of now use for as it would not significantly affect the dynamic of permeation for the considered thickness.\\
 For the test case, we further simplify the model by considering that the concentration of interstitial H in material 1 $c_1$ is constant (\textit{ie.} $\partial c_1/\partial t=0$).
 The diffusive fluxes are neglected in Equation~\ref{eq:c2} in order to solve a 0D problem.
 The system of equation is solved with the SciPy package~\cite{virtanen_scipy_2020} which uses the odepack library~\cite{hindmarch_odepack_1982}.\\
 % \indent As for the trapping around defects, we consider that the activation energy for the trapping reaction to the interface from material $k$ is the energy barrier for the diffusion $E_{k\rightarrow\mathrm{i}}=E_{\mathrm{diff},k}$.
 % In addition, we consider that all the pre-exponential factor are equal to 10$^{13}$ \si{s^{-1}}.
-% It means that, in order to have the steady-state equation (equation~\ref{eq:steady}) equivalent to Equation~\ref{eq: c/s conservation}, one needs $\frac{S_{0,1}}{S_{0,2}}=\frac{\lambda_2}{\lambda_1}$.
+% It means that, in order to have the steady-state equation (equation~\ref{eq:steady}) equivalent to \refeq{c/s conservation}, one needs $\frac{S_{0,1}}{S_{0,2}}=\frac{\lambda_2}{\lambda_1}$.
 % Fixing all these parameters, the only free parameters are the detrapping energy from the interface to the materials. 
 
 % Again, to satisfy the steady-state condition, one needs:
@@ -119,7 +119,7 @@ The interface is saturated with H for $E_{\mathrm{i\rightarrow},2}/(k_B T) > 25$
 % No knowledge of detrapping energies are know so far for the W/Cu interface.
 % However, the case $E_\mathrm{i\rightarrow2}=1.13$ eV corresponds to $E_\mathrm{i\rightarrow1}=1.60$ eV.
 % In tungsten, a trap with a detrapping energy of 1.6 eV is a quite a deep trap such as monovacancy~\cite{fernandez_hydrogen_2015} or small vacancy cluster~\cite{pecovnik_new_2020, hou_predictive_2019}.
-% If one considers that traps at the interface are as deep as trap in the materials (0.57 eV in table~\ref{tab:materials properties}), the characteristic time are very small (0.1 s) and the retention at the interface is negligible ($10^{15}$ m$^{-2}$) making equation~\ref{eq: c/s conservation} a good approximation for the estimation of very macroscopic retention and permeation properties of the ITER monobloc.
+% If one considers that traps at the interface are as deep as trap in the materials (0.57 eV in table~\ref{tab:materials properties}), the characteristic time are very small (0.1 s) and the retention at the interface is negligible ($10^{15}$ m$^{-2}$) making \refeq{c/s conservation} a good approximation for the estimation of very macroscopic retention and permeation properties of the ITER monobloc.
 
 \begin{figure} [h!]
     \centering

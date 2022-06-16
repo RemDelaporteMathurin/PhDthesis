@@ -30,13 +30,18 @@ The influence of several control parameters is investigated: the input power (\t
 
 \subsection{Plasma simulations}
 This Section describes the parameters of the plasma simulations.
+These simulations were run with SolEdge3X-EIRENE for WEST and SOLPS-ITER for ITER.
+In a nutshell, these codes solve, for each species (ions and electrons), the particle density, velocity and temperature.
+The equations at stake are comparable to the Navier-Stokes equations coupled to the heat equation and interactions with the electro-magnetic fields in the plasma \sidecite{bufferand_numerical_2015}.
+Subsequently, the incident particle fluxes, heat fluxes and particle energy can be calculated along the tokamak wall.
 For the SolEdge3X-EIRENE runs, the puffing rate and the input power were used as control parameters.
 For SOLPS-ITER calculation, the divertor neutral pressure is the control parameter.
+
 \subsubsection{SolEdge3X-EIRENE runs}
 The Lower-Single-Null magnetic configuration used for the 2D simulations in SolEdge3X-EIRENE transport code (v588.165) are based on the experimental WEST plasma discharge \#54903 at $T_\mathrm{flat-top} = \SI{8}{s}$ (see \reffig{reactors}).
 In order to get as many divertor conditions as possible, the puffing rate was varied from \SI{4.5e20}{molecule.s^{-1}} to \SI{4.72e21}{molecule.s^{-1}} and the input power from \SI{0.449}{MW} to \SI{2.5}{MW}.
 The setup parameters of the simulation are listed in \reftab{my_tab}.
-$R_\mathrm{wall}$ is the recycling coefficient of main chamber wall, $R_\mathrm{pump}$ is the recycling coefficient of the pump, $D_\mathrm{m}$ is the cross-field mass diffusivity perpendicular to the flux surface, $\nu$ is the momentum diffusivity, $\chi_e$ and $\chi_i$ are the energy diffusivity for electrons and ions, respectively.
+$R_\mathrm{wall}$ is the recycling coefficient of main chamber wall, $R_\mathrm{pump}$ is the recycling coefficient of the pump, $D$ is the cross-field mass diffusivity perpendicular to the flux surface, $\nu$ is the momentum diffusivity, $\chi_e$ and $\chi_i$ are the energy diffusivity for electrons and ions, respectively.
 While the value of these coefficients is required for the sake of reproductibility, their detailed description is outside the scope of this research.
 More information can be found in \sidecite{ciraolo_first_2019}.
 The gas puff position is set inside the private region (\textit{ie} the region between the two strike points) and the pump position is set under the baffle.
@@ -57,7 +62,7 @@ The gas puff position is set inside the private region (\textit{ie} the region b
     \\
     Drifts & - \\
     \\
-    Transport coefficients & $D_\mathrm{m} = \SI{0.3}{m^2.s^{-1}}$ \\
+    Transport coefficients & $D = \SI{0.3}{m^2.s^{-1}}$ \\
      & $\nu = \SI{0.3}{m^2.s^{-1}}$ \\
      & $\chi_e = \chi_i = \SI{1.0}{m^2.s^{-1}}$ \\
     \end{tabular}
