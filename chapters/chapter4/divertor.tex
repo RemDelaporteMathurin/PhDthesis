@@ -6,8 +6,8 @@
 % \section{Introduction}
 
 This Chapter focusses on the estimation of the H inventory in the divertors of WEST and ITER.
-This estimation relies on monoblocks behaviour law computed in \refch{Chapter3}.
-This behaviour law allows rapid evaluations of the monoblocks H inventory.
+This estimation relies on the monoblock behaviour law computed in \refch{Chapter3}.
+This behaviour law allows rapid evaluations of the monoblocks H inventory for any exposure condition.
 Inputs are taken from SolEdge3X-EIRENE \cite{bufferand_three-dimensional_2019} and SOLPS-ITER \cite{kaveeva_solps-iter_2020} plasma simulations.
 The influence of several control parameters is investigated: the input power (\textit{ie} how much heating power is injected in the plasma), the gas puffing rate (used in most tokamaks to increase the plasma density \cite{zweben_effect_2014}), and the divertor pressure of neutral particles in ITER.
 
@@ -138,148 +138,6 @@ The divHretention python package is distributed via PyPi \cite{delaporte-mathuri
 Moreover, all the results obtained in this Chapter can be reproduced with the scripts available at \href{https://github.com/RemDelaporteMathurin/divHretention-Nucl.Fusion-2021}{https://github.com/RemDelaporteMathurin/divHretention-Nucl.Fusion-2021}.
 
 \section{ITER results}
-
-% \subsection{Influence of incident particle flux and ion energy on hydrogen inventory} \label{particle and energy}
-% Incident particle flux $\varphi_\mathrm{inc}$ and ion energy $E$ have an impact on the amount of mobile particles implanted in the material but also on the heat load and therefore on the surface temperature of the monoblock.
-
-% Assuming a source term with a narrow Gaussian distribution and a non-instantaneous recombination (characterised by a recombination coefficient $K$), the concentration $c_\mathrm{max}$ at the near surface is approximated by:
-
-% \begin{equation}
-%     c_\mathrm{max} =  \frac{\varphi_\mathrm{imp} \cdot R_p}{D(T_\mathrm{surface})} + \sqrt{\frac{\varphi_\mathrm{imp}}{K(T_\mathrm{surface})}}
-%     \label{eq:cmax}
-% \end{equation}
-
-% where $\varphi_\mathrm{imp} = (1-r) \cdot \varphi_\mathrm{inc}$ is the implanted particle flux, $r$ is the particle reflection coefficient, $K$ is the recombination coefficient, and $R_p$ is the mean implantation depth in \si{m}.
-% Details can be found in appendix \textcolor{black}{as Supplementary Material}.
-% Many different values of the recombination coefficient $K$ for tungsten can be found in literature.
-% For instance the widely used Anderl coefficient describes an endothermic recombination \sidecite{anderl_hydrogen_1990} whereas Ogorodnikova showed an exothermic recombination coefficient could be used to reproduce a set of experiments \sidecite{ogorodnikova_recombination_2019}.
-
-% Facing the difficulty of an accurate choice for $K$ and following the recommendation of Causey \textit{et al} \sidecite{causey_hydrogen_2002}, an instantaneous recombination will therefore be assumed (\textit{ie} $K \rightarrow +\infty$).
-% It is also worth noting that experiments by Bisson \textit{et al} \sidecite{bisson_dynamic_2015} support the fact that recombination is not the rate limiting step during the hydrogen release from polycrystalline tungsten after ion implantation.
-
-% In the following, the concentration on $\Gamma_\mathrm{top}$ was set to $c_\mathrm{surface} = c_{\mathrm{max}}$ for the kinetics involved are really fast (see appendix of \sidecite{hodille_hydrogen_2018}) and $R_p$ is small compared to the monoblock dimensions.
-
-% The heat load was assumed to evolve as a function of the incident particle flux $\varphi_\mathrm{inc}$ and $E$ as follow:
-
-% \begin{equation}
-%     \varphi_H = 2.2\cdot \varphi_\mathrm{inc} \cdot e \cdot (E + \SI{13.6}{eV})
-%     \label{eq:phi_H}
-% \end{equation}
-% with $e = \SI{1.6e-19}{C}$.
-% This relation was obtained by fitting SOLPS \textcolor{black}{data \sidecite{pacher_impurity_2015, khan_walldyn_2019}}.
-% The factor 2.2 was applied to take into account other heat sources such as radiative flux.
-
-% Moreover, the ion energy $E$ has an influence on $r$ and implantation range $R_p$ and it was possible to model the evolution of these parameters with SRIM \sidecite{ziegler_srim_2010} calculations as follow:
-% \begin{equation}
-%     r = 2\times 10^{-8} \cdot E^2 -6 \times 10^{-5} \cdot E + 8\times 10^{-1}
-%     \label{eq:r}
-% \end{equation}
-
-% \begin{equation}
-%     R_p = 1.4\times 10 ^{-10}\cdot E^{0.64}
-%     \label{eq:Rp}
-% \end{equation}
-% By combining Equations \ref{eq:phi_H}, \ref{eq:r}, one can obtain the evolution of $\varphi_H$ as a function of $\varphi_\mathrm{inc}$ and $E$ as shown in Figure \ref{fig:phi_H phi E}.
-% From the thermal behaviour given by Equation \ref{eq:thermal behaviour law}, the surface temperature $T_\mathrm{surface}$ can be computed (see Figure \ref{fig:T_surf phi E}).
-% Finally, $c_\mathrm{max}$ was obtained from Equations \ref{eq:cmax} and \ref{eq:Rp} (see Figure \ref{fig:c_max_instantaneous}).
-
-% \begin{figure*} [ht]
-%     \centering
-%     \begin{subfigure}{0.5\linewidth}
-%         \centering
-%         \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/phi_H_phi_E.pdf}
-%         \caption{Surface heat flux}
-%         \label{fig:phi_H phi E}
-%     \end{subfigure}%
-%     \begin{subfigure}{0.5\linewidth}
-%         \centering
-%         \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/T_phi_E.pdf}
-%         \caption{Surface temperature}
-%         \label{fig:T_surf phi E}
-%     \end{subfigure}
-%     \begin{subfigure}{0.5\linewidth}
-%         \centering
-%         \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/c_max_instantaneous.pdf}
-%         \caption{Surface concentration}
-%         \label{fig:c_max_instantaneous}
-%     \end{subfigure}%
-%     \begin{subfigure}{0.5\linewidth}
-%         \centering
-%         \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/inventory_phi_E.pdf}
-%         \caption{Monoblock inventory}
-%         \label{fig:inventory phi E}
-%     \end{subfigure}
-%     \caption{$\varphi_H$, $T_\text{surface}$, $c_\mathrm{max}$ and inventory per monoblock as a function of $\varphi_\mathrm{inc}$ and $E$. Inventory has not been calculated for surface temperature above \SI{1200}{K} (greyed region). White circles correspond to points on ITER divertor using the divertor plasma parameters from SOLPS \cite{bonnin_presentation_2016} calculations (see Section \ref{ITER application}).}
-%     \label{fig:phi_H T_surf c_max}
-% \end{figure*}
-
-% One must be aware that above \SI{1500}{K}, W recrystallisation can occur and H transport will strongly be affected.
-% The hypothesis made above as well as material properties may then not be valid.
-% Because of the trade-off between the amount of implanted particles and the resulting heat flux, the maximum value of $c_{\mathrm{max}}$ was found to be \SI{2e22}{m^{-3}} around $(\varphi_\mathrm{inc}, E)=(\SI{8e22}{m^{-2}.s^{-1}}, \SI{20}{eV})$.
-% Considering the previously calculated response of the monoblock to $c_\mathrm{surface}$ and $T_\mathrm{surface}$ (see Figure \ref{fig:inventory T c}), the inventory as a function of $\varphi_\mathrm{inc}$ and $E$ was computed (see Figure \ref{fig:inventory phi E}).
-% The inventory values have not been calculated for surface temperatures above \SI{1200}{K}.
-% Again a trade-off was found between implanted particle flux and surface temperature.
-% Indeed, the maximum inventory was not found at regions where the incident flux is maximum but rather at regions where $c_\mathrm{surface}$ is maximum and $T_\mathrm{surface}$ is minimum as seen in previous 1D studies \sidecite{hodille_estimation_2017}.
-
-% Each white circle in Figure \ref{fig:phi_H T_surf c_max} corresponds to a point along a poloidal section of the ITER divertor for which implanted particle flux and ion energy were calculated with SOLPS \sidecite{bonnin_presentation_2016} for a partially detached plasma scenario.
-% This scenario corresponds to a $Q=10$ discharge with a neutral pressure of \SI{8.6}{Pa} \sidecite{pitts_physics_2019}.
-
-
-% \begin{figure*} [t]
-%     \centering
-%     \includegraphics[width=0.8\linewidth]{Figures/Chapter3/monoblocks/parametric_study/along_divertor.pdf}
-%     \caption{Evolution of $\varphi_H$ (top), $T_\mathrm{surface}$ (middle) and inventory (bottom) after several exposure times along a poloidal section of the divertor for inner vertical target and outer vertical target.}
-%     \label{fig:along divertor}
-% \end{figure*}
-
-% As expected the highest surface temperatures and heat loads were located on strike points and most of the zones on the divertor were found to stay at coolant temperature (see Figure \ref{fig:along divertor}).
-% The maximum hydrogen content is approximately \SI{6e19}{H} per monoblock after a \SI{e7}{s} exposure.
-% As explained in the previous section, the maximum inventory is not necessarily in the region where the flux is maximum as it induces a higher temperature which will tend to increase detrapping: strike points are not where hydrogen is trapped the most.
-% Instead, the maximum inventory is reached about \SI{5}{cm} away from the strike points where the temperature and the fluxes are high enough to guarantee a strong source of mobile particle but the temperature is not high enough to trigger detrapping.
-
-% For all points on the divertor, the inventory evolved as $a \cdot t^b$ as shown in Figure \ref{fig:inv_vs_time} for particular points on the inner vertical target ($x=0.03$ m is close to the strike point).
-% The coefficient $b$ is maximum on strike points reaching 0.75 (see Figure \ref{fig:a_b_along_div}).
-% In other regions, $b$ is closer to 0.5.
-% This result can be explained by the non-homogeneous temperature field in monoblocks with high heat loads.
-% For monoblocks with a high surface temperature, as hydrogen penetrates deeper into the bulk, the bulk temperature decreases (see Figure \ref{fig:T field 10 MW}) leading to an increase of the trap occupancy \sidecite{hodille_estimation_2017}.
-% The exponent $b$ is therefore higher than $0.5$.
-% For monoblock where $T_\mathrm{surface} \approx T_\mathrm{coolant}$ on the other hand, the temperature is homogeneous in the whole domain and $b=0.5$.
-% This corresponds to a diffusion-limited behaviour.
-
-% The temperature is close to $T_\mathrm{coolant}$ and the trap occupancy is therefore close to one in the whole domain which is not the case for regions near strike points where temperature fields are non-uniform.
-
-% \begin{figure} [t]
-%     \centering
-%     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/inventory_vs_time.pdf}
-%     \caption{Temporal evolution of hydrogen inventory in monoblocks at several locations on inner vertical target of ITER divertor}
-%     \label{fig:inv_vs_time}
-% \end{figure}
-
-
-% \begin{figure*} [h]
-%     \centering
-%     \includegraphics[width=0.8\linewidth]{Figures/Chapter3/monoblocks/parametric_study/a_b_along_div.pdf}
-%     \caption{Evolution of coefficients $a$ and $b$ along a poloidal section of the divertor. Inventory evolves as $a\cdot t^b$ (H).}
-%     \label{fig:a_b_along_div}
-% \end{figure*}
-
-% One can obtain the inventory in the whole divertor by integrating the results obtained in Figure \ref{fig:along divertor} over the tokamak as follow:
-
-% \begin{eqnarray}
-%     \mathrm{inv_{divertor}} = N_\mathrm{cassettes}
-%     \cdot \left(N_\mathrm{PFU-IVT} \cdot \int \mathrm{inv_{IVT}}(x)\: dx + N_\mathrm{PFU-OVT} \cdot\int \mathrm{inv_{OVT}}(x) \: dx \right)
-% \end{eqnarray}
-% with $N_\mathrm{cassettes}=54$ the number of cassettes, $N_\mathrm{PFU-IVT}=16$ and $N_\mathrm{PFU-OVT}=22$ the number of plasma facing units per cassette on the inner and outer targets respectively, $\mathrm{inv_{IVT}}$ and $\mathrm{inv_{OVT}}$ the hydrogen inventory profile along the inner and outer targets respectively and $x$ the distance along the targets.
-
-% \begin{figure} [h]
-%     \centering
-%     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/inventory_divertor.pdf}
-%     \caption{Temporal evolution of hydrogen inventory in the whole divertor}
-%     \label{fig:inventory divertor}
-% \end{figure}
-
-% After a \SI{e7}{s} exposure, hydrogen inventory is estimated at approximately \SI{8}{g} (see Figure \ref{fig:inventory divertor}) which is relatively low considering the ITER in-vessel limit and the elapsed time.
-% De Temmerman \textit{et al} showed that retention in ITER can reach \SI{0.3}{g} per \SI{400}{s} discharge when taking into account Be deposits.
 
 \begin{figure}[h!]
     \centering
