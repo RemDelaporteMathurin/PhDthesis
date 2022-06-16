@@ -36,8 +36,10 @@ For SOLPS-ITER calculation, the divertor neutral pressure is the control paramet
 The Lower-Single-Null magnetic configuration used for the 2D simulations in SolEdge3X-EIRENE transport code (v588.165) are based on the experimental WEST plasma discharge \#54903 at $T_\mathrm{flat-top} = \SI{8}{s}$ (see \reffig{reactors}).
 In order to get as many divertor conditions as possible, the puffing rate was varied from \SI{4.5e20}{molecule.s^{-1}} to \SI{4.72e21}{molecule.s^{-1}} and the input power from \SI{0.449}{MW} to \SI{2.5}{MW}.
 The setup parameters of the simulation are listed in \reftab{my_tab}.
-$R_\mathrm{wall}$ is the recycling coefficient of main chamber wall, $R_\mathrm{pump}$ is the recycling coefficient of the pump, $D_\mathrm{m}$ is the cross-field mass diffusivity perpendicular to the flux surface, $\nu$ is the momentum diffusivity, $\chi_e$ and $\chi_i$ are the heat flux diffusivity for electrons and ions, respectively.
-The gas puff position is set inside the private region and the pump position is set under the baffle.
+$R_\mathrm{wall}$ is the recycling coefficient of main chamber wall, $R_\mathrm{pump}$ is the recycling coefficient of the pump, $D_\mathrm{m}$ is the cross-field mass diffusivity perpendicular to the flux surface, $\nu$ is the momentum diffusivity, $\chi_e$ and $\chi_i$ are the energy diffusivity for electrons and ions, respectively.
+While the value of these coefficients is required for the sake of reproductibility, their detailed description is outside the scope of this research.
+More information can be found in \sidecite{ciraolo_first_2019}.
+The gas puff position is set inside the private region (\textit{ie} the region between the two strike points) and the pump position is set under the baffle.
 
 \begin{table}[!ht]
     \centering
@@ -64,10 +66,10 @@ The gas puff position is set inside the private region and the pump position is 
 
 
 \subsubsection{SOLPS runs}
-Several ITER cases were taken with divertor neutral pressures varying from \SI{1.8}{Pa} to \SI{11.2}{Pa}.
+Several ITER cases were taken from \sidecite{pitts_physics_2019} with divertor neutral pressures varying from \SI{1.8}{Pa} to \SI{11.2}{Pa}.
 These SOLPS \sidecite{kaveeva_solps-iter_2020} scenarios can be found in the ITER Integrated Modelling Analysis Suite (IMAS) database \sidecite{imbeaux_design_2015, park_assessment_2020}.
 The nine simulations used in this work are labelled 122396, 122397, 122398, 122399, 122400, 122401, 122402, 122403 and 122404.
-These have been run in baseline burning plasma conditions (Q=10) and with an averaged separatrix Ne concentration of around \SI{0.6}{\%} \sidecite{pitts_physics_2019}.
+These have been run in baseline burning plasma conditions ($Q=10$).
 
 
 \begin{figure}[h!]
