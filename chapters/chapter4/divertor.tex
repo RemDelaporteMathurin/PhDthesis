@@ -140,12 +140,20 @@ Moreover, all the results obtained in this Chapter can be reproduced with the sc
 
 \section{ITER results}
 
-\begin{figure}[h!]
+\begin{figure*}[h!]
+    \captionsetup[subfigure]{format=plain,singlelinecheck=true}  % needed to center the subcaptions
     \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter4/ITER/inventory_along_outer_divertor.pdf}
-    \caption{Surface temperature, surface concentration and inventory along ITER outer vertical target with neutral pressures varying from \SI{2}{Pa} to \SI{11}{Pa}. The area corresponds to the 95\% confidence interval.}
-    \labfig{distrib outer target}
-\end{figure}
+    \begin{subfigure}{0.42\linewidth}
+        \includegraphics[width=\linewidth]{Figures/Chapter4/ITER/inventory_along_inner_divertor.pdf}
+        \caption{IVT}
+    \end{subfigure}%
+    \begin{subfigure}{0.58\linewidth}
+        \includegraphics[width=\linewidth]{Figures/Chapter4/ITER/inventory_along_outer_divertor.pdf}
+        \caption{OVT}
+        \labfig{distrib outer target}
+    \end{subfigure}
+    \caption{Surface temperature, surface concentration and inventory along the ITER divertor with neutral pressures varying from \SI{2}{Pa} to \SI{11}{Pa}. The area corresponds to the 95\% confidence interval.}
+\end{figure*}
 
 
 \begin{figure}[h]
@@ -184,11 +192,18 @@ Peak temperatures at strike points increased when decreasing the divertor neutra
 The peak temperature at the outer strike point reached \SI{2000}{K} at \SI{2}{Pa} and more than \SI{1000}{K} at the inner strike point, which is in accordance with the results obtained by Pitts \textit{et al} \sidecite{pitts_physics_2019}.
 
 % global inventory
-The inventory in the whole divertor is computed as follow:
+The inventory in the whole divertor is computed as follows:
 \begin{equation}
-    \mathrm{inv_{divertor}} = N_\mathrm{cassettes} \cdot \left( N_\mathrm{PFU-IVT} \cdot \int \mathrm{inv_{IVT}}(x)\: dx + N_\mathrm{PFU-OVT} \cdot\int \mathrm{inv_{OVT}}(x) \: dx \right)
+    \mathrm{inv_{divertor}} = N_\mathrm{cassettes} \cdot (\mathrm{inv_{IVT}} + \mathrm{inv_{OVT}})
 \end{equation}
-with $N_\mathrm{cassettes}=54$ the number of cassettes, $N_\mathrm{PFU-IVT}=16$ and $N_\mathrm{PFU-OVT}=22$ the number of plasma facing units per cassette in the inner and outer targets respectively (see \refsec{divertor section}), $\mathrm{inv_{IVT}}$ and $\mathrm{inv_{OVT}}$ the hydrogen inventory profile along the inner and outer targets respectively and $x$ the distance along the targets.
+with $N_\mathrm{cassettes}=54$ the number of cassettes, $\mathrm{inv_{IVT}}$ and $\mathrm{inv_{OVT}}$ the total inventory in the IVT and OVT respectively (in one cassette).
+
+\begin{align}
+    \mathrm{inv_{IVT}} &= N_\mathrm{PFU-IVT} \cdot \int_\mathrm{IVT} \mathrm{inv_{MB}}(x)\: dx \\
+    \mathrm{inv_{OVT}} &= N_\mathrm{PFU-OVT} \cdot \int_\mathrm{OVT} \mathrm{inv_{MB}}(x)\: dx
+\end{align}
+$N_\mathrm{PFU-IVT}=16$ and $N_\mathrm{PFU-OVT}=22$ the number of plasma facing units per cassette in the inner and outer targets respectively (see \refsec{divertor section}), $\mathrm{inv_{MB}}$ is the monoblock inventory per unit thickness and $x$ the distance along the targets.
+Here, $\int_\mathrm{OVT} \mathrm{inv_{MB}}(x) dx$ corresponds to the area of the profile shown on \reffig{distrib outer target}.
 
 The inventory in the outer target was found to be nearly twice that of the inner target.
 This is largely explained by the larger number of plasma facing units in the outer target and therefore a greater exposed surface.
@@ -272,10 +287,10 @@ On the other hand, the increasing temperature at the strike points only enhanced
 
 The total inventory in the WEST divertor is computed as follows:
 \begin{equation}
-    \mathrm{inv}_\mathrm{divertor} = N_\mathrm{PFU} \cdot \int \mathrm{inv}_\mathrm{PFU}(x)\: dx
+    \mathrm{inv}_\mathrm{divertor} = N_\mathrm{PFU} \cdot \int \mathrm{inv}_\mathrm{MB}(x)\: dx
     \labeq{inventory WEST}
 \end{equation}
-where $N_\mathrm{PFU} = 480$ is the number of PFU (Plasma Facing Units) in WEST, $\mathrm{inv}_\mathrm{PFU}$ is the inventory per unit thickness in \si{H.m^{-1}} (see \reffig{divertor distr power scan}) and $x$ the distance along the target in \si{m}.
+where $N_\mathrm{PFU} = 480$ is the number of PFU (Plasma Facing Units) in WEST, $\mathrm{inv}_\mathrm{MB}$ is the inventory per unit thickness in \si{H.m^{-1}} (see \reffig{divertor distr power scan}) and $x$ the distance along the target in \si{m}.
 
 The divertor inventory increased with the input power (see \reffig{inventory vs input power}) and evolved as the power 0.3 of the input power.
 The maximum divertor inventory was \SI{8.8e23}{H} at \SI{2.0}{MW} of input power.
