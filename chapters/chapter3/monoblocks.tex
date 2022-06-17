@@ -185,9 +185,24 @@ Using a mean surface temperature had low influence on the hydrogen transport res
 \subsection{Influence of dimensionality}\labsec{influence of dimensionality}
 
 The first simplification that can be done is the dimensionality.
-A full 3D simulation would be the most accurate, but also the most expensive in terms of computaion time.
+A full 3D simulation would be the most accurate, but also the most expensive in terms of computaion time (partly because more cells are required for the same spatial discretisation as seen on \reffig{monoblock meshes}).
 Conversely, 1D simulations are faster to run, but are less accurate.
 This is sometimes refered as the \textit{curse of dimensionality}.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.27\linewidth}
+        \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/mesh_3d.png}
+        \caption{3D mesh}
+    \end{subfigure}%
+    \begin{subfigure}{0.73\linewidth}
+        \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/mesh_2d.pdf}
+        \caption{2D mesh}
+    \end{subfigure}
+    \caption{Meshes used for the monoblock simulations.}
+    \labfig{monoblock meshes}
+\end{figure}
+
 A 2D approximation assumes the solution is independent of the poloidal direction.
 The hydrogen inventory is obtained by:
 
