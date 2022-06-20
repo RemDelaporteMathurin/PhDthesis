@@ -23,7 +23,7 @@ More complex and thorough verification cases are shown in Appendix \ref{appendix
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/mes_festim_effective_diffusion.pdf}
-    \caption{Temporal evolution of the particle flux $\varphi$ (Case 1).}
+    \caption{Temporal evolution of the outward particle flux $\varphi$ at $x=l$ (Case 1).}
     \label{fig:FESTIM vs analytical}
 \end{figure}
 
@@ -38,7 +38,7 @@ The trapping parameter $\zeta$ is defined in \sidecite{longhurst_verification_20
     \zeta = \frac{p}{k \: n} + \frac{c_\mathrm{m}}{n}
 \end{equation}
 
-In our case, we choose the trapping and detrapping rates $k$ and $p$, the concentration $c_0$ and the temperature $T$ so that $\zeta \gg \frac{c_\mathrm{m}}{n_1}$.
+In our case, we choose the trapping and detrapping rates $k$ and $p$, the concentration $c_0$ and the temperature $T$ so that $\zeta \gg \frac{c_\mathrm{m}}{n}$.
 This is known as the \textit{effective diffusivity regime} where the diffusion is almost identical to the case where there are no traps.
 In this regime, the governing equations are identical as a pure diffusion regime and are therefore easy to solve analytically.
 
@@ -46,7 +46,7 @@ The coefficient $D$ is then replaced by an effective diffusion coefficient:
 \begin{equation}
     D_\mathrm{eff} = \frac{D}{1+\frac{1}{\zeta}}
 \end{equation}
-The particle flux at the background surface is expressed in $\SI{}{H.m^{-2}.s^{-1}}$ and finally defined in \sidecite{longhurst_verification_2005} by:
+The particle flux at the background surface ($x=l$) is expressed in $\si{H.m^{-2}.s^{-1}}$ and finally defined in \sidecite{longhurst_verification_2005} by:
 \begin{equation}
     \varphi(t) = \frac{c_0 D}{l}\bigg[1+2\sum_{m=1}^{\infty}(-1)^m \exp\bigg(-m^2\frac{\pi^2 \:D_\mathrm{eff} \: t}{l^2}\bigg)\bigg]
 \label{eq:flux analytical}
@@ -114,7 +114,7 @@ Let us take a simple example with the Poisson equation defined on a 1D domain $[
 \end{equation}
 where $u$ is the unknown, $q$ is the source term.
 
-The manufactured solution is:
+The manufactured solution is arbitrarily defined as:
 \begin{equation}
     U(t, x) = A + \sin{(x + B t)}
 \end{equation}
@@ -163,6 +163,7 @@ By combining Equations \ref{eq:mobile}, \ref{eq:trapped} and \ref{eq: manufactur
     \end{cases}
     \label{eq:sources}
 \end{equation}
+$f$ is the source term of the mobile concentration equation and $g_1$ is the source term of the trapped concentration equation.
 
 where $g_1$ is an additional source term in Equation \ref{eq:trapped}.
 The Dirichlet boundary conditions for $c_\mathrm{m}$ and $c_{t,1}$ are:
@@ -225,12 +226,12 @@ Moreover, the convergence rates confirm the mesh dependency of the computed solu
     \begin{subfigure}{0.3\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Figures/Chapter2/c_m.pdf}
-        \caption{Computed $c_\mathrm{m}$ $N=64$}
+        \caption{Computed $c_\mathrm{m}$ (64 elements)}
     \end{subfigure}%
     \begin{subfigure}{0.3\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Figures/Chapter2/c_t.pdf}
-        \caption{Computed $c_\mathrm{t}$ $N=64$}
+        \caption{Computed $c_\mathrm{t}$ (64 elements)}
     \end{subfigure}%
     \begin{subfigure}{0.3\linewidth}
         \centering
