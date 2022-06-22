@@ -20,7 +20,7 @@ jobs:
       - name: First compile LaTeX document
         run: |
           latexmk -pdf main.tex
-          makeglossaries main.tex
+          makeglossaries main
           latexmk -pdf main.tex
 
       - uses: actions/upload-artifact@v2
