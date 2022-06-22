@@ -191,17 +191,17 @@ This is known as the Lawson criterion, which needs to be satisfied in order to r
 
 
 Fusion devices can therefore be classified into three categories.
-Stars like our Sun have very high confinement times and densities while remaining at relatively low temperatures (the sun Core is at \SI{1.2}{keV}).
+Stars like our Sun have very high confinement times and densities while remaining at relatively low temperatures (the sun core is at \SI{1.2}{keV}).
 Magnetic confinement devices (tokamaks, stellarators, etc.) exhibit temperatures orders of magnitude higher than stars but have confinement times of the order of $\sim \SI{1}{s}$.
-A third way of achieving fusion is to heat and compress a target of fuel with either lasers (NIF \sidecite{zylstra_burning_2022}, Laser Mega Joule \sidecite{miquel_laser_2016}), pistons (General Fusion) or by smashing it at high speed with a projectile (First Light Fusion).
+A third way of achieving fusion is to heat and compress a target of fuel with either lasers (\acrshort{nif} \sidecite{zylstra_burning_2022}, Laser Mega Joule \sidecite{miquel_laser_2016}), pistons (General Fusion) or by smashing it at high speed with a projectile (First Light Fusion).
 These devices, known as \textit{inertial fusion devices}, exhibit extremely high densities ($\sim \SI{e31}{m^{-3}}$) but short confinement times ($\sim \SI{e-11}{s}$).
  
 So far, no fusion device has been able to even reach \textit{break-even} ($Q = 1$) (see \reffig{triple product vs T}).
-The record of $Q = 0.68$ by the European tokamak JET (Joint European Torus) and was performed in 1997 \sidecite{mailloux_overview_2022}.
-The objective of the ITER tokamak, currently under construction in France, is to demonstrate an amplification factor of $Q=10$ over \SI{400}{s} \sidecite{casper_development_2013}. 
-Note that ITER will not produce any electricity as this will be the role of a future fusion reactor: DEMO \sidecite{federici_overview_2014}.
-Other designs aim at demonstrating plasma gain (\textit{ie} $Q > 1$) sooner than ITER and at a smaller scale (see \reffig{comparison reactors}).
-This is the case of SPARC and ARC developed by Commonwealth Fusion Systems and MIT \sidecite{sorbom_arc_2015,creely_overview_2020} or STEP designed by the United Kingdom Atomic Energy Authority (UKAEA) \sidecite{wilson_steppathway_2020}.
+The record of $Q = 0.68$ by the European tokamak \gls{jet} and was performed in 1997 \sidecite{mailloux_overview_2022}.
+The objective of the \acrshort{iter} tokamak, currently under construction in France, is to demonstrate an amplification factor of $Q=10$ over \SI{400}{s} \sidecite{casper_development_2013}. 
+Note that \acrshort{iter} will not produce any electricity as this will be the role of a future fusion reactor: DEMO \sidecite{federici_overview_2014}.
+Other designs aim at demonstrating plasma gain (\textit{ie} $Q > 1$) sooner than \acrshort{iter} and at a smaller scale (see \reffig{comparison reactors}).
+This is the case of \acrshort{sparc} and \acrshort{arc} developed by Commonwealth Fusion Systems and MIT \sidecite{sorbom_arc_2015,creely_overview_2020} or \acrshort{step} designed by the \gls{ukaea} \sidecite{wilson_steppathway_2020}.
 
 \begin{figure}
     \centering
@@ -212,44 +212,44 @@ This is the case of SPARC and ARC developed by Commonwealth Fusion Systems and M
 
 \begin{figure}
     \includegraphics[width=0.9\linewidth]{Figures/Chapter1/comparison_reactors.pdf}
-    \caption{Comparison of the tokamaks ITER, JET, ARC, WEST and SPARC. Data from \cite{delaporte-mathurin_remdelaportemathurinfusion-world_2022}.}
+    \caption{Comparison of the tokamaks \acrshort{iter} , JET, ARC, WEST and SPARC. Data from \cite{delaporte-mathurin_remdelaportemathurinfusion-world_2022}.}
     \labfig{comparison reactors}
 \end{figure}
 
 \subsection{Plasma-facing materials}
 
 The walls of a fusion reactor are exposed to intense heat and particle fluxes.
-The choice of plasma-facing materials (PFM) is therefore crucial.
+The choice of \glspl{pfm} is therefore crucial.
 
-An appropriate PFM must have good thermal properties to withstand the extreme heat fluxes.
+An appropriate \gls{pfm} must have good thermal properties to withstand the extreme heat fluxes.
 A high thermal conductivity is required as well as a very high melting point to enhance heat exhaust but also minimise the impact of arcing (material release from erosion) \sidecite{ivanova_plasma-facing_2012, mccracken_review_1980}.
 The material must also resist to thermal chocs encountered during short plasma discharges or transient events in the plasma \sidecite{van_den_kerkhof_impact_2021}.
 
-In order to maximise the components lifespan, PFMs must resist erosion.
+In order to maximise the components lifespan, \glspl{pfm} must resist erosion.
 This is even more important when the eroded particle reduce plasma performances by making it radiate and cool down.
 
-The choice of a PFM is also important from the nuclear safety point of view.
+The choice of a \gls{pfm} is also important from the nuclear safety point of view.
 First, the quantity of tritium retained in the materials need to be minimised (this point will be detailed in Section \ref{the tritium issue}).
 Second, neutron activation of the material can increase the quantity of radioactive waste and must be minimised.
 
-One of the first PFM was carbon fiber composite (CFC) \sidecite{linke_challenges_2019}.
-CFC had the great advantage of not melting and withstand very high heat fluxes.
-Using CFC also increased the plasma performances greatly \sidecite{federici_plasma-material_2001}.
+One of the first \gls{pfm} was \gls{cfc} \sidecite{linke_challenges_2019}.
+\gls{cfc} had the great advantage of not melting and withstand very high heat fluxes.
+Using \gls{cfc} also increased the plasma performances greatly \sidecite{federici_plasma-material_2001}.
 Unfortunately, graphite being porous, hydrogen (and therefore tritium) retention was high \sidecite{sugiyama_measurement_2004}.
 Plus carbon can react with plasma particles forming methane.
 Methane is then deposited on locations hard to access in the reactor trapping tritium even more.
-For these two safety reasons, CFC was replaced with tungsten or beryllium (or both).
+For these two safety reasons, \gls{cfc} was replaced with tungsten or beryllium (or both).
 
 Tungsten has a very high melting point (\SI{3422}{°C}) and retains less tritium \sidecite{pajuste_tritium_2021}.
 However, tungsten being a high-Z element, eroded tungsten will make the plasma radiate and cool it down.
-For this reason, the ITER divertor will be made of tungsten but the first wall (which has a large surface area) will be made of beryllium.
+For this reason, the \acrshort{iter} divertor will be made of tungsten but the first wall (which has a large surface area) will be made of beryllium.
 
 \subsection{Divertor}\labsec{divertor section}
 
 In a fusion reactor, heat and particles (fusion ashes) need to be extracted.
 In most tokamaks, the escaping plasma is diverted towards a dedicated component that is heat-resistant.
 Such a configuration is called a \textit{divertor} configuration.
-The X-divertor is a common configuration (used in WEST, JET, ITER) but more advanced configurations exist such as the Super-X divertor (MAST-U) \sidecite{havlickova_effect_2015}, X-Point Target (SPARC) \sidecite{rodriguez-fernandez_overview_2022, kuang_divertor_2020} or the Snowflake configurations \sidecite{ryutov_snowflake_2015}.
+The X-divertor is a common configuration (used in \acrshort{west}, \acrshort{jet}, \acrshort{iter}) but more advanced configurations exist such as the Super-X divertor (\acrshort{mast-u}) \sidecite{havlickova_effect_2015}, X-Point Target (\acrshort{sparc}) \sidecite{rodriguez-fernandez_overview_2022, kuang_divertor_2020} or the Snowflake configurations \sidecite{ryutov_snowflake_2015}.
 
 \begin{figure} [h]
     \centering
@@ -265,27 +265,27 @@ At these strike points, the targets will experience very intense heat and partic
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/divertor_exposure_conditions.pdf}
-    \caption{Heat flux, particle flux and particle energy along the ITER divertor computed by SOLPS (shot \#122399) \cite{pitts_physics_2019}.}
+    \caption{Heat flux, particle flux and particle energy along the \acrshort{iter} divertor computed by SOLPS (shot \#122399) \cite{pitts_physics_2019}.}
     \labfig{divertor exposure conditions}
 \end{figure}
 
-The ITER divertor will be composed of 54 cassettes (see \reffig{monoblock to divertor}).
-Each cassette is made of two targets - the inner vertical target (IVT) and outer vertical target (OVT) - , a dome and two reflector plates.
-The inner and outer strike points (respectively ISP and OSP) will be located on the IVT and the OVT.
-A prototype of the IVT is shown on \reffig{inner target photo}.
-These elements are themselves made of rows, called \glspl{pfuLabel}, of small unit bricks of a few dozens of milimetres called \textit{monoblocks}.
-In ITER, the IVT has 16 \glspl{pfuLabel} and the OVT has 22 \glspl{pfuLabel}.
+The \acrshort{iter} divertor will be composed of 54 cassettes (see \reffig{monoblock to divertor}).
+Each cassette is made of two targets - the \gls{ivt} and \gls{ovt} - , a dome and two reflector plates.
+The inner and outer strike points (respectively \acrshort{isp} and \acrshort{osp}) will be located on the \gls{ivt} and the \gls{ovt}.
+A prototype of the \gls{ivt} is shown on \reffig{inner target photo}.
+These elements are themselves made of rows, called \glspl{pfuLabel}, of small unit bricks of a few dozens of milimetres called \glspl{monoblock}.
+In \acrshort{iter} , the \gls{ivt} has 16 \glspl{pfuLabel} and the \gls{ovt} has 22 \glspl{pfuLabel}.
 Monoblocks are typically made of a tungsten substrate with a cooling pipe running through.
 This cooling channel is necessary to keep the component's temperature below its operating limit and exhaust heat.
 
 Several monoblock designs are currently studied for DEMO with varying dimensions, different materials for the cooling pipe or the interlayer, etc \sidecite{vizvary_european_2020, huang_tungsten_2016, hirai_use_2016, domptail_design_2020}.
-The main candidate is the ITER-like design, the type of monoblock that will be used in ITER \cite{hirai_use_2016}.
+The main candidate is the ITER-like design, the type of monoblock that will be used in \acrshort{iter} \cite{hirai_use_2016}.
 This design has a tunsgten substrate with a CuCrZr cooling pipe and a Cu interlayer for compliance.
-In ITER, monoblocks will be \SI{12}{mm}-thick whereas they will be thiner (\SI{4}{mm}) in DEMO \sidecite{you_european_2018}.
+In \acrshort{iter} , monoblocks will be \SI{12}{mm}-thick whereas they will be thiner (\SI{4}{mm}) in DEMO \sidecite{you_european_2018}.
 
 \begin{figure*}
     \includegraphics[width=\linewidth]{Figures/Chapter1/monoblock_to_divertor.pdf}
-    \caption{Structure of the ITER divertor. (images: ITER Organization, \cite{guerrini_fabrication_2021}) }
+    \caption{Structure of the \acrshort{iter} divertor. (images: ITER Organization, \cite{guerrini_fabrication_2021}) }
     \labfig{monoblock to divertor}
 \end{figure*}
 
@@ -330,12 +330,12 @@ The current reserve of tritium in the world is a few dozens of kilograms.
 It is naturally produced by interaction of comsic rays with the nitrogen in the atmosphere (\SI{0.2}{kg} per year).
 Tritium is however produced in larger quantities in fission CANDU reactors as a by-product (\SI{130}{g} per year per CANDU reactor \sidecite{ni_tritium_2013}).
 
-ITER itself will consume around \SI{18}{kg} of tritium over the duration of its operation \sidecite{glugla_iter_2007}, which represent a yearly consumption of \SI{0.9}{kg} for a 20-year lifetime.
+\acrshort{iter} itself will consume around \SI{18}{kg} of tritium over the duration of its operation \sidecite{glugla_iter_2007}, which represent a yearly consumption of \SI{0.9}{kg} for a 20-year lifetime.
 A \SI{800}{MWe} DEMO-type commercial fusion reactor would burn around \SI{300}{g} of tritium per day ($\approx \SI{100}{kg}$ a year).
 
 For all these reasons, tritium must be produced on-site in large quantities for a fusion economy to be possible.
 
-To this end, the neutrons of the DT fusion reactions will be harnessed in a component containing lithium (Li) surrounding the plasma called the \textit{breeding blanket} (see \reffig{blanket_shimwell}).
+To this end, the neutrons of the DT fusion reactions will be harnessed in a component containing \gls{Li} surrounding the plasma called the \textit{breeding blanket} (see \reffig{blanket_shimwell}).
 
 
 \begin{figure}
@@ -353,7 +353,7 @@ To this end, the neutrons of the DT fusion reactions will be harnessed in a comp
     \labfig{blanket_shimwell}
 \end{figure}
 
-Depending on the Li isotope, two reactions can occur:
+Depending on the \gls{Li} isotope, two reactions can occur:
 
 \begin{align}
     \text{n} + \text{\textsuperscript{6}Li}  \ \ &\xrightarrow{} \ \ \text{\textsuperscript{3}H} + \alpha + \SI{4.8}{MeV}\\
@@ -363,20 +363,20 @@ Depending on the Li isotope, two reactions can occur:
 Several blankets designs have been proposed divided in three main categories: ceramic concepts, liquid metal concepts, and molten-salts concepts.
 All designs differ in the choice of tritium breeder, coolant and geometry.
 
-The european candidates for breeding blankets in DEMO are the Water-Cooled-Lithium-Lead (WCLL) \sidecite{aubert_design_2020, del_nevo_recent_2019}, the Helium-Cooled-Pebble-Bed (HCPB) \sidecite{hernandez_overview_2018, hernandez_new_2017,pereslavtsev_neutronic_2017}, the Helium-Cooled-Liquid-Lead (HCLL) \sidecite{aubert_status_2018,jaboulay_nuclear_2017} and the Dual-Coolant-Lithium-Lead (cooled by water and helium) \sidecite{urgorri_tritium_2017, palermo_neutronic_2015} \sidecite{federici_overview_2019}.
+The european candidates for breeding blankets in DEMO are the Water-Cooled-Lithium-Lead (WCLL) \sidecite{aubert_design_2020, del_nevo_recent_2019}, the \gls{hcpb} \sidecite{hernandez_overview_2018, hernandez_new_2017,pereslavtsev_neutronic_2017}, the \gls{hcll} \sidecite{aubert_status_2018,jaboulay_nuclear_2017} and the \gls{dcll} \sidecite{urgorri_tritium_2017, palermo_neutronic_2015} \sidecite{federici_overview_2019}.
 
-The TBR is defined by the number of tritium atoms produced by generated neutrons.
-In order to ensure tritium self-sufficiency, the tritium breeding ratio (TBR) of the blanket must be greater than or equal to one \sidecite{abdou_blanketfirst_2015}.
-A TBR greater than one can only be obtained by neutron multiplication with lead or beryllium.
+The \gls{tbr} is defined by the number of tritium atoms produced by generated neutrons.
+In order to ensure tritium self-sufficiency, the \gls{tbr} of the blanket must be greater than or equal to one \sidecite{abdou_blanketfirst_2015}.
+A \gls{tbr} greater than one can only be obtained by neutron multiplication with lead or beryllium.
 
-Moreover, the TBR must account for:
+Moreover, the \gls{tbr} must account for:
 \begin{itemize}
     \item losses via permeation, trapping, radioactive decay (5\% per year)
     \item safety reserve in case of interruption of the fuel cycle
     \item supply of new reactors, also called the \textit{startup inventory}
 \end{itemize}
 
-The TBR target in conventional power plants is around 1.05 \sidecite{shimwell_multiphysics_2019}.
+The \gls{tbr} target in conventional power plants is around 1.05 \sidecite{shimwell_multiphysics_2019}.
 Though this would achieve self-sufficiency, it is not be enough to sustain the development of a fusion energy market.
 
 % The desired doubling time of fusion power plants will drive this last point \sidecite{bockhoff_tritium_1983}.
@@ -398,12 +398,12 @@ This time reaches \SI{50}{years} with a doubling time of \SI{5}{years}.
     \labfig{fusion power doubling time}
 \end{figure}
 
-For fusion power plants to achieve a doubling time $\tau_2 \leq \SI{3}{years}$ (doubling times in power industry are typically \SI{5}{years}), the TBR must be greater than 1.15 \sidecite{abdou_physics_2020}.
-Other key parameters influence the required TBR (for a given doubling time) like the tritium burn-up fraction, the fueling efficiency, the plant availability factor...
+For fusion power plants to achieve a doubling time $\tau_2 \leq \SI{3}{years}$ (doubling times in power industry are typically \SI{5}{years}), the \gls{tbr} must be greater than 1.15 \sidecite{abdou_physics_2020}.
+Other key parameters influence the required \gls{tbr} (for a given doubling time) like the tritium burn-up fraction, the fueling efficiency, the plant availability factor...
 
 Tritium transport in breeding blankets is crucial as trapped tritium in solid parts would increase the startup inventory.
-For a given doubling time, a higher startup inventory means a higher TBR requirement.
-The blanket inventory in the solid parts can be reduced by (1) reduce the amount of solid components (this will also increase the TBR \cite{shimwell_multiphysics_2019}) (2) designing permeation barriers \sidecite{utili_design_2022}.
+For a given doubling time, a higher startup inventory means a higher \gls{tbr} requirement.
+The blanket inventory in the solid parts can be reduced by (1) reduce the amount of solid components (this will also increase the \gls{tbr} \cite{shimwell_multiphysics_2019}) (2) designing permeation barriers \sidecite{utili_design_2022}.
 % Understanding hydrogen transport in these components is therefore crucial for the future of nuclear fusion technology.
 
 \subsection{Safety}
@@ -414,7 +414,7 @@ Tritium's half-life once incorporated in organic compounds increases to 40 days 
 To put tritium toxicity in perspective, it has been estimated that drinking \SI{2}{L} of water with the highest permissible level of tritium contamination (\SI{10000}{Bq.L^{-1}}) each day for a year results in a total radiation dose of \SI{0.1}{mSv}, which is equivalent to two weeks natural radioactivity exposure \sidecite{hyatt_radioactive_2021}.
 
 To limit the potential environmental releases due to a loss of vacuum accident, its inventory in fusion reactors must be limited \sidecite{honda_analyses_2000}.
-In ITER for instance, the in-vessel inventory of tritium is limited to \SI{1}{kg} including \SI{120}{g} retained in cryo-pumps \sidecite{roth_tritium_2008}.
+In \acrshort{iter} for instance, the in-vessel inventory of tritium is limited to \SI{1}{kg} including \SI{120}{g} retained in cryo-pumps \sidecite{roth_tritium_2008}.
 This limit has been determined to avoid evacuation of population around the reactor in the event of a loss of vacuum accident.
 
 Moreover, as tritium can migrate in materials, components that have been in contact with it are considered as tritiated waste and must be handled.
@@ -469,13 +469,13 @@ Finally, interactions of lithium with neutrons represent a major source of hydro
 \subsubsection{Helium}
 Helium is the product of the fusion reaction (see \refeq{fusion reactions}).
 Therefore, the wall of a fusion reactor is also bombarded with helium ions.
-This is the primary source of helium in plasma-facing materials.
+This is the primary source of helium in \glspl{pfm}.
 
 Helium can also be produced in materials indirectly.
 Since tritium decays into helium-3 (see \refeq{tritium decay}), regions with high tritium retention are expected to act as a source of helium over time \cite{shimada_tritium_2017}.
 Moreover, interactions of neutrons (from the fusion reactions) with metallic elements (\textit{eg} tungsten or iron) can produce helium via transmutation \sidecite{watanabe_status_2011}.
 This \textit{transmutation gas} production has been estimated using well-established neutronics simulations (Monte-Carlo simulations modelling the path of neutroncs in matter) \sidecite{gilbert_neutron-induced_2013, gilbert_integrated_2012}.
-Depending on the position in the DEMO divertor, cumulative helium production over the course of three full power years (FPY) could reach more than \SI{400}{appm}.
+Depending on the position in the DEMO divertor, cumulative helium production over the course of three \glspl{fpy} could reach more than \SI{400}{appm}.
 
 
 \subsection{H/W \& He/W interactions}
@@ -512,8 +512,8 @@ Bennanoune and coworkers performed hydrogen transport studies with hydrostatic p
 Studies are currently being performed for tungsten.
 
 % MD simulations
-Diffusion coefficients (also called diffusivities) can be computed by Molecular Dynamics (MD) and Density Functional Theory (DFT).
-The principle of MD is to calculate the trajectory of atoms in a simulation box (see \reffig{md faney}).
+Diffusion coefficients (also called diffusivities) can be computed by \gls{md} and \gls{dft}.
+The principle of \gls{md} is to calculate the trajectory of atoms in a simulation box (see \reffig{md faney}).
 The trajectory of a particle $i$ in a system of $N$ particles can be computed from Newton's second law of motion:
 
 \begin{equation}
@@ -521,7 +521,7 @@ The trajectory of a particle $i$ in a system of $N$ particles can be computed fr
 \end{equation}
 where $m_i$ is the mass of the particle, $\vec{a_i}$ is its acceleration, $\vec{F}_{i,j}$ is the force applied to the particle due to its interaction with particle $j$.
 The forces between atoms is only a function of the interatomic potentials.
-These potentials can be found in literature or can be estimated from \textit{ab initio} computations (DFT) \sidecite{connetable_diffusion_2019,fernandez_hydrogen_2015,boisse_modelling_2014,boisse_modeling_2014,becquart_microstructural_2010} or from methods based on machine learning \sidecite{lam_modeling_2021,behler_constructing_2015}.
+These potentials can be found in literature or can be estimated from \textit{ab initio} computations (\gls{dft}) \sidecite{connetable_diffusion_2019,fernandez_hydrogen_2015,boisse_modelling_2014,boisse_modeling_2014,becquart_microstructural_2010} or from methods based on machine learning \sidecite{lam_modeling_2021,behler_constructing_2015}.
 
 \begin{figure*}
     \centering
@@ -530,7 +530,7 @@ These potentials can be found in literature or can be estimated from \textit{ab 
     \labfig{md faney}
 \end{figure*}
 
-By measuring the trajectory of a diffusing species from MD simulations for a long time, its diffusion coefficient $D$ can be estimated from Einstein equation \cite{einstein_uber_1905}:
+By measuring the trajectory of a diffusing species from \gls{md} simulations for a long time, its diffusion coefficient $D$ can be estimated from Einstein equation \cite{einstein_uber_1905}:
 \begin{equation}
     \lim_{x\to\infty} \frac{\langle R^2(t) \rangle}{6t} = D
 \end{equation}
@@ -586,11 +586,11 @@ Peaks appearing at high temperatures correspond to "deep" traps with a high detr
     \labfig{TDS example ialovega}
 \end{figure}
 
-These parameters can also be obtained from DFT calculations \sidecite{hodille_modelling_2021, hodille_hydrogen_2018, backer_multiscale_2017,lu_review_2014}.
+These parameters can also be obtained from \gls{dft} calculations \sidecite{hodille_modelling_2021, hodille_hydrogen_2018, backer_multiscale_2017,lu_review_2014}.
 
 Some defects can trap several hydrogen/helium atoms.
 For instance, up to approximately seven helium atoms can be trapped in a mono-vacancy \sidecite{faney_spatially_2015}.
-DFT calculations also show that defects like mono-vacancies, dislocations or grain boundaries can retain multiple hydrogen atoms (see \reffig{trapping energy hydrogen in tungsten}).
+\gls{dft} calculations also show that defects like mono-vacancies, dislocations or grain boundaries can retain multiple hydrogen atoms (see \reffig{trapping energy hydrogen in tungsten}).
 As the number of trapped particles (helium or hydrogen) increases, the binding energy of a particle with the defect usually decreases.
 In other words, the more particles are trapped in a defect the easier it is for a hydrogen atom to escape.
 For instance, the binding energy of a helium atom in an empty mono-vacancy is around \SI{4}{eV} and around \SI{2.5}{eV} if the vacancy already retains four helium atoms \cite{faney_spatially_2015}.
@@ -611,7 +611,7 @@ They can also be created from external factors (\textit{extrinsic} defects) like
 When a surface is in contact with a gas, molecular species (\textit{eg.} $\text{H}_2$, $\text{T}_2$, $\text{HD}$...) can dissociate into mono-atomic species.
 After their dissociation, the atomic particles can be adsorbed on the surface (on adsorption sites).
 This dissociation is described by a sticking propability usually associated with an Arrhenius law $s = s_0 \exp{(-E_s/k_B T)}$.
-DFT calculations can calculate energy barriers for adsorption and migration of solute species on surfaces \sidecite{heinola_first-principles_2010}.
+\gls{dft} calculations can calculate energy barriers for adsorption and migration of solute species on surfaces \sidecite{heinola_first-principles_2010}.
 Studies have however shown that this process is not thermally activated (\textit{ie} $E_s=0$) \sidecite{alnot_adsorption_1989, tamm_interaction_1970} but rather depends on the ratio of the surface concentration of the species (hydrogen or helium) by the concentration of adsorption sites.
 This quantity is called the \textit{surface coverage} $\theta$. 
 When $\theta = 1$, the surface is fully saturated and when $\theta = 0$ all the adsorption sites are available.
@@ -619,7 +619,7 @@ Moreover, the presence of impurities occupying adsorption sites can decrease the
 
 Adsorbed particles can then be \textit{absorbed} in the bulk (see \reffig{potential energy diagram metal lattice}).
 This thermally activated process is associated with an absorption coefficient following an Arrhenius law $A=A_0 \exp{(-E_A/k_B T)}$.
-The absorption process is modelled using DFT and absorption activation energies $E_A$ can be determined for different surface orientations \sidecite{johnson_hydrogen_2010, nojima_theoretical_2007,alnot_adsorption_1989}.
+The absorption process is modelled using \gls{dft} and absorption activation energies $E_A$ can be determined for different surface orientations \sidecite{johnson_hydrogen_2010, nojima_theoretical_2007,alnot_adsorption_1989}.
 
 All these processes (dissociation, adsorption and absorption) can be described by an absorption flux:
 \begin{equation}
@@ -711,7 +711,7 @@ For hydrogen diffusing in liquid LiPb (typically in a WCLL breeding blanket with
 \subsubsection{Clustering}
 Single He atoms implanted into the material diffuse rapidly due to the high W-He repulsion.
 This high repulsive W-He interaction is such that interstitial He atoms preferably rearrange into groups of atoms in order to minimise the number of repulsive interactions \sidecite{hamid_molecular_2019, hammond_large-scale_2018}.
-This phenomena, called "clustering", was highlighted by DFT studies \cite{becquart_density_2009,dunn_rate_2013} and MD simulations \cite{henriksson_molecular_2006}.
+This phenomena, called "clustering", was highlighted by \gls{dft} studies \cite{becquart_density_2009,dunn_rate_2013} and MD simulations \cite{henriksson_molecular_2006}.
 Small clusters are themselves mobile as long as all the He atoms within the cluster are occupying interstitial position in the solid lattice.
 The activation energy for interstitial He atoms and clusters in W ranges from 0.15 to \SI{0.45}{eV} according to Perez \textit{et al} \sidecite{perez_mobility_2017}.
 He clusters will eventually grow by interacting with either interstitial He atoms or other clusters.
@@ -723,7 +723,7 @@ Clustering of H atoms is less clear and Henriksson \textit{et al} showed that H 
 If its size is big enough the cluster pressure is sufficient to knock off a W atom from the lattice, creating a W vacancy and an interstitial W atom (a Frenkel pair).
 This process is called trap mutation or \textit{self-trapping} and the trapped clusters act as nuclei for bubble formation.
 
-Trap mutation has been modelled in W using DFT \sidecite{boisse_modelling_2014} and Monte Carlo computations \sidecite{de_backer_modeling_2015}.
+Trap mutation has been modelled in W using \gls{dft} \sidecite{boisse_modelling_2014} and Monte Carlo computations \sidecite{de_backer_modeling_2015}.
 It has been shown that this phenomena depends not only on the number of He atoms in the cluster but also on temperature, position of the cluster to the free surface or even the crystal orientation \sidecite{blondel_modeling_2017, hu_interactions_2014, hu_dynamics_2014}.
 At this point, the trapped cluster occupies the newly created W vacancy position.
 It is considered immobile since it would requires either diffusion of another vacancy next to it, or recombination of the Frenkel pair in order to diffuse \sidecite{morishita_nucleation_2007}.
@@ -790,7 +790,7 @@ Blistering was found to lead to hardening in W due to the production of dislocat
 It can also form cracks depending on the alloying elements in W and the microstructure \sidecite{ueda_hydrogen_2005}.
 
 Hydrogen blistering was observed under high energy irradiation (typically from a few \si{keV} to \si{MeV}).
-These energies are orders of magnitudes higher than the ones expected in the ITER divertor (see \reffig{divertor exposure conditions}).
+These energies are orders of magnitudes higher than the ones expected in the \acrshort{iter} divertor (see \reffig{divertor exposure conditions}).
 
 It was also found that hydrogen blister formation was avoided in tungsten at temperatures above \SI{600}{K} \sidecite{wang_blister_2001,shimada_blister_2003}.
 
@@ -963,7 +963,7 @@ A behaviour law linking the monoblock inventory to exposure conditions (surface 
     \item \textbf{\refch{Chapter4}} \newline
 The next stage is to scale up from a monoblock model to a full divertor model.
 The behaviour law obtained in \refch{Chapter3} will be coupled to plasma simulations (providing distributions of exposure conditions).
-The inventory of the ITER and WEST divertors will be computed for several plasma scenarios.
+The inventory of the \acrshort{iter} and WEST divertors will be computed for several plasma scenarios.
     \item \textbf{\refch{Chapter5}} \newline
 Finally, the influence of helium exposure and the presence of helium bubbles was studied.
 To this end, a finite element solver was first developed to simulate helium transport and clustering in tungsten.

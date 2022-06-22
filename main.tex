@@ -122,10 +122,11 @@
 \makeindex[columns=3, title=Alphabetical Index, intoc] % Make LaTeX produce the files required to compile the index
 \usepackage[automake, acronym]{glossaries-extra}
 
+% uncomment to have the first use of acronyms in italic
 \setabbreviationstyle[acronym]{long-short}
-\glssetcategoryattribute{acronym}{glossdescfont}{emph}
+% \glssetcategoryattribute{acronym}{glossdescfont}{emph}
 
-\renewcommand*{\glsfirstlongdefaultfont}[1]{\emph{#1}}
+% \renewcommand*{\glsfirstlongdefaultfont}[1]{\emph{#1}}
 
 \makeglossaries % Make LaTeX produce the files required to compile the glossary
 \input{glossary.tex} % Include the glossary definitions

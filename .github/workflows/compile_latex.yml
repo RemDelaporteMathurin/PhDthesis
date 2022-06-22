@@ -15,7 +15,18 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v2
 
-      - name: Compile LaTeX document
+      - name: First compile LaTeX document
         uses: dante-ev/latex-action@master
         with:
           root_file: main.tex
+          post_compile: makeglossaries main
+
+      - name: Second compile LaTeX document
+        uses: dante-ev/latex-action@master
+        with:
+          root_file: main.tex
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: PDF
+          path: main.pdf
