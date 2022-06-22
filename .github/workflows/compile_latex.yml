@@ -17,7 +17,7 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v2
 
-      - name: First compile LaTeX document
+      - name: Compile LaTeX document
         run: |
           latexmk -pdf main.tex
           makeglossaries main
