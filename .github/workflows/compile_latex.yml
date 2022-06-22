@@ -6,6 +6,8 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   build_latex:
     runs-on: ubuntu-latest
+    container:
+      image: danteev/texlive:latest
     steps:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.6.0
@@ -16,15 +18,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: First compile LaTeX document
-        uses: xu-cheng/latex-action@v2
-        with:
-          root_file: main.tex
-          post_compile: makeglossaries main
-
-      - name: Second compile LaTeX document
-        uses: xu-cheng/latex-action@v2
-        with:
-          root_file: main.tex
+        run: |
+          latexmk -pdf main.tex
+          makeglossaries main.tex
+          latexmk -pdf main.tex
 
       - uses: actions/upload-artifact@v2
         with:
