@@ -86,7 +86,7 @@ In a metal, $n=2$ and in a non-metallic liquid, $n=1$.
 Recombination occurs when hydrogen particles located at the surface of the material combine with other particles (which can be other hydrogen particles) and are no longer bonded with the metal surface.
 It can happen both in presence of a vacuum or when the metal is in contact with a fluid (gas or liquid).
 
-Similarly, a dissociation flux can be applied when a surface is in contact with a gas atmosphere of H:
+Similarly, a dissociation flux can be applied when a surface is in contact with a gas atmosphere of H2:
 \begin{equation}
     - D(T)\nabla c_\mathrm{m} \cdot \mathbf{n} = K_d(T) P \quad \text { on } \partial \Omega
     \label{eq: dissociation flux}
@@ -368,7 +368,7 @@ The approximated solution $u_h$ therefore reads (see Figure \ref{fig: example ap
     u_h(x) = \sum^N_{i=1}U_i \phi_i(x)
     \label{eq: FEM solution}
 \end{equation}
-where $U_i$ are the coefficient to be determined one each node (called degrees of freedom).
+where $U_i$ are the coefficient to be determined on each node (called degrees of freedom).
 $N$ is the number of nodes used to discretise the domain.
 
 \begin{figure}
@@ -444,7 +444,7 @@ Many different finite elements are available in FEniCS \cite{noauthor_periodic_n
 
 % Adaptive step size
 When dealing with transient problems, FESTIM provides an adaptive stepsize allowing the stepsize to increase (by a user-defined factor) when the convergence criterion is easily reached by the solver.
-This greatly improve the performance of the code since less timesteps are needed.
+This greatly improves the performance of the code since less timesteps are needed.
 
 
 
