@@ -1,4 +1,5 @@
-This Section reproduces the experiment of Ialovega and co-workers \sidecite{ialovega_hydrogen_2020}.
+The focus of this Section is the coupled effects of helium implantation and hydrogen transport.
+To this end, the experiment of Ialovega and co-workers \sidecite{ialovega_hydrogen_2020} is reproduced with the helium bubble model described in this Chapter coupled to FESTIM.
 
 \subsection{Experiment and FESTIM simulation description}
 
@@ -48,7 +49,7 @@ The quantities $c_b$ and $\langle r_b \rangle$ have been computed from the model
     \label{tab: trap properties}
 \end{table}
 
-The diffusion coefficient of deuterium (\si{m^2.s^{-1}}) was set to $4.1\times 10 ^{-7} \exp{-0.39/k_B T}$ \sidecite{frauenfelder_solution_1969}
+The diffusion coefficient of deuterium (\si{m^2.s^{-1}}) was set to $4.1\times 10 ^{-7} \exp{-0.39/k_B T}$ \sidecite{frauenfelder_solution_1969}.
 The \SI{250}{eV} deuterium implantation was represented by a Gaussian distrubiton with a mean implantation depth \SI{10}{nm} and a standard deviation of \SI{4.5}{nm} (calculated from SRIM \sidecite{ziegler_srim_2010}).
 Finally, an instantaneous recombination was assumed on the surfaces.
 
@@ -77,39 +78,15 @@ The detrapping energies of traps 1, 2 and 3 were found to be \SI{1.08}{eV}, \SI{
     \label{tab: trap properties results}
 \end{table}
 
-\begin{itemize}
-    \item 1st He implantation: all pre-existing defects are saturated with He and bubbles are formed (proof from PAS that there are pre-existing defects before He implantation)
-    \item 1st H implantation: H can only be trapped around bubbles since defects are saturated
-    \item 1st TDS: H trapped around bubbles is desorbed (550K peak), He dissociates from HeV clusters (up to 1250K)
-    \item 2nd H implantation: H is trapped around bubbles + in the non-saturated defects
-    \item 2nd TDS: H trapped around bubbles is desorbed (550 K peak) + H trapped in non-saturated HeHV clusters (peaks 400K, 450K and 500K) + He trapped in deeper traps dissociate (TDS up to 1350K)
-    
-    \item 3rd to 5th implantation: H is trapped around bubbles + non-saturated defects
-    \item 3rd to 5th TDS: H around bubbles is desorbed + more H dissociates from HeHV clusters
-\end{itemize}
-
-
-
-
-% After the first TDS, three additional peaks appear (traps 1, 2 and 3), which correlates with the fact that a small quantity of He left the sample after the first TDS.
-% During all the following TDS cycles, the He desorption was much lower.
-% This relates with the fact that the He bubbles traps density does not vary between the second and fifth TDS.
-% The density of traps 1, 2 and 3 is increasing from the first TDS to the second.
-% This suggests that some of the desorbed He was occupying defects such as vacancies.
-% This attribution is also supported by the He TDS spectra shown in \cite{ialovega_hydrogen_2020}.
-% These spectra showed that, during the first and second TDS, He desorbed at temperatures above \SI{1000}{K} which corresponds to $\mathrm{He}_m\mathrm{V}_1$ clusters \cite{faney_spatially_2014}.
-
 This would mean that if the TDS were run up to temperature around \SI{1600}{K}, $\mathrm{He}_1\mathrm{V}_1$ clusters could dissociate resulting in additional free trapping sites for H and therefore different TDS spectra.
 
-The H retention is not dominated by He-bubbles trapping but rather by secondary defects - potentially induced by the formation of bubbles.
-
-
+The H retention is not dominated by He-bubbles trapping but rather by pre-existing defects.
 
 \begin{figure}[h!]
     \centering
     \begin{subfigure}{\linewidth}
         \includegraphics[width=\linewidth]{Figures/Chapter5/ialovega_tds.pdf}
-        \caption{Experimental TDS spectra fitted with FESTIM}
+        \caption{Experimental TDS spectra fitted with FESTIM. Experimental points are taken from \cite{ialovega_hydrogen_2020}.}
         \label{fig: 3 TDS}
     \end{subfigure}
     \begin{subfigure}{\linewidth}
@@ -124,20 +101,53 @@ The H retention is not dominated by He-bubbles trapping but rather by secondary 
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter5/trap_densities.pdf}
-    \caption{Caption}
+    \caption{Evolution of the trap densities between the second and fifth TDS.}
     \label{fig:density evolution}
 \end{figure}
 
 The densities of traps 1 and 2 increased from the 2nd to the 5th TDS (see Figure \ref{fig:density evolution}).
 However, the density of trap 3 decreased slightly (which is also visible on the TDS spectra shown in Figure \ref{fig: fitted TDS}).
-This can be explained by either by 1) He leaving V-He complexes 2) annealing of some defects.
 The processes at stake cannot yet be precisely described. 
 
-\subsection*{Conclusion}
+One possible interpretation of the results is:
+\begin{itemize}
+    \item Initial state: the sample has some pre-existing defects %(proof from PAS that there are pre-existing defects before He implantation)
+    \item He implantation: all pre-existing defects are saturated with He and bubbles are formed
+    \item 1st D implantation: D can only be trapped around bubbles since defects are saturated with He
+    \item 1st TDS (up to \SI{1250}{K}): D is detrapped from bubbles is desorbed (\SI{550}{K} peak), He dissociates from pre-existing defects 
+    \item 2nd D implantation: D is trapped around bubbles and in the non-saturated defects
+    \item 2nd TDS (up to \SI{1350}{K}): D is detrapped from bubbles is desorbed (\SI{550}{K} peak) and from non-saturated defects (peaks 400K, 450K and 500K) + He trapped in deeper traps dissociate (because the TDS goes to higher temperatures)
+    \item 3rd to 5th D implantations: D is trapped around bubbles and in pre-existing defects
+    \item 3rd to 5th TDS: D is detrapped from bubbles and pre-existing defects (now more available than at the 2nd TDS)
+\end{itemize}
+This interpretation is represented (in a simplified way) on \reffig{ialovega experiment interpretation}.
 
-- H He implantation has been simulated with FESTIM
-- One potential explanation of the effects observed in \cite{ialovega_hydrogen_2020}
-- Though fitting a TDS spectrum is not sufficient to draw strong conclusions
-- Suggests that 1) He doesn't leave bubbles in significant quantities at these temperatures 2) He occupies pre-existing defects avoiding H to get trapped 3) H retention is not dominated by He-induced bubbles
 
-- Experimental suggestions: stop the TDS at \SI{750}{K} to limit He desorption. If the TDS spectra aren't affected this would confirm/infirm the He-induced trapping reduction effect.
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter5/sketch ialovega experiment.pdf}
+    \caption{Schematic interpretation of the simulation results showing the several stages of the experiment (from helium implantation to TDS cycles).}
+    \labfig{ialovega experiment interpretation}
+\end{figure*}
+
+\subsection{Conclusion}
+
+FESTIM was used to simulate the influence of helium implantation on hydrogen transport.
+The experiment of Ialovega and co-workers described in \sidecite{ialovega_hydrogen_2020} was reproduced and one possible explanation was given.
+Although fitting a TDS spectrum is not sufficient to draw strong conclusions, this works suggests that:
+\begin{itemize}
+    \item He does not leave bubbles in significant quantities at these temperatures
+    \item He occupies pre-existing defects avoiding H to get trapped
+    \item Hydrogen retention is not dominated by He-induced bubbles but rather by the saturation of pre-existing defects by He
+\end{itemize}
+
+From these results, several experimental suggestions can be made.
+Running the TDS up to \SI{750}{K} only would limit He desorption.
+Indeed, it was shown in \cite{ialovega_hydrogen_2020} that there was no helium desorption below this temperature after the initial cleaning TDS.
+If helium does not desorb and remains in the pre-existing defects, the deuterium TDS spectra should not be affected and only the desorption from bubbles should be observed.
+This would confirm or infirm the interpretation of the results presented here.
+
+Moreover, if this interpretation was confirmed, it could have implications for hydrogen retention.
+Indeed, one could imagine reducing the tritium inventory of components by first exposing them to helium.
+Helium would fill the existing defects, making it impossible for tritium to be trapped.
+However, having a helium inventory in components can also have negative consequences.
