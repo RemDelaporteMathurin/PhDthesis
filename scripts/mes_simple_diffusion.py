@@ -10,10 +10,11 @@ my_model = F.Simulation()
 
 my_model.mesh = F.MeshFromVertices(np.linspace(0, 1.5, num=1000))
 
-my_model.materials = F.Materials([F.Material(id=1, D_0=2, E_D=0.2)])
+my_mat = F.Material(id=1, D_0=2, E_D=0.2)
+my_model.materials = F.Materials([my_mat])
 
 my_model.traps = F.Traps(
-    [F.Trap(k_0=0.01, E_k=0.1, p_0=1, E_p=0.1, materials=1, density=2)]
+    [F.Trap(k_0=0.01, E_k=0.1, p_0=1, E_p=0.1, materials=my_mat, density=2)]
 )
 
 my_model.boundary_conditions = [
@@ -87,8 +88,8 @@ t = np.array(derived_quantities.data[1:])[:, 0]
 flux = -np.array(derived_quantities.data[1:])[:, 1]
 
 flux_ref = exact_flux(t, my_model)
-error = np.linalg.norm(flux - flux_ref, 2)
-print(error)
+relative_L2_norm = np.linalg.norm(flux - flux_ref, 2) / np.linalg.norm(flux_ref, 2)
+print(relative_L2_norm)
 plt.plot(t / t_final, flux / max_flux(my_model), label="computed", linestyle="dashed")
 plt.ylabel(r"$\varphi / \max{(\varphi)}$")
 plt.xlabel("$t/t_f$")
