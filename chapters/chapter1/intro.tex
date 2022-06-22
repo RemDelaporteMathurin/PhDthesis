@@ -388,7 +388,7 @@ The evolution of the maximum fusion power on the grid $P_\mathrm{max}$ can be ex
 where $\tau_2$ is the doubling time (\textit{ie} the time after which a plant has doubled its initial tritium inventory), $t$ is the time, and $P_\mathrm{plant}$ is the power of a single plant.
 This expression assumes the only source of tritium is the reactors currently under operation.
 
-Assuming $P_\mathrm{plant} = \SI{1}{GW}$, with a doubling time $\tau_2 = \SI{2}{years}$, it will take \SI{20}{years} to produce \SI{1}{TWh} of fusion electricity on the grid (see \reffig{fusion power doubling time}).
+Assuming $P_\mathrm{plant} = \SI{1}{GW}$, with a doubling time $\tau_2 = \SI{2}{years}$, it will take \SI{20}{years} to produce \SI{1}{TW} of fusion electricity on the grid (see \reffig{fusion power doubling time}).
 This time reaches \SI{50}{years} with a doubling time of \SI{5}{years}.
 
 \begin{figure}
@@ -455,7 +455,7 @@ The wall of a fusion reactor (first wall and divertor) is bombarded with high en
 Due to their small size, these ions can penetrate the metal lattice and be implanted in the material.
 
 Components are also exposed to neutral hydrogen particles either in the atomic or molecular form.
-This is also the case for the divertor region where recycling can occur depending on the plasma detachment \sidecite{denis_dynamic_2019, causey_hydrogen_2002}.
+This is also the case for the divertor region where recycling can occur \sidecite{denis_dynamic_2019, causey_hydrogen_2002}.
 
 Tritium can also be produced by the neutron capture of helium-3 \sidecite{shimada_tritium_2017, knoll_radiation_1989} (see \refeq{he3 neutron capture reaction}).
 
@@ -505,7 +505,7 @@ Diffusion is therefore a thermally activated process governed by a diffusion coe
 \end{equation}
 where $E_D$ is expressed in \si{eV}, $T$ is the temperature in \si{K}, $k_B$ is the Boltzmann constant in \si{eV.K^{-1}}.
 
-Diffusion can also be assisted by temperature gradients (called the \textit{Soret effect} or \textit{thermophoresis}) \sidecite{martinez_thermal_2021, hodille_estimation_2017} or hydrostatic pressure gradients.
+Diffusion can also be assisted by temperature gradients (called the \textit{Soret effect} or \textit{thermophoresis}) \sidecite{martinez_thermal_2021, hodille_estimation_2017, longhurst_soret_1985} or hydrostatic pressure gradients.
 The tungsten property to simulate the Soret effect (Soret coefficient or heat of transport) is currently missing from litterature (for hydrogen).
 Hodille \textit{et al} used the properties of steel as an approximation \cite{hodille_estimation_2017}.
 Bennanoune and coworkers performed hydrogen transport studies with hydrostatic pressure gradients showing it could have an impact of around \SI{10}{\%} in steel components \sidecite{benannoune_multidimensional_2020}.
@@ -521,7 +521,7 @@ The trajectory of a particle $i$ in a system of $N$ particles can be computed fr
 \end{equation}
 where $m_i$ is the mass of the particle, $\vec{a_i}$ is its acceleration, $\vec{F}_{i,j}$ is the force applied to the particle due to its interaction with particle $j$.
 The forces between atoms is only a function of the interatomic potentials.
-These potentials can be found in literature or can be estimated from \textit{ab initio} computations (DFT) \sidecite{connetable_diffusion_2019,fernandez_hydrogen_2015,boisse_modelling_2014,boisse_modeling_2014,becquart_microstructural_2010} or from methods based on machine learning \sidecite{lam_modeling_2021,behler_constructing_2015}.
+These potentials can be found in literature or can be estimated from \textit{ab initio} computations (DFT) \sidecite{boisse_modelling_2014,boisse_modeling_2014} or from methods based on machine learning \sidecite{lam_modeling_2021,behler_constructing_2015}.
 
 \begin{figure*}
     \centering
@@ -532,14 +532,14 @@ These potentials can be found in literature or can be estimated from \textit{ab 
 
 By measuring the trajectory of a diffusing species from MD simulations for a long time, its diffusion coefficient $D$ can be estimated from Einstein equation \cite{einstein_uber_1905}:
 \begin{equation}
-    \lim_{x\to\infty} \frac{\langle R^2(t) \rangle}{6t} = D
+    \lim_{t\to\infty} \frac{\langle R^2(t) \rangle}{6t} = D
 \end{equation}
 where $\langle R^2(t) \rangle$ is the mean squared displacement of the species.
 
 This modelling technique was used to estimate the diffusion coefficient of H in W \sidecite{wang_molecular_2020, zhou_molecular_2016,kato_super-saturated_2015,liu_hydrogen_2014} and for He in W \sidecite{faney_numerical_2013,faney_spatially_2014,faney_spatially_2015,sefta_surface_2013,perez_mobility_2017}.
 
 % Experiments
-Diffusivity of hydrogen has also been measured experimentally in W \sidecite{frauenfelder_solution_1969, anderl_hydrogen_1990}, copper and copper alloys (CuCrZr) \sidecite{anderl_deuterium_1992} and other metals.
+Diffusivity of hydrogen has also been measured experimentally in W \sidecite{holzner_solute_2020, frauenfelder_solution_1969, anderl_hydrogen_1990}, copper and copper alloys (CuCrZr) \sidecite{anderl_deuterium_1992} and other metals.
 Note that the diffusion coefficients measured experimentally are usually effective coefficients accounting for trapping effects (detailed below).
 % EUROFER \sidecite{montupet-leblond_permeation_2021,esteban_hydrogen_2007,aiello_hydrogen_2002}, 
 Because He tends to cluster (as explained below), measuring its diffusivity experimentally is extremely complicated and therefore most estimations of He diffusion coefficient are numerical.
@@ -586,7 +586,7 @@ Peaks appearing at high temperatures correspond to "deep" traps with a high detr
     \labfig{TDS example ialovega}
 \end{figure}
 
-These parameters can also be obtained from DFT calculations \sidecite{hodille_modelling_2021, hodille_hydrogen_2018, backer_multiscale_2017,lu_review_2014}.
+These parameters can also be obtained from DFT calculations \sidecite{hou_predictive_2019, backer_hydrogen_2017, backer_multiscale_2017, fernandez_hydrogen_2015, lu_review_2014, heinola_hydrogen_2010, zhou_investigating_2010}.
 
 Some defects can trap several hydrogen/helium atoms.
 For instance, up to approximately seven helium atoms can be trapped in a mono-vacancy \sidecite{faney_spatially_2015}.
@@ -615,11 +615,11 @@ DFT calculations can calculate energy barriers for adsorption and migration of s
 Studies have however shown that this process is not thermally activated (\textit{ie} $E_s=0$) \sidecite{alnot_adsorption_1989, tamm_interaction_1970} but rather depends on the ratio of the surface concentration of the species (hydrogen or helium) by the concentration of adsorption sites.
 This quantity is called the \textit{surface coverage} $\theta$. 
 When $\theta = 1$, the surface is fully saturated and when $\theta = 0$ all the adsorption sites are available.
-Moreover, the presence of impurities occupying adsorption sites can decrease the sticking probability of a species.
+Moreover, the presence of impurities occupying adsorption sites can decrease the sticking probability of a species \sidecite{dunand_surface_2022, whitten_coadsorption_1998}.
 
 Adsorbed particles can then be \textit{absorbed} in the bulk (see \reffig{potential energy diagram metal lattice}).
 This thermally activated process is associated with an absorption coefficient following an Arrhenius law $A=A_0 \exp{(-E_A/k_B T)}$.
-The absorption process is modelled using DFT and absorption activation energies $E_A$ can be determined for different surface orientations \sidecite{johnson_hydrogen_2010, nojima_theoretical_2007,alnot_adsorption_1989}.
+The absorption process is modelled using DFT and absorption activation energies $E_A$ can be determined for different surface orientations \sidecite{johnson_hydrogen_2010, nojima_theoretical_2007,ajmalghan_surface_2019}.
 
 All these processes (dissociation, adsorption and absorption) can be described by an absorption flux:
 \begin{equation}
@@ -726,7 +726,7 @@ This process is called trap mutation or \textit{self-trapping} and the trapped c
 Trap mutation has been modelled in W using DFT \sidecite{boisse_modelling_2014} and Monte Carlo computations \sidecite{de_backer_modeling_2015}.
 It has been shown that this phenomena depends not only on the number of He atoms in the cluster but also on temperature, position of the cluster to the free surface or even the crystal orientation \sidecite{blondel_modeling_2017, hu_interactions_2014, hu_dynamics_2014}.
 At this point, the trapped cluster occupies the newly created W vacancy position.
-It is considered immobile since it would requires either diffusion of another vacancy next to it, or recombination of the Frenkel pair in order to diffuse \sidecite{morishita_nucleation_2007}.
+It is considered immobile since it would require either diffusion of another vacancy next to it, or recombination of the Frenkel pair in order to diffuse \sidecite{morishita_nucleation_2007}.
 
 \subsubsection{Bubble growth}
 
@@ -761,10 +761,10 @@ Coalescence of He bubbles has been observed in MD simulations \sidecite{hamid_mo
 This may not have an impact on He concentration on the macroscopic scale but might influence bubble bursting.
 
 The pressure inside the bubble and the bubble radius are two parameters of interest and are correlated.
-Sefta and co-workers \sidecite{sefta_surface_2013} proposed to use the Wolfer equation of state in order to determine the number of He atoms contained in a He bubble based on its pressure, the latter being calculated from its radius and its surface tension.
+Sefta \sidecite{sefta_surface_2013} proposed to use the Wolfer equation of state in order to determine the number of He atoms contained in a He bubble based on its pressure, the latter being calculated from its radius and its surface tension.
 One must be aware that if radii and pressure of bubbles computation is quite straightforward using MD \sidecite{zhang_simulation_2019} or cluster dynamics \sidecite{faney_spatially_2015} simulations it will be more complex to estimate these metrics considering a continuum model that does not keep track of every type of clusters but only a few of them.
 The only information \textit{a priori} available in this case is indeed the local helium concentration and an equivalence could be found by either having a high density of small bubbles or a low density of big bubbles.
-An effort has been made by Ialovega and co-workers to measure the pressure inside helium bubbles using EELS (Electron Energy Loss Spectroscopy) \sidecite{ialovega_surface_2021}.
+An effort has been made by Ialovega to measure the pressure inside helium bubbles using EELS (Electron Energy Loss Spectroscopy) \sidecite{ialovega_surface_2021}.
 This technique, consisting in analysing the electron energy loss as they interact with matter \sidecite{pyper_excited_2017}, showed evidence that the observed cavities (see \reffig{he bubbles ialovega}) were filled with helium.
 
 \subsubsection{Blistering}
@@ -779,7 +779,7 @@ This technique, consisting in analysing the electron energy loss as they interac
 During helium or hydrogen implantation, \textit{blistering} can be observed under certain conditions.
 Blisters are plastic deformation (swelling) of the metal near the surface due to high pressure in bubbles (see \reffig{h blisters in tungsten}).
 This phenomenon is separated from loop punching even though loop punching can be considered as a plastic deformation.
-Blistering usually happens at low temperatures because only then the growth rate of the bubble is greater than the dissolution in the bulk (which depends on the thermally activated diffusion coefficient and/or solubility).
+Blistering usually happens at low temperatures because only then the growth rate of the bubble is greater than the dissolution in the bulk (which depends on the thermally activated diffusion coefficient and solubility).
 Eventually, if the rate of incoming atoms is greater that the rate of re-dissolution in the bulk, blisters can rupture.
 Similarly, if the rate of incoming atoms is less than the rate of re-dissolution in the bulk, the blister will collapse.
 
@@ -845,7 +845,8 @@ Thermal properties of the media are also affected by the formation of W fuzz \si
 After 1h of plasma implantation, nanostructuring can be found deep in the bulk (up to several hundred of $\mu$m).
 According to Baldwin and Doerner \sidecite{baldwin_formation_2010}, heavy alloying helps reducing the formation of He induced fuzz.
 
-Bernard \textit{et al} showed that temperature has a strong influence on fuzz formation \sidecite{bernard_temperature_2017} and Takamura \textit{et al} showed fuzz could be grown under relevant tokamak conditions (high-flux He plasma irradiation and surface temperature greater than \SI{1250}{K}) \sidecite{takamura_formation_2006}.
+Takamura \textit{et al} showed fuzz could be grown under relevant tokamak conditions (high-flux He plasma irradiation and surface temperature greater than \SI{1250}{K}) \sidecite{takamura_formation_2006}.
+Baldwin \textit{et al} showed the fuzz thickness evolved as a square root of the fluence \cite{baldwin_effects_2009}.
 
 \begin{figure} [h!]
     \centering
@@ -887,6 +888,7 @@ They showed with Elastic Recoil Detection depth profiles (up to 40 nm) that D is
 These defects can be interstitial loops produced by loop punching or even vacancies created by stress field induced by overpressurised bubbles.
 Lee \textit{et al} also suggested that no evidence had been found on trapping of D by chemisorption on the inner surface of a He bubble nor by molecular interaction with the He cluster.
 The privileged mechanism is therefore the trapping of D in the defects made by the stress field induced by the He bubble to the crystalline structure of the W.
+Bergstrom \textit{et al} however showed hydrogen can be located at the surface of He bubbles \sidecite{bergstrom_molecular_2017}.
 
 It has been shown by Ueda \textit{et al} that He implantation (even in small amounts) greatly affects H blistering in W \sidecite{ueda_simultaneous_2009}.
 With only 0.1\% of He in the ion beam one can observe that H blistering is completely suppressed for temperature greater than \SI{653}{K}.
@@ -923,6 +925,8 @@ Some of these codes rely on proprietary software like Abaqus or COMSOL for HIT -
 The code ACHLYS meets all these requirements and is the only one available open-source but was only released in mid 2021.
 Finally, good computing performances were required in order to simulate the full divertor.
 This ruled out the use of Abaqus in its current state as it was initially designed for thermo-mechanical simulations.
+
+For all these reasons, the FESTIM code was developed and used to conduct this PhD research.
 
 \begin{table*} [h]
     \centering
