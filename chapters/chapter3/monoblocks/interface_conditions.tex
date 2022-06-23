@@ -1,7 +1,7 @@
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/difference_w_wo_chemical_pot.pdf}
-    \caption{Influence of chemical potential conservation on hydrogen inventory.}
+    \caption{Influence of continuity of chemical potential on the monoblock hydrogen inventory. The bottom plot shows the contribution of the trapped hydrogen in W, Cu and CuCrZr as well as the total mobile hydrogen for the case with continuity of chemical potential.}
     \labfig{influence of chemical potential on monoblock inventory}
 \end{figure}
 
@@ -28,7 +28,7 @@
         \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/retention_chemical_pot.pdf}
         \caption{Retention (continuity of chemical potential)}
     \end{subfigure}
-    \caption{Concentration fields at $t=\SI{2e7}{s}$}
+    \caption{Concentration fields at $t=\SI{2e7}{s}$, $\varphi_\mathrm{heat} = \SI{7}{MW.m^{-2}}$.}
     \labfig{concentration fields w/wo chemical potential}
 \end{figure}
 
@@ -38,11 +38,11 @@ Indeed, this would allow to get rid of one equation and therefore reduce the com
 But is this simplification valid?
 
 To verify its validity, 2D monoblock simulations are performed with chemical potential continuity (see \refeq{c/s conservation}) or mobile concentration continuity and the temporal evolution of the inventory was computed.
-The implanted flux $\varphi_\mathrm{imp}$ was fixed to \SI{1.0e21}{m^{-2}.s^{-1}} and the heat flux $\varphi_\mathrm{heat}$ varied from \SI{3.0}{MW} to \SI{7.0}{MW}.
+The implanted flux $\varphi_\mathrm{imp}$ was fixed to \SI{1.0e21}{m^{-2}.s^{-1}} and the heat flux $\varphi_\mathrm{heat}$ varied from \SI{3.0}{MW.m^{-2}} to \SI{7.0}{MW.m^{-2}}.
 
-For the low flux cases (\SI{3}{MW} and \SI{5}{MW}), no difference was found (see \reffig{influence of chemical potential on monoblock inventory}).
-For the case at \SI{6}{MW}, differences start to appear after \SI{3e6}{s} (\SI{7e5}{s} at \SI{7}{MW}).
-After \SI{2e7}{s} of continuous exposure, the absolute difference at \SI{6}{MW} was 25 \% and 55 \% at \SI{7}{MW}.
+For the low flux cases (\SI{3}{MW.m^{-2}} and \SI{5}{MW.m^{-2}}), no difference was found (see \reffig{influence of chemical potential on monoblock inventory}).
+For the case at \SI{6}{MW.m^{-2}}, differences start to appear after \SI{3e6}{s} (\SI{7e5}{s} at \SI{7}{MW.m^{-2}}).
+After \SI{2e7}{s} of continuous exposure, the absolute difference at \SI{6}{MW.m^{-2}} was 25 \% and 55 \% at \SI{7}{MW.m^{-2}}.
 
 This time of appearance of differences is identical to the time required for the hydrogen to migrate up to the W/Cu interface.
 This is explained by the high solubility ratio between W, Cu and CuCrZr leading to a higher concentration of mobile particles in CuCrZr (see \reffig{concentration fields w/wo chemical potential}) and therefore a higher trapping rate.
