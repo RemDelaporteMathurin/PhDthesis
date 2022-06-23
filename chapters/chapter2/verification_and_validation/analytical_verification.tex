@@ -82,7 +82,7 @@ These parameters have been chosen for the sake of verification and do not necess
     \label{tab:parameters analytical verification}
 \end{table}
 One can notice on Figure \ref{fig:FESTIM vs analytical} that the numerical results are in good agreement with the analytical solution.
-The L2 error between analytical and numerical solutions was found to be \SI{6.7e-5}{m^{-2}.s^{-1}} with 1000 piecewise linear elements (P1) and a stepsize of \SI{1}{s}.
+The relative L2 error between analytical and numerical solutions was found to be $\approx 1 \%$ with 1000 piecewise linear elements (P1) and a stepsize of \SI{1}{s}.
 This value decreases with the stepsize and with the element size (see \reffig{MES evolution of L2 error as function of dt and dx}).
 \begin{figure}
     \centering
@@ -141,7 +141,7 @@ or Neumann boundary conditions:
 or even a combination of Dirichlet and Neumann boundary conditions.
 
 By solving \refeq{poisson eq demo mms} with $q = Q(t, x)$ and initial condition $u = U(0, x)$, we can obtain the computed solution $u_\mathrm{computed}$.
-The error between the computed solution $u_\mathrm{computed}$ and the exact solution $U(t, x)$ can be calculated to assess the 
+The error between the computed solution $u_\mathrm{computed}$ and the exact solution $U(t, x)$ can be calculated to assess the code accuracy.
 
 \paragraph{Case 2a: Application to 1D hydrogen transport}
 
