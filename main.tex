@@ -302,50 +302,52 @@
 % %----------------------------------------------------------------------------------------
 
 % % The nomenclature needs to be compiled on the command line with 'makeindex main.nlo -s nomencl.ist -o main.nls' from the template directory
+\newcommand{\nomunit}[1]{%
+  \renewcommand{\nomentryend}{\hspace*{\fill}#1}%
+}
+\nomenclature{$c_\mathrm{m}$}{mobile concentration of hydrogen \nomunit{\si{m^{-3}}}}
+\nomenclature{$c_\mathrm{t, \, i}$}{concentration of trapped hydrogen in trap $i$ \nomunit{\si{m^{-3}}}}
+\nomenclature{$T$}{Temperature \nomunit{\si{K}}}
+\nomenclature{$T_\mathrm{coolant}$}{Coolant temperature \nomunit{\si{K}}}
+\nomenclature{$D$}{Diffusion coefficient \nomunit{\si{m^2.s^{-1}}}}
+\nomenclature{$S$}{Solubility \nomunit{\si{m^{-3}.Pa^{-0.5}}}}
+\nomenclature{$k_i$}{Trapping rate of trap $i$ \nomunit{\si{m^{3}.s^{-1}}}}
+\nomenclature{$p_i$}{Detrapping rate of trap $i$ \nomunit{\si{s^{-1}}}}
+\nomenclature{$k_{0, \, i}$}{Trapping rate of trap $i$ pre-exponential factor \nomunit{\si{m^{3}.s^{-1}}}}
+\nomenclature{$E_{k, \, i}$}{Trapping rate of trap $i$ activation energy \nomunit{\si{eV}}}
+\nomenclature{$p_{0, \, i}$}{Detrapping rate of trap $i$ pre-exponential factor \nomunit{\si{s^{-1}}}}
+\nomenclature{$E_{p, \, i}$}{Detrapping rate of trap $i$ activation energy \nomunit{\si{eV}}}
 
-\nomenclature{$c_\mathrm{m}$}{mobile concentration of hydrogen}
-\nomenclature{$c_\mathrm{t, \, i}$}{concentration of trapped hydrogen in trap $i$}
-\nomenclature{$T$}{Temperature}
-\nomenclature{$T_\mathrm{coolant}$}{Coolant temperature}
-\nomenclature{$D$}{Diffusion coefficient}
-\nomenclature{$S$}{Solubility}
-\nomenclature{$k_i$}{Trapping rate of trap $i$}
-\nomenclature{$p_i$}{Detrapping rate of trap $i$}
-\nomenclature{$k_{0, \, i}$}{Trapping rate of trap $i$ pre-exponential factor}
-\nomenclature{$E_{k, \, i}$}{Trapping rate of trap $i$ activation energy}
-\nomenclature{$p_{0, \, i}$}{Detrapping rate of trap $i$ pre-exponential factor}
-\nomenclature{$E_{p, \, i}$}{Detrapping rate of trap $i$ activation energy}
-
-\nomenclature{$D_{0}$}{Diffusivity pre-exponential factor}
-\nomenclature{$E_{D}$}{Diffusivity activation energy}
-\nomenclature{$S_{0}$}{Solubility pre-exponential factor}
-\nomenclature{$E_{S}$}{Solubility activation energy}
+\nomenclature{$D_{0}$}{Diffusivity pre-exponential factor \nomunit{\si{m^2.s^{-1}}}}
+\nomenclature{$E_{D}$}{Diffusivity activation energy \nomunit{\si{eV}}}
+\nomenclature{$S_{0}$}{Solubility pre-exponential factor \nomunit{\si{m^{-3}.Pa^{-0.5}}}}
+\nomenclature{$E_{S}$}{Solubility activation energy \nomunit{\si{eV}}}
 
 \nomenclature{$u$}{An arbitrary solution}
 \nomenclature{$v$}{A test function}
 
-\nomenclature{$n_i$}{Density of trap $i$}
-\nomenclature{$k_B$}{Boltzmann constant}
-\nomenclature{$R_p$}{Implantation range}
+\nomenclature{$n_i$}{Density of trap $i$ \nomunit{\si{m ^{-3}}}}
+\nomenclature{$k_B$}{Boltzmann constant \nomunit{\si{eV.K^{-1}}}}
+\nomenclature{$R_p$}{Implantation range \nomunit{\si{m}}}
 \nomenclature{$r$}{Particle reflection coefficient}
-\nomenclature{$r_A$}{Capture radius of species A}
-\nomenclature{$K_r$}{recombination coefficient}
-\nomenclature{$\varphi_\mathrm{imp}$}{Implanted particle flux per unit surface}
-\nomenclature{$\varphi_\mathrm{incident}$}{Incident particle flux per unit surface}
-\nomenclature{$\varphi_\mathrm{heat}$}{Heat flux per unit surface}
-\nomenclature{$t$}{Time}
-\nomenclature{$\lambda$}{Thermal conductivity}
-\nomenclature{$\lambda_\mathrm{decay}$}{Radioactive decay constant}
-\nomenclature{$C_p$}{Heat capacity}
-\nomenclature{$\rho$}{Volumetric density}
-\nomenclature{$h$}{Convective heat transfer coefficient per unit surface}
+\nomenclature{$r_A$}{Capture radius of species A \nomunit{\si{m}}}
+\nomenclature{$K_r$}{Recombination coefficient \nomunit{\si{m^{4}.s^{-1}}}}
+\nomenclature{$\varphi_\mathrm{imp}$}{Implanted particle flux per unit surface \nomunit{\si{m^{-2}.s^{-1}}}}
+\nomenclature{$\varphi_\mathrm{incident}$}{Incident particle flux per unit surface \nomunit{\si{m^{-2}.s^{-1}}}}
+\nomenclature{$\varphi_\mathrm{heat}$}{Heat flux per unit surface \nomunit{\si{W.m^{-2}}}}
+\nomenclature{$t$}{Time \nomunit{\si{s}}}
+\nomenclature{$\lambda$}{Thermal conductivity \nomunit{\si{W.m^{-1}.K^{-1}}}}
+\nomenclature{$\lambda_\mathrm{decay}$}{Radioactive decay constant \nomunit{\si{s}}}
+\nomenclature{$C_p$}{Heat capacity \nomunit{\si{W.K^{-1}}}}
+\nomenclature{$\rho$}{Volumetric density \nomunit{\si{kg.m^{-3}}}}
+\nomenclature{$h$}{Convective heat transfer coefficient per unit surface \nomunit{\si{W.m^{-2}.K^{-1}}}}
 \nomenclature{$\Omega$}{Geometrical domain}
 \nomenclature{$\partial \Omega$}{Boundary of a geometrical domain}
 
-\nomenclature{$c_b$}{Total concentration of helium clusters above a given threshold}
+\nomenclature{$c_b$}{Total concentration of helium clusters above a given threshold \nomunit{\si{m^{-3}}}}
 \nomenclature{$\langle i_b \rangle$}{Average helium content in $c_b$}
-\nomenclature{$\langle r_b \rangle$}{Average radius in $c_b$}
-\nomenclature{$\tau_{1/2}$}{Radioactive half-life}
+\nomenclature{$\langle r_b \rangle$}{Average radius in $c_b$ \nomunit{\si{m}}}
+\nomenclature{$\tau_{1/2}$}{Radioactive half-life \nomunit{\si{s}}}
 
 
 
