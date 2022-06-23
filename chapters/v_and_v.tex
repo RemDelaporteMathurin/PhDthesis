@@ -2,7 +2,7 @@
 \chapter{FESTIM verification}\label{appendix verification}
 
 \section{Conservation of chemical potential (MES)}
-This verification case aims at checking the FESTIM code is correctly solving the governing Equations \ref{eq: c/s conservation}, \ref{eq:mobile} and \ref{eq: diffusion equation changed}.
+This verification case aims at checking the FESTIM code is correctly solving the governing \refeq{c/s conservation}, Equation \ref{eq:mobile} and \ref{eq: diffusion equation changed}.
 
 \begin{figure*} [h]
     \centering
@@ -100,7 +100,7 @@ In order to exercise all these terms, the Method of Manufactured Solutions (MMS)
 
 \section{Conservation of chemical potential (MMS)}
 
-This verification case aims at checking the FESTIM code is correctly solving the governing Equations \ref{eq: c/s conservation}, \ref{eq:mobile} and \ref{eq: diffusion equation changed}.
+This verification case aims at checking the FESTIM code is correctly solving the governing \refeq{c/s conservation}, Equation \ref{eq:mobile} and \ref{eq: diffusion equation changed}.
 
 The domain $\Omega$ for this test problem is a unit square composed of two subdomains $\Omega_1$ and $\Omega_2$ (see Equation \ref{eq: MMS domain}).
 \begin{subequations} \label{eq: MMS domain}
@@ -122,7 +122,7 @@ In order to unravel the complexity of an analytical resolution of the direct pro
 \end{equation}
 where $c_{M1} = 2 + \cos(2\pi x) \cdot \cos(2\pi y) + t$
 
-It is worth noting that, when choosing a manufactured solution, one must ensure it satisfies all the governing equations (especially \ref{eq: c/s conservation}).
+It is worth noting that, when choosing a manufactured solution, one must ensure it satisfies all the governing equations (especially \refeq{c/s conservation}).
 In our case, $c_M$ ensures the flux conservation at the interface and the continuity of the quantity $c_\mathrm{m}/S$.
 
 Properties are assumed time and space dependent in order to test every portion of the code (see Equation \ref{eq: MMS properties}).
