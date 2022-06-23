@@ -16,19 +16,19 @@ This model describes the evolution of the concentrations of pure interstitial He
         \put(22, 15){V$_2$He$_{10}$}
         
     \end{overpic}
-    \caption{Representation of He clustering in solids. Dissociation is omitted for simplification purposes. \textcolor{black}{The grey arrows thicknesses represent} the \textcolor{black}{magnitude} of the reaction rate \textcolor{black}{between mobile He$_1$ and other clusters at the same distance}.}
+    \caption{Representation of He clustering in solids. Dissociation is omitted for simplification purposes. The grey arrows thicknesses represent the magnitude of the reaction rate between mobile He$_1$ and other clusters at the same distance}.
     \label{fig:clustering sketch}
 \end{figure*}
 
 
-The spatio-temporal evolution of each species \textcolor{black}{of size} $i$ is defined by:
+The spatio-temporal evolution of each species of size $i$ is defined by:
 \begin{equation}
     \frac{\partial c_i}{\partial t} =  \nabla \cdot (D_i\nabla c_i) + \Gamma_i + R_i
     \label{eq:model}
 \end{equation}
-In Equation \ref{eq:model}, the first term of the right hand-side is the diffusion term \textcolor{black}{where ${D=D_0 \cdot \exp\big(-E_\mathrm{diff}/ (k_B \cdot T )\big)}$ is the thermally activated diffusion coefficient expressed in \si{m^2.s^{-1}} with $E_\mathrm{diff}$ the diffusion activation energy in \si{eV}, $k_B$ the Boltzmann constant in \si{eV.K^{-1}} and $T$ the temperature in \si{K}}.
+In Equation \ref{eq:model}, the first term of the right hand-side is the diffusion term where ${D=D_0 \cdot \exp\big(-E_\mathrm{diff}/ (k_B \cdot T )\big)}$ is the thermally activated diffusion coefficient expressed in \si{m^2.s^{-1}} with $E_\mathrm{diff}$ the diffusion activation energy in \si{eV}, $k_B$ the Boltzmann constant in \si{eV.K^{-1}} and $T$ the temperature in \si{K}.
 If a species $i$ is assumed to be immobile, its diffusion coefficient $D_i$ is zero.
-$\Gamma_i$ is the \textcolor{black}{external} production rate of species $i$.
+$\Gamma_i$ is the external production rate of species $i$.
 
 The term $R_i$ is the coupling term due to reactions between species.
 A simple reaction between two species can be described as:
@@ -36,26 +36,26 @@ A simple reaction between two species can be described as:
     \ce{A + B <=>[k^+_\mathrm{A,B}][k^-_\mathrm{A,B}] AB}
 \end{equation}
 
-\textcolor{black}{The \textcolor{black}{forward} rate constant $k^+_{A,B}$ is the clustering rate and is calculated using the theory of diffusion-limited reactions\sidecite{goldstein_diffusion_2007}:
+The forward rate constant $k^+_{A,B}$ is the clustering rate and is calculated using the theory of diffusion-limited reactions \sidecite{goldstein_diffusion_2007}:
 \begin{equation}
     k^+_\mathrm{A,B} = 4 \pi (r_\mathrm{A} + r_\mathrm{B}) (D_\mathrm{A} + D_\mathrm{B})
 \end{equation}
 where $r_\mathrm{A}$ and $r_\mathrm{B}$ are the capture radii and $D_\mathrm{A}$ and $D_\mathrm{B}$ are the diffusion coefficients of species A and B respectively.
-The \textcolor{black}{backward} rate constant $k^-_\mathrm{A,B}$ is the dissociation rate and is obtained using chemical equilibrium principles\cite{goldstein_diffusion_2007}:
+The backward rate constant $k^-_\mathrm{A,B}$ is the dissociation rate and is obtained using chemical equilibrium principles \cite{goldstein_diffusion_2007}:
 \begin{equation}
     k^-_\mathrm{A,B} =\rho k^+_\mathrm{A,B}e^{\frac{-E_b}{k_B T}}
 \end{equation}
-where $\rho$ is the atomic density in $\si{m^{-3}}$ ($\rho = \SI{6.3e28}{m^{-3}}$ for W), $k_B$ is the Boltzmann constant in \si{eV.K^{-1}}, $T$ is the temperature in \si{K} and $E_b$ is the binding energy for the reaction \ce{AB -> A + B} in \si{eV}.}
+where $\rho$ is the atomic density in $\si{m^{-3}}$ ($\rho = \SI{6.3e28}{m^{-3}}$ for W), $k_B$ is the Boltzmann constant in \si{eV.K^{-1}}, $T$ is the temperature in \si{K} and $E_b$ is the binding energy for the reaction \ce{AB -> A + B} in \si{eV}.
 
 The reaction term $R_i$ is the coupling term between concentrations and is expressed as:
-\textcolor{black}{
+
 \begin{equation}
     R_i=  \sum_{m} k^+_{m,i-m} c_m c_{i-m}  - c_i \sum_m \left( k_{i, m}^+ c_{m} + k_{i+1}^- c_{i+1} -  k_i^- c_i \right)
     \label{eq:reaction term}
 \end{equation}
-}
 
-In Equation \ref{eq:reaction term}, \textcolor{black}{$c_i$ is the concentration of clusters of size $i$ in \si{m^{-3}}}.
+
+In Equation \ref{eq:reaction term}, $c_i$ is the concentration of clusters of size $i$ in \si{m^{-3}}.
 The first term corresponds to the reactions producing clusters of size $i$.
 The second one corresponds to the ones reacting with clusters of size $i$.
 The third term accounts for bigger clusters dissociating.
@@ -64,7 +64,7 @@ Finally, the last term corresponds to clusters of size $i$ dissociating.
 \subsection{Grouped approach}
 Extending this clustering model to clusters containing millions of helium extremely increases the computational cost.
 A grouped approach proposed by Faney et al \sidecite{faney_spatially_2014} for reducing the number of equations will therefore be employed.
-This technique consists in grouping the big clusters \textcolor{black}{that} have a similar behaviour in a single equation while explicitly \textcolor{black}{accounting} for smaller clusters.
+This technique consists in grouping the big clusters that have a similar behaviour in a single equation while explicitly accounting for smaller clusters.
 
 The clustering equations can be written as follows:
 
@@ -79,7 +79,7 @@ The clustering equations can be written as follows:
     \end{align}
     \label{eq: temporal evolution no grouping}
 \end{subequations}
-\textcolor{black}{where $N$ is some threshold required for the grouping technique.}
+where $N$ is some threshold required for the grouping technique.
 
 In order to simplify this model, the following quantities are defined:
 
@@ -90,9 +90,7 @@ In order to simplify this model, the following quantities are defined:
     \langle k_b^+ \rangle &=  \frac{1}{c_b}\sum\limits_{i=N+1}^\infty k_{1,i}^+ c_i = 4 \pi D_1 (r_1 + \langle r_b \rangle) \quad \text{ : average clustering rate in $c_b$}
 \end{align}
 
-\textcolor{black}{
 Clusters with more than $N$ He ($c_b$) will be referred as "bubbles" in the following.
-}
 
 Equation \ref{eq: temporal evolution no grouping} therefore reads:
 
@@ -108,7 +106,7 @@ Equation \ref{eq: temporal evolution no grouping} therefore reads:
     \label{eq: temporal evolution grouping}
 \end{subequations}
 
-The \textcolor{black}{mean} radius of pure He clusters\sidecite{faney_spatially_2015} is given by:
+The mean radius of pure He clusters\sidecite{faney_spatially_2015} is given by:
 \begin{equation}
     r_{\mathrm{He}_x} = r_{\mathrm{He}_1} + \left(\frac{3}{4\pi} \frac{a_0^3}{10} x \right)^{1/3} - \left( \frac{3}{4\pi} \frac{a_0^3}{10} \right)^{1/3}
     \label{eq: radius pure He}
@@ -138,8 +136,7 @@ The current implementation further simplifies Faney's model \sidecite{faney_spat
 \begin{itemize}
     \item Interactions with \gls{self-interstitial} atoms or pre-existing vacancies are not taken into account.
     In this work, the only dissociations are He emissions from small mobile clusters and \gls{trap mutation} for large clusters.
-    \textcolor{black}{
-    It was showed that this assumption did not have an impact on the results (see Figure \ref{fig:tendril profiles}).}
+    It was showed that this assumption did not have an impact on the results (see Figure \ref{fig:tendril profiles}).
     \item The only clusters explicitly computed are $\mathrm{He}_{x \leq 6}$ (\textit{ie} $N=6$) whereas Faney's work explicitly accounted for clusters up to $\mathrm{V}_{50}\mathrm{He}_{250}$ and solved a bigger system of equations.
     The influence of this threshold $N$ above which clusters are integrated in the quantity $c_b$ is discussed in Section \ref{impact of N}.
     \item Clusters containing more than six He atoms are assumed to be immobile (\textit{ie} $D_i = 0$ for $i>6$) due to \gls{trap mutation} events.
