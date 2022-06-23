@@ -12,7 +12,7 @@ Sequential deuterium loading and \gls{tds} were then repeated five times.
 The \gls{tds} phase ramps up to \SI{1350}{K} (\SI{1250}{K} for the first \gls{tds}) at a rate of \SI{1}{K.s^{-1}}.
 
 Four traps are simulated: traps 1-3 are pre-existing defects and trap 4 represents the traps induced by helium bubbles.
-The detrapping energies and trap densities are set as free parameters, including the trap density $n_b$ (see Table \ref{tab: trap properties}).
+The detrapping energies and trap densities are set as free parameters, including the trap density $n_b$ (see \reftab{trap properties}).
 
 Considering deuterium is trapped on the surface of He bubbles, the bubble trap density $n_b$ is given by:
 
@@ -21,13 +21,13 @@ Considering deuterium is trapped on the surface of He bubbles, the bubble trap d
 \end{equation}
 where $f$ is a free parameter representing the number of trapping site per unit surface, $\Ab = 4\pi \langle r_b \rangle^2$ is the area in \si{m^2} of a spherical bubble of radius $\langle r_b \rangle$, and $c_b$ is the concentration of bubbles in $\si{m^{-3}}$.
 
-The quantities $c_b$ and $\langle r_b \rangle$ have been computed from the model described in Section \ref{helium model description} (see Figure \ref{fig:trap bubbles distribution}).
+The quantities $c_b$ and $\langle r_b \rangle$ have been computed from the model described in \refsec{helium model description} (see \reffig{trap bubbles distribution}).
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter5/trap_bubble_distribution.pdf}
     \caption{Spatial distribution of the bubbles density and the equivalent trap density (assuming $f=\SI{3e18}{m^{-2}}$).}
-    \label{fig:trap bubbles distribution}
+    \labfig{trap bubbles distribution}
 \end{figure}
 
 
@@ -46,7 +46,7 @@ The quantities $c_b$ and $\langle r_b \rangle$ have been computed from the model
     \\
     Trap bubbles & & & & free & $n_b$ \\
     \end{tabular}
-    \label{tab: trap properties}
+    \labtab{trap properties}
 \end{table}
 
 The diffusion coefficient of deuterium (\si{m^2.s^{-1}}) was set to $4.1\times 10 ^{-7} \exp{-0.39/k_B T}$ \sidecite{frauenfelder_solution_1969}.
@@ -57,7 +57,7 @@ Using the parametric optimisation method developed in \sidecite{delaporte-mathur
 
 \subsection{Results}
 
-The properties obtained by the fitting procedure (see Table \ref{tab: trap properties results}) fitted well the three \gls{tds} spectra (see Figure \ref{fig: fitted TDS}).
+The properties obtained by the fitting procedure (see \reftab{trap properties results}) fitted well the three \gls{tds} spectra (see \reffig{fitted TDS}).
 As explained in \cite{ialovega_hydrogen_2020}, the last bump of desorption (around \SI{600}{K}) is due to a temperature control issue and was therefore ignored in the fitting procedure.
 The detrapping energies of traps 1, 2 and 3 were found to be \SI{1.08}{eV}, \SI{1.20}{eV} and \SI{1.38}{eV} respectively, whereas the trap attributed to He bubbles has a detrapping energy of \SI{1.45}{eV}.
 
@@ -75,7 +75,7 @@ The detrapping energies of traps 1, 2 and 3 were found to be \SI{1.08}{eV}, \SI{
     \\
     5th \gls{tds} & 1.08 & $3.38$ & 1.20 & $3.10$ & 1.37 & $1.50$ & 1.42 & $3.00$ \\
     \end{tabular}
-    \label{tab: trap properties results}
+    \labtab{trap properties results}
 \end{table}
 
 This would mean that if the \gls{tds} were run up to temperature around \SI{1600}{K}, $\mathrm{He}_1\mathrm{V}_1$ clusters could dissociate resulting in additional free trapping sites for H and therefore different \gls{tds} spectra.
@@ -87,26 +87,26 @@ The H retention is not dominated by He-bubbles trapping but rather by pre-existi
     \begin{subfigure}{\linewidth}
         \includegraphics[width=\linewidth]{Figures/Chapter5/ialovega_tds.pdf}
         \caption{Experimental TDS spectra fitted with FESTIM. Experimental points are taken from \cite{ialovega_hydrogen_2020}.}
-        \label{fig: 3 TDS}
+        \labfig{3 TDS}
     \end{subfigure}
     \begin{subfigure}{\linewidth}
         \includegraphics[width=\linewidth]{Figures/Chapter5/tds_trap_distribution.pdf}
         \caption{Traps contribution to the TDS spectra}
-        \label{fig: trap contributions}
+        \labfig{trap contributions}
     \end{subfigure}
     \caption{Results of the TDS fitting procedure}
-    \label{fig: fitted TDS}
+    \labfig{fitted TDS}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter5/trap_densities.pdf}
     \caption{Evolution of the trap densities between the second and fifth TDS.}
-    \label{fig:density evolution}
+    \labfig{density evolution}
 \end{figure}
 
-The densities of traps 1 and 2 increased from the 2nd to the 5th \gls{tds} (see Figure \ref{fig:density evolution}).
-However, the density of trap 3 decreased slightly (which is also visible on the \gls{tds} spectra shown in Figure \ref{fig: fitted TDS}).
+The densities of traps 1 and 2 increased from the 2nd to the 5th \gls{tds} (see \reffig{density evolution}).
+However, the density of trap 3 decreased slightly (which is also visible on the \gls{tds} spectra shown in \reffig{fitted TDS}).
 The processes at stake cannot yet be precisely described. 
 
 One possible interpretation of the results is:
