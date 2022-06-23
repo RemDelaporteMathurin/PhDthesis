@@ -1,20 +1,20 @@
-The focus of this Section is the coupled effects of helium implantation and hydrogen transport.
-To this end, the experiment of Ialovega and co-workers \sidecite{ialovega_hydrogen_2020} is reproduced with the helium bubble model described in this Chapter coupled to FESTIM.
+The focus of this Section is the coupled effects of \gls{He} implantation and hydrogen transport.
+To this end, the experiment of Ialovega and co-workers \sidecite{ialovega_hydrogen_2020} is reproduced with the \gls{He} bubble model described in this Chapter coupled to FESTIM.
 
 \subsection{Experiment and FESTIM simulation description}
 
 A \SI{100}{\micro\metre} thick tungsten sample was pre-damaged with \SI{75}{eV} He at \SI{1073}{K}.
-The He flux was \SI{2.3e22}{m^{-2}.s^{-1}} and the exposure time was \SI{13}{s}.
+The \gls{He} flux was \SI{2.3e22}{m^{-2}.s^{-1}} and the exposure time was \SI{13}{s}.
 An initial cleaning \gls{tds} was performed up to \SI{870}{K}.
 
 Sequential deuterium loading and \gls{tds} were then repeated five times.
-\SI{250}{eV} deuterium were implanted at room temperature with a flux of \SI{1.7e16}{m^{-2}.s^{-1}} and a fluence of \SI{4.5e19}{m^{-2}}.
+\SI{250}{eV} deuterium were implanted at room temperature with a flux of \SI{1.7e16}{m^{-2}.s^{-1}} and a \gls{fluence} of \SI{4.5e19}{m^{-2}}.
 The \gls{tds} phase ramps up to \SI{1350}{K} (\SI{1250}{K} for the first \gls{tds}) at a rate of \SI{1}{K.s^{-1}}.
 
-Four traps are simulated: traps 1-3 are pre-existing defects and trap 4 represents the traps induced by helium bubbles.
+Four traps are simulated: traps 1-3 are pre-existing defects and trap 4 represents the traps induced by \gls{He} bubbles.
 The detrapping energies and trap densities are set as free parameters, including the trap density $n_b$ (see \reftab{trap properties}).
 
-Considering deuterium is trapped on the surface of He bubbles, the bubble trap density $n_b$ is given by:
+Considering deuterium is trapped on the surface of \gls{He} bubbles, the bubble trap density $n_b$ is given by:
 
 \begin{equation}
     n_b = f \cdot c_b \cdot \Ab(\langle r_b \rangle)
@@ -59,7 +59,7 @@ Using the parametric optimisation method developed in \sidecite{delaporte-mathur
 
 The properties obtained by the fitting procedure (see \reftab{trap properties results}) fitted well the three \gls{tds} spectra (see \reffig{fitted TDS}).
 As explained in \cite{ialovega_hydrogen_2020}, the last bump of desorption (around \SI{600}{K}) is due to a temperature control issue and was therefore ignored in the fitting procedure.
-The detrapping energies of traps 1, 2 and 3 were found to be \SI{1.08}{eV}, \SI{1.20}{eV} and \SI{1.38}{eV} respectively, whereas the trap attributed to He bubbles has a detrapping energy of \SI{1.45}{eV}.
+The detrapping energies of traps 1, 2 and 3 were found to be \SI{1.08}{eV}, \SI{1.20}{eV} and \SI{1.38}{eV} respectively, whereas the trap attributed to \gls{He} bubbles has a detrapping energy of \SI{1.45}{eV}.
 
 
 \begin{table}[!h]
@@ -78,9 +78,9 @@ The detrapping energies of traps 1, 2 and 3 were found to be \SI{1.08}{eV}, \SI{
     \labtab{trap properties results}
 \end{table}
 
-This would mean that if the \gls{tds} were run up to temperature around \SI{1600}{K}, $\mathrm{He}_1\mathrm{V}_1$ clusters could dissociate resulting in additional free trapping sites for H and therefore different \gls{tds} spectra.
+This would mean that if the \gls{tds} were run up to temperature around \SI{1600}{K}, $\mathrm{He}_1\mathrm{V}_1$ clusters could dissociate resulting in additional free trapping sites for \gls{H} and therefore different \gls{tds} spectra.
 
-The H retention is not dominated by He-bubbles trapping but rather by pre-existing defects.
+The \gls{H} retention is not dominated by \gls{He}-bubbles trapping but rather by pre-existing defects.
 
 \begin{figure}[h!]
     \centering
@@ -112,11 +112,11 @@ The processes at stake cannot yet be precisely described.
 One possible interpretation of the results is:
 \begin{itemize}
     \item Initial state: the sample has some pre-existing defects %(proof from PAS that there are pre-existing defects before He implantation)
-    \item He implantation: all pre-existing defects are saturated with He and bubbles are formed
-    \item 1st D implantation: D can only be trapped around bubbles since defects are saturated with He
-    \item 1st \gls{tds} (up to \SI{1250}{K}): D is detrapped from bubbles is desorbed (\SI{550}{K} peak), He dissociates from pre-existing defects 
+    \item \gls{He} implantation: all pre-existing defects are saturated with \gls{He} and bubbles are formed
+    \item 1st D implantation: D can only be trapped around bubbles since defects are saturated with \gls{He}
+    \item 1st \gls{tds} (up to \SI{1250}{K}): D is detrapped from bubbles is desorbed (\SI{550}{K} peak), \gls{He} dissociates from pre-existing defects 
     \item 2nd D implantation: D is trapped around bubbles and in the non-saturated defects
-    \item 2nd \gls{tds} (up to \SI{1350}{K}): D is detrapped from bubbles is desorbed (\SI{550}{K} peak) and from non-saturated defects (peaks 400K, 450K and 500K) + He trapped in deeper traps dissociate (because the \gls{tds} goes to higher temperatures)
+    \item 2nd \gls{tds} (up to \SI{1350}{K}): D is detrapped from bubbles is desorbed (\SI{550}{K} peak) and from non-saturated defects (peaks 400K, 450K and 500K) + \gls{He} trapped in deeper traps dissociate (because the \gls{tds} goes to higher temperatures)
     \item 3rd to 5th D implantations: D is trapped around bubbles and in pre-existing defects
     \item 3rd to 5th \gls{tds}: D is detrapped from bubbles and pre-existing defects (now more available than at the 2nd \gls{tds})
 \end{itemize}
@@ -126,6 +126,6 @@ This interpretation is represented (in a simplified way) on \reffig{ialovega exp
 \begin{figure*}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter5/sketch ialovega experiment.pdf}
-    \caption{Schematic interpretation of the simulation results showing the several stages of the experiment (from helium implantation to TDS cycles).}
+    \caption{Schematic interpretation of the simulation results showing the several stages of the experiment (from \gls{He} implantation to TDS cycles).}
     \labfig{ialovega experiment interpretation}
 \end{figure*}
