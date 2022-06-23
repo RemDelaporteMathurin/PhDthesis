@@ -3,18 +3,37 @@
 \chapter{He transport in PFCs}\labch{Chapter5}
 \label{Chapter5} % For referencing the chapter elsewhere, use \ref{Chapter2}
 
-\section{Introduction}
 \input{chapters/chapter5/He_transport_in_PFCs/introduction}
-\section{Model description}
+\section{Model description}\labsec{helium model description}
 \input{chapters/chapter5/He_transport_in_PFCs/model}
 \section{Direct implantation of He}
 \input{chapters/chapter5/He_transport_in_PFCs/direct_implantation}
 \section{Indirect sources of He}
-\subsection{Neutron induced transmutation}
-
-\subsection{Tritium decay}
-
+\input{chapters/chapter5/He_transport_in_PFCs/indirect_implantation}
 \section{Influence on H transport}
 \input{chapters/chapter5/He_transport_in_PFCs/Influence_on_H_transport.tex}
 
 \section{Summary}
+
+FESTIM was used to simulate the influence of helium implantation on hydrogen transport.
+The formation of helium bubble in tungsten was first studied.
+It was shown that this phenomenon was limited to a small region near the exposed surface.
+
+The experiment of Ialovega and co-workers described in \sidecite{ialovega_hydrogen_2020} was then reproduced and one possible explanation was given.
+Although fitting a TDS spectrum is not sufficient to draw strong conclusions, this work suggests that:
+\begin{itemize}
+    \item He does not leave bubbles in significant quantities at these temperatures
+    \item He occupies pre-existing defects avoiding H to get trapped
+    \item Hydrogen retention is not dominated by He-induced bubbles but rather by the saturation of pre-existing defects by He
+\end{itemize}
+
+From these results, several experimental suggestions can be made.
+Running the TDS up to \SI{750}{K} only would limit He desorption.
+Indeed, it was shown in \cite{ialovega_hydrogen_2020} that there was no helium desorption below this temperature after the initial cleaning TDS.
+If helium does not desorb and remains in the pre-existing defects, the deuterium TDS spectra should not be affected and only the desorption from bubbles should be observed.
+This would confirm or infirm the interpretation of the results presented here.
+
+Moreover, if this interpretation was confirmed, it could have implications for hydrogen retention.
+Indeed, one could imagine reducing the tritium inventory of components by first exposing them to helium.
+Helium would fill the existing defects, making it impossible for tritium to be trapped.
+However, having a helium inventory in components can also have negative consequences.
