@@ -52,7 +52,7 @@ This is the case for plasma implantation and nuclear reactions producing H.
 
 In Equation \ref{eq:trapped}, $k_i$ and $p_i$ are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively and $n_i$ is the trap density in \si{m^{-3}}.
 
-At steady state (\textit{ie} $\frac{\partial c_\mathrm{m}}{\partial t} = 0$ and $\frac{\partial c_{\mathrm{t}, i}}{\partial t} = 0$), the mobile H concentration is independent of $c_{\mathrm{t}, i}$.
+At steady state (i.e.\ $\frac{\partial c_\mathrm{m}}{\partial t} = 0$ and $\frac{\partial c_{\mathrm{t}, i}}{\partial t} = 0$), the mobile H concentration is independent of $c_{\mathrm{t}, i}$.
 Equation \ref{eq:trapped} can be rewritten as:
 \begin{equation}
     c_{\mathrm{t}, i} = n_i \frac{1}{\frac{p}{k c_\mathrm{m}} + 1}
@@ -120,7 +120,7 @@ These profiles can be simulated by Monte Carlo codes like SRIM \sidecite{ziegler
 
 % In order to accurately model this source term, the size of the cells constituing the mesh (the spatial discretisation of the domain) must be less than a nanometre.
 % This can be done easily in 1D but is very complicated in higher dimensions, especially when simulating centimetre-sized components.
-This volumetric source term can be simplified into a Dirichlet boundary condition (\textit{ie} enforcing the mobile particle concentration at the exposed surface).
+This volumetric source term can be simplified into a Dirichlet boundary condition (i.e.\ enforcing the mobile particle concentration at the exposed surface).
 
 Let us consider a volumetric source term of hydrogen $\Gamma = \varphi_\mathrm{imp} \; f(x)$ where $f$ is a narrow Gaussian distribution.
 The mobile particles concentration profile can be approximated by a triangular shape \sidecite{schmid_diffusion-trapping_2016} (see Figure \ref{fig:recomb sketch}).
@@ -177,7 +177,7 @@ By replacing Equation \ref{eq:c_0} in Equation \ref{eq:c_max} one can obtain:
     c_\mathrm{max} = \frac{\varphi_\mathrm{imp} R_{p}}{D}+\sqrt{\frac{\varphi_\mathrm{imp}}{K_r}}
 \end{equation}
 
-As the recombination process becomes fast (\textit{ie} $K_r \rightarrow \infty$), $c_0 \rightarrow 0$ and $c_\mathrm{max} \rightarrow \frac{\varphi_\mathrm{imp} R_{p}}{D}$.
+As the recombination process becomes fast (i.e.\ $K_r \rightarrow \infty$), $c_0 \rightarrow 0$ and $c_\mathrm{max} \rightarrow \frac{\varphi_\mathrm{imp} R_{p}}{D}$.
 
 Since the main driver for the diffusion is the value $c_\mathrm{max}$, when $R_p$ is negligeable compared to the dimension of the simulation domain, one can simply impose this value at the surface.
 % This analytical simplification is especially useful to simulate implanted sources near the surface (\textit{eg} plasma implantation) without having to finely discretise the domain to fully represent the gaussian distribution.
