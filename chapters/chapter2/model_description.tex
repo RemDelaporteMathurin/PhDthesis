@@ -52,7 +52,7 @@ This is the case for plasma implantation and nuclear reactions producing H.
 
 In Equation \ref{eq:trapped}, $k_i$ and $p_i$ are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively and $n_i$ is the trap density in \si{m^{-3}}.
 
-At steady state (\textit{ie} $\frac{\partial c_\mathrm{m}}{\partial t} = 0$ and $\frac{\partial c_{\mathrm{t}, i}}{\partial t} = 0$), the mobile H concentration is independent of $c_{\mathrm{t}, i}$.
+At steady state (i.e.\ $\frac{\partial c_\mathrm{m}}{\partial t} = 0$ and $\frac{\partial c_{\mathrm{t}, i}}{\partial t} = 0$), the mobile H concentration is independent of $c_{\mathrm{t}, i}$.
 Equation \ref{eq:trapped} can be rewritten as:
 \begin{equation}
     c_{\mathrm{t}, i} = n_i \frac{1}{\frac{p}{k c_\mathrm{m}} + 1}
@@ -120,7 +120,7 @@ These profiles can be simulated by Monte Carlo codes like SRIM \sidecite{ziegler
 
 % In order to accurately model this source term, the size of the cells constituing the mesh (the spatial discretisation of the domain) must be less than a nanometre.
 % This can be done easily in 1D but is very complicated in higher dimensions, especially when simulating centimetre-sized components.
-This volumetric source term can be simplified into a Dirichlet boundary condition (\textit{ie} enforcing the mobile particle concentration at the exposed surface).
+This volumetric source term can be simplified into a Dirichlet boundary condition (i.e.\ enforcing the mobile particle concentration at the exposed surface).
 
 Let us consider a volumetric source term of hydrogen $\Gamma = \varphi_\mathrm{imp} \; f(x)$ where $f$ is a narrow Gaussian distribution.
 The mobile particles concentration profile can be approximated by a triangular shape \sidecite{schmid_diffusion-trapping_2016} (see Figure \ref{fig:recomb sketch}).
@@ -157,19 +157,19 @@ Equation \ref{eq:flux balance} can therefore be written as:
 
 Moreover, according to Fick's law, $\varphi_\mathrm{recomb}$ can be expressed as:
 
-\begin{eqnarray}
+\begin{align}
     \varphi_\mathrm{recomb} &= D \cdot \frac{c_\mathrm{max}-c_{0}}{R_{p}} = \varphi_\mathrm{imp}\\
     \Leftrightarrow c_\mathrm{max} &= \frac{\varphi_\mathrm{imp} R_{p}}{D}+ c_0
     \label{eq:c_max}
-\end{eqnarray}
+\end{align}
 
 Assuming second order recombination, $\varphi_\mathrm{recomb}$ can also be expressed as a function of the recombination coefficient $K_r$:
 
-\begin{eqnarray}
+\begin{align}
     \varphi_\mathrm{recomb} &= K_r c_{0}^{2} = \varphi_\mathrm{imp}\\
     \Leftrightarrow c_{0} &= \sqrt{\frac{\varphi_\mathrm{imp}}{K_r}}
     \label{eq:c_0}
-\end{eqnarray}
+\end{align}
 
 By replacing Equation \ref{eq:c_0} in Equation \ref{eq:c_max} one can obtain:
 
@@ -177,7 +177,7 @@ By replacing Equation \ref{eq:c_0} in Equation \ref{eq:c_max} one can obtain:
     c_\mathrm{max} = \frac{\varphi_\mathrm{imp} R_{p}}{D}+\sqrt{\frac{\varphi_\mathrm{imp}}{K_r}}
 \end{equation}
 
-As the recombination process becomes fast (\textit{ie} $K_r \rightarrow \infty$), $c_0 \rightarrow 0$ and $c_\mathrm{max} \rightarrow \frac{\varphi_\mathrm{imp} R_{p}}{D}$.
+As the recombination process becomes fast (i.e.\ $K_r \rightarrow \infty$), $c_0 \rightarrow 0$ and $c_\mathrm{max} \rightarrow \frac{\varphi_\mathrm{imp} R_{p}}{D}$.
 
 Since the main driver for the diffusion is the value $c_\mathrm{max}$, when $R_p$ is negligeable compared to the dimension of the simulation domain, one can simply impose this value at the surface.
 % This analytical simplification is especially useful to simulate implanted sources near the surface (\textit{eg} plasma implantation) without having to finely discretise the domain to fully represent the gaussian distribution.
@@ -278,7 +278,7 @@ Finally, to model a convective heat flux when the surface is in contact with a f
 \end{equation}
 where $h$ is the heat transfer coefficient in \si{W.m^{-2}.K^{-1}}, $T_\mathrm{ext}$ is the fluid temperature in \si{K} and $\partial \Omega$ is the domain boundary.
 The heat transfer coefficient can be dependent on the temperature and the flow characteristics.
-It is obtained by computing the Nusselt number from correlations linking it to the Reynolds number of the flow and the Prandtl number of the fluid \sidecite{poirier_correlations_2016} (\textit{eg} Dittus-Boetler, Sieder-State, Gnielinski, ...).
+It is obtained by computing the Nusselt number from correlations linking it to the Reynolds number of the flow and the Prandtl number of the fluid \sidecite{poirier_correlations_2016} (\textit{eg} Dittus-Boetler, Sieder-State, Gnielinski...).
 Once the Nusselt number is known, the heat transfer coefficient $h$ reads:
 \begin{equation}
     h = \frac{\lambda \, \textit{Nu}}{L}
@@ -294,7 +294,7 @@ The code \gls{festim} \sidecite{delaporte-mathurin_finite_2019} was therefore de
 
 \subsection{The finite element method: FEniCS}
 \gls{festim} is based on the Finite Element Method to solve this set of differential equations and boundary conditions.
-Several finite element libraries are available open-source (deal.II \sidecite{arndt_dealii_2021}, MFEM \sidecite{kolev_tzanio_modular_2010}, MOOSE \sidecite{permann_moose_2020}, FreeFEM++ \sidecite{hecht_new_2012}, ...).
+Several finite element libraries are available open-source (deal.II \sidecite{arndt_dealii_2021}, MFEM \sidecite{kolev_tzanio_modular_2010}, MOOSE \sidecite{permann_moose_2020}, FreeFEM++ \sidecite{hecht_new_2012}...).
 The open-source python/C++ package \gls{fenics} \sidecite{alnaes_fenics_2015} was employed.
 The finite element method is a versatile tool that can solve any partial differential equation on an arbitrary geometry in 1D, 2D or 3D.
 The main advantage of this method compared to the finite difference method is the simplicity of its application to complex geometries and unstructured meshes.
@@ -354,7 +354,7 @@ The function space $V$ is defined as:
     V = \{ v \in H^1(\Omega) \ : \ v=u_0 \ \text{on} \ \Gamma_D \}
 \end{equation}
 
-Poisson's equation can now be discretised by restricting the variational problem \ref{eq: weak form 2} to discrete function spaces $V_h$ and $\hat{V}_h$ : find $u_h \in V_h \subset V$
+Poisson's equation can now be discretised by restricting the variational problem \ref{eq: weak form 2} to discrete function spaces $V_h$ and $\hat{V}_h$: find $u_h \in V_h \subset V$
 \begin{equation}
     \int_{\Omega} \nabla u_h \cdot \nabla v  \ dx = \int_{\Omega} f \ v \ dx - \int_{\Gamma_N} g \ v \ ds \quad \forall \ v \in \hat{V}_h \subset \hat{V}
     \label{eq: discrete variational problem}
@@ -381,7 +381,7 @@ $N$ is the number of nodes used to discretise the domain.
 By replacing $u_h$ in Equation \ref{eq: discrete variational problem} with Equation \ref{eq: FEM solution} and varying the basis functions $\hat{\phi}_j$:
 
 \begin{equation}
-    \sum^N_{i=1} U_i \int_\Omega \nabla \phi_i \cdot \nabla \hat{\phi}_j \ dx = \int_\Omega f \ \hat{\phi}_j \ dx - \int_{\Gamma_N} g \ \hat{\phi}_j \ ds , \quad \ j = 1, \ 2, \ ..., \ N
+    \sum^N_{i=1} U_i \int_\Omega \nabla \phi_i \cdot \nabla \hat{\phi}_j \ dx = \int_\Omega f \ \hat{\phi}_j \ dx - \int_{\Gamma_N} g \ \hat{\phi}_j \ ds , \quad \ j = 1, \ 2, \ \ldots, \ N
 \end{equation}
 
 This can be written in a matrix form:
@@ -452,7 +452,7 @@ This greatly improves the performance of the code since less timesteps are neede
 
 Before using the \gls{festim} code for analysis, it has to be verified and validated.
 The \gls{vv} has two goals: (1) to prove that the governing equations are correctly solved and that the code is error free and (2) to demonstrate that the governing equations actually reproduce processes observed experimentally.
-In other words, verification is answering the question \textit{"Are we building the code right?"} and validation is answering the question \textit{"Are we building the right code?"}.
+In other words, verification is answering the question \textit{``Are we building the code right?''} and validation is answering the question \textit{``Are we building the right code?''}.
 
 This Section details the \gls{vv} of \gls{festim}.
 
@@ -471,7 +471,7 @@ This Section details the \gls{vv} of \gls{festim}.
 \section{Summary}
 
 The macroscopic rate equations model describing the transport (diffusion and trapping) of H in solids was presented alongside with additional models such as the conservation of chemical potential at interfaces.
-Due to the presence of thermally activated processes (diffusion, trapping, detrapping, surface processes, ...), the heat transfer equation has to be solved numerically.
+Due to the presence of thermally activated processes (diffusion, trapping, detrapping, surface processes...), the heat transfer equation has to be solved numerically.
 All these equations are solved with the newly developed finite element code \gls{festim}, which heavily relies of \gls{fenics}.
 
 \gls{festim} has been verified using methods such as the Method of Exact Solutions and the Method of Manufactured Solutions.

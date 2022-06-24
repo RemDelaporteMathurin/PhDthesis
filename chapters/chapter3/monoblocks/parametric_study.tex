@@ -41,14 +41,14 @@ Instead, trap occupancy is close to one and the retention is high in the whole r
     \begin{subfigure}{0.5\linewidth}
         \centering
         \includegraphics[height=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/retention_T=7.000e+02;c=1.00e+20.pdf}
-        \caption{$T_\mathrm{surface} = \SI{700}{K}$ and $c_\mathrm{surface} = \SI{e20}{m^{-3}}$}
+        \caption{$T_\mathrm{surface} = \SI{700}{K}$ and $c_\mathrm{surface} = \SI{e20}{m^{-3}}$.}
     \end{subfigure}%
     \begin{subfigure}{0.5\linewidth}
         \centering
         \includegraphics[height=\linewidth]{Figures/Chapter3/monoblocks/parametric_study/retention_T=1.000e+03;c=1.00e+21.pdf}
-        \caption{$T_\mathrm{surface} = \SI{1000}{K}$ and $c_\mathrm{surface} = \SI{e21}{m^{-3}}$}
+        \caption{$T_\mathrm{surface} = \SI{1000}{K}$ and $c_\mathrm{surface} = \SI{e21}{m^{-3}}$.}
     \end{subfigure}
-    \caption{Example retention fields in \si{m^{-3}} after a \SI{e7}{s} exposure}
+    \caption{Example retention fields in \si{m^{-3}} after a \SI{e7}{s} exposure.}
     \labfig{retention fields}
 \end{figure*}
 
@@ -98,7 +98,7 @@ This parameter will however have an influence on the permeation flux and should 
 
 % Gap recombination
 Similarly, the influence on molecular recombination on the sides of the monoblock was found to have a low impact on the results.
-By assuming an instantaneous recombination coefficient, the relative error on the monoblock inventory was found to be significant only in hot regions (\textit{ie} within \SI{10}{cm} on both sides of the strike points).
+By assuming an instantaneous recombination coefficient, the relative error on the monoblock inventory was found to be significant only in hot regions (i.e.\ within \SI{10}{cm} on both sides of the strike points).
 The influence on the total divertor inventory is therefore low (less than \SI{5}{\%} after a \SI{e7}{s} exposure) since it is dominated by regions where $T_\mathrm{surface} \approx T_\mathrm{coolant}$.
 
 % ELMs
@@ -106,15 +106,15 @@ It should be noted that specific scenarios like edge localised modes (ELMs) were
 ELMs are transient plasma events releasing thermal energy and locally increasing the heat flux at the surface of the monoblock.
 MRE simulations by Hu and Hassanein \sidecite{hu_predicting_2015} suggest that a \SI{400}{s} discharge with \SI{1}{Hz} or \SI{10}{Hz} ELMs significantly reduces (77 \%) the inventory in W materials.
 However, the modelling of the ELM is simulated by increasing the temperature for a very short time without changing the incident flux of particles that can also be much higher thus balancing the fuel retention reduction.
-Another study by Schmid \textit{et al} \sidecite{schmid_diffusion-trapping_2016} also simulated the effect of \SI{1}{Hz} ELMs on fuel retention in W.
+Another study by Schmid et al.\ \sidecite{schmid_diffusion-trapping_2016} also simulated the effect of \SI{1}{Hz} ELMs on fuel retention in W.
 The outcome is that \SI{6}{s} of \SI{1}{Hz}-ELMs does not affect significantly the fuel retention, though the temperature excursion in those simulations are smaller than for the one of Hu and Hassanein.
 Thus, the effect of ELMs, especially the balance between increase of heat flux, incident energy and particle flux, could either favour or disfavour trapping, diffusion and migration and therefore the overall retention.
-
+  
 % Surface process
 In this study the model to link the concentration of mobile particles at the surface (implantation zone) with the exposure condition considers that the particles are implanted in the bulk and that the recombination coefficient is very high since many uncertainties concerning the recombination coefficient are yet to be lifted.
 However, if an exothermic process is considered as in \sidecite{ogorodnikova_recombination_2019}, this should have low influence since recombination is very quick at a temperature close to that of the coolant.
 
-On the other hand, experimental results \sidecite{t_hoen_strongly_2013} suggest that for ion energy below \SI{5}{eV/H}, typical of detached plasma as the one treated in the previous section, the surface process can be important and limits the uptake of hydrogen, i.e. the adsorption on the surface and the further absorption from surface to bulk could be the limiting process for the growth of $c_\mathrm{surface}$ during such exposure.
+On the other hand, experimental results \sidecite{t_hoen_strongly_2013} suggest that for ion energy below \SI{5}{eV/H}, typical of detached plasma as the one treated in the previous section, the surface process can be important and limits the uptake of hydrogen, i.e.\ the adsorption on the surface and the further absorption from surface to bulk could be the limiting process for the growth of $c_\mathrm{surface}$ during such exposure.
 The evolution of $c_\mathrm{surface}$ to the exposure condition for that range of energy (and therefore the inventory) would then be different.
 The advantage of the presented method is that taking into account such process is realtively easy as no expensive simulations are needed.
 One would only need to modify the model giving $c_\mathrm{surface}$

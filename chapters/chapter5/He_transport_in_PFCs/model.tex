@@ -16,7 +16,7 @@ This model describes the evolution of the concentrations of pure interstitial He
         \put(22, 15){V$_2$He$_{10}$}
         
     \end{overpic}
-    \caption{Representation of He clustering in solids. Dissociation is omitted for simplification purposes. The grey arrows thicknesses represent the magnitude of the reaction rate between mobile He$_1$ and other clusters at the same distance}.
+    \caption{Representation of He clustering in solids. Dissociation is omitted for simplification purposes. The grey arrows thicknesses represent the magnitude of the reaction rate between mobile He$_1$ and other clusters at the same distance.}
     \labfig{clustering sketch}
 \end{figure*}
 
@@ -63,7 +63,7 @@ Finally, the last term corresponds to clusters of size $i$ dissociating.
 
 \subsection{Grouped approach}
 Extending this clustering model to clusters containing millions of helium extremely increases the computational cost.
-A grouped approach proposed by Faney et al \sidecite{faney_spatially_2014} for reducing the number of equations will therefore be employed.
+A grouped approach proposed by Faney et al.\ \sidecite{faney_spatially_2014} for reducing the number of equations will therefore be employed.
 This technique consists in grouping the big clusters that have a similar behaviour in a single equation while explicitly accounting for smaller clusters.
 
 The clustering equations can be written as follows:
@@ -90,7 +90,7 @@ In order to simplify this model, the following quantities are defined:
     \langle k_b^+ \rangle &=  \frac{1}{c_b}\sum\limits_{i=N+1}^\infty k_{1,i}^+ c_i = 4 \pi D_1 (r_1 + \langle r_b \rangle) \quad \text{ : average clustering rate in $c_b$}
 \end{align}
 
-Clusters with more than $N$ He ($c_b$) will be referred as "bubbles" in the following.
+Clusters with more than $N$ He ($c_b$) will be referred as ``bubbles'' in the following.
 
 Equation \refeq{temporal evolution no grouping} therefore reads:
 
@@ -128,7 +128,7 @@ Several assumptions are made:
     The number of vacancies in bubbles is assumed to be $\langle i_b \rangle/4$.
     This assumption is motivated by \gls{md} computations showing that \gls{trap mutation} events occur for every four additional helium in large \gls{vacancy}-helium clusters.
     Moreover, theoretical models for He bubbles growth in metal suggest a similar trend \sidecite{hammond_theoretical_2020}.
-    \item Dissociation of large clusters is neglected (\textit{ie} $k_i^- = 0$ for $i>N$).
+    \item Dissociation of large clusters is neglected (i.e.\ $k_i^- = 0$ for $i>N$).
     Indeed, the activation energy for \gls{trap mutation} events is lower than that of He or \gls{vacancy} emission\sidecite{boisse_modeling_2014}. Dissociation of large clusters by \gls{vacancy} or He emission is therefore negligible.
 \end{itemize}
 
@@ -137,12 +137,12 @@ The current implementation further simplifies Faney's model \sidecite{faney_spat
     \item Interactions with \gls{self-interstitial} atoms or pre-existing vacancies are not taken into account.
     In this work, the only dissociations are He emissions from small mobile clusters and \gls{trap mutation} for large clusters.
     It was showed that this assumption did not have an impact on the results (see \reffig{tendril profiles}).
-    \item The only clusters explicitly computed are $\mathrm{He}_{x \leq 6}$ (\textit{ie} $N=6$) whereas Faney's work explicitly accounted for clusters up to $\mathrm{V}_{50}\mathrm{He}_{250}$ and solved a bigger system of equations.
+    \item The only clusters explicitly computed are $\mathrm{He}_{x \leq 6}$ (i.e.\ $N=6$) whereas Faney's work explicitly accounted for clusters up to $\mathrm{V}_{50}\mathrm{He}_{250}$ and solved a bigger system of equations.
     The influence of this threshold $N$ above which clusters are integrated in the quantity $c_b$ is discussed in \refsec{impact of N}.
-    \item Clusters containing more than six He atoms are assumed to be immobile (\textit{ie} $D_i = 0$ for $i>6$) due to \gls{trap mutation} events.
+    \item Clusters containing more than six He atoms are assumed to be immobile (i.e.\ $D_i = 0$ for $i>6$) due to \gls{trap mutation} events.
     This assumption is motivated by \gls{dft} and \gls{md} results suggesting that the \gls{self-trapping} energy is below the binding energy of one He atom in a pure He cluster for clusters containing more than five He atoms \sidecite{boisse_modeling_2014}.
 
-    For smaller clusters ($\mathrm{He}_1$, $\mathrm{He}_2$, ..., $\mathrm{He}_6$) the diffusion coefficient and the dissociation by He emission energy vary with the number of He atoms in the cluster (see \reftab{clusters properties}).
+    For smaller clusters ($\mathrm{He}_1$, $\mathrm{He}_2$,$\ldots$, $\mathrm{He}_6$) the diffusion coefficient and the dissociation by He emission energy vary with the number of He atoms in the cluster (see \reftab{clusters properties}).
 \end{itemize}
 
 \begin{table}
@@ -158,7 +158,7 @@ The current implementation further simplifies Faney's model \sidecite{faney_spat
         He$_5$ & $5.20\times 10^{-9}$ & $0.12$ & 1.6\\
         He$_6$ & $1.20\times 10^{-9}$ & $0.30$ & 2.0\\
     \end{tabular}
-    \caption{Pure He clusters properties in W. Diffusion properties are taken from Faney \textit{et al} \cite{faney_spatially_2015} and binding energies are taken from Becquart \textit{et al} \cite{becquart_microstructural_2010}.}
+    \caption{Pure He clusters properties in W. Diffusion properties are taken from Faney et al.\ \cite{faney_spatially_2015} and binding energies are taken from Becquart et al.\ \cite{becquart_microstructural_2010}.}
     \labtab{clusters properties}
 \end{table}
 
