@@ -17,7 +17,7 @@ This optimisation case is therefore a 5D optimisation problem.
 Every other parameter is taken from \cite{hodille_macroscopic_2015}.
 The resulting fit is shown on \reffig{5D TDS} alongside with the contribution of each trap to the total spectrum.
 An interesting feature of this spectrum is the negative area of the contribution of the second trap around \SI{400}{K}.
-Because not all of these traps are saturated, when trap 1 is empyting, some of the hydrogen particles are nearly instantly trapped in the second trap which has a higher detrapping energy.
+Because not all of these traps are saturated, when trap 1 is empyting, some hydrogen particles are nearly instantly trapped in the second trap which has a higher detrapping energy.
 
 % (1 trap [ 0.88368005  1.44347635] 2 traps [ 0.83582125  1.23768655  0.98708714  6.85457283])
 \begin{figure*} [h!]
@@ -110,7 +110,7 @@ Users should also be aware of the number of traps the data is being fitted with.
 As shown on \reffig{number of traps comparison} too few traps in the simulation will not result in a satisfactory fit (even though the optimisation routine will converge to an optimised solution).
 Moreover, as shown on \reffig{hurley_comparison}, one single TDS spectrum can be reproduced with several traps of different energies and densities.
 This means that the cost function with several traps as free parameters can have several local minima of very similar values.
-Adding traps to an optimisation problem can also help having a better fit of the experimental data in some cases.
+Adding traps to an optimisation problem can also help to have a better fit of the experimental data in some cases.
 But artificially adding more and more traps is not necessarily realistic and could lead to misinterpretation of the results.
 
 \begin{figure}[h!]
