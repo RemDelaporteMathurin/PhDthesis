@@ -302,45 +302,90 @@
 % %----------------------------------------------------------------------------------------
 
 % % The nomenclature needs to be compiled on the command line with 'makeindex main.nlo -s nomencl.ist -o main.nls' from the template directory
+\newcommand{\nomunit}[1]{%
+  \renewcommand{\nomentryend}{\hspace*{\fill}#1}%
+}
+\nomenclature{$c_\mathrm{m}$}{mobile concentration of hydrogen \nomunit{\si{m^{-3}}}}
+\nomenclature{$c_\mathrm{t, \, i}$}{concentration of trapped hydrogen in trap $i$ \nomunit{\si{m^{-3}}}}
+\nomenclature{$T$}{Temperature \nomunit{\si{K}}}
+\nomenclature{$T_\mathrm{coolant}$}{Coolant temperature \nomunit{\si{K}}}
+\nomenclature{$D$}{Diffusion coefficient \nomunit{\si{m^2.s^{-1}}}}
+\nomenclature{$S$}{Solubility \nomunit{\si{m^{-3}.Pa^{-0.5}}}}
+\nomenclature{$k_i$}{Trapping rate of trap $i$ \nomunit{\si{m^{3}.s^{-1}}}}
+\nomenclature{$p_i$}{Detrapping rate of trap $i$ \nomunit{\si{s^{-1}}}}
+\nomenclature{$k_{0, \, i}$}{Trapping rate of trap $i$ pre-exponential factor \nomunit{\si{m^{3}.s^{-1}}}}
+\nomenclature{$E_{k, \, i}$}{Trapping rate of trap $i$ activation energy \nomunit{\si{eV}}}
+\nomenclature{$p_{0, \, i}$}{Detrapping rate of trap $i$ pre-exponential factor \nomunit{\si{s^{-1}}}}
+\nomenclature{$E_{p, \, i}$}{Detrapping rate of trap $i$ activation energy \nomunit{\si{eV}}}
 
-% \nomenclature{$c$}{Speed of light in a vacuum inertial frame}
-% \nomenclature{$h$}{Planck constant}
+\nomenclature{$D_{0}$}{Diffusivity pre-exponential factor \nomunit{\si{m^2.s^{-1}}}}
+\nomenclature{$E_{D}$}{Diffusivity activation energy \nomunit{\si{eV}}}
+\nomenclature{$S_{0}$}{Solubility pre-exponential factor \nomunit{\si{m^{-3}.Pa^{-0.5}}}}
+\nomenclature{$E_{S}$}{Solubility activation energy \nomunit{\si{eV}}}
 
-% \renewcommand{\nomname}{Notation} % Rename the default 'Nomenclature'
-% \renewcommand{\nompreamble}{The next list describes several symbols that will be later used within the body of the document.} % Prepend this text to the nomenclature
+\nomenclature{$u$}{An arbitrary solution}
+\nomenclature{$v$}{A test function}
 
-% \printnomenclature % Output the nomenclature
+\nomenclature{$n_i$}{Density of trap $i$ \nomunit{\si{m ^{-3}}}}
+\nomenclature{$k_B$}{Boltzmann constant \nomunit{\si{eV.K^{-1}}}}
+\nomenclature{$R_p$}{Implantation range \nomunit{\si{m}}}
+\nomenclature{$r$}{Particle reflection coefficient}
+\nomenclature{$r_A$}{Capture radius of species A \nomunit{\si{m}}}
+\nomenclature{$K_r$}{Recombination coefficient \nomunit{\si{m^{4}.s^{-1}}}}
+\nomenclature{$\varphi_\mathrm{imp}$}{Implanted particle flux per unit surface \nomunit{\si{m^{-2}.s^{-1}}}}
+\nomenclature{$\varphi_\mathrm{incident}$}{Incident particle flux per unit surface \nomunit{\si{m^{-2}.s^{-1}}}}
+\nomenclature{$\varphi_\mathrm{heat}$}{Heat flux per unit surface \nomunit{\si{W.m^{-2}}}}
+\nomenclature{$t$}{Time \nomunit{\si{s}}}
+\nomenclature{$\lambda$}{Thermal conductivity \nomunit{\si{W.m^{-1}.K^{-1}}}}
+\nomenclature{$\lambda_\mathrm{decay}$}{Radioactive decay constant \nomunit{\si{s}}}
+\nomenclature{$C_p$}{Heat capacity \nomunit{\si{W.K^{-1}}}}
+\nomenclature{$\rho$}{Volumetric density \nomunit{\si{kg.m^{-3}}}}
+\nomenclature{$h$}{Convective heat transfer coefficient per unit surface \nomunit{\si{W.m^{-2}.K^{-1}}}}
+\nomenclature{$\Omega$}{Geometrical domain}
+\nomenclature{$\partial \Omega$}{Boundary of a geometrical domain}
+
+\nomenclature{$c_b$}{Total concentration of helium clusters above a given threshold \nomunit{\si{m^{-3}}}}
+\nomenclature{$\langle i_b \rangle$}{Average helium content in $c_b$}
+\nomenclature{$\langle r_b \rangle$}{Average radius in $c_b$ \nomunit{\si{m}}}
+\nomenclature{$\tau_{1/2}$}{Radioactive half-life \nomunit{\si{s}}}
+
+
+
+\renewcommand{\nomname}{Notation} % Rename the default 'Nomenclature'
+\renewcommand{\nompreamble}{The next list describes several symbols that will be later used within the body of the document.} % Prepend this text to the nomenclature
+
+\printnomenclature % Output the nomenclature
 
 %----------------------------------------------------------------------------------------
 %	GREEK ALPHABET
 % 	Originally from https://gitlab.com/jim.hefferon/linear-algebra
 %----------------------------------------------------------------------------------------
 
-\vspace{1cm}
+% \vspace{1cm}
 
-{\usekomafont{chapter}Greek Letters with Pronounciation} \\[2ex]
-\begin{center}
-	\newcommand{\pronounced}[1]{\hspace*{.2em}\small\textit{#1}}
-	\begin{tabular}{l l @{\hspace*{3em}} l l}
-		\toprule
-		Character & Name & Character & Name \\ 
-		\midrule
-		$\alpha$ & alpha \pronounced{AL-fuh} & $\nu$ & nu \pronounced{NEW} \\
-		$\beta$ & beta \pronounced{BAY-tuh} & $\xi$, $\Xi$ & xi \pronounced{KSIGH} \\ 
-		$\gamma$, $\Gamma$ & gamma \pronounced{GAM-muh} & o & omicron \pronounced{OM-uh-CRON} \\
-		$\delta$, $\Delta$ & delta \pronounced{DEL-tuh} & $\pi$, $\Pi$ & pi \pronounced{PIE} \\
-		$\epsilon$ & epsilon \pronounced{EP-suh-lon} & $\rho$ & rho \pronounced{ROW} \\
-		$\zeta$ & zeta \pronounced{ZAY-tuh} & $\sigma$, $\Sigma$ & sigma \pronounced{SIG-muh} \\
-		$\eta$ & eta \pronounced{AY-tuh} & $\tau$ & tau \pronounced{TOW (as in cow)} \\
-		$\theta$, $\Theta$ & theta \pronounced{THAY-tuh} & $\upsilon$, $\Upsilon$ & upsilon \pronounced{OOP-suh-LON} \\
-		$\iota$ & iota \pronounced{eye-OH-tuh} & $\phi$, $\Phi$ & phi \pronounced{FEE, or FI (as in hi)} \\
-		$\kappa$ & kappa \pronounced{KAP-uh} & $\chi$ & chi \pronounced{KI (as in hi)} \\
-		$\lambda$, $\Lambda$ & lambda \pronounced{LAM-duh} & $\psi$, $\Psi$ & psi \pronounced{SIGH, or PSIGH} \\
-		$\mu$ & mu \pronounced{MEW} & $\omega$, $\Omega$ & omega \pronounced{oh-MAY-guh} \\
-		\bottomrule
-	\end{tabular} \\[1.5ex]
-	Capitals shown are the ones that differ from Roman capitals.
-\end{center}
+% {\usekomafont{chapter}Greek Letters with Pronounciation} \\[2ex]
+% \begin{center}
+% 	\newcommand{\pronounced}[1]{\hspace*{.2em}\small\textit{#1}}
+% 	\begin{tabular}{l l @{\hspace*{3em}} l l}
+% 		\toprule
+% 		Character & Name & Character & Name \\ 
+% 		\midrule
+% 		$\alpha$ & alpha \pronounced{AL-fuh} & $\nu$ & nu \pronounced{NEW} \\
+% 		$\beta$ & beta \pronounced{BAY-tuh} & $\xi$, $\Xi$ & xi \pronounced{KSIGH} \\ 
+% 		$\gamma$, $\Gamma$ & gamma \pronounced{GAM-muh} & o & omicron \pronounced{OM-uh-CRON} \\
+% 		$\delta$, $\Delta$ & delta \pronounced{DEL-tuh} & $\pi$, $\Pi$ & pi \pronounced{PIE} \\
+% 		$\epsilon$ & epsilon \pronounced{EP-suh-lon} & $\rho$ & rho \pronounced{ROW} \\
+% 		$\zeta$ & zeta \pronounced{ZAY-tuh} & $\sigma$, $\Sigma$ & sigma \pronounced{SIG-muh} \\
+% 		$\eta$ & eta \pronounced{AY-tuh} & $\tau$ & tau \pronounced{TOW (as in cow)} \\
+% 		$\theta$, $\Theta$ & theta \pronounced{THAY-tuh} & $\upsilon$, $\Upsilon$ & upsilon \pronounced{OOP-suh-LON} \\
+% 		$\iota$ & iota \pronounced{eye-OH-tuh} & $\phi$, $\Phi$ & phi \pronounced{FEE, or FI (as in hi)} \\
+% 		$\kappa$ & kappa \pronounced{KAP-uh} & $\chi$ & chi \pronounced{KI (as in hi)} \\
+% 		$\lambda$, $\Lambda$ & lambda \pronounced{LAM-duh} & $\psi$, $\Psi$ & psi \pronounced{SIGH, or PSIGH} \\
+% 		$\mu$ & mu \pronounced{MEW} & $\omega$, $\Omega$ & omega \pronounced{oh-MAY-guh} \\
+% 		\bottomrule
+% 	\end{tabular} \\[1.5ex]
+% 	Capitals shown are the ones that differ from Roman capitals.
+% \end{center}
 
 %----------------------------------------------------------------------------------------
 %	GLOSSARY
