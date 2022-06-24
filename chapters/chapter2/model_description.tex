@@ -4,8 +4,8 @@
 \label{Chapter2} % For referencing the chapter elsewhere, use \ref{Chapter2} 
 \section{Introduction}
 This Chapter describes the mathematical models needed to simulate H transport in tokamaks plasma facing components.
-The numerical scheme to solve these equations and an introduction to the finite element method alongside with its implementation in the FESTIM code are also presented.
-Finally, the verification \& validation of FESTIM is performed to guaranty its reliability.
+The numerical scheme to solve these equations and an introduction to the finite element method alongside with its implementation in the \gls{festim} code are also presented.
+Finally, the verification \& validation of \gls{festim} is performed to guaranty its reliability.
 
 \section{H transport} \label{description_H_transport_model}
 
@@ -13,7 +13,7 @@ Finally, the verification \& validation of FESTIM is performed to guaranty its r
 
 \subsection{Macroscopic Rate Equations model}
 
-The Macroscopic Rate Equations (MRE) model will be employed.
+The \gls{mre} model will be employed.
 The principle is to split the hydrogen isotopes into several populations: the mobile hydrogen particles and the hydrogen particles trapped in the i-th trap.
 Their concentration in \si{H.m^{-3}} are respectively $c_\mathrm{m}$ and $c_{\mathrm{t},i}$.
 They can be expressed in atomic fraction (at.fr.) by normalising them to the atomic density of the material.
@@ -290,10 +290,10 @@ with $\lambda$ the thermal conductivity of the fluid in \si{W.m^{-1}.K^{-1}}, $\
 
 
 The models described in this Section can be hard to solve analytically for complex problems (complex geometries, transients, combined boundary conditions, etc).
-The code FESTIM \sidecite{delaporte-mathurin_finite_2019} was therefore developped in order to numerically solve these coupled equations.
+The code \gls{festim} \sidecite{delaporte-mathurin_finite_2019} was therefore developped in order to numerically solve these coupled equations.
 
 \subsection{The finite element method: FEniCS}
-FESTIM is based on the Finite Element Method to solve this set of differential equations and boundary conditions.
+\gls{festim} is based on the Finite Element Method to solve this set of differential equations and boundary conditions.
 Several finite element libraries are available open-source (deal.II \sidecite{arndt_dealii_2021}, MFEM \sidecite{kolev_tzanio_modular_2010}, MOOSE \sidecite{permann_moose_2020}, FreeFEM++ \sidecite{hecht_new_2012}, ...).
 The open-source python/C++ package \gls{fenics} \sidecite{alnaes_fenics_2015} was employed.
 The finite element method is a versatile tool that can solve any partial differential equation on an arbitrary geometry in 1D, 2D or 3D.
@@ -403,58 +403,58 @@ The integral terms in \refeq{eq: matrices A and b} are computed with Gauss-Legen
 After solving Equation \ref{eq: variational problem matrix form}, the $U_i$ coefficients are known and the approximated solution $u_h$ can be computed.
 Non-linear problems are solved in a similar manner where the solution is approached using Newton's method.
 
-\subsection{Main features of FESTIM}
-FESTIM provides an even higher level of abstraction than \gls{fenics} by providing a user-friendly interface dedicated to H transport and heat transfer problems.
+\subsection{Main features of \gls{festim}}
+\gls{festim} provides an even higher level of abstraction than \gls{fenics} by providing a user-friendly interface dedicated to H transport and heat transfer problems.
 Users only have to provide inputs such as material properties, traps properties, geometry, solving parameters, without having to dive into the finite element implementation.
-In other words, users do not need to be finite element experts to run a FESTIM simulation (though knowledge and experience in finite elements will help in solving numerical problems).
+In other words, users do not need to be finite element experts to run a \gls{festim} simulation (though knowledge and experience in finite elements will help in solving numerical problems).
 
 % user friendly
 Multi-dimensional multi-material transient simulations coupled with heat transfer can therefore be run fairly easily without finite element knowledge.
-Nevertheless, since FESTIM is object-oriented, advanced users will always be able to turn FESTIM inside-out to adapt the code to their specific needs (specific boundary conditions, slight changes in the governing equations...).
-Since FESTIM is written in python - which is a fairly easy-to-learn programming langage - no advanced level of coding is required.
+Nevertheless, since \gls{festim} is object-oriented, advanced users will always be able to turn \gls{festim} inside-out to adapt the code to their specific needs (specific boundary conditions, slight changes in the governing equations...).
+Since \gls{festim} is written in python - which is a fairly easy-to-learn programming langage - no advanced level of coding is required.
 
 % physics
-As mentioned above, FESTIM simulates hydrogen transport (diffusion and trapping) and additional physics can be incorporated, such as the Soret effect (even though not used in this work) and conservation of chemical potential at interfaces...
+As mentioned above, \gls{festim} simulates hydrogen transport (diffusion and trapping) and additional physics can be incorporated, such as the Soret effect (even though not used in this work) and conservation of chemical potential at interfaces...
 The hydrogen transport equations can be coupled to the heat equation (weak coupling).
 Various types of boundary conditions are available for both the H transport (imposed concentration, recombination flux, dissociation flux, implanted source approximation...) and the heat transfer problems (imposed temperature, imposed flux, convective flux...).
 Traps densities in FESTIM can also be time-dependent allowing the users to simulate extrinsic traps (\textit{eg} irradiation induced traps, stress induced traps...).
 
 % geometry
-Thanks to the finite element method, geometries used in FESTIM can be complex (see Figure \ref{fig: example mesh}).
-The meshing capability of FESTIM is limited to 1D meshes and it was decided to instead make FESTIM accept (with the XDMF format) complex meshes from third-party applications dedicated to meshing such as SALOME or GMSH.
+Thanks to the finite element method, geometries used in \gls{festim} can be complex (see Figure \ref{fig: example mesh}).
+The meshing capability of \gls{festim} is limited to 1D meshes and it was decided to instead make \gls{festim} accept (with the XDMF format) complex meshes from third-party applications dedicated to meshing such as SALOME or GMSH.
 These third-party applications can for instance be usefull to run CAD-based simulations.
 Users can also decide to use the \gls{fenics} built-in meshing tool.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.5\linewidth]{Figures/Chapter2/example_mesh.png}
-    \caption{Example of a complex 3D geometry (here a breeding blanket section) mesh readable by FESTIM \cite{dark_influence_2021}.}
+    \caption{Example of a complex 3D geometry (here a breeding blanket section) mesh readable by \gls{festim} \cite{dark_influence_2021}.}
     \label{fig: example mesh}
 \end{figure}
 
 % visualisation
-Similarly, FESTIM (\gls{fenics}) visualisation functions are limited.
-FESTIM is not a graphical application but the files generated by FESTIM (XDMF, CSV, TXT) can easily be read and post-processed by specialised tools such as Paraview \sidecite{ahrens_paraview_2005}, matplotlib \sidecite{hunter_matplotlib_2007}, NumPy \sidecite{harris_array_2020}, etc.
+Similarly, \gls{festim} (\gls{fenics}) visualisation functions are limited.
+\gls{festim} is not a graphical application but the files generated by \gls{festim} (XDMF, CSV, TXT) can easily be read and post-processed by specialised tools such as Paraview \sidecite{ahrens_paraview_2005}, matplotlib \sidecite{hunter_matplotlib_2007}, NumPy \sidecite{harris_array_2020}, etc.
 
 % what FE
-Regarding the default finite elements used in FESTIM are first order piecewise elements (called P1, Lagrange or also Continuous Galerkin 1).
+Regarding the default finite elements used in \gls{festim} are first order piecewise elements (called P1, Lagrange or also Continuous Galerkin 1).
 Using these finite elements for trapped concentration exhibiting discontinuities (at the interface between two materials for instance) can cause performance issues and loss of accuracies.
 Therefore, it can be switched to discontinuous elements (DG1) when needed to avoid under- or over-shoots in the concentration fields.
 Many different finite elements are available in \gls{fenics} \cite{noauthor_periodic_nodate} and their description is outside the scope of this work.
 
 % Adaptive step size
-When dealing with transient problems, FESTIM provides an adaptive stepsize allowing the stepsize to increase (by a user-defined factor) when the convergence criterion is easily reached by the solver.
+When dealing with transient problems, \gls{festim} provides an adaptive stepsize allowing the stepsize to increase (by a user-defined factor) when the convergence criterion is easily reached by the solver.
 This greatly improves the performance of the code since less timesteps are needed.
 
 
 
 \section{Verification \& Validation}
 
-Before using the FESTIM code for analysis, it has to be verified and validated.
-The verification \& validation process (often called V\&V) has two goals: (1) to prove that the governing equations are correctly solved and that the code is error free and (2) to demonstrate that the governing equations actually reproduce processes observed experimentally.
+Before using the \gls{festim} code for analysis, it has to be verified and validated.
+The \gls{vv} has two goals: (1) to prove that the governing equations are correctly solved and that the code is error free and (2) to demonstrate that the governing equations actually reproduce processes observed experimentally.
 In other words, verification is answering the question \textit{"Are we building the code right?"} and validation is answering the question \textit{"Are we building the right code?"}.
 
-This Section details the V\&V of FESTIM.
+This Section details the \gls{vv} of \gls{festim}.
 
 \subsection{Analytical verification}
 \input{chapters/chapter2/verification_and_validation/analytical_verification.tex}
@@ -472,14 +472,14 @@ This Section details the V\&V of FESTIM.
 
 The macroscopic rate equations model describing the transport (diffusion and trapping) of H in solids was presented alongside with additional models such as the conservation of chemical potential at interfaces.
 Due to the presence of thermally activated processes (diffusion, trapping, detrapping, surface processes, ...), the heat transfer equation has to be solved numerically.
-All these equations are solved with the newly developed finite element code FESTIM, which heavily relies of \gls{fenics}.
+All these equations are solved with the newly developed finite element code \gls{festim}, which heavily relies of \gls{fenics}.
 
-FESTIM has been verified using methods such as the Method of Exact Solutions and the Method of Manufactured Solutions.
-On the other hand, it was shown that FESTIM could be employed to reproduce experiments (TDS experiments) performed on tungsten.
+\gls{festim} has been verified using methods such as the Method of Exact Solutions and the Method of Manufactured Solutions.
+On the other hand, it was shown that \gls{festim} could be employed to reproduce experiments (TDS experiments) performed on tungsten.
 This validation process could be extended by reproducing other types of experiments such as permeation experiments and profilometry.
 However, this set of equation (shared amongst H transport codes) has already proven to be capable of reproducing these experiments.
 This has been done, for instance, during the validation of TMAP7 \sidecite{longhurst_tmap7_2008}.
 
 Thanks to this verification \& validation process, it was shown that (1) the hydrogen transport governing equations were correctly solved and (2) these equations can represent processes observed experimentally.
 
-The FESTIM code can then be safely employed to perform analysis on tokamak components.
+The \gls{festim} code can then be safely employed to perform analysis on tokamak components.
