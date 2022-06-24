@@ -3,7 +3,7 @@ In ITER, these fluxes can reach $\approx$ \SI{10}{MW.m^{-2}} and $\approx$ \SI{e
 The distribution of these fluxes depend on many operation parameters.
 
 One way of simulating a whole divertor would be to simulate each and every monoblock for a given scenario along one Plasma-Facing Unit.
-However, this method would be computationally expensive as it requires to redo the simulations for every scenario.
+However, this method would be computationally expensive as it requires redoing the simulations for every scenario.
 
 Another, more efficient method, is to perform a parametric study on a monoblock.
 The exposure parameters are varied and for each set of parameters, the quantity of interest (here the hydrogen inventory) is computed.
@@ -55,7 +55,7 @@ Instead, trap occupancy is close to one and the retention is high in the whole r
 
 In order to obtain this continuous field (see \reffig{inventory T c}), more than 600 simulations randomly distributed on the parameter plane were run and analysed using a Gaussian process machine learning algorithm \sidecite{rasmussen_gaussian_2006} as in \sidecite{shimwell_multiphysics_2019} based on the python package inference-tools \sidecite{chris_bowman_c-bowmaninference-tools_2020}.
 The inventory obtained by the Gaussian regression process is also given for a constant value of $c_\mathrm{surf}=\SI{2e21}{m^{-3}}$ (top inset) and a constant temperature $T=\SI{850}{K}$ (left inset).
-The Gaussian regression process was particularly appropriate as it calculates a local standard deviation $\sigma$ based on the localisation of the datapoints and the deviation of the computed inventories.
+The Gaussian regression process was particularly appropriate as it calculates a local standard deviation $\sigma$ based on the localisation of the data points and the deviation of the computed inventories.
 The lower the density of simulation points, the higher was the value of $\sigma$ (for example around \SI{850}{K} on the top inset of \reffig{inventory T c}).
 However, despite the lack of simulation in this region, the value of $\sigma$ was still acceptable (only a few percents of the inventory) ensuring the quality of the resulting interpolation.
 
@@ -75,7 +75,7 @@ Indeed, to estimate the inventory with different exposure conditions, one only n
 \end{figure*}
 
 \subsection{Discussion}
-Even though this methodology provides a rapid way of estimating hydrogen content in the whole divertor, several assumptions have however been made.
+Even though this methodology provides a rapid way of estimating hydrogen content in the whole divertor, some assumptions have however been made.
 
 
 % Influence of cycling
@@ -102,7 +102,7 @@ By assuming an instantaneous recombination coefficient, the relative error on th
 The influence on the total divertor inventory is therefore low (less than \SI{5}{\%} after a \SI{e7}{s} exposure) since it is dominated by regions where $T_\mathrm{surface} \approx T_\mathrm{coolant}$.
 
 % ELMs
-It should be noted that specific scenarios like edge localised modes (ELMs) were also not taken into account in this work since their time scale is very short.
+It should be noted that specific scenarios like edge localised modes (ELMs) were also not taken into account in this work since their timescale is very short.
 ELMs are transient plasma events releasing thermal energy and locally increasing the heat flux at the surface of the monoblock.
 MRE simulations by Hu and Hassanein \sidecite{hu_predicting_2015} suggest that a \SI{400}{s} discharge with \SI{1}{Hz} or \SI{10}{Hz} ELMs significantly reduces (77 \%) the inventory in W materials.
 However, the modelling of the ELM is simulated by increasing the temperature for a very short time without changing the incident flux of particles that can also be much higher thus balancing the fuel retention reduction.
@@ -116,7 +116,7 @@ However, if an exothermic process is considered as in \sidecite{ogorodnikova_rec
 
 On the other hand, experimental results \sidecite{t_hoen_strongly_2013} suggest that for ion energy below \SI{5}{eV/H}, typical of detached plasma as the one treated in the previous section, the surface process can be important and limits the uptake of hydrogen, i.e.\ the adsorption on the surface and the further absorption from surface to bulk could be the limiting process for the growth of $c_\mathrm{surface}$ during such exposure.
 The evolution of $c_\mathrm{surface}$ to the exposure condition for that range of energy (and therefore the inventory) would then be different.
-The advantage of the presented method is that taking into account such process is realtively easy as no expensive simulations are needed.
+The advantage of the presented method is that taking into account such process is relatively easy as no expensive simulations are needed.
 One would only need to modify the model giving $c_\mathrm{surface}$
 as a function of $(E_\mathrm{inc},\varphi_\mathrm{inc})$ to include the different surface processes.
 To this end, one can use kinetic surface models \sidecite{hodille_retention_2017, zaloznik_deuterium_2017, pecovnik_influence_2019, guterl_effects_2019}.

@@ -6,7 +6,7 @@ In order to assess the behaviour of H in the divertor, component-level simulatio
 
 This chapter will focus on simulating H transport in ITER-like monoblocks.
 
-\refsec{model description} will described the model geometry, the boundary conditions as well as the materials and trap properties.
+\refsec{model description} will describe the model geometry, the boundary conditions as well as the materials and trap properties.
 Then, \refsec{simulation simplifications} will review the simplifications that can be brought to the model to reduce the computation time.
 Finally, with these simplifications, a parametric study will be performed and a behaviour law linking the monoblock H inventory to the exposure conditions will be determined in \refsec{influence of exposure conditions}.
 
@@ -15,7 +15,7 @@ Finally, with these simplifications, a parametric study will be performed and a 
 The monoblock geometry is described on \reffig{monoblock geometry}.
 The boundary conditions for the heat transfer problem are described in \refeq{bc thermal monoblock} and those for the hydrogen transport problem are described in \refeq{bc H transport monoblock}.
 An instantaneous recombination is assumed on the poloidal and toroidal gaps and at the plasma facing surface.
-This assumption is consistant with the high recombination coefficient measured by Ogorodnikova \sidecite{ogorodnikova_recombination_2019} compared to Anderl's coefficient \sidecite{anderl_deuterium_1992}.
+This assumption is consistent with the high recombination coefficient measured by Ogorodnikova \sidecite{ogorodnikova_recombination_2019} compared to Anderl's coefficient \sidecite{anderl_deuterium_1992}.
 
 The materials properties (diffusivity, solubility, and thermal conductivity, density and heat capacity) are described in \reftab{materials properties monoblock} and plotted on \reffig{properties monoblock}.
 Finally, the traps properties are described in \reftab{traps monoblock}.
@@ -185,9 +185,9 @@ Using a mean surface temperature had low influence on the hydrogen transport res
 \subsection{Influence of dimensionality}\labsec{influence of dimensionality}
 
 The first simplification that can be done is the dimensionality.
-A full 3D simulation would be the most accurate, but also the most expensive in terms of computaion time (partly because more cells are required for the same spatial discretisation as seen on \reffig{monoblock meshes}).
+A full 3D simulation would be the most accurate, but also the most expensive in terms of computation time (partly because more cells are required for the same spatial discretisation as seen on \reffig{monoblock meshes}).
 Conversely, 1D simulations are faster to run, but are less accurate.
-This is sometimes refered as the \textit{curse of dimensionality}.
+This is sometimes referred as the \textit{curse of dimensionality}.
 
 \begin{figure}
     \centering
@@ -211,7 +211,7 @@ The hydrogen inventory is obtained by:
 \end{equation}
 where $e$ is the monoblock thickness.
 
-Similarily, the 1D approximation assumes the solution is independent of both the poloidal and the toroidal direction (see \reffig{dimension approximations monoblock}).
+Similarly, the 1D approximation assumes the solution is independent of both the poloidal and the toroidal direction (see \reffig{dimension approximations monoblock}).
 It also cannot capture the full geometry of the monoblock as it would assume Cu and CuCrZr slabs instead of hollow cylinders.
 The hydrogen inventory is obtained by:
 
@@ -228,7 +228,7 @@ where $L$ is the monoblock width.
 \end{figure}
 
 Monoblocks simulations were run in 1D, 2D, and 3D and the inventory was computed for each case (see \reffig{monoblock inventories 1d 2d 3d}).
-Both the 1D and 2D approximations overestimate the inventory compared to the 3D reference, these approximations are therfore conservative.
+Both the 1D and 2D approximations overestimate the inventory compared to the 3D reference, these approximations are therefore conservative.
 It should however be noticed that, when neglecting the recombination on the poloidal gap (i.e.\ assuming hydrogen cannot desorb from this surface), the 2D approximation is strictly equivalent to the 3D reference (see \refch{DEMO monoblocks}).
 For these reasons, the 2D approximation will be employed in the following sections as it is the best compromise between accuracy and computational time.
 
@@ -309,7 +309,7 @@ For a monoblock where the flux is even lower and the temperature difference is a
 Moreover, the ``height'' of these spikes is constant.
 This means that, after more cycles, these spikes will become negligible compared to the bulk inventory.
 For the high flux case, the inventory spike will be negligible (10\% of the total inventory) after approximately 4000 cycles.
-For the low flux case, it is negligble after only 1150 cycles.
+For the low flux case, it is negligible after only 1150 cycles.
 
 This therefore validates the continuous exposure simplification.
 
