@@ -3,22 +3,22 @@ This is an integral part of every simulation code for it guarantees the code is 
 It is generally hard to simply substitute this process by code comparison (cross-checks between two different codes) because often the codes are implemented differently.
 Moreover, if the code we are comparing with is not verified, then obtaining similar results does not give any guarantee on the code accuracy as two different codes can have the same bug.
 
-Several methods can be used to verify a code but the Method of Exact Solutions (MES) and the Method of Manufactured Solutions (MMS) are employed here.
+Several methods can be used to verify a code but the \gls{mes} and the \gls{mms} are employed here.
 
 Both methods consist in comparing a computed solution with an exact solution and measuring the error.
-The exact solution in the MES is obtained by solving the governing equations analytically.
-When using the MMS, the problem is reversed: an arbitrary exact solution (called \textit{manufactured solution}) is chosen and injected in the governing equations.
+The exact solution in the \gls{mes} is obtained by solving the governing equations analytically.
+When using the \gls{mms}, the problem is reversed: an arbitrary exact solution (called \textit{manufactured solution}) is chosen and injected in the governing equations.
 It is then possible to determine source terms and boundary conditions.
 These are then fed into the code and the computed solution is compared to the manufactured (exact) solution.
 
-This MMS is often used to unravel the complexity of governing equations \sidecite{dudson_verification_2016, roache_code_2002}.
+This \gls{mms} is often used to unravel the complexity of governing equations \sidecite{dudson_verification_2016, roache_code_2002}.
 This is particularly useful when dealing with complex geometries or to exercise non-trivial material propoerties.
 
-This section describes two verification cases of FESTIM.
-The first one uses the MES and the second one the MMS.
+This section describes two verification cases of \gls{festim}.
+The first one uses the \gls{mes} and the second one the \gls{mms}.
 More complex and thorough verification cases are shown in Appendix \ref{appendix verification}.
 
-\subsubsection{Case 1: H transport (MES)} \label{analytical}
+\subsubsection{Case 1: H transport (\gls{mes})} \label{analytical}
 
 \begin{figure}
     \centering
@@ -82,7 +82,7 @@ These parameters have been chosen for the sake of verification and do not necess
     \label{tab:parameters analytical verification}
 \end{table}
 One can notice on Figure \ref{fig:FESTIM vs analytical} that the numerical results are in good agreement with the analytical solution.
-The relative L2 error between analytical and numerical solutions was found to be $\approx 1 \%$ with 1000 piecewise linear elements (P1) and a stepsize of \SI{1}{s}.
+The relative L2 error between analytical and numerical solutions was found to be $\approx 1 \%$ with 1000 piecewise linear elements (\gls{p1}) and a stepsize of \SI{1}{s}.
 This value decreases with the stepsize and with the element size (see \reffig{MES evolution of L2 error as function of dt and dx}).
 \begin{figure}
     \centering
@@ -94,15 +94,15 @@ This value decreases with the stepsize and with the element size (see \reffig{ME
 
 Since this test case is very similar to a pure diffusion case, it does not exercise all terms of the governing equations.
 To do so, the governing equations would have to be solved for a generic case which proves to be complex.
-This is why the MMS will be used instead.
+This is why the \gls{mms} will be used instead.
 
-\subsubsection{Case 2: H transport (MMS)} \label{mms}
+\subsubsection{Case 2: H transport (\gls{mms})} \label{mms}
 
 \paragraph{Principle}
-The MMS is often used to unravel the complexity of governing equations \sidecite{dudson_verification_2016, roache_code_2002}.
+The \gls{mms} is often used to unravel the complexity of governing equations \sidecite{dudson_verification_2016, roache_code_2002}.
 This is particularly useful when dealing with complex geometries or to exercise non-trivial material properties.
 
-The principle of the MMS is to manufacture an exact solution.
+The principle of the \gls{mms} is to manufacture an exact solution.
 Again, physical realism is not a concern here as verification is a mathematical exercise.
 This manufactured solution needs to be non trivial in order to test the robustness of the implementation.
 It is then passed through the governing equations (either the heat equation or the hydrogen transport equations) and source terms are obtained.
@@ -145,7 +145,7 @@ The error between the computed solution $u_\mathrm{computed}$ and the exact solu
 
 \paragraph{Case 2a: Application to 1D hydrogen transport}
 
-Let us apply the MMS to the hydrogen transport model on a 1D domain $\Omega$.
+Let us apply the \gls{mms} to the hydrogen transport model on a 1D domain $\Omega$.
 In order to exercise all terms in Equations \ref{eq:mobile} and \ref{eq:trapped}, the following manufactured solutions are chosen:
 \begin{equation}
     \begin{cases}
