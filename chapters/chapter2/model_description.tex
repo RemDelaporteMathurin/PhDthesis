@@ -93,7 +93,7 @@ Similarly, a dissociation flux can be applied when a surface is in contact with 
 \end{equation}
 where $K_d(T) = K_{d_0} \exp(\frac{-E_{K_d}}{k_B T}) $ is the dissociation coefficient expressed in \si{m^{-3}.Pa^{-1}} and $\mathbf{n}$ is the boundary normal vector.
 Dissociation is the opposite process of recombination and occurs when particles in the surrounding atmosphere or fluid reach the metal surface and are adsorbed.
-These particle can then reach the bulk and diffuse in the metal.
+These particles can then reach the bulk and diffuse in the metal.
 
 With $n=2$, a steady-state approximation of the flux balance between recombination and dissociation fluxes is the Sievert's law (see \refeq{Sievert's law}).
 
@@ -123,7 +123,7 @@ These profiles can be simulated by Monte Carlo codes like SRIM \sidecite{ziegler
 This volumetric source term can be simplified into a Dirichlet boundary condition (i.e.\ enforcing the mobile particle concentration at the exposed surface).
 
 Let us consider a volumetric source term of hydrogen $\Gamma = \varphi_\mathrm{imp} \; f(x)$ where $f$ is a narrow Gaussian distribution.
-The mobile particles concentration profile can be approximated by a triangular shape \sidecite{schmid_diffusion-trapping_2016} (see \reffig{recomb sketch}).
+The concentration profile of mobile particles can be approximated by a triangular shape \sidecite{schmid_diffusion-trapping_2016} (see \reffig{recomb sketch}).
 
 \begin{figure*}[h!]
     \centering
@@ -179,8 +179,8 @@ By replacing \refeq{c_0} in \refeq{c_max} one can obtain:
 
 As the recombination process becomes fast (i.e.\ $K_r \rightarrow \infty$), $c_0 \rightarrow 0$ and $c_\mathrm{max} \rightarrow \frac{\varphi_\mathrm{imp} R_{p}}{D}$.
 
-Since the main driver for the diffusion is the value $c_\mathrm{max}$, when $R_p$ is negligeable compared to the dimension of the simulation domain, one can simply impose this value at the surface.
-% This analytical simplification is especially useful to simulate implanted sources near the surface (\textit{eg} plasma implantation) without having to finely discretise the domain to fully represent the gaussian distribution.
+Since the main driver for the diffusion is the value $c_\mathrm{max}$, when $R_p$ is negligible compared to the dimension of the simulation domain, one can simply impose this value at the surface.
+% This analytical simplification is especially useful to simulate implanted sources near the surface (e.g.\ plasma implantation) without having to finely discretise the domain to fully represent the gaussian distribution.
 % Such a discretisation can be easily done for 1D simulations but is very complex in 2D and 3D and often makes the mesh very large which increases drastically the computational cost.
 
 A transient solution based on trap properties can be derived \sidecite{hodille_study_2016}:
@@ -271,14 +271,14 @@ This condition is called a Neumann condition.
 \end{equation}
 where $\lambda$ is the thermal conductivity in \si{W.m^{-1}.K^{-1}}, $\mathbf{n}$ is the boundary normal vector and $\partial \Omega$ is the domain boundary.
 
-Finally, to model a convective heat flux when the surface is in contact with a fluid (\textit{eg} cooling pipes, natural convection...), a Robin boundary condition needs to be employed (see \refeq{convective bc T}).
+Finally, to model a convective heat flux when the surface is in contact with a fluid (e.g.\ cooling pipes, natural convection...), a Robin boundary condition needs to be employed (see \refeq{convective bc T}).
 \begin{equation}
     -\lambda \nabla T \cdot \mathbf{n} = h (T - T_\mathrm{ext}) \quad \text { on } \partial \Omega
     \labeq{convective bc T}
 \end{equation}
 where $h$ is the heat transfer coefficient in \si{W.m^{-2}.K^{-1}}, $T_\mathrm{ext}$ is the fluid temperature in \si{K} and $\partial \Omega$ is the domain boundary.
 The heat transfer coefficient can be dependent on the temperature and the flow characteristics.
-It is obtained by computing the Nusselt number from correlations linking it to the Reynolds number of the flow and the Prandtl number of the fluid \sidecite{poirier_correlations_2016} (\textit{eg} Dittus-Boetler, Sieder-State, Gnielinski...).
+It is obtained by computing the Nusselt number from correlations linking it to the Reynolds number of the flow and the Prandtl number of the fluid \sidecite{poirier_correlations_2016} (e.g.\ Dittus-Boetler, Sieder-State, Gnielinski...).
 Once the Nusselt number is known, the heat transfer coefficient $h$ reads:
 \begin{equation}
     h = \frac{\lambda \, \textit{Nu}}{L}
@@ -289,8 +289,8 @@ with $\lambda$ the thermal conductivity of the fluid in \si{W.m^{-1}.K^{-1}}, $\
 \section{Implementation}
 
 
-The models described in this Section can be hard to solve analytically for complex problems (complex geometries, transients, combined boundary conditions, etc).
-The code \gls{festim} \sidecite{delaporte-mathurin_finite_2019} was therefore developped in order to numerically solve these coupled equations.
+The models described in this Section can be hard to solve analytically for complex problems (complex geometries, transients, combined boundary conditions, etc.).
+The code \gls{festim} \sidecite{delaporte-mathurin_finite_2019} was therefore developed in order to numerically solve these coupled equations.
 
 \subsection{The finite element method: FEniCS}
 \gls{festim} is based on the Finite Element Method to solve this set of differential equations and boundary conditions.
@@ -361,7 +361,7 @@ Poisson's equation can now be discretised by restricting the variational problem
 \end{equation}
 
 To solve \refeq{discrete variational problem}, a suitable pair of discrete function spaces $V_h$ and $\hat{V}_h$ must be constructed.
-Piecewise polynomials basis functions $\{ \phi_i \}_{i=1}^N$ are defined for $V_h$ and $\{ \hat{\phi}_j \}_{j=1}^N$ for $\hat{V}_h$.
+Piecewise polynomial basis functions $\{ \phi_i \}_{i=1}^N$ are defined for $V_h$ and $\{ \hat{\phi}_j \}_{j=1}^N$ for $\hat{V}_h$.
 
 The approximated solution $u_h$ therefore reads (see \reffig{example approximated solution}):
 \begin{equation}
@@ -401,7 +401,7 @@ where
 The integral terms in \refeq{eq: matrices A and b} are computed with Gauss-Legendre quadrature.
 
 After solving \refeq{variational problem matrix form}, the $U_i$ coefficients are known and the approximated solution $u_h$ can be computed.
-Non-linear problems are solved in a similar manner where the solution is approached using Newton's method.
+Non-linear problems are solved similarly where the solution is approached using Newton's method.
 
 \subsection{Main features of \gls{festim}}
 \gls{festim} provides an even higher level of abstraction than \gls{fenics} by providing a user-friendly interface dedicated to H transport and heat transfer problems.
@@ -409,20 +409,20 @@ Users only have to provide inputs such as material properties, traps properties,
 In other words, users do not need to be finite element experts to run a \gls{festim} simulation (though knowledge and experience in finite elements will help in solving numerical problems).
 
 % user friendly
-Multi-dimensional multi-material transient simulations coupled with heat transfer can therefore be run fairly easily without finite element knowledge.
+Multidimensional multi-material transient simulations coupled with heat transfer can therefore be run fairly easily without finite element knowledge.
 Nevertheless, since \gls{festim} is object-oriented, advanced users will always be able to turn \gls{festim} inside-out to adapt the code to their specific needs (specific boundary conditions, slight changes in the governing equations...).
-Since \gls{festim} is written in python - which is a fairly easy-to-learn programming langage - no advanced level of coding is required.
+Since \gls{festim} is written in python - which is a fairly easy-to-learn programming language - no advanced level of coding is required.
 
 % physics
 As mentioned above, \gls{festim} simulates hydrogen transport (diffusion and trapping) and additional physics can be incorporated, such as the Soret effect (even though not used in this work) and conservation of chemical potential at interfaces...
 The hydrogen transport equations can be coupled to the heat equation (weak coupling).
 Various types of boundary conditions are available for both the H transport (imposed concentration, recombination flux, dissociation flux, implanted source approximation...) and the heat transfer problems (imposed temperature, imposed flux, convective flux...).
-Traps densities in FESTIM can also be time-dependent allowing the users to simulate extrinsic traps (\textit{eg} irradiation induced traps, stress induced traps...).
+Traps densities in FESTIM can also be time-dependent allowing the users to simulate extrinsic traps (e.g.\ irradiation induced traps, stress induced traps...).
 
 % geometry
 Thanks to the finite element method, geometries used in \gls{festim} can be complex (see \reffig{example mesh}).
-The meshing capability of \gls{festim} is limited to 1D meshes and it was decided to instead make \gls{festim} accept (with the XDMF format) complex meshes from third-party applications dedicated to meshing such as SALOME or GMSH.
-These third-party applications can for instance be usefull to run CAD-based simulations.
+The meshing capability of \gls{festim} is limited to 1D meshes, and it was decided to instead make \gls{festim} accept (with the XDMF format) complex meshes from third-party applications dedicated to meshing such as SALOME or GMSH.
+These third-party applications can for instance be useful to run CAD-based simulations.
 Users can also decide to use the \gls{fenics} built-in meshing tool.
 
 \begin{figure}
@@ -434,7 +434,7 @@ Users can also decide to use the \gls{fenics} built-in meshing tool.
 
 % visualisation
 Similarly, \gls{festim} (\gls{fenics}) visualisation functions are limited.
-\gls{festim} is not a graphical application but the files generated by \gls{festim} (XDMF, CSV, TXT) can easily be read and post-processed by specialised tools such as Paraview \sidecite{ahrens_paraview_2005}, matplotlib \sidecite{hunter_matplotlib_2007}, NumPy \sidecite{harris_array_2020}, etc.
+\gls{festim} is not a graphical application, but the files generated by \gls{festim} (XDMF, CSV, TXT) can easily be read and post-processed by specialised tools such as Paraview \sidecite{ahrens_paraview_2005}, matplotlib \sidecite{hunter_matplotlib_2007}, NumPy \sidecite{harris_array_2020}, etc.
 
 % what FE
 Regarding the default finite elements used in \gls{festim} are first order piecewise elements (called P1, Lagrange or also Continuous Galerkin 1).
@@ -472,7 +472,7 @@ This Section details the \gls{vv} of \gls{festim}.
 
 The macroscopic rate equations model describing the transport (diffusion and trapping) of H in solids was presented alongside with additional models such as the conservation of chemical potential at interfaces.
 Due to the presence of thermally activated processes (diffusion, trapping, detrapping, surface processes...), the heat transfer equation has to be solved numerically.
-All these equations are solved with the newly developed finite element code \gls{festim}, which heavily relies of \gls{fenics}.
+All these equations are solved with the newly developed finite element code \gls{festim}, which heavily relies on \gls{fenics}.
 
 \gls{festim} has been verified using methods such as the Method of Exact Solutions and the Method of Manufactured Solutions.
 On the other hand, it was shown that \gls{festim} could be employed to reproduce experiments (TDS experiments) performed on tungsten.

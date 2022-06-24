@@ -33,7 +33,7 @@ For this verification case, a 1D slab is considered with a thickness $l$.
 The concentration of mobile particles was set to $c_0$ on one side of the slab and set to zero on the other side.
 Only one trap is considered in this case and its density $n$ is homogeneously distributed.
 
-The trapping parameter $\zeta$ is defined in \sidecite{longhurst_verification_2005} as follow:
+The trapping parameter $\zeta$ is defined in \sidecite{longhurst_verification_2005} as follows:
 \begin{equation}
     \zeta = \frac{p}{k \: n} + \frac{c_\mathrm{m}}{n}
 \end{equation}
@@ -104,7 +104,7 @@ This is particularly useful when dealing with complex geometries or to exercise 
 
 The principle of the \gls{mms} is to manufacture an exact solution.
 Again, physical realism is not a concern here as verification is a mathematical exercise.
-This manufactured solution needs to be non trivial in order to test the robustness of the implementation.
+This manufactured solution needs to be non-trivial in order to test the robustness of the implementation.
 It is then passed through the governing equations (either the heat equation or the hydrogen transport equations) and source terms are obtained.
 
 Let us take a simple example with the Poisson equation defined on a 1D domain $[x_1, x_2]$:
@@ -183,7 +183,7 @@ Finally, initial values for $c_\mathrm{m}$ and $c_{t,i}$ are:
     \end{cases}
 \end{equation}
 Once all these parameters are fed into FESTIM, one can easily compare the computed solution with the exact solution in \refeq{manufactured solutions}.
-The L2-norm $E_{c_\mathrm{m}}$ can then be calculated as follow:
+The L2-norm $E_{c_\mathrm{m}}$ can then be calculated as follows:
 \begin{equation}
     E_{c_\mathrm{m}} = \sqrt{\int_\Omega(c_{m_D} - c_\mathrm{m})^2dx}
 \end{equation}
@@ -218,7 +218,7 @@ Let us choose the following steady state test problem on a domain $\Omega = [0, 
 The source terms $f_1$ and $f_2$ and the boundary conditions can be obtained in a similar fashion by replacing $c_\mathrm{m}$ and $c_\mathrm{t}$ in the governing equations.
 
 It was shown that the computed solutions was similar to the exact solutions (see \reffig{results MMS 2D H transport}).
-Moreover, the convergence rates confirm the mesh dependency of the computed solutions accuracy (see \reffig{convergence rates H}).
+Moreover, the convergence rates confirm the mesh dependency of the computed solutions' accuracy (see \reffig{convergence rates H}).
 % A super-convergence is observed for the P2 elements.
 
 \begin{figure*}

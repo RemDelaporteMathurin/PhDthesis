@@ -27,7 +27,7 @@ They will be converted from plasma simulations outputs.
 This Section describes the parameters of the plasma simulations.
 These simulations were run with SolEdge3X-EIRENE for WEST and SOLPS-ITER for ITER.
 In a nutshell, these codes solve, for each species (ions and electrons), the particle density, velocity and temperature.
-The equations at stake are comparable to the Navier-Stokes equations coupled to the heat equation and interactions with the electro-magnetic fields in the plasma \sidecite{bufferand_numerical_2015}.
+The equations at stake are comparable to the Navier-Stokes equations coupled to the heat equation and interactions with the electromagnetic fields in the plasma \sidecite{bufferand_numerical_2015}.
 Subsequently, the incident particle fluxes, heat fluxes and particle energy can be calculated along the tokamak wall.
 For the SolEdge3X-EIRENE runs, the puffing rate and the input power were used as control parameters.
 For SOLPS-ITER calculation, the divertor neutral pressure is the control parameter.
@@ -37,7 +37,7 @@ The Lower-Single-Null magnetic configuration used for the 2D simulations in SolE
 In order to get as many divertor conditions as possible, the puffing rate was varied from \SI{4.5e20}{molecule.s^{-1}} to \SI{4.72e21}{molecule.s^{-1}} and the input power from \SI{0.449}{MW} to \SI{2.5}{MW}.
 The setup parameters of the simulation are listed in \reftab{my_tab}.
 $R_\mathrm{wall}$ is the recycling coefficient of main chamber wall, $R_\mathrm{pump}$ is the recycling coefficient of the pump, $D$ is the cross-field mass diffusivity perpendicular to the flux surface, $\nu$ is the momentum diffusivity, $\chi_e$ and $\chi_i$ are the energy diffusivity for electrons and ions, respectively.
-While the value of these coefficients is required for the sake of reproductibility, their detailed description is outside the scope of this research.
+While the value of these coefficients is required for the sake of reproducibility, their detailed description is outside the scope of this research.
 More information can be found in \sidecite{ciraolo_first_2019}.
 The gas puff position is set inside the private region (i.e.\ the region between the two strike points) and the pump position is set under the baffle.
 
@@ -137,7 +137,7 @@ It should be noted that since SRIM is based on the binary collision approximatio
 
 All of these steps have been automated and packaged into a tool called divHretention.
 divHretention can directly link SOLPS/SOLEDGE output files and produce a distribution of monoblock inventory as in \reffig{behaviour law example}.
-The source-code of the tool is under version control and openly available via Github under a MIT licence \cite{delaporte-mathurin_irfmdivhretention_2021}.
+The source-code of the tool is under version control and openly available via GitHub under a MIT licence \cite{delaporte-mathurin_irfmdivhretention_2021}.
 The divHretention python package is distributed via PyPi \cite{delaporte-mathurin_divhretention_nodate}.
 Moreover, all the results obtained in this Chapter can be reproduced with the scripts available at \url{https://github.com/RemDelaporteMathurin/divHretention-Nucl.Fusion-2021}.
 
@@ -345,7 +345,7 @@ The input power was fixed to \SI{0.45}{MW}.
 The maximum retention was again located at the strike points for all puffing rates values (see \reffig{divertor distr density scan}).
 The inventory at the outer strike point was higher than at the inner strike point.
 The inventory in the private zone was found to increase with the puffing rate whereas it was almost constant at the strike points (see \reffig{local retention vs puffing rate}).
-As for the power scan, the ions contribution to the inventory is rather low in the private zone (see \reffig{ion contribution vs puffing rate}).
+As for the power scan, the ions' contribution to the inventory is rather low in the private zone (see \reffig{ion contribution vs puffing rate}).
 Moreover, the contribution of ions decreases rapidly at the strike points and represents only half of the surface concentration at \SI{4e21}{molecule.s^{-1}}.
 
 The inventory in the whole WEST divertor is computed from \refeq{inventory WEST}.
@@ -371,7 +371,7 @@ While WEST operates at low input power, ITER operates at high input power with a
 These differences in the operation regime can explain different trends.
 
 The maximum hydrogen inventory in the ITER divertor was approximately \SI{14}{g} after \SI{e7}{s} of continuous plasma exposure (25 000 ITER discharges), which is well below the safety limit (\SI{1}{kg}).
-Moreover, since the behaviour law is based on 2D monoblock simulations, this value is a upper estimate.
+Moreover, since the behaviour law is based on 2D monoblock simulations, this value is an upper estimate.
 2D simulations are indeed conservative in terms of inventory (see \refsec{influence of dimensionality}).
 
 The underlying monoblock model has also a few limitations, as detailed in \refch{Chapter3}.
