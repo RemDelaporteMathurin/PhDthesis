@@ -1,0 +1,40 @@
+\setchapterpreamble[u]{\margintoc}
+\chapter{Conclusion}\labch{conclusion}
+
+This Chapter will summarise the key findings of this research as well as the main contributions thereof.
+It will also review the limitations of the study and propose recommandations for future work.
+
+\section*{Key findings}
+
+This study aimed to estimate the tritium inventory in the ITER tungsten \gls{divertor}.
+One of the objectives was to evaluate the potential influence of helium exposure on the tritium retention.
+The results indicate that, over the operation time of ITER, the \gls{divertor} tritium inventory should remains well below the safety limit.
+Indeed, this component will not be the limiting factor and if the limit is hit, it would likely be due to other causes (retention in co-deposited layers, other in-vessel components...).
+Moreover, the results suggest that the presence of helium could reduce the tritium inventory.
+
+\section*{Contributions to the field}
+The findings of this PhD research were the subject of several articles as well as talks in international conferences.
+The main contribution is the \gls{festim} code, a hydrogen transport code that has been developed to answer the main questions of the study.
+At the time of writing, \gls{festim} is used by a handful of researchers, engineers and students and applied on other cases.
+Making \gls{festim} available to other researchers (by making it open-source) would greatly benefit the broader community.
+
+The method of running parametric sub-component simulations and then extract a behaviour law was nothing new.
+However, applying it to the estimation of the \gls{divertor} inventory saved a significant amount of time compared to using the ``brute force'' approach of modelling the whole \gls{divertor} at a time.
+This method can be applied to other components like the \gls{breeding blanket}, where the tritium inventory is also an issue.
+
+Finally, the model developed to simulate the growth of helium bubbles in tungsten gives a rapid way of implementing and testing new physical models.
+
+\section*{Limitations}
+\begin{itemize}
+    \item since the code was not open-sourced, it was sometimes hard to receive help from external experts
+    \item However, using exclusively open-source tools (\gls{fenics}, SALOME, Paraview...), working remotely has not been a technical issue
+    \item Time constraints
+\end{itemize}
+
+\section*{Recommandations for future work}
+\begin{itemize}
+    \item Behaviour law should be remade with varying $\varphi_\mathrm{imp} \ R_p$ and $\varphi_\mathrm{heat}$ instead of $c_\mathrm{surface}$ and $T_\mathrm{surface}$
+    \item Inventory in other in-vessel components (like breeding blankets) should be investigated
+    \item Simultaneous H/He exposure to investigate if the He exposure still inhibits the hydrogen trapping
+\end{itemize}
+
