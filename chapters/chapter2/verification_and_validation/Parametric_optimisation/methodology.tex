@@ -4,15 +4,15 @@ This process has been automated by embedding \gls{festim} in a minimisation algo
 
 As in manual fitting, the parametric optimisation problem is solved by minimising a function representing the residual between simulated results and some reference data.
 This function $f$ is called \textit{cost function}.
-Considering fitting one or several \gls{tds} spectra (in order to identify for instance trapping parameters or diffusion coefficients), $f$ can simply be the mean absolute error described in Equation \ref{eq:cost function} representing the residual between the simulated spectrum and the experimental reference: 
+Considering fitting one or several \gls{tds} spectra (in order to identify for instance trapping parameters or diffusion coefficients), $f$ can simply be the mean absolute error described in \refeq{cost function} representing the residual between the simulated spectrum and the experimental reference: 
 
 \begin{equation}
     f(\textbf{x})=\frac{\sum_{i=0}^{N}  \alpha_i(T_i)\left| d_{i}-d_{\mathrm{sim}}\right|}{\sum_{i=0}^{N}  \alpha_i(T_i)}
-    \label{eq:cost function}
+    \labeq{cost function}
 \end{equation}
 
 where \textbf{x} is the set of parameters used for the simulation, $d_\mathrm{sim}$ are the values of the simulated spectrum, $N$ is the number of experimental points $(T_i, d_i)$.
-In Equation \ref{eq:cost function}, $f(\textbf{x})$ can be weighted by coefficients $\alpha_i$ in order to have a better fit on specific regions of the spectrum.
+In \refeq{cost function}, $f(\textbf{x})$ can be weighted by coefficients $\alpha_i$ in order to have a better fit on specific regions of the spectrum.
 %Note that this cost function could as well be a root mean square error or any type of residual.
 
 The parametric optimisation problem can now be solved by finding the minimum of the cost function $f$.

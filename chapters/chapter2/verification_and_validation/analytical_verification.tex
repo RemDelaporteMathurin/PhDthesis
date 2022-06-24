@@ -27,7 +27,7 @@ More complex and thorough verification cases are shown in Appendix \ref{appendix
     \label{fig:FESTIM vs analytical}
 \end{figure}
 
-% Although validation against experiments could show that FESTIM is able reproduce the data with a given set of parameters, objective verification against analytical solutions is first required to ensure that the governing Equations \ref{eq:mobile} and \ref{eq:trapped} are solved correctly.
+% Although validation against experiments could show that FESTIM is able reproduce the data with a given set of parameters, objective verification against analytical solutions is first required to ensure that the governing \refeq{mobile} and \refeq{trapped} are solved correctly.
 
 For this verification case, a 1D slab is considered with a thickness $l$.
 The concentration of mobile particles was set to $c_0$ on one side of the slab and set to zero on the other side.
@@ -49,7 +49,7 @@ The coefficient $D$ is then replaced by an effective diffusion coefficient:
 The particle flux at the background surface ($x=l$) is expressed in $\si{H.m^{-2}.s^{-1}}$ and finally defined in \sidecite{longhurst_verification_2005} by:
 \begin{equation}
     \varphi(t) = \frac{c_0 D}{l}\bigg[1+2\sum_{m=1}^{\infty}(-1)^m \exp\bigg(-m^2\frac{\pi^2 \:D_\mathrm{eff} \: t}{l^2}\bigg)\bigg]
-\label{eq:flux analytical}
+\labeq{flux analytical}
 \end{equation}
 Note: The infinite sum has been truncated at $m=10000$.
 
@@ -146,26 +146,26 @@ The error between the computed solution $u_\mathrm{computed}$ and the exact solu
 \paragraph{Case 2a: Application to 1D hydrogen transport}
 
 Let us apply the \gls{mms} to the hydrogen transport model on a 1D domain $\Omega$.
-In order to exercise all terms in Equations \ref{eq:mobile} and \ref{eq:trapped}, the following manufactured solutions are chosen:
+In order to exercise all terms in \refeq{mobile} and \refeq{trapped}, the following manufactured solutions are chosen:
 \begin{equation}
     \begin{cases}
     c_{m_D} = 1 + x^2 + \sin(t) \\
     c_{{t,1}_D} = 1 + x^2 + \cos(t)
     \end{cases}
-    \label{eq: manufactured solutions}
+    \labeq{manufactured solutions}
 \end{equation}
 
-By combining Equations \ref{eq:mobile}, \ref{eq:trapped} and \ref{eq: manufactured solutions}, one can obtain the following source terms:
+By combining \refeq{mobile}, \refeq{trapped} and \refeq{ manufactured solutions}, one can obtain the following source terms:
 \begin{equation}
     \begin{cases}
     f = \cos(t) - \sin(t) - 2D \\
     g_1 = \nu_1 c_{{t,1}_D} - \nu_m c_{m_D} ( n_1 - c_{{t,1}_D}) - \sin(t)
     \end{cases}
-    \label{eq:sources}
+    \labeq{sources}
 \end{equation}
 $f$ is the source term of the mobile concentration equation and $g_1$ is the source term of the trapped concentration equation.
 
-where $g_1$ is an additional source term in Equation \ref{eq:trapped}.
+where $g_1$ is an additional source term in \refeq{trapped}.
 The Dirichlet boundary conditions for $c_\mathrm{m}$ and $c_{t,1}$ are:
 
 \begin{equation}
@@ -182,7 +182,7 @@ Finally, initial values for $c_\mathrm{m}$ and $c_{t,i}$ are:
     c_{t,1}(t=0) = 2 + x^2
     \end{cases}
 \end{equation}
-Once all these parameters are fed into FESTIM, one can easily compare the computed solution with the exact solution in Equation \ref{eq: manufactured solutions}.
+Once all these parameters are fed into FESTIM, one can easily compare the computed solution with the exact solution in \refeq{manufactured solutions}.
 The L2-norm $E_{c_\mathrm{m}}$ can then be calculated as follow:
 \begin{equation}
     E_{c_\mathrm{m}} = \sqrt{\int_\Omega(c_{m_D} - c_\mathrm{m})^2dx}

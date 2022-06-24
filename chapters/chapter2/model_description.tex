@@ -39,24 +39,24 @@ The spatio-temporal evolution of these concentrations is commonly described by t
 
 \begin{equation}
     \frac{\partial c_\mathrm{m}}{\partial t}=\nabla \cdot J+\Gamma-\sum \frac{\partial c_{\mathrm{t}, i}}{\partial t}
-    \label{eq:mobile}
+    \labeq{mobile}
 \end{equation}
 
 \begin{equation}
     \frac{\partial c_{\mathrm{t}, i}}{\partial t}=k_i \cdot c_\mathrm{m} \cdot\left(n_{i}-c_{\mathrm{t}, i}\right)-p_i \cdot c_{\mathrm{t}, i}
-    \label{eq:trapped}
+    \labeq{trapped}
 \end{equation}
 
-In Equation \ref{eq:mobile}, $\Gamma$ is the volumetric source term of particles in \si{m^{-3}.s^{-1}}, which can be used to simulate any process producing H in the bulk.
+In \refeq{mobile}, $\Gamma$ is the volumetric source term of particles in \si{m^{-3}.s^{-1}}, which can be used to simulate any process producing H in the bulk.
 This is the case for plasma implantation and nuclear reactions producing H.
 
-In Equation \ref{eq:trapped}, $k_i$ and $p_i$ are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively and $n_i$ is the trap density in \si{m^{-3}}.
+In \refeq{trapped}, $k_i$ and $p_i$ are the trapping and detrapping rates expressed in \si{m^3.s^{-1}} and \si{s^{-1}} respectively and $n_i$ is the trap density in \si{m^{-3}}.
 
 At steady state (i.e.\ $\frac{\partial c_\mathrm{m}}{\partial t} = 0$ and $\frac{\partial c_{\mathrm{t}, i}}{\partial t} = 0$), the mobile H concentration is independent of $c_{\mathrm{t}, i}$.
-Equation \ref{eq:trapped} can be rewritten as:
+\refeq{trapped} can be rewritten as:
 \begin{equation}
     c_{\mathrm{t}, i} = n_i \frac{1}{\frac{p}{k c_\mathrm{m}} + 1}
-    \label{eq: steady state ct}
+    \labeq{steady state ct}
 \end{equation}
 The quantity $(p / (k c_\mathrm{m}) + 1)^{-1}$ determines the trap occupancy. 
 As it approaches one (high mobile concentration, low detrapping rate or high trapping rate), the trapped concentration approaches the trap density.
@@ -68,18 +68,18 @@ Several boundary conditions will be employed in order to constrain either the co
 
 \subsubsection{Dissociation and recombination fluxes}
 
-The concentration gradient can also be constrained on the boundaries (see Equation \ref{eq: neuman robin bc}).
+The concentration gradient can also be constrained on the boundaries (see \refeq{neuman robin bc}).
 
 \begin{equation}
     - D(T)\nabla c_\mathrm{m} \cdot \mathbf{n} = f(x, t) \quad \text { on } \partial \Omega
-    \label{eq: neuman robin bc}
+    \labeq{neuman robin bc}
 \end{equation}
 where $D(T) = D_0 \exp(\frac{-E_D}{k_B T}) $ is the diffusion coefficient in \si{m^2.s^{-1}}, $T$ is the local temperature in \si{K}, $\mathbf{n}$ is the boundary normal vector and $\partial \Omega$ is the domain boundary.
 
 $f$ can also be expressed as a molecular recombination flux:
 \begin{equation}
     - D(T)\nabla c_\mathrm{m} \cdot \mathbf{n} = K_r(T) c_\mathrm{m}^n \quad \text { on } \partial \Omega
-    \label{eq: recombination flux}
+    \labeq{recombination flux}
 \end{equation}
 where $K_r(T) = K_{r_0} \exp(\frac{-E_{K_r}}{k_B T}) $ is the recombination coefficient expressed in \si{m^{3n-2}.s^{-1}}, $\mathbf{n}$ is the boundary normal vector and $n \in \{1, 2\}$ is the order of the recombination.
 In a metal, $n=2$ and in a non-metallic liquid, $n=1$.
@@ -89,17 +89,17 @@ It can happen both in presence of a vacuum or when the metal is in contact with 
 Similarly, a dissociation flux can be applied when a surface is in contact with a gas atmosphere of H2:
 \begin{equation}
     - D(T)\nabla c_\mathrm{m} \cdot \mathbf{n} = K_d(T) P \quad \text { on } \partial \Omega
-    \label{eq: dissociation flux}
+    \labeq{dissociation flux}
 \end{equation}
 where $K_d(T) = K_{d_0} \exp(\frac{-E_{K_d}}{k_B T}) $ is the dissociation coefficient expressed in \si{m^{-3}.Pa^{-1}} and $\mathbf{n}$ is the boundary normal vector.
 Dissociation is the opposite process of recombination and occurs when particles in the surrounding atmosphere or fluid reach the metal surface and are adsorbed.
 These particle can then reach the bulk and diffuse in the metal.
 
-With $n=2$, a steady-state approximation of the flux balance between recombination and dissociation fluxes is the Sievert's law (see Equation \ref{eq: Sievert's law}).
+With $n=2$, a steady-state approximation of the flux balance between recombination and dissociation fluxes is the Sievert's law (see \refeq{Sievert's law}).
 
 \begin{equation}
     c_\mathrm{m} = S(T) \sqrt{P}\quad \text { on } \partial \Omega
-    \label{eq: Sievert's law}
+    \labeq{Sievert's law}
 \end{equation}
 where $P$ is the partial pressure of hydrogen at the boundary in \si{Pa}, $S(T)=S_0 \exp(\frac{-E_S}{k_B T})$ is the material solubility in \si{m^{-3}.Pa^{-1/2}} and $T$ is the local temperature in \si{K}.
 This law of equilibrium is a steady-state approximation of a more complex model which takes into account flux exchanges between adsorbed and mobile concentrations at the boundary.
@@ -137,7 +137,7 @@ The expression of $c_\mathrm{max}$ can be obtained by expressing the flux balanc
 
 \begin{equation}
     \varphi_\mathrm{imp} = \varphi_\mathrm{recomb} + \varphi_\mathrm{bulk}
-    \label{eq:flux balance}
+    \labeq{flux balance}
 \end{equation}
 where $\varphi_\mathrm{recomb}$ is the recombination flux and $\varphi_\mathrm{bulk}$ is the migration flux.
 
@@ -149,10 +149,10 @@ with $R_d$ the diffusion depth.
 
 % When $t \rightarrow \infty$ or $R_d \gg R_p$ (a ratio of 10 or 100 is enough), $\varphi_\mathrm{bulk} \ll \varphi_\mathrm{recomb}$.
 When $R_d \gg R_p$, $\varphi_\mathrm{bulk} \rightarrow 0$.
-Equation \ref{eq:flux balance} can therefore be written as:
+\refeq{flux balance} can therefore be written as:
 \begin{equation}
     \varphi_\mathrm{recomb} \approx \varphi_\mathrm{imp}
-    \label{eq:flux balance 2}
+    \labeq{flux balance 2}
 \end{equation}
 
 Moreover, according to Fick's law, $\varphi_\mathrm{recomb}$ can be expressed as:
@@ -160,7 +160,7 @@ Moreover, according to Fick's law, $\varphi_\mathrm{recomb}$ can be expressed as
 \begin{align}
     \varphi_\mathrm{recomb} &= D \cdot \frac{c_\mathrm{max}-c_{0}}{R_{p}} = \varphi_\mathrm{imp}\\
     \Leftrightarrow c_\mathrm{max} &= \frac{\varphi_\mathrm{imp} R_{p}}{D}+ c_0
-    \label{eq:c_max}
+    \labeq{c_max}
 \end{align}
 
 Assuming second order recombination, $\varphi_\mathrm{recomb}$ can also be expressed as a function of the recombination coefficient $K_r$:
@@ -168,10 +168,10 @@ Assuming second order recombination, $\varphi_\mathrm{recomb}$ can also be expre
 \begin{align}
     \varphi_\mathrm{recomb} &= K_r c_{0}^{2} = \varphi_\mathrm{imp}\\
     \Leftrightarrow c_{0} &= \sqrt{\frac{\varphi_\mathrm{imp}}{K_r}}
-    \label{eq:c_0}
+    \labeq{c_0}
 \end{align}
 
-By replacing Equation \ref{eq:c_0} in Equation \ref{eq:c_max} one can obtain:
+By replacing \refeq{c_0} in \refeq{c_max} one can obtain:
 
 \begin{equation}
     c_\mathrm{max} = \frac{\varphi_\mathrm{imp} R_{p}}{D}+\sqrt{\frac{\varphi_\mathrm{imp}}{K_r}}
@@ -208,28 +208,28 @@ When $t \gg \tau$, $c_\mathrm{max}(t) \approx \frac{R_p \varphi_\mathrm{imp}}{D}
 % % where $D$ is the diffusion coefficient of hydrogen expressed in \si{m^{2}.s^{-1}}. 
 
 
-% The local equilibrium at the interface between two materials must ensure  the continuity of both the chemical potential $\mu$ (see Equation \ref{eq: muconservation}) and the particle flux (see Equation \ref{eq: flux conservation}).
+% The local equilibrium at the interface between two materials must ensure  the continuity of both the chemical potential $\mu$ (see \refeq{muconservation}) and the particle flux (see \refeq{flux conservation}).
 % \begin{equation}
-%     \mu^- = \mu^+  \label{eq: muconservation}  
+%     \mu^- = \mu^+  \labeq{muconservation}  
 % \end{equation}
     
 % \begin{equation}
-%     D^- \nabla c_\mathrm{m}^- = D^+ \nabla c_\mathrm{m}^+ \label{eq: flux conservation} 
+%     D^- \nabla c_\mathrm{m}^- = D^+ \nabla c_\mathrm{m}^+ \labeq{flux conservation} 
 % \end{equation}
 
 
 % This assumption is correct as long as the time needed to reach the equilibrium is low compared to the time of the simulation.
 % For long exposure time as well as for high temperatures, the characteristic time is small enough for the equilibrium model to be valid (see page \refpage{Interface transient model}).
 
-% From Equation \ref{eq: c/s conservation}, one can deduce that a solubility discontinuity across an interface induces a discontinuity of mobile hydrogen concentration $c_\mathrm{m}$.
+% From \refeq{c/s conservation}, one can deduce that a solubility discontinuity across an interface induces a discontinuity of mobile hydrogen concentration $c_\mathrm{m}$.
 % This can also be interpreted as the chemical potentials at a reference state being different in different materials \sidecite{kirchheim_25_2014}, as the lattice site concentration.
 
 The continuity of chemical potential can be ensured by performing a change of variable in Fick's second law of diffusion with $\phi = c_\mathrm{m}/S$ (in the case of a metal) \sidecite{smith_abaqusstandard_2009} when internal conditions cannot be set.
-Neglecting the trapping and generation terms, Equation \ref{eq:mobile} therefore reads:
+Neglecting the trapping and generation terms, \refeq{mobile} therefore reads:
 
 \begin{align}
     \frac{\partial \phi S}{\partial t} &= \nabla \cdot\left(D \nabla \phi S\right) + f \nonumber \\
-    &=\nabla \cdot\left( D S \nabla \phi + D \phi \nabla S\right) + f \label{eq: diffusion equation changed}
+    &=\nabla \cdot\left( D S \nabla \phi + D \phi \nabla S\right) + f \labeq{diffusion equation changed}
 \end{align}
 
 % Because $\phi$ is computed, the ratio $c_\mathrm{m}/S$ is continuous by default at the material interfaces.
@@ -237,7 +237,7 @@ Neglecting the trapping and generation terms, Equation \ref{eq:mobile} therefore
 % This second approach is used for instance in the \textit{mass-diffusion} procedure of the Abaqus code \sidecite{smith_abaqusstandard_2009}.
 % This interface model has also been implemented into the current hydrogen transport code FESTIM \sidecite{delaporte-mathurin_finite_2019} using FEniCS \sidecite{alnaes_fenics_2015}.
 
-After solving Equation \ref{eq: diffusion equation changed} for $\phi$, $c_m$ can be retrieved by multiplying the solution by $S$.
+After solving \refeq{diffusion equation changed} for $\phi$, $c_m$ can be retrieved by multiplying the solution by $S$.
 
 \section{Heat transfer}
 Due to the numerous processes that are thermally activated, it is essential to have an accurate temperature field.
@@ -248,7 +248,7 @@ For these reasons, heat transfers need to be modelled.
 The equation describing heat conduction in solids is described as follows:
 \begin{equation}
     \rho \cdot C_p \frac{\partial T}{\partial t}=\nabla \cdot (\lambda \nabla T)
-    \label{eq:heat equation}
+    \labeq{heat equation}
 \end{equation}
 where $\rho$ is the density of the material in \si{kg.m^{-3}}, $C_p$ its specific heat capacity expressed in \si{J.kg^{-1}.K^{-1}} and $\lambda$ the thermal conductivity expressed in \si{W.m^{-1}.K^{-1}}.
 
@@ -256,25 +256,25 @@ The thermal properties $C_p$, $\rho$ and $\lambda$ are usually temperature depen
 
 For heat transfer problems, three types of boundary conditions can be imposed.
 
-First, the temperature can be fixed on the boundary with a Dirichlet boundary condition (see Equation \ref{eq:dirichlet bc T}).
+First, the temperature can be fixed on the boundary with a Dirichlet boundary condition (see \refeq{dirichlet bc T}).
 \begin{equation}
     T = T(x, y, z, t) \quad \text { on } \partial \Omega
-    \label{eq:dirichlet bc T}
+    \labeq{dirichlet bc T}
 \end{equation}
 where $\partial \Omega$ is the domain boundary.
 
-On the other hand, a heat flux can also be imposed by enforcing the temperature gradient (see Equation \ref{eq: neumann bc T}).
+On the other hand, a heat flux can also be imposed by enforcing the temperature gradient (see \refeq{neumann bc T}).
 This condition is called a Neumann condition.
 \begin{equation}
     -\lambda \nabla T \cdot \mathbf{n} = f(x, y, z, t) \quad \text { on } \partial \Omega
-    \label{eq: neumann bc T}
+    \labeq{neumann bc T}
 \end{equation}
 where $\lambda$ is the thermal conductivity in \si{W.m^{-1}.K^{-1}}, $\mathbf{n}$ is the boundary normal vector and $\partial \Omega$ is the domain boundary.
 
-Finally, to model a convective heat flux when the surface is in contact with a fluid (\textit{eg} cooling pipes, natural convection...), a Robin boundary condition needs to be employed (see Equation \ref{eq: convective bc T}).
+Finally, to model a convective heat flux when the surface is in contact with a fluid (\textit{eg} cooling pipes, natural convection...), a Robin boundary condition needs to be employed (see \refeq{convective bc T}).
 \begin{equation}
     -\lambda \nabla T \cdot \mathbf{n} = h (T - T_\mathrm{ext}) \quad \text { on } \partial \Omega
-    \label{eq: convective bc T}
+    \labeq{convective bc T}
 \end{equation}
 where $h$ is the heat transfer coefficient in \si{W.m^{-2}.K^{-1}}, $T_\mathrm{ext}$ is the fluid temperature in \si{K} and $\partial \Omega$ is the domain boundary.
 The heat transfer coefficient can be dependent on the temperature and the flow characteristics.
@@ -302,7 +302,7 @@ Indeed, implementing a finite difference scheme for such a problem would be tedi
 
 This section illustrates the finite element method applied to Poisson's equation \sidecite{logg_automated_2012}.
 
-The mathematical problem can be described by Equation \ref{eq: example poisson} where $u$ is the unknown to be solved governed by Poisson's equation.
+The mathematical problem can be described by \refeq{example poisson} where $u$ is the unknown to be solved governed by Poisson's equation.
 The problem is constrained by boundary conditions defined on $\partial \Omega$, the boundary of the domain.
 The value of $u$ is prescribed on the subset $\Gamma_D$ (Dirichlet boundary condition) whereas the value of the normal derivative of $u$ is prescribed on the remaining boundary $\Gamma_N$ (Neumann boundary condition) (see \reffig{fe problem sketch}).
 
@@ -312,7 +312,7 @@ The value of $u$ is prescribed on the subset $\Gamma_D$ (Dirichlet boundary cond
         u &= u_0 \quad \text{on    } \Gamma_D  \subset \delta \Omega \\
         -\frac{\partial u}{\partial n} &= g \quad \text{on    } \Gamma_N  \subset \delta \Omega
     \end{align}
-    \label{eq: example poisson}
+    \labeq{example poisson}
 \end{subequations}
 
 
@@ -323,12 +323,12 @@ The value of $u$ is prescribed on the subset $\Gamma_D$ (Dirichlet boundary cond
     \labfig{fe problem sketch}
 \end{figure}
 
-The first step of the finite element method is to build a variational formulation (also called \textit{weak form}) of the governing equation \ref{eq: example poisson} (called the \textit{strong form}).
+The first step of the finite element method is to build a variational formulation (also called \textit{weak form}) of the governing \refeq{example poisson} (called the \textit{strong form}).
 To do so, the equation is multiplied by a function $v$ (called the \textit{test function}) and integrated over the domain $\Omega$.
 The following expression is obtained:
 \begin{equation}
     \int_{\Omega} -\nabla^2 \ u \ v \ dx = \int_{\Omega} f \ v \ dx \quad \forall \ v \in \hat{V}
-    \label{eq: weak form 1}
+    \labeq{weak form 1}
 \end{equation}
 
 The function space $\hat{V}$ is defined as:
@@ -336,17 +336,17 @@ The function space $\hat{V}$ is defined as:
     \hat{V} = \{ v \in H^1(\Omega) \ : \ v=0 \ \text{on} \ \Gamma_D \}
 \end{equation}
 
-Equation \ref{eq: weak form 1} needs now to be rewritten in order to only have first order derivatives.
+\refeq{weak form 1} needs now to be rewritten in order to only have first order derivatives.
 To do so, Gauss-Green's lemma is employed:
 \begin{equation}
     \int_{\Omega} -\nabla^2 u \ v \ dx = \int_{\Omega} \nabla u \cdot \nabla \ v \ dx - \int_{\partial \Omega} \frac{\partial u}{\partial n} \ v \ ds
-    \label{eq: gauss-green}
+    \labeq{gauss-green}
 \end{equation}
 
 Since the test function $v$ vanishes on $\Gamma_D$, the following variational problem is obtained: find $u \in V$ such that
 \begin{equation}
     \int_{\Omega} \nabla u \cdot \nabla v  \ dx = \int_{\Omega} f \ v \ dx - \int_{\Gamma_N} g \ v \ ds \quad \forall \ v \in \hat{V}
-    \label{eq: weak form 2}
+    \labeq{weak form 2}
 \end{equation}
 
 The function space $V$ is defined as:
@@ -357,16 +357,16 @@ The function space $V$ is defined as:
 Poisson's equation can now be discretised by restricting the variational problem \ref{eq: weak form 2} to discrete function spaces $V_h$ and $\hat{V}_h$: find $u_h \in V_h \subset V$
 \begin{equation}
     \int_{\Omega} \nabla u_h \cdot \nabla v  \ dx = \int_{\Omega} f \ v \ dx - \int_{\Gamma_N} g \ v \ ds \quad \forall \ v \in \hat{V}_h \subset \hat{V}
-    \label{eq: discrete variational problem}
+    \labeq{discrete variational problem}
 \end{equation}
 
-To solve Equation \ref{eq: discrete variational problem}, a suitable pair of discrete function spaces $V_h$ and $\hat{V}_h$ must be constructed.
+To solve \refeq{discrete variational problem}, a suitable pair of discrete function spaces $V_h$ and $\hat{V}_h$ must be constructed.
 Piecewise polynomials basis functions $\{ \phi_i \}_{i=1}^N$ are defined for $V_h$ and $\{ \hat{\phi}_j \}_{j=1}^N$ for $\hat{V}_h$.
 
 The approximated solution $u_h$ therefore reads (see Figure \ref{fig: example approximated solution}):
 \begin{equation}
     u_h(x) = \sum^N_{i=1}U_i \phi_i(x)
-    \label{eq: FEM solution}
+    \labeq{FEM solution}
 \end{equation}
 where $U_i$ are the coefficient to be determined on each node (called degrees of freedom).
 $N$ is the number of nodes used to discretise the domain.
@@ -378,7 +378,7 @@ $N$ is the number of nodes used to discretise the domain.
     \label{fig: example approximated solution}
 \end{figure}
 
-By replacing $u_h$ in Equation \ref{eq: discrete variational problem} with Equation \ref{eq: FEM solution} and varying the basis functions $\hat{\phi}_j$:
+By replacing $u_h$ in \refeq{discrete variational problem} with \refeq{FEM solution} and varying the basis functions $\hat{\phi}_j$:
 
 \begin{equation}
     \sum^N_{i=1} U_i \int_\Omega \nabla \phi_i \cdot \nabla \hat{\phi}_j \ dx = \int_\Omega f \ \hat{\phi}_j \ dx - \int_{\Gamma_N} g \ \hat{\phi}_j \ ds , \quad \ j = 1, \ 2, \ \ldots, \ N
@@ -387,7 +387,7 @@ By replacing $u_h$ in Equation \ref{eq: discrete variational problem} with Equat
 This can be written in a matrix form:
 \begin{equation}
     AU = b
-    \label{eq: variational problem matrix form}
+    \labeq{variational problem matrix form}
 \end{equation}
 where
 \begin{subequations}
@@ -400,7 +400,7 @@ where
 
 The integral terms in \refeq{eq: matrices A and b} are computed with Gauss-Legendre quadrature.
 
-After solving Equation \ref{eq: variational problem matrix form}, the $U_i$ coefficients are known and the approximated solution $u_h$ can be computed.
+After solving \refeq{variational problem matrix form}, the $U_i$ coefficients are known and the approximated solution $u_h$ can be computed.
 Non-linear problems are solved in a similar manner where the solution is approached using Newton's method.
 
 \subsection{Main features of \gls{festim}}
