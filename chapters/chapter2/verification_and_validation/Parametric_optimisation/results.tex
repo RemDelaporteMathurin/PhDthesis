@@ -6,7 +6,7 @@
 
 \subsubsection{Validation on tungsten}
 
-The TDS spectrum measured by Ogorodnikova \textit{et al} \sidecite{ogorodnikova_deuterium_2003} has been reproduced by setting all traps parameters as free parameters.
+The TDS spectrum measured by Ogorodnikova et al. \sidecite{ogorodnikova_deuterium_2003} has been reproduced by setting all traps parameters as free parameters.
 The fitting procedure has been run for several numbers of traps as shown on \reffig{number of traps comparison}.
 It is clear that setting only one trap is not sufficient to reproduce the experimental data.
 The two traps case shows better results but also has a discrepancy near \SI{600}{K}.
@@ -44,7 +44,7 @@ One single cost function evaluation `costing` less than \SI{20}{s} to compute (f
 
 % \subsubsection{EUROFER}
 
-% Hollingsworth \textit{et al} performed thermo-desorption on pre-damaged EUROFER at several damage levels \sidecite{hollingsworth_comparative_2019}.
+% Hollingsworth et al. performed thermo-desorption on pre-damaged EUROFER at several damage levels \sidecite{hollingsworth_comparative_2019}.
 % Three spectra with similar exposure conditions have been fitted with one trapping site (since only one peak appears on the spectra) as shown on \reffig{TDS EUROFER}.
 
 % \begin{figure} [h!]
@@ -60,12 +60,12 @@ One single cost function evaluation `costing` less than \SI{20}{s} to compute (f
 % For all simulations the attempt frequency $p_0$ is \SI{1e13}{s^{-1}} and the diffusion coefficient is taken from \sidecite{esteban_hydrogen_2007}.
 
 % The total fitting procedure took less than two hours for fitting the three spectra.
-% A more thorough study of these experiments could involve constraining the algorithm with profilometry data obtained by Hollingsworth \textit{et al} \cite{hollingsworth_comparative_2019}.
+% A more thorough study of these experiments could involve constraining the algorithm with profilometry data obtained by Hollingsworth et al. \cite{hollingsworth_comparative_2019}.
 % Indeed, having a non-homogeneous trapping site distribution could help having a better fit of both the profilometry data and the TDS spectra. 
 
 % \subsubsection{Aluminium}
 
-% The experiment performed on Aluminium by Quiros \textit{et al} \sidecite{quiros_blistering_2019, quiros_blister_2017} has also been reproduced with FESTIM.
+% The experiment performed on Aluminium by Quiros et al. \sidecite{quiros_blistering_2019, quiros_blister_2017} has also been reproduced with FESTIM.
 
 % Only one trap has been set in the simulation and its energy $E_p$ and density $n$ are set as free parameters.
 % Every other parameters are fixed and taken from \cite{quiros_blister_2017, quiros_blistering_2019}.
@@ -80,20 +80,20 @@ One single cost function evaluation `costing` less than \SI{20}{s} to compute (f
 
 % The identified parameters are $n = \SI{1.8e-2}{at.fr.}$ and $E =\SI{1.1}{eV}$.
 % The trapping sites density is significantly higher than the one described in \cite{quiros_blister_2017}.
-% However, the TDS spectrum obtained with this procedure better fits the experimental data since the one obtained by Quiros \textit{et al} requires a 10-fold increase.
+% However, the TDS spectrum obtained with this procedure better fits the experimental data since the one obtained by Quiros et al. requires a 10-fold increase.
 % The fitting procedure took less than a hundred cost function evaluations, which corresponds in total to a few dozens of minutes.
 
 % \subsubsection{Beryllium}
-% Be co-deposition experiments performed by Baldwin \textit{et al} \sidecite{baldwin_experimental_2014} were reproduced.
+% Be co-deposition experiments performed by Baldwin et al. \sidecite{baldwin_experimental_2014} were reproduced.
 % In this experiment, a \SI{1}{\micro m} thick Be-D layer is grown on Tungsten at \SI{330}{K}. 
-% Following the strategy proposed by Baldwin \textit{et al}, only the thermo-desorption phase has been simulated with two trapping sites with homogeneously distributed densities and with initial occupancies $f_i$.
+% Following the strategy proposed by Baldwin et al., only the thermo-desorption phase has been simulated with two trapping sites with homogeneously distributed densities and with initial occupancies $f_i$.
 % There are therefore three free parameters per trap (energy, density and initial occupancy) which makes this optimisation problem 6D.
 % It is assumed that the surface flux is the net balance between incoming flux from the chamber (very low since the pressure is $\SI{1}{\micro Pa}$) and the molecular recombination flux.
 % All the other parameters are described in \cite{baldwin_experimental_2014}.
 
 % The resulting optimised TDS spectrum is shown on \reffig{TDS baldwin}.
 % The optimised parameters are $E_{p, 1} = \SI{0.75}{eV}$, $n_1 = \SI{1.09e-1}{at.fr.}$, $f_1=0.73$, $E_{p, 2} = \SI{0.93}{eV}$, \newline ${n_2 = \SI{3.40e-2}{at.fr.}}$, $f_2=0.28$.
-% These values are in agreement with the ones found by Baldwin \textit{et al} \cite{baldwin_experimental_2014} and took only a few of minutes to compute since the implantation phase was not simulated.
+% These values are in agreement with the ones found by Baldwin et al. \cite{baldwin_experimental_2014} and took only a few of minutes to compute since the implantation phase was not simulated.
 
 % \begin{figure} [h!]
 %     \centering
@@ -120,7 +120,7 @@ But artificially adding more and more traps is not necessarily realistic and cou
     \labfig{hurley_comparison}
 \end{figure}
 
-In the first case with only one trapping site, as described by Hurley \textit{et al} in \sidecite{hurley_numerical_2015}, the binding energy is \SI{0.55}{eV} and the trap density is \SI{2.08e24}{m^{-3}}.
+In the first case with only one trapping site, as described by Hurley et al. in \sidecite{hurley_numerical_2015}, the binding energy is \SI{0.55}{eV} and the trap density is \SI{2.08e24}{m^{-3}}.
 The appearance of two peaks is due to the desorption on different sides of the sample as explained in \cite{hurley_numerical_2015}.
 In the second case, the curve as been reproduced with two trapping sites which energies and densities are respectively \SI{0.51}{eV} and \SI{0.57}{eV} and \SI{2.02e24}{m^{-3}} and \SI{2.12e24}{m^{-3}}.
 In the third case, it has been reproduced with three trapping sites which energies and densities are respectively \SI{0.55}{eV}, \SI{0.38}{eV} and \SI{0.51}{eV} and \SI{2.12e24}{m^{-3}}, \SI{2.26e24}{m^{-3}} and \SI{2.13e24}{m^{-3}}.
