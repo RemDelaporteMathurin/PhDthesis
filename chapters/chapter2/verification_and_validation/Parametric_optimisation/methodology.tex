@@ -71,8 +71,8 @@ Nelder-Mead (also called the simplex method), Powell, \gls{tnc} and \gls{cg}.
 Thorough descriptions of these algorithms would be beyond the scope of this research but can be found in \sidecite{nocedal_numerical_2006}.
 The performances of these algorithms have been compared with 100 different initial guesses randomly distributed on the $(E_1,n_1)$ plane and are shown on Figure \ref{fig:algos perfs}.
 It appears that the \gls{cg} algorithm is less robust since for some cases it didn't converge towards the global minimum (see white bands on Figure \ref{fig:algos perfs}).
-Nelder-Mead algorithm appears to be the most efficient with initial guesses both close and far from the global minimum since the number of cost function evaluations ranges from 50 to 100 whereas other algorithms require more than 100.
-This can be explained by the fact that Nelder-Mead is a derivative-free algorithm whereas \gls{tnc} and \gls{cg} algorithms need on the other hand to compute first order derivatives thus increasing the number of function evaluations.
+The Nelder-Mead algorithm appears to be the most efficient with initial guesses both close and far from the global minimum since the number of cost function evaluations ranges from 50 to 100 whereas other algorithms require more than 100.
+This can be explained by the fact that Nelder-Mead is a derivative-free algorithm whereas the \gls{tnc} and \gls{cg} algorithms need to compute first order derivatives thus increasing the number of function evaluations.
 This will be even more true when increasing the number of free parameters since the derivative will become more costly to compute.
 
 It is worth noting that the Nelder-Mead algorithm is an unconstrained method.
