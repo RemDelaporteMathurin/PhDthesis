@@ -7,7 +7,7 @@ This Chapter describes the mathematical models needed to simulate H transport in
 The numerical scheme to solve these equations and an introduction to the finite element method alongside with its implementation in the \gls{festim} code are also presented.
 Finally, the verification \& validation of \gls{festim} is performed to guaranty its reliability.
 
-\section{H transport} \label{description_H_transport_model}
+\section{H transport} \labsec{description_H_transport_model}
 
 % This Section describes the main model for simulating H transport in materials.
 
@@ -105,7 +105,7 @@ where $P$ is the partial pressure of hydrogen at the boundary in \si{Pa}, $S(T)=
 This law of equilibrium is a steady-state approximation of a more complex model which takes into account flux exchanges between adsorbed and mobile concentrations at the boundary.
 It is therefore valid when applied to cases where the kinetics are fast enough for the system to remain at equilibrium.
 
-\subsubsection{Analytical simplification for an implanted source of H} \label{triangle model}
+\subsubsection{Analytical simplification for an implanted source of H} \labsec{triangle model}
 
 Plasma implantation of hydrogen particles can be modelled with a volumetric source.
 Typically, the depth of the implantation profile is a few nanometres depending on the incident particles energy and incident angle.
@@ -123,13 +123,13 @@ These profiles can be simulated by Monte Carlo codes like SRIM \sidecite{ziegler
 This volumetric source term can be simplified into a Dirichlet boundary condition (i.e.\ enforcing the mobile particle concentration at the exposed surface).
 
 Let us consider a volumetric source term of hydrogen $\Gamma = \varphi_\mathrm{imp} \; f(x)$ where $f$ is a narrow Gaussian distribution.
-The mobile particles concentration profile can be approximated by a triangular shape \sidecite{schmid_diffusion-trapping_2016} (see Figure \ref{fig:recomb sketch}).
+The mobile particles concentration profile can be approximated by a triangular shape \sidecite{schmid_diffusion-trapping_2016} (see \reffig{recomb sketch}).
 
 \begin{figure*}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{Figures/Chapter2/recomb_sketch.pdf}
     \caption{Concentration profile with recombination flux and volumetric source term at $x=R_p$. Dashed lines correspond to the time evolution.}
-    \label{fig:recomb sketch}
+    \labfig{recomb sketch}
 \end{figure*}
 
 The concentration profile is therefore maximum at $x=R_p$.
@@ -354,7 +354,7 @@ The function space $V$ is defined as:
     V = \{ v \in H^1(\Omega) \ : \ v=u_0 \ \text{on} \ \Gamma_D \}
 \end{equation}
 
-Poisson's equation can now be discretised by restricting the variational problem \ref{eq: weak form 2} to discrete function spaces $V_h$ and $\hat{V}_h$: find $u_h \in V_h \subset V$
+Poisson's equation can now be discretised by restricting the variational problem \refeq{weak form 2} to discrete function spaces $V_h$ and $\hat{V}_h$: find $u_h \in V_h \subset V$
 \begin{equation}
     \int_{\Omega} \nabla u_h \cdot \nabla v  \ dx = \int_{\Omega} f \ v \ dx - \int_{\Gamma_N} g \ v \ ds \quad \forall \ v \in \hat{V}_h \subset \hat{V}
     \labeq{discrete variational problem}
@@ -363,7 +363,7 @@ Poisson's equation can now be discretised by restricting the variational problem
 To solve \refeq{discrete variational problem}, a suitable pair of discrete function spaces $V_h$ and $\hat{V}_h$ must be constructed.
 Piecewise polynomials basis functions $\{ \phi_i \}_{i=1}^N$ are defined for $V_h$ and $\{ \hat{\phi}_j \}_{j=1}^N$ for $\hat{V}_h$.
 
-The approximated solution $u_h$ therefore reads (see Figure \ref{fig: example approximated solution}):
+The approximated solution $u_h$ therefore reads (see \reffig{example approximated solution}):
 \begin{equation}
     u_h(x) = \sum^N_{i=1}U_i \phi_i(x)
     \labeq{FEM solution}
@@ -375,7 +375,7 @@ $N$ is the number of nodes used to discretise the domain.
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter2/approximated_solution.pdf}
     \caption{1D example of an approximated solution $u$ (exact in blue, approximated in orange) with basis function $\phi_i$ for linear finite elements with 2 nodes.}
-    \label{fig: example approximated solution}
+    \labfig{example approximated solution}
 \end{figure}
 
 By replacing $u_h$ in \refeq{discrete variational problem} with \refeq{FEM solution} and varying the basis functions $\hat{\phi}_j$:
@@ -420,7 +420,7 @@ Various types of boundary conditions are available for both the H transport (imp
 Traps densities in FESTIM can also be time-dependent allowing the users to simulate extrinsic traps (\textit{eg} irradiation induced traps, stress induced traps...).
 
 % geometry
-Thanks to the finite element method, geometries used in \gls{festim} can be complex (see Figure \ref{fig: example mesh}).
+Thanks to the finite element method, geometries used in \gls{festim} can be complex (see \reffig{example mesh}).
 The meshing capability of \gls{festim} is limited to 1D meshes and it was decided to instead make \gls{festim} accept (with the XDMF format) complex meshes from third-party applications dedicated to meshing such as SALOME or GMSH.
 These third-party applications can for instance be usefull to run CAD-based simulations.
 Users can also decide to use the \gls{fenics} built-in meshing tool.
@@ -429,7 +429,7 @@ Users can also decide to use the \gls{fenics} built-in meshing tool.
     \centering
     \includegraphics[width=0.5\linewidth]{Figures/Chapter2/example_mesh.png}
     \caption{Example of a complex 3D geometry (here a breeding blanket section) mesh readable by \gls{festim} \cite{dark_influence_2021}.}
-    \label{fig: example mesh}
+    \labfig{example mesh}
 \end{figure}
 
 % visualisation

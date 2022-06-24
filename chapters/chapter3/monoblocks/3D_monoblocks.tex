@@ -4,7 +4,7 @@ It will be shown that the error induced by 2D assumption decreases for thick mon
 
 \subsection{Methodology}
 
-The DEMO monoblock geometry differs slightly from the ITER geometry (see Figure \ref{fig: geometry DEMO monoblock}) but the general concept is the same, meaning the observations made in this Section are also valid for the ITER geometry.
+The DEMO monoblock geometry differs slightly from the ITER geometry (see \reffig{geometry DEMO monoblock}) but the general concept is the same, meaning the observations made in this Section are also valid for the ITER geometry.
 
 
 \begin{figure}
@@ -26,12 +26,12 @@ The DEMO monoblock geometry differs slightly from the ITER geometry (see Figure 
             \put(75, 60){\large$\Gamma_\mathrm{poloidal}$}
         \end{overpic}
     \caption{3D geometry of the DEMO monoblock used for the simulations showing W armour \cruleme[grey]{0.3cm}{0.3cm}, Cu interlayer \cruleme[orange]{0.3cm}{0.3cm}, CuCrZr alloy cooling pipe  \cruleme[yellow]{0.3cm}{0.3cm}.}
-    \label{fig: geometry DEMO monoblock}
+    \labfig{geometry DEMO monoblock}
 \end{figure}
 
 The boundary conditions for the steady state heat transfer problem are the same as for the 2D case (see \refeq{bc thermal DEMO monoblock}).
 The boundary conditions for the transient H transport problem are similar (see \refeq{bc H transport DEMO monoblock}).
-A non-homogeneous mobile concentration is assumed at the plasma exposed surface to simulate an implanted source of particles (see Section \ref{triangle model}).
+A non-homogeneous mobile concentration is assumed at the plasma exposed surface to simulate an implanted source of particles (see \refsec{triangle model}).
 Depending on the simulation case (with or without desorption on the gaps), the other external surfaces (except the cooling surfaces) will either be insulated or an instantaneous recombination will be assumed.
 
 
@@ -40,7 +40,7 @@ Depending on the simulation case (with or without desorption on the gaps), the o
     -\lambda \vec{\nabla} T \cdot \vec{n} &=\varphi_\mathrm{heat} \quad  &\text { on } \Gamma_\mathrm{top}\\
     -\lambda \vec{\nabla} T\cdot \vec{n} &= -h \cdot \left(T_\mathrm{coolant} - T\right)\quad &\text { on } \Gamma_\mathrm{coolant}
     \end{align}
-    \label{eq: bc thermal DEMO monoblock}
+    \labeq{bc thermal DEMO monoblock}
 \end{subequations}
 where $\varphi_\mathrm{heat}=\SI{10}{MW}$, $h=\SI{7e4}{W.m^{-2}.K^{-1}}$ is the heat exchange coefficient and $T_\mathrm{coolant} = \SI{323}{K}$ is the coolant temperature.
 
@@ -51,11 +51,11 @@ where $\varphi_\mathrm{heat}=\SI{10}{MW}$, $h=\SI{7e4}{W.m^{-2}.K^{-1}}$ is the 
     c_\mathrm{m} &=  0 \quad &\text { on } \Gamma_\mathrm{toroidal} \text{  and  } \Gamma_\mathrm{pipe} \\
     c_\mathrm{m} &=  0 \quad \text{or} \quad -D \vec{\nabla} c_\mathrm{m} \cdot \vec{n} = 0 &\text { on } \Gamma_\mathrm{poloidal}
     \end{align}
-    \label{eq: bc H transport DEMO monoblock}
+    \labeq{bc H transport DEMO monoblock}
 \end{subequations}
 where $\varphi_\mathrm{imp} = \SI{1.6e22}{H.m^{-2}.s^{-1}}$ is the implanted particle flux, $R_p = \SI{1e-9}{m}$ is the particle implantation depth, $K_\mathrm{CuCrZr}=2.9\times 10^{-14}\exp{-1.92/(k_B T)}$ is the H recombination coefficient in CuCrZr expressed in \si{m^4.s^{-1}}.
 
-Two intrinsic traps were set in W, one trap in the Cu interlayer and two traps in the CuCrZr cooling pipe (see Table \ref{tab:traps monoblock DEMO}).
+Two intrinsic traps were set in W, one trap in the Cu interlayer and two traps in the CuCrZr cooling pipe (see \reftab{traps monoblock DEMO}).
 
 \begin{table*}
     \centering
@@ -75,7 +75,7 @@ Two intrinsic traps were set in W, one trap in the Cu interlayer and two traps i
         % \\
     \end{tabular}
     \caption{Traps properties used in the 3D DEMO monoblocks simulations.}
-    \label{tab:traps monoblock DEMO}
+    \labtab{traps monoblock DEMO}
 \end{table*}
 
 Transient simulations up to \SI{e7}{s} were run.
@@ -86,18 +86,18 @@ FESTIM simulations were run with and without desorption on the gaps.
 
 % Temperature field
 
-The temperature field obtained was very similar to the 2D case (see Figure \ref{fig: T field 3D monoblock}) with a top surface temperature of approximately \SI{1200}{K}.
+The temperature field obtained was very similar to the 2D case (see \reffig{T field 3D monoblock}) with a top surface temperature of approximately \SI{1200}{K}.
 
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/temperature_3D_monoblock.png}
     \caption{Temperature field of the 3D DEMO monoblock.}
-    \label{fig: T field 3D monoblock}
+    \labfig{T field 3D monoblock}
 \end{figure}
 
 
 % Retention fields
-As expected, a higher retention was observed in the case without desorption (see Figure \ref{fig:retention fields 3D monoblocks}).
+As expected, a higher retention was observed in the case without desorption (see \reffig{retention fields 3D monoblocks}).
 This is explained by the surface losses.
 % The maximum retention for the case with desorption is three orders of magnitude lower than that of the case without desorption.
 % In both cases, the higher retention was found to be in the CuCrZr cooling pipe.
@@ -128,26 +128,26 @@ This is explained by the surface losses.
         \caption{$t=\SI{1e6}{s}$}
     \end{subfigure}
     \caption{Retention fields of the DEMO monoblock with (left) or without (right) recombination on the poloidal gaps (standard case). Note the colour bars are different.}
-    \label{fig:retention fields 3D monoblocks}
+    \labfig{retention fields 3D monoblocks}
 \end{figure}
 
 % Inventory
-The total H inventory in the monoblock was also between one and three orders of magnitude lower in the case with desorption (see Figure \ref{fig: inventory vs time DEMO monoblock}).
+The total H inventory in the monoblock was also between one and three orders of magnitude lower in the case with desorption (see \reffig{inventory vs time DEMO monoblock}).
 This difference increased with the exposure time.
 Moreover, the steady state was reached way earlier for the case with desorption whereas the inventory kept increasing after \SI{e7}{s} for the insulated case.
 This means that not taking desorption from the gaps into account in 2D simulations is a conservative assumption in terms of H inventory.
-The simulations performed in Section \ref{influence of exposure conditions} then overestimate the monoblock H inventory.
+The simulations performed in \refsec{influence of exposure conditions} then overestimate the monoblock H inventory.
 
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/inventory_standard_case_w_wo_recomb.pdf}
     \caption{Temporal evolution of the monoblock inventory (standard case).}
-    \label{fig: inventory vs time DEMO monoblock}
+    \labfig{inventory vs time DEMO monoblock}
 \end{figure}
 
 % fluxes
 These 3D simulations are however essential to estimate the outgassing fluxes from the poloidal gaps.
-The particle flux at the poloidal gap is six times higher than the flux at the toroidal gap  (see Figure \ref{fig: fluxes DEMO monoblock}).
+The particle flux at the poloidal gap is six times higher than the flux at the toroidal gap  (see \reffig{fluxes DEMO monoblock}).
 The permeation flux to the coolant is five to six orders orders of magnitude lower than the fluxes at the gaps.
 The particle fluxes at the gaps (poloidal and toroidal) were approximately \SI{e12}{H.s^{-1}} whereas the flux towards the cooling channel was below \SI{e7}{H.s^{-1}}.
 The values of the outgassing fluxes from both the gaps are orders of magnitude lower than that of the retrodesorbed flux (i.e.\ the flux of implanted particles that diffuse back to the exposed surface).
@@ -158,7 +158,7 @@ They will however impact the value of the contamination flux towards the coolant
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/desorption_flux_standard_case.pdf}
     \caption{Temporal evolution of outgassing fluxes for the standard case with desorption from the poloidal gaps. Blue lines correspond to the fluxes towards the vacuum vessel, the orange line is the flux towards the coolant.}
-    \label{fig: fluxes DEMO monoblock}
+    \labfig{fluxes DEMO monoblock}
 \end{figure}
 
 \subsection{Influence of the monoblock thickness}
@@ -166,8 +166,8 @@ They will however impact the value of the contamination flux towards the coolant
 Several simulations were run with monoblock thicknesses varying from \SI{4}{mm} to \SI{14}{mm}.
 
 % inventory
-As the thickness increases, the inventory per unit thickness increases for the case with instantaneous recombination on the poloidal gap (see Figure \ref{fig: inventory vs time DEMO monoblock}).
-It remains constant for the case with no recombination since it is equivalent to a 2D case (the decrease observed at low thicknesses is due to the impact of the CuCrZr pipe between monoblocks as shown on Figure \ref{fig: geometry DEMO monoblock}).
+As the thickness increases, the inventory per unit thickness increases for the case with instantaneous recombination on the poloidal gap (see \reffig{inventory vs time DEMO monoblock}).
+It remains constant for the case with no recombination since it is equivalent to a 2D case (the decrease observed at low thicknesses is due to the impact of the CuCrZr pipe between monoblocks as shown on \reffig{geometry DEMO monoblock}).
 The relative difference between the cases with or without recombination on the poloidal gap decreases as the thickness increases.
 After \SI{1e6}{s} of exposure, for a thickness of \SI{4}{mm} the relative difference is \SI{200}{\%} and drops at \SI{30}{\%} for \SI{14}{mm}.
 This result was expected as the edge effects become negligible at large thicknesses.
@@ -176,11 +176,11 @@ This result was expected as the edge effects become negligible at large thicknes
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/inventory_vs_thickness.pdf}
     \caption{Evolution of the inventory with or without recombination at the poloidal gap for several monoblock thicknesses at $t=\SI{1e6}{s}$}
-    \label{fig: ratio 3D thickness monoblock}
+    \labfig{ratio 3D thickness monoblock}
 \end{figure}
 
 % flux
-The permeation flux towards the cooling channel per unit thickness globally increases with the monoblock thickness (see Figure \ref{fig: flux to coolant DEMO monoblock}).
+The permeation flux towards the cooling channel per unit thickness globally increases with the monoblock thickness (see \reffig{flux to coolant DEMO monoblock}).
 It is always higher in the case without recombination on the gaps.
 Similarly to the inventory, the relative difference between the cases with or without recombination on the poloidal gap decreases with the thickness.
 
@@ -188,18 +188,18 @@ Similarly to the inventory, the relative difference between the cases with or wi
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/permeation_flux_vs_thickness.pdf}
     \caption{Evolution of the permeation flux to the coolant with or without recombination at the poloidal gap for several monoblock thicknesses at $t=\SI{1e6}{s}$.}
-    \label{fig: flux to coolant DEMO monoblock}
+    \labfig{flux to coolant DEMO monoblock}
 \end{figure}
 
 % impact of the extrusion
 Finally, the extrusion of the CuCrZr pipe between monoblocks has an impact on the permeation flux and the inventory.
-Without this extrusion, the case without recombination on the poloidal gap corresponds to a pure 2D case and the inventory is independent of the thickness (see Figure \ref{fig: inventory monoblock vs thickness no gap}).
+Without this extrusion, the case without recombination on the poloidal gap corresponds to a pure 2D case and the inventory is independent of the thickness (see \reffig{inventory monoblock vs thickness no gap}).
 
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/inventory_vs_thickness_no_gap.pdf}
     \caption{Evolution of the permeation flux with or without recombination at the poloidal gap for several monoblock thicknesses without CuCrZr extrusion at $t=\SI{1e6}{s}$.}
-    \label{fig: inventory monoblock vs thickness no gap}
+    \labfig{inventory monoblock vs thickness no gap}
 \end{figure}
 
 \subsection{Summary}
