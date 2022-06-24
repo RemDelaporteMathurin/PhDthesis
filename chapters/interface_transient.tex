@@ -2,7 +2,7 @@
 \labpage{Interface transient model}
 \chapter{Interface transient model}
 
-\section{Model description}
+% \section{Model description}
 A kinetic model of trapping/detrapping at the interface between two materials based on the idealised energy diagram shown in Figure~\ref{fig:diagram_E} is presented.
 On this diagram, $E_\mathrm{diff,k}$ is the barrier for the diffusion of H from interstitial site to interstitial site, $E_{k\rightarrow \mathrm{i}}$ is the trapping energy from material $k$ to the interface, $E_{\mathrm{i}\rightarrow k}$ is the detrapping energy from the interface to the interface and $E_{S,k}$ is the solution energy of H in material $k$.
 In this model, H is split into three populations: the concentrations of mobile H in materials 1 \& 2 ($c_1$ and $c_2$ respectively) expressed in \si{m^{-3}} and the concentration of H trapped at the interface $c_\mathrm{i}$ (in \si{m^{-2}}).
@@ -20,7 +20,7 @@ In this model, H is split into three populations: the concentrations of mobile H
 \end{figure}
 The interface coverage is defined as: $\theta_\mathrm{i}=\frac{c_\mathrm{i}}{n_\mathrm{i}}$ where $n_\mathrm{i}$ is the sites concentration on the interface (in \si{m^{-2}}).
 % In practice, there should also be maximum concentration of sites for interstitial H ($n_{k\in\lbrace 1,2 \rbrace}$ in \si{m^{-3}}) but the concentration of interstitial H is assumed to be low compared to this maximum value, $c_k \ll n_k$: there are always a free interstitial site to detrap from the interface.
-The interface is considered as a 2D defect (like a surface), hence the unit of $c_\mathrm{i}$ and $n_\mathrm{i}$ is \si{m^{-2}}.\\
+The interface is considered as a 2D defect (like a surface), hence the unit of $c_\mathrm{i}$ and $n_\mathrm{i}$ is \si{m^{-2}}.
 \indent In this model, 2 types of reactions are considered at the interface:
 \begin{itemize}
     \item the trapping from material $k$ to the interface: $\mathrm{H}_k \rightarrow \mathrm{H_i}$.
@@ -31,7 +31,7 @@ The rate (\si{s^{-1}}) of each reaction $x\rightarrow y$ is written with an Arrh
 \nu_{x\rightarrow y}(T)=\nu_0^{x\rightarrow y}\exp\left(-\frac{E_{x\rightarrow y}}{k_\mathrm{B}T}\right)
 \label{eq:TST}
 \end{equation}
-with $\nu_0^{x\rightarrow y}$ (\si{s^{-1}}) the pre-exponential factor, $E_{x\rightarrow y}$ (\si{eV}) the energy barrier for the reaction $x\rightarrow y$, $k_\mathrm{B}$ (\si{eV.K^{-1}}) the Boltzmann constant and $T$ (\si{K}) the temperature.\\
+with $\nu_0^{x\rightarrow y}$ (\si{s^{-1}}) the pre-exponential factor, $E_{x\rightarrow y}$ (\si{eV}) the energy barrier for the reaction $x\rightarrow y$, $k_\mathrm{B}$ (\si{eV.K^{-1}}) the Boltzmann constant and $T$ (\si{K}) the temperature.
 
 % \indent The model outputs the the temporal evolution of the concentration of H at the interface and in the materials at the position $x_\mathrm{i}$ of the interface.
 \indent The jump from interstitial site to interstitial site in material $k$ is assumed to be described by the Fick's law on diffusion characterised by the diffusion coefficient of H in material $k$ $D_{k\in\lbrace 1,2\rbrace}$ (\si{m^{2}.s^{-1}}).
@@ -57,8 +57,8 @@ Thus, the flux balance at the interface gives:
                       \label{eq:c2}
 \end{align}
 where $\lambda_{k\in\lbrace 1,2 \rbrace}$ (\si{m}) is the distance between two interstitial sites in material $k$ (such that $\lambda_k c_k(x_\mathrm{i})$ represent the areal density of interstitial H at the depth $x_\mathrm{i}$ which interacts with the interface).
-In Equations~\ref{eq:c1} and~\ref{eq:c2}, the first term on the right-hand side corresponds to the detrapping from the interface to material $k$, the second term correspond to the trapping to the interface and the last term corresponds to the diffusion that carries away particles from the interface region (it is important to note that the signs of these fluxes are different).\\
-\indent At steady-state, when the time derivatives are null and the diffusive flux can be neglected (i.e. when the diffusion depth is long compared to $\lambda_k$), one gets:
+In Equations~\ref{eq:c1} and~\ref{eq:c2}, the first term on the right-hand side corresponds to the detrapping from the interface to material $k$, the second term correspond to the trapping to the interface and the last term corresponds to the diffusion that carries away particles from the interface region (it is important to note that the signs of these fluxes are different).
+\indent At steady-state, when the time derivatives are null and the diffusive flux can be neglected (i.e.\ when the diffusion depth is long compared to $\lambda_k$), one gets:
 \begin{equation}
      \frac{c_2}{c_1}=\frac{\lambda_1}{\lambda_2}\frac{\nu_\mathrm{i\rightarrow2}(T)}{\nu_\mathrm{2\rightarrow i}(T)}\frac{\nu_\mathrm{1\rightarrow i}(T)}{\nu_\mathrm{i\rightarrow 1}(T)} = \frac{S_2(T)}{S_1(T)}
 \end{equation}
@@ -74,12 +74,12 @@ The condition to have such steady-state is:
 \end{equation}
 % This is equivalent to Equation~\refeq{c/s conservation} used in this study.
 
-\section{Test case}
+% \section{Test case}
 \indent The simple kinetic presented here allows us to see how fast the equilibrium given by \refeq{c/s conservation} is reached.
-% If it is much faster than the characteristic time of the simulation presented in section~\ref{iter case}, one can consider that the use of such kinetic model is of now use for as it would not significantly affect the dynamic of permeation for the considered thickness.\\
+% If it is much faster than the characteristic time of the simulation presented in section~\ref{iter case}, one can consider that the use of such kinetic model is of now use for as it would not significantly affect the dynamic of permeation for the considered thickness.
 For the test case, we further simplify the model by considering that the concentration of interstitial H in material 1 $c_1$ is constant (\textit{ie.} $\partial c_1/\partial t=0$).
 The diffusive fluxes are neglected in Equation~\ref{eq:c2} in order to solve a 0D problem.
-The system of equation is solved with the SciPy package~\cite{virtanen_scipy_2020} which uses the odepack library~\cite{hindmarch_odepack_1982}.\\
+The system of equation is solved with the SciPy package~\cite{virtanen_scipy_2020} which uses the odepack library~\cite{hindmarch_odepack_1982}.
 % \indent As for the trapping around defects, we consider that the activation energy for the trapping reaction to the interface from material $k$ is the energy barrier for the diffusion $E_{k\rightarrow\mathrm{i}}=E_{\mathrm{diff},k}$.
 % In addition, we consider that all the pre-exponential factor are equal to 10$^{13}$ \si{s^{-1}}.
 % It means that, in order to have the steady-state equation (equation~\ref{eq:steady}) equivalent to \refeq{c/s conservation}, one needs $\frac{S_{0,1}}{S_{0,2}}=\frac{\lambda_2}{\lambda_1}$.
@@ -91,7 +91,7 @@ The system of equation is solved with the SciPy package~\cite{virtanen_scipy_202
 % \end{equation}
 
 
-% Since, we already fixed the value of $E_{\mathrm{i\rightarrow},k}$ to the diffusion barrier in material $k$ and since $E_{S,1}-E_{S,2}$ is fixed for a set of materials, there is actually only one free parameter.\\
+% Since, we already fixed the value of $E_{\mathrm{i\rightarrow},k}$ to the diffusion barrier in material $k$ and since $E_{S,1}-E_{S,2}$ is fixed for a set of materials, there is actually only one free parameter.
 \indent A W/Cu interface is simulated at \SI{475}{K}.
 % We fix the concentration of H in tungsten to $c_1=10^{18}$ \si{m^{-3}}.
 % The trapping energy to the interface are 0.39 eV for both materials (table~\ref{tab:materials properties}).

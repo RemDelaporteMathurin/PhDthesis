@@ -9,18 +9,21 @@ This Chapter focusses on the estimation of the H inventory in the divertors of W
 This estimation relies on the monoblock behaviour law computed in \refch{Chapter3}.
 This behaviour law allows rapid evaluations of the monoblocks H inventory for any exposure condition.
 Inputs are taken from SolEdge3X-EIRENE \cite{bufferand_three-dimensional_2019} and SOLPS-ITER \cite{kaveeva_solps-iter_2020} plasma simulations.
-The influence of several control parameters is investigated: the input power (\textit{ie} how much heating power is injected in the plasma), the gas puffing rate (used in most tokamaks to increase the plasma density \cite{zweben_effect_2014}), and the divertor pressure of neutral particles in ITER.
+The influence of several control parameters is investigated: the input power (i.e.\ how much heating power is injected in the plasma), the gas puffing rate (used in most tokamaks to increase the plasma density \cite{zweben_effect_2014}), and the divertor pressure of neutral particles in ITER.
 
 
 \section{Methodology}
+To make use of the monoblock inventory behaviour law, distribution of surface concentrations and surface temperatures along the divertors will be required.
+They will be converted from plasma simulations outputs.
+
+\subsection{Plasma simulations}
+
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.95\linewidth]{Figures/Chapter4/coordinates.pdf}
-    \caption{Geometry of WEST and ITER divertors}
+    \caption{Geometry of WEST and ITER divertors.}
     \labfig{reactors}
 \end{figure}
-
-\subsection{Plasma simulations}
 This Section describes the parameters of the plasma simulations.
 These simulations were run with SolEdge3X-EIRENE for WEST and SOLPS-ITER for ITER.
 In a nutshell, these codes solve, for each species (ions and electrons), the particle density, velocity and temperature.
@@ -36,11 +39,11 @@ The setup parameters of the simulation are listed in \reftab{my_tab}.
 $R_\mathrm{wall}$ is the recycling coefficient of main chamber wall, $R_\mathrm{pump}$ is the recycling coefficient of the pump, $D$ is the cross-field mass diffusivity perpendicular to the flux surface, $\nu$ is the momentum diffusivity, $\chi_e$ and $\chi_i$ are the energy diffusivity for electrons and ions, respectively.
 While the value of these coefficients is required for the sake of reproductibility, their detailed description is outside the scope of this research.
 More information can be found in \sidecite{ciraolo_first_2019}.
-The gas puff position is set inside the private region (\textit{ie} the region between the two strike points) and the pump position is set under the baffle.
+The gas puff position is set inside the private region (i.e.\ the region between the two strike points) and the pump position is set under the baffle.
 
 \begin{table}[!ht]
     \centering
-    \caption{Setup parameters used in the SOLEDGE3X simulations}
+    \caption{Setup parameters used in the SOLEDGE3X simulations.}
     \begin{tabular}{L{0.4\linewidth}  R{0.4\linewidth}}
     \hline \\
     Plasma composition & Deuterium, no impurity \\
@@ -82,12 +85,12 @@ These have been run in baseline burning plasma conditions ($Q=10$ with \SI{50}{M
     \centering
     \begin{subfigure}{0.5\linewidth}
         \includegraphics[width=\linewidth]{Figures/Chapter4/implantation_range.pdf}
-        \caption{Implantation range $R_p$}
+        \caption{Implantation range $R_p$.}
         \labfig{implantation range vs energy}
     \end{subfigure}%
     \begin{subfigure}{0.5\linewidth}                          
         \includegraphics[width=\linewidth]{Figures/Chapter4/reflection_coeff.pdf}
-        \caption{Reflection coefficient $r$}
+        \caption{Reflection coefficient $r$.}
         \labfig{reflection coeff vs energy}
     \end{subfigure}
     \caption{Evolution of the implantation range and the reflection coefficient as a function of incident energy $E$ and angle of incidence.}
@@ -136,7 +139,7 @@ All of these steps have been automated and packaged into a tool called divHreten
 divHretention can directly link SOLPS/SOLEDGE output files and produce a distribution of monoblock inventory as in \reffig{behaviour law example}.
 The source-code of the tool is under version control and openly available via Github under a MIT licence \cite{delaporte-mathurin_irfmdivhretention_2021}.
 The divHretention python package is distributed via PyPi \cite{delaporte-mathurin_divhretention_nodate}.
-Moreover, all the results obtained in this Chapter can be reproduced with the scripts available at \href{https://github.com/RemDelaporteMathurin/divHretention-Nucl.Fusion-2021}{https://github.com/RemDelaporteMathurin/divHretention-Nucl.Fusion-2021}.
+Moreover, all the results obtained in this Chapter can be reproduced with the scripts available at \url{https://github.com/RemDelaporteMathurin/divHretention-Nucl.Fusion-2021}.
 
 \section{ITER results}
 
@@ -145,11 +148,11 @@ Moreover, all the results obtained in this Chapter can be reproduced with the sc
     \centering
     \begin{subfigure}{0.42\linewidth}
         \includegraphics[width=\linewidth]{Figures/Chapter4/ITER/inventory_along_inner_divertor.pdf}
-        \caption{IVT}
+        \caption{IVT.}
     \end{subfigure}%
     \begin{subfigure}{0.58\linewidth}
         \includegraphics[width=\linewidth]{Figures/Chapter4/ITER/inventory_along_outer_divertor.pdf}
-        \caption{OVT}
+        \caption{OVT.}
         \labfig{distrib outer target}
     \end{subfigure}
     \caption{Surface temperature, surface concentration and inventory per unit thickness along the ITER divertor with neutral pressures varying from \SI{2}{Pa} to \SI{11}{Pa}. The area corresponds to the 95\% confidence interval.}
@@ -189,7 +192,7 @@ Moreover, all the results obtained in this Chapter can be reproduced with the sc
 
 % peak temperature
 Peak temperatures at strike points increased when decreasing the divertor neutral pressure (see \reffig{distrib outer target}).
-The peak temperature at the outer strike point reached \SI{2000}{K} at \SI{2}{Pa} and more than \SI{1000}{K} at the inner strike point, which is in accordance with the results obtained by Pitts \textit{et al} \sidecite{pitts_physics_2019}.
+The peak temperature at the outer strike point reached \SI{2000}{K} at \SI{2}{Pa} and more than \SI{1000}{K} at the inner strike point, which is in accordance with the results obtained by Pitts et al.\ \sidecite{pitts_physics_2019}.
 
 % global inventory
 The inventory in the whole divertor is computed as follows:

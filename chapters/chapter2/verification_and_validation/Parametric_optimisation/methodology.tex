@@ -20,7 +20,7 @@ The global optimisation routine is illustrated on Figure \ref{fig:diagramm}.
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/Parametric_optimisation/algorithm diagram.pdf}
-    \caption{Diagram of the embedding of FESTIM within a parametric optimisation routine based on SciPy \cite{virtanen_scipy_2020}}
+    \caption{Diagram of the embedding of FESTIM within a parametric optimisation routine based on SciPy \cite{virtanen_scipy_2020}.}
     \label{fig:diagramm}
 \end{figure}
 
@@ -29,7 +29,7 @@ These algorithms require the user to give an initial set of parameters called \t
 As in \sidecite{drexler_model-based_2019}, the Python package SciPy \sidecite{virtanen_scipy_2020} will be employed.
 
 Four minimisation algorithms have been benchmarked against a test case.
-In the following example an experimental TDS spectrum from Ogorodnikova \textit{et al.} \sidecite{ogorodnikova_deuterium_2003} will be fitted and materials properties such as trap density and detrapping energy will be identified.
+In the following example an experimental TDS spectrum from Ogorodnikova et al.\ \sidecite{ogorodnikova_deuterium_2003} will be fitted and materials properties such as trap density and detrapping energy will be identified.
 For this example case, two intrinsic traps and one extrinsic trap are set.
 The only free parameters are $E_1$ and $n_1$, respectively the detrapping energy and density of trap 1.
 The other parameters are constrained and described in \sidecite{delaporte-mathurin_finite_2019}.
@@ -40,14 +40,12 @@ The cost function $f$ has been plotted on Figure \ref{fig:cost function} as func
         \begin{subfigure}[t]{0.7\linewidth}
             \centering
             \includegraphics[width=\linewidth]{Figures/Chapter3/Parametric_optimisation/cost_function_2D.pdf}
-            \caption{Normalised cost function}
-            \label{fig:2D}
+            \caption{Normalised cost function.}
         \end{subfigure}
         \begin{subfigure}[t]{0.7\linewidth}
             \centering
             \includegraphics[width=\linewidth]{Figures/Chapter3/Parametric_optimisation/points_on_cost_function.pdf}
-            \caption{Corresponding simulated TDS spectra}
-            \label{fig:corresponding spectra}
+            \caption{Corresponding simulated TDS spectra.}
         \end{subfigure}%
     \caption{Normalised cost function $\hat{f} = (f - \min{f})/(\max{f}-\min{f})$ as function of $E_1$ (\si{eV}) and $n_1$ (\si{at.fr.}) with global minimum located at $(\SI{0.86}{eV}, \SI{1.2e-3}{at.fr.})$.}
     \label{fig:cost function}
