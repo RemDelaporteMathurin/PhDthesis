@@ -111,24 +111,24 @@ This is explained by the surface losses.
     \begin{subfigure}{0.45\linewidth}
         \centering
         \includegraphics[trim=500 0 300 0, clip, width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/retention_1e3s.png}
-        \caption{$t=\SI{1e3}{s}$}
+        \caption{$t=\SI{1e3}{s}$.}
     \end{subfigure}%
     \qquad
     \begin{subfigure}{0.45\linewidth}
         \centering
         \includegraphics[trim=500 0 300 0, clip, width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/retention_1e4s.png}
-        \caption{$t=\SI{1e4}{s}$}
+        \caption{$t=\SI{1e4}{s}$.}
     \end{subfigure}
     \begin{subfigure}{0.45\linewidth}
         \centering
         \includegraphics[trim=500 0 300 0, clip, width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/retention_1e5s.png}
-        \caption{$t=\SI{1e5}{s}$}
+        \caption{$t=\SI{1e5}{s}$.}
     \end{subfigure}%
     \qquad
     \begin{subfigure}{0.45\linewidth}
         \centering
         \includegraphics[trim=500 0 300 0, clip, width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/retention_1e6s.png}
-        \caption{$t=\SI{1e6}{s}$}
+        \caption{$t=\SI{1e6}{s}$.}
     \end{subfigure}
     \caption{Retention fields of the DEMO monoblock with (left) or without (right) recombination on the poloidal gaps (standard case). Note the colour bars are different.}
     \label{fig:retention fields 3D monoblocks}
@@ -171,14 +171,14 @@ Several simulations were run with monoblock thicknesses varying from \SI{4}{mm} 
 % inventory
 As the thickness increases, the inventory per unit thickness increases for the case with instantaneous recombination on the poloidal gap (see Figure \ref{fig: inventory vs time DEMO monoblock}).
 It remains constant for the case with no recombination since it is equivalent to a 2D case (the decrease observed at low thicknesses is due to the impact of the CuCrZr pipe between monoblocks as shown on Figure \ref{fig: geometry DEMO monoblock}).
-The relative difference between the cases with or without recombination on the poloidal gap decreases as the thickness increases.
+The relative difference between the cases with or without recombination on the poloidal gap decreases as the thickness increases (see Figure \ref{fig: ratio 3D thickness monoblock}).
 After \SI{1e6}{s} of exposure, for a thickness of \SI{4}{mm} the relative difference is \SI{200}{\%} and drops at \SI{30}{\%} for \SI{14}{mm}.
 This result was expected as the edge effects become negligible at large thicknesses.
 
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/3D_monoblocks/inventory_vs_thickness.pdf}
-    \caption{Evolution of the inventory with or without recombination at the poloidal gap for several monoblock thicknesses at $t=\SI{1e6}{s}$}
+    \caption{Evolution of the inventory with or without recombination at the poloidal gap for several monoblock thicknesses at $t=\SI{1e6}{s}$.}
     \label{fig: ratio 3D thickness monoblock}
 \end{figure}
 
@@ -205,11 +205,11 @@ Without this extrusion, the case without recombination on the poloidal gap corre
     \label{fig: inventory monoblock vs thickness no gap}
 \end{figure}
 
-\section{Summary}
-The influence of H desorption on poloidal and toroidal gaps between monoblocks was investigated.
-The DEMO baseline geometry (based on an ITER-like concept) was simulated with FESTIM.
-It was shown that taking into account recombination on these gaps could drastically decrease the monoblock H inventory (by several orders of magnitude).
-In other words, this makes the 2D assumption for monoblocks less valid for (1) thin monoblocks (2) long exposure times.
-Indeed, a 2D assumption implies assuming an infinitely thick monoblock (which is totally unrealistic for the ITER and DEMO designs).
-However, this assumption is conservative since it will overestimate the H inventory and the permeation flux to the coolant.
-Moreover, performing 3D simulations is more computationaly expensive than 2D simulations.
+% \section{Summary}
+% The influence of H desorption on poloidal and toroidal gaps between monoblocks was investigated.
+% The DEMO baseline geometry (based on an ITER-like concept) was simulated with FESTIM.
+% It was shown that taking into account recombination on these gaps could drastically decrease the monoblock H inventory (by several orders of magnitude).
+% In other words, this makes the 2D assumption for monoblocks less valid for (1) thin monoblocks (2) long exposure times.
+% Indeed, a 2D assumption implies assuming an infinitely thick monoblock (which is totally unrealistic for the ITER and DEMO designs).
+% However, this assumption is conservative since it will overestimate the H inventory and the permeation flux to the coolant.
+% Moreover, performing 3D simulations is more computationaly expensive than 2D simulations.

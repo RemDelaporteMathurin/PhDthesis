@@ -278,7 +278,7 @@ Finally, to model a convective heat flux when the surface is in contact with a f
 \end{equation}
 where $h$ is the heat transfer coefficient in \si{W.m^{-2}.K^{-1}}, $T_\mathrm{ext}$ is the fluid temperature in \si{K} and $\partial \Omega$ is the domain boundary.
 The heat transfer coefficient can be dependent on the temperature and the flow characteristics.
-It is obtained by computing the Nusselt number from correlations linking it to the Reynolds number of the flow and the Prandtl number of the fluid \sidecite{poirier_correlations_2016} (\textit{eg} Dittus-Boetler, Sieder-State, Gnielinski, ...).
+It is obtained by computing the Nusselt number from correlations linking it to the Reynolds number of the flow and the Prandtl number of the fluid \sidecite{poirier_correlations_2016} (\textit{eg} Dittus-Boetler, Sieder-State, Gnielinski...).
 Once the Nusselt number is known, the heat transfer coefficient $h$ reads:
 \begin{equation}
     h = \frac{\lambda \, \textit{Nu}}{L}
@@ -294,7 +294,7 @@ The code FESTIM \sidecite{delaporte-mathurin_finite_2019} was therefore developp
 
 \subsection{The finite element method: FEniCS}
 FESTIM is based on the Finite Element Method to solve this set of differential equations and boundary conditions.
-Several finite element libraries are available open-source (deal.II \sidecite{arndt_dealii_2021}, MFEM \sidecite{kolev_tzanio_modular_2010}, MOOSE \sidecite{permann_moose_2020}, FreeFEM++ \sidecite{hecht_new_2012}, ...).
+Several finite element libraries are available open-source (deal.II \sidecite{arndt_dealii_2021}, MFEM \sidecite{kolev_tzanio_modular_2010}, MOOSE \sidecite{permann_moose_2020}, FreeFEM++ \sidecite{hecht_new_2012}...).
 The open-source python/C++ package \gls{fenics} \sidecite{alnaes_fenics_2015} was employed.
 The finite element method is a versatile tool that can solve any partial differential equation on an arbitrary geometry in 1D, 2D or 3D.
 The main advantage of this method compared to the finite difference method is the simplicity of its application to complex geometries and unstructured meshes.
@@ -354,7 +354,7 @@ The function space $V$ is defined as:
     V = \{ v \in H^1(\Omega) \ : \ v=u_0 \ \text{on} \ \Gamma_D \}
 \end{equation}
 
-Poisson's equation can now be discretised by restricting the variational problem \ref{eq: weak form 2} to discrete function spaces $V_h$ and $\hat{V}_h$ : find $u_h \in V_h \subset V$
+Poisson's equation can now be discretised by restricting the variational problem \ref{eq: weak form 2} to discrete function spaces $V_h$ and $\hat{V}_h$: find $u_h \in V_h \subset V$
 \begin{equation}
     \int_{\Omega} \nabla u_h \cdot \nabla v  \ dx = \int_{\Omega} f \ v \ dx - \int_{\Gamma_N} g \ v \ ds \quad \forall \ v \in \hat{V}_h \subset \hat{V}
     \label{eq: discrete variational problem}
@@ -381,7 +381,7 @@ $N$ is the number of nodes used to discretise the domain.
 By replacing $u_h$ in Equation \ref{eq: discrete variational problem} with Equation \ref{eq: FEM solution} and varying the basis functions $\hat{\phi}_j$:
 
 \begin{equation}
-    \sum^N_{i=1} U_i \int_\Omega \nabla \phi_i \cdot \nabla \hat{\phi}_j \ dx = \int_\Omega f \ \hat{\phi}_j \ dx - \int_{\Gamma_N} g \ \hat{\phi}_j \ ds , \quad \ j = 1, \ 2, \ ..., \ N
+    \sum^N_{i=1} U_i \int_\Omega \nabla \phi_i \cdot \nabla \hat{\phi}_j \ dx = \int_\Omega f \ \hat{\phi}_j \ dx - \int_{\Gamma_N} g \ \hat{\phi}_j \ ds , \quad \ j = 1, \ 2, \ \ldots, \ N
 \end{equation}
 
 This can be written in a matrix form:
@@ -452,7 +452,7 @@ This greatly improves the performance of the code since less timesteps are neede
 
 Before using the FESTIM code for analysis, it has to be verified and validated.
 The verification \& validation process (often called V\&V) has two goals: (1) to prove that the governing equations are correctly solved and that the code is error free and (2) to demonstrate that the governing equations actually reproduce processes observed experimentally.
-In other words, verification is answering the question \textit{"Are we building the code right?"} and validation is answering the question \textit{"Are we building the right code?"}.
+In other words, verification is answering the question \textit{``Are we building the code right?''} and validation is answering the question \textit{``Are we building the right code?''}.
 
 This Section details the V\&V of FESTIM.
 
@@ -471,7 +471,7 @@ This Section details the V\&V of FESTIM.
 \section{Summary}
 
 The macroscopic rate equations model describing the transport (diffusion and trapping) of H in solids was presented alongside with additional models such as the conservation of chemical potential at interfaces.
-Due to the presence of thermally activated processes (diffusion, trapping, detrapping, surface processes, ...), the heat transfer equation has to be solved numerically.
+Due to the presence of thermally activated processes (diffusion, trapping, detrapping, surface processes...), the heat transfer equation has to be solved numerically.
 All these equations are solved with the newly developed finite element code FESTIM, which heavily relies of \gls{fenics}.
 
 FESTIM has been verified using methods such as the Method of Exact Solutions and the Method of Manufactured Solutions.
