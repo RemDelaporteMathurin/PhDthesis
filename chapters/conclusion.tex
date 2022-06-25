@@ -6,35 +6,57 @@ It will also review the limitations of the study and propose recommandations for
 
 \section*{Key findings}
 
-This study aimed to estimate the tritium inventory in the ITER tungsten \gls{divertor}.
+This study aimed to estimate the tritium inventory in the \gls{iter} tungsten \gls{divertor}.
 One of the objectives was to evaluate the potential influence of helium exposure on the tritium retention.
-The results indicate that, over the operation time of ITER, the \gls{divertor} tritium inventory should remains well below the safety limit.
+The results indicate that, over the operation time of \gls{iter}, the \gls{divertor} tritium inventory should remains well below the safety limit.
 Indeed, this component will not be the limiting factor and if the limit is hit, it would likely be due to other causes (retention in co-deposited layers, other in-vessel components...).
 Moreover, the results suggest that the presence of helium could reduce the tritium inventory.
 
 \section*{Contributions to the field}
-The findings of this PhD research were the subject of several articles as well as talks in international conferences.
 The main contribution is the \gls{festim} code, a hydrogen transport code that has been developed to answer the main questions of the study.
+The first article introducing the \gls{festim} code was published during the master preceding this PhD research \cite{delaporte-mathurin_finite_2019}.
 At the time of writing, \gls{festim} is used by a handful of researchers, engineers and students and applied on other cases.
 Making \gls{festim} available to other researchers (by making it open-source) would greatly benefit the broader community.
 
+The parametric optimisation method used in \refch{Chapter2} now provides an efficient way of automatically fitting experimental data without manually tweaking parameters, saving precious time in the process.
+This method was published in a proceedings article \cite{delaporte-mathurin_parametric_2021}.
+
+The initial monoblock results shown in \refch{Chapter3} were published in several articles \cite{delaporte-mathurin_finite_2019, delaporte-mathurin_parametric_2021, delaporte-mathurin_influence_2021-1}.
 The method of running parametric sub-component simulations and then extract a behaviour law was nothing new.
 However, applying it to the estimation of the \gls{divertor} inventory saved a significant amount of time compared to using the ``brute force'' approach of modelling the whole \gls{divertor} at a time.
-This method can be applied to other components like the \gls{breeding blanket}, where the tritium inventory is also an issue.
+This method was published in 2020 \cite{delaporte-mathurin_parametric_2020}.
+This method can be now be applied to other components like the \gls{breeding blanket}, where the tritium inventory is also an issue.
 
-Finally, the model developed to simulate the growth of helium bubbles in tungsten gives a rapid way of implementing and testing new physical models.
+The model developed to simulate the growth of helium bubbles in tungsten gives a rapid way of implementing and testing new physical models.
+This work was published in 2021 \cite{delaporte-mathurin_influence_2021}.
+
+Finally, during this PhD research, several contributions were made to the open-source \gls{paramak} code and related neutronics tools \cite{shimwell_paramak_2021}.
 
 \section*{Limitations}
-\begin{itemize}
-    \item since the code was not open-sourced, it was sometimes hard to receive help from external experts
-    \item However, using exclusively open-source tools (\gls{fenics}, SALOME, Paraview...), working remotely has not been a technical issue
-    \item Time constraints
-\end{itemize}
+
+Many of the technical limitations of this research lie with the development issues of \gls{festim}.
+Since \gls{festim} was built from scratch, features were added gradually.
+For instance, at the time the simulations in \refsec{influence of exposure conditions} were run, the surface concentration could not be inhomogeneous and directly dependent of the inhomogeneous surface temperature imposed by the imposed heat flux.
+The choice was therefore made to impose an homogeneous surface temperature instead.
+Even though the required feature was added a few months later, re-running all the \gls{festim} simulations was too much time-consuming given the time constraints.
+Many of these development drawbacks could have been alleviated if \gls{festim} was open-sourced, as external community experts could have more easily contributed to its development or bug fixes.
+
+This study also has physical limitations inherent to the assumptions that were made.
+Some of these assumptions are conservative (i.e.\ represent a worst-case scenario) and do not jeopardise the key findings.
+Assumptions were also made as a response to uncertainties.
+For instance, no recombination was assumed on the monoblocks gaps.
+The value of the recombination coefficient at the interface between the coolant and the monoblock also has a high uncertainty as it was measured in vacuum.
+
 
 \section*{Recommandations for future work}
-\begin{itemize}
-    \item Behaviour law should be remade with varying $\varphi_\mathrm{imp} \ R_p$ and $\varphi_\mathrm{heat}$ instead of $c_\mathrm{surface}$ and $T_\mathrm{surface}$
-    \item Inventory in other in-vessel components (like breeding blankets) should be investigated
-    \item Simultaneous H/He exposure to investigate if the He exposure still inhibits the hydrogen trapping
-\end{itemize}
+
+A more accurate behaviour law for the monoblock inventory can be obtained by redoing the parametric study.
+Instead of varying the surface concentration and temperature, one should vary the incident heat flux as well as the product of the implantation range and implanted particle flux $\varphi_\mathrm{imp} \ R_p$.
+Assuming the uncertainty regarding the recombination coefficient of tungsten is lifted, and recombination on gaps cannot be neglected, 3D simulations could also be run for the most exposed monoblocks.
+Hydrogen recombination from CuCrZr in contact with water should also be studied for this can reduce even more the tritium inventory while increasing the permeation flux to the coolant.
+
+To estimate the tritium inventory in the \gls{iter} vacuum vessel, studies should now focus on other components like the \gls{iter} \gls{first wall}, the tritium breeding system, etc.
+
+Regarding the influence of helium on hydrogen transport, future work could involve experimental studies investigating the simultaneous exposure of hydrogen and helium in tungsten to confirm, or infirm the suggested results of this research.
+
 
