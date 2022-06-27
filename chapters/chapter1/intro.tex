@@ -920,7 +920,7 @@ However, the tools currently available did not meet the requirements of either d
 Numerous simulation tools have been developed throughout the years (see \reftab{code comparison}).
 Most of these codes are not able to run multimaterial and/or multidimensional simulations.
 These features are however essential to fully simulate monoblocks (see \refsec{divertor section}).
-Many of them rely on the \gls{fdm} whereas \acrshort{hit} \sidecite{candido_integrated_2020}, Abaqus \sidecite{benannoune_multidimensional_2020} and \gls{achlys} \sidecite{stephen-dixon_aurora-multiphysicsachlys_2021} rely on the \gls{fem}.
+Many of them rely on the \gls{fdm} whereas \acrshort{hit} \sidecite{candido_integrated_2020}, Abaqus \sidecite{benannoune_multidimensional_2020} and \gls{achlys} \sidecite{dixon_aurora-multiphysicsachlys_2021} rely on the \gls{fem}.
 Moreover, some do not have an integrated heat transfer solver - essential for an accurate estimation of temperature fields and therefore thermally activated processes.
 Some of these codes rely on proprietary software like Abaqus or COMSOL for \acrshort{hit} - limiting their accessibility and scalability (parallel computing).
 The code \gls{achlys} meets all these requirements and is the only one available open-source but was only released in mid 2021.
@@ -948,7 +948,7 @@ For all these reasons, the \acrshort{festim} code was developed and used to cond
         \\
         Abaqus \cite{benannoune_multidimensional_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & & Fortran\\
         \\
-        \gls{achlys} \cite{stephen-dixon_aurora-multiphysicsachlys_2021} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & C++\\
+        \gls{achlys} \cite{dixon_aurora-multiphysicsachlys_2021} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & C++\\
         \\
     \end{tabular}
     \caption{Comparison of some hydrogen transport modelling tools.}
