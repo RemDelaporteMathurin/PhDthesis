@@ -1,7 +1,7 @@
 The focus of this Section is the coupled effects of \gls{He} implantation and hydrogen transport.
-To this end, the experiment of Ialovega and co-workers \sidecite{ialovega_hydrogen_2020} is reproduced with the \gls{He} bubble model described in this Chapter coupled to FESTIM.
+To this end, the experiment of Ialovega and co-workers \sidecite{ialovega_hydrogen_2020} is reproduced with the \gls{He} bubble model described in this Chapter coupled to \gls{festim}.
 
-\subsection{Experiment and FESTIM simulation description}
+\subsection{Experiment and \gls{festim} simulation description}
 
 A \SI{100}{\micro\metre} thick tungsten sample was pre-damaged with \SI{75}{eV} He at \SI{1073}{K}.
 The \gls{He} flux was \SI{2.3e22}{m^{-2}.s^{-1}} and the exposure time was \SI{13}{s}.
@@ -32,7 +32,7 @@ The quantities $c_b$ and $\langle r_b \rangle$ have been computed from the model
 
 
 \begin{table}[!h]
-    \caption{Trap properties used to fit the TDS spectra. The density distribution $n_b$ as well as detrapping energies $E_p$ are assumed constant across TDS experiments.}
+    \caption{Trap properties used to fit the \gls{tds} spectra. The density distribution $n_b$ as well as detrapping energies $E_p$ are assumed constant across TDS experiments.}
     \begin{tabular}{r l l l l l}
     \\
      & $k_0$ & $E_k$ & $p_0$ & $E_p$ & $n$ \\
@@ -50,7 +50,7 @@ The quantities $c_b$ and $\langle r_b \rangle$ have been computed from the model
 \end{table}
 
 The diffusion coefficient of deuterium (\si{m^2.s^{-1}}) was set to $4.1\times 10 ^{-7} \exp{-0.39/k_B T}$ \sidecite{frauenfelder_solution_1969}.
-The \SI{250}{eV} deuterium implantation was represented by a Gaussian distrubiton with a mean implantation depth \SI{10}{nm} and a standard deviation of \SI{4.5}{nm} (calculated from SRIM \sidecite{ziegler_srim_2010}).
+The \SI{250}{eV} deuterium implantation was represented by a Gaussian distrubiton with a mean implantation depth \SI{10}{nm} and a standard deviation of \SI{4.5}{nm} (calculated from \gls{srim} \sidecite{ziegler_srim_2010}).
 Finally, an instantaneous recombination was assumed on the surfaces.
 
 Using the parametric optimisation method developed in \sidecite{delaporte-mathurin_parametric_2021}, the free parameters are identified.
@@ -113,12 +113,12 @@ One possible interpretation of the results is:
 \begin{itemize}
     \item Initial state: the sample has some pre-existing defects %(proof from PAS that there are pre-existing defects before He implantation)
     \item \gls{He} implantation: all pre-existing defects are saturated with \gls{He} and bubbles are formed
-    \item 1st D implantation: D can only be trapped around bubbles since defects are saturated with \gls{He}
-    \item 1st \gls{tds} (up to \SI{1250}{K}): D is detrapped from bubbles is desorbed (\SI{550}{K} peak), \gls{He} dissociates from pre-existing defects 
-    \item 2nd D implantation: D is trapped around bubbles and in the non-saturated defects
-    \item 2nd \gls{tds} (up to \SI{1350}{K}): D is detrapped from bubbles is desorbed (\SI{550}{K} peak) and from non-saturated defects (peaks 400K, 450K and 500K) + \gls{He} trapped in deeper traps dissociate (because the \gls{tds} goes to higher temperatures)
-    \item 3rd to 5th D implantations: D is trapped around bubbles and in pre-existing defects
-    \item 3rd to 5th \gls{tds}: D is detrapped from bubbles and pre-existing defects (now more available than at the 2nd \gls{tds})
+    \item 1st \gls{D} implantation: \gls{D} can only be trapped around bubbles since defects are saturated with \gls{He}
+    \item 1st \gls{tds} (up to \SI{1250}{K}): \gls{D} is detrapped from bubbles is desorbed (\SI{550}{K} peak), \gls{He} dissociates from pre-existing defects 
+    \item 2nd \gls{D} implantation: \gls{D} is trapped around bubbles and in the non-saturated defects
+    \item 2nd \gls{tds} (up to \SI{1350}{K}): \gls{D} is detrapped from bubbles is desorbed (\SI{550}{K} peak) and from non-saturated defects (peaks 400K, 450K and 500K) + \gls{He} trapped in deeper traps dissociate (because the \gls{tds} goes to higher temperatures)
+    \item 3rd to 5th \gls{D} implantations: \gls{D} is trapped around bubbles and in pre-existing defects
+    \item 3rd to 5th \gls{tds}: \gls{D} is detrapped from bubbles and pre-existing defects (now more available than at the 2nd \gls{tds})
 \end{itemize}
 This interpretation is represented (in a simplified way) on \reffig{ialovega experiment interpretation}.
 

@@ -7,11 +7,11 @@ Finally, the model is compared against experimental data.
 \begin{figure*}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter4/profiles_tendrils.pdf}
-    \caption{He clusters concentration profiles in the tendril at \SI{500}{K}, \SI{1000}{K} and \SI{1500}{K}. Comparison between the current implementation (solid) and Faney's results \cite{faney_spatially_2015} (dashed).  Discrepancies at high temperature are likely due to the use of a different set of dissociation energies. At \SI{1000}{K} and \SI{1500}{K} the dashed and solid profiles of He$_1$ overlap.}
+    \caption{He clusters concentration profiles in the \gls{tendril} at \SI{500}{K}, \SI{1000}{K} and \SI{1500}{K}. Comparison between the current implementation (solid) and Faney's results \cite{faney_spatially_2015} (dashed).  Discrepancies at high temperature are likely due to the use of a different set of dissociation energies. At \SI{1000}{K} and \SI{1500}{K} the dashed and solid profiles of He$_1$ overlap.}
     \labfig{tendril profiles}
 \end{figure*}
 
-The tendril application case described in \cite{faney_spatially_2015} was simulated in 1D with the current implementation and the results were compared.
+The \gls{tendril} application case described in \cite{faney_spatially_2015} was simulated in 1D with the current implementation and the results were compared.
 
 The domain size is \SI{30}{nm} and the volumetric source term is described as follows:
 \begin{equation}
@@ -19,16 +19,16 @@ The domain size is \SI{30}{nm} and the volumetric source term is described as fo
 \end{equation}
 where $\varphi_\mathrm{imp} = \SI{5e25}{m^{-2} s^{-1}}$ is the implanted He flux and $f(x)$ is a Gaussian distribution with a mean value $\mu = R_p = \SI{1.5}{nm}$ and a standard deviation $\sigma = \SI{1}{nm}$ which corresponds to a \SI{100}{eV} He implantation based on \gls{srim} computations \sidecite{ziegler_srim_2010}.
 
-Mobile He clusters concentrations were set to zero at the tendril's surfaces ($x=\SI{0}{nm}$ and $x=\SI{30}{nm}$).
+Mobile He clusters concentrations were set to zero at the \gls{tendril}'s surfaces ($x=\SI{0}{nm}$ and $x=\SI{30}{nm}$).
 
 Concentration profiles computed by the current implementation showed good agreement with the ones obtained by Faney et al.\ \cite{faney_spatially_2015} (see \reffig{tendril profiles}).
 The discrepancies are likely due to a difference in the set of dissociation energies that have been used.
 Indeed, at low temperature, where dissociation is not activated, the discrepancies were very small whereas at high temperature, differences increased because dissociation became more dominant.
 When $c_b$ is small compared to $c_{\mathrm{He}_1}$, the equilibrium of $\mathrm{He}_1$ is independent of these dissociation energies and the profiles for $\mathrm{He}_1$ are identical.
 
-Moreover, increasing the temperature tended to inhibit bubble formation in the tendril.
+Moreover, increasing the temperature tended to inhibit bubble formation in the \gls{tendril}.
 This was explained by a greater increase in the dissociation rate and in losses at surfaces than the increase in the clustering rate.
-This observation is in agreement with MD results simulating He implantation in tendrils \sidecite{wei_better_2020, wei_understanding_2019}.
+This observation is in agreement with \gls{md} results simulating He implantation in \glspl{tendril} \sidecite{wei_better_2020, wei_understanding_2019}.
 The current implementation and the additional assumptions that were made are therefore valid.
 
 \subsection{Half-slab case} \labsec{half slab}
@@ -40,28 +40,28 @@ The current implementation and the additional assumptions that were made are the
     \labfig{profiles half slab}
 \end{figure}
 
-He transport was simulated in a 1D semi-infinite W slab.
+\gls{He} transport was simulated in a 1D semi-infinite \gls{W} slab.
 This case is the standard case describing the main quantities of interest of the parametric study performed in \refsec{parametric study}.
 
-The domain size is \SI{0.1}{mm} which is much greater than the penetration depth of He in the simulations.
-\SI{100}{eV} He were implanted in the first \SI{1.5}{nm} as in \refsec{tendril case}.
+The domain size is \SI{0.1}{mm} which is much greater than the penetration depth of \gls{He} in the simulations.
+\SI{100}{eV} \gls{He} were implanted in the first \SI{1.5}{nm} as in \refsec{tendril case}.
 The implanted flux was \SI{1e22}{m^{-2} s^{-1}} and the temperature was \SI{1000}{K}.
 
-At low \glspl{fluence}, He diffused really quickly into the bulk (see \reffig{profiles half slab}) and the bubbles' concentration $c_b$ was found to be zero.
-As the \gls{fluence} increased, bubbles started to appear and acted as strong sinks for mobile He.
+At low \glspl{fluence}, \gls{He} diffused really quickly into the bulk (see \reffig{profiles half slab}) and the bubbles' concentration $c_b$ was found to be zero.
+As the \gls{fluence} increased, bubbles started to appear and acted as strong sinks for mobile \gls{He}.
 This lead to a great decrease in the mobile He concentration profile.
 
 It is worth noticing the maximum of $c_b$ was not located at the maximum of $c_{\mathrm{He}_1}$ which is the implantation depth $R_p$.
-This was explained by the diffusion of small mobile clusters as shown by analytical models \sidecite{krasheninnikov_helium_2014}.
-As He clusters, small mobile clusters diffuse deeper into the bulk until \gls{trap mutation} occurs and bubbles nucleons (clusters with more than 6 He) are created.
+This was explained by the \gls{diffusion} of small mobile clusters as shown by analytical models \sidecite{krasheninnikov_helium_2014}.
+As \gls{He} clusters, small mobile clusters diffuse deeper into the bulk until \gls{trap mutation} occurs and bubbles nucleons (clusters with more than 6 \gls{He}) are created.
 From that point, bubbles are formed relatively far from the surface.
-Because He is implanted in the first nanometres, $c_{\mathrm{He}_1}$ is maximum at $R_p = \SI{1.5}{nm}$ and interactions with bubbles are stronger in this region.
+Because \gls{He} is implanted in the first nanometres, $c_{\mathrm{He}_1}$ is maximum at $R_p = \SI{1.5}{nm}$ and interactions with bubbles are stronger in this region.
 This tends to draw the maximum location of $c_b$ towards the surface.
 
-The He content in bubbles $\langle i_b \rangle$ and the radius $\langle r_b \rangle$ were computed.
+The \gls{He} content in bubbles $\langle i_b \rangle$ and the radius $\langle r_b \rangle$ were computed.
 After \SI{10}{s} of implantation, bubbles located in the near surface contained up to \SI{3e7}{He}.
 The maximum of $\langle r_b \rangle$ was found to be very close to the surface at approximately \SI{2}{nm} (see \reffig{profiles rb half slab}).
-This is explained by the high concentration of mobile He in this near surface region.
+This is explained by the high concentration of mobile \gls{He} in this near surface region.
 Moreover, a bursting zone can be defined by the region where $\langle r_b \rangle$ is greater than the depth of the bubble.
 In this region, bubble of this size would have likely burst.
 % This result was in good agreement with the He bubbles observations performed by Ialovega et al.\ on W \sidecite{ialovega_hydrogen_2020}.
@@ -69,25 +69,25 @@ In this region, bubble of this size would have likely burst.
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter4/half_slab/profile_rb.pdf}
-    \caption{Profile of mean bubble radius $\langle r_b \rangle$ as a function of depth $x$ in W exposed to \SI{100}{eV} He at \SI{e22}{m^{-2}.s^{-1}} and \SI{1000}{K}.}
+    \caption{Profile of mean bubble radius $\langle r_b \rangle$ as a function of depth $x$ in \gls{W} exposed to \SI{100}{eV} \gls{He} at \SI{e22}{m^{-2}.s^{-1}} and \SI{1000}{K}.}
     \labfig{profiles rb half slab}
 \end{figure}
 
 \begin{figure*}
     \centering
     \includegraphics[width=0.75\linewidth]{Figures/Chapter4/half_slab/average_content_radius.pdf}
-    \caption{Average helium content $\langle i \rangle$ and average radius $\langle r \rangle$ in all clusters (mobile and bubbles) in W exposed to \SI{100}{eV} He at \SI{e22}{m^{-2}.s^{-1}} and \SI{1000}{K}.}
+    \caption{Average helium content $\langle i \rangle$ and average radius $\langle r \rangle$ in all clusters (mobile and bubbles) in \gls{W} exposed to \SI{100}{eV} \gls{He} at \SI{e22}{m^{-2}.s^{-1}} and \SI{1000}{K}.}
     \labfig{content and radius}
 \end{figure*}
 
-From this average He content in bubbles and from Equations \refeq{radius average} and \refeq{radius pure He} expressing the clusters radii, the average radius $\langle r \rangle$ can be computed as:
+From this average \gls{He} content in bubbles and from Equations \refeq{radius average} and \refeq{radius pure He} expressing the clusters radii, the average radius $\langle r \rangle$ can be computed as:
 
 \begin{equation}
         \langle r \rangle = \frac{\sum\limits_{i=1}^\infty c_i r_i}{\sum\limits_{i=1}^\infty c_i}
         = \frac{\sum\limits_{i=1}^N c_i r_i + c_b \langle r_b \rangle }{\sum\limits_{i=1}^N c_i + c_b}
 \end{equation}
 
-The average content of He in all clusters $\langle i \rangle$ is computed similarly:
+The average content of \gls{He} in all clusters $\langle i \rangle$ is computed similarly:
 \begin{equation}
         \langle i \rangle = \frac{\sum\limits_{i=1}^\infty c_i i}{\sum\limits_{i=1}^\infty c_i}
         = \frac{\sum\limits_{i=1}^N c_i i + c_b \langle i_b \rangle }{\sum\limits_{i=1}^N c_i + c_b}
@@ -132,7 +132,7 @@ Behaviour laws are identified and can be used to obtain information on He transp
     \begin{subfigure}{0.5\linewidth}
         \centering
         \includegraphics[width=\linewidth]{Figures/Chapter4/parametric study/mean_ib_T_phi.pdf}
-        \caption{Average He content in bubbles $\Bar{\langle i_b \rangle} = I / I_b$.}
+        \caption{Average \gls{He} content in bubbles $\Bar{\langle i_b \rangle} = I / I_b$.}
         \labfig{mean ib T phi}
     \end{subfigure}%
     \begin{subfigure}{0.5\linewidth}
@@ -141,7 +141,7 @@ Behaviour laws are identified and can be used to obtain information on He transp
         \caption{Location of max $\langle i_b \rangle$.}
         \labfig{x max ib T phi}
     \end{subfigure}
-    \caption{Evolution of quantities as a function of the implanted flux and temperature after \SI{1}{h} of \SI{100}{eV} He exposure. Grey crosses correspond to simulations points.}
+    \caption{Evolution of quantities as a function of the implanted flux and temperature after \SI{1}{h} of \SI{100}{eV} \gls{He} exposure. Grey crosses correspond to simulations points.}
     \labfig{T phi quantities}
 \end{figure*}
 
@@ -177,7 +177,7 @@ After \SI{1}{h} of exposure, the bubbles inventory $I_\mathrm{bubbles}$ shows a 
 $I_\mathrm{bubbles}$ varies from \SI{4e12}{\text{bubbles } m^{-2}} at high temperature and low flux to \SI{2e19}{\text{bubbles } m^{-2}} at low temperature and high flux.
 
 % He inventory
-The He inventory $I$ varies from \SI{8e16}{m^{-2}} at high temperature and low flux to \SI{e25}{m^{-2}} at low temperature and high flux (see \reffig{He inventory T phi}).
+The \gls{He} inventory $I$ varies from \SI{8e16}{m^{-2}} at high temperature and low flux to \SI{e25}{m^{-2}} at low temperature and high flux (see \reffig{He inventory T phi}).
 For temperatures above \SI{600}{K}, the temperature dependence is rather weak compared to the flux dependence.
 
 % mean ib
@@ -263,7 +263,7 @@ The depth of the maximum of $\langle i_b \rangle$ tended to decrease with time a
 \end{figure}
 
 For every $(T, \varphi_\mathrm{imp})$ couple, $I_\mathrm{bubbles}$ increased rapidly at low \glspl{fluence} until reaching a maximum at high \glspl{fluence} (see \reffig{inventory bubbles time}).
-On the other hand, the mean He content $\Bar{\langle i_b \rangle}$ was constant at low \glspl{fluence} and increased as a power law of time at high \glspl{fluence} (see \reffig{mean ib time}).
+On the other hand, the mean \gls{He} content $\Bar{\langle i_b \rangle}$ was constant at low \glspl{fluence} and increased as a power law of time at high \glspl{fluence} (see \reffig{mean ib time}).
 The evolution of $\Bar{\langle i_b \rangle}$ can be described as:
 \begin{equation}
     \Bar{\langle i_b \rangle} = N + 1 + a \; t^b
@@ -271,7 +271,7 @@ The evolution of $\Bar{\langle i_b \rangle}$ can be described as:
 \end{equation}
 where $N=6$ in this model, $a$ and $b$ depend on $(T, \varphi_\mathrm{imp})$.
 The choice of $N=6$ in this model is detailed in \refsec{impact of N}.
-The total He inventory $I$ being the product of these two quantities, two different growth rates were observed (see \reffig{He inventory time} and \reffig{two regimes}).
+The total \gls{He} \gls{inventory} $I$ being the product of these two quantities, two different growth rates were observed (see \reffig{He inventory time} and \reffig{two regimes}).
 
 This phenomenon can be attributed to two different regimes.
 The first regime is the nucleation regime where new bubbles nucleons are created (i.e.\ $c_b$ and $I_\mathrm{bubbles}$ increase).
@@ -281,7 +281,7 @@ In this regime, $c_b$ is high enough for interactions between bubbles and mobile
 Implanted interstitial He atoms ($c_{\mathrm{He}_1}$) therefore interact preferably with bubbles rather than clustering with other interstitial He atoms.
 This means that no additional bubbles nucleons are created (i.e.\ $c_b$ reaches a maximum).
 Because interactions between bubbles and mobile He are strong, the term $\langle k_b^+ \rangle c_1 c_b$ in Equation \refeq{temporal evolution grouping} becomes significant and the He content increases (i.e.\ $\Bar{\langle i_b \rangle}$ increases).
-This is illustrated by the thickness of the interaction arrows in \reffig{clustering sketch}.
+This is illustrated by the thickness of the arrows in \reffig{clustering sketch}.
 
 
 \subsubsection{Influence of $N$} \labsec{impact of N}
@@ -307,14 +307,14 @@ This minimum value corresponds to the number of mobile clusters which have to be
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter4/bubbles_tem.jpg}
-    \caption{TEM images of W after exposure to \SI{75}{eV} He at \SI{2.3e22}{m^{-2}.s^{-1}} and \SI{1053}{K} for \SI{13}{s} showing bubbles that have burst, large size bubbles at the near surface and small size bubbles in the bulk.}
+    \caption{\gls{tem} images of W after exposure to \SI{75}{eV} He at \SI{2.3e22}{m^{-2}.s^{-1}} and \SI{1053}{K} for \SI{13}{s} showing bubbles that have burst, large size bubbles at the near surface and small size bubbles in the bulk.}
     \labfig{tem images}
 \end{figure}
 
 \begin{figure} [h!]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter4/comparison_model_exp.pdf}
-    \caption{Comparison of experimental results with simulations for W implanted with \SI{75}{eV} He at \SI{2.3e22}{m^{-2}.s^{-1}} and \SI{1053}{K} for \SI{13}{s}. Error bars correspond to the lowest and highest radius in the TEM image.}
+    \caption{Comparison of experimental results with simulations for W implanted with \SI{75}{eV} He at \SI{2.3e22}{m^{-2}.s^{-1}} and \SI{1053}{K} for \SI{13}{s}. Error bars correspond to the lowest and highest radius in the \gls{tem} image.}
     \labfig{exp model comparison}
 \end{figure}
 
@@ -325,8 +325,8 @@ This minimum value corresponds to the number of mobile clusters which have to be
 
 He implantation experiments were performed on W in the linear plasma device PSI--2 \sidecite{kreter_linear_2015}.
 W was irradiated with \SI{75}{eV} He at \SI{2.3e22}{m^{-2}.s^{-1}} and \SI{1053}{K} for \SI{13}{s}.
-A thin lamella for cross-sectional observations was prepared using the FIB (Focused Ion Beam) technique with a Dual Beam FIB (FEI Helios 600 NanoLab).
-Prior to FIB cutting, the surface of the sample was coated with a SiO layer for better contrast and then with a protective platinum layer to avoid damaging the surface during the lamella preparation.
+A thin lamella for cross-sectional observations was prepared using the \gls{fib} technique with a Dual Beam FIB (FEI Helios 600 NanoLab).
+Prior to \gls{fib} cutting, the surface of the sample was coated with a SiO layer for better contrast and then with a protective platinum layer to avoid damaging the surface during the lamella preparation.
 Cross-sectional observations of the He-implanted W were performed using \gls{tem} in a TEM FEI Titan 80-300 apparatus.
 
 A typical \gls{tem} image of the lamella is presented in \reffig{tem images}.
