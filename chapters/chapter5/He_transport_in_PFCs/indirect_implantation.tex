@@ -5,7 +5,7 @@ This section will focus on comparing these two indirect sources with direct heli
 
 In combination with the \gls{paramak} code \sidecite{shimwell_paramak_2021} used for creating the geometry, a neutronics simulation was run to assess the total quantity of helium generation in a monoblock under neutron irradiation with the \gls{openmc} code \sidecite{romano_openmc_2015}, a modern open-source Monte-Carlo neutron and photon transport code.
 In this simulation, a neutron source was placed above the monoblock and the total helium production was tallied.
-The neutron source corresponds to a \SI{500}{MW} DT source, which gives a neutron generation rate of \SI{1.8e20}{neutrons.s^{-1}} (based on the energy produced by the DT fusion reaction).
+The neutron source corresponds to a \SI{500}{MW} DT neutron source, which gives a neutron generation rate of \SI{1.8e20}{neutrons.s^{-1}} (based on the energy produced by the DT fusion reaction).
 50 batches of 1 million neutrons were simulated in order to reduce the stochastic error inherant to Monte-Carlo methods.
 
 The production of helium was found to be more important close to the top surface and to the neutron source (see \reffig{transmutation helium in monoblock}).
@@ -35,7 +35,7 @@ Other \glspl{monoblock} of the \gls{divertor} will be tilted and shadowed by oth
 
 \subsection{Tritium decay}
 
-The generation of helium via tritium decay was computed from FESTIM simulations of hydrogen transport in \glspl{monoblock}.
+The generation of helium via tritium decay was computed from \gls{festim} simulations of hydrogen transport in \glspl{monoblock}.
 For this case, a volumetric source was added to take the radioactive decay into account.
 \refeq{mobile} and \refeq{trapped} can be written as:
 
@@ -52,7 +52,7 @@ The decay constant is expressed from the tritium radioactive half-life $\tau_{1/
     \lambda_\mathrm{decay} = \frac{\ln 2}{\tau_{1/2}} \approx \SI{1.77e-9}{s^{-1}}
 \end{equation}
 
-The generation rate of helium from T decay is directly proportional to the hydrogen (tritium) retention can therefore be expressed as $\lambda_\mathrm{decay} (c_\mathrm{m} + \sum c_{\mathrm{t}, i})$.
+The generation rate of helium from tritium decay is directly proportional to the hydrogen (tritium) retention can therefore be expressed as $\lambda_\mathrm{decay} (c_\mathrm{m} + \sum c_{\mathrm{t}, i})$.
 In order to remain conservative, it was computed at steady state.
 
 The maximum generation rate of helium in the \gls{monoblock} was found to be \SI{6.5e12}{m^{-3}.s^{-1}} (see \reffig{he generation from t decay}).
