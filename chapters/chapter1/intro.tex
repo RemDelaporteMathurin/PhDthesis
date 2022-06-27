@@ -238,17 +238,18 @@ Using \gls{cfc} also increased the \gls{plasma} performances greatly \sidecite{f
 Unfortunately, graphite being porous, hydrogen (and therefore tritium) retention was high \sidecite{sugiyama_measurement_2004}.
 Plus carbon can react with \gls{plasma} particles forming methane.
 Methane is then deposited on locations hard to access in the reactor \gls{trapping} tritium even more.
-For these two safety reasons, \gls{cfc} was replaced with tungsten or beryllium (or both).
+For these two safety reasons, \gls{cfc} was replaced with \Gls{W} or \gls{Be} (or both).
 
 \Gls{W} has a very high melting point (\SI{3422}{\celsius}) and retains less tritium \sidecite{pajuste_tritium_2021}.
-However, tungsten being a high-Z element, eroded tungsten will make the \gls{plasma} radiate and cool it down.
-For this reason, the \acrshort{iter} divertor will be made of tungsten but the first wall (which has a large surface area) will be made of beryllium.
+However, \Gls{W} being a high-Z element, eroded \Gls{W} will make the \gls{plasma} radiate and cool it down.
+For this reason, the \acrshort{iter} divertor will be made of \Gls{W} but the first wall (which has a large surface area) will be made of \gls{Be}.
 
 \subsection{Divertor}\labsec{divertor section}
 
 In a fusion reactor, heat and particles (fusion ashes) need to be extracted.
 In most \glspl{tokamak}, the escaping \gls{plasma} is diverted towards a dedicated component that is heat-resistant.
 Such a configuration is called a \emph{\gls{divertor}} configuration.
+The \gls{divertor} allows the creation of a \gls{x-point} and a \gls{separatrix} decoupling the \gls{plasma} edge from the walls. 
 The X-divertor is a common configuration (used in \acrshort{west}, \acrshort{jet}, \acrshort{iter}) but more advanced configurations exist such as the Super-X \gls{divertor} (\acrshort{mast-u}) \sidecite{havlickova_effect_2015}, X-Point Target (\acrshort{sparc}) \sidecite{rodriguez-fernandez_overview_2022, kuang_divertor_2020} or the Snowflake configurations \sidecite{ryutov_snowflake_2015}.
 
 \begin{figure} [h]
@@ -275,7 +276,7 @@ The inner and outer \glspl{strike point} (respectively \acrshort{isp} and \acrsh
 A prototype of the \gls{ivt} is shown on \reffig{inner target photo}.
 These elements are themselves made of rows, called \glspl{pfuLabel}, of small unit bricks of a few dozens of millimetres called \glspl{monoblock}.
 In \acrshort{iter}, the \gls{ivt} has 16 \glspl{pfuLabel} and the \gls{ovt} has 22 \glspl{pfuLabel}.
-\Glspl{monoblock} are typically made of a tungsten substrate with a cooling pipe running through.
+\Glspl{monoblock} are typically made of a \Gls{W} substrate with a cooling pipe running through.
 This cooling channel is necessary to keep the component's temperature below its operating limit and exhaust heat.
 
 Several \gls{monoblock} designs are currently studied for DEMO with varying dimensions, different materials for the cooling pipe or the interlayer, etc. \sidecite{vizvary_european_2020, huang_tungsten_2016, hirai_use_2016, domptail_design_2020}.
@@ -296,7 +297,7 @@ In \acrshort{iter}, \glspl{monoblock} will be \SI{12}{mm}-thick whereas they wil
     \labfig{inner target photo}
 \end{figure}
 
-Studies on ITER-like \glspl{monoblock} have demonstrated the resistance of the \gls{monoblock} design to high heat loads while investigating the effect of tungsten recrystallisation \sidecite{durif_impact_2019, durif_modelisation_2019, visca_manufacturing_2018} (see \reffig{monoblock_temperature_exp_model}).
+Studies on ITER-like \glspl{monoblock} have demonstrated the resistance of the \gls{monoblock} design to high heat loads while investigating the effect of \Gls{W} recrystallisation \sidecite{durif_impact_2019, durif_modelisation_2019, visca_manufacturing_2018} (see \reffig{monoblock_temperature_exp_model}).
 
 \begin{figure} [h]
     \centering
@@ -367,7 +368,7 @@ The European candidates for \glspl{breeding blanket} in DEMO are the \gls{wcll} 
 
 The \gls{tbr} is defined by the number of tritium atoms produced by generated neutrons.
 In order to ensure tritium self-sufficiency, the \gls{tbr} of the blanket must be greater than or equal to one \sidecite{abdou_blanketfirst_2015}.
-A \gls{tbr} greater than one can only be obtained by neutron multiplication with lead or beryllium.
+A \gls{tbr} greater than one can only be obtained by neutron multiplication with lead or \gls{Be}.
 
 Moreover, the \gls{tbr} must account for:
 \begin{itemize}
@@ -919,7 +920,7 @@ However, the tools currently available did not meet the requirements of either d
 Numerous simulation tools have been developed throughout the years (see \reftab{code comparison}).
 Most of these codes are not able to run multimaterial and/or multidimensional simulations.
 These features are however essential to fully simulate monoblocks (see \refsec{divertor section}).
-Many of them rely on the \gls{fdm} whereas \acrshort{hit} \sidecite{candido_integrated_2020}, Abaqus \sidecite{benannoune_multidimensional_2020} and \gls{achlys} \sidecite{stephen-dixon_aurora-multiphysicsachlys_2021} rely on the \gls{fem}.
+Many of them rely on the \gls{fdm} whereas \acrshort{hit} \sidecite{candido_integrated_2020}, Abaqus \sidecite{benannoune_multidimensional_2020} and \gls{achlys} \sidecite{dixon_aurora-multiphysicsachlys_2021} rely on the \gls{fem}.
 Moreover, some do not have an integrated heat transfer solver - essential for an accurate estimation of temperature fields and therefore thermally activated processes.
 Some of these codes rely on proprietary software like Abaqus or COMSOL for \acrshort{hit} - limiting their accessibility and scalability (parallel computing).
 The code \gls{achlys} meets all these requirements and is the only one available open-source but was only released in mid 2021.
@@ -941,13 +942,13 @@ For all these reasons, the \acrshort{festim} code was developed and used to cond
         \\
         \acrshort{mhims} \cite{hodille_study_2016} & $\checkmark$ & & & & & & Fortran \\
         \\
-        \acrshort{tessim} \cite{schmid_transport_2014} & $\checkmark$ & & & & & & \\
+        \acrshort{tessim} \cite{schmid_transport_2014} & $\checkmark$ & & & $\checkmark$ & & & \\
         \\
         \acrshort{hit} \cite{candido_integrated_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & & COMSOL\\
         \\
         Abaqus \cite{benannoune_multidimensional_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & & Fortran\\
         \\
-        \gls{achlys} \cite{stephen-dixon_aurora-multiphysicsachlys_2021} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & C++\\
+        \gls{achlys} \cite{dixon_aurora-multiphysicsachlys_2021} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & C++\\
         \\
     \end{tabular}
     \caption{Comparison of some hydrogen transport modelling tools.}
