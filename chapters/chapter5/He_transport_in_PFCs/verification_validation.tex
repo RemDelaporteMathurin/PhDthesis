@@ -3,17 +3,19 @@
 \begin{figure*}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter4/profiles_tendrils.pdf}
-    \caption{He clusters concentration profiles in the \gls{tendril} at \SI{500}{K}, \SI{1000}{K} and \SI{1500}{K}. Comparison between the current implementation (solid) and Faney's results \cite{faney_spatially_2015} (dashed).  Discrepancies at high temperature are likely due to the use of a different set of dissociation energies. At \SI{1000}{K} and \SI{1500}{K} the dashed and solid profiles of He$_1$ overlap.}
+    \caption{He clusters concentration profiles in the \gls{tendril} at \SI{500}{K}, \SI{1000}{K} and \SI{1500}{K} under \SI{100}{eV} He exposure at \SI{1e22}{m^{-2}.s^{-1}} at a fluence of \SI{5e25}{m^{-2}}. Comparison between the current implementation (solid) and Faney's results \cite{faney_spatially_2015} (dashed).}
     \labfig{tendril profiles}
 \end{figure*}
 
-The \gls{tendril} application case described in \cite{faney_spatially_2015} was simulated in 1D with the current implementation and the results were compared.
+The current implementation was compared to literature results\cite{faney_spatially_2015}.
+Helium exposure in a \gls{tendril} was simulated in 1D.
+The helium flux is \SI{1e22}{m^{-2}.s^{-1}} and the fluence was \SI{5e25}{m^{-2}}.
 
 The domain size is \SI{30}{nm} and the volumetric source term is described as follows:
 \begin{equation}
     \Gamma(x) = \varphi_\mathrm{imp} \; f(x) 
 \end{equation}
-where $\varphi_\mathrm{imp} = \SI{5e25}{m^{-2} s^{-1}}$ is the implanted He flux and $f(x)$ is a Gaussian distribution with a mean value $\mu = R_p = \SI{1.5}{nm}$ and a standard deviation $\sigma = \SI{1}{nm}$ which corresponds to a \SI{100}{eV} He implantation based on \gls{srim} computations \sidecite{ziegler_srim_2010}.
+where $\varphi_\mathrm{imp} = \SI{1e22}{m^{-2} s^{-1}}$ is the implanted He flux and $f(x)$ is a Gaussian distribution with a mean value $\mu = R_p = \SI{1.5}{nm}$ and a standard deviation $\sigma = \SI{1}{nm}$ which corresponds to a \SI{100}{eV} He implantation based on \gls{srim} computations \sidecite{ziegler_srim_2010}.
 
 Mobile He clusters concentrations were set to zero at the \gls{tendril}'s surfaces ($x=\SI{0}{nm}$ and $x=\SI{30}{nm}$).
 
