@@ -45,6 +45,9 @@ Other \glspl{monoblock} of the \gls{divertor} will be tilted and shadowed by oth
 
 The generation of helium via tritium decay was computed from \gls{festim} simulations of hydrogen transport in \glspl{monoblock}.
 For this case, a volumetric source was added to take the radioactive decay into account.
+The materials and trapping parameters can be found in \refch{Chapter3}.
+The incident heat flux was set to \SI{10}{MW.m^{-2}}, the implanted particle flux to \SI{1.61e22}{m^{-2}.s^{-1}}, the implantation range to \SI{9.52e-10}{m}.
+
 \refeq{mobile} and \refeq{trapped} can be written as:
 
 \begin{equation}
@@ -75,7 +78,14 @@ This is order of magnitudes below the generation from direct implantation.
 \end{figure}
 
 
-When comparing the production of helium from indirect sources with the quantity helium implanted from the plasma, it appears that the indirect sources are negligible (see \reffig{comparison helium generation}).
+The volumetric source of helium $\Gamma$ due to direct implantation can be calculated by:
+\begin{equation}
+    \Gamma = \varphi_\mathrm{imp} * f(x)
+\end{equation}
+where $\varphi_\mathrm{imp}$ is the implanted helium flux and $f(x)$ is a gaussian distribution centered on $R_p=\SI{1.5}{nm}$ and a width $\sigma=\SI{1.0}{nm}$.
+
+When comparing the production of helium from indirect sources with the quantity helium implanted from the plasma $\Gamma$, it appears that the indirect sources are negligible in the exposed region (see \reffig{comparison helium generation}).
+Indirect helium production may become dominant in bulk regions - though may not necessarily be enough to produce helium bubbles.
 
 \begin{figure}
     \centering
