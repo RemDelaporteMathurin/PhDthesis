@@ -18,9 +18,16 @@ where $\varphi_\mathrm{imp} = \SI{5e25}{m^{-2} s^{-1}}$ is the implanted He flux
 Mobile He clusters concentrations were set to zero at the \gls{tendril}'s surfaces ($x=\SI{0}{nm}$ and $x=\SI{30}{nm}$).
 
 Concentration profiles computed by the current implementation showed good agreement with the ones obtained by Faney et al.\ \cite{faney_spatially_2015} (see \reffig{tendril profiles}).
-The discrepancies are likely due to a difference in the set of dissociation energies that have been used.
-Indeed, at low temperature, where dissociation is not activated, the discrepancies were very small whereas at high temperature, differences increased because dissociation became more dominant.
-When $c_b$ is small compared to $c_{\mathrm{He}_1}$, the equilibrium of $\mathrm{He}_1$ is independent of these dissociation energies and the profiles for $\mathrm{He}_1$ are identical.
+The discrepancies are likely due to a difference in the set of dissociation energies that have been used as these energies have an impact on the concentration profiles (see \reffig{parametric study dissociation energies}).
+Indeed, at low temperature, where dissociation is not activated, the discrepancies were rather small whereas at high temperature, differences increased because dissociation became more dominant.
+
+\begin{figure*}
+    \includegraphics[width=\linewidth]{Figures/Chapter5/parametric_study_dissociation_energies.pdf}
+    \caption{Helium clusters concentration profiles with dissociation energies varying from -\SI{0.5}{eV} (dash-point) to +\SI{0.5}{eV} (dash).}
+    \labfig{parametric study dissociation energies}
+\end{figure*}
+
+% When $c_b$ is small compared to $c_{\mathrm{He}_1}$, the equilibrium of $\mathrm{He}_1$ is independent of these dissociation energies and the profiles for $\mathrm{He}_1$ are identical.
 
 Moreover, increasing the temperature tended to inhibit bubble formation in the \gls{tendril}.
 This was explained by a greater increase in the dissociation rate and in losses at surfaces than the increase in the clustering rate.
