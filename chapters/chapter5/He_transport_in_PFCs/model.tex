@@ -97,23 +97,12 @@ Dissociation of large clusters by \gls{vacancy} or He emission is therefore negl
 In order to simplify this set of equations, the following quantities are defined:
 
 \begin{align}
-    c_b &= \sum\limits_{i=N+1}^\infty c_i \quad \text{ : total concentration of clusters containing more than $N$ He} \\
-    \langle i_b \rangle &= \frac{1}{c_b} \sum\limits_{i=N+1}^\infty i c_i \quad \text{ : average He content in $c_b$} \\
-    \langle r_b \rangle &=  \frac{1}{c_b}\sum\limits_{i=N+1}^\infty r_i c_i \quad \text{ : average radius in $c_b$}\\
-    \langle k_b^+ \rangle &=  \frac{1}{c_b}\sum\limits_{i=N+1}^\infty k_{1,i}^+ c_i = 4 \pi D_1 (r_1 + \langle r_b \rangle) \quad \text{ : average clustering rate in $c_b$}
+    c_b &= \sum\limits_{i=N+1}^\infty c_i \quad \text{: bubbles concentration} \\
+    \langle i_b \rangle &= \frac{1}{c_b} \sum\limits_{i=N+1}^\infty i c_i \quad \text{: average He content in bubbles} \\
+    \langle r_b \rangle &=  \frac{1}{c_b}\sum\limits_{i=N+1}^\infty r_i c_i \quad \text{: average radius in bubbles}\\
+    \langle k_b^+ \rangle &=  \frac{1}{c_b}\sum\limits_{i=N+1}^\infty k_{1,i}^+ c_i \quad \text{: average clustering rate in bubbles}
 \end{align}
-
-To solve for $\langle i_b \rangle$, is also useful to write the expression of the sum $\sum\limits_{i=N+1}^\infty i \frac{\partial c_i}{\partial t}$:
-
-\begin{align}
-    \sum\limits_{i=N+1}^\infty i \frac{\partial c_i}{\partial t} &= \sum\limits_{i=N+1}^\infty i k_{1,i-1}^+ c_1 c_{i-1} - \sum\limits_{i=N+1}^\infty i k_{1,i}^+ c_1 c_{i} \nonumber\\
-    &= (N+1) k_{1,N}^+ c_1 c_N + \sum\limits_{i=N+2}^\infty i k_{1,i-1}^+ c_1 c_{i-1} - \sum\limits_{i=N+1}^\infty i k_{1,i}^+ c_1 c_{i} \nonumber\\
-    &= (N+1) k_{1,N}^+ c_1 c_N + \sum\limits_{i=N+1}^\infty (i + 1) k_{1,i}^+ c_1 c_{i} - \sum\limits_{i=N+1}^\infty i k_{1,i}^+ c_1 c_{i} \nonumber\\
-    &= (N+1) k_{1,N}^+ c_1 c_N + \sum\limits_{i=N+1}^\infty (i + 1) k_{1,i}^+ c_1 c_{i} - i k_{1,i}^+ c_1 c_{i} \nonumber\\
-    &= (N+1) k_{1,N}^+ c_1 c_N + \sum\limits_{i=N+1}^\infty k_{1,i}^+ c_1 c_{i} \nonumber\\
-    \frac{\partial \langle i_b \rangle c_b}{\partial t} &= (N+1) k_{1,N}^+ c_1 c_N + \langle k_b^+ \rangle c_1 c_b
-\end{align}
-
+Clusters with more than $N$ \gls{He} ($c_b$) will be referred as ``bubbles'' in the following.
 
 \refeq{temporal evolution grouping no new symbols} therefore reads:
 
@@ -124,32 +113,106 @@ To solve for $\langle i_b \rangle$, is also useful to write the expression of th
         \vdots \nonumber\\
         \frac{\partial c_N}{\partial t} &= - k_{1, N}^+ c_1 c_N + k_{1, N-1}^+ c_1 c_{N-1} - k_{N}^- c_N\\
         \frac{\partial c_b}{\partial t} &= k_ {1,N}^+ c_1 c_N \\
-        \frac{\partial (\langle i_b \rangle c_b)}{\partial t} &= (N+1)k_ {1,N}^+ c_1 c_N  + \langle k_b^+ \rangle c_1 c_b
     \end{align}
     \labeq{temporal evolution grouping}
 \end{subequations}
 
-Clusters with more than $N$ \gls{He} ($c_b$) will be referred as ``bubbles'' in the following.
-The mean radius of pure \gls{He} clusters \sidecite{faney_spatially_2015} is given by:
+The radius of pure \gls{He} clusters \sidecite{faney_spatially_2015} given by:
 \begin{equation}
     r_{\mathrm{He}_x} = r_{\mathrm{He}_1} + \left(\frac{3}{4\pi} \frac{a_0^3}{10} x \right)^{1/3} - \left( \frac{3}{4\pi} \frac{a_0^3}{10} \right)^{1/3}
     \labeq{radius pure He}
 \end{equation}
 with $r_{\mathrm{He}_1} = \SI{0.3}{nm}$.
 
-The average radius is assumed to be a function of $\langle i_b \rangle$:
+$\langle k_b^+ \rangle$ can be expressed as:
+\begin{subequations}
+    \begin{align}
+        \langle k_b^+ \rangle &= \frac{1}{c_b}\sum\limits_{i=N+1}^\infty k_{1,i}^+ c_i\\
+        &= \frac{1}{c_b} 4 \pi \sum\limits_{i=N+1}^\infty c_i  (r_1 + r_i) (D_1 + D_i)
+    \end{align}
+\end{subequations}
+
+Assuming $D_i = 0$ for $i > N$:
+\begin{subequations}
+    \begin{align}
+        \langle k_b^+ \rangle &= \frac{1}{c_b} 4 \pi D_1  \sum\limits_{i=N+1}^\infty c_i (r_1 + r_i) \\
+        &= \frac{1}{c_b} 4 \pi D_1 \left(\sum\limits_{i=N+1}^\infty c_i r_1 + \sum\limits_{i=N+1}^\infty c_i r_i \right)\\
+        &= \frac{1}{c_b} 4 \pi D_1 \left(r_1 c_b  + \sum\limits_{i=N+1}^\infty c_i r_i \right)\\
+        &= 4 \pi D_1 (r_1 + \langle r_b \rangle) 
+    \end{align}
+\end{subequations}
+
+For clusters containing both \gls{He} and vacancies, the radius only depends on the number of vacancies $m$ is given by \cite{faney_spatially_2015}:
 \begin{equation}
-    \begin{split}
-        \langle r_b \rangle &= r(\mathrm{He}_{\langle i_b \rangle}\mathrm{V}_{\langle i_b \rangle/4}) \\
-        &= r_{\mathrm{He}_0 \mathrm{V}_1} + \left(\frac{3}{4 \pi} \frac{a_0^3}{2} \frac{\langle i_b \rangle}{4} \right)^{1/3} - \left(\frac{3}{4 \pi} \frac{a_0^3}{2} \right)^{1/3}
-    \end{split}
-    \labeq{radius average}
+    r_{\mathrm{He}_i\mathrm{V}_m} = r_{\mathrm{He}_0 \mathrm{V}_1} + \left(\frac{3}{4 \pi} \frac{a_0^3}{2} m \right)^{1/3} - \left(\frac{3}{4 \pi} \frac{a_0^3}{2} \right)^{1/3}
 \end{equation}
 with $a_0 = \SI{0.318}{nm}$ the lattice parameter and $r_{\mathrm{He}_0 \mathrm{V}_1} =  a_0 \sqrt{3}/4$.
-The average radius $\langle r_b \rangle$ is assumed to be only dependent on $\langle i_b \rangle$.
-The number of vacancies in bubbles is assumed to be $\langle i_b \rangle/4$.
+
+
+The bubble radius $\langle r_b \rangle$ therefore reads:
+\begin{subequations}
+    \begin{align}
+        \langle r_b \rangle &=  \frac{1}{c_b}\sum\limits_{i=N+1}^\infty  c_i \ r_{\mathrm{He}_i\mathrm{V}_m}\\
+                            % &= r(\mathrm{He}_{\langle i_b \rangle}\mathrm{V}_{\langle i_b \rangle/4}) \\
+        &= \frac{1}{c_b}\sum\limits_{i=N+1}^\infty c_i \left( r_{\mathrm{He}_0 \mathrm{V}_1} + \left(\frac{3}{4 \pi} \frac{a_0^3}{2} m \right)^{1/3} - \left(\frac{3}{4 \pi} \frac{a_0^3}{2} \right)^{1/3} \right)\\
+        &= r_{\mathrm{He}_0 \mathrm{V}_1} + \left(\frac{3}{4 \pi} \frac{a_0^3}{2} \right)^{1/3} \frac{1}{c_b}\sum\limits_{i=N+1}^\infty c_i \ m^{1/3} - \left(\frac{3}{4 \pi} \frac{a_0^3}{2} \right)^{1/3}
+    \end{align}
+    \labeq{radius average}
+\end{subequations}
+
+The number of vacancies in bubbles $m$ is assumed to be $i/4$ (i.e.\ four helium per vacancy).
 This assumption is motivated by \gls{md} computations showing that \gls{trap mutation} events occur for every four additional helium in large \gls{vacancy}-helium clusters.
-Moreover, theoretical models for He bubbles growth in metal suggest a similar trend \sidecite{hammond_theoretical_2020}.
+Moreover, theoretical models for He bubbles growth in metals suggest a similar trend \sidecite{hammond_theoretical_2020}.
+
+The average radius $\langle r_b \rangle$ therefore reads:
+\begin{equation}
+    \langle r_b \rangle = r_{\mathrm{He}_0 \mathrm{V}_1} + \left(\frac{3}{4 \pi} \frac{a_0^3}{2} \right)^{1/3} \frac{1}{c_b}\sum\limits_{i=N+1}^\infty c_i(\frac{i}{4})^{1/3} - \left(\frac{3}{4 \pi} \frac{a_0^3}{2} \right)^{1/3}
+\end{equation}
+
+Assuming $c_i$ follows a narrow gaussian distribution, $\frac{1}{c_b}\sum\limits_{i=N+1}^\infty c_i(\frac{i}{4})^{1/3} \approx \left( \frac{1}{c_b}\sum\limits_{i=N+1}^\infty c_i\frac{i}{4} \right)^{1/3} $ (see \reffig{sum of powers approximation}).
+% is assumed to be only dependent on $\langle i_b \rangle$.
+
+\begin{figure}
+    \begin{subfigure}{0.75\linewidth}
+        \includegraphics[width=\linewidth]{Figures/Chapter5/comparison_sum_of_powers_power_of_sums.pdf}
+    \end{subfigure}%
+    \begin{subfigure}{0.25\linewidth}
+        \includegraphics[width=\linewidth]{Figures/Chapter5/gaussian_representation.pdf}
+    \end{subfigure}
+    \caption{Validity of the sum approximation in the computation of the bubble radius assuming $c_i$ has a gaussian distribution centered on $\mu$ and with a standard deviation $\sigma$.}
+    \labfig{sum of powers approximation}
+\end{figure}
+
+
+The final expression of the bubble radius is therefore:
+\begin{equation}
+    \langle r_b \rangle = r_{\mathrm{He}_0 \mathrm{V}_1} + \left(\frac{3}{4 \pi} \frac{a_0^3}{2} \frac{\langle i_b \rangle}{4} \right)^{1/3} - \left(\frac{3}{4 \pi} \frac{a_0^3}{2} \right)^{1/3}
+\end{equation}
+
+To solve for $\langle i_b \rangle$, is also useful to write the expression of the sum $\sum\limits_{i=N+1}^\infty i \frac{\partial c_i}{\partial t}$:
+
+\begin{align}
+    \sum\limits_{i=N+1}^\infty i \frac{\partial c_i}{\partial t} &= \sum\limits_{i=N+1}^\infty i k_{1,i-1}^+ c_1 c_{i-1} - \sum\limits_{i=N+1}^\infty i k_{1,i}^+ c_1 c_{i} \nonumber\\
+    &= (N+1) k_{1,N}^+ c_1 c_N + \sum\limits_{i=N+2}^\infty i k_{1,i-1}^+ c_1 c_{i-1} - \sum\limits_{i=N+1}^\infty i k_{1,i}^+ c_1 c_{i} \nonumber\\
+    &= (N+1) k_{1,N}^+ c_1 c_N + \sum\limits_{i=N+1}^\infty (i + 1) k_{1,i}^+ c_1 c_{i} - \sum\limits_{i=N+1}^\infty i k_{1,i}^+ c_1 c_{i} \nonumber\\
+    &= (N+1) k_{1,N}^+ c_1 c_N + \sum\limits_{i=N+1}^\infty (i + 1) k_{1,i}^+ c_1 c_{i} - i k_{1,i}^+ c_1 c_{i} \nonumber\\
+    &= (N+1) k_{1,N}^+ c_1 c_N + \sum\limits_{i=N+1}^\infty k_{1,i}^+ c_1 c_{i} \nonumber\\
+    \frac{\partial \langle i_b \rangle c_b}{\partial t} &= (N+1) k_{1,N}^+ c_1 c_N + \langle k_b^+ \rangle c_1 c_b
+    \labeq{pde for d (cb ib)/ dt}
+\end{align}
+
+The final form of the system of coupled equations is obtained by adding \refeq{pde for d (cb ib)/ dt} to:
+\begin{subequations}
+    \begin{align}
+        \frac{\partial c_1}{\partial t} &= \nabla \cdot (D_1 \nabla c_1) + \Gamma + \sum\limits_{i=2}^N k_{i}^- c_i- 2k_{1, 1}^+ c_1^2 - \sum\limits_{i=2}^N k_{1,i}^+ c_1 c_i - \langle k_b^+ \rangle c_1 c_b \\
+        \frac{\partial c_2}{\partial t} &= \nabla \cdot (D_2 \nabla c_2) - k_{1, 2}^+ c_1 c_2 + k_{1, 1}^+ c_1^2 - k_{2}^- c_2 + k_{3}^- c_3\\
+        \vdots \nonumber\\
+        \frac{\partial c_N}{\partial t} &= - k_{1, N}^+ c_1 c_N + k_{1, N-1}^+ c_1 c_{N-1} - k_{N}^- c_N\\
+        \frac{\partial c_b}{\partial t} &= k_ {1,N}^+ c_1 c_N \\
+        \frac{\partial (\langle i_b \rangle c_b)}{\partial t} &= (N+1)k_ {1,N}^+ c_1 c_N  + \langle k_b^+ \rangle c_1 c_b
+    \end{align}
+    \labeq{final system of equation}
+\end{subequations}
 
 The current implementation further simplifies Faney's model \sidecite{faney_spatially_2014}:
 \begin{itemize}
