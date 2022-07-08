@@ -50,7 +50,7 @@ where $\rho = \SI{6.3e28}{m^{-3}}$ is the atomic density of W in $\si{m^{-3}}$ a
 The reaction term $R_i$ is the coupling term between concentrations and is expressed as:
 
 \begin{equation}
-    R_i=  \sum_{m} k^+_{m,i-m} c_m c_{i-m}  - c_i \sum_m k_{i, m}^+ c_{m} + k_{i+1}^- c_{i+1} -  k_i^- c_i
+    R_i=  k^+_{i,i-1} c_1 c_{i-1}  - k_{i, 1}^+ c_i  c_{1} + k_{i+1}^- c_{i+1} -  k_i^- c_i
     \labeq{reaction term}
 \end{equation}
 
@@ -205,7 +205,7 @@ To solve for $\langle i_b \rangle$, is also useful to write the expression of th
     \labeq{pde for d (cb ib)/ dt}
 \end{align}
 
-The final form of the system of coupled equations is obtained by adding \refeq{pde for d (cb ib)/ dt} to \refeq{temporal evolution grouping}:
+The final form of the system of governing equations is obtained by adding \refeq{pde for d (cb ib)/ dt} to \refeq{temporal evolution grouping}:
 \begin{subequations}
     \begin{align}
         \frac{\partial c_1}{\partial t} &= \nabla \cdot (D_1 \nabla c_1) + \Gamma + \sum\limits_{i=2}^N k_{i}^- c_i- 2k_{1, 1}^+ c_1^2 - \sum\limits_{i=2}^N k_{1,i}^+ c_1 c_i - \langle k_b^+ \rangle c_1 c_b \\
