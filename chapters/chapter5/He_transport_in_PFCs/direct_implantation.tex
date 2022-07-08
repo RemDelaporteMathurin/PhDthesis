@@ -273,3 +273,44 @@ Implanted interstitial He atoms ($c_{\mathrm{He}_1}$) therefore interact prefera
 This means that no additional bubbles nucleons are created (i.e.\ $c_b$ reaches a maximum).
 Because interactions between bubbles and mobile He are strong, the term $\langle k_b^+ \rangle c_1 c_b$ in \refeq{temporal evolution grouping} becomes significant and the He content increases (i.e.\ $\Bar{\langle i_b \rangle}$ increases).
 This is illustrated by the thickness of the arrows in \reffig{clustering sketch}.
+
+These regimes can also be worked out analytically.
+\paragraph{Nucleation regime}
+When $c_N k_{1,N}^+ \gg \langle k_b^+ \rangle c_b$, \refeq{final system of equation: ib cb} can be simplified by:
+\begin{equation}
+    \frac{\partial \langle i_b \rangle c_b}{\partial t} \approx (N +1) k_{1,N}^+ c_1 c_N = (N+1) \frac{\partial c_b }{\partial t}
+\end{equation}
+
+When extending the temporal derivative, one can obtain:
+
+\begin{subequations}
+    \begin{align}
+        \frac{\partial \langle i_b \rangle }{\partial t} &\approx (N +1) \frac{\partial c_b }{\partial t} - \langle i_b \rangle \frac{\partial c_b }{\partial t} \\
+        &\approx \frac{\partial c_b }{\partial t} ( N + 1 - \langle i_b \rangle)
+    \end{align}
+\end{subequations}
+Moreover, since $\langle i_b \rangle \approx N + 1$, $\frac{\partial \langle i_b \rangle }{\partial t} \approx 0$.
+The bubble content $\langle i_b \rangle$ is therefore constant.
+
+\paragraph{Growth regime}
+When $c_N k_{1,N}^+ \ll \langle k_b^+ \rangle c_b$ , \refeq{final system of equation: c1} can be simplified by:
+
+\begin{equation}
+    \frac{\partial c_1}{\partial t} \approx \nabla \cdot (D_1 \nabla c_1) + \Gamma - \langle k_b^+ \rangle c_b c_1
+\end{equation}
+
+Moreover, $c_i \approx 0 \, \forall \, 2 \leq i \leq N$.
+This leads to $\frac{\partial c_b}{\partial t} \ approx 0$.
+
+\refeq{final system of equation: ib cb} can therefore be simplified:
+\begin{subequations}
+    \begin{align}
+        \frac{\partial \langle i_b \rangle c_b}{\partial t} \approx \langle k_b^+ \rangle c_b c_1 \\
+        c_b \frac{\partial \langle i_b \rangle}{\partial t} \approx \langle k_b^+ \rangle c_b c_1
+    \end{align}
+\end{subequations}
+
+The temporal evolution of the bubble content $\langle i_b \rangle$ can finally be written as:
+\begin{equation}
+    \frac{\partial \langle i_b \rangle}{\partial t} \approx \langle k_b^+ \rangle c_1
+\end{equation}
