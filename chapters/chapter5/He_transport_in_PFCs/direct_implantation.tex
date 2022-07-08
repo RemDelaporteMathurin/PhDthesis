@@ -74,6 +74,45 @@ The average radius $\langle r \rangle$ cannot be easily compared to experimental
 The impact of He flux and temperature $T$ was studied on the case described in \refsec{half slab} in order to identify trends.
 Behaviour laws are identified and can be used to obtain information on He transport without needing to run any simulation.
 
+In order to analyse the results, several quantities are computed.
+First the bubbles inventory is defined as:
+\begin{equation}
+    I_\mathrm{bubbles}= \displaystyle \int c_b \; dx
+\end{equation}
+The total helium inventory is calculated by:
+\begin{equation}
+        I = \displaystyle \int \sum\limits_{i=1}^N i c_i + \langle i_b \rangle c_b \; dx
+        \approx \displaystyle \int \langle i_b \rangle c_b \; dx
+    \labeq{I}
+\end{equation}
+The spatial mean helium content in bubbles can be computed as:
+\begin{equation}
+        \Bar{\langle i_b \rangle} = \frac{\displaystyle \int \langle i_b \rangle c_b \; dx}{\displaystyle \int c_b \; dx}
+        \approx \frac{I}{I_\mathrm{bubbles}}
+    \labeq{mean ib}
+\end{equation}
+The approximation made in \refeq{I} and \refeq{mean ib} is valid as long as $\int \langle i_b \rangle c_b dx \gg  \int \sum\limits_{i=1}^N i c_i dx$ (i.e.\ the He inventory is dominated by that of the bubbles).
+This is the case in these simulations because $N=6$ (the influence of this parameter is discussed in \refsec{impact of N}).
+
+\subsubsection{Influence of $N$} \labsec{impact of N}
+In order to assess the impact of the parameter $N$ in \refeq{temporal evolution grouping}, the evolution of the He inventory $I$, the mean He content in immobile clusters (different from $\Bar{\langle i_b \rangle}$) and the bubbles inventory $I_\mathrm{bubbles}$ was computed with several values of $N$.
+
+The flux of \SI{100}{eV} He in this test case was \SI{e20}{m^{-2} s^{-1}} and the temperature was \SI{1000}{K}. 
+
+It was shown that varying $N$ had no impact on these quantities whatsoever (see \reffig{N variation}).
+This highlights the very quick transition from nucleation regime to growth regime in this model.
+
+The number of equations that need to be solved can therefore be minimised by setting the parameter $N$ to its minimum ($N=6$) without losing accuracy in the results.
+This minimum value corresponds to the number of mobile clusters which have to be explicitly simulated in order to account for all the diffusion mechanisms.
+
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter4/varying_N.pdf}
+    \caption{Comparison of several quantities of interest for several values of $N$ in W exposed to \SI{100}{eV} He at \SI{e20}{m^{-2}.s^{-1}} and \SI{1000}{K}.}
+    \labfig{N variation}
+\end{figure}
+
+
 \subsubsection{Parametric study} \labsec{parametric study}
 
 \begin{figure*} [ht!]
@@ -117,26 +156,6 @@ Behaviour laws are identified and can be used to obtain information on He transp
 \end{figure*}
 
 A parametric study was performed by varying the implanted flux $\varphi_\mathrm{imp}$ between \SI{1e17}{m^{-2} s^{-1}} and \SI{5e21}{m^{-2} s^{-1}} and the sample temperature $T$ between \SI{100}{K} and \SI{1200}{K}.
-
-Several quantities were computed.
-First the bubbles inventory is defined as:
-\begin{equation}
-    I_\mathrm{bubbles}= \displaystyle \int c_b \; dx
-\end{equation}
-The total helium inventory is calculated by:
-\begin{equation}
-        I = \displaystyle \int \sum\limits_{i=1}^N i c_i + \langle i_b \rangle c_b \; dx
-        \approx \displaystyle \int \langle i_b \rangle c_b \; dx
-    \labeq{I}
-\end{equation}
-The spatial mean helium content in bubbles can be computed as:
-\begin{equation}
-        \Bar{\langle i_b \rangle} = \frac{\displaystyle \int \langle i_b \rangle c_b \; dx}{\displaystyle \int c_b \; dx}
-        \approx \frac{I}{I_\mathrm{bubbles}}
-    \labeq{mean ib}
-\end{equation}
-The approximation made in \refeq{I} and \refeq{mean ib} is valid as long as $\int \langle i_b \rangle c_b dx \gg  \int \sum\limits_{i=1}^N i c_i dx$ (i.e.\ the He inventory is dominated by that of the bubbles).
-This is the case in these simulations because $N=6$ (the influence of this parameter is discussed in \refsec{impact of N}).
 
 More than 160 simulations were performed simulating \SI{1}{h} of exposure.
 For each simulation, the quantities of interest described above were computed.
@@ -224,6 +243,7 @@ This phenomenon is explained in details in \refsec{nucleation growth phases}.
 Similarly, $\Bar{\langle i_b \rangle}$ could be written as a power law of time described in Eq \refeq{ib evolution} (see \reffig{mean ib time}).
 The depth of the maximum of $\langle i_b \rangle$ tended to decrease with time as it was observed in \refsec{half slab} (see \reffig{inventory bubbles time}).
 
+
 \subsubsection{Inventory evolution regimes} \labsec{nucleation growth phases}
 
 \begin{figure} [h]
@@ -253,22 +273,3 @@ Implanted interstitial He atoms ($c_{\mathrm{He}_1}$) therefore interact prefera
 This means that no additional bubbles nucleons are created (i.e.\ $c_b$ reaches a maximum).
 Because interactions between bubbles and mobile He are strong, the term $\langle k_b^+ \rangle c_1 c_b$ in \refeq{temporal evolution grouping} becomes significant and the He content increases (i.e.\ $\Bar{\langle i_b \rangle}$ increases).
 This is illustrated by the thickness of the arrows in \reffig{clustering sketch}.
-
-
-\subsubsection{Influence of $N$} \labsec{impact of N}
-In order to assess the impact of the parameter $N$ in \refeq{temporal evolution grouping}, the evolution of the He inventory $I$, the mean He content in immobile clusters (different from $\Bar{\langle i_b \rangle}$) and the bubbles inventory $I_\mathrm{bubbles}$ was computed with several values of $N$.
-
-The flux of \SI{100}{eV} He in this test case was \SI{e20}{m^{-2} s^{-1}} and the temperature was \SI{1000}{K}. 
-
-It was shown that varying $N$ had no impact on these quantities whatsoever (see \reffig{N variation}).
-This highlights the very quick transition from nucleation regime to growth regime in this model.
-
-The number of equations that need to be solved can therefore be minimised by setting the parameter $N$ to its minimum ($N=6$) without losing accuracy in the results.
-This minimum value corresponds to the number of mobile clusters which have to be explicitly simulated in order to account for all the diffusion mechanisms.
-
-\begin{figure} [h]
-    \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter4/varying_N.pdf}
-    \caption{Comparison of several quantities of interest for several values of $N$ in W exposed to \SI{100}{eV} He at \SI{e20}{m^{-2}.s^{-1}} and \SI{1000}{K}.}
-    \labfig{N variation}
-\end{figure}
