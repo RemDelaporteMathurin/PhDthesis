@@ -1,5 +1,5 @@
 The focus of this Section is the coupled effects of \gls{He} implantation and hydrogen transport.
-To this end, the experiment of Ialovega and co-workers \sidecite{ialovega_hydrogen_2020} is reproduced with the \gls{He} bubble model described in this Chapter coupled to \gls{festim}.
+To this end, the experiment of Ialovega and co-workers \sidecite{ialovega_hydrogen_2020} is reproduced with the \gls{He} bubble model described in this Chapter coupled to \gls{festim} by converting a bubble density into trapping sites for hydrogen.
 
 \subsection{Experiment}
 
@@ -9,11 +9,16 @@ An initial cleaning \gls{tds} was performed up to \SI{870}{K}.
 
 Sequential deuterium loading and \gls{tds} were then repeated five times.
 \SI{250}{eV} deuterium were implanted at room temperature with a flux of \SI{1.7e16}{m^{-2}.s^{-1}} and a \gls{fluence} of \SI{4.5e19}{m^{-2}}.
-The \gls{tds} phase ramps up to \SI{1350}{K} (\SI{1250}{K} for the first \gls{tds}) at a rate of \SI{1}{K.s^{-1}}.
+The \gls{tds} phase ramps up to \SI{1350}{K} (\SI{1250}{K} for the first \gls{tds}) at a rate of \SI{1}{K.s^{-1}} (see \reffig{fitted TDS}).
+
+The authors observed that the deuterium inventory after the first \gls{tds} was lower than after the following implantation/\gls{tds} cycles.
+They associated this increase to a modification of the near-surface microstructure.
+They also link the modification of the deuterium retention entirely with the variation of \gls{He} bubbles density.
+Little mention was made of the influence of pre-existing defects and the pristine \gls{W} (not exposed to \gls{He}) \gls{tds} spectrum was only qualitatively comparable (authors communication).
 
 \subsection{Bubble growth simulation}
 The quantities $c_b$ and $\langle r_b \rangle$ have been computed from the helium bubble model described in \refsec{helium model description} (see \reffig{trap bubbles distribution}).
-The helium implantation distritbuion is a Gaussian with a mean value of \SI{1.5}{nm} and a standard deviation of \SI{0.8}{nm} corresponding to a \SI{75}{eV} He exposure calculated with \gls{srim}. 
+The helium implantation distritbuion is a Gaussian with a mean value of \SI{1.5}{nm} and a standard deviation of \SI{0.8}{nm} corresponding to a \SI{75}{eV} He exposure calculated with \gls{srim}.
 The other parameters are unchanged.
 
 \subsection{\gls{festim} simulation}
