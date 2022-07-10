@@ -246,7 +246,7 @@ The depth of the maximum of $\langle i_b \rangle$ tended to decrease with time a
 
 \subsubsection{Inventory evolution regimes} \labsec{nucleation growth phases}
 
-\begin{figure} [h]
+\begin{figure} [h!]
     \centering
     \includegraphics[width=0.75\linewidth]{Figures/Chapter4/parametric study/inventory_bubbles_ib.pdf}
     \caption{Temporal evolution of $\Bar{\langle i_b \rangle}$, $I_\mathrm{bubbles}$ and $I$ in W exposed to \SI{100}{eV} He at \SI{1.59e18}{m^{-2}.s^{-1}} and \SI{1020}{K}. The dashed grey vertical line represents the transition from nucleation regime to bubble growth regime.}
@@ -281,12 +281,12 @@ When $c_N k_{1,N}^+ \gg \langle k_b^+ \rangle c_b$, \refeq{final system of equat
     \frac{\partial \langle i_b \rangle c_b}{\partial t} \approx (N +1) k_{1,N}^+ c_1 c_N = (N+1) \frac{\partial c_b }{\partial t}
 \end{equation}
 
-When extending the temporal derivative, one can obtain:
+By extending the temporal derivative, one can obtain:
 
 \begin{subequations}
     \begin{align}
-        \frac{\partial \langle i_b \rangle }{\partial t} &\approx (N +1) \frac{\partial c_b }{\partial t} - \langle i_b \rangle \frac{\partial c_b }{\partial t} \\
-        &\approx \frac{\partial c_b }{\partial t} ( N + 1 - \langle i_b \rangle)
+        c_b \frac{\partial \langle i_b \rangle }{\partial t} &\approx (N +1) \frac{\partial c_b }{\partial t} - \langle i_b \rangle \frac{\partial c_b }{\partial t} \\
+        \frac{\partial \langle i_b \rangle }{\partial t} &\approx \frac{\partial c_b }{\partial t} \frac{( N + 1 - \langle i_b \rangle)}{c_b}
     \end{align}
 \end{subequations}
 Moreover, since $\langle i_b \rangle \approx N + 1$, $\frac{\partial \langle i_b \rangle }{\partial t} \approx 0$.
@@ -300,7 +300,7 @@ When $c_N k_{1,N}^+ \ll \langle k_b^+ \rangle c_b$ , \refeq{final system of equa
 \end{equation}
 
 Moreover, $c_i \approx 0 \, \forall \, 2 \leq i \leq N$.
-This leads to $\frac{\partial c_b}{\partial t} \ approx 0$.
+This leads to $\frac{\partial c_b}{\partial t} \approx 0$.
 
 \refeq{final system of equation: ib cb} can therefore be simplified:
 \begin{subequations}
@@ -314,3 +314,59 @@ The temporal evolution of the bubble content $\langle i_b \rangle$ can finally b
 \begin{equation}
     \frac{\partial \langle i_b \rangle}{\partial t} \approx \langle k_b^+ \rangle c_1
 \end{equation}
+
+\subsubsection{Dimensionless analysis}
+
+Following the adimensionalisation strategy proposed by Krasheninnikov et al.\ \sidecite{krasheninnikov_helium_2014}, the following dimensionless numbers are defined:
+
+\begin{align}
+    \hat{t} &= t \, k^+_{1,1} c_{\mathrm{He}_1, \mathrm{ideal}} \\
+    \hat{x} &= \frac{x}{l_1} \\
+    \hat{c_i} &= \frac{c_i}{c_{\mathrm{He}_1, \mathrm{ideal}}}
+\end{align}
+where $l_1$ is the characteristic length of the $\mathrm{He}_1 + \mathrm{He}_1 \rightarrow \mathrm{He}_2$ reaction in \si{m}.
+
+The dimensionless bubble inventory $\hat{I}_\mathrm{bubbles}$ can be computed as:
+\begin{subequations}
+    \begin{align}
+        \hat{I}_\mathrm{bubbles} &= \int \hat{c_b} d\hat{x} \\
+        &= \frac{ \int c_b dx}{c_{\mathrm{He}_1, \mathrm{ideal}} \, l_1} \\
+        &= \frac{I_\mathrm{bubbles}}{c_{\mathrm{He}_1, \mathrm{ideal}} \, l_1} 
+    \end{align}
+\end{subequations}
+
+Similarly, the dimensionless helium inventory in bubbles $\hat{I}$ can be expressed as:
+\begin{equation}
+    \hat{I} = \frac{I}{c_{\mathrm{He}_1, \mathrm{ideal}} \, l_1} 
+\end{equation}
+
+By normalising the results obtained in \refsec{parametric study}, all simulation points seem to follow the same trend (see \reffig{dimensionless quantities}).
+There are however some discrepencies, which are numerical artifacts.
+
+The evolution of the dimensionless quantities can be fitted to obtain a law.
+The temporal evolution of $\Bar{\langle i_b \rangle}$ is:
+\begin{equation}
+    \Bar{\langle i_b \rangle} = \frac{(N+1)}{1 - e^{-\frac{100}{\hat{t}^{1.12}}}}
+\end{equation}
+
+The temporal evolution of the bubble inventory $\hat{I}_\mathrm{bubbles}$ can be expressed as:
+\begin{equation}
+    \hat{I}_\mathrm{bubbles} = 10 \, (1 - e^{-\frac{\hat{t}}{10}})^{6.5}
+\end{equation}
+
+The limit of $\hat{I}_\mathrm{bubbles}$ when $\hat{t}$ approaches infinity is 10.
+
+The temporal evolution of the inventory $\hat{I}$ is given by:
+\begin{equation}
+    \hat{I} = \hat{I}_\mathrm{bubbles} \, \Bar{\langle i_b \rangle}
+\end{equation}
+
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Figures/Chapter4/parametric study/dimensionless_quantities.pdf}
+    \caption{Evolution of $\Bar{\langle i_b \rangle}$, $\hat{I}_\mathrm{bubbles}$ and $\hat{I}$ as a function of $\hat{t}$ for several $c_{\mathrm{He}_1, \mathrm{ideal}}$ values. The blue curves correspond to the fitted evolutions.}
+    \labfig{dimensionless quantities}
+\end{figure}
+
+These results are in accordance with the analytical analysis performed by Krasheninnikov et al.\ \sidecite{krasheninnikov_helium_2014}, where the authors predicted two different regimes whether $\hat{t} \ll 1$ or $\hat{t} \gg 1$.
+This is exactly what can be observed on \reffig{dimensionless quantities}.
