@@ -240,6 +240,8 @@ Unfortunately, graphite being porous, hydrogen (and therefore tritium) retention
 Plus carbon can react with \gls{plasma} particles forming methane.
 Methane is then deposited on locations hard to access in the reactor \gls{trapping} tritium even more.
 For these two safety reasons, \gls{cfc} was replaced with \Gls{W} or \gls{Be} (or both).
+The advantage of \gls{Be} is that it creates a stable oxide.
+The formation of this oxide layer consumes oxygen and reduces the oxygen level in the plasma.
 
 \Gls{W} has a very high melting point (\SI{3422}{\celsius}) and retains less tritium \sidecite{pajuste_tritium_2021}.
 However, \Gls{W} being a high-Z element, eroded \Gls{W} will make the \gls{plasma} radiate and cool it down.
@@ -251,7 +253,7 @@ In a fusion reactor, heat and particles (fusion ashes) need to be extracted.
 In most \glspl{tokamak}, the escaping \gls{plasma} is diverted towards a dedicated component that is heat-resistant.
 Such a configuration is called a \emph{\gls{divertor}} configuration.
 The \gls{divertor} allows the creation of a \gls{x-point} and a \gls{separatrix} decoupling the \gls{plasma} edge from the walls. 
-The X-divertor is a common configuration (used in \acrshort{west}, \acrshort{jet}, \acrshort{iter}) but more advanced configurations exist such as the Super-X \gls{divertor} (\acrshort{mast-u}) \sidecite{havlickova_effect_2015}, X-Point Target (\acrshort{sparc}) \sidecite{rodriguez-fernandez_overview_2022, kuang_divertor_2020} or the Snowflake configurations \sidecite{ryutov_snowflake_2015}.
+The X-divertor is a common configuration (used in \acrshort{asdex}, \acrshort{west}, \acrshort{jet}, \acrshort{iter}) but more advanced configurations exist such as the Super-X \gls{divertor} (\acrshort{mast-u}) \sidecite{havlickova_effect_2015}, X-Point Target (\acrshort{sparc}) \sidecite{rodriguez-fernandez_overview_2022, kuang_divertor_2020} or the Snowflake configurations \sidecite{ryutov_snowflake_2015}.
 
 \begin{figure} [h]
     \centering
@@ -267,14 +269,14 @@ At these \glspl{strike point}, the targets will experience very intense heat and
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/divertor_exposure_conditions.pdf}
-    \caption{Heat flux, particle flux and particle energy along the \acrshort{iter} divertor computed by SOLPS (shot \#122399) \cite{pitts_physics_2019}.}
+    \caption{Heat flux, particle flux and particle energy along the \acrshort{iter} divertor computed by the edge-plasma simulation code SOLPS (shot \#122399) \cite{pitts_physics_2019}.}
     \labfig{divertor exposure conditions}
 \end{figure}
 
 The \acrshort{iter} divertor will be composed of 54 cassettes (see \reffig{monoblock to divertor}).
 Each cassette is made of two targets - the \gls{ivt} and \gls{ovt} -, a dome and two reflector plates.
 The inner and outer \glspl{strike point} (respectively \acrshort{isp} and \acrshort{osp}) will be located on the \gls{ivt} and the \gls{ovt}.
-A prototype of the \gls{ivt} is shown on \reffig{inner target photo}.
+% A prototype of the \gls{ivt} is shown on \reffig{inner target photo}.
 These elements are themselves made of rows, called \glspl{pfuLabel}, of small unit bricks of a few dozens of millimetres called \glspl{monoblock}.
 In \acrshort{iter}, the \gls{ivt} has 16 \glspl{pfuLabel} and the \gls{ovt} has 22 \glspl{pfuLabel}.
 \Glspl{monoblock} are typically made of a \Gls{W} substrate with a cooling pipe running through.
@@ -282,7 +284,7 @@ This cooling channel is necessary to keep the component's temperature below its 
 
 Several \gls{monoblock} designs are currently studied for DEMO with varying dimensions, different materials for the cooling pipe or the interlayer, etc. \sidecite{vizvary_european_2020, huang_tungsten_2016, hirai_use_2016, domptail_design_2020}.
 The main candidate is the ITER-like design, the type of \gls{monoblock} that will be used in \acrshort{iter} \cite{hirai_use_2016}.
-This design has a tunsgten substrate with a CuCrZr cooling pipe and a Cu interlayer for compliance.
+This design has a tungsten substrate with a CuCrZr cooling pipe and a Cu interlayer for compliance.
 In \acrshort{iter}, \glspl{monoblock} will be \SI{12}{mm}-thick whereas they will be thinner (\SI{4}{mm}) in DEMO \sidecite{you_european_2018}.
 
 \begin{figure*}
@@ -291,12 +293,12 @@ In \acrshort{iter}, \glspl{monoblock} will be \SI{12}{mm}-thick whereas they wil
     \labfig{monoblock to divertor}
 \end{figure*}
 
-\begin{figure} [h]
-    \centering
-    \includegraphics[width=0.8\linewidth]{Figures/Chapter1/inner_target_iter.jpg}
-    \caption{Prototype of the inner vertical target (source: ITER Organization).}
-    \labfig{inner target photo}
-\end{figure}
+% \begin{figure} [h]
+%     \centering
+%     \includegraphics[width=0.8\linewidth]{Figures/Chapter1/inner_target_iter.jpg}
+%     \caption{Prototype of the inner vertical target (source: ITER Organization).}
+%     \labfig{inner target photo}
+% \end{figure}
 
 Studies on ITER-like \glspl{monoblock} have demonstrated the resistance of the \gls{monoblock} design to high heat loads while investigating the effect of \Gls{W} recrystallisation \sidecite{durif_impact_2019, durif_modelisation_2019, visca_manufacturing_2018} (see \reffig{monoblock_temperature_exp_model}).
 
@@ -316,11 +318,11 @@ Studies on ITER-like \glspl{monoblock} have demonstrated the resistance of the \
 
 \section{The tritium issue} \labsec{the tritium issue}
 
-Tritium is a radioactive \gls{isotope} of hydrogen with a half-life is approximately 12 years \sidecite{jordan_half-life_1967}.
+Tritium is a radioactive \gls{isotope} of hydrogen with a half-life is 12.32 years \sidecite{jordan_half-life_1967}.
 It decays into $^3$He emitting a beta particle (see \refeq{tritium decay}).
 
 \begin{equation}
-    \ce{^3H -> ^3He + e^- (\SI{0.018590}{MeV})}
+    \ce{^3H -> ^3He + e^- (\SI{18.590}{keV})}
     \labeq{tritium decay}
 \end{equation}
 
@@ -416,11 +418,12 @@ Tritium's half-life once incorporated in organic compounds increases to 40 days 
 To put tritium toxicity in perspective, it has been estimated that drinking \SI{2}{L} of water with the highest permissible level of tritium contamination (\SI{10000}{Bq.L^{-1}}) each day for a year results in a total radiation dose of \SI{0.1}{mSv}, which is equivalent to two weeks natural radioactivity exposure \sidecite{hyatt_radioactive_2021}.
 
 To limit the potential environmental releases due to a loss of vacuum accident, its \gls{inventory} in fusion reactors must be limited \sidecite{honda_analyses_2000}.
-In \acrshort{iter} for instance, the in-vessel \gls{inventory} of tritium is limited to \SI{1}{kg} including \SI{120}{g} retained in cryo-pumps \sidecite{roth_tritium_2008}.
+In \acrshort{iter} for instance, the in-vessel \gls{inventory} of tritium is limited to \SI{1}{kg} including \SI{120}{g} retained in cryo-pumps and \SI{180}{g} of measurement uncertainties \sidecite{roth_tritium_2008,de_temmerman_efficiency_2017}.
 This limit has been determined to avoid evacuation of population around the reactor in the event of a loss of vacuum accident.
 
 Moreover, as tritium can migrate in materials, components that have been in contact with it are considered as tritiated waste and must be handled.
-Tritium migration through complete material layers (\gls{permeation}) to the cooling tubes \sidecite{arredondo_preliminary_2021, shimada_tritium_2018} or to the atmosphere can lead to contamination of coolants and must be taken into account in the detritiation process.
+Tritium migration through complete material layers (\gls{permeation}) to the cooling tubes \sidecite{arredondo_preliminary_2021, shimada_tritium_2018} can lead to contamination of coolants and must be taken into account in the detritiation process.
+Tritium permeation to the atmosphere must also be controlled.
 
 Detritiation techniques are being developed to reduce the volume of tritiated waste in future fusion reactors \sidecite{liger_overview_2018}.
 These techniques mainly consist in heating the tritiated samples and recovering the tritiated gas \sidecite{lefebvre_preliminary_2012} that can be reused as fuel.
