@@ -4,36 +4,46 @@
 \label{Chapter5} % For referencing the chapter elsewhere, use \ref{Chapter2}
 
 \input{chapters/chapter5/He_transport_in_PFCs/introduction}
-\section{Model description}\labsec{helium model description}
-\input{chapters/chapter5/He_transport_in_PFCs/model}
-\section{Direct implantation of He}
-\input{chapters/chapter5/He_transport_in_PFCs/direct_implantation}
-\section{Indirect sources of He}
+
+\section{Sources of helium}
 \input{chapters/chapter5/He_transport_in_PFCs/indirect_implantation}
-\section{Influence on H transport}
+
+\section{Bubble growth model}\labsec{helium model description}
+\input{chapters/chapter5/He_transport_in_PFCs/model}
+
+\section{Verification \& Validation}
+\input{chapters/chapter5/He_transport_in_PFCs/verification_validation.tex}
+
+\section{Bubble growth study}
+\input{chapters/chapter5/He_transport_in_PFCs/direct_implantation}
+
+\section{Influence on hydrogen transport}
 \input{chapters/chapter5/He_transport_in_PFCs/Influence_on_H_transport.tex}
 
 \section{Summary}
 
-\gls{festim} was used to simulate the influence of helium implantation on hydrogen transport.
-The formation of helium bubble in tungsten was first studied.
-It was shown that this phenomenon was limited to a small region near the exposed surface.
+This Chapter investigated the influence of helium on hydrogen transport.
 
-The experiment of Ialovega and co-workers described in \sidecite{ialovega_hydrogen_2020} was then reproduced and one possible explanation was given.
+To do so, a cluster dynamics model was first developed to simulate the growth of helium bubbles in tungsten.
+This model was compared to existing numerical results and helium exposure experiments were reproduced.
+A parametric study was performed to investigate the impact of helium flux and temperature on the bubbles density and size.
+Finally, a dimensionless analysis was carried out to extract key parameters and identify two different bubble growth regimes.
+
+Based on the results of the bubble growth model, the experiment of Ialovega and co-workers \sidecite{ialovega_hydrogen_2020} was then reproduced with \gls{festim} and one possible explanation was given.
 Although fitting a \gls{tds} spectrum is not sufficient to draw strong conclusions, this work suggests that:
 \begin{itemize}
-    \item helium does not leave bubbles in significant quantities at these temperatures
-    \item helium occupies pre-existing defects avoiding hydrogen to get trapped
+    \item Helium does not leave bubbles in significant quantities at these temperatures
+    \item Helium occupies pre-existing defects avoiding hydrogen to get trapped
     \item Hydrogen retention is not dominated by helium-induced bubbles but rather by the saturation of pre-existing defects by helium
 \end{itemize}
 
 From these results, several experimental suggestions can be made.
-Running the \gls{tds} up to \SI{750}{K} only would limit helium desorption.
-Indeed, it was shown in \cite{ialovega_hydrogen_2020} that there was no helium desorption below this temperature after the initial cleaning \gls{tds}.
+Running the \gls{tds} only up to \SI{750}{K} would limit helium desorption.
+Indeed, the authors \cite{ialovega_hydrogen_2020} showed that there was no helium desorption below this temperature after the initial cleaning \gls{tds}.
 If helium does not desorb and remains in the pre-existing defects, the deuterium \gls{tds} spectra should not be affected and only the desorption from bubbles should be observed.
 This would confirm or infirm the interpretation of the results presented herein.
 
 Moreover, if this interpretation was confirmed, it could have implications for hydrogen retention.
-Indeed, one could imagine reducing the tritium inventory of components by first exposing them to helium.
-Helium would fill the existing defects, making it impossible for tritium to be trapped.
+Indeed, one could imagine reducing the tritium inventory of components by exposing them to helium first.
+Helium would saturate the existing defects, making it impossible for tritium to be trapped.
 However, having a helium inventory in components can also have negative consequences.
