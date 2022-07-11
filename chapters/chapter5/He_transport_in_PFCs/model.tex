@@ -28,15 +28,15 @@ The spatio-temporal evolution of each species of size $i$ is defined by:
 \end{equation}
 where ${D=D_{0_i} \cdot \exp\big(-E_{\mathrm{D}_i}/ (k_B \cdot T )\big)}$ is the thermally activated diffusion coefficient expressed in \si{m^2.s^{-1}}.
 If a species $i$ is assumed to be immobile, its diffusion coefficient $D_i$ is zero.
-$\Gamma_i$ is the external production rate of species $i$.
+$\Gamma_i$ is the external production rate of species $i$ expressed in \si{m^{-3}.s^{-1}}.
+The term $R_i$ is the coupling term due to reactions between species expressed in \si{m^{-3}.s^{-1}}.
 
-The term $R_i$ is the coupling term due to reactions between species.
 A simple reaction between two species can be described as:
 \begin{equation}
     \ce{A + B <=>[k^+][k^-] AB}
 \end{equation}
 
-The forward rate constant $k^+_{A,B}$ is the clustering rate and is calculated using the theory of diffusion-limited reactions \sidecite{goldstein_diffusion_2007}:
+The forward rate constant $k^+_{A,B}$ is the clustering rate and is calculated using the theory of diffusion-limited reactions \sidecite{goldstein_diffusion_2007, nichols_estimation_1978, waite_theoretical_1957}:
 \begin{equation}
     k^+_\mathrm{A,B} = 4 \pi (r_\mathrm{A} + r_\mathrm{B}) (D_\mathrm{A} + D_\mathrm{B})
 \end{equation}
@@ -45,7 +45,7 @@ The backward rate constant $k^-_\mathrm{A,B}$ is the dissociation rate and is ob
 \begin{equation}
     k^-_\mathrm{A,B} =\rho k^+_\mathrm{A,B}e^{\frac{-E_b}{k_B T}}
 \end{equation}
-where $\rho = \SI{6.3e28}{m^{-3}}$ is the atomic density of W in $\si{m^{-3}}$ and $E_b$ is the binding energy for the reaction \ce{AB -> A + B} in \si{eV}.
+where $\rho = \SI{6.3e28}{m^{-3}}$ is the atomic density of W in $\si{m^{-3}}$ and $E_b$ is the binding energy for the equilibrium \ce{AB -> A + B} in \si{eV}.
 
 The reaction term $R_i$ is the coupling term between concentrations and is expressed as:
 
