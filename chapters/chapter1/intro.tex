@@ -462,12 +462,19 @@ Due to their small size, these ions can penetrate the metal \gls{lattice} and be
 Components are also exposed to neutral hydrogen particles either in the atomic or molecular form.
 This is also the case for the \gls{divertor} region where \gls{fuel recycling} can occur \sidecite{denis_dynamic_2019, causey_hydrogen_2002}.
 
-Tritium can also be produced by the neutron capture of helium-3 \sidecite{shimada_tritium_2017, knoll_radiation_1989} (see \refeq{he3 neutron capture reaction}).
+Tritium can also be produced by the neutron capture of helium-3 \sidecite{shimada_tritium_2017, knoll_radiation_1989} (see \refeq{he3 neutron capture reaction} and \reffig{helium3 neutron capture cross section}).
 
 \begin{equation}
     \ce{^3He + n -> ^1H + ^3H + \SI{0.764}{MeV}}
     \labeq{he3 neutron capture reaction}
 \end{equation}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter1/cross_section_he3_neutron_capture.pdf}
+    \caption{Cross section of the $^3\mathrm{He(n,T)H}$ \cite{shimwell_xsplot_2021}.}
+    \labfig{helium3 neutron capture cross section}
+\end{figure}
 
 Finally, interactions of lithium with neutrons represent a major source of hydrogen in tritium \glspl{breeding blanket} \sidecite{dark_influence_2021}.
 
