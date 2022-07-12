@@ -5,6 +5,8 @@
 *.fdb_latexmk
 *.fls
 *.glo
+*.glg
+*.gls
 *.glsdefs
 *.idx
 *.ilg
@@ -12,6 +14,8 @@
 *.lof
 *.log
 *.lot
+*.nlg
+*.nls
 *.mw
 *.nlo
 *.run.xml

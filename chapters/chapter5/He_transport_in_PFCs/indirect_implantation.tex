@@ -1,11 +1,28 @@
 As detailed in \refsec{sources of helium}, helium can be produced in tungsten from neutron \gls{transmutation} and from tritium decay.
-This section will focus on comparing these two indirect sources with direct helium implantation in monoblocks.
+This section will focus on comparing these two indirect sources with direct helium implantation in \glspl{monoblock}.
 
 \subsection{Neutron induced transmutation}
 
-In combination with the \gls{paramak} code \sidecite{shimwell_paramak_2021} used for creating the geometry, a neutronics simulation was run to assess the total quantity of helium generation in a monoblock under neutron irradiation with the \gls{openmc} code \sidecite{romano_openmc_2015}, a modern open-source Monte-Carlo neutron and photon transport code.
-In this simulation, a neutron source was placed above the monoblock and the total helium production was tallied.
-The neutron source corresponds to a \SI{500}{MW} DT source, which gives a neutron generation rate of \SI{1.8e20}{neutrons.s^{-1}} (based on the energy produced by the DT fusion reaction).
+In combination with the \gls{paramak} code \sidecite{shimwell_paramak_2021} used for creating the \gls{monoblock} geometry, a neutronics simulation was run to assess the total quantity of helium generation in a \gls{monoblock} under neutron irradiation with the \gls{openmc} code \sidecite{romano_openmc_2015}, a modern open-source Monte-Carlo neutron and photon transport code.
+
+\Gls{openmc} simulates the transport of neutroncs by modelling their paths from their birth until their deaths.
+Neutron interactions with matter (reflexion, absorption, fission...) are simulated using a probabilistic approach where each reaction has a corresponding cross-section (taken from the \gls{endf}).
+
+In this simulation, a neutron source was placed above the \gls{monoblock} and the total helium production was tallied via the $(n,X\alpha)$ reaction rate (MT reaction number 207).
+The neutron source corresponds to a \SI{500}{MW} DT neutron source, which gives a neutron generation rate of \SI{1.8e20}{neutrons.s^{-1}} (based on the energy produced by the DT fusion reaction).
+The neutrons energy follows a Muir energy spectrum \sidecite{ericsson_advanced_2019} (see \reffig{muir energy spectrum}).
+The probability density is a normal distribution with a standard deviation $\sigma$ depending on the mass of the reactants $M_\mathrm{reactants}$ and the \gls{plasma} temperature $T_i$ and the mean $\mu=E_0= \SI{14}{MeV}$ is the neutron energy of the DT reaction:
+
+\begin{equation}
+    \sigma = \sqrt{\frac{4 E_0 T_i}{M_\mathrm{reactants}}}
+\end{equation}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{Figures/Chapter5/DT_neutron_source.pdf}
+    \caption{Muir neutron energy spectrum corresponding to a DT reaction sampled with 5000 particles.}
+    \labfig{muir energy spectrum}
+\end{figure}
+
 50 batches of 1 million neutrons were simulated in order to reduce the stochastic error inherant to Monte-Carlo methods.
 
 The production of helium was found to be more important close to the top surface and to the neutron source (see \reffig{transmutation helium in monoblock}).
@@ -17,15 +34,20 @@ The error bars were computed by averaging the standard deviation provided by \gl
 \begin{figure*}
     \centering
     \begin{subfigure}{0.5\linewidth}
-        \includegraphics[width=\linewidth]{Figures/Chapter5/helium_transmutation_in_monoblock.pdf}
-        \caption{2D distribution.}
+        \includegraphics[width=\linewidth]{Figures/Chapter5/helium_generation_in_monoblock.pdf}
+        \caption{Helium generation (mean value).}
     \end{subfigure}%
     \begin{subfigure}{0.5\linewidth}
-        \includegraphics[width=\linewidth]{Figures/Chapter5/he_generation_distribution.pdf}
+        \includegraphics[width=\linewidth]{Figures/Chapter5/helium_generation_in_monoblock_std_dev.pdf}
+        \caption{Helium generation (standard deviation).}
+    \end{subfigure}
+    \begin{subfigure}{1\linewidth}
+        \centering
+        \includegraphics[width=0.6\linewidth]{Figures/Chapter5/he_generation_distribution.pdf}
         \caption{Distribution from the top surface. Errors bars correspond to the 95 \% confidence interval.}
         \labfig{helium generation distribution}
     \end{subfigure}
-    \caption{Helium generation via transmutation in a monoblock (only tungsten is shown).}
+    \caption{Helium generation via transmutation in a \gls{monoblock} (only tungsten is shown).}
     \labfig{transmutation helium in monoblock}
 \end{figure*}
 
@@ -35,8 +57,11 @@ Other \glspl{monoblock} of the \gls{divertor} will be tilted and shadowed by oth
 
 \subsection{Tritium decay}
 
-The generation of helium via tritium decay was computed from FESTIM simulations of hydrogen transport in \glspl{monoblock}.
+The generation of helium via tritium decay was computed from \gls{festim} simulations of hydrogen transport in \glspl{monoblock}.
 For this case, a volumetric source was added to take the radioactive decay into account.
+The materials and trapping parameters can be found in \refch{Chapter3}.
+The incident heat flux was set to \SI{10}{MW.m^{-2}}, the implanted particle flux to \SI{1.61e22}{m^{-2}.s^{-1}}, the implantation range to \SI{9.52e-10}{m}.
+
 \refeq{mobile} and \refeq{trapped} can be written as:
 
 \begin{equation}
@@ -47,12 +72,12 @@ For this case, a volumetric source was added to take the radioactive decay into 
     \frac{\partial c_{\mathrm{t}, i}}{\partial t}=k_i \cdot c_\mathrm{m} \cdot\left(n_{i}-c_{\mathrm{t}, i}\right)-p_i \cdot c_{\mathrm{t}, i} - \lambda_\mathrm{decay} c_{\mathrm{t}, i}
 \end{equation}
 where $\lambda_\mathrm{decay}$ is the decay constant in \si{s^{-1}}.
-The decay constant is expressed from the tritium radioactive half-life $\tau_{1/2}$:
+It is expressed from the tritium radioactive half-life $\tau_{1/2}$:
 \begin{equation}
     \lambda_\mathrm{decay} = \frac{\ln 2}{\tau_{1/2}} \approx \SI{1.77e-9}{s^{-1}}
 \end{equation}
 
-The generation rate of helium from T decay is directly proportional to the hydrogen (tritium) retention can therefore be expressed as $\lambda_\mathrm{decay} (c_\mathrm{m} + \sum c_{\mathrm{t}, i})$.
+The generation rate of helium from tritium decay is directly proportional to the hydrogen (tritium) retention can therefore be expressed as $\lambda_\mathrm{decay} (c_\mathrm{m} + \sum c_{\mathrm{t}, i})$.
 In order to remain conservative, it was computed at steady state.
 
 The maximum generation rate of helium in the \gls{monoblock} was found to be \SI{6.5e12}{m^{-3}.s^{-1}} (see \reffig{he generation from t decay}).
@@ -66,12 +91,20 @@ This is order of magnitudes below the generation from direct implantation.
     \labfig{he generation from t decay}
 \end{figure}
 
+\subsection{Comparison to direct implantation}
 
-When comparing the production of helium from indirect sources with the quantity helium implanted from the plasma, it appears that the indirect sources are negligible (see \reffig{comparison helium generation}).
+The volumetric source of helium $\Gamma$ due to direct implantation can be calculated by:
+\begin{equation}
+    \Gamma = \varphi_\mathrm{imp} \, f(x)
+\end{equation}
+where $\varphi_\mathrm{imp}$ is the implanted helium flux and $f(x)$ is a gaussian distribution centered on $R_p=\SI{1.5}{nm}$ and a width $\sigma=\SI{1.0}{nm}$.
+
+When comparing the production of helium from indirect sources with the quantity helium implanted from the plasma $\Gamma$, it appears that the indirect sources are negligible in the exposed region (see \reffig{comparison helium generation}).
+Indirect helium production may become dominant in bulk regions - though may not necessarily be enough to produce helium bubbles.
 
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter5/helium_generation.pdf}
-    \caption{Comparison of the three sources of helium in a monoblock. The source from direct implantation was computed for an incident flux of \SI{5e25}{m^{-2}.s^{-1}} with a gaussian distribution (mean of \SI{1}{nm} and standard deviation of \SI{1.5}{nm}).}
+    \caption{Comparison of the three sources of helium in a \gls{monoblock}. The source from direct implantation was computed for an incident flux of \SI{5e25}{m^{-2}.s^{-1}} with a gaussian distribution (mean of \SI{1}{nm} and standard deviation of \SI{1.5}{nm}).}
     \labfig{comparison helium generation}
 \end{figure}

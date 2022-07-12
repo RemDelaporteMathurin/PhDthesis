@@ -212,7 +212,7 @@ This is the case of \acrshort{sparc} and \acrshort{arc} developed by Commonwealt
 
 \begin{figure}
     \includegraphics[width=0.9\linewidth]{Figures/Chapter1/comparison_reactors.pdf}
-    \caption{Comparison of the tokamaks \acrshort{iter} , JET, ARC, WEST and SPARC. Data from \cite{delaporte-mathurin_remdelaportemathurinfusion-world_2022}.}
+    \caption{Comparison of the tokamaks \acrshort{iter}, JET, ARC, WEST and SPARC. Data from \cite{delaporte-mathurin_remdelaportemathurinfusion-world_2022}.}
     \labfig{comparison reactors}
 \end{figure}
 
@@ -222,8 +222,9 @@ The walls of a fusion reactor are exposed to intense heat and particle fluxes.
 The choice of \glspl{pfm} is therefore crucial.
 
 An appropriate \gls{pfm} must have good thermal properties to withstand the extreme heat fluxes.
+To minimise electric arcs, the materials must have a high electrical conductivity.
 A high thermal conductivity is required as well as a very high melting point to enhance heat exhaust but also minimise the impact of arcing (material release from erosion) \sidecite{ivanova_plasma-facing_2012, mccracken_review_1980}.
-The material must also resist to thermal chocs encountered during short \gls{plasma} discharges or transient events in the \gls{plasma} \sidecite{van_den_kerkhof_impact_2021}.
+The material must also resist to thermal shock encountered during short \gls{plasma} discharges or transient events in the \gls{plasma} \sidecite{van_den_kerkhof_impact_2021}.
 
 In order to maximise the components' lifespan, \glspl{pfm} must resist erosion.
 This is even more important when the eroded particle reduce \gls{plasma} performances by making it radiate and cool down.
@@ -238,18 +239,21 @@ Using \gls{cfc} also increased the \gls{plasma} performances greatly \sidecite{f
 Unfortunately, graphite being porous, hydrogen (and therefore tritium) retention was high \sidecite{sugiyama_measurement_2004}.
 Plus carbon can react with \gls{plasma} particles forming methane.
 Methane is then deposited on locations hard to access in the reactor \gls{trapping} tritium even more.
-For these two safety reasons, \gls{cfc} was replaced with tungsten or beryllium (or both).
+For these two safety reasons, \gls{cfc} was replaced with \Gls{W} or \gls{Be} (or both).
+The advantage of \gls{Be} is that it creates a stable oxide.
+The formation of this oxide layer consumes oxygen and reduces the oxygen level in the plasma.
 
 \Gls{W} has a very high melting point (\SI{3422}{\celsius}) and retains less tritium \sidecite{pajuste_tritium_2021}.
-However, tungsten being a high-Z element, eroded tungsten will make the \gls{plasma} radiate and cool it down.
-For this reason, the \acrshort{iter} divertor will be made of tungsten but the first wall (which has a large surface area) will be made of beryllium.
+However, \Gls{W} being a high-Z element, eroded \Gls{W} will make the \gls{plasma} radiate and cool it down.
+For this reason, the \acrshort{iter} divertor will be made of \Gls{W} but the first wall (which has a large surface area) will be made of \gls{Be}.
 
 \subsection{Divertor}\labsec{divertor section}
 
 In a fusion reactor, heat and particles (fusion ashes) need to be extracted.
 In most \glspl{tokamak}, the escaping \gls{plasma} is diverted towards a dedicated component that is heat-resistant.
 Such a configuration is called a \emph{\gls{divertor}} configuration.
-The X-divertor is a common configuration (used in \acrshort{west}, \acrshort{jet}, \acrshort{iter}) but more advanced configurations exist such as the Super-X \gls{divertor} (\acrshort{mast-u}) \sidecite{havlickova_effect_2015}, X-Point Target (\acrshort{sparc}) \sidecite{rodriguez-fernandez_overview_2022, kuang_divertor_2020} or the Snowflake configurations \sidecite{ryutov_snowflake_2015}.
+The \gls{divertor} allows the creation of a \gls{x-point} and a \gls{separatrix} decoupling the \gls{plasma} edge from the walls. 
+The X-divertor is a common configuration (used in \acrshort{asdex}, \acrshort{west}, \acrshort{jet}, \acrshort{iter}) but more advanced configurations exist such as the Super-X \gls{divertor} (\acrshort{mast-u}) \sidecite{havlickova_effect_2015}, X-Point Target (\acrshort{sparc}) \sidecite{rodriguez-fernandez_overview_2022, kuang_divertor_2020} or the Snowflake configurations \sidecite{ryutov_snowflake_2015}.
 
 \begin{figure} [h]
     \centering
@@ -265,22 +269,22 @@ At these \glspl{strike point}, the targets will experience very intense heat and
 \begin{figure} [h]
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/divertor_exposure_conditions.pdf}
-    \caption{Heat flux, particle flux and particle energy along the \acrshort{iter} divertor computed by SOLPS (shot \#122399) \cite{pitts_physics_2019}.}
+    \caption{Heat flux, particle flux and particle energy along the \acrshort{iter} divertor computed by the edge-plasma simulation code SOLPS (shot \#122399) \cite{pitts_physics_2019}.}
     \labfig{divertor exposure conditions}
 \end{figure}
 
 The \acrshort{iter} divertor will be composed of 54 cassettes (see \reffig{monoblock to divertor}).
 Each cassette is made of two targets - the \gls{ivt} and \gls{ovt} -, a dome and two reflector plates.
 The inner and outer \glspl{strike point} (respectively \acrshort{isp} and \acrshort{osp}) will be located on the \gls{ivt} and the \gls{ovt}.
-A prototype of the \gls{ivt} is shown on \reffig{inner target photo}.
+% A prototype of the \gls{ivt} is shown on \reffig{inner target photo}.
 These elements are themselves made of rows, called \glspl{pfuLabel}, of small unit bricks of a few dozens of millimetres called \glspl{monoblock}.
 In \acrshort{iter}, the \gls{ivt} has 16 \glspl{pfuLabel} and the \gls{ovt} has 22 \glspl{pfuLabel}.
-\Glspl{monoblock} are typically made of a tungsten substrate with a cooling pipe running through.
+\Glspl{monoblock} are typically made of a \Gls{W} substrate with a cooling pipe running through.
 This cooling channel is necessary to keep the component's temperature below its operating limit and exhaust heat.
 
 Several \gls{monoblock} designs are currently studied for DEMO with varying dimensions, different materials for the cooling pipe or the interlayer, etc. \sidecite{vizvary_european_2020, huang_tungsten_2016, hirai_use_2016, domptail_design_2020}.
 The main candidate is the ITER-like design, the type of \gls{monoblock} that will be used in \acrshort{iter} \cite{hirai_use_2016}.
-This design has a tunsgten substrate with a CuCrZr cooling pipe and a Cu interlayer for compliance.
+This design has a tungsten substrate with a CuCrZr cooling pipe and a Cu interlayer for compliance.
 In \acrshort{iter}, \glspl{monoblock} will be \SI{12}{mm}-thick whereas they will be thinner (\SI{4}{mm}) in DEMO \sidecite{you_european_2018}.
 
 \begin{figure*}
@@ -289,14 +293,14 @@ In \acrshort{iter}, \glspl{monoblock} will be \SI{12}{mm}-thick whereas they wil
     \labfig{monoblock to divertor}
 \end{figure*}
 
-\begin{figure} [h]
-    \centering
-    \includegraphics[width=0.8\linewidth]{Figures/Chapter1/inner_target_iter.jpg}
-    \caption{Prototype of the inner vertical target (source: ITER Organization).}
-    \labfig{inner target photo}
-\end{figure}
+% \begin{figure} [h]
+%     \centering
+%     \includegraphics[width=0.8\linewidth]{Figures/Chapter1/inner_target_iter.jpg}
+%     \caption{Prototype of the inner vertical target (source: ITER Organization).}
+%     \labfig{inner target photo}
+% \end{figure}
 
-Studies on ITER-like \glspl{monoblock} have demonstrated the resistance of the \gls{monoblock} design to high heat loads while investigating the effect of tungsten recrystallisation \sidecite{durif_impact_2019, durif_modelisation_2019, visca_manufacturing_2018} (see \reffig{monoblock_temperature_exp_model}).
+Studies on ITER-like \glspl{monoblock} have demonstrated the resistance of the \gls{monoblock} design to high heat loads while investigating the effect of \Gls{W} recrystallisation \sidecite{durif_impact_2019, durif_modelisation_2019, visca_manufacturing_2018} (see \reffig{monoblock_temperature_exp_model}).
 
 \begin{figure} [h]
     \centering
@@ -314,11 +318,11 @@ Studies on ITER-like \glspl{monoblock} have demonstrated the resistance of the \
 
 \section{The tritium issue} \labsec{the tritium issue}
 
-Tritium is a radioactive \gls{isotope} of hydrogen with a half-life is approximately 12 years \sidecite{jordan_half-life_1967}.
+Tritium is a radioactive \gls{isotope} of hydrogen with a half-life is 12.32 years \sidecite{jordan_half-life_1967}.
 It decays into $^3$He emitting a beta particle (see \refeq{tritium decay}).
 
 \begin{equation}
-    \ce{^3H -> ^3He + e^- (\SI{0.018590}{MeV})}
+    \ce{^3H -> ^3He + e^- (\SI{18.590}{keV})}
     \labeq{tritium decay}
 \end{equation}
 
@@ -367,7 +371,7 @@ The European candidates for \glspl{breeding blanket} in DEMO are the \gls{wcll} 
 
 The \gls{tbr} is defined by the number of tritium atoms produced by generated neutrons.
 In order to ensure tritium self-sufficiency, the \gls{tbr} of the blanket must be greater than or equal to one \sidecite{abdou_blanketfirst_2015}.
-A \gls{tbr} greater than one can only be obtained by neutron multiplication with lead or beryllium.
+A \gls{tbr} greater than one can only be obtained by neutron multiplication with lead or \gls{Be}.
 
 Moreover, the \gls{tbr} must account for:
 \begin{itemize}
@@ -414,11 +418,12 @@ Tritium's half-life once incorporated in organic compounds increases to 40 days 
 To put tritium toxicity in perspective, it has been estimated that drinking \SI{2}{L} of water with the highest permissible level of tritium contamination (\SI{10000}{Bq.L^{-1}}) each day for a year results in a total radiation dose of \SI{0.1}{mSv}, which is equivalent to two weeks natural radioactivity exposure \sidecite{hyatt_radioactive_2021}.
 
 To limit the potential environmental releases due to a loss of vacuum accident, its \gls{inventory} in fusion reactors must be limited \sidecite{honda_analyses_2000}.
-In \acrshort{iter} for instance, the in-vessel \gls{inventory} of tritium is limited to \SI{1}{kg} including \SI{120}{g} retained in cryo-pumps \sidecite{roth_tritium_2008}.
+In \acrshort{iter} for instance, the in-vessel \gls{inventory} of tritium is limited to \SI{1}{kg} including \SI{120}{g} retained in cryo-pumps and \SI{180}{g} of measurement uncertainties \sidecite{roth_tritium_2008,de_temmerman_efficiency_2017}.
 This limit has been determined to avoid evacuation of population around the reactor in the event of a loss of vacuum accident.
 
 Moreover, as tritium can migrate in materials, components that have been in contact with it are considered as tritiated waste and must be handled.
-Tritium migration through complete material layers (\gls{permeation}) to the cooling tubes \sidecite{arredondo_preliminary_2021, shimada_tritium_2018} or to the atmosphere can lead to contamination of coolants and must be taken into account in the detritiation process.
+Tritium migration through complete material layers (\gls{permeation}) to the cooling tubes \sidecite{arredondo_preliminary_2021, shimada_tritium_2018} can lead to contamination of coolants and must be taken into account in the detritiation process.
+Tritium permeation to the atmosphere must also be controlled.
 
 Detritiation techniques are being developed to reduce the volume of tritiated waste in future fusion reactors \sidecite{liger_overview_2018}.
 These techniques mainly consist in heating the tritiated samples and recovering the tritiated gas \sidecite{lefebvre_preliminary_2012} that can be reused as fuel.
@@ -457,12 +462,19 @@ Due to their small size, these ions can penetrate the metal \gls{lattice} and be
 Components are also exposed to neutral hydrogen particles either in the atomic or molecular form.
 This is also the case for the \gls{divertor} region where \gls{fuel recycling} can occur \sidecite{denis_dynamic_2019, causey_hydrogen_2002}.
 
-Tritium can also be produced by the neutron capture of helium-3 \sidecite{shimada_tritium_2017, knoll_radiation_1989} (see \refeq{he3 neutron capture reaction}).
+Tritium can also be produced by the neutron capture of helium-3 \sidecite{shimada_tritium_2017, knoll_radiation_1989} (see \refeq{he3 neutron capture reaction} and \reffig{helium3 neutron capture cross section}).
 
 \begin{equation}
     \ce{^3He + n -> ^1H + ^3H + \SI{0.764}{MeV}}
     \labeq{he3 neutron capture reaction}
 \end{equation}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter1/cross_section_he3_neutron_capture.pdf}
+    \caption{Cross section of the $^3\mathrm{He(n,T)H}$ \cite{shimwell_xsplot_2021}.}
+    \labfig{helium3 neutron capture cross section}
+\end{figure}
 
 Finally, interactions of lithium with neutrons represent a major source of hydrogen in tritium \glspl{breeding blanket} \sidecite{dark_influence_2021}.
 
@@ -549,7 +561,7 @@ Because He tends to cluster (as explained below), measuring its diffusivity expe
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/materials_diffusivity_review_comparison.pdf}
+    \includegraphics[width=0.8\linewidth]{Figures/Chapter1/materials_diffusivity_review_comparison.pdf}
     \caption{Diffusivity values for tungsten, copper and CuCrZr. Data from \cite{delaporte-mathurin_remdelaportemathurinh-transport-materials_2022}.}
     \labfig{diffusivity materials}
 \end{figure}
@@ -579,17 +591,17 @@ These parameters can be identified from fitting \gls{tds} experiments.
 This results in a spectrum which typically has one or several desorption peaks corresponding to different traps (see \reffig{TDS example ialovega}).
 Peaks appearing at high temperatures correspond to ``deep'' traps with a high \gls{detrapping} energy $E_p$.
 
-\begin{figure} [h!]
+\begin{figure*}
     \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter1/tds_helium_nicolas.pdf}
+    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/tds_helium_nicolas.pdf}
     \caption{H TDS spectra of pre-damaged W. Reproduced from \cite{ialovega_hydrogen_2020}.}
     \labfig{TDS example ialovega}
-\end{figure}
+\end{figure*}
 
 These parameters can also be obtained from \gls{dft} calculations \sidecite{hou_predictive_2019, backer_hydrogen_2017, backer_multiscale_2017, fernandez_hydrogen_2015, lu_review_2014, heinola_hydrogen_2010, zhou_investigating_2010}.
 
 Some defects can trap several hydrogen/helium atoms.
-For instance, up to approximately seven helium atoms can be trapped in a mono-\gls{vacancy} \sidecite{faney_spatially_2015}.
+For instance, up to approximately seven helium atoms can be trapped in a mono-\gls{vacancy} at room temperature \sidecite{faney_spatially_2015}.
 \gls{dft} calculations also show that defects like mono-vacancies, dislocations or grain boundaries can retain multiple hydrogen atoms (see \reffig{trapping energy hydrogen in tungsten}).
 As the number of trapped particles (helium or hydrogen) increases, the binding energy of a particle with the defect usually decreases.
 In other words, the more particles are trapped in a defect the easier it is for a hydrogen atom to escape.
@@ -646,16 +658,16 @@ By rearranging \refeq{equilibrium absorption desorption}:
 
 When the absorption/desorption order is $n=1$ (monoatomic absorption):
 \begin{equation}
-    c_\mathrm{surface} = K_H P
+    c_\mathrm{surface} = S P
 \end{equation}
-This relationship is known as Henry's law of solubility and $K_H = K_\mathrm{abs}/K_\mathrm{des}$ is the material solubility expressed in \si{m^{-3}.Pa^{-1}}.
+This relationship is known as Henry's law of solubility and $S = K_\mathrm{abs}/K_\mathrm{des}$ is the material solubility expressed in \si{m^{-3}.Pa^{-1}}.
 
 When the absorption/desorption order is $n=2$ (diatomic absorption):
 \begin{equation}
-    c_\mathrm{surface} = K_S \sqrt{P}
+    c_\mathrm{surface} = S \sqrt{P}
     \labeq{sievert's law}
 \end{equation}
-This equiilbrium is known as Sievert's law of solubility and $K_S = \sqrt{2 K_\mathrm{abs}/K_\mathrm{des}}$ is the material solubility expressed in \si{m^{-3}.Pa^{-0.5}}.
+This equiilbrium is known as Sievert's law of solubility and $S = \sqrt{2 K_\mathrm{abs}/K_\mathrm{des}}$ is the material solubility expressed in \si{m^{-3}.Pa^{-0.5}}.
 The solubility of tungsten, copper and CuCrZr are described in \reffig{solubility materials}.
 
 The product of the solubility and diffusivity is called \textit{permeability}.
@@ -737,7 +749,7 @@ It is considered immobile since it would require either diffusion of another \gl
     \labfig{he bubbles ialovega}
 \end{figure}
 
-Once a bubble nucleus is created via \gls{trap mutation}, it can continue to grow via three main mechanisms: absorption of clusters, \gls{loop punching} or blistering.
+Once a bubble nucleus is created via \gls{trap mutation}, it can continue to grow by absorbing other clusters.
 Two or more bubbles can also coalesce and form a bigger bubble.
 Condon and Schober \sidecite{condon_hydrogen_1993} reviewed the key mechanisms of bubble growth in metals.
 
@@ -767,6 +779,8 @@ The only information \textit{a priori} available in this case is indeed the loca
 An effort has been made by Ialovega to measure the pressure inside helium bubbles using \gls{eels} \sidecite{ialovega_surface_2021}.
 This technique, consisting in analysing the electron energy loss as they interact with matter \sidecite{pyper_excited_2017}, showed evidence that the observed cavities (see \reffig{he bubbles ialovega}) were filled with helium.
 
+Ultimately, a bubble can form blisters, increase its size via \gls{loop punching} or even burst.
+
 \subsubsection{Blistering}
 
 \begin{figure}
@@ -786,7 +800,7 @@ Similarly, if the rate of incoming atoms is less than the rate of re-dissolution
 Helium \gls{blistering} has been observed in \gls{W} at low temperature ($< \SI{1000}{K}$) \sidecite{baldwin_formation_2010}.
 Hydrogen \gls{blistering} was also observed in \gls{W} \sidecite{haasz_effect_1999}.
 Causey et al.\ also reviewed a wide range of studies showing H exposure leads to \gls{blistering} \sidecite{causey_hydrogen_2002}.
-\Gls{blistering} was found to lead to hardening in W due to the production of dislocations \sidecite{chen_irradiation_2019}.
+\Gls{blistering} was found to lead to local hardening in W due to the production of dislocations \sidecite{chen_irradiation_2019}.
 It can also form cracks depending on the alloying elements in W and the microstructure \sidecite{ueda_hydrogen_2005}.
 
 Hydrogen \gls{blistering} was observed under high energy irradiation (typically from a few \si{keV} to \si{MeV}).
@@ -919,7 +933,7 @@ However, the tools currently available did not meet the requirements of either d
 Numerous simulation tools have been developed throughout the years (see \reftab{code comparison}).
 Most of these codes are not able to run multimaterial and/or multidimensional simulations.
 These features are however essential to fully simulate monoblocks (see \refsec{divertor section}).
-Many of them rely on the \gls{fdm} whereas \acrshort{hit} \sidecite{candido_integrated_2020}, Abaqus \sidecite{benannoune_multidimensional_2020} and \gls{achlys} \sidecite{stephen-dixon_aurora-multiphysicsachlys_2021} rely on the \gls{fem}.
+Many of them rely on the \gls{fdm} whereas \acrshort{hit} \sidecite{candido_integrated_2020}, Abaqus \sidecite{benannoune_multidimensional_2020} and \gls{achlys} \sidecite{dixon_aurora-multiphysicsachlys_2021} rely on the \gls{fem}.
 Moreover, some do not have an integrated heat transfer solver - essential for an accurate estimation of temperature fields and therefore thermally activated processes.
 Some of these codes rely on proprietary software like Abaqus or COMSOL for \acrshort{hit} - limiting their accessibility and scalability (parallel computing).
 The code \gls{achlys} meets all these requirements and is the only one available open-source but was only released in mid 2021.
@@ -941,13 +955,13 @@ For all these reasons, the \acrshort{festim} code was developed and used to cond
         \\
         \acrshort{mhims} \cite{hodille_study_2016} & $\checkmark$ & & & & & & Fortran \\
         \\
-        \acrshort{tessim} \cite{schmid_transport_2014} & $\checkmark$ & & & & & & \\
+        \acrshort{tessim} \cite{schmid_transport_2014} & $\checkmark$ & & & $\checkmark$ & & & \\
         \\
-        \acrshort{hit} \cite{candido_integrated_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & & COMSOL\\
+        \acrshort{hit} \cite{candido_integrated_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & & COMSOL interface\\
         \\
-        Abaqus \cite{benannoune_multidimensional_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & & Fortran\\
+        Abaqus \cite{benannoune_multidimensional_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & & Fortran user subroutines\\
         \\
-        \gls{achlys} \cite{stephen-dixon_aurora-multiphysicsachlys_2021} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & C++\\
+        \gls{achlys} \cite{dixon_aurora-multiphysicsachlys_2021} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & C++\\
         \\
     \end{tabular}
     \caption{Comparison of some hydrogen transport modelling tools.}
@@ -956,13 +970,13 @@ For all these reasons, the \acrshort{festim} code was developed and used to cond
 
 \begin{itemize}
     \item \textbf{\refch{Chapter2}} \newline
-The first part of this work was to develop a model and a simulation tool - \gls{festim} - capable of solving hydrogen transport problem in 2D/3D.
-This Chapter will describe the mathematical models used in \gls{festim} as well as the global numerical implementation.
+The first part of this work was to develop a model and a simulation tool - \acrshort{festim} - capable of solving hydrogen transport problem in 2D/3D.
+This Chapter will describe the mathematical models used in \acrshort{festim} as well as the global numerical implementation.
 Finally, it will detail the analytical verification and experimental validation strategy.
-This last point includes a code comparison with the reference code TMAP7.
+This last point includes a code comparison with the reference code \acrshort{tmap7}.
     \item \textbf{\refch{Chapter3}} \newline
 This Chapter will focus on estimating the tritium \gls{retention} in \glspl{monoblock}.
-To this end, a \gls{festim} model of ITER-like \gls{monoblock} will be developed.
+To this end, a \acrshort{festim} model of \acrshort{iter}-like \gls{monoblock} will be developed.
 A behaviour law linking the \gls{monoblock} \gls{inventory} to exposure conditions (surface concentration and surface temperature) will be obtained.
     \item \textbf{\refch{Chapter4}} \newline
 The next stage is to scale up from a \gls{monoblock} model to a full \gls{divertor} model.
@@ -972,5 +986,5 @@ The \gls{inventory} of the \acrshort{iter} and WEST \glspl{divertor} will be com
 Finally, the influence of helium exposure and the presence of helium bubbles was studied.
 To this end, a finite element solver was first developed to simulate helium transport and clustering in tungsten.
 This code was compared to the Xolotl code \sidecite{blondel_continuum-scale_2018}.
-This helium transport code was then coupled to \gls{festim} to estimate the potential impact of helium on the tritium \gls{inventory} estimations.
+This helium transport code was then coupled to \acrshort{festim} to estimate the potential impact of helium on the tritium \gls{inventory} estimations.
 \end{itemize}
