@@ -212,7 +212,7 @@ This is the case of \acrshort{sparc} and \acrshort{arc} developed by Commonwealt
 
 \begin{figure}
     \includegraphics[width=0.9\linewidth]{Figures/Chapter1/comparison_reactors.pdf}
-    \caption{Comparison of the tokamaks \acrshort{iter} , JET, ARC, WEST and SPARC. Data from \cite{delaporte-mathurin_remdelaportemathurinfusion-world_2022}.}
+    \caption{Comparison of the tokamaks \acrshort{iter}, JET, ARC, WEST and SPARC. Data from \cite{delaporte-mathurin_remdelaportemathurinfusion-world_2022}.}
     \labfig{comparison reactors}
 \end{figure}
 
@@ -658,16 +658,16 @@ By rearranging \refeq{equilibrium absorption desorption}:
 
 When the absorption/desorption order is $n=1$ (monoatomic absorption):
 \begin{equation}
-    c_\mathrm{surface} = K_H P
+    c_\mathrm{surface} = S P
 \end{equation}
-This relationship is known as Henry's law of solubility and $K_H = K_\mathrm{abs}/K_\mathrm{des}$ is the material solubility expressed in \si{m^{-3}.Pa^{-1}}.
+This relationship is known as Henry's law of solubility and $S = K_\mathrm{abs}/K_\mathrm{des}$ is the material solubility expressed in \si{m^{-3}.Pa^{-1}}.
 
 When the absorption/desorption order is $n=2$ (diatomic absorption):
 \begin{equation}
-    c_\mathrm{surface} = K_S \sqrt{P}
+    c_\mathrm{surface} = S \sqrt{P}
     \labeq{sievert's law}
 \end{equation}
-This equiilbrium is known as Sievert's law of solubility and $K_S = \sqrt{2 K_\mathrm{abs}/K_\mathrm{des}}$ is the material solubility expressed in \si{m^{-3}.Pa^{-0.5}}.
+This equiilbrium is known as Sievert's law of solubility and $S = \sqrt{2 K_\mathrm{abs}/K_\mathrm{des}}$ is the material solubility expressed in \si{m^{-3}.Pa^{-0.5}}.
 The solubility of tungsten, copper and CuCrZr are described in \reffig{solubility materials}.
 
 The product of the solubility and diffusivity is called \textit{permeability}.
@@ -749,7 +749,7 @@ It is considered immobile since it would require either diffusion of another \gl
     \labfig{he bubbles ialovega}
 \end{figure}
 
-Once a bubble nucleus is created via \gls{trap mutation}, it can continue to grow via three main mechanisms: absorption of clusters, \gls{loop punching} or blistering.
+Once a bubble nucleus is created via \gls{trap mutation}, it can continue to grow by absorbing other clusters.
 Two or more bubbles can also coalesce and form a bigger bubble.
 Condon and Schober \sidecite{condon_hydrogen_1993} reviewed the key mechanisms of bubble growth in metals.
 
@@ -779,6 +779,8 @@ The only information \textit{a priori} available in this case is indeed the loca
 An effort has been made by Ialovega to measure the pressure inside helium bubbles using \gls{eels} \sidecite{ialovega_surface_2021}.
 This technique, consisting in analysing the electron energy loss as they interact with matter \sidecite{pyper_excited_2017}, showed evidence that the observed cavities (see \reffig{he bubbles ialovega}) were filled with helium.
 
+Ultimately, a bubble can form blisters, increase its size via \gls{loop punching} or even burst.
+
 \subsubsection{Blistering}
 
 \begin{figure}
@@ -798,7 +800,7 @@ Similarly, if the rate of incoming atoms is less than the rate of re-dissolution
 Helium \gls{blistering} has been observed in \gls{W} at low temperature ($< \SI{1000}{K}$) \sidecite{baldwin_formation_2010}.
 Hydrogen \gls{blistering} was also observed in \gls{W} \sidecite{haasz_effect_1999}.
 Causey et al.\ also reviewed a wide range of studies showing H exposure leads to \gls{blistering} \sidecite{causey_hydrogen_2002}.
-\Gls{blistering} was found to lead to hardening in W due to the production of dislocations \sidecite{chen_irradiation_2019}.
+\Gls{blistering} was found to lead to local hardening in W due to the production of dislocations \sidecite{chen_irradiation_2019}.
 It can also form cracks depending on the alloying elements in W and the microstructure \sidecite{ueda_hydrogen_2005}.
 
 Hydrogen \gls{blistering} was observed under high energy irradiation (typically from a few \si{keV} to \si{MeV}).
@@ -955,9 +957,9 @@ For all these reasons, the \acrshort{festim} code was developed and used to cond
         \\
         \acrshort{tessim} \cite{schmid_transport_2014} & $\checkmark$ & & & $\checkmark$ & & & \\
         \\
-        \acrshort{hit} \cite{candido_integrated_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & & COMSOL\\
+        \acrshort{hit} \cite{candido_integrated_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & & COMSOL interface\\
         \\
-        Abaqus \cite{benannoune_multidimensional_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & & Fortran\\
+        Abaqus \cite{benannoune_multidimensional_2020} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & & Fortran user subroutines\\
         \\
         \gls{achlys} \cite{dixon_aurora-multiphysicsachlys_2021} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & C++\\
         \\
@@ -968,13 +970,13 @@ For all these reasons, the \acrshort{festim} code was developed and used to cond
 
 \begin{itemize}
     \item \textbf{\refch{Chapter2}} \newline
-The first part of this work was to develop a model and a simulation tool - \gls{festim} - capable of solving hydrogen transport problem in 2D/3D.
-This Chapter will describe the mathematical models used in \gls{festim} as well as the global numerical implementation.
+The first part of this work was to develop a model and a simulation tool - \acrshort{festim} - capable of solving hydrogen transport problem in 2D/3D.
+This Chapter will describe the mathematical models used in \acrshort{festim} as well as the global numerical implementation.
 Finally, it will detail the analytical verification and experimental validation strategy.
-This last point includes a code comparison with the reference code TMAP7.
+This last point includes a code comparison with the reference code \acrshort{tmap7}.
     \item \textbf{\refch{Chapter3}} \newline
 This Chapter will focus on estimating the tritium \gls{retention} in \glspl{monoblock}.
-To this end, a \gls{festim} model of ITER-like \gls{monoblock} will be developed.
+To this end, a \acrshort{festim} model of \acrshort{iter}-like \gls{monoblock} will be developed.
 A behaviour law linking the \gls{monoblock} \gls{inventory} to exposure conditions (surface concentration and surface temperature) will be obtained.
     \item \textbf{\refch{Chapter4}} \newline
 The next stage is to scale up from a \gls{monoblock} model to a full \gls{divertor} model.
@@ -984,5 +986,5 @@ The \gls{inventory} of the \acrshort{iter} and WEST \glspl{divertor} will be com
 Finally, the influence of helium exposure and the presence of helium bubbles was studied.
 To this end, a finite element solver was first developed to simulate helium transport and clustering in tungsten.
 This code was compared to the Xolotl code \sidecite{blondel_continuum-scale_2018}.
-This helium transport code was then coupled to \gls{festim} to estimate the potential impact of helium on the tritium \gls{inventory} estimations.
+This helium transport code was then coupled to \acrshort{festim} to estimate the potential impact of helium on the tritium \gls{inventory} estimations.
 \end{itemize}
