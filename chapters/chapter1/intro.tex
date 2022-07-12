@@ -521,7 +521,7 @@ where $E_D$ is expressed in \si{eV}, $T$ is the temperature in \si{K}, $k_B$ is 
 The tungsten property to simulate the \gls{Soret effect} (Soret coefficient or heat of transport) is currently missing from literature (for hydrogen).
 Hodille et al.\ used the properties of steel as an approximation \cite{hodille_estimation_2017}.
 Bennanoune and coworkers performed hydrogen transport studies with hydrostatic pressure gradients showing it could have an impact of around \SI{10}{\%} in steel components \sidecite{benannoune_multidimensional_2020}.
-Studies are currently being performed for tungsten.
+% Studies are currently being performed for tungsten.
 
 % MD simulations
 Diffusion coefficients (also called diffusivities) can be computed by \gls{md} and \gls{dft}.
@@ -574,9 +574,9 @@ Species can be trapped at \glspl{vacancy}, \glspl{dislocation loop}, \gls{self-i
 
 The \gls{trapping} process can be described as:
 \begin{equation}
-    \ce{S + T <=>[k][p] S^*}
+    \ce{H + [\quad] <=>[k][p] [H]}
 \end{equation}
-where S is the particle in an interstitial site (i.e.\ mobile), T is the defect and S$^*$ represents the particle trapped in the defect T.
+where H is the particle in an interstitial site (i.e.\ mobile), $[\quad]$ is the defect and $[\mathrm{H}]$ represents the particle trapped in the defect.
 The \gls{trapping} rate and \gls{detrapping} rate can be respectively expressed as:
 \begin{align}
     k &= k_0 \exp{\frac{-E_k}{k_B T}} \\
