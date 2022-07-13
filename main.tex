@@ -59,7 +59,7 @@
 \usepackage{lipsum}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{calrsfs}
-
+\usepackage{pdfpages}
 % package for code blocks
 \usepackage{listings}
 
@@ -168,20 +168,41 @@
 %----------------------------------------------------------------------------------------
 %	BOOK INFORMATION
 %----------------------------------------------------------------------------------------
-\titlehead{PhD thesis title}
-\subject{My awesome subject}
+\titlehead{UNIVERSITE SORBONNE PARIS NORD}
+% \subject{My awesome subject}
 
-\title[Hydrogen transport in tokamak plasma facing components]{Hydrogen transport in tokamak plasma facing components}
-\subtitle{a subtitle}
+\title[Hydrogen transport in tokamaks]{
+    \noindent\rule{8cm}{0.4pt} \\
+    Hydrogen transport in tokamaks\\
+    }
+\subtitle{
+    Estimation of the ITER divertor tritium inventory \\
+    \noindent\rule{8cm}{0.4pt}
+}
 
 \author[Rémi Delaporte-Mathurin]{Rémi Delaporte-Mathurin}
 
-\date{\today}
-
-\publishers{An Awesome Publisher}
+\date{
+    Submitted in fulfillment of the requirements for the degree of \\
+    Doctor of Philosophy in Materials science \\
+    17th October 2022
+}
+\publishers{\begin{tabular}{p{12cm}l}
+    \textbf{Klaus SCHMID}, Max Planck Institute for Plasma Physics & reader \\
+    \textbf{Jamaa BOUHATTATE}, Univ. La Rochelle & reader \\
+    \textbf{Sophie BLONDEL}, Univ. of Tennessee, Knoxville & committee member \\
+    \textbf{Xavier BONNIN}, ITER Organization & committee member \\
+    \textbf{Monique GASPERINI}, Univ. Sorbonne Paris Nord & committee member \\
+    \textbf{Dennis WHYTE}, Massachusetts Institute of Technology & committee member \\
+    \textbf{Etienne HODILLE}, CEA & invited member \\
+    \textbf{Christian GRISOLIA}, CEA & cosupervisor \\
+    \textbf{Yann CHARLES}, Univ. Sorbonne Paris Nord & cosupervisor \\
+    \textbf{Jonathan MOUGENOT}, Univ. Sorbonne Paris Nord & adviser \\
+    \end{tabular}
+}
 
 %----------------------------------------------------------------------------------------
-
+% \includepdf[pages={1}]{chapters/front_page.pdf}
 \frontmatter % Denotes the start of the pre-document content, uses roman numerals
 
 %----------------------------------------------------------------------------------------
