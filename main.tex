@@ -274,53 +274,6 @@
 
 \listoftables % Output the list of tables
 
-\endgroup
-
-%----------------------------------------------------------------------------------------
-%	MAIN BODY
-%----------------------------------------------------------------------------------------
-
-\mainmatter % Denotes the start of the main document content, resets page numbering and uses arabic numbers
-\setchapterstyle{kao} % Choose the default chapter heading style
-
-\glsresetall % resets first use of glossary entries
-
-\input{chapters/chapter1/intro}
-\input{chapters/chapter2/model_description}
-\input{chapters/chapter3/monoblocks}
-\input{chapters/chapter4/divertor}
-\input{chapters/chapter5/he_transport_in_pfcs}
-\input{chapters/conclusion}
-
-\appendix % From here onwards, chapters are numbered with letters, as is the appendix convention
-
-\pagelayout{wide} % No margins
-\addpart{Appendix}
-\pagelayout{margin} % Restore margins
-
-\input{chapters/v_and_v}
-\input{chapters/interface_transient.tex}
-\input{chapters/demo_monoblock.tex}
-% \input{chapters/appendix.tex}
-% \input{chapters/breeding_blankets}
-% \input{chapters/codeposition_model}
-
-%----------------------------------------------------------------------------------------
-
-\backmatter % Denotes the end of the main document content
-\setchapterstyle{plain} % Output plain chapters from this point onwards
-
-%----------------------------------------------------------------------------------------
-%	BIBLIOGRAPHY
-%----------------------------------------------------------------------------------------
-
-% The bibliography needs to be compiled with biber using your LaTeX editor, or on the command line with 'biber main' from the template directory
-
-% Redefine the citation style to Author (year) and using bracket like [i-ii]
-
-\defbibnote{bibnote}{Here are the references in citation order.\par\bigskip} % Prepend this text to the bibliography
-\printbibliography[heading=bibintoc, title=Bibliography, prenote=bibnote] % Add the bibliography heading to the ToC, set the title of the bibliography and output the bibliography note
-
 % %----------------------------------------------------------------------------------------
 % %	NOMENCLATURE
 % %----------------------------------------------------------------------------------------
@@ -420,6 +373,53 @@
 
 \setglossarystyle{listgroup} % Set the style of the glossary (see https://en.wikibooks.org/wiki/LaTeX/Glossary for a reference)
 \printglossary[title=List of Terms, toctitle=List of Terms] % Output the glossary, 'title' is the chapter heading for the glossary, toctitle is the table of contents heading
+
+\endgroup
+
+%----------------------------------------------------------------------------------------
+%	MAIN BODY
+%----------------------------------------------------------------------------------------
+
+\mainmatter % Denotes the start of the main document content, resets page numbering and uses arabic numbers
+\setchapterstyle{kao} % Choose the default chapter heading style
+
+\glsresetall % resets first use of glossary entries
+
+\input{chapters/chapter1/intro}
+\input{chapters/chapter2/model_description}
+\input{chapters/chapter3/monoblocks}
+\input{chapters/chapter4/divertor}
+\input{chapters/chapter5/he_transport_in_pfcs}
+\input{chapters/conclusion}
+
+\appendix % From here onwards, chapters are numbered with letters, as is the appendix convention
+
+\pagelayout{wide} % No margins
+\addpart{Appendix}
+\pagelayout{margin} % Restore margins
+
+\input{chapters/v_and_v}
+\input{chapters/interface_transient.tex}
+\input{chapters/demo_monoblock.tex}
+% \input{chapters/appendix.tex}
+% \input{chapters/breeding_blankets}
+% \input{chapters/codeposition_model}
+
+%----------------------------------------------------------------------------------------
+
+\backmatter % Denotes the end of the main document content
+\setchapterstyle{plain} % Output plain chapters from this point onwards
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+% The bibliography needs to be compiled with biber using your LaTeX editor, or on the command line with 'biber main' from the template directory
+
+% Redefine the citation style to Author (year) and using bracket like [i-ii]
+
+\defbibnote{bibnote}{Here are the references in citation order.\par\bigskip} % Prepend this text to the bibliography
+\printbibliography[heading=bibintoc, title=Bibliography, prenote=bibnote] % Add the bibliography heading to the ToC, set the title of the bibliography and output the bibliography note
 
 %----------------------------------------------------------------------------------------
 %	INDEX
