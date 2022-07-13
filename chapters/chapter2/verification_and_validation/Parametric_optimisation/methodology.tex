@@ -15,17 +15,17 @@ where \textbf{x} is the set of parameters used for the simulation, $d_\mathrm{si
 In \refeq{cost function}, $f(\textbf{x})$ can be weighted by coefficients $\alpha_i$ in order to have a better fit on specific regions of the spectrum.
 %Note that this cost function could as well be a root mean square error or any type of residual.
 
-The parametric optimisation problem can now be solved by finding the minimum of the cost function $f$.
-The global optimisation routine is illustrated on \reffig{diagramm}.
-\begin{figure}
+% The global optimisation routine is illustrated on \reffig{diagram}.
+\begin{figure*}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter3/Parametric_optimisation/algorithm diagram.pdf}
-    \caption{Diagram of the embedding of FESTIM within a parametric optimisation routine based on SciPy \cite{virtanen_scipy_2020}.}
-    \labfig{diagramm}
-\end{figure}
+    \caption{Diagram of the parametric optimisation routine.}
+    \labfig{diagram}
+\end{figure*}
 
-A comparative study of the several optimisation algorithms which can be employed has been made.
-These algorithms require the user to give an initial set of parameters called \textit{initial guess} and evaluate the cost function with several parameters sets until the convergence criterion is reached.
+The parametric optimisation problem can now be solved by finding the minimum of the cost function $f$.
+A comparative study of the several optimisation algorithms which can be employed has been performed.
+These algorithms require the user to give an initial set of parameters called \textit{initial guess} and evaluate the cost function with several parameters sets until the convergence criterion is reached (see \reffig{diagram}).
 As in \sidecite{drexler_model-based_2019}, the Python package SciPy \sidecite{virtanen_scipy_2020} will be employed.
 
 Four minimisation algorithms have been benchmarked against a test case.
