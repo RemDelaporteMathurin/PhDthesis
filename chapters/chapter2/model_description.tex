@@ -3,7 +3,7 @@
 \chapter{Model description}\labch{Chapter2}
 \label{Chapter2} % For referencing the chapter elsewhere, use \ref{Chapter2} 
 \section{Introduction}
-This Chapter describes the mathematical models needed to simulate H transport in tokamaks plasma facing components.
+This Chapter describes the mathematical models used to simulate H transport in tokamaks plasma facing components.
 The numerical scheme to solve these equations and an introduction to the finite element method alongside with its implementation in the \gls{festim} code are also presented.
 Finally, the verification \& validation of \gls{festim} is performed to guaranty its reliability.
 
@@ -35,7 +35,7 @@ The Soret effect and the effect of hydrostatic pressure are here neglected due t
 % This effect will enhance the diffusion when particles diffuse from a hot region to a cold region.
 % It should be noted however that the Soret coefficient is fairly difficult to measure.
 
-The spatio-temporal evolution of these concentrations is commonly described by the following reaction-diffusion system:
+The spatio-temporal evolution of these concentrations is commonly described by the following reaction-diffusion system \sidecite{mcnabb_new_1963}:
 
 \begin{equation}
     \frac{\partial c_\mathrm{m}}{\partial t}=\nabla \cdot J+\Gamma-\sum \frac{\partial c_{\mathrm{t}, i}}{\partial t}
@@ -55,10 +55,10 @@ In \refeq{trapped}, $k_i$ and $p_i$ are the trapping and detrapping rates expres
 At steady state (i.e.\ $\frac{\partial c_\mathrm{m}}{\partial t} = 0$ and $\frac{\partial c_{\mathrm{t}, i}}{\partial t} = 0$), the mobile H concentration is independent of $c_{\mathrm{t}, i}$.
 \refeq{trapped} can be rewritten as:
 \begin{equation}
-    c_{\mathrm{t}, i} = n_i \frac{1}{\frac{p}{k c_\mathrm{m}} + 1}
+    c_{\mathrm{t}, i} = n_i \frac{1}{\frac{p_i}{k_i c_\mathrm{m}} + 1}
     \labeq{steady state ct}
 \end{equation}
-The quantity $(p / (k c_\mathrm{m}) + 1)^{-1}$ determines the trap occupancy. 
+The quantity $(p_i / (k_i c_\mathrm{m}) + 1)^{-1}$ determines the trap occupancy. 
 As it approaches one (high mobile concentration, low detrapping rate or high trapping rate), the trapped concentration approaches the trap density.
 As it approaches zero (high detrapping rate, low mobile concentration or low trapping rate), the trapped concentration approaches zero.
 
@@ -68,20 +68,20 @@ Several boundary conditions will be employed in order to constrain either the co
 
 \subsubsection{Dissociation and recombination fluxes}
 
-The concentration gradient can also be constrained on the boundaries (see \refeq{neuman robin bc}).
+The concentration gradient can be constrained on the boundaries (see \refeq{neuman robin bc}).
 
 \begin{equation}
     - D(T)\nabla c_\mathrm{m} \cdot \mathbf{n} = f(x, t) \quad \text { on } \partial \Omega
     \labeq{neuman robin bc}
 \end{equation}
-where $D(T) = D_0 \exp(\frac{-E_D}{k_B T}) $ is the diffusion coefficient in \si{m^2.s^{-1}}, $T$ is the local temperature in \si{K}, $\mathbf{n}$ is the boundary normal vector and $\partial \Omega$ is the domain boundary.
+where $D(T) = D_0 \exp(\frac{-E_D}{k_B T}) $ is the diffusion coefficient in \si{m^2.s^{-1}}, $\mathbf{n}$ is the boundary normal vector and $\partial \Omega$ is the domain boundary.
 
-$f$ can also be expressed as a molecular recombination flux:
+$f$ can be expressed as a molecular recombination flux:
 \begin{equation}
     - D(T)\nabla c_\mathrm{m} \cdot \mathbf{n} = K_r(T) c_\mathrm{m}^n \quad \text { on } \partial \Omega
     \labeq{recombination flux}
 \end{equation}
-where $K_r(T) = K_{r_0} \exp(\frac{-E_{K_r}}{k_B T}) $ is the recombination coefficient expressed in \si{m^{3n-2}.s^{-1}}, $\mathbf{n}$ is the boundary normal vector and $n \in \{1, 2\}$ is the order of the recombination.
+where $K_r(T) = K_{r_0} \exp(\frac{-E_{K_r}}{k_B T}) $ is the recombination coefficient expressed in \si{m^{3n-2}.s^{-1}}, $n \in \{1, 2\}$ is the order of the recombination.
 In a metal, $n=2$ and in a non-metallic liquid, $n=1$.
 Recombination occurs when hydrogen particles located at the surface of the material combine with other particles (which can be other hydrogen particles) and are no longer bonded with the metal surface.
 It can happen both in presence of a vacuum or when the metal is in contact with a fluid (gas or liquid).
@@ -91,7 +91,7 @@ Similarly, a dissociation flux can be applied when a surface is in contact with 
     - D(T)\nabla c_\mathrm{m} \cdot \mathbf{n} = K_d(T) P \quad \text { on } \partial \Omega
     \labeq{dissociation flux}
 \end{equation}
-where $K_d(T) = K_{d_0} \exp(\frac{-E_{K_d}}{k_B T}) $ is the dissociation coefficient expressed in \si{m^{-3}.Pa^{-1}} and $\mathbf{n}$ is the boundary normal vector.
+where $K_d(T) = K_{d_0} \exp(\frac{-E_{K_d}}{k_B T}) $ is the dissociation coefficient expressed in \si{m^{-3}.Pa^{-1}}.
 Dissociation is the opposite process of recombination and occurs when particles in the surrounding atmosphere or fluid reach the metal surface and are adsorbed.
 These particles can then reach the bulk and diffuse in the metal.
 
@@ -108,8 +108,11 @@ It is therefore valid when applied to cases where the kinetics are fast enough f
 \subsubsection{Analytical simplification for an implanted source of H} \labsec{triangle model}
 
 Plasma implantation of hydrogen particles can be modelled with a volumetric source.
-Typically, the depth of the implantation profile is a few nanometres depending on the incident particles energy and incident angle.
+Typically, the depth of the implantation profile $R_p$ is a few nanometres depending on the incident particles energy and incident angle.
 These profiles can be simulated by Monte Carlo codes like \gls{srim} \sidecite{ziegler_srim_2010} and have a gaussian-like shape  (see \reffig{srim_implantation_profile_example}).
+% In order to accurately model this source term, the size of the cells constituing the mesh (the spatial discretisation of the domain) must be less than a nanometre.
+% This can be done easily in 1D but is very complicated in higher dimensions, especially when simulating centimetre-sized components.
+This volumetric source term can be simplified into a Dirichlet boundary condition (i.e.\ enforcing the mobile particle concentration at the exposed surface).
 
 \begin{figure}
     \centering
@@ -117,10 +120,6 @@ These profiles can be simulated by Monte Carlo codes like \gls{srim} \sidecite{z
     \caption{\SI{100}{eV} deuterium implantation profile in tungsten computed from \gls{srim}. Reproduced from \cite{shimada_improved_2019}.}
     \labfig{srim_implantation_profile_example}
 \end{figure}
-
-% In order to accurately model this source term, the size of the cells constituing the mesh (the spatial discretisation of the domain) must be less than a nanometre.
-% This can be done easily in 1D but is very complicated in higher dimensions, especially when simulating centimetre-sized components.
-This volumetric source term can be simplified into a Dirichlet boundary condition (i.e.\ enforcing the mobile particle concentration at the exposed surface).
 
 Let us consider a volumetric source term of hydrogen $\Gamma = \varphi_\mathrm{imp} \; f(x)$ where $f$ is a narrow Gaussian distribution.
 The concentration profile of mobile particles can be approximated by a triangular shape \sidecite{schmid_diffusion-trapping_2016} (see \reffig{recomb sketch}).
@@ -133,7 +132,7 @@ The concentration profile of mobile particles can be approximated by a triangula
 \end{figure*}
 
 The concentration profile is therefore maximum at $x=R_p$.
-The expression of $c_\mathrm{max}$ can be obtained by expressing the flux balance at equilibrium:
+The expression of maximum concentration value $c_\mathrm{max}$ can be obtained by expressing the flux balance at equilibrium:
 
 \begin{equation}
     \varphi_\mathrm{imp} = \varphi_\mathrm{recomb} + \varphi_\mathrm{bulk}
@@ -191,7 +190,7 @@ where $\tau$ is a characteristic time expressed by:
 \begin{equation}
     \tau = \frac{R_p \sum R_i \, n_i}{8 \varphi_\mathrm{imp}}
 \end{equation}
-In this expression, $R_i = (p / (k c_\mathrm{max}) + 1)^{-1}$ represents the maximum filling ratio of the trap $i$ and $n_i$ is the trap density.
+In this expression, $R_i = (p_i / (k_i \, c_\mathrm{max}) + 1)^{-1}$ represents the maximum filling ratio of the trap $i$ and $n_i$ is the trap density.
 When $t \gg \tau$, $c_\mathrm{max}(t) \approx \frac{R_p \varphi_\mathrm{imp}}{D} + \sqrt{\frac{\varphi_\mathrm{imp}}{K_r}}$
 
 \subsection{Interface condition: conservation of chemical potential}\labsec{conservation of chemical potential}
@@ -269,33 +268,33 @@ This condition is called a Neumann condition.
     -\lambda \nabla T \cdot \mathbf{n} = f(x, y, z, t) \quad \text { on } \partial \Omega
     \labeq{neumann bc T}
 \end{equation}
-where $\lambda$ is the thermal conductivity in \si{W.m^{-1}.K^{-1}}, $\mathbf{n}$ is the boundary normal vector and $\partial \Omega$ is the domain boundary.
+where $\lambda$ is the thermal conductivity in \si{W.m^{-1}.K^{-1}}.
 
 Finally, to model a convective heat flux when the surface is in contact with a fluid (e.g.\ cooling pipes, natural convection...), a Robin boundary condition needs to be employed (see \refeq{convective bc T}).
 \begin{equation}
     -\lambda \nabla T \cdot \mathbf{n} = h (T - T_\mathrm{ext}) \quad \text { on } \partial \Omega
     \labeq{convective bc T}
 \end{equation}
-where $h$ is the heat transfer coefficient in \si{W.m^{-2}.K^{-1}}, $T_\mathrm{ext}$ is the fluid temperature in \si{K} and $\partial \Omega$ is the domain boundary.
+where $h$ is the heat transfer coefficient in \si{W.m^{-2}.K^{-1}}, $T_\mathrm{ext}$ is the fluid temperature in \si{K}.
 The heat transfer coefficient can be dependent on the temperature and the flow characteristics.
 It is obtained by computing the Nusselt number from correlations linking it to the Reynolds number of the flow and the Prandtl number of the fluid \sidecite{poirier_correlations_2016} (e.g.\ Dittus-Boetler, Sieder-State, Gnielinski...).
 Once the Nusselt number is known, the heat transfer coefficient $h$ reads:
 \begin{equation}
     h = \frac{\lambda \, \textit{Nu}}{L}
 \end{equation}
-with $\lambda$ the thermal conductivity of the fluid in \si{W.m^{-1}.K^{-1}}, $\textit{Nu}$ the Nusselt number and $L$ the characteristic length in \si{m}.
+with $\textit{Nu}$ the Nusselt number and $L$ the characteristic length in \si{m}.
 
 
 \section{Implementation}
 
 
-The models described in this Section can be hard to solve analytically for complex problems (complex geometries, transients, combined boundary conditions, etc.).
+The models described in the previous sections can be hard to solve analytically for complex problems (complex geometries, transients, combined boundary conditions, coupling, etc.).
 The code \gls{festim} \sidecite{delaporte-mathurin_finite_2019} was therefore developed in order to numerically solve these coupled equations.
 
 \subsection{The finite element method: FEniCS}
 \gls{festim} is based on the Finite Element Method to solve this set of differential equations and boundary conditions.
 Several finite element libraries are available open-source (deal.II \sidecite{arndt_dealii_2021}, MFEM \sidecite{kolev_tzanio_modular_2010}, MOOSE \sidecite{permann_moose_2020}, FreeFEM++ \sidecite{hecht_new_2012}...).
-The open-source python/C++ package \gls{fenics} \sidecite{alnaes_fenics_2015} was employed.
+The open-source python/C++ package \gls{fenics} \sidecite{alnaes_fenics_2015} was employed for it provides a user-friendly python interface.
 The finite element method is a versatile tool that can solve any partial differential equation on an arbitrary geometry in 1D, 2D or 3D.
 The main advantage of this method compared to the finite difference method is the simplicity of its application to complex geometries and unstructured meshes.
 Indeed, implementing a finite difference scheme for such a problem would be tedious and extra care must be taken for mistakes in the implementation could result in losses in efficiency and accuracy of the numerical solution.
@@ -303,7 +302,7 @@ Indeed, implementing a finite difference scheme for such a problem would be tedi
 This section illustrates the finite element method applied to Poisson's equation \sidecite{logg_automated_2012}.
 
 The mathematical problem can be described by \refeq{example poisson} where $u$ is the unknown to be solved governed by Poisson's equation.
-The problem is constrained by boundary conditions defined on $\partial \Omega$, the boundary of the domain.
+The problem is constrained by boundary conditions defined on $\partial \Omega$, the boundary of the domain $\Omega$.
 The value of $u$ is prescribed on the subset $\Gamma_D$ (Dirichlet boundary condition) whereas the value of the normal derivative of $u$ is prescribed on the remaining boundary $\Gamma_N$ (Neumann boundary condition) (see \reffig{fe problem sketch}).
 
 \begin{subequations}

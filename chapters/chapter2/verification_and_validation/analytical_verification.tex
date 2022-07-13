@@ -39,6 +39,7 @@ The trapping parameter $\zeta$ is defined in \sidecite{longhurst_verification_20
 \end{equation}
 
 In our case, we choose the trapping and detrapping rates $k$ and $p$, the concentration $c_0$ and the temperature $T$ so that $\zeta \gg \frac{c_\mathrm{m}}{n}$.
+This condition is equivalent to having the trap filling ratio $(p / (k \, c_\mathrm{m}) + 1)^{-1} \ll 1$.
 This is known as the \textit{effective diffusivity regime} where the diffusion is almost identical to the case where there are no traps.
 In this regime, the governing equations are identical as a pure diffusion regime and are therefore easy to solve analytically.
 
@@ -46,14 +47,14 @@ The coefficient $D$ is then replaced by an effective diffusion coefficient:
 \begin{equation}
     D_\mathrm{eff} = \frac{D}{1+\frac{1}{\zeta}}
 \end{equation}
-The particle flux at the background surface ($x=l$) is expressed in $\si{H.m^{-2}.s^{-1}}$ and finally defined in \sidecite{longhurst_verification_2005} by:
+The particle flux at the background surface ($x=l$) is expressed in $\si{H.m^{-2}.s^{-1}}$ and finally defined in \cite{longhurst_verification_2005} by:
 \begin{equation}
     \varphi(t) = \frac{c_0 D}{l}\bigg[1+2\sum_{m=1}^{\infty}(-1)^m \exp\bigg(-m^2\frac{\pi^2 \:D_\mathrm{eff} \: t}{l^2}\bigg)\bigg]
 \labeq{flux analytical}
 \end{equation}
-Note: The infinite sum has been truncated at $m=10000$.
+In \refeq{flux analytical}, the infinite sum has been truncated at $m=10000$.
 
-All the parameters are defined in \reftab{parameters analytical verification}.
+All the parameters used in this verification case are defined in \reftab{parameters analytical verification}.
 These parameters have been chosen for the sake of verification and do not necessarily represent realistic conditions as verification is a mathematical exercise.
 \begin{table}
     \centering
@@ -159,7 +160,7 @@ By combining \refeq{mobile}, \refeq{trapped} and \refeq{manufactured solutions},
 \begin{equation}
     \begin{cases}
     f = \cos(t) - \sin(t) - 2D \\
-    g_1 = \nu_1 c_{{t,1}_D} - \nu_m c_{m_D} ( n_1 - c_{{t,1}_D}) - \sin(t)
+    g_1 = p_1 c_{{t,1}_D} - k_1 c_{m_D} ( n_1 - c_{{t,1}_D}) - \sin(t)
     \end{cases}
     \labeq{sources}
 \end{equation}
