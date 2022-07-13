@@ -23,7 +23,7 @@ with plt.style.context(matplotx.styles.dufte):
 
     my_diagram.add_dotted_line(trap_2, dx_right=2)
     my_diagram.add_dotted_line(states[states.index(trap_2) + 1], dx_right=1)
-    my_diagram.add_arrow(states[states.index(trap_2) + 1], trap_2, "$E_{\mathrm{b},2}$")
+    my_diagram.add_arrow(states[states.index(trap_2) + 2], trap_2, "$E_{\mathrm{b},2}$")
     my_diagram.add_arrow(
         states[states.index(trap_2) + 2],
         states[states.index(trap_2) + 3],
