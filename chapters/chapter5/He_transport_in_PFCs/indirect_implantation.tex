@@ -6,7 +6,7 @@ This section will focus on comparing these two indirect sources with direct heli
 In combination with the \gls{paramak} code \sidecite{shimwell_paramak_2021} used for creating the \gls{monoblock} geometry, a neutronics simulation was run to assess the total quantity of helium generation in a \gls{monoblock} under neutron irradiation with the \gls{openmc} code \sidecite{romano_openmc_2015}, a modern open-source Monte-Carlo neutron and photon transport code.
 
 \Gls{openmc} simulates the transport of neutroncs by modelling their paths from their birth until their deaths.
-Neutron interactions with matter (reflexion, absorption, fission...) are simulated using a probabilistic approach where each reaction has a corresponding cross-section (taken from the \gls{endf}).
+Neutron interactions with matter (reflexion, absorption, fission...) are simulated using a probabilistic approach where each reaction has a corresponding cross-section (taken from the \gls{endf} \sidecite{brown_endfb-viii0_2018}).
 
 In this simulation, a neutron source was placed above the \gls{monoblock} and the total helium production was tallied via the $(n,X\alpha)$ reaction rate (MT reaction number 207).
 The neutron source corresponds to a \SI{500}{MW} DT neutron source, which gives a neutron generation rate of \SI{1.8e20}{neutrons.s^{-1}} (based on the energy produced by the DT fusion reaction).
@@ -97,7 +97,7 @@ The volumetric source of helium $\Gamma$ due to direct implantation can be calcu
 \begin{equation}
     \Gamma = \varphi_\mathrm{imp} \, f(x)
 \end{equation}
-where $\varphi_\mathrm{imp}$ is the implanted helium flux and $f(x)$ is a gaussian distribution centered on $R_p=\SI{1.5}{nm}$ and a width $\sigma=\SI{1.0}{nm}$.
+where $\varphi_\mathrm{imp} = \SI{5e25}{m^{-2}.s^{-1}}$ is the implanted helium flux and $f(x)$ is a gaussian distribution centered on $R_p=\SI{1.5}{nm}$ and a width $\sigma=\SI{1.0}{nm}$, which correspond to typical implantation parameters for helium exposure in tokamaks.
 
 When comparing the production of helium from indirect sources with the quantity helium implanted from the plasma $\Gamma$, it appears that the indirect sources are negligible in the exposed region (see \reffig{comparison helium generation}).
 Indirect helium production may become dominant in bulk regions - though may not necessarily be enough to produce helium bubbles.

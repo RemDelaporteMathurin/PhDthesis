@@ -74,8 +74,15 @@ These have been run in baseline burning plasma conditions ($Q=10$ with \SI{50}{M
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter4/example.pdf}
-    \caption{Method of \gls{divertor} \gls{H} \gls{inventory} estimation based on the surface concentration, the surface temperature and the behaviour law obtained in \refch{Chapter3}.}
+    \begin{overpic}[width=\linewidth]{Figures/Chapter4/example.pdf}
+        % \linethickness{2pt}
+        \thicklines
+        \put(55,36){\color{black}\vector(-1, 0){30}}
+        \put(25,75){\color{black}\vector(0, -1){30}}
+        \put(35,45){\color{black}\vector(1, 1){30}}
+    \end{overpic}
+
+    \caption{Method of WEST \gls{divertor} \gls{H} \gls{inventory} estimation based on the surface concentration, the surface temperature and the behaviour law obtained in \refch{Chapter3}.}
     \labfig{behaviour law example}
 \end{figure}
 
@@ -137,9 +144,11 @@ It should be noted that since \gls{srim} is based on the binary collision approx
 
 All of these steps have been automated and packaged into a tool called divHretention.
 divHretention can directly interpret \gls{solps}/\gls{soledge} data and produce a distribution of \gls{monoblock} \gls{inventory} as in \reffig{behaviour law example}.
+\marginnote{
 The source-code of the tool is under version control and openly available via GitHub under a MIT licence \cite{delaporte-mathurin_irfmdivhretention_2021}.
 The divHretention python package is distributed via PyPi \cite{delaporte-mathurin_divhretention_nodate}.
 Moreover, all the results obtained in this Chapter can be reproduced with the scripts available at \url{https://github.com/RemDelaporteMathurin/divHretention-Nucl.Fusion-2021}.
+}
 
 \section{\gls{iter} results}
 
@@ -148,11 +157,11 @@ Moreover, all the results obtained in this Chapter can be reproduced with the sc
     \centering
     \begin{subfigure}{0.42\linewidth}
         \includegraphics[width=\linewidth]{Figures/Chapter4/ITER/inventory_along_inner_divertor.pdf}
-        \caption{IVT.}
+        \caption{Inner Vertical Target.}
     \end{subfigure}%
     \begin{subfigure}{0.58\linewidth}
         \includegraphics[width=\linewidth]{Figures/Chapter4/ITER/inventory_along_outer_divertor.pdf}
-        \caption{OVT.}
+        \caption{Outer Vertical Target.}
         \labfig{distrib outer target}
     \end{subfigure}
     \caption{Surface temperature, surface concentration and \gls{inventory} per unit thickness along the \gls{iter} \gls{divertor} with neutral pressures varying from \SI{2}{Pa} to \SI{11}{Pa}. The area corresponds to the 95\% confidence interval.}
@@ -221,7 +230,7 @@ This is especially true considering that this was for a very long exposure time 
 
 
 % local inventories
-The inventory at the inner and outer \glspl{strike point} globally increases with the \gls{divertor} neutral pressure (see \reffig{local inventory neutral pressure}).
+The inventory at the inner \gls{strike point} is constant from \SI{4}{Pa} whereas the inventory at the outer \gls{strike point} globally increases with the \gls{divertor} neutral pressure (see \reffig{local inventory neutral pressure}).
 The contribution of ions to the surface concentration at the inner strike point is around 50 \% and tends to decrease with increasing neutral pressure (see \reffig{ion contribution neutral pressure}).
 At low \gls{divertor} neutral pressure, the contribution of ions at the outer strike point is around 90 \% and tends to decrease with increasing neutral pressure.
 This can be explained by the fact that in both inner and outer targets, the integrated flux of ions decreases with increasing neutral pressure whereas the integrated flux of atoms increases, leading to a greater proportion of neutral particles.
