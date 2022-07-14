@@ -40,8 +40,8 @@ Depending on the simulation case (with or without desorption on the gaps), the o
 
 \begin{subequations}
     \begin{align}
-    -\lambda \vec{\nabla} T \cdot \vec{n} &=\varphi_\mathrm{heat} \quad  &\text { on } \Gamma_\mathrm{top}\\
-    -\lambda \vec{\nabla} T\cdot \vec{n} &= -h \cdot \left(T_\mathrm{coolant} - T\right)\quad &\text { on } \Gamma_\mathrm{coolant}
+    -\lambda \nabla T \cdot \mathbf{n} &=\varphi_\mathrm{heat} \quad  &\text { on } \Gamma_\mathrm{top}\\
+    -\lambda \nabla T\cdot \mathbf{n} &= -h \cdot \left(T_\mathrm{coolant} - T\right)\quad &\text { on } \Gamma_\mathrm{coolant}
     \end{align}
     \labeq{bc thermal DEMO monoblock}
 \end{subequations}
@@ -50,9 +50,9 @@ where $\varphi_\mathrm{heat}=\SI{10}{MW}$, $h=\SI{7e4}{W.m^{-2}.K^{-1}}$ is the 
 \begin{subequations}
     \begin{align}
     c_\mathrm{m} &=  \frac{\varphi_\mathrm{imp} R_p}{D} \quad &\text { on } \Gamma_\mathrm{top}\\
-    -D \vec{\nabla} c_\mathrm{m} \cdot \vec{n} &= K_\mathrm{CuCrZr} \cdot c_\mathrm{m}^{2} \quad &\text { on } \Gamma_\mathrm{coolant} \\
+    -D \nabla c_\mathrm{m} \cdot \mathbf{n} &= K_\mathrm{CuCrZr} \cdot c_\mathrm{m}^{2} \quad &\text { on } \Gamma_\mathrm{coolant} \\
     c_\mathrm{m} &=  0 \quad &\text { on } \Gamma_\mathrm{toroidal} \text{  and  } \Gamma_\mathrm{pipe} \\
-    c_\mathrm{m} &=  0 \quad \text{or} \quad -D \vec{\nabla} c_\mathrm{m} \cdot \vec{n} = 0 &\text { on } \Gamma_\mathrm{poloidal}
+    c_\mathrm{m} &=  0 \quad \text{or} \quad -D \nabla c_\mathrm{m} \cdot \mathbf{n} = 0 &\text { on } \Gamma_\mathrm{poloidal}
     \end{align}
     \labeq{bc H transport DEMO monoblock}
 \end{subequations}

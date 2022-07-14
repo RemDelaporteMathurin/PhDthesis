@@ -199,7 +199,7 @@ These devices, known as \textit{inertial fusion devices}, exhibit extremely high
 So far, no fusion device has been able to even reach \textit{break-even} ($Q = 1$) (see \reffig{triple product vs T}).
 The record of $Q = 0.68$ by the European \gls{tokamak} \gls{jet} and was performed in 1997 \sidecite{mailloux_overview_2022}.
 The objective of the \gls{iter} \gls{tokamak}, currently under construction in France, is to demonstrate an amplification factor of $Q=10$ over \SI{400}{s} \sidecite{casper_development_2013}. 
-Note that \acrshort{iter} will not produce any electricity as this will be the role of a future fusion reactor: DEMO \sidecite{federici_overview_2014}.
+Note that \acrshort{iter} will not produce any electricity as this will be the role of a future fusion reactor: \gls{demo} \sidecite{federici_overview_2014}.
 Other designs aim at demonstrating \gls{plasma} gain (i.e.\ $Q > 1$) sooner than \acrshort{iter} and at a smaller scale (see \reffig{comparison reactors}).
 This is the case of \acrshort{sparc} and \acrshort{arc} developed by Commonwealth Fusion Systems and MIT \sidecite{sorbom_arc_2015,creely_overview_2020} or \acrshort{step} designed by the \gls{ukaea} \sidecite{wilson_steppathway_2020}.
 
@@ -241,7 +241,7 @@ Plus carbon can react with \gls{plasma} particles forming methane.
 Methane is then deposited on locations hard to access in the reactor \gls{trapping} tritium even more.
 For these two safety reasons, \gls{cfc} was replaced with \Gls{W} or \gls{Be} (or both).
 The advantage of \gls{Be} is that it creates a stable oxide.
-The formation of this oxide layer consumes oxygen and reduces the oxygen level in the plasma.
+The formation of this oxide layer consumes oxygen and reduces the oxygen impurity level in the plasma.
 
 \Gls{W} has a very high melting point (\SI{3422}{\celsius}) and retains less tritium \sidecite{pajuste_tritium_2021}.
 However, \Gls{W} being a high-Z element, eroded \Gls{W} will make the \gls{plasma} radiate and cool it down.
@@ -282,10 +282,10 @@ In \acrshort{iter}, the \gls{ivt} has 16 \glspl{pfuLabel} and the \gls{ovt} has 
 \Glspl{monoblock} are typically made of a \Gls{W} substrate with a cooling pipe running through.
 This cooling channel is necessary to keep the component's temperature below its operating limit and exhaust heat.
 
-Several \gls{monoblock} designs are currently studied for DEMO with varying dimensions, different materials for the cooling pipe or the interlayer, etc. \sidecite{vizvary_european_2020, huang_tungsten_2016, hirai_use_2016, domptail_design_2020}.
+Several \gls{monoblock} designs are currently studied for \gls{demo} with varying dimensions, different materials for the cooling pipe or the interlayer, etc. \sidecite{vizvary_european_2020, huang_tungsten_2016, hirai_use_2016, domptail_design_2020}.
 The main candidate is the ITER-like design, the type of \gls{monoblock} that will be used in \acrshort{iter} \cite{hirai_use_2016}.
-This design has a tungsten substrate with a CuCrZr cooling pipe and a Cu interlayer for compliance.
-In \acrshort{iter}, \glspl{monoblock} will be \SI{12}{mm}-thick whereas they will be thinner (\SI{4}{mm}) in DEMO \sidecite{you_european_2018}.
+This design has a \gls{W} substrate with a CuCrZr cooling pipe and a Cu interlayer for compliance.
+In \acrshort{iter}, \glspl{monoblock} will be \SI{12}{mm}-thick whereas they will be thinner (\SI{4}{mm}) in \gls{demo} \sidecite{you_european_2018}.
 
 \begin{figure*}
     \includegraphics[width=\linewidth]{Figures/Chapter1/monoblock_to_divertor.pdf}
@@ -437,7 +437,7 @@ The use of these \gls{permeation} barriers - by definition minimising \gls{perme
 
 \section{Helium and Hydrogen in metals}
 
-This Section summarises the main processes at stake (see \reffig{helium and hydrogen in metals sketch}) when helium and hydrogen particles interact with metals and with each other.
+This Section summarises the main processes at stake (see \reffig{helium and hydrogen in metals sketch}) when \gls{He} and \gls{H} particles interact with metals and with each other.
 
 \begin{figure*}[h!]
     \begin{subfigure}{0.9\linewidth}
@@ -472,7 +472,7 @@ Tritium can also be produced by the neutron capture of helium-3 \sidecite{shimad
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{Figures/Chapter1/cross_section_he3_neutron_capture.pdf}
-    \caption{Cross section of the $^3\mathrm{He(n,T)H}$ \cite{shimwell_xsplot_2021}.}
+    \caption{Cross section of the $^3\mathrm{He(n,T)H}$ reaction \cite{shimwell_xsplot_2021}.}
     \labfig{helium3 neutron capture cross section}
 \end{figure}
 
@@ -486,7 +486,7 @@ This is the primary source of helium in \glspl{pfm}.
 Helium can also be produced in materials indirectly.
 Since tritium decays into helium-3 (see \refeq{tritium decay}), regions with high tritium \gls{retention} are expected to act as a source of helium over time \cite{shimada_tritium_2017}.
 Moreover, interactions of neutrons (from the fusion reactions) with metallic elements (e.g.\ tungsten or iron) can produce helium via transmutation \sidecite{watanabe_status_2011}.
-This \emph{\gls{transmutation gas}} production has been estimated using well-established neutronics simulations (Monte-Carlo simulations modelling the path of neutroncs in matter) \sidecite{gilbert_neutron-induced_2013, gilbert_integrated_2012}.
+This \emph{\gls{transmutation gas}} production has been estimated using well-established neutronics simulations (Monte-Carlo simulations modelling the path of neutrons in matter) \sidecite{gilbert_neutron-induced_2013, gilbert_integrated_2012}.
 Depending on the position in the DEMO \gls{divertor}, cumulative helium production over the course of three \glspl{fpy} could reach more than \SI{400}{appm}.
 
 
@@ -548,13 +548,13 @@ By measuring the trajectory of a diffusing species from \gls{md} simulations for
 \end{equation}
 where $\langle R^2(t) \rangle$ is the mean squared displacement of the species.
 
-This modelling technique was used to estimate the diffusion coefficient of \gls{H} in \gls{W} \sidecite{wang_molecular_2020, zhou_molecular_2016,kato_super-saturated_2015,liu_hydrogen_2014} and for He in \gls{W} \sidecite{faney_numerical_2013,faney_spatially_2014,faney_spatially_2015,sefta_surface_2013,perez_mobility_2017}.
+This modelling technique was used to estimate the diffusion coefficient of \gls{H} in \gls{W} \sidecite{wang_molecular_2020, zhou_molecular_2016,kato_super-saturated_2015,liu_hydrogen_2014} and for \gls{He} in \gls{W} \sidecite{faney_numerical_2013,faney_spatially_2014,faney_spatially_2015,sefta_surface_2013,perez_mobility_2017}.
 
 % Experiments
 Diffusivity of hydrogen has also been measured experimentally in \gls{W} \sidecite{holzner_solute_2020, frauenfelder_solution_1969, anderl_hydrogen_1990}, copper and copper alloys (CuCrZr) \sidecite{anderl_deuterium_1992} and other metals.
 Note that the diffusion coefficients measured experimentally are usually effective coefficients accounting for \gls{trapping} effects (detailed below).
 % EUROFER \sidecite{montupet-leblond_permeation_2021,esteban_hydrogen_2007,aiello_hydrogen_2002}, 
-Because He tends to cluster (as explained below), measuring its diffusivity experimentally is extremely complicated and therefore most estimations of He diffusion coefficients are numerical.
+Because \gls{He} tends to cluster (as explained below), measuring its diffusivity experimentally is extremely complicated and therefore most estimations of \gls{He} diffusion coefficients are numerical.
 \reffig{diffusivity materials} is a collection of diffusivity values found in literature (measured experimentally or computed) for tungsten, copper and CuCrZr.
 
 % The diffusivities of copper and CuCrZr are comparable (see \reffig{diffusivity solubility copper} and \reffig{diffusivity solubility cucrzr}).
@@ -594,7 +594,7 @@ Peaks appearing at high temperatures correspond to ``deep'' traps with a high \g
 \begin{figure*}
     \centering
     \includegraphics[width=0.75\linewidth]{Figures/Chapter1/tds_helium_nicolas.pdf}
-    \caption{H TDS spectra of pre-damaged W. Reproduced from \cite{ialovega_hydrogen_2020}.}
+    \caption{H TDS spectrum of pre-damaged W. Reproduced from \cite{ialovega_hydrogen_2020}.}
     \labfig{TDS example ialovega}
 \end{figure*}
 
@@ -721,12 +721,12 @@ When $\mathrm{Pe} \ll 1$, \gls{diffusion} dominates and \gls{advection} can be n
 For hydrogen diffusing in liquid LiPb (typically in a WCLL breeding blanket with a characteristic length $L \approx \SI{1}{m}$), with $D \approx \SI{1e-9}{m^2.s^{-1}}$ and $u \approx \SI{1e-4}{m.s^{-1}}$ \sidecite{dark_influence_2021}, $\mathrm{Pe} \approx 10^{5}$, which means that \gls{advection} dominates the mass transport and cannot be neglected.
 
 \subsubsection{Clustering}
-Single He atoms implanted into the material diffuse rapidly due to the high W-He repulsion.
-This high repulsive W-He interaction is such that interstitial He atoms preferably rearrange into groups of atoms in order to minimise the number of repulsive interactions \sidecite{hamid_molecular_2019, hammond_large-scale_2018}.
+Single \gls{He} atoms implanted into the material diffuse rapidly due to the high W-He repulsion.
+This high repulsive W-He interaction is such that interstitial \gls{He} atoms preferably rearrange into groups of atoms in order to minimise the number of repulsive interactions \sidecite{hamid_molecular_2019, hammond_large-scale_2018}.
 This phenomenon, called \emph{clustering}, was highlighted by \gls{dft} studies \cite{becquart_density_2009,dunn_rate_2013} and MD simulations \cite{henriksson_molecular_2006}.
-Small clusters are themselves mobile as long as all the He atoms within the cluster are occupying interstitial position in the solid \gls{lattice}.
-The activation energy for interstitial He atoms and clusters in \gls{W} ranges from 0.15 to \SI{0.45}{eV} according to Perez et al.\ \sidecite{perez_mobility_2017}.
-He clusters will eventually grow by interacting with either interstitial He atoms or other clusters.
+Small clusters are themselves mobile as long as all the \gls{He} atoms within the cluster are occupying interstitial position in the solid \gls{lattice}.
+The activation energy for interstitial \gls{He} atoms and clusters in \gls{W} ranges from 0.15 to \SI{0.45}{eV} according to Perez et al.\ \sidecite{perez_mobility_2017}.
+He clusters will eventually grow by interacting with either interstitial \gls{He} atoms or other clusters.
 
 Clustering of \gls{H} atoms is less clear and Henriksson et al.\ showed that \gls{H} atoms do not form bonds with other \gls{H} atoms in \gls{bcc} \gls{W} \sidecite{henriksson_difference_2005}.
 
@@ -736,7 +736,7 @@ If its size is big enough the cluster pressure is sufficient to knock off a \gls
 This process is called \gls{trap mutation} or \emph{\gls{self-trapping}} and the trapped clusters act as nuclei for bubble formation.
 
 \Gls{trap mutation} has been modelled in \gls{W} using \gls{dft} \sidecite{boisse_modelling_2014} and Monte Carlo computations \sidecite{de_backer_modeling_2015}.
-It has been shown that this phenomenon depends not only on the number of He atoms in the cluster but also on temperature, position of the cluster to the free surface or even the crystal orientation \sidecite{blondel_modeling_2017, hu_interactions_2014, hu_dynamics_2014}.
+It has been shown that this phenomenon depends not only on the number of \gls{He} atoms in the cluster but also on temperature, position of the cluster to the free surface or even the crystal orientation \sidecite{blondel_modeling_2017, hu_interactions_2014, hu_dynamics_2014}.
 At this point, the trapped cluster occupies the newly created \gls{W} \gls{vacancy} position.
 It is considered immobile since it would require either diffusion of another \gls{vacancy} next to it, or recombination of the Frenkel pair in order to diffuse \sidecite{morishita_nucleation_2007}.
 
@@ -754,26 +754,26 @@ Two or more bubbles can also coalesce and form a bigger bubble.
 Condon and Schober \sidecite{condon_hydrogen_1993} reviewed the key mechanisms of bubble growth in metals.
 
 Each of these mechanisms can become dominant over another depending on the implantation and the metal conditions. 
-Bubbles can continue to grow by absorbing interstitial He atoms or mobile He clusters (i.e.\ that haven't self trapped).
-Considering that vacancies are mobile in the solid, the volume of a bubble could also increase if a \gls{vacancy} or a \gls{vacancy} cluster interacts with a He bubble.
+Bubbles can continue to grow by absorbing interstitial \gls{He} atoms or mobile \gls{He} clusters (i.e.\ that haven't self trapped).
+Considering that vacancies are mobile in the solid, the volume of a bubble could also increase if a \gls{vacancy} or a \gls{vacancy} cluster interacts with a \gls{He} bubble.
 The same is true for He-vacancies or H-vacancies clusters.
 
-There is no experimental evidence of He clustering with \gls{self-interstitial} \gls{W} atoms \sidecite{faney_spatially_2014}.
+There is no experimental evidence of \gls{He} clustering with \gls{self-interstitial} \gls{W} atoms \sidecite{faney_spatially_2014}.
 
 % This process is described by cluster dynamics equations in which interaction between the clusters is governed by pairs of association and dissociation rates.
-During the growth of a He bubble by absorbing He atoms, if the pressure increases until reaching a critical value, \gls{dislocation loop} punching can occur.
+During the growth of a \gls{He} bubble by absorbing \gls{He} atoms, if the pressure increases until reaching a critical value, \gls{dislocation loop} punching can occur.
 During the punching event, a whole facet of \gls{W} atoms is pushed, and the vacant \gls{lattice} sites are absorbed by the bubble allowing the bubble to expand and reducing the pressure in it \sidecite{sefta_surface_2013}.
 The produced \gls{self-interstitial} \gls{W} atoms will likely be attracted by \textit{image forces} at the surface and will contribute to the roughening of the surface and/or formation of surface structures.
 
-\Glspl{dislocation loop} happen at very high pressure and if the number of vacancies in the \gls{lattice} is low compared to the amount of He atoms.
-This is the case when a high He flux is applied and the He ions energy is low so that no displacement damaged is produced \cite{sefta_surface_2013}.
-If vacancies were created via He ions implantation, they could interact with existing He bubbles which would have the effect of increasing the volume and thus decreasing the pressure (assuming no change in temperature and no other implantation mechanism).
+\Glspl{dislocation loop} happen at very high pressure and if the number of vacancies in the \gls{lattice} is low compared to the amount of \gls{He} atoms.
+This is the case when a high \gls{He} flux is applied and the \gls{He} ions energy is low so that no displacement damaged is produced \cite{sefta_surface_2013}.
+If vacancies were created via \gls{He} ions implantation, they could interact with existing \gls{He} bubbles which would have the effect of increasing the volume and thus decreasing the pressure (assuming no change in temperature and no other implantation mechanism).
 
-Coalescence of He bubbles has been observed in \gls{md} simulations \sidecite{hamid_molecular_2019, hammond_helium_2019, zhang_simulation_2019} and would tend to increase the bubble size decreasing the bubble density at the same time.
-This may not have an impact on He concentration on the macroscopic scale but might influence bubble bursting.
+Coalescence of \gls{He} bubbles has been observed in \gls{md} simulations \sidecite{hamid_molecular_2019, hammond_helium_2019, zhang_simulation_2019} and would tend to increase the bubble size decreasing the bubble density at the same time.
+This may not have an impact on \gls{He} concentration on the macroscopic scale but might influence bubble bursting.
 
 The pressure inside the bubble and the bubble radius are two parameters of interest and are correlated.
-Sefta \sidecite{sefta_surface_2013} proposed to use the Wolfer equation of state in order to determine the number of He atoms contained in a He bubble based on its pressure, the latter being calculated from its radius and its surface tension.
+Sefta \sidecite{sefta_surface_2013} proposed to use the Wolfer equation of state in order to determine the number of \gls{He} atoms contained in a \gls{He} bubble based on its pressure, the latter being calculated from its radius and its surface tension.
 One must be aware that if radii and pressure of bubbles computation is quite straightforward using \gls{md} \sidecite{zhang_simulation_2019} or cluster dynamics \sidecite{faney_spatially_2015} simulations it will be more complex to estimate these metrics considering a continuum model that does not keep track of every type of clusters but only a few of them.
 The only information \textit{a priori} available in this case is indeed the local helium concentration and an equivalence could be found by either having a high density of small bubbles or a low density of big bubbles.
 An effort has been made by Ialovega to measure the pressure inside helium bubbles using \gls{eels} \sidecite{ialovega_surface_2021}.
@@ -800,8 +800,8 @@ Similarly, if the rate of incoming atoms is less than the rate of re-dissolution
 Helium \gls{blistering} has been observed in \gls{W} at low temperature ($< \SI{1000}{K}$) \sidecite{baldwin_formation_2010}.
 Hydrogen \gls{blistering} was also observed in \gls{W} \sidecite{haasz_effect_1999}.
 Causey et al.\ also reviewed a wide range of studies showing H exposure leads to \gls{blistering} \sidecite{causey_hydrogen_2002}.
-\Gls{blistering} was found to lead to local hardening in W due to the production of dislocations \sidecite{chen_irradiation_2019}.
-It can also form cracks depending on the alloying elements in W and the microstructure \sidecite{ueda_hydrogen_2005}.
+\Gls{blistering} was found to lead to local hardening in \gls{W} due to the production of dislocations \sidecite{chen_irradiation_2019}.
+It can also form cracks depending on the alloying elements in \gls{W} and the microstructure \sidecite{ueda_hydrogen_2005}.
 
 Hydrogen \gls{blistering} was observed under high energy irradiation (typically from a few \si{keV} to \si{MeV}).
 These energies are orders of magnitudes higher than the ones expected in the \acrshort{iter} \gls{divertor} (see \reffig{divertor exposure conditions}).
@@ -819,21 +819,21 @@ It was also found that hydrogen blister formation was avoided in tungsten at tem
 \end{figure}
 
 When a bubble grows near the surface and is over-pressurised, \gls{bursting} can occur (see \reffig{bubble bursting zhou}).
-As the bubble size increases via \gls{loop punching}, the W \gls{lattice} is deformed and the ligament thickness decreases.
-The latter can rupture which would make all the He atoms contained in the bubble to be released to the vacuum.
-This is why He \gls{bursting} is characterised by sharp drops in the He \gls{inventory} \sidecite{hammond_helium_2019}.
+As the bubble size increases via \gls{loop punching}, the \gls{W} \gls{lattice} is deformed and the ligament thickness decreases.
+The latter can rupture which would make all the \gls{He} atoms contained in the bubble to be released to the vacuum.
+This is why \gls{He} \gls{bursting} is characterised by sharp drops in the \gls{He} \gls{inventory} \sidecite{hammond_helium_2019}.
 
 Sefta and co-workers observed that \gls{bursting} is more likely to happen at high temperatures.
 This phenomenon contributes to surface roughening and could be the beginning of the formation of \gls{fuzz} \sidecite{sefta_helium_2013}.
-Indeed, a \gls{bursting} event could either form a crater on the W surface or an empty cavity due to self-healing.
-In the last case, called a \textit{pinhole} \gls{bursting} event, the cavity can be repressurised with He atoms.
+Indeed, a \gls{bursting} event could either form a crater on the \gls{W} surface or an empty cavity due to self-healing.
+In the last case, called a \textit{pinhole} \gls{bursting} event, the cavity can be repressurised with \gls{He} atoms.
 Blondel et al.\ proposed to model \gls{bursting} as a stochastic function of depth in the material rather than a calculation of the bubble pressure.
 They have also shown that simulation parameters have an impact on the \gls{retention} \sidecite{blondel_continuum-scale_2018}.
 % These differences are mainly due to 2D effects as more bursting events occur but with smaller bubbles.
 They have shown that the size of the reaction network size (using cluster dynamics) does not seem to have an influence (between 250 and 200) as the first bursting events happen with clusters of size $\text{He}_{80}$.
 % Other simulation parameters (depth of the sample, pre-existing vacancies, bubble growth trajectory...) don't affect the simulations results as they converge for long time steps (100 s).
 
-If \gls{bursting} is not included in continuum simulations, the volume fraction of He present in W could become very large and the dilute limit approximation could no longer be valid \sidecite{sefta_surface_2013}.
+If \gls{bursting} is not included in continuum simulations, the volume fraction of \gls{He} present in \gls{W} could become very large and the dilute limit approximation could no longer be valid \sidecite{sefta_surface_2013}.
 The correct metric for estimating \gls{bursting} probabilities must therefore be chosen with care.
 
 \subsubsection{W tendrils or ``nano-fuzz''}
@@ -845,21 +845,21 @@ The correct metric for estimating \gls{bursting} probabilities must therefore be
     \labfig{w fuzz wright}
 \end{figure}
 
-In 2012, Wright et al.\ \sidecite{wright_tungsten_2012} observed the formation of nanostructures on the surfaces of the W divertor of the reactor Alcator C-mod.
-These nanostructures are made of W \glspl{tendril} (see \reffig{w fuzz wright}).
-These structures are called W \gls{fuzz}, nano-fuzz or even fuzzy W.
-Because a small portion of the \gls{divertor} grew W \gls{fuzz}, no conclusion was made regarding its influence on the \gls{plasma} operation.
-However, if these structures were to be removed during \gls{plasma} operation via erosion, W atoms could be fed into the \gls{plasma}, affecting the \gls{tokamak} performances.
-Moreover, this phenomenon could increase the W dust formation in the reactor and lead to contamination and safety issues \sidecite{grisolia_tritium_2015}.
+In 2012, Wright et al.\ \sidecite{wright_tungsten_2012} observed the formation of nanostructures on the surfaces of the \gls{W} divertor of the reactor Alcator C-mod.
+These nanostructures are made of \gls{W} \glspl{tendril} (see \reffig{w fuzz wright}).
+These structures are called \gls{W} \gls{fuzz}, nano-fuzz or even fuzzy W.
+Because a small portion of the \gls{divertor} grew \gls{W} \gls{fuzz}, no conclusion was made regarding its influence on the \gls{plasma} operation.
+However, if these structures were to be removed during \gls{plasma} operation via erosion, \gls{W} atoms could be fed into the \gls{plasma}, affecting the \gls{tokamak} performances.
+Moreover, this phenomenon could increase the \gls{W} dust formation in the reactor and lead to contamination and safety issues \sidecite{grisolia_tritium_2015}.
 
 W \gls{fuzz} has been observed at high temperature (>1000K), high flux (>\SI{1e21}{He^+.m^{-2}.s^{-1}}) and long exposure (t>\SI{1e2}{s}) \sidecite{baldwin_formation_2010, nishijima_sputtering_2011}.
 
 The reason of the \gls{fuzz} formation is still unclear but could be due to bursting events and/or accumulation of self interstitial W atoms at the surface \sidecite{baldwin_effects_2009, baldwin_helium_2008, woller_dynamic_2015, hammond_helium_2017}.
-Thermal properties of the media are also impacted by the formation of W \gls{fuzz} \sidecite{wirtz_influence_2016} which could have a severe impact during ELM-like events.
+Thermal properties of the media are also impacted by the formation of \gls{W} \gls{fuzz} \sidecite{wirtz_influence_2016} which could have a severe impact during ELM-like events.
 After 1h of \gls{plasma} implantation, nanostructuring can be found deep in the bulk (up to several hundred of $\mu$m).
 According to Baldwin and Doerner \sidecite{baldwin_formation_2010}, heavy alloying helps reduce the formation of He-induced \gls{fuzz}.
 
-Takamura et al.\ showed \gls{fuzz} could be grown under relevant \gls{tokamak} conditions (high-flux He \gls{plasma} irradiation and surface temperature greater than \SI{1250}{K}) \sidecite{takamura_formation_2006}.
+Takamura et al.\ showed \gls{fuzz} could be grown under relevant \gls{tokamak} conditions (high-flux \gls{He} \gls{plasma} irradiation and surface temperature greater than \SI{1250}{K}) \sidecite{takamura_formation_2006}.
 Baldwin et al.\ showed the \gls{fuzz} thickness evolved as a square root of the \gls{fluence} \cite{baldwin_effects_2009}.
 
 \begin{figure} [h!]
@@ -869,19 +869,19 @@ Baldwin et al.\ showed the \gls{fuzz} thickness evolved as a square root of the 
     \labfig{w fuzz mccarthy}
 \end{figure}
 
-McCarthy et al.\ studied the formation of W \gls{fuzz} (see \reffig{w fuzz mccarthy}) at helium fluences ranging from \SI{4e23}{m^{-2}} to \SI{e25}{m^{-2}}, temperatures ranging from \SI{1050}{K} to \SI{1150}{K} and He ion energies from \SI{80}{eV} to \SI{100}{eV}.
-They identified different \gls{fuzz} growth regimes depending on the He \gls{fluence} due to the change in porosity of the fuzzy layer during the growth process.
-The rate of growth was found to be dependent on the temperature and the state (ion or atom) of the incident He particles.
+McCarthy et al.\ studied the formation of \gls{W} \gls{fuzz} (see \reffig{w fuzz mccarthy}) at helium fluences ranging from \SI{4e23}{m^{-2}} to \SI{e25}{m^{-2}}, temperatures ranging from \SI{1050}{K} to \SI{1150}{K} and \gls{He} ion energies from \SI{80}{eV} to \SI{100}{eV}.
+They identified different \gls{fuzz} growth regimes depending on the \gls{He} \gls{fluence} due to the change in porosity of the fuzzy layer during the growth process.
+The rate of growth was found to be dependent on the temperature and the state (ion or atom) of the incident \gls{He} particles.
 
-Recent modelling work also showed temperature could significantly affect the bursting of He bubbles and therefore the growth of W \gls{fuzz} \sidecite{niu_effect_2021}.
+Recent modelling work also showed temperature could significantly affect the bursting of \gls{He} bubbles and therefore the growth of \gls{W} \gls{fuzz} \sidecite{niu_effect_2021}.
 
-De Temmerman et al.\ concluded that temperature was the most critical parameter controlling W \gls{fuzz} growth \sidecite{de_temmerman_nanostructuring_2012}.
+De Temmerman et al.\ concluded that temperature was the most critical parameter controlling \gls{W} \gls{fuzz} growth \sidecite{de_temmerman_nanostructuring_2012}.
 
 \subsubsection{Cracks}
 
-The role of He implantation in cracks formation is still unclear since cracks have also been observed during pure thermal shock on W PFC \sidecite{wirtz_influence_2016}.
+The role of \gls{He} implantation in cracks formation is still unclear since cracks have also been observed during pure thermal shock on \gls{W} PFC \sidecite{wirtz_influence_2016}.
 Under some specific conditions, cracks can close due to thermal expansion which induce frictional loads on the structure.
-The formation of W nano-fuzz could also bridge those cracks as observed by Lemahieu et al.\ \sidecite{lemahieu_h/he_2016}.
+The formation of \gls{W} nano-fuzz could also bridge those cracks as observed by Lemahieu et al.\ \sidecite{lemahieu_h/he_2016}.
 
 \subsubsection{Reduction of thermal performances}
 
@@ -897,24 +897,24 @@ This could lead to reduction of the PFC heat exhaust capacity and furthermore lo
 % NOTE: an interesting study would be to investigate thermal constriction due to the presence of inhomogeneities (He bubbles) in which thermal conductivity is low compared to the one of the W.
 
 \subsection{He/H interactions}
-Lee et al.\ studied the influence of He implantation on D \gls{retention}.
-They showed with Elastic Recoil Detection depth profiles (up to 40 nm) that D is trapped where He is trapped and proposed that He bubbles produce secondary defects around them which can trap D \sidecite{lee_hydrogen_2007}.
+Lee et al.\ studied the influence of \gls{He} implantation on \gls{D} \gls{retention}.
+They showed with Elastic Recoil Detection depth profiles (up to 40 nm) that \gls{D} is trapped where \gls{He} is trapped and proposed that \gls{He} bubbles produce secondary defects around them which can trap \gls{D} \sidecite{lee_hydrogen_2007}.
 These defects can be interstitial loops produced by \gls{loop punching} or even vacancies created by stress field induced by overpressurised bubbles.
-Lee et al.\ also suggested that no evidence had been found on trapping of D by chemisorption on the inner surface of a He bubble nor by molecular interaction with the He cluster.
-The privileged mechanism is therefore the trapping of D in the defects made by the stress field induced by the He bubble to the crystalline structure of the W.
-Bergstrom et al.\ however showed hydrogen can be located at the surface of He bubbles \sidecite{bergstrom_molecular_2017}.
+Lee et al.\ also suggested that no evidence had been found on trapping of \gls{D} by chemisorption on the inner surface of a \gls{He} bubble nor by molecular interaction with the \gls{He} cluster.
+The privileged mechanism is therefore the trapping of \gls{D} in the defects made by the stress field induced by the \gls{He} bubble to the crystalline structure of the W.
+Bergstrom et al.\ however showed hydrogen can be located at the surface of \gls{He} bubbles \sidecite{bergstrom_molecular_2017}.
 
-It has been shown by Ueda et al.\ that He implantation (even in small amounts) greatly affects \gls{H} blistering in W \sidecite{ueda_simultaneous_2009}.
-With only 0.1\% of He in the ion beam one can observe that \gls{H} blistering is completely suppressed for temperature greater than \SI{653}{K}.
+It has been shown by Ueda et al.\ that \gls{He} implantation (even in small amounts) greatly affects \gls{H} blistering in \gls{W} \sidecite{ueda_simultaneous_2009}.
+With only 0.1\% of \gls{He} in the ion beam one can observe that \gls{H} blistering is completely suppressed for temperature greater than \SI{653}{K}.
 At lower temperature, \gls{H} blistering occurs but is significantly reduced.
-This phenomenon is due to the fact that \gls{H} migration to the bulk and accumulation at grain boundaries is avoided by He bubbles at the near surface which act as a diffusion plug for H.
+This phenomenon is due to the fact that \gls{H} migration to the bulk and accumulation at grain boundaries is avoided by \gls{He} bubbles at the near surface which act as a diffusion plug for H.
 The same phenomenon has been observed by Miyamoto et al.\ \sidecite{miyamoto_microscopic_2011} which contributes to reducing \gls{H} \gls{retention}.
-Markelj et al.\ \sidecite{markelj_hydrogen_2017} showed however that He implantation can increase D \gls{retention} in the He clustering zone.
-This suggests that observed reduction or increase of D \gls{retention} in mixed H-He \gls{plasma} experiment depend on the implantation depth.
+Markelj et al.\ \sidecite{markelj_hydrogen_2017} showed however that \gls{He} implantation can increase \gls{D} \gls{retention} in the \gls{He} clustering zone.
+This suggests that observed reduction or increase of \gls{D} \gls{retention} in mixed H-He \gls{plasma} experiment depend on the implantation depth.
 
-Ialovega et al.\ performed sequential \gls{H} implantation/desorption cycles on W samples pre-damaged with He \sidecite{ialovega_hydrogen_2020}.
+Ialovega et al.\ performed sequential \gls{H} implantation/desorption cycles on \gls{W} samples pre-damaged with \gls{He} \sidecite{ialovega_hydrogen_2020}.
 He bubbles were found in the near surface region (see \reffig{he bubbles ialovega}) and significantly different \gls{tds} spectra were observed after several \gls{H} implantations/desorptions (see \reffig{TDS example ialovega}).
-This works gives evidence of an interaction between He and \gls{H} in \gls{W}.
+This works gives evidence of an interaction between \gls{He} and \gls{H} in \gls{W}.
 
 \section{Problem definition}
 
@@ -944,7 +944,7 @@ For all these reasons, the \acrshort{festim} code was developed and used to cond
 
 \begin{table*} [h]
     \centering
-    \begin{tabular}{L{2cm} L{0.5cm} L{0.5cm} L{0.6cm} L{1.7cm} l l l }
+    \begin{tabular}{L{2cm} C{0.5cm} C{0.5cm} C{0.6cm} C{1.7cm} c c l }
         & 1D & 2D & 3D & Multimaterial & Heat transfer & Open-source & Programming language \\
         \hline \\
         \acrshort{tmap7} \cite{longhurst_tmap7_2008} & $\checkmark$ & & & $\checkmark$ & & & Fortran\\
