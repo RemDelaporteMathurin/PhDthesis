@@ -50,7 +50,7 @@ where $\rho = \SI{6.3e28}{m^{-3}}$ is the atomic density of W in $\si{m^{-3}}$ a
 Considering only the absorption of $\mathrm{He}_1$ by other clusters (see \reffig{clustering sketch}):
 
 \begin{equation}
-    \ce{c_\mathrm{He_xV_y} + c_\mathrm{He_1} <=>[k^+][k^-] c_\mathrm{He_{x+1}V_y}}
+    \ce{He_xV_y + He_1 <=>[k^+][k^-] He_{x+1}V_y}
 \end{equation}
 
 The reaction term $R_i$ is the coupling term between concentrations and is expressed as:
@@ -87,7 +87,7 @@ To do so, the dissociation of large clusters is neglected (i.e.\ $k_i^- = 0$ for
 This assumption is valid since the activation energy for \gls{trap mutation} events is lower than that of He or \gls{vacancy} emission \sidecite{boisse_modeling_2014}.
 Dissociation of large clusters by \gls{vacancy} or He emission is therefore negligible.
 Moreover, clusters containing more than six \gls{He} atoms are assumed to be immobile (i.e.\ $D_i = 0$ for $i>6$).
-This assumption is motivated by \gls{dft} and \gls{md} results suggesting that the \gls{self-trapping} energy is below the binding energy of one He atom in a pure He cluster for clusters containing more than five He atoms \sidecite{boisse_modeling_2014}.
+This assumption is motivated by \gls{dft} and \gls{md} results suggesting that the \gls{self-trapping} energy is below the binding energy of one He atom in a pure He cluster for clusters containing more than five He atoms \cite{boisse_modeling_2014}.
 
 For smaller clusters ($\mathrm{He}_1$, $\mathrm{He}_2$,$\ldots$, $\mathrm{He}_6$) the diffusion coefficient and the dissociation by He emission energy vary with the number of \gls{He} atoms in the cluster (see \reftab{clusters properties}).
 
