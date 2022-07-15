@@ -30,8 +30,8 @@ jobs:
         with:
           upload_url: ${{ steps.get_release.outputs.upload_url }}
           asset_path: ./main.pdf
-          asset_name: "manuscript_${{ env.GITHUB_REF_NAME }}.pdf"
+          asset_name: "manuscript_${GITHUB_REF/refs\/tags\//}.pdf"
           asset_content_type: pdf
   
       - name: Debug
-        run: echo ${{ env.GITHUB_REF_NAME }}
+        run: echo ${GITHUB_REF/refs\/tags\//}
