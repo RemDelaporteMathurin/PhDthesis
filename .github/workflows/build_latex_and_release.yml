@@ -29,6 +29,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.get_release.outputs.upload_url }}
-          asset_path: ./main.pdf
-          asset_name: main.pdf
+          asset_path: ./manuscript_${GITHUB_REF_NAME}.pdf
+          asset_name: manuscript_${GITHUB_REF_NAME}.pdf
           asset_content_type: pdf
