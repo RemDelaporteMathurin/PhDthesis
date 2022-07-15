@@ -44,7 +44,7 @@ Finally, the traps properties are described in \reftab{traps monoblock}.
     \end{align}
     \labeq{bc thermal monoblock}
 \end{subequations}
-where $\varphi_\mathrm{heat} = \SI{10}{MW.m^{-2}}$, $T_\mathrm{coolant} = \SI{323}{K}$ and $h = \SI{70000}{W.m^{-2}.K^{-1}}$.
+where $T_\mathrm{coolant} = \SI{323}{K}$ and $h = \SI{70000}{W.m^{-2}.K^{-1}}$.
 
 \begin{subequations}
     \begin{align}
@@ -54,14 +54,14 @@ where $\varphi_\mathrm{heat} = \SI{10}{MW.m^{-2}}$, $T_\mathrm{coolant} = \SI{32
     \end{align}
     \labeq{bc H transport monoblock}
 \end{subequations}
-where $\varphi_\mathrm{imp} = \SI{1.6e22}{m^{-2}.s^{-1}}$, $R_p = \SI{1}{nm}$, and $K_\mathrm{r, \, CuCrZr} = 2.9 \times 10^{-14}\cdot \exp{(-1.92/(k_B\cdot T))}$ the recombination coefficient of the copper alloy (in vacuum) expressed in \si{m^4.s^{-1}} \sidecite{anderl_deuterium_1999}.
+where $K_\mathrm{r, \, CuCrZr} = 2.9 \times 10^{-14}\cdot \exp{(-1.92/(k_B\cdot T))}$ the recombination coefficient of the copper alloy (in vacuum) expressed in \si{m^4.s^{-1}} \sidecite{anderl_deuterium_1999}.
 
 \begin{table*}
     \centering
     \begin{tabular}{p{1.7cm}  R{3cm}  R{3cm}  R{1.8cm}  R{1cm} R{1.8cm}  R{1cm}}
          & \multicolumn{2}{c}{Thermal properties} & \multicolumn{4}{c}{Hydrogen transport properties}\\
         \hline
-        Material & $\rho \cdot C_p \newline(\si{J.K^{-1}.m^{-3}})$ & $\lambda \newline(\si{W.m^{-1}.K^{-1}})$ & $D_0 \newline(\si{m^2.s^{-1}})$ & $E_\mathrm{diff} \newline(\si{eV})$ & $S_0 \newline(\si{m^{-3}.Pa^{-0.5}})$ & $E_\mathrm{S} \newline(\si{eV})$\\
+        Material & $\rho \cdot C_p \newline(\si{J.K^{-1}.m^{-3}})$ & $\lambda \newline(\si{W.m^{-1}.K^{-1}})$ & $D_0 \newline(\si{m^2.s^{-1}})$ & $E_D \newline(\si{eV})$ & $S_0 \newline(\si{m^{-3}.Pa^{-0.5}})$ & $E_\mathrm{S} \newline(\si{eV})$\\
         \hline
         \\
         W \cite{frauenfelder_solution_1969,fernandez_hydrogen_2015}& %
@@ -173,7 +173,7 @@ With $\varphi_\mathrm{heat} = \SI{1}{MW.m^{-2}}$, the surface temperature of the
     \caption{Thermal behaviour of the monoblock.}
 \end{figure*}
 
-The average surface temperature $T_\mathrm{surface}$ therefore increases linearly with the heat load and can be modelled by \refeq{thermal behaviour law} (see \reffig{surface temperature as a function of heat flux}).
+The average surface temperature $T_\mathrm{surface}$ therefore increases linearly with the heat load and can be fitted by \refeq{thermal behaviour law} (see \reffig{surface temperature as a function of heat flux}).
 \begin{equation}
     T_\mathrm{surface} = 1.1 \times 10^{-4} \cdot \varphi_\mathrm{heat} + T_\mathrm{coolant}
     \labeq{thermal behaviour law}
@@ -249,10 +249,10 @@ Instead, pulses of \SI{600}{s} will be shot \sidecite{lister_plasma_2006} with a
 Simulating these transient cycles would require stepsizes of $\approx \SI{10}{s}$ in order to capture the ramp-up and ramp-down phases.
 Simulating one cycle would therefore require more than 60 steps (excluding the resting phase).
 
-On the other hand, FESTIM has an adaptive stepsize feature allowing the stepsize to increase (resp. decrease) when steps are solved in less (resp. more) than 5 Newton iterations.
+On the other hand, FESTIM has an adaptive stepsize feature allowing the stepsize to increase (resp. decrease) when steps are solved in less (resp. more) than five Newton iterations.
 Therefore, if a continuous plasma exposure was simulated, the adaptive stepsize would allow the stepsize to increase up to thousands of seconds, reducing a lot the simulation time.
 
-To verify the validity of this approximation, 1D simulations were run with plasma cycles or continuous exposure.
+To verify the validity of the continuous exposure approximation, 1D simulations were run with plasma cycles or continuous exposure.
 For the cycled simulation, both the heat flux $\varphi_\mathrm{heat}$ and the particle flux $\varphi_\mathrm{imp}$ were varied from zero during the resting phases to their nominal values during the plateau phase (see \reffig{plasma cycle}).
 
 Two cases were run:

@@ -5,7 +5,7 @@
 
 % \section{Introduction}
 
-This Chapter focusses on the estimation of the \gls{H} \gls{inventory} in the \glspl{divertor} of \gls{west} and \gls{iter}.
+This Chapter focusses on the estimation of the \gls{H} \gls{inventory} in the \glspl{divertor} of \acrshort{west} and \gls{iter}.
 This estimation relies on the \gls{monoblock} behaviour law computed in \refch{Chapter3}.
 This behaviour law allows rapid evaluations of the \glspl{monoblock} \gls{H} \gls{inventory} for any exposure condition.
 Inputs are taken from \gls{soledge}-EIRENE \cite{bufferand_three-dimensional_2019} and \gls{solps} \cite{kaveeva_solps-iter_2020} plasma simulations.
@@ -22,7 +22,7 @@ They will be converted from plasma simulations outputs.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.95\linewidth]{Figures/Chapter4/coordinates.pdf}
-    \caption{Geometry of \gls{west} and \gls{iter} \glspl{divertor}.}
+    \caption{Poloidal cross section of \gls{west} and \gls{iter} showing the \glspl{divertor} in red.}
     \labfig{reactors}
 \end{figure}
 This Section describes the parameters of the plasma simulations.
@@ -74,8 +74,15 @@ These have been run in baseline burning plasma conditions ($Q=10$ with \SI{50}{M
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\linewidth]{Figures/Chapter4/example.pdf}
-    \caption{Method of \gls{divertor} \gls{H} \gls{inventory} estimation based on the surface concentration, the surface temperature and the behaviour law obtained in \refch{Chapter3}.}
+    \begin{overpic}[width=\linewidth]{Figures/Chapter4/example.pdf}
+        % \linethickness{2pt}
+        \thicklines
+        \put(55,36){\color{black}\vector(-1, 0){30}}
+        \put(25,75){\color{black}\vector(0, -1){30}}
+        \put(35,45){\color{black}\vector(1, 1){30}}
+    \end{overpic}
+
+    \caption{Method of WEST \gls{divertor} \gls{H} \gls{inventory} estimation based on the surface concentration, the surface temperature and the behaviour law obtained in \refch{Chapter3}.}
     \labfig{behaviour law example}
 \end{figure}
 
@@ -112,7 +119,7 @@ They can be expressed as:
 \begin{equation}
     c_\mathrm{surface, \, i} = \frac{R_{p, \mathrm{i}} \ \varphi_\mathrm{imp, \,i}}{D(T_\mathrm{surface})}
 \end{equation}
-where $R_{p, i}$ is the implantation depth in \si{m}, $\varphi_{\mathrm{imp}, \,i}$ is the implanted particles flux in \si{m^{-2}.s^{-1}} and $D$ is the \gls{H} diffusion coefficient in \si{m^{2}.s^{-1}}.
+where $R_{p, i}$ is the implantation depth in \si{m}, $\varphi_{\mathrm{imp}, \,i}$ is the implanted particles flux in \si{m^{-2}.s^{-1}} and $D$ is the \gls{H} diffusion coefficient in \si{m^{2}.s^{-1}} (see \refsec{triangle model}).
 
 Finally, the implanted flux can be expressed as:
 \begin{equation}
@@ -137,22 +144,24 @@ It should be noted that since \gls{srim} is based on the binary collision approx
 
 All of these steps have been automated and packaged into a tool called divHretention.
 divHretention can directly interpret \gls{solps}/\gls{soledge} data and produce a distribution of \gls{monoblock} \gls{inventory} as in \reffig{behaviour law example}.
+\marginnote{
 The source-code of the tool is under version control and openly available via GitHub under a MIT licence \cite{delaporte-mathurin_irfmdivhretention_2021}.
 The divHretention python package is distributed via PyPi \cite{delaporte-mathurin_divhretention_nodate}.
 Moreover, all the results obtained in this Chapter can be reproduced with the scripts available at \url{https://github.com/RemDelaporteMathurin/divHretention-Nucl.Fusion-2021}.
+}
 
-\section{\gls{iter} results}
+\section{ITER results}
 
 \begin{figure*}[h!]
     \captionsetup[subfigure]{format=plain,singlelinecheck=true}  % needed to center the subcaptions
     \centering
-    \begin{subfigure}{0.42\linewidth}
+    \begin{subfigure}{0.40\linewidth}
         \includegraphics[width=\linewidth]{Figures/Chapter4/ITER/inventory_along_inner_divertor.pdf}
-        \caption{IVT.}
+        \caption{Inner Vertical Target.}
     \end{subfigure}%
     \begin{subfigure}{0.58\linewidth}
         \includegraphics[width=\linewidth]{Figures/Chapter4/ITER/inventory_along_outer_divertor.pdf}
-        \caption{OVT.}
+        \caption{Outer Vertical Target.}
         \labfig{distrib outer target}
     \end{subfigure}
     \caption{Surface temperature, surface concentration and \gls{inventory} per unit thickness along the \gls{iter} \gls{divertor} with neutral pressures varying from \SI{2}{Pa} to \SI{11}{Pa}. The area corresponds to the 95\% confidence interval.}
@@ -221,7 +230,7 @@ This is especially true considering that this was for a very long exposure time 
 
 
 % local inventories
-The inventory at the inner and outer \glspl{strike point} globally increases with the \gls{divertor} neutral pressure (see \reffig{local inventory neutral pressure}).
+The inventory at the inner \gls{strike point} is constant from \SI{4}{Pa} whereas the inventory at the outer \gls{strike point} globally increases with the \gls{divertor} neutral pressure (see \reffig{local inventory neutral pressure}).
 The contribution of ions to the surface concentration at the inner strike point is around 50 \% and tends to decrease with increasing neutral pressure (see \reffig{ion contribution neutral pressure}).
 At low \gls{divertor} neutral pressure, the contribution of ions at the outer strike point is around 90 \% and tends to decrease with increasing neutral pressure.
 This can be explained by the fact that in both inner and outer targets, the integrated flux of ions decreases with increasing neutral pressure whereas the integrated flux of atoms increases, leading to a greater proportion of neutral particles.
@@ -233,7 +242,7 @@ The additional \gls{inventory} per \SI{400}{s} discharge was found to decrease w
 Past 300 discharges, the additional \gls{inventory} per discharge decreases with the number of discharges.
 The maximum is around \SI{5}{mg/discharge} between 30 and 100 discharges.
 
-\section{\gls{west} results}
+\section{WEST results}
 
 All the computations have been made for very long exposure times (\SI{e7}{s}) in order to better visualise trends.
 Even though cycling can have an effect on \gls{H} outgassing at the \gls{monoblock} plasma facing surface, it was shown in \refsec{influence of cycling} that the evolution of the \gls{monoblock} \gls{inventory} with the fluence was not affected.
