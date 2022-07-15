@@ -36,6 +36,4 @@ jobs:
           asset_path: ./main.pdf
           asset_name: manuscript_${{ steps.get_version.outputs.VERSION }}.pdf
           asset_content_type: pdf
-  
-      - name: Debug
-        run: echo ${{ steps.get_version.outputs.VERSION }}
+
