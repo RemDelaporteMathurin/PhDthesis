@@ -19,6 +19,7 @@ This assumption is consistent with the high recombination coefficient measured b
 
 The materials properties (diffusivity, solubility, and thermal conductivity, density and heat capacity) are described in \reftab{materials properties monoblock} and plotted on \reffig{properties monoblock}.
 Finally, the traps properties are described in \reftab{traps monoblock}.
+The traps for \gls{W} were taken from \sidecite{hodille_macroscopic_2015} and the trap created by ion implantation is neglected for it only affects the near surface of the monoblock.
 
 \begin{figure}
     \begin{overpic}[width=\linewidth]{Figures/Chapter3/monoblocks/interface_condition/iter case/monoblock_sketch.pdf}
@@ -229,7 +230,7 @@ where $L$ is the monoblock width.
 
 Monoblocks simulations were run in 1D, 2D, and 3D and the inventory was computed for each case (see \reffig{monoblock inventories 1d 2d 3d}).
 Both the 1D and 2D approximations overestimate the inventory compared to the 3D reference, these approximations are therefore conservative.
-It should however be noticed that, when neglecting the recombination on the poloidal gap (i.e.\ assuming hydrogen cannot desorb from this surface), the 2D approximation is strictly equivalent to the 3D reference (see \refch{DEMO monoblocks}).
+It should however be noticed that, when neglecting the recombination on the poloidal gap (i.e.\ assuming hydrogen cannot desorb from this surface), the 2D approximation is strictly equivalent to the 3D reference (see \ref{DEMO monoblocks}).
 For these reasons, the 2D approximation will be employed in the following sections as it is the best compromise between accuracy and computational time.
 
 \begin{figure}
@@ -302,7 +303,7 @@ These kinetics are observed for both the low flux and high flux cases.
 However, in the low flux case, the height of the spikes is greatly reduced.
 This is explained by the lower temperature difference between the resting phase and the plateau phase.
 
-In both cases, the evolution trends are the same with or without cycling and the inventory evolution during the plateau phases nearly match the continuous case.
+In both cases, the evolution trends are the same with or without cycling and the inventory evolution during the plateau phases match the continuous case.
 These results are consistent with the one observed in \sidecite{hodille_modelling_2021} with other trapping parameters.
 For a monoblock where the flux is even lower and the temperature difference is almost zero, no spikes will appear, and the cycled and continuous cases will match.
 

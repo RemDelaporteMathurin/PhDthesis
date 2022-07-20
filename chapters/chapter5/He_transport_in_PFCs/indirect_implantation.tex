@@ -3,9 +3,9 @@ This section will focus on comparing these two indirect sources with direct heli
 
 \subsection{Neutron induced transmutation}
 
-In combination with the \gls{paramak} code \sidecite{shimwell_paramak_2021} used for creating the \gls{monoblock} geometry, a neutronics simulation was run to assess the total quantity of helium generation in a \gls{monoblock} under neutron irradiation with the \gls{openmc} code \sidecite{romano_openmc_2015}, a modern open-source Monte-Carlo neutron and photon transport code.
+In combination with the \gls{paramak} code \sidecite{shimwell_paramak_2021} used for creating the \gls{monoblock} geometry, a neutronics simulation was run to assess helium generation in a \gls{monoblock} under neutron irradiation with the \gls{openmc} code \sidecite{romano_openmc_2015}, a modern open-source Monte-Carlo neutron and photon transport code.
 
-\Gls{openmc} simulates the transport of neutroncs by modelling their paths from their birth until their deaths.
+\Gls{openmc} simulates the transport of neutronics by modelling their paths from their birth until their deaths.
 Neutron interactions with matter (reflexion, absorption, fission...) are simulated using a probabilistic approach where each reaction has a corresponding cross-section (taken from the \gls{endf} \sidecite{brown_endfb-viii0_2018}).
 
 In this simulation, a neutron source was placed above the \gls{monoblock} and the total helium production was tallied via the $(n,X\alpha)$ reaction rate (MT reaction number 207).
@@ -27,7 +27,7 @@ The probability density is a normal distribution with a standard deviation $\sig
 
 The production of helium was found to be more important close to the top surface and to the neutron source (see \reffig{transmutation helium in monoblock}).
 It evolves as linearly with the distance from the top surface.
-The maximum generation rate is $\approx \SI{7e18}{m^{-3}.s^{-1}}$, which is well below the generation rate from direct implantation.
+The maximum generation rate is $\approx \SI{7e18}{m^{-3}.s^{-1}}$, which is well below the generation rate from direct implantation in the near surface.
 \reffig{helium generation distribution} was obtained by averaging all the values by distance from the top surface.
 The error bars were computed by averaging the standard deviation provided by \gls{openmc}.
 
@@ -77,12 +77,12 @@ It is expressed from the tritium radioactive half-life $\tau_{1/2}$:
     \lambda_\mathrm{decay} = \frac{\ln 2}{\tau_{1/2}} \approx \SI{1.77e-9}{s^{-1}}
 \end{equation}
 
-The generation rate of helium from tritium decay is directly proportional to the hydrogen (tritium) retention can therefore be expressed as $\lambda_\mathrm{decay} (c_\mathrm{m} + \sum c_{\mathrm{t}, i})$.
+The generation rate of helium from tritium decay is directly proportional to the hydrogen (tritium) retention and can be expressed as $\lambda_\mathrm{decay} (c_\mathrm{m} + \sum c_{\mathrm{t}, i})$.
 In order to remain conservative, it was computed at steady state.
 
 The maximum generation rate of helium in the \gls{monoblock} was found to be \SI{6.5e12}{m^{-3}.s^{-1}} (see \reffig{he generation from t decay}).
 This value assumes all the implanted hydrogen is tritium and should be halved to consider a 50\%-50\% DT mixture.
-This is order of magnitudes below the generation from direct implantation.
+This is order of magnitudes below the generation from direct implantation in the near surface region.
 
 \begin{figure}
     \centering
@@ -93,7 +93,7 @@ This is order of magnitudes below the generation from direct implantation.
 
 \subsection{Comparison to direct implantation}
 
-The volumetric source of helium $\Gamma$ due to direct implantation can be calculated by:
+The volumetric source of helium $\Gamma$ due to direct implantation from the plasma can be calculated by:
 \begin{equation}
     \Gamma = \varphi_\mathrm{imp} \, f(x)
 \end{equation}
