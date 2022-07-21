@@ -37,7 +37,7 @@ Find the repositories to reproduce the results shown in this manuscript:
         - [5.1.1 Neutron induced transmutation](https://github.com/RemDelaporteMathurin/monoblock_neutronics)
         - [5.1.2 Tritium Decay](https://github.com/RemDelaporteMathurin/t_decay_in_monoblocks)
     - [5.3 to 5.4 Bubble growth results](https://github.com/RemDelaporteMathurin/he_fenics)
-    - [5.4 Influence on hydrogen transport](https://github.com/RemDelaporteMathurin/he_h_coupling)
+    - [5.5 Influence on hydrogen transport](https://github.com/RemDelaporteMathurin/he_h_coupling)
 - **Appendix**:
     - A. FESTIM verification:
         - [A.1 Conservation of chemical potential (MES)](https://github.com/RemDelaporteMathurin/interface_conditions_paper)
