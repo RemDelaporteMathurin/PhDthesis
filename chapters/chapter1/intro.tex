@@ -30,7 +30,7 @@ To be able to fuse, they must overcome the Coulomb barrier induced by the electr
 This Coulomb barrier increases with the charge of the nuclei (i.e.\ the number of protons).
 This means that the nuclei must collide with a high enough velocity.
 At the atomistic scale, the velocity $v_\mathrm{th}$ is a function of temperature (see \refeq{thermal velocity}).
-This is one of the reasons why the probability of a fusion reaction (called cross-section) is temperature dependent.
+This is one of the reasons why the probability of a fusion reaction is temperature dependent.
 
 \begin{equation}
     v_\mathrm{th} = \sqrt{\frac{k_B T}{m}}
@@ -48,7 +48,7 @@ where $k_B = \SI{1.3806e-23}{m^2.s^{-2}.kg.K^{-1}}$ is the Boltzmann constant, $
 
 Hydrogen, as the lightest element, has the lowest fusion temperature.
 It is also the most abundant element on Earth (although bond to other elements).
-Depending on which hydrogen \gls{isotope} is used, different fusion reactions are possible (see Equations \refeq{fusion reactions}) \cite{forrest_fendl-3_2012}.
+Depending on which hydrogen \gls{isotope} is used, different fusion reactions are possible (see \refeq{fusion reactions}) \sidecite{forrest_fendl-3_2012}.
 
 \begin{subequations}
     \begin{equation}
@@ -75,7 +75,7 @@ Depending on which hydrogen \gls{isotope} is used, different fusion reactions ar
 Each of these reactions has a different cross-section (measure of the reaction probability).
 The \gls{D}-\gls{T} reaction is the one with the highest cross-section at `low` temperature (see \reffig{fusion cross sections}).
 This is the reason why this reaction has been the focus of nuclear fusion for decades.
-More recently, private companies have started experimenting with more exotic reactions like proton-boron (TAE Technologies) or $^2$H-$^3$He (Helion Energy).
+More recently, private companies have started experimenting with more exotic reactions like proton-boron (TAE Technologies) or \gls{D}-$^3$He (Helion Energy).
 
 % \begin{figure} [h]
 %     \centering
@@ -332,7 +332,7 @@ This is an issue for both the fuel supply chain and nuclear safety.
 Due to its radioactive nature, tritium is very rare on Earth.
 The current reserve of tritium in the world is a few dozens of kilograms.
 It is naturally produced by interaction of cosmic rays with the nitrogen in the atmosphere (\SI{0.2}{kg} per year).
-Tritium is however produced in larger quantities in fission \gls{candu} reactors as a by-product (\SI{130}{g} per year per \gls{candu} reactor \sidecite{ni_tritium_2013}).
+Tritium is however produced in larger quantities in fission \glspl{candu} as a by-product (\SI{130}{g} per year per \gls{candu} reactor \sidecite{ni_tritium_2013}).
 
 \acrshort{iter} itself will consume around \SI{18}{kg} of tritium over the duration of its operation \sidecite{glugla_iter_2007}, which represent a yearly consumption of \SI{0.9}{kg} for a 20-year lifetime.
 A \SI{800}{MWe} DEMO-type commercial fusion reactor would burn around \SI{300}{g} of tritium per day ($\approx \SI{100}{kg}$ a year).
@@ -364,12 +364,12 @@ Depending on the \gls{Li} \gls{isotope}, two reactions can occur:
     \text{n} + \text{\textsuperscript{7}Li}  \ \ &\xrightarrow{} \ \ \text{\textsuperscript{3}H} + \alpha + \text{n}' - \SI{2.5}{MeV} 
 \end{align}
 
-Several \glspl{breeding blanket} designs have been proposed divided in three main categories: ceramic concepts, liquid metal concepts, and molten-salts concepts.
+Several \glspl{breeding blanket} designs have been proposed and divided in three main categories: ceramic concepts, liquid metal concepts, and molten-salts concepts.
 All designs differ in the choice of tritium breeder, coolant and geometry.
 
 The European candidates for \glspl{breeding blanket} in DEMO are the \gls{wcll} \sidecite{aubert_design_2020, del_nevo_recent_2019}, the \gls{hcpb} \sidecite{hernandez_overview_2018, hernandez_new_2017,pereslavtsev_neutronic_2017}, the \gls{hcll} \sidecite{aubert_status_2018,jaboulay_nuclear_2017} and the \gls{dcll} \sidecite{urgorri_tritium_2017, palermo_neutronic_2015} \sidecite{federici_overview_2019}.
 
-The \gls{tbr} is defined by the number of tritium atoms produced by generated neutrons.
+The \gls{tbr} is defined as the number of tritium atoms produced per generated neutrons.
 In order to ensure tritium self-sufficiency, the \gls{tbr} of the blanket must be greater than or equal to one \sidecite{abdou_blanketfirst_2015}.
 A \gls{tbr} greater than one can only be obtained by neutron multiplication with lead or \gls{Be}.
 
@@ -476,7 +476,7 @@ Tritium can also be produced by the neutron capture of helium-3 \sidecite{shimad
     \labfig{helium3 neutron capture cross section}
 \end{figure}
 
-Finally, interactions of lithium with neutrons represent a major source of hydrogen in tritium \glspl{breeding blanket} \sidecite{dark_influence_2021}.
+Finally, interactions of lithium with neutrons represent a major source of tritium in tritium \glspl{breeding blanket} \sidecite{dark_influence_2021}.
 
 \subsubsection{Helium}\labsec{sources of helium}
 Helium is the product of the fusion reaction (see \refeq{fusion reactions}).
@@ -490,7 +490,7 @@ This \emph{\gls{transmutation gas}} production has been estimated using well-est
 Depending on the position in the DEMO \gls{divertor}, cumulative helium production over the course of three \glspl{fpy} could reach more than \SI{400}{appm}.
 
 
-\subsection{H/W \& He/W interactions}
+\subsection{H/W \& He/W interactions} \labsec{hydrogen and helium interactions with tungsten}
 
 
 \begin{figure} [h]
@@ -515,7 +515,7 @@ The `height` of the potential energy wells is called the \gls{diffusion} \textit
 \begin{equation}
     D = D_0 \exp{(-E_D/k_B T)}
 \end{equation}
-where $E_D$ is expressed in \si{eV}, $T$ is the temperature in \si{K}, $k_B$ is the Boltzmann constant in \si{eV.K^{-1}}.
+where $E_D$ is expressed in \si{eV}, $T$ is the temperature in \si{K}, $k_B = \SI{8.617e-5}{eV.K^{-1}}$ is the Boltzmann constant.
 
 \Gls{diffusion} can also be assisted by temperature gradients (called the \emph{\gls{Soret effect}} or \emph{\gls{thermophoresis}}) \sidecite{martinez_thermal_2021, hodille_estimation_2017, longhurst_soret_1985} or hydrostatic pressure gradients.
 The tungsten property to simulate the \gls{Soret effect} (Soret coefficient or heat of transport) is currently missing from literature (for hydrogen).
@@ -585,7 +585,7 @@ The \gls{trapping} rate and \gls{detrapping} rate can be respectively expressed 
 where $E_k$ is the \gls{trapping} energy in \si{eV}, $k_B$ is the Boltzmann constant in \si{eV.K^{-1}}, $T$ is the temperature in \si{K}, $E_\mathrm{b}$ is the binding energy of the particle with the defect and $E_p = E_\mathrm{b} + E_k$ is the \gls{detrapping} energy.
 A common assumption is that $E_k = E_D$.
 
-Each rate therefore has two parameters: the pre-activation factor and the activation energy.
+Each rate therefore has two parameters: the pre-exponential factor and the activation energy.
 These parameters can be identified from fitting \gls{tds} experiments.
 \gls{tds} experiments consist in loading a metal sample with the studied species (e.g.\ \gls{H} or \gls{He}) and heat it at different temperatures with a well controlled temperature ramp (e.g.\ \SI{1}{K.s^{-1}}, \SI{10}{K.s^{-1}}...) while measuring the desorption flux.
 This results in a spectrum which typically has one or several desorption peaks corresponding to different traps (see \reffig{TDS example ialovega}).
@@ -616,12 +616,12 @@ Similarly, the binding energy of a hydrogen atom in a mono-\gls{vacancy} varies 
 \end{figure*}
 
 Defects can either be pre-existent in the material (sometimes called \textit{intrinsic} defects): impurities, grain boundaries, etc.
-They can also be created from external factors (\textit{extrinsic} defects) like particle bombardment (ions, neutrons) \sidecite{ogorodnikova_deuterium_2003} or mechanical stress \sidecite{benannoune_multidimensional_2020}.
+They can also be caused by external factors (\textit{extrinsic} defects) like particle bombardment (ions, neutrons) \sidecite{ogorodnikova_deuterium_2003} or mechanical stress \sidecite{benannoune_multidimensional_2020}.
 
 \subsubsection{Surface dissolution}
 
 When a surface is in contact with a gas, molecular species (e.g.\ $\text{H}_2$, $\text{T}_2$, $\text{HD}$...) can dissociate into mono-atomic species.
-After their dissociation, the atomic particles can be adsorbed on the surface (on adsorption sites).
+After their dissociation, the atomic particles can be adsorbed on the surface (on adsorption sites) \sidecite{hodille_modelling_2021-1}.
 This dissociation is described by a sticking probability usually associated with an Arrhenius law $s = s_0 \exp{(-E_s/k_B T)}$.
 \gls{dft} calculations can calculate energy barriers for adsorption and migration of solute species on surfaces \sidecite{heinola_first-principles_2010}.
 Studies have however shown that this process is not thermally activated (i.e.\ $E_s=0$) \sidecite{alnot_adsorption_1989, tamm_interaction_1970} but rather depends on the ratio of the surface concentration of the species (hydrogen or helium) by the concentration of adsorption sites.
@@ -674,8 +674,8 @@ The product of the solubility and diffusivity is called \textit{permeability}.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.75\linewidth]{Figures/Chapter1/materials_solubility_review_comparison.pdf}
-    \caption{Solubitity values for tungsten, copper and CuCrZr. Data from \cite{delaporte-mathurin_remdelaportemathurinh-transport-materials_2022}.}
+    \includegraphics[width=0.8\linewidth]{Figures/Chapter1/materials_solubility_review_comparison.pdf}
+    \caption{Solubility values for tungsten, copper and CuCrZr. Data from \cite{delaporte-mathurin_remdelaportemathurinh-transport-materials_2022}.}
     \labfig{solubility materials}
 \end{figure}
 
@@ -732,7 +732,7 @@ Clustering of \gls{H} atoms is less clear and Henriksson et al.\ showed that \gl
 
 \subsubsection{Bubble nucleation}
 
-If its size is big enough the cluster pressure is sufficient to knock off a \gls{W} atom from the \gls{lattice}, creating a \gls{W} \gls{vacancy} and an interstitial \gls{W} atom (a \gls{Frenkel pair}).
+If its size is big enough, the cluster pressure is sufficient to knock off a \gls{W} atom from the \gls{lattice}, creating a \gls{W} \gls{vacancy} and an interstitial \gls{W} atom (a \gls{Frenkel pair}).
 This process is called \gls{trap mutation} or \emph{\gls{self-trapping}} and the trapped clusters act as nuclei for bubble formation.
 
 \Gls{trap mutation} has been modelled in \gls{W} using \gls{dft} \sidecite{boisse_modelling_2014} and Monte Carlo computations \sidecite{de_backer_modeling_2015}.
@@ -754,7 +754,7 @@ Two or more bubbles can also coalesce and form a bigger bubble.
 Condon and Schober \sidecite{condon_hydrogen_1993} reviewed the key mechanisms of bubble growth in metals.
 
 Each of these mechanisms can become dominant over another depending on the implantation and the metal conditions. 
-Bubbles can continue to grow by absorbing interstitial \gls{He} atoms or mobile \gls{He} clusters (i.e.\ that haven't self trapped).
+Bubbles can continue to grow by absorbing interstitial \gls{He} atoms or mobile \gls{He} clusters (i.e.\ that have not self trapped).
 Considering that vacancies are mobile in the solid, the volume of a bubble could also increase if a \gls{vacancy} or a \gls{vacancy} cluster interacts with a \gls{He} bubble.
 The same is true for He-vacancies or H-vacancies clusters.
 
@@ -847,10 +847,11 @@ The correct metric for estimating \gls{bursting} probabilities must therefore be
 
 In 2012, Wright et al.\ \sidecite{wright_tungsten_2012} observed the formation of nanostructures on the surfaces of the \gls{W} divertor of the reactor Alcator C-mod.
 These nanostructures are made of \gls{W} \glspl{tendril} (see \reffig{w fuzz wright}).
-These structures are called \gls{W} \gls{fuzz}, nano-fuzz or even fuzzy W.
+These structures are called \gls{W} \gls{fuzz}, nano-fuzz or even fuzzy \gls{W}.
 Because a small portion of the \gls{divertor} grew \gls{W} \gls{fuzz}, no conclusion was made regarding its influence on the \gls{plasma} operation.
 However, if these structures were to be removed during \gls{plasma} operation via erosion, \gls{W} atoms could be fed into the \gls{plasma}, affecting the \gls{tokamak} performances.
-Moreover, this phenomenon could increase the \gls{W} dust formation in the reactor and lead to contamination and safety issues \sidecite{grisolia_tritium_2015}.
+Moreover, this phenomenon could increase the \gls{W} dust formation in the reactor and lead to contamination and safety issues since the dust particles can be radioactive \sidecite{grisolia_tritium_2015}.
+The formation of \gls{W} \gls{fuzz} also increases the specific surface area and therfore the potential intake of hydrogen.
 
 W \gls{fuzz} has been observed at high temperature (>1000K), high flux (>\SI{1e21}{He^+.m^{-2}.s^{-1}}) and long exposure (t>\SI{1e2}{s}) \sidecite{baldwin_formation_2010, nishijima_sputtering_2011}.
 

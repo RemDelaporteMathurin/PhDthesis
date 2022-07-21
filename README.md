@@ -19,8 +19,8 @@ Find the repositories to reproduce the results shown in this manuscript:
 - **Chapter 2 Model description**:
     - 2.5.1 Analytical verification:
         - [Case 1: H transport MES](https://github.com/RemDelaporteMathurin/PhDthesis/blob/main/scripts/mes_simple_diffusion.py)
-        - Case 2a: 1D H transport MMS: need to find the repo
-        - Case 2b: 2D H transport MMS: need to find the repo
+        - Case 2a: 1D H transport MMS
+        - Case 2b: 2D H transport MMS
     - [2.5.2 Experimental validation](https://github.com/RemDelaporteMathurin/tds_optimisation)
     - [2.5.3 Comparison with TMAP7](https://github.com/RemDelaporteMathurin/interface_conditions_paper)
 
@@ -32,12 +32,12 @@ Find the repositories to reproduce the results shown in this manuscript:
         - [3.2.4 Influence of cycling](https://github.com/RemDelaporteMathurin/monoblock_cycling)
     - [3.3 Monoblock behaviour law](https://github.com/RemDelaporteMathurin/monoblock_parametric)
 - [**Chapter 4 Divertor inventory estimation**](https://github.com/RemDelaporteMathurin/divHretention-Nucl.Fusion-2021)
-- **Chapter 5 He transport in PFCs**:
-    - [5.2 Direct implantation](https://github.com/RemDelaporteMathurin/he_fenics)
-    - 5.3 Indirect sources:
-        - [5.3.1 Neutron induced transmutation](https://github.com/RemDelaporteMathurin/monoblock_neutronics)
-        - [5.3.2 Tritium Decay](https://github.com/RemDelaporteMathurin/t_decay_in_monoblocks)
-    - [5.4 Influence on H transport](https://github.com/RemDelaporteMathurin/he_h_coupling)
+- **Chapter 5 Influence of helium on hydrogen transport**:
+    - 5.1 Sources of helium:
+        - [5.1.1 Neutron induced transmutation](https://github.com/RemDelaporteMathurin/monoblock_neutronics)
+        - [5.1.2 Tritium Decay](https://github.com/RemDelaporteMathurin/t_decay_in_monoblocks)
+    - [5.3 to 5.4 Bubble growth results](https://github.com/RemDelaporteMathurin/he_fenics)
+    - [5.5 Influence on hydrogen transport](https://github.com/RemDelaporteMathurin/he_h_coupling)
 - **Appendix**:
     - A. FESTIM verification:
         - [A.1 Conservation of chemical potential (MES)](https://github.com/RemDelaporteMathurin/interface_conditions_paper)
