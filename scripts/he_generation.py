@@ -8,7 +8,7 @@ imp_depth = 1.5e-9
 gaussian_distribution = (
     1 / (width * (2 * np.pi) ** 0.5) * np.exp(-0.5 * ((x - imp_depth) / width) ** 2)
 )  # m-1
-flux = 5e25  # He/m2/s
+flux = 1e23  # He/m2/s
 
 gaussian_area = np.trapz(gaussian_distribution, x)
 
@@ -39,7 +39,7 @@ with plt.style.context(matplotx.styles.dufte):
     plt.yscale("log")
     matplotx.ylabel_top("He generation \n (m$^{-3}$ s$^{-1}$)")
     plt.xlabel("Depth (nm)")
-    plt.ylim(bottom=1e10, top=1e35)
+    plt.ylim(bottom=1e10, top=1e34)
     matplotx.line_labels(min_label_distance=5)
     plt.tight_layout()
     plt.show()
