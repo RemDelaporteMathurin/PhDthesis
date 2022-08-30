@@ -402,6 +402,18 @@ The integral terms in \refeq{eq: matrices A and b} are computed with Gauss-Legen
 After solving \refeq{variational problem matrix form}, the $U_i$ coefficients are known and the approximated solution $u_h$ can be computed.
 Non-linear problems are solved similarly where the solution is approached using Newton's method.
 
+
+The weak formulation of the steady state McNabb & Foster equation is:
+
+\begin{equation}
+    \int_{\Omega} \nabla c_\mathrm{m} \cdot \nabla v_\mathrm{m}  \ dx = \int_{\Omega} \left( k c_\mathrm{m} (n - c_\mathrm{t}) - p c_\mathrm{t} \right) \ v_\mathrm{t} \ dx \quad \forall \ (v_\mathrm{m}, v_\mathrm{t}) \in \hat{V}
+    \labeq{weak form mcnabb foster}
+\end{equation}
+where $\hat{V}$ is a suitable vector-functionspace.
+
+The transient formulation can be obtained by adding transient terms to \refeq{weak form mcnabb foster} $\int_{\Omega} \frac{c_\mathrm{m} - c_\mathrm{m, old}}{\Delta t} v_\mathrm{m} \ dx$ and $\int_{\Omega} \frac{c_\mathrm{t} - c_\mathrm{t, old}}{\Delta t} v_\mathrm{t} \ dx$ (forward Euler time discretisation).
+$c_\mathrm{m, old}$ and $c_\mathrm{t, old}$ are the previous solutions for the mobile concentration and trapped concentration respectively and $\Delta$ is the timestep.
+
 \subsection{Main features of \gls{festim}}
 \gls{festim} provides an even higher level of abstraction than \gls{fenics} by providing a user-friendly interface dedicated to H transport and heat transfer problems.
 Users only have to provide inputs such as material properties, traps properties, geometry, solving parameters, without having to dive into the finite element implementation.
