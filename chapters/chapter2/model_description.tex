@@ -412,7 +412,7 @@ The weak formulation of the steady state McNabb \& Foster equation is:
 where $\hat{V}$ is a suitable vector-functionspace.
 
 The transient formulation can be obtained by adding transient terms to \refeq{weak form mcnabb foster} $\int_{\Omega} \frac{c_\mathrm{m} - c_\mathrm{m, old}}{\Delta t} v_\mathrm{m} \ dx$ and $\int_{\Omega} \frac{c_\mathrm{t} - c_\mathrm{t, old}}{\Delta t} v_\mathrm{t} \ dx$ (forward Euler time discretisation).
-$c_\mathrm{m, old}$ and $c_\mathrm{t, old}$ are the previous solutions for the mobile concentration and trapped concentration respectively and $\Delta$ is the timestep.
+$c_\mathrm{m, old}$ and $c_\mathrm{t, old}$ are the previous solutions for the mobile concentration and trapped concentration respectively and $\Delta t$ is the timestep.
 
 \subsection{Main features of \gls{festim}}
 \gls{festim} provides an even higher level of abstraction than \gls{fenics} by providing a user-friendly interface dedicated to H transport and heat transfer problems.
