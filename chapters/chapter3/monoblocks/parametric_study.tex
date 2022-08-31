@@ -15,6 +15,16 @@ The goal of this Section is to establish this relationship between the exposure 
 \subsection{Assumptions and simplifications}
 
 For the sake of simplicity and computational time, Trap 2 (in W) is neglected.
+This trap was neglected for it has the lowest density.
+However this will induce errors (< \SI{80}{\%}) in the inventory computation (see \reffig{neglecting trap 2 error})
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/Chapter3/monoblocks/neglecting_trap_2_error.pdf}
+    \caption{Evolution of the concentrations of traps 1 and 2 as a function of temperature for a local mobile hydrogen concentration of \SI{1e22}{m^{-3}} and error associated with neglecting trap 2.}
+    \labfig{neglecting trap 2 error}
+\end{figure}
+
 Note that this method could be applied to any set of trapping parameters.
 Continuity of mobile concentration at interfaces between materials is also assumed in order to save computational time (see \refsec{influence of interface conditions}).
 To remain conservative, no recombination on the gaps (toroidal and poloidal) is assumed.
