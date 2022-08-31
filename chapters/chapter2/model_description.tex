@@ -232,11 +232,16 @@ Neglecting the trapping and generation terms, \refeq{mobile} therefore reads:
     \frac{\partial \phi S}{\partial t} &= \nabla \cdot\left(D \nabla \phi S\right) + f \nonumber \\
     &=\nabla \cdot\left( D S \nabla \phi + D \phi \nabla S\right) + f \labeq{diffusion equation changed}
 \end{align}
-
+where $f$ is some source term.
 % Because $\phi$ is computed, the ratio $c_\mathrm{m}/S$ is continuous by default at the material interfaces.
 
 % This second approach is used for instance in the \textit{mass-diffusion} procedure of the Abaqus code \sidecite{smith_abaqusstandard_2009}.
 % This interface model has also been implemented into the current hydrogen transport code FESTIM \sidecite{delaporte-mathurin_finite_2019} using FEniCS \sidecite{alnaes_fenics_2015}.
+
+\refeq{trapped} reads:
+\begin{equation}
+    \frac{\partial c_{\mathrm{t}, i}}{\partial t}=k_i \ \phi \ S \ \left(n_{i}-c_{\mathrm{t}, i}\right)-p_i \ c_{\mathrm{t}, i}
+\end{equation}
 
 After solving \refeq{diffusion equation changed} for $\phi$, $c_m$ can be retrieved by multiplying the solution by $S$.
 
