@@ -82,6 +82,8 @@ $f$ can be expressed as a molecular recombination flux:
     \labeq{recombination flux}
 \end{equation}
 where $K_r(T) = K_{r_0} \exp(\frac{-E_{K_r}}{k_B T}) $ is the recombination coefficient expressed in \si{m^{3n-2}.s^{-1}}, $n \in \{1, 2\}$ is the order of the recombination.
+This is the Waelbroeck model \sidecite{waelbroeck_influence_1984}.
+This model may not be valid for all cases \sidecite{schmid_use_2021} and a more extended and more complex model from Pick–Sonnenberg \sidecite{pick_model_1985} could be more generic.
 In a metal, $n=2$ and in a non-metallic liquid, $n=1$.
 Recombination occurs when hydrogen particles located at the surface of the material combine with other particles (which can be other hydrogen particles) and are no longer bonded with the metal surface.
 It can happen both in presence of a vacuum or when the metal is in contact with a fluid (gas or liquid).
@@ -230,11 +232,16 @@ Neglecting the trapping and generation terms, \refeq{mobile} therefore reads:
     \frac{\partial \phi S}{\partial t} &= \nabla \cdot\left(D \nabla \phi S\right) + f \nonumber \\
     &=\nabla \cdot\left( D S \nabla \phi + D \phi \nabla S\right) + f \labeq{diffusion equation changed}
 \end{align}
-
+where $f$ is some source term.
 % Because $\phi$ is computed, the ratio $c_\mathrm{m}/S$ is continuous by default at the material interfaces.
 
 % This second approach is used for instance in the \textit{mass-diffusion} procedure of the Abaqus code \sidecite{smith_abaqusstandard_2009}.
 % This interface model has also been implemented into the current hydrogen transport code FESTIM \sidecite{delaporte-mathurin_finite_2019} using FEniCS \sidecite{alnaes_fenics_2015}.
+
+\refeq{trapped} reads:
+\begin{equation}
+    \frac{\partial c_{\mathrm{t}, i}}{\partial t}=k_i \ \phi \ S \ \left(n_{i}-c_{\mathrm{t}, i}\right)-p_i \ c_{\mathrm{t}, i}
+\end{equation}
 
 After solving \refeq{diffusion equation changed} for $\phi$, $c_m$ can be retrieved by multiplying the solution by $S$.
 
@@ -401,6 +408,18 @@ The integral terms in \refeq{eq: matrices A and b} are computed with Gauss-Legen
 
 After solving \refeq{variational problem matrix form}, the $U_i$ coefficients are known and the approximated solution $u_h$ can be computed.
 Non-linear problems are solved similarly where the solution is approached using Newton's method.
+
+
+The weak formulation of the steady state McNabb \& Foster equation is:
+
+\begin{equation}
+    \int_{\Omega} \nabla c_\mathrm{m} \cdot \nabla v_\mathrm{m}  \ dx = \int_{\Omega} \left( k c_\mathrm{m} (n - c_\mathrm{t}) - p c_\mathrm{t} \right) \ v_\mathrm{t} \ dx \quad \forall \ (v_\mathrm{m}, v_\mathrm{t}) \in \hat{V}
+    \labeq{weak form mcnabb foster}
+\end{equation}
+where $\hat{V}$ is a suitable vector-functionspace.
+
+The transient formulation can be obtained by adding transient terms to \refeq{weak form mcnabb foster} $\int_{\Omega} \frac{c_\mathrm{m} - c_\mathrm{m, old}}{\Delta t} v_\mathrm{m} \ dx$ and $\int_{\Omega} \frac{c_\mathrm{t} - c_\mathrm{t, old}}{\Delta t} v_\mathrm{t} \ dx$ (forward Euler time discretisation).
+$c_\mathrm{m, old}$ and $c_\mathrm{t, old}$ are the previous solutions for the mobile concentration and trapped concentration respectively and $\Delta t$ is the timestep.
 
 \subsection{Main features of \gls{festim}}
 \gls{festim} provides an even higher level of abstraction than \gls{fenics} by providing a user-friendly interface dedicated to H transport and heat transfer problems.

@@ -69,7 +69,7 @@ The gas puff position is set inside the \gls{private flux region} (i.e.\ the reg
 Several \gls{iter} cases were taken from \sidecite{pitts_physics_2019} with \gls{divertor} neutral pressures varying from \SI{1.8}{Pa} to \SI{11.2}{Pa}.
 These \gls{solps} \sidecite{kaveeva_solps-iter_2020} scenarios can be found in the \gls{iter} \gls{imas} database \sidecite{imbeaux_design_2015, park_assessment_2020}.
 The nine simulations used in this work are labelled 122396, 122397, 122398, 122399, 122400, 122401, 122402, 122403 and 122404.
-These have been run in baseline burning plasma conditions ($Q=10$ with \SI{50}{MW} of input power).
+These have been run in baseline detached burning plasma conditions ($Q=10$ with \SI{50}{MW} of input power).
 
 
 \begin{figure}[h!]
@@ -152,6 +152,23 @@ Moreover, all the results obtained in this Chapter can be reproduced with the sc
 
 \section{ITER results}
 
+
+\begin{figure*}[h!]
+    \captionsetup[subfigure]{format=plain,singlelinecheck=true}  % needed to center the subcaptions
+    \centering
+    \begin{subfigure}{0.40\linewidth}
+        \includegraphics[width=\linewidth]{Figures/Chapter4/ITER/exposure_conditions_inner.pdf}
+        \caption{\gls{ivt}.}
+    \end{subfigure}%
+    \begin{subfigure}{0.58\linewidth}
+        \includegraphics[width=\linewidth]{Figures/Chapter4/ITER/exposure_conditions_outer.pdf}
+        \caption{\gls{ovt}.}
+    \end{subfigure}
+    \caption{Distribution of exposure conditions (heat flux, particle flux and particle incident energy) along the ITER divertor for several divertor neutral pressures \cite{pitts_physics_2019}.}
+    \labfig{distrib exposure conditions iter divertor}
+\end{figure*}
+
+
 \begin{figure*}[h!]
     \captionsetup[subfigure]{format=plain,singlelinecheck=true}  % needed to center the subcaptions
     \centering
@@ -198,6 +215,7 @@ Moreover, all the results obtained in this Chapter can be reproduced with the sc
     \labfig{iter vs time}
 \end{figure}
 
+The exposure conditions vary with respect to the divertor neutral pressure (see \reffig{distrib exposure conditions iter divertor}).
 
 % peak temperature
 Peak temperatures at \glspl{strike point} increased when decreasing the \gls{divertor} neutral pressure (see \reffig{distrib outer target}).
